@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         print("Hello Jan")
         print("Hello Peter")
         // Do any additional setup after loading the view, typically from a nib.
+        print("Commit aus XCode")
     }
 
 
