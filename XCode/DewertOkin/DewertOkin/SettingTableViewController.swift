@@ -54,6 +54,16 @@ class SettingTableViewController: UITableViewController {
         
         if (indexPath.row == settingsEntries.firstIndex(of: .deviceInfo)) {
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .profiles)) {
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .warranty)) {
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .about)) {
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .siri)) {
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         }
         
         // Configure the cell...
