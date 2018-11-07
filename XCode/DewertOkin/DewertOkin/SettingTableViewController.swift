@@ -11,7 +11,7 @@ import UIKit
 class SettingTableViewController: UITableViewController {
     
     var settingsEntries = ["Device Info", "Profiles", "Achievements",
-                           "Accessability", "Warranty", "About", "Siri", "Dark Mode",]
+                           "Accessibility Mode", "Warranty", "About", "Siri", "Dark Mode",]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +41,32 @@ class SettingTableViewController: UITableViewController {
         if (indexPath.row == settingsEntries.firstIndex(of: "Dark Mode")) {
             let darkModeSwitch = UISwitch()
             darkModeSwitch.isOn = true
+            darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchChanged(sender:)), for: .valueChanged)
             cell.accessoryView = darkModeSwitch
         }
+        
+        if (indexPath.row == settingsEntries.firstIndex(of: "Accessibility Mode")) {
+            let accessibilityModeSwitch = UISwitch()
+            accessibilityModeSwitch.isOn = false
+            accessibilityModeSwitch.addTarget(self, action: #selector(accessibilityModeSwitchChanged(sender:)), for: .valueChanged)
+            cell.accessoryView = accessibilityModeSwitch
+        }
+        
 
         // Configure the cell...
 
         return cell
     }
     
+    @objc
+    private func darkModeSwitchChanged(sender: UISwitch!) {
+        print("Dark Mode switch is on: \(sender.isOn)")
+    }
+    
+    @objc
+    private func accessibilityModeSwitchChanged(sender: UISwitch!) {
+        print("Accessibility Mode switch is on: \(sender.isOn)")
+    }
 
     /*
     // Override to support conditional editing of the table view.
