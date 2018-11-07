@@ -22,6 +22,12 @@ class SettingTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Sets the title of the surrounding Navigation Controller
+        navigationItem.title = "Settings"
+    }
 
     // MARK: - Table view data source
 
