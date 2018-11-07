@@ -17,6 +17,7 @@
 		0357FBFE218607A40043A828 /* DewertOkinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBFD218607A40043A828 /* DewertOkinUITests.swift */; };
 		CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */; };
 		CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */; };
+		CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD61A9D22192F7990093A990 /* SettingsEntry.swift */; };
 		FAD177EA2191C3D70031E4E3 /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		0357FBFF218607A40043A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMore.storyboard; sourceTree = "<group>"; };
 		CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		CD61A9D22192F7990093A990 /* SettingsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntry.swift; sourceTree = "<group>"; };
 		FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				0357FBE4218607A30043A828 /* Assets.xcassets */,
 				0357FBE6218607A30043A828 /* LaunchScreen.storyboard */,
 				0357FBE9218607A30043A828 /* Info.plist */,
+				CD61A9D22192F7990093A990 /* SettingsEntry.swift */,
 				0357FBE1218607A30043A828 /* DewertOkin.xcdatamodeld */,
 				FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */,
 				CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */,
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */,
+				CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */,
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,

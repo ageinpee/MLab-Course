@@ -10,8 +10,8 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
     
-    var settingsEntries = ["Device Info", "Profiles", "Achievements",
-                           "Accessibility Mode", "Warranty", "About", "Siri", "Dark Mode",]
+    var settingsEntries: [SettingsEntry] = [.deviceInfo, .profiles, .achievements,
+                           .accessibilityMode, .warranty, .about, .siri, .darkMode]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,30 +36,26 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
-        cell.textLabel?.text = settingsEntries[indexPath.row]
+        cell.textLabel?.text = settingsEntries[indexPath.row].rawValue
         
-        if (indexPath.row == settingsEntries.firstIndex(of: "Dark Mode")) {
+        if (indexPath.row == settingsEntries.firstIndex(of: .darkMode)) {
             let darkModeSwitch = UISwitch()
             darkModeSwitch.isOn = true
             darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchChanged(sender:)), for: .valueChanged)
             cell.accessoryView = darkModeSwitch
         }
         
-        if (indexPath.row == settingsEntries.firstIndex(of: "About")){
-            cell.detailTextLabel?.text = "Version 0.1"
-            cell.detailTextLabel?.textColor = UIColor.gray
-        } else {
-            cell.detailTextLabel?.text = ""
-        }
-        
-        if (indexPath.row == settingsEntries.firstIndex(of: "Accessibility Mode")) {
+        if (indexPath.row == settingsEntries.firstIndex(of: .accessibilityMode)) {
             let accessibilityModeSwitch = UISwitch()
             accessibilityModeSwitch.isOn = false
             accessibilityModeSwitch.addTarget(self, action: #selector(accessibilityModeSwitchChanged(sender:)), for: .valueChanged)
             cell.accessoryView = accessibilityModeSwitch
         }
         
-
+        if (indexPath.row == settingsEntries.firstIndex(of: .deviceInfo)) {
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        }
+        
         // Configure the cell...
 
         return cell
