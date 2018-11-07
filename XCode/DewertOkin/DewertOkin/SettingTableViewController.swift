@@ -9,6 +9,9 @@
 import UIKit
 
 class SettingTableViewController: UITableViewController {
+    
+    var settingsEntries = ["Device Info", "Profiles", "Achievements",
+                           "Accessability", "Warranty", "About", "Siri", "Dark Mode",]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,20 +26,23 @@ class SettingTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return settingsEntries.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
-        cell.textLabel?.text = "Hello MLab"
-        cell.textLabel?.textColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
+        cell.textLabel?.text = settingsEntries[indexPath.row]
+        
+        if (indexPath.row == settingsEntries.firstIndex(of: "Dark Mode")) {
+            let darkModeSwitch = UISwitch()
+            darkModeSwitch.isOn = true
+            cell.accessoryView = darkModeSwitch
+        }
 
         // Configure the cell...
 
