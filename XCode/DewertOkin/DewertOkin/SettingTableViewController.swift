@@ -45,6 +45,13 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryView = darkModeSwitch
         }
         
+        if (indexPath.row == settingsEntries.firstIndex(of: "About")){
+            cell.detailTextLabel?.text = "Version 0.1"
+            cell.detailTextLabel?.textColor = UIColor.gray
+        } else {
+            cell.detailTextLabel?.text = ""
+        }
+        
         if (indexPath.row == settingsEntries.firstIndex(of: "Accessibility Mode")) {
             let accessibilityModeSwitch = UISwitch()
             accessibilityModeSwitch.isOn = false
