@@ -19,6 +19,9 @@
 		03E9875A219447D500189C97 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98759219447D500189C97 /* Presets.swift */; };
 		03E9875C219447E000189C97 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875B219447E000189C97 /* Reminder.swift */; };
 		03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875D2194483D00189C97 /* PersistenceService.swift */; };
+		03E98760219452B800189C97 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E9875F219452B800189C97 /* Presets.storyboard */; };
+		03E98762219452C400189C97 /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E98761219452C400189C97 /* Timer.storyboard */; };
+		03E98764219452D300189C97 /* Reminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E98763219452D300189C97 /* Reminder.storyboard */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,9 @@
 		03E98759219447D500189C97 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		03E9875B219447E000189C97 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		03E9875D2194483D00189C97 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		03E9875F219452B800189C97 /* Presets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
+		03E98761219452C400189C97 /* Timer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
+		03E98763219452D300189C97 /* Reminder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminder.storyboard; sourceTree = "<group>"; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -120,6 +126,9 @@
 				0357FBE9218607A30043A828 /* Info.plist */,
 				0357FBE1218607A30043A828 /* DewertOkin.xcdatamodeld */,
 				03E9875D2194483D00189C97 /* PersistenceService.swift */,
+				03E9875F219452B800189C97 /* Presets.storyboard */,
+				03E98761219452C400189C97 /* Timer.storyboard */,
+				03E98763219452D300189C97 /* Reminder.storyboard */,
 			);
 			path = DewertOkin;
 			sourceTree = "<group>";
@@ -264,9 +273,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E98762219452C400189C97 /* Timer.storyboard in Resources */,
 				0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */,
+				03E98764219452D300189C97 /* Reminder.storyboard in Resources */,
 				0357FBE5218607A30043A828 /* Assets.xcassets in Resources */,
 				0357FBE0218607A30043A828 /* Main.storyboard in Resources */,
+				03E98760219452B800189C97 /* Presets.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
