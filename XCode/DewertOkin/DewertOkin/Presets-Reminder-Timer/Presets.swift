@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Preset {
+class Presets {
     var name : String = ""
     var preset_description : String = ""
     var ded_device : String = ""
