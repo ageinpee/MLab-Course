@@ -15,8 +15,10 @@
 		0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0357FBE6218607A30043A828 /* LaunchScreen.storyboard */; };
 		0357FBF3218607A40043A828 /* DewertOkinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBF2218607A40043A828 /* DewertOkinTests.swift */; };
 		0357FBFE218607A40043A828 /* DewertOkinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBFD218607A40043A828 /* DewertOkinUITests.swift */; };
+		03E98758219447BC00189C97 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98757219447BC00189C97 /* Timer.swift */; };
+		03E9875A219447D500189C97 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98759219447D500189C97 /* Presets.swift */; };
+		03E9875C219447E000189C97 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875B219447E000189C97 /* Reminder.swift */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		FA397CA821943B68000B4912 /* presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA397CA721943B68000B4912 /* presets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +53,10 @@
 		0357FBF9218607A40043A828 /* DewertOkinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DewertOkinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0357FBFD218607A40043A828 /* DewertOkinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DewertOkinUITests.swift; sourceTree = "<group>"; };
 		0357FBFF218607A40043A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03E98757219447BC00189C97 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		03E98759219447D500189C97 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
+		03E9875B219447E000189C97 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		FA397CA721943B68000B4912 /* presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = presets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +88,6 @@
 		0357FBCE218607A30043A828 = {
 			isa = PBXGroup;
 			children = (
-				FA397CA621943745000B4912 /* presets-reminder-timer */,
 				0357FBD9218607A30043A828 /* DewertOkin */,
 				0357FBF1218607A40043A828 /* DewertOkinTests */,
 				0357FBFC218607A40043A828 /* DewertOkinUITests */,
@@ -106,6 +109,7 @@
 		0357FBD9218607A30043A828 /* DewertOkin */ = {
 			isa = PBXGroup;
 			children = (
+				FA397CA621943745000B4912 /* Presets-Reminder-Timer */,
 				0357FBDA218607A30043A828 /* AppDelegate.swift */,
 				0357FBDC218607A30043A828 /* ViewController.swift */,
 				0357FBDE218607A30043A828 /* Main.storyboard */,
@@ -143,12 +147,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FA397CA621943745000B4912 /* presets-reminder-timer */ = {
+		FA397CA621943745000B4912 /* Presets-Reminder-Timer */ = {
 			isa = PBXGroup;
 			children = (
-				FA397CA721943B68000B4912 /* presets.swift */,
+				03E98757219447BC00189C97 /* Timer.swift */,
+				03E98759219447D500189C97 /* Presets.swift */,
+				03E9875B219447E000189C97 /* Reminder.swift */,
 			);
-			path = "presets-reminder-timer";
+			path = "Presets-Reminder-Timer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,7 +290,9 @@
 			files = (
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
-				FA397CA821943B68000B4912 /* presets.swift in Sources */,
+				03E98758219447BC00189C97 /* Timer.swift in Sources */,
+				03E9875C219447E000189C97 /* Reminder.swift in Sources */,
+				03E9875A219447D500189C97 /* Presets.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

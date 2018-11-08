@@ -1,8 +1,8 @@
 //
-//  presets.swift
+//  Presets.swift
 //  DewertOkin
 //
-//  Created by MacBook-Benutzer on 08.11.18.
+//  Created by Nima Rahrakhshan on 08.11.18.
 //  Copyright © 2018 Team DewertOkin. All rights reserved.
 //
 
