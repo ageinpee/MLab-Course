@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G3025" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
+        <attribute name="reminderDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminderName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminderTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Timer" representedClassName="Timer" syncable="YES" codeGenerationType="class">
+        <attribute name="timerDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timerTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     <entity name="Preset" representedClassName="Preset" syncable="YES" codeGenerationType="class">
         <attribute name="ded_device" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="device_light_1" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -18,6 +27,8 @@
         <attribute name="preset_description" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Reminder" positionX="-63.95703125" positionY="-11.46484375" width="128" height="88"/>
+        <element name="Timer" positionX="-340.14453125" positionY="-12.98828125" width="128" height="88"/>
         <element name="Preset" positionX="-63" positionY="-18" width="128" height="270"/>
     </elements>
 </model>
