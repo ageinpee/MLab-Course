@@ -9,6 +9,7 @@
         <attribute name="timerDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timerTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+	</entity>
     <entity name="Preset" representedClassName="Preset" syncable="YES" codeGenerationType="class">
         <attribute name="ded_device" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="device_light_1" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
