@@ -22,6 +22,9 @@
 		03E98760219452B800189C97 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E9875F219452B800189C97 /* Presets.storyboard */; };
 		03E98762219452C400189C97 /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E98761219452C400189C97 /* Timer.storyboard */; };
 		03E98764219452D300189C97 /* Reminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E98763219452D300189C97 /* Reminder.storyboard */; };
+		03E987682194631300189C97 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987652194631300189C97 /* NotificationCenter.framework */; };
+		03E987692194631300189C97 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987662194631300189C97 /* UserNotifications.framework */; };
+		03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987672194631300189C97 /* UserNotificationsUI.framework */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 		03E9875F219452B800189C97 /* Presets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
 		03E98761219452C400189C97 /* Timer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 		03E98763219452D300189C97 /* Reminder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminder.storyboard; sourceTree = "<group>"; };
+		03E987652194631300189C97 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		03E987662194631300189C97 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		03E987672194631300189C97 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -72,6 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E987682194631300189C97 /* NotificationCenter.framework in Frameworks */,
+				03E987692194631300189C97 /* UserNotifications.framework in Frameworks */,
+				03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */,
 				85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +163,9 @@
 		85919DE521943DCC0026AD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03E987652194631300189C97 /* NotificationCenter.framework */,
+				03E987662194631300189C97 /* UserNotifications.framework */,
+				03E987672194631300189C97 /* UserNotificationsUI.framework */,
 				85919DE621943DCC0026AD28 /* CoreData.framework */,
 			);
 			name = Frameworks;
