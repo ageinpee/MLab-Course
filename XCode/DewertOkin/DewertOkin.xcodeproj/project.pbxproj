@@ -15,7 +15,7 @@
 		0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0357FBE6218607A30043A828 /* LaunchScreen.storyboard */; };
 		0357FBF3218607A40043A828 /* DewertOkinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBF2218607A40043A828 /* DewertOkinTests.swift */; };
 		0357FBFE218607A40043A828 /* DewertOkinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBFD218607A40043A828 /* DewertOkinUITests.swift */; };
-		03E98758219447BC00189C97 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98757219447BC00189C97 /* Timer.swift */; };
+		03E98758219447BC00189C97 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98757219447BC00189C97 /* Timers.swift */; };
 		03E9875A219447D500189C97 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98759219447D500189C97 /* Presets.swift */; };
 		03E9875C219447E000189C97 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875B219447E000189C97 /* Reminder.swift */; };
 		03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875D2194483D00189C97 /* PersistenceService.swift */; };
@@ -60,7 +60,7 @@
 		0357FBF9218607A40043A828 /* DewertOkinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DewertOkinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0357FBFD218607A40043A828 /* DewertOkinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DewertOkinUITests.swift; sourceTree = "<group>"; };
 		0357FBFF218607A40043A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03E98757219447BC00189C97 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		03E98757219447BC00189C97 /* Timers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timers.swift; sourceTree = "<group>"; };
 		03E98759219447D500189C97 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		03E9875B219447E000189C97 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		03E9875D2194483D00189C97 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		FA397CA621943745000B4912 /* Presets-Reminder-Timer */ = {
 			isa = PBXGroup;
 			children = (
-				03E98757219447BC00189C97 /* Timer.swift */,
+				03E98757219447BC00189C97 /* Timers.swift */,
 				03E98759219447D500189C97 /* Presets.swift */,
 				03E9875B219447E000189C97 /* Reminder.swift */,
 			);
@@ -318,7 +318,7 @@
 				03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */,
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
-				03E98758219447BC00189C97 /* Timer.swift in Sources */,
+				03E98758219447BC00189C97 /* Timers.swift in Sources */,
 				03E9875C219447E000189C97 /* Reminder.swift in Sources */,
 				03E9875A219447D500189C97 /* Presets.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
@@ -497,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7SN78RF3Z9;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,6 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7SN78RF3Z9;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
