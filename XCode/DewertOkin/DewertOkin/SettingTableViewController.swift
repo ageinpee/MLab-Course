@@ -12,6 +12,8 @@ class SettingTableViewController: UITableViewController {
     
     var settingsEntries: [SettingsEntry] = [.deviceInfo, .profiles, .achievements,
                            .accessibilityMode, .warranty, .about, .siri, .darkMode]
+    
+    let search = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,10 @@ class SettingTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         // Sets the title of the surrounding Navigation Controller
         navigationItem.title = "Settings"
+        //navigationItem.largeTitleDisplayMode = .automatic
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        search.searchResultsUpdater = self
+        self.navigationItem.searchController = search
     }
 
     // MARK: - Table view data source
@@ -132,4 +138,12 @@ class SettingTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension SettingTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    
 }
