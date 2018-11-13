@@ -24,7 +24,11 @@ class Timers: UIViewController{
         super.viewDidLoad()
     }
     
-    @IBAction func addTimer(){
+    @IBAction func addTimer(_ sender: UIStoryboardSegue){
+        
+    }
+    
+    @IBAction func addTimerWasCanceled(_ sender: UIStoryboardSegue){
         
     }
     
@@ -33,7 +37,7 @@ class Timers: UIViewController{
     }
 }
 
-extension ViewController: UITableViewDataSource{
+extension Timers: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
