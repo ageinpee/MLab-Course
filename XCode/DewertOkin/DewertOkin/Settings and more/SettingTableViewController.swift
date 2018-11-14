@@ -10,8 +10,10 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
     
-    var settingsEntries: [SettingsEntry] = [.deviceInfo, .profiles, .achievements,
+    private let settingsEntries: [SettingsEntry] = [.deviceInfo, .achievements, .presets,
                            .accessibilityMode, .warranty, .about, .siri, .darkMode]
+    
+    private let search = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,10 @@ class SettingTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         // Sets the title of the surrounding Navigation Controller
         navigationItem.title = "Settings"
+        //navigationItem.largeTitleDisplayMode = .automatic
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        search.searchResultsUpdater = self
+        self.navigationItem.searchController = search
     }
 
     // MARK: - Table view data source
@@ -60,7 +66,7 @@ class SettingTableViewController: UITableViewController {
         
         if (indexPath.row == settingsEntries.firstIndex(of: .deviceInfo)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .profiles)) {
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .presets)) {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
             cell.accessoryType = .disclosureIndicator
@@ -132,4 +138,12 @@ class SettingTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension SettingTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    
 }

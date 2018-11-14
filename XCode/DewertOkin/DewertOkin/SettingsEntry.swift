@@ -10,7 +10,7 @@ import Foundation
 
 enum SettingsEntry: String {
     case deviceInfo = "Device Info"
-    case profiles = "Profiles"
+    case presets = "Presets"
     case achievements = "Achievements"
     case accessibilityMode = "Accessibility Mode"
     case warranty = "Warranty"
