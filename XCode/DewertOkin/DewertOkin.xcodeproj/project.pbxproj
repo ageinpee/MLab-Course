@@ -56,7 +56,7 @@
 		CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMore.storyboard; sourceTree = "<group>"; };
 		CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		CD61A9D22192F7990093A990 /* SettingsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntry.swift; sourceTree = "<group>"; };
-		FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
+		FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +115,7 @@
 				0357FBE9218607A30043A828 /* Info.plist */,
 				CD61A9D22192F7990093A990 /* SettingsEntry.swift */,
 				0357FBE1218607A30043A828 /* DewertOkin.xcdatamodeld */,
-				FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */,
-				CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */,
-				CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */,
+				CD35980E219840EF00B57987 /* Settings and more */,
 			);
 			path = DewertOkin;
 			sourceTree = "<group>";
@@ -138,6 +136,16 @@
 				0357FBFF218607A40043A828 /* Info.plist */,
 			);
 			path = DewertOkinUITests;
+			sourceTree = "<group>";
+		};
+		CD35980E219840EF00B57987 /* Settings and more */ = {
+			isa = PBXGroup;
+			children = (
+				FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */,
+				CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */,
+				CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */,
+			);
+			path = "Settings and more";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
