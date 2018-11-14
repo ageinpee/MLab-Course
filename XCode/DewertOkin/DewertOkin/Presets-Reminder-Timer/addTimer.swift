@@ -18,16 +18,15 @@ class addTimer: UIViewController{
     public var timerName = [String]()
     public var timerDescription = [String]()
     
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func doneTimer(){
         print("Timer added successfully")
-    }
-    
-    @IBAction func cancelNewTimer(segue: UIStoryboardSegue){
-        print("Unwinding to Timers Storyboard")
+        print(timePicker.date)
     }
     
     func notificationCenter(){
