@@ -49,9 +49,11 @@
                     <connections>
                         <outlet property="TableView" destination="B3x-XU-Igp" id="5hM-bY-5bn"/>
                         <outlet property="tableView" destination="B3x-XU-Igp" id="R7c-u4-lJ3"/>
+                        <segue destination="Syg-DQ-0cM" kind="unwind" unwindAction="addReminderWasCanceled:" id="aGP-4K-eB0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZQ-F5-KEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Syg-DQ-0cM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-4" y="94.902548725637189"/>
         </scene>
@@ -67,7 +69,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Reminder" id="Ej0-x1-pMH">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hPN-ik-rMD"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hPN-ik-rMD">
+                                            <connections>
+                                                <segue destination="mvQ-FM-QPO" kind="unwind" unwindAction="addReminderWasCanceled:" id="6tr-1f-Jc5"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="2xB-tJ-AA8"/>
                                     </navigationItem>
                                 </items>
@@ -110,6 +116,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylw-8h-bwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mvQ-FM-QPO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="848.79999999999995" y="97.601199400299862"/>
         </scene>

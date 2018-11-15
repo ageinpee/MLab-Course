@@ -25,8 +25,17 @@ class addTimer: UIViewController{
     }
     
     @IBAction func doneTimer(){
-        print("Timer added successfully")
-        print(timePicker.date)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let time = timePicker.date
+        let components = Calendar.current.dateComponents([.hour,.minute],from: time)
+        let hour = components.hour!
+        let minute = components.minute!
+        if let destination = segue.destination as? Timers {
+            destination.timerTime.append(hour)
+        }
     }
     
     func notificationCenter(){
