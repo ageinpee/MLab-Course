@@ -14,7 +14,7 @@ import NotificationCenter
 
 class Timers: UIViewController{
     
-    public var timerTime = [Int]()
+    public var timerTime = [String]()
     public var timerName = [String]()
     public var timerDescription = [String]()
     
@@ -26,8 +26,6 @@ class Timers: UIViewController{
     
     @IBAction func addTimer(_ sender: UIStoryboardSegue){
         print("Done button was clicked")
-        self.timerName.append("This is a Test")
-        //self.timerTime.append(20)
         self.tableView.reloadData()
     }
     
@@ -55,7 +53,7 @@ extension Timers: UITableViewDataSource{
         let mySwitch = UISwitch()
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = timerName[indexPath.row]
-        cell.detailTextLabel?.text = String (timerTime[indexPath.row])
+        cell.detailTextLabel?.text = timerTime[indexPath.row]
         cell.accessoryView = mySwitch
         mySwitch.setOn(true,animated:true)
         return cell

@@ -34,7 +34,8 @@ class addTimer: UIViewController{
         let hour = components.hour!
         let minute = components.minute!
         if let destination = segue.destination as? Timers {
-            destination.timerTime.append(hour)
+            destination.timerTime.append((String(hour) + ":" + String(minute)))
+            destination.timerName.append("This is a test")
         }
     }
     
