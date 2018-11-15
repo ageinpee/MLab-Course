@@ -87,6 +87,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="563816908.07113504">
                                     <!--2018-11-13 15:48:28 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="doneTimer" destination="94w-4O-QUa" eventType="valueChanged" id="saQ-5H-M3A"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -100,6 +103,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hoS-sH-BsJ"/>
                     </view>
+                    <connections>
+                        <outlet property="timePicker" destination="7aN-So-Cv2" id="Vr0-cZ-cen"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afO-Gt-d2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iw2-Bw-fjp" userLabel="Exit" sceneMemberID="exit"/>

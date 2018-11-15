@@ -18,16 +18,25 @@ class addTimer: UIViewController{
     public var timerName = [String]()
     public var timerDescription = [String]()
     
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func doneTimer(){
-        print("Timer added successfully")
+        
     }
     
-    @IBAction func cancelNewTimer(segue: UIStoryboardSegue){
-        print("Unwinding to Timers Storyboard")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let time = timePicker.date
+        let components = Calendar.current.dateComponents([.hour,.minute],from: time)
+        let hour = components.hour!
+        let minute = components.minute!
+        if let destination = segue.destination as? Timers {
+            destination.timerTime.append((String(hour) + ":" + String(minute)))
+            destination.timerName.append("This is a test")
+        }
     }
     
     func notificationCenter(){

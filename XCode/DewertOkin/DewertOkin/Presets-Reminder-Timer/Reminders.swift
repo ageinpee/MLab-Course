@@ -8,13 +8,17 @@
 
 import Foundation
 import CoreData
+import UIKit
+import UserNotifications
+import NotificationCenter
 
-class Reminders {
+class Reminders: UIViewController {
     
-    var reminderName : String = ""
-    var reminderDescription : String = ""
-    var reminderTime : Int = 0
+    public var reminderName : String = ""
+    public var reminderDescription : String = ""
+    public var reminderTime : Int = 0
     
+    @IBOutlet weak var tableView: UITableView!
     /**
      */
     func ´init´(){
@@ -23,38 +27,38 @@ class Reminders {
     
     /**
      */
-    func viewDidLoad () {
+    override func viewDidLoad () {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func addReminder(_ sender: UIStoryboardSegue){
         
     }
     
-    /**
-     */
-    func addReminder () {
+    @IBAction func addReminderWasCanceled(_ sender: UIStoryboardSegue){
         
     }
     
-    /**
-     */
-    func editReminder () {
-        
-    }
-    
-    /**
-     */
-    func deleteReminder () {
-        
-    }
-    
-    /**
-     */
     func notificationcenter () {
         
     }
-    
-    /**
-     */
-    func toggleReminder () {
-        
-    }
 
+}
+
+extension Reminders: UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reminderName.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        cell.textLabel?.text = ""
+        cell.detailTextLabel?.text = ""
+        return cell
+    }
 }
