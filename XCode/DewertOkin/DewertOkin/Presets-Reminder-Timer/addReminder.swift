@@ -22,11 +22,11 @@ class addReminder: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func doneReminder(){
+    @IBAction func addReminder(){
         print("Reminder added successfully")
     }
     
-    @IBAction func cancelNewReminder(segue: UIStoryboardSegue){
+    @IBAction func addReminderWasCanceled(segue: UIStoryboardSegue){
         print("Unwinding to Reminders Storyboard")
     }
     

@@ -50,6 +50,7 @@
                         <outlet property="TableView" destination="B3x-XU-Igp" id="5hM-bY-5bn"/>
                         <outlet property="tableView" destination="B3x-XU-Igp" id="R7c-u4-lJ3"/>
                         <segue destination="Syg-DQ-0cM" kind="unwind" unwindAction="addReminderWasCanceled:" id="aGP-4K-eB0"/>
+                        <segue destination="Syg-DQ-0cM" kind="unwind" unwindAction="addReminder:" id="lez-qS-nAl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZQ-F5-KEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -74,7 +75,11 @@
                                                 <segue destination="mvQ-FM-QPO" kind="unwind" unwindAction="addReminderWasCanceled:" id="6tr-1f-Jc5"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="2xB-tJ-AA8"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="2xB-tJ-AA8">
+                                            <connections>
+                                                <segue destination="mvQ-FM-QPO" kind="unwind" unwindAction="addReminder:" id="99d-Tv-2Th"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
