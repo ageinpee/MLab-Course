@@ -32,6 +32,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B3x-XU-Igp">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jhm-Uz-Ae2" id="9I8-1U-wUO"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -84,41 +87,57 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminders name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-rf-Bzb">
-                                <rect key="frame" x="16" y="80" width="343" height="30"/>
+                                <rect key="frame" x="16" y="288" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminders Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nsi-wv-fsq">
-                                <rect key="frame" x="16" y="118" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="doneReminder" destination="nr4-g2-C3t" eventType="valueChanged" id="v3Q-E4-iXS"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFn-in-XBD">
-                                <rect key="frame" x="0.0" y="156" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="563879672.14149797">
                                     <!--2018-11-14 09:14:32 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="doneReminder" destination="nr4-g2-C3t" eventType="valueChanged" id="cNC-MT-Drs"/>
+                                </connections>
                             </datePicker>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminders Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nsi-wv-fsq">
+                                <rect key="frame" x="16" y="326" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="doneReminder" destination="nr4-g2-C3t" eventType="valueChanged" id="YBd-iv-POC"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nsi-wv-fsq" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" constant="16" id="4I3-aH-DDy"/>
+                            <constraint firstItem="ZBl-rf-Bzb" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" constant="16" id="0kT-2s-BKq"/>
+                            <constraint firstItem="pT0-oQ-2zH" firstAttribute="trailing" secondItem="ZBl-rf-Bzb" secondAttribute="trailing" constant="16" id="2tS-Ed-MxO"/>
+                            <constraint firstItem="pT0-oQ-2zH" firstAttribute="trailing" secondItem="nsi-wv-fsq" secondAttribute="trailing" constant="16" id="3gr-uE-VCB"/>
                             <constraint firstItem="pT0-oQ-2zH" firstAttribute="trailing" secondItem="nsi-wv-fsq" secondAttribute="trailing" constant="16" id="6LH-zb-FKJ"/>
-                            <constraint firstItem="ZBl-rf-Bzb" firstAttribute="top" secondItem="DjD-We-mpv" secondAttribute="bottom" constant="16" id="Ezm-b3-War"/>
+                            <constraint firstItem="PFn-in-XBD" firstAttribute="top" secondItem="DjD-We-mpv" secondAttribute="bottom" id="Ez2-Rf-8Td"/>
+                            <constraint firstItem="ZBl-rf-Bzb" firstAttribute="top" secondItem="PFn-in-XBD" secondAttribute="bottom" constant="8" id="Gi2-fM-mh0"/>
+                            <constraint firstItem="PFn-in-XBD" firstAttribute="trailing" secondItem="pT0-oQ-2zH" secondAttribute="trailing" id="Jj3-Pk-sdm"/>
+                            <constraint firstItem="PFn-in-XBD" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" id="QYN-TB-EyX"/>
                             <constraint firstItem="DjD-We-mpv" firstAttribute="trailing" secondItem="pT0-oQ-2zH" secondAttribute="trailing" id="Qqv-S9-JF6"/>
+                            <constraint firstItem="nsi-wv-fsq" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" constant="16" id="RRY-70-mms"/>
                             <constraint firstItem="DjD-We-mpv" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" id="Uf2-pA-nQ5"/>
-                            <constraint firstItem="PFn-in-XBD" firstAttribute="trailing" secondItem="pT0-oQ-2zH" secondAttribute="trailing" id="Uf7-5I-QCF"/>
-                            <constraint firstItem="ZBl-rf-Bzb" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" constant="16" id="ZaN-BC-gvx"/>
                             <constraint firstItem="DjD-We-mpv" firstAttribute="top" secondItem="pT0-oQ-2zH" secondAttribute="top" id="ZjM-Iz-Txt"/>
-                            <constraint firstItem="PFn-in-XBD" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" id="aYP-ck-Gk6"/>
-                            <constraint firstItem="nsi-wv-fsq" firstAttribute="top" secondItem="ZBl-rf-Bzb" secondAttribute="bottom" constant="8" id="b7A-zP-06c"/>
                             <constraint firstItem="pT0-oQ-2zH" firstAttribute="trailing" secondItem="ZBl-rf-Bzb" secondAttribute="trailing" constant="16" id="ibK-BE-OIS"/>
-                            <constraint firstItem="PFn-in-XBD" firstAttribute="top" secondItem="nsi-wv-fsq" secondAttribute="bottom" constant="8" id="wtH-hN-UnN"/>
+                            <constraint firstItem="nsi-wv-fsq" firstAttribute="top" secondItem="ZBl-rf-Bzb" secondAttribute="bottom" constant="8" id="wPd-54-PR3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pT0-oQ-2zH"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextfield" destination="nsi-wv-fsq" id="31R-j4-YYB"/>
+                        <outlet property="nameTextfield" destination="ZBl-rf-Bzb" id="qCw-bQ-ZBD"/>
+                        <outlet property="timePicker" destination="PFn-in-XBD" id="uAA-g1-iNC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylw-8h-bwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="mvQ-FM-QPO" userLabel="Exit" sceneMemberID="exit"/>

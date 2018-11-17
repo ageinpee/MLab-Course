@@ -14,29 +14,23 @@ import NotificationCenter
 
 class Reminders: UIViewController {
     
-    public var reminderName : String = ""
-    public var reminderDescription : String = ""
-    public var reminderTime : Int = 0
+    public var reminderName = [String]()
+    public var reminderDescription = [String]()
+    public var reminderTime = [String]()
     
     @IBOutlet weak var tableView: UITableView!
-    /**
-     */
-    func ´init´(){
     
-    }
-    
-    /**
-     */
     override func viewDidLoad () {
         super.viewDidLoad()
     }
     
     @IBAction func addReminder(_ sender: UIStoryboardSegue){
-        
+        print("Done button was clicked")
+        self.tableView.reloadData()
     }
     
     @IBAction func addReminderWasCanceled(_ sender: UIStoryboardSegue){
-        
+        print("Cancel button was clicked")
     }
     
     func notificationcenter () {
@@ -56,9 +50,14 @@ extension Reminders: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let mySwitch = UISwitch()
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = ""
-        cell.detailTextLabel?.text = ""
+        
+        cell.textLabel?.text = reminderName[indexPath.row]
+        cell.detailTextLabel?.text = reminderTime[indexPath.row] + " | " +  reminderDescription[indexPath.row]
+        cell.accessoryView = mySwitch
+        mySwitch.setOn(true,animated:true)
         return cell
     }
 }

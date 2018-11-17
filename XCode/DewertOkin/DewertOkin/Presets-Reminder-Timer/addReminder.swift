@@ -14,20 +14,32 @@ import NotificationCenter
 
 class addReminder: UIViewController {
     
-    public var reminderTime = [Int]()
     public var reminderName = [String]()
     public var reminderDescription = [String]()
+    public var reminderTime = [String]()
+    
+    @IBOutlet weak var nameTextfield: UITextField!
+    @IBOutlet weak var descriptionTextfield: UITextField!
+    @IBOutlet weak var timePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func addReminder(){
-        print("Reminder added successfully")
+    @IBAction func doneReminder(){
+        
     }
     
-    @IBAction func addReminderWasCanceled(segue: UIStoryboardSegue){
-        print("Unwinding to Reminders Storyboard")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let time = timePicker.date
+        let components = Calendar.current.dateComponents([.hour,.minute],from: time)
+        let hour = components.hour!
+        let minute = components.minute!
+        if let destination = segue.destination as? Reminders {
+            destination.reminderTime.append((String(hour) + ":" + String(minute)))
+            destination.reminderName.append(nameTextfield.text!)
+            destination.reminderDescription.append(nameTextfield.text!)
+        }
     }
     
     func notificationCenter(){
