@@ -29,7 +29,6 @@ class addTimer: UIViewController{
         }
     }
     
-    // This needs a better handler, since you can always type it in
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let time = timePicker.date
         guard let destination = segue.destination as? Timers else { return }
