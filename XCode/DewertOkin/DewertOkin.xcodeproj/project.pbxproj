@@ -34,7 +34,7 @@
 		CD94528E219C3D9100280A66 /* AccessoriesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD94528D219C3D9100280A66 /* AccessoriesStoryboard.storyboard */; };
 		CD945292219C423100280A66 /* AccessoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD945291219C423100280A66 /* AccessoriesViewController.swift */; };
 		CD945294219C429400280A66 /* Accessorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD945293219C429400280A66 /* Accessorie.swift */; };
-		FAD177EA2191C3D70031E4E3 /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */; };
+		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,7 @@
 		CD94528D219C3D9100280A66 /* AccessoriesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccessoriesStoryboard.storyboard; sourceTree = "<group>"; };
 		CD945291219C423100280A66 /* AccessoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesViewController.swift; sourceTree = "<group>"; };
 		CD945293219C429400280A66 /* Accessorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessorie.swift; sourceTree = "<group>"; };
-		FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
+		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +203,7 @@
 		CD94528A219C3D2800280A66 /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
-				FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */,
+				FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */,
 				CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */,
 			);
 			path = Achievements;
@@ -389,7 +389,7 @@
 				03E9875C219447E000189C97 /* Reminders.swift in Sources */,
 				03E9875A219447D500189C97 /* Presets.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
-				FAD177EA2191C3D70031E4E3 /* AchievementsViewController.swift in Sources */,
+				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,7 +1,128 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kqt-Eh-9BD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Achievements Table View Controller-->
+        <scene sceneID="BLw-nW-H3v">
+            <objects>
+                <tableViewController id="kqt-Eh-9BD" customClass="AchievementsTableViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="c2U-de-HrY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="45" id="QRq-OZ-54o" customClass="LabelTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QRq-OZ-54o" id="xSv-L9-l9v">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testrubrik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOL-nq-j7O">
+                                            <rect key="frame" x="16" y="0.0" width="77" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14/17 Trophies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwe-2A-2Hf">
+                                            <rect key="frame" x="248" y="-3" width="111" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pwe-2A-2Hf" firstAttribute="top" secondItem="xSv-L9-l9v" secondAttribute="top" constant="-3" id="44B-NS-Xvk"/>
+                                        <constraint firstItem="pwe-2A-2Hf" firstAttribute="leading" secondItem="TOL-nq-j7O" secondAttribute="trailing" constant="26" id="Dcw-IJ-Auv"/>
+                                        <constraint firstItem="pwe-2A-2Hf" firstAttribute="leading" secondItem="TOL-nq-j7O" secondAttribute="trailing" constant="155" id="I7v-I3-Gny"/>
+                                        <constraint firstAttribute="trailing" secondItem="pwe-2A-2Hf" secondAttribute="trailing" constant="16" id="Vo6-Ej-YNv"/>
+                                        <constraint firstItem="TOL-nq-j7O" firstAttribute="top" secondItem="xSv-L9-l9v" secondAttribute="top" id="Xjq-gn-kNa"/>
+                                        <constraint firstAttribute="bottom" secondItem="pwe-2A-2Hf" secondAttribute="bottom" constant="-2.5" id="mJY-29-xk1"/>
+                                        <constraint firstAttribute="bottom" secondItem="TOL-nq-j7O" secondAttribute="bottom" constant="-5.5" id="owf-lE-sAb"/>
+                                        <constraint firstItem="TOL-nq-j7O" firstAttribute="leading" secondItem="xSv-L9-l9v" secondAttribute="leading" constant="16" id="wC5-Zt-chU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="TopicLabel" destination="TOL-nq-j7O" id="Hkg-ar-MM5"/>
+                                    <outlet property="TopicTrophyCountLabel" destination="pwe-2A-2Hf" id="xQ5-KF-9Rh"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="121" id="Ftf-BB-DQq" customClass="AchievementTableViewCell">
+                                <rect key="frame" x="0.0" y="73" width="375" height="121"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ftf-BB-DQq" id="OW8-88-rmB">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000Buttonsgeklickt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIu-Iy-a7s">
+                                            <rect key="frame" x="16" y="0.0" width="262.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ih7-iJ-9aX">
+                                            <rect key="frame" x="286.5" y="29" width="79.5" height="81"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFe-sY-Znl">
+                                            <rect key="frame" x="16" y="11" width="252.5" height="109"/>
+                                            <string key="text">Klicke 1000 Buttons um das Achievement freizuschalten. langer text zur probe - wenn er zu lang ist werden hoffentlich punkte angezeigt</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="357/1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKV-5u-Hu9">
+                                            <rect key="frame" x="286.5" y="0.0" width="79.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ih7-iJ-9aX" firstAttribute="top" secondItem="jKV-5u-Hu9" secondAttribute="bottom" constant="8" id="4E5-d2-NCR"/>
+                                        <constraint firstItem="aFe-sY-Znl" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="top" constant="11" id="54y-Pl-miW"/>
+                                        <constraint firstItem="jKV-5u-Hu9" firstAttribute="leading" secondItem="zIu-Iy-a7s" secondAttribute="trailing" constant="8" id="7ev-8q-RQL"/>
+                                        <constraint firstItem="jKV-5u-Hu9" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="top" id="7oE-xE-ln4"/>
+                                        <constraint firstItem="jKV-5u-Hu9" firstAttribute="leading" secondItem="aFe-sY-Znl" secondAttribute="trailing" constant="18" id="9Rp-cV-pxc"/>
+                                        <constraint firstItem="Ih7-iJ-9aX" firstAttribute="top" secondItem="jKV-5u-Hu9" secondAttribute="bottom" constant="8" id="BNh-iv-SKC"/>
+                                        <constraint firstItem="zIu-Iy-a7s" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="top" id="D5Q-R2-Xg4"/>
+                                        <constraint firstItem="aFe-sY-Znl" firstAttribute="leading" secondItem="OW8-88-rmB" secondAttribute="leading" constant="16" id="IfG-YU-gRV"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ih7-iJ-9aX" secondAttribute="bottom" constant="10.5" id="JWT-YA-Mh9"/>
+                                        <constraint firstAttribute="bottom" secondItem="zIu-Iy-a7s" secondAttribute="bottom" constant="99.5" id="Vyc-IU-Q1I"/>
+                                        <constraint firstAttribute="bottom" secondItem="aFe-sY-Znl" secondAttribute="bottom" constant="0.5" id="et2-TD-CdA"/>
+                                        <constraint firstAttribute="trailing" secondItem="jKV-5u-Hu9" secondAttribute="trailing" constant="9" id="fgi-bx-vnZ"/>
+                                        <constraint firstItem="Ih7-iJ-9aX" firstAttribute="leading" secondItem="aFe-sY-Znl" secondAttribute="trailing" constant="18" id="jHj-ZJ-yQR"/>
+                                        <constraint firstItem="zIu-Iy-a7s" firstAttribute="leading" secondItem="OW8-88-rmB" secondAttribute="leading" constant="16" id="ol6-z2-58k"/>
+                                        <constraint firstItem="Ih7-iJ-9aX" firstAttribute="leading" secondItem="aFe-sY-Znl" secondAttribute="trailing" constant="18" id="q7P-gD-s6g"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ih7-iJ-9aX" secondAttribute="trailing" constant="9" id="viW-z8-fal"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AchievementDescriptionLabel" destination="aFe-sY-Znl" id="rtU-i9-9oY"/>
+                                    <outlet property="AchievementLabel" destination="aFe-sY-Znl" id="KZb-5b-caV"/>
+                                    <outlet property="AchievementProgressLabel" destination="jKV-5u-Hu9" id="KQj-fj-sUc"/>
+                                    <outlet property="AchievementTrophyImageView" destination="Ih7-iJ-9aX" id="35E-RY-0fL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kqt-Eh-9BD" id="SUe-1I-Bze"/>
+                            <outlet property="delegate" destination="kqt-Eh-9BD" id="Zoe-sG-d16"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="TableViewAchievementCell" destination="OW8-88-rmB" id="wh5-L0-QbE"/>
+                        <outlet property="TableViewLabelCell" destination="QRq-OZ-54o" id="qNJ-D0-bgX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7hc-T5-Lwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="152.47376311844079"/>
+        </scene>
+    </scenes>
 </document>
