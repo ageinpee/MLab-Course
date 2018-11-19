@@ -36,7 +36,7 @@ class AchievementsTableViewController: UITableViewController {
         "Other"
     ]
     // Array(struct) of all achievements in Section 1 of the achievementssection
-    var achievementSection1 = [
+    var achievementCollection1 = [
         achievement(id: 1, title: "achievement1", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
@@ -44,7 +44,7 @@ class AchievementsTableViewController: UITableViewController {
         achievement(id: 5, title: "achievement5", description: "descriptor5", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 6, title: "achievement6", description: "descriptor6", progress: "5/7undefined", image: "LockedTrophy")
     ]
-    var achievementSection2 = [
+    var achievementCollection2 = [
         achievement(id: 1, title: "achievementsec21", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
@@ -54,39 +54,36 @@ class AchievementsTableViewController: UITableViewController {
     ]
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return achievementSections.count
+        return 1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return achievementSection1.count
+        return achievementCollection1.count + achievementCollection2.count
         
     }
-    
-    class LabelTableViewCell: UITableViewCell {
-        @IBOutlet weak var TopicLabel: UILabel!
-        @IBOutlet weak var TopicTrophyCountLabel: UILabel!
-        
-    }
-    class AchievementTableViewCell: UITableViewCell {
-        @IBOutlet weak var AchievementLabel: UILabel!
-        @IBOutlet weak var AchievementDescriptionLabel: UILabel!
-        @IBOutlet weak var AchievementProgressLabel: UILabel!
-        @IBOutlet weak var AchievementTrophyImageView: UIImageView!
-        
-    }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-                    as! AchievementTableViewCell
         
-                let achievement = achievementSection1[indexPath.row]
-                cell.AchievementLabel?.text = achievement.title
-                cell.AchievementDescriptionLabel?.text = achievement.description
-                cell.AchievementProgressLabel?.text = achievement.progress
-                cell.AchievementTrophyImageView?.image = UIImage(named: achievement.image)
-        
-                return cell
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath)
+            
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+            return cell
+        }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
 //            as! AchievementTableViewCell
