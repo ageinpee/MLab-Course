@@ -15,10 +15,6 @@
 		0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0357FBE6218607A30043A828 /* LaunchScreen.storyboard */; };
 		0357FBF3218607A40043A828 /* DewertOkinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBF2218607A40043A828 /* DewertOkinTests.swift */; };
 		0357FBFE218607A40043A828 /* DewertOkinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBFD218607A40043A828 /* DewertOkinUITests.swift */; };
-		CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */; };
-		CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */; };
-		CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD61A9D22192F7990093A990 /* SettingsEntry.swift */; };
-		FAD177EA2191C3D70031E4E3 /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */; };
 		03E98758219447BC00189C97 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98757219447BC00189C97 /* Timers.swift */; };
 		03E9875A219447D500189C97 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98759219447D500189C97 /* Presets.swift */; };
 		03E9875C219447E000189C97 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875B219447E000189C97 /* Reminders.swift */; };
@@ -30,7 +26,13 @@
 		03E987692194631300189C97 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987662194631300189C97 /* UserNotifications.framework */; };
 		03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987672194631300189C97 /* UserNotificationsUI.framework */; };
 		03EA45C8219B26BF0097F099 /* addTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA45C7219B26BF0097F099 /* addTimer.swift */; };
+		25C0E399219D762C006B2211 /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0E397219D762C006B2211 /* BluetoothViewController.swift */; };
+		25C0E39A219D762C006B2211 /* Bluetooth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C0E398219D762C006B2211 /* Bluetooth.storyboard */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */; };
+		CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */; };
+		CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD61A9D22192F7990093A990 /* SettingsEntry.swift */; };
+		FAD177EA2191C3D70031E4E3 /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,10 +67,6 @@
 		0357FBF9218607A40043A828 /* DewertOkinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DewertOkinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0357FBFD218607A40043A828 /* DewertOkinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DewertOkinUITests.swift; sourceTree = "<group>"; };
 		0357FBFF218607A40043A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMore.storyboard; sourceTree = "<group>"; };
-		CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
-		CD61A9D22192F7990093A990 /* SettingsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntry.swift; sourceTree = "<group>"; };
-		FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
 		03E98757219447BC00189C97 /* Timers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timers.swift; sourceTree = "<group>"; };
 		03E98759219447D500189C97 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		03E9875B219447E000189C97 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
@@ -80,7 +78,13 @@
 		03E987662194631300189C97 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		03E987672194631300189C97 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		03EA45C7219B26BF0097F099 /* addTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTimer.swift; sourceTree = "<group>"; };
+		25C0E397219D762C006B2211 /* BluetoothViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothViewController.swift; path = "../../../../../../Desktop/untitled folder/BluetoothViewController.swift"; sourceTree = "<group>"; };
+		25C0E398219D762C006B2211 /* Bluetooth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Bluetooth.storyboard; path = "../../../../../../Desktop/untitled folder/Bluetooth.storyboard"; sourceTree = "<group>"; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMore.storyboard; sourceTree = "<group>"; };
+		CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		CD61A9D22192F7990093A990 /* SettingsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntry.swift; sourceTree = "<group>"; };
+		FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 		0357FBD9218607A30043A828 /* DewertOkin */ = {
 			isa = PBXGroup;
 			children = (
+				25C0E398219D762C006B2211 /* Bluetooth.storyboard */,
+				25C0E397219D762C006B2211 /* BluetoothViewController.swift */,
 				FA397CA621943745000B4912 /* Presets-Reminder-Timer */,
 				0357FBDA218607A30043A828 /* AppDelegate.swift */,
 				0357FBDC218607A30043A828 /* ViewController.swift */,
@@ -172,16 +178,6 @@
 			path = DewertOkinUITests;
 			sourceTree = "<group>";
 		};
-		CD35980E219840EF00B57987 /* Settings and more */ = {
-			isa = PBXGroup;
-			children = (
-				FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */,
-				CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */,
-				CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */,
-			);
-			path = "Settings and more";
-			sourceTree = "<group>";
-		};
 		85919DE521943DCC0026AD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +187,16 @@
 				85919DE621943DCC0026AD28 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD35980E219840EF00B57987 /* Settings and more */ = {
+			isa = PBXGroup;
+			children = (
+				FAD177E92191C3D70031E4E3 /* AchievementsViewController.swift */,
+				CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */,
+				CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */,
+			);
+			path = "Settings and more";
 			sourceTree = "<group>";
 		};
 		FA397CA621943745000B4912 /* Presets-Reminder-Timer */ = {
@@ -309,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03E98762219452C400189C97 /* Timer.storyboard in Resources */,
+				25C0E39A219D762C006B2211 /* Bluetooth.storyboard in Resources */,
 				0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */,
 				03E98764219452D300189C97 /* Reminder.storyboard in Resources */,
 				0357FBE5218607A30043A828 /* Assets.xcassets in Resources */,
@@ -348,6 +355,7 @@
 				03E98758219447BC00189C97 /* Timers.swift in Sources */,
 				03E9875C219447E000189C97 /* Reminders.swift in Sources */,
 				03E9875A219447D500189C97 /* Presets.swift in Sources */,
+				25C0E399219D762C006B2211 /* BluetoothViewController.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsViewController.swift in Sources */,
 			);
@@ -525,7 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SN588L9RVZ;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -543,7 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SN588L9RVZ;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
