@@ -32,15 +32,11 @@ class addTimer: UIViewController{
     // This needs a better handler, since you can always type it in
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let time = timePicker.date
-        let components = Calendar.current.dateComponents([.hour,.minute],from: time)
-        let hour = components.hour!
-        let minute = components.minute!
         guard let destination = segue.destination as? Timers else { return }
         let addTime = Timer(context: PersistenceService.context)
         addTime.timerName = name.text!
         addTime.timerTime = time
         PersistenceService.saveContext()
-            //(String(hour) + ":" + String(minute))
         destination.timer.append(addTime)
     }
     
