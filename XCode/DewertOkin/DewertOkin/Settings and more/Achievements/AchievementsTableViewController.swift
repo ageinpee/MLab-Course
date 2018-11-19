@@ -68,11 +68,12 @@ class AchievementsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath)
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+            cell.descriptionLabel.text = achievementCollection1[0].description
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+            cell.descriptionLabel.text = achievementCollection1[1].description
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
