@@ -36,7 +36,7 @@ class AchievementsTableViewController: UITableViewController {
         "Other"
     ]
     // Array(struct) of all achievements in Section 1 of the achievementssection
-    var achievementCollection1 = [
+    var achievementCollection1: [achievement] = [
         achievement(id: 1, title: "achievement1", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
@@ -44,7 +44,7 @@ class AchievementsTableViewController: UITableViewController {
         achievement(id: 5, title: "achievement5", description: "descriptor5", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 6, title: "achievement6", description: "descriptor6", progress: "5/7undefined", image: "LockedTrophy")
     ]
-    var achievementCollection2 = [
+    var achievementCollection2: [achievement] = [
         achievement(id: 1, title: "achievementsec21", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
@@ -70,10 +70,14 @@ class AchievementsTableViewController: UITableViewController {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
             cell.descriptionLabel.text = achievementCollection1[0].description
+            cell.titleLabel.text = achievementCollection1[0].title
+            cell.progressLabel.text = achievementCollection1[0].progress
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
             cell.descriptionLabel.text = achievementCollection1[1].description
+            cell.titleLabel.text = achievementCollection1[1].title
+            cell.progressLabel.text = achievementCollection1[1].progress
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
@@ -83,6 +87,13 @@ class AchievementsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
+    }
+    
+    public static func didTriggerAchievement(clickCount count: Int) {
+        if (count >= 5) {
+            print("Achievement triggered!")
+        }
+
     }
 
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

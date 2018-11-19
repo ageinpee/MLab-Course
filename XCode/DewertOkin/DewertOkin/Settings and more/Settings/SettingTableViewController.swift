@@ -14,7 +14,18 @@ class SettingTableViewController: UITableViewController {
                            .accessibilityMode, .accessories, .about, .siri, .darkMode]
     
     private let search = UISearchController(searchResultsController: nil)
-
+    
+    // TODO: In achievements auslagern
+    public var clickCount: Int = 0 { didSet {
+            AchievementsTableViewController.didTriggerAchievement(clickCount: clickCount)
+        }}
+    
+    @IBOutlet weak var barButtonItem: UIBarButtonItem!
+    
+    @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
+        clickCount = clickCount + 1
+        print("Click count: \(clickCount)")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

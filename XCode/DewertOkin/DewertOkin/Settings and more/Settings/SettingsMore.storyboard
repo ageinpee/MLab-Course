@@ -40,7 +40,16 @@
                             <outlet property="delegate" destination="YY3-ND-2xW" id="knq-ej-AUw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="fOH-g0-Gdv"/>
+                    <navigationItem key="navigationItem" id="fOH-g0-Gdv">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="QKf-gA-i0c">
+                            <connections>
+                                <action selector="barButtonClicked:" destination="YY3-ND-2xW" id="vCR-XS-S6K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="barButtonItem" destination="QKf-gA-i0c" id="OwQ-WS-FZP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yES-7P-lQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

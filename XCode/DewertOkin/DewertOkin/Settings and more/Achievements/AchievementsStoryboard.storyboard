@@ -92,6 +92,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="aFe-sY-Znl" id="W4N-4h-GEU"/>
+                                    <outlet property="imageView" destination="Ih7-iJ-9aX" id="iq8-KG-3JM"/>
+                                    <outlet property="progressLabel" destination="jKV-5u-Hu9" id="pJD-1Q-Mrk"/>
+                                    <outlet property="titleLabel" destination="zIu-Iy-a7s" id="gUx-qA-zEJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
