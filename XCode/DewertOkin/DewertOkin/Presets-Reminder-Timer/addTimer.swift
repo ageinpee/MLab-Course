@@ -16,16 +16,13 @@ class addTimer: UIViewController{
     
     public var timerTime = [Int]()
     public var timerName = [String]()
-    public var timerDescription = [String]()
     
     @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet var name: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    @IBAction func doneTimer(){
-        
+        //name.borderStyle = UITextField.BorderStyle.roundedRect
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,8 +32,9 @@ class addTimer: UIViewController{
         let minute = components.minute!
         if let destination = segue.destination as? Timers {
             destination.timerTime.append((String(hour) + ":" + String(minute)))
-            destination.timerName.append("This is a test")
+            destination.timerName.append(name.text!)
         }
+        
     }
     
     func notificationCenter(){

@@ -16,12 +16,12 @@ class Timers: UIViewController{
     
     public var timerTime = [String]()
     public var timerName = [String]()
-    public var timerDescription = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.reloadData()
     }
     
     @IBAction func addTimer(_ sender: UIStoryboardSegue){
