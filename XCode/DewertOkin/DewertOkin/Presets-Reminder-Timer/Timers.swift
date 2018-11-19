@@ -14,17 +14,26 @@ import NotificationCenter
 
 class Timers: UIViewController{
     
-    public var timerTime = [String]()
-    public var timerName = [String]()
+    var timer = [Timer]()
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.reloadData()
+        
+        let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
+        
+        do {
+            let timer = try PersistenceService.context.fetch(fetchRequest)
+            self.timer = timer
+            self.tableView.reloadData()
+        } catch {
+            print("Couldnt update the TableView, reload!")
+        }
     }
     
     @IBAction func addTimer(_ sender: UIStoryboardSegue){
+        //guard let addedTimer = segue.source as? addTimer else { return }
         print("Done button was clicked")
         self.tableView.reloadData()
     }
@@ -45,17 +54,28 @@ extension Timers: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timerName.count
+        return timer.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let mySwitch = UISwitch()
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = timerName[indexPath.row]
-        cell.detailTextLabel?.text = timerTime[indexPath.row]
+        cell.textLabel?.text = timer[indexPath.row].timerName
+        cell.detailTextLabel?.text = timer[indexPath.row].timerTime.toString(dateFormat: "HH:MM")
         cell.accessoryView = mySwitch
         mySwitch.setOn(true,animated:true)
         return cell
     }
+}
+
+extension Date
+{
+    func toString( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
 }

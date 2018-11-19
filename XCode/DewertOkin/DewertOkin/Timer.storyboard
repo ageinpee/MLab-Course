@@ -23,7 +23,7 @@
                                     <navigationItem title="Timer" id="mIg-Tm-fGN">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lRk-9D-hhJ">
                                             <connections>
-                                                <segue destination="94w-4O-QUa" kind="show" id="Jyj-5i-Jbp"/>
+                                                <segue destination="94w-4O-QUa" kind="show" identifier="ToAddTimerView" id="Jyj-5i-Jbp"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -71,12 +71,12 @@
                                     <navigationItem title="Timer" id="mny-ZI-h0Q">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FLn-TY-fAB">
                                             <connections>
-                                                <segue destination="iw2-Bw-fjp" kind="unwind" unwindAction="addTimerWasCanceled:" id="e90-6o-4aD"/>
+                                                <segue destination="iw2-Bw-fjp" kind="unwind" unwindAction="addTimerWasCanceled:" id="P7s-7Q-4mI"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="vwW-4h-Hht">
                                             <connections>
-                                                <segue destination="iw2-Bw-fjp" kind="unwind" unwindAction="addTimer:" id="7Uu-r8-x2G"/>
+                                                <action selector="doneButton:" destination="94w-4O-QUa" id="c4k-6t-6e4"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -87,9 +87,6 @@
                                 <date key="date" timeIntervalSinceReferenceDate="563816908.07113504">
                                     <!--2018-11-13 15:48:28 +0000-->
                                 </date>
-                                <connections>
-                                    <action selector="doneTimer" destination="94w-4O-QUa" eventType="valueChanged" id="saQ-5H-M3A"/>
-                                </connections>
                             </datePicker>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Timer Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oex-EW-que">
                                 <rect key="frame" x="0.0" y="280" width="375" height="45"/>
@@ -118,6 +115,7 @@
                     <connections>
                         <outlet property="name" destination="Oex-EW-que" id="aoB-Bv-ie0"/>
                         <outlet property="timePicker" destination="7aN-So-Cv2" id="Vr0-cZ-cen"/>
+                        <segue destination="iw2-Bw-fjp" kind="unwind" identifier="TimerWasAdded" unwindAction="addTimer:" id="WbD-eG-Xfg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afO-Gt-d2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
