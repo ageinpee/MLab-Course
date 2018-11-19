@@ -22,9 +22,9 @@ class addTimer: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //name.borderStyle = UITextField.BorderStyle.roundedRect
     }
     
+    // This needs a better handler, since you can always type it in
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let time = timePicker.date
         let components = Calendar.current.dateComponents([.hour,.minute],from: time)
