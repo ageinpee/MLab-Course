@@ -16,22 +16,21 @@ class Accessorie {
     // The URL from which the image should be fetched
     let imageURL: URL?
     // Any further information, e.g. why is this product useful?
-    let otherText: String
+    //let otherText: String
     // The URL to be opened upon a click
     let targetURL: URL?
     
-    init(title: String, description: String, imageURL: URL, otherText: String, targetURL: URL) {
+    init(title: String, description: String, imageURL: URL, targetURL: URL) {
         self.title = title
         self.description = description
         self.imageURL = imageURL
-        self.otherText = otherText
+        //self.otherText = otherText
         self.targetURL = targetURL
     }
     
-    init(title: String, description: String, otherText: String) {
+    init(title: String, description: String) {
         self.title = title
         self.description = description
-        self.otherText = otherText
         self.imageURL = nil
         self.targetURL = nil
     }

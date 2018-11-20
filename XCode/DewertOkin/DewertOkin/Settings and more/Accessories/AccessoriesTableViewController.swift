@@ -15,21 +15,13 @@ class AccessoriesTableViewController: UITableViewController {
         
         tableView.separatorStyle = .none
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
 
     
@@ -43,6 +35,9 @@ class AccessoriesTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath)
             return cell
         case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath)
+            return cell
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath)
             return cell
         default:
@@ -59,10 +54,17 @@ class AccessoriesTableViewController: UITableViewController {
             return 44
         case 2:
             return 150
+        case 3:
+            return 150
         default:
             return 44
         }
     }
+    
+    var products: [Accessorie] = [
+        Accessorie(title: "New Under-Bed-Lighting", description: "This will definitely lighten up your life!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),
+        Accessorie(title: "RGB light strip", description: "For all the colours you need!")
+    ]
 
     /*
     // Override to support conditional editing of the table view.
