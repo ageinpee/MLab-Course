@@ -10,6 +10,9 @@ import UIKit
 
 class AccessorieTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var productImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
