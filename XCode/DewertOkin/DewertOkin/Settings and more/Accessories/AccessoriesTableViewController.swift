@@ -12,6 +12,8 @@ class AccessoriesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.separatorStyle = .none
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,15 +32,37 @@ class AccessoriesTableViewController: UITableViewController {
         return 3
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath)
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
+            return cell
+        }
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 44
+        case 1:
+            return 44
+        case 2:
+            return 150
+        default:
+            return 44
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
