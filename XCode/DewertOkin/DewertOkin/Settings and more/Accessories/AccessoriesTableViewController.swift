@@ -38,10 +38,16 @@ class AccessoriesTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
             cell.titleLabel.text = products[0].title
             cell.descriptionLabel.text = products[0].description
-            cell.productImage.image = UIImage(named: "bla")
+            cell.productImage.image = UIImage(named: "lichtleiste")
+            cell.productImage.contentMode = .scaleAspectFit
+            
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+            cell.titleLabel.text = products[1].title
+            cell.descriptionLabel.text = products[1].description
+            cell.productImage.image = UIImage(named: "dewertokinlogo")
+            cell.productImage.contentMode = .scaleAspectFit
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
@@ -54,7 +60,7 @@ class AccessoriesTableViewController: UITableViewController {
         case 0:
             return 44
         case 1:
-            return 44
+            return 60
         case 2:
             return 150
         case 3:
@@ -67,7 +73,7 @@ class AccessoriesTableViewController: UITableViewController {
     var products: [Accessorie] = [
         Accessorie(title: "New Under-Bed-Lighting", description: "This will definitely lighten up your life!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),
         Accessorie(title: "RGB light strip", description: "For all the colours you need!")
-    ]
+    ]   
 
     /*
     // Override to support conditional editing of the table view.

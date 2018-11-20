@@ -36,6 +36,7 @@
 		CD945294219C429400280A66 /* Accessorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD945293219C429400280A66 /* Accessorie.swift */; };
 		CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDE821A479F600EFF523 /* AccessoriesTableViewController.swift */; };
 		CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */; };
+		CDC3FDED21A48C8500EFF523 /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */; };
 		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		CD945293219C429400280A66 /* Accessorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessorie.swift; sourceTree = "<group>"; };
 		CDC3FDE821A479F600EFF523 /* AccessoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesTableViewController.swift; sourceTree = "<group>"; };
 		CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessorieTableViewCell.swift; sourceTree = "<group>"; };
+		CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
 		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				CD94528D219C3D9100280A66 /* AccessoriesStoryboard.storyboard */,
+				CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */,
 				CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */,
 				CD945293219C429400280A66 /* Accessorie.swift */,
 				CDC3FDE821A479F600EFF523 /* AccessoriesTableViewController.swift */,
@@ -396,6 +399,7 @@
 				03E98758219447BC00189C97 /* Timers.swift in Sources */,
 				03E9875C219447E000189C97 /* Reminders.swift in Sources */,
 				03E9875A219447D500189C97 /* Presets.swift in Sources */,
+				CDC3FDED21A48C8500EFF523 /* SectionTableViewCell.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 			);
