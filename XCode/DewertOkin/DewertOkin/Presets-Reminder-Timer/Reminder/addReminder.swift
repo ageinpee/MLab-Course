@@ -31,18 +31,18 @@ class addReminder: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let time = timePicker.date
         guard let destination = segue.destination as? Reminders else { return }
-        let addTime = Reminder(context: PersistenceService.context)
-        addTime.reminderName = nameTextfield.text!
-        addTime.reminderDescription = descriptionTextfield.text!
-        addTime.reminderTime = time
+        let addReminder = Reminder(context: PersistenceService.context)
+        addReminder.reminderName = nameTextfield.text!
+        addReminder.reminderDescription = descriptionTextfield.text!
+        addReminder.reminderTime = time
+        PersistenceService.saveContext()
+        destination.reminder.append(addReminder)
         
-        destination.reminderTime.append((stringHour + ":" + stringMinute))
-        destination.reminderName.append(nameTextfield.text!)
-        destination.reminderDescription.append(nameTextfield.text!)
         }
-    }
+    
     
     func notificationCenter(){
         // Set the current notification center

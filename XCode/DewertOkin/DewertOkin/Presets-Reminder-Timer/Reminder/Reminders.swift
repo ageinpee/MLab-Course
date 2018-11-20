@@ -54,7 +54,7 @@ extension Reminders: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reminderName.count
+        return reminder.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,20 +63,10 @@ extension Reminders: UITableViewDataSource{
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
         cell.textLabel?.text = reminder[indexPath.row].reminderName
-        cell.detailTextLabel?.text = reminder[indexPath.row].reminderTime.toString(dateFormat: "HH:MM") + " | " +  reminder[indexPath.row].reminderDescription
+        cell.detailTextLabel?.text = (reminder[indexPath.row].reminderTime?.toString(dateFormat: "HH:MM"))! + " | " +  reminder[indexPath.row].reminderDescription!
         cell.accessoryView = mySwitch
         mySwitch.setOn(true,animated:true)
         return cell
-    }
-}
-    
-extension Date{
-    func toString( dateFormat format  : String ) -> String
-    {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = format
-            return dateFormatter.string(from: self)
-    }
         
+    }
 }
-
