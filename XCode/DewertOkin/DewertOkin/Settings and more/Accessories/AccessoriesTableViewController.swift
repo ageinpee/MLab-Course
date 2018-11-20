@@ -21,7 +21,7 @@ class AccessoriesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 7
     }
 
     
@@ -32,7 +32,8 @@ class AccessoriesTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
+            cell.sectionTitleLabel.text = "Recommended Products"
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
@@ -40,14 +41,40 @@ class AccessoriesTableViewController: UITableViewController {
             cell.descriptionLabel.text = products[0].description
             cell.productImage.image = UIImage(named: "lichtleiste")
             cell.productImage.contentMode = .scaleAspectFit
-            
+            cell.contentView.layer.borderWidth = 2.0
+            cell.contentView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
             cell.titleLabel.text = products[1].title
             cell.descriptionLabel.text = products[1].description
-            cell.productImage.image = UIImage(named: "dewertokinlogo")
+            cell.productImage.image = UIImage(named: "remote")
             cell.productImage.contentMode = .scaleAspectFit
+            cell.contentView.layer.borderWidth = 2.0
+            cell.contentView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
+            cell.sectionTitleLabel.text = "Other customers bought"
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+            cell.titleLabel.text = products[0].title
+            cell.descriptionLabel.text = products[0].description
+            cell.productImage.image = UIImage(named: "lichtleiste")
+            cell.productImage.contentMode = .scaleAspectFit
+            cell.contentView.layer.borderWidth = 2.0
+            cell.contentView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            
+            return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+            cell.titleLabel.text = products[1].title
+            cell.descriptionLabel.text = products[1].description
+            cell.productImage.image = UIImage(named: "remote")
+            cell.productImage.contentMode = .scaleAspectFit
+            cell.contentView.layer.borderWidth = 2.0
+            cell.contentView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
@@ -64,6 +91,12 @@ class AccessoriesTableViewController: UITableViewController {
         case 2:
             return 150
         case 3:
+            return 150
+        case 4:
+            return 60
+        case 5:
+            return 150
+        case 6:
             return 150
         default:
             return 44

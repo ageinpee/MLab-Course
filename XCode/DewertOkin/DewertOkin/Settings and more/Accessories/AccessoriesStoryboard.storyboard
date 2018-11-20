@@ -37,6 +37,9 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="rwl-y9-apK" secondAttribute="bottom" constant="-10" id="ybc-ly-kEf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="sectionTitleLabel" destination="rwl-y9-apK" id="EWk-CO-ADt"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccessorieCell" rowHeight="150" id="oLR-pW-s8a" customClass="AccessorieTableViewCell" customModule="DewertOkin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="375" height="150"/>
