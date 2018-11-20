@@ -35,17 +35,20 @@ class AccessoriesTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath)
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+            cell.titleLabel.text = products[0].title
+            cell.descriptionLabel.text = products[0].description
+            cell.productImage.image = UIImage(named: "bla")
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
             return cell
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
