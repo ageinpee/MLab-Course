@@ -14,14 +14,22 @@ import NotificationCenter
 
 class Reminders: UIViewController {
     
-    public var reminderName = [String]()
-    public var reminderDescription = [String]()
-    public var reminderTime = [String]()
+    var reminder = [Reminder]()
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad () {
         super.viewDidLoad()
+        
+        let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        
+        do {
+            let reminder = try PersistenceService.context.fetch(fetchRequest)
+            self.reminder = reminder
+            self.tableView.reloadData()
+        } catch {
+            print("Couldnt update the TableView, reload!")
+        }
     }
     
     @IBAction func addReminder(_ sender: UIStoryboardSegue){
@@ -54,10 +62,21 @@ extension Reminders: UITableViewDataSource{
         let mySwitch = UISwitch()
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
-        cell.textLabel?.text = reminderName[indexPath.row]
-        cell.detailTextLabel?.text = reminderTime[indexPath.row] + " | " +  reminderDescription[indexPath.row]
+        cell.textLabel?.text = reminder[indexPath.row].reminderName
+        cell.detailTextLabel?.text = reminder[indexPath.row].reminderTime.toString(dateFormat: "HH:MM") + " | " +  reminder[indexPath.row].reminderDescription
         cell.accessoryView = mySwitch
         mySwitch.setOn(true,animated:true)
         return cell
     }
 }
+    
+extension Date{
+    func toString( dateFormat format  : String ) -> String
+    {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = format
+            return dateFormatter.string(from: self)
+    }
+        
+}
+

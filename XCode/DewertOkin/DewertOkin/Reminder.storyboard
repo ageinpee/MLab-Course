@@ -50,14 +50,10 @@
                         <viewLayoutGuide key="safeArea" id="Q6o-W9-dCQ"/>
                     </view>
                     <connections>
-                        <outlet property="TableView" destination="B3x-XU-Igp" id="5hM-bY-5bn"/>
                         <outlet property="tableView" destination="B3x-XU-Igp" id="R7c-u4-lJ3"/>
-                        <segue destination="Syg-DQ-0cM" kind="unwind" unwindAction="addReminderWasCanceled:" id="aGP-4K-eB0"/>
-                        <segue destination="Syg-DQ-0cM" kind="unwind" unwindAction="addReminder:" id="lez-qS-nAl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZQ-F5-KEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Syg-DQ-0cM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-4" y="94.902548725637189"/>
         </scene>
@@ -80,6 +76,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="2xB-tJ-AA8">
                                             <connections>
+                                                <action selector="doneReminder" destination="nr4-g2-C3t" id="mm8-DX-TI7"/>
                                                 <segue destination="mvQ-FM-QPO" kind="unwind" unwindAction="addReminder:" id="99d-Tv-2Th"/>
                                             </connections>
                                         </barButtonItem>
@@ -91,27 +88,18 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="doneReminder" destination="nr4-g2-C3t" eventType="valueChanged" id="v3Q-E4-iXS"/>
-                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFn-in-XBD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="563879672.14149797">
                                     <!--2018-11-14 09:14:32 +0000-->
                                 </date>
-                                <connections>
-                                    <action selector="doneReminder" destination="nr4-g2-C3t" eventType="valueChanged" id="cNC-MT-Drs"/>
-                                </connections>
                             </datePicker>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminders Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nsi-wv-fsq">
                                 <rect key="frame" x="16" y="326" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="doneReminder" destination="nr4-g2-C3t" eventType="valueChanged" id="YBd-iv-POC"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
