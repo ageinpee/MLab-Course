@@ -80,7 +80,7 @@ class AchievementsTableViewController: UITableViewController {
             cell.progressLabel.text = achievementCollection1[1].progress
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
             return cell
         }
     }
