@@ -97,6 +97,27 @@
                                     <outlet property="titleLabel" destination="zIu-Iy-a7s" id="gUx-qA-zEJ"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmptyCell" rowHeight="121" id="Gr2-lX-Vmk" customClass="AchievementsTableViewCell" customModule="DewertOkin" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="194" width="375" height="121"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gr2-lX-Vmk" id="v2C-OA-4wA">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not implemented" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeH-Gs-cRP">
+                                            <rect key="frame" x="121.5" y="49.5" width="132" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="OeH-Gs-cRP" secondAttribute="bottom" constant="39" id="Idi-Fw-Znu"/>
+                                        <constraint firstItem="OeH-Gs-cRP" firstAttribute="centerX" secondItem="v2C-OA-4wA" secondAttribute="centerX" id="hQv-Aa-AF7"/>
+                                        <constraint firstItem="OeH-Gs-cRP" firstAttribute="centerY" secondItem="v2C-OA-4wA" secondAttribute="centerY" id="miv-ov-UHO"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="kqt-Eh-9BD" id="SUe-1I-Bze"/>
