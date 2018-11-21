@@ -13,7 +13,7 @@ class AccessoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.separatorStyle = .none
+        //tableView.separatorStyle = .none
 
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -21,7 +21,7 @@ class AccessoriesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 7
     }
 
     
@@ -32,16 +32,46 @@ class AccessoriesTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
+            cell.sectionTitleLabel.text = "Recommended Products"
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
             cell.titleLabel.text = products[0].title
             cell.descriptionLabel.text = products[0].description
-            cell.productImage.image = UIImage(named: "bla")
+            cell.productImage.image = UIImage(named: "lichtleiste")
+            cell.productImage.contentMode = .scaleAspectFit
+
+            
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+            cell.titleLabel.text = products[1].title
+            cell.descriptionLabel.text = products[1].description
+            cell.productImage.image = UIImage(named: "remote")
+            cell.productImage.contentMode = .scaleAspectFit
+
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
+            cell.sectionTitleLabel.text = "Other customers bought"
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+            cell.titleLabel.text = products[0].title
+            cell.descriptionLabel.text = products[0].description
+            cell.productImage.image = UIImage(named: "lichtleiste")
+            cell.productImage.contentMode = .scaleAspectFit
+
+            
+            return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+            cell.titleLabel.text = products[1].title
+            cell.descriptionLabel.text = products[1].description
+            cell.productImage.image = UIImage(named: "remote")
+            cell.productImage.contentMode = .scaleAspectFit
+
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
@@ -52,12 +82,18 @@ class AccessoriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 44
+            return 100
         case 1:
-            return 44
+            return 60
         case 2:
             return 150
         case 3:
+            return 150
+        case 4:
+            return 60
+        case 5:
+            return 150
+        case 6:
             return 150
         default:
             return 44
@@ -67,7 +103,7 @@ class AccessoriesTableViewController: UITableViewController {
     var products: [Accessorie] = [
         Accessorie(title: "New Under-Bed-Lighting", description: "This will definitely lighten up your life!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),
         Accessorie(title: "RGB light strip", description: "For all the colours you need!")
-    ]
+    ]   
 
     /*
     // Override to support conditional editing of the table view.

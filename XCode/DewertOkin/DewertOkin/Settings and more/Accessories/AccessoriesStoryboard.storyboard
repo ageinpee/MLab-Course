@@ -17,35 +17,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SectionCell" id="xZF-3B-euL">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SectionCell" rowHeight="60" id="xZF-3B-euL" customClass="SectionTableViewCell" customModule="DewertOkin" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xZF-3B-euL" id="Rjh-dh-ev1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwl-y9-apK">
-                                            <rect key="frame" x="93" y="11" width="189" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="89" y="22" width="197" height="37"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="rwl-y9-apK" firstAttribute="centerX" secondItem="Rjh-dh-ev1" secondAttribute="centerX" id="8NL-L7-ihq"/>
-                                        <constraint firstItem="rwl-y9-apK" firstAttribute="top" secondItem="Rjh-dh-ev1" secondAttribute="topMargin" id="fZj-Jr-Jf2"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="rwl-y9-apK" secondAttribute="bottom" constant="1" id="ybc-ly-kEf"/>
+                                        <constraint firstItem="rwl-y9-apK" firstAttribute="top" secondItem="Rjh-dh-ev1" secondAttribute="topMargin" constant="11" id="fZj-Jr-Jf2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="rwl-y9-apK" secondAttribute="bottom" constant="-10" id="ybc-ly-kEf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="sectionTitleLabel" destination="rwl-y9-apK" id="EWk-CO-ADt"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccessorieCell" rowHeight="150" id="oLR-pW-s8a" customClass="AccessorieTableViewCell" customModule="DewertOkin" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oLR-pW-s8a" id="hfI-Hw-jPQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="remote" translatesAutoresizingMaskIntoConstraints="NO" id="a3x-qc-0fb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="remote" translatesAutoresizingMaskIntoConstraints="NO" id="a3x-qc-0fb">
                                             <rect key="frame" x="16" y="11" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -71,12 +74,23 @@
                                     <outlet property="titleLabel" destination="EoX-N1-U9T" id="0LJ-Qd-Iq3"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" id="5lH-Bo-XT7">
-                                <rect key="frame" x="0.0" y="222" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="100" id="5lH-Bo-XT7">
+                                <rect key="frame" x="0.0" y="238" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5lH-Bo-XT7" id="8Lc-p0-0up">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dewertokinlogo" translatesAutoresizingMaskIntoConstraints="NO" id="NzQ-ox-rCN">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="89"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="NzQ-ox-rCN" firstAttribute="bottom" secondItem="8Lc-p0-0up" secondAttribute="bottomMargin" id="BUh-H2-p5T"/>
+                                        <constraint firstItem="NzQ-ox-rCN" firstAttribute="leading" secondItem="8Lc-p0-0up" secondAttribute="leadingMargin" id="IfN-jb-sff"/>
+                                        <constraint firstItem="NzQ-ox-rCN" firstAttribute="top" secondItem="8Lc-p0-0up" secondAttribute="top" id="hnx-KD-70o"/>
+                                        <constraint firstItem="NzQ-ox-rCN" firstAttribute="trailing" secondItem="8Lc-p0-0up" secondAttribute="trailingMargin" id="zWa-Ri-uym"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -92,6 +106,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dewertokinlogo" width="171" height="79"/>
         <image name="remote" width="817" height="358"/>
     </resources>
 </document>
