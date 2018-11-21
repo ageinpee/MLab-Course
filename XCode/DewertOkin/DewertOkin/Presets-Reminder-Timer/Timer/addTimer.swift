@@ -14,29 +14,29 @@ import NotificationCenter
 
 class addTimer: UIViewController{
     
-    public var timerTime = [Int]()
-    public var timerName = [String]()
-    public var timerDescription = [String]()
-    
     @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet var name: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func doneTimer(){
-        
+    @IBAction func doneButton(_ sender: Any) {
+        if !(name.text == ""){
+        self.performSegue(withIdentifier: "TimerWasAdded", sender: self)
+        } else {
+            print("Invalid Name")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let time = timePicker.date
-        let components = Calendar.current.dateComponents([.hour,.minute],from: time)
-        let hour = components.hour!
-        let minute = components.minute!
-        if let destination = segue.destination as? Timers {
-            destination.timerTime.append((String(hour) + ":" + String(minute)))
-            destination.timerName.append("This is a test")
-        }
+        guard let destination = segue.destination as? Timers else { return }
+        let addTime = Timer(context: PersistenceService.context)
+        addTime.timerName = name.text!
+        addTime.timerTime = time
+        PersistenceService.saveContext()
+        destination.timer.append(addTime)
     }
     
     func notificationCenter(){

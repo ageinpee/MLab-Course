@@ -14,29 +14,31 @@ import NotificationCenter
 
 class Reminders: UIViewController {
     
-    public var reminderName : String = ""
-    public var reminderDescription : String = ""
-    public var reminderTime : Int = 0
+    var reminder = [Reminder]()
     
     @IBOutlet weak var tableView: UITableView!
-    /**
-     */
-    func ´init´(){
     
-    }
-    
-    /**
-     */
     override func viewDidLoad () {
         super.viewDidLoad()
+        
+        let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        
+        do {
+            let reminder = try PersistenceService.context.fetch(fetchRequest)
+            self.reminder = reminder
+            self.tableView.reloadData()
+        } catch {
+            print("Couldnt update the TableView, reload!")
+        }
     }
     
     @IBAction func addReminder(_ sender: UIStoryboardSegue){
-        
+        print("Done button was clicked")
+        self.tableView.reloadData()
     }
     
     @IBAction func addReminderWasCanceled(_ sender: UIStoryboardSegue){
-        
+        print("Cancel button was clicked")
     }
     
     func notificationcenter () {
@@ -52,13 +54,19 @@ extension Reminders: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reminderName.count
+        return reminder.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let mySwitch = UISwitch()
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = ""
-        cell.detailTextLabel?.text = ""
+        
+        cell.textLabel?.text = reminder[indexPath.row].reminderName
+        cell.detailTextLabel?.text = (reminder[indexPath.row].reminderTime?.toString(dateFormat: "HH:MM"))! + " | " +  reminder[indexPath.row].reminderDescription!
+        cell.accessoryView = mySwitch
+        mySwitch.setOn(true,animated:true)
         return cell
+        
     }
 }
