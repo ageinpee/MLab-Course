@@ -87,8 +87,10 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .siri)) {
             cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .accessories)) {
+            cell.accessoryType = .disclosureIndicator
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushViewController)))
         }
-        
         // Configure the cell...
 
         return cell
@@ -102,6 +104,15 @@ class SettingTableViewController: UITableViewController {
     @objc
     private func accessibilityModeSwitchChanged(sender: UISwitch!) {
         print("Accessibility Mode switch is on: \(sender.isOn)")
+    }
+    
+    @objc
+    private func pushViewController() {
+        if let vc = UIStoryboard(name: "AccessoriesStoryboard", bundle: nil).instantiateInitialViewController() as? AccessoriesTableViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(vc, animated: true)
+            }
+        }
     }
 
     /*
@@ -155,6 +166,4 @@ extension SettingTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
-    
-    
 }
