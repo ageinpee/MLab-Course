@@ -1,8 +1,0 @@
-Please write your names here as your first Commits:
------------------------------------------------------
-
-Henrik Peters
-Nima Rahrakhshan
-Jan Robert Janneck
-Peter Herner
-xxx

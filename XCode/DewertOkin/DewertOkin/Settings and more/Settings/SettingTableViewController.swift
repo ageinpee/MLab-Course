@@ -11,10 +11,21 @@ import UIKit
 class SettingTableViewController: UITableViewController {
     
     private let settingsEntries: [SettingsEntry] = [.deviceInfo, .achievements, .presets,
-                           .accessibilityMode, .warranty, .about, .siri, .darkMode]
+                           .accessibilityMode, .accessories, .about, .siri, .darkMode]
     
     private let search = UISearchController(searchResultsController: nil)
-
+    
+    // TODO: In achievements auslagern
+    public var clickCount: Int = 0 { didSet {
+            AchievementsTableViewController.didTriggerAchievement(clickCount: clickCount)
+        }}
+    
+    @IBOutlet weak var barButtonItem: UIBarButtonItem!
+    
+    @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
+        clickCount = clickCount + 1
+        print("Click count: \(clickCount)")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,14 +81,17 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
             cell.accessoryType = .disclosureIndicator
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushAchievementsStoryboard)))
         } else if (indexPath.row == settingsEntries.firstIndex(of: .warranty)) {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .about)) {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .siri)) {
             cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .accessories)) {
+            cell.accessoryType = .disclosureIndicator
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushAccessoriesStoryboard)))
         }
-        
         // Configure the cell...
 
         return cell
@@ -91,6 +105,24 @@ class SettingTableViewController: UITableViewController {
     @objc
     private func accessibilityModeSwitchChanged(sender: UISwitch!) {
         print("Accessibility Mode switch is on: \(sender.isOn)")
+    }
+    
+    @objc
+    private func pushAccessoriesStoryboard() {
+        if let vc = UIStoryboard(name: "AccessoriesStoryboard", bundle: nil).instantiateInitialViewController() as? AccessoriesTableViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    @objc
+    private func pushAchievementsStoryboard() {
+        if let vc = UIStoryboard(name: "AchievementsStoryboard", bundle: nil).instantiateInitialViewController() as? AchievementsTableViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(vc, animated: true)
+            }
+        }
     }
 
     /*
@@ -144,6 +176,4 @@ extension SettingTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
-    
-    
 }
