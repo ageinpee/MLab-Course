@@ -81,6 +81,7 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
             cell.accessoryType = .disclosureIndicator
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushAchievementsStoryboard)))
         } else if (indexPath.row == settingsEntries.firstIndex(of: .warranty)) {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .about)) {
@@ -89,7 +90,7 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .accessories)) {
             cell.accessoryType = .disclosureIndicator
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushViewController)))
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushAccessoriesStoryboard)))
         }
         // Configure the cell...
 
@@ -107,8 +108,17 @@ class SettingTableViewController: UITableViewController {
     }
     
     @objc
-    private func pushViewController() {
+    private func pushAccessoriesStoryboard() {
         if let vc = UIStoryboard(name: "AccessoriesStoryboard", bundle: nil).instantiateInitialViewController() as? AccessoriesTableViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    @objc
+    private func pushAchievementsStoryboard() {
+        if let vc = UIStoryboard(name: "AchievementsStoryboard", bundle: nil).instantiateInitialViewController() as? AchievementsTableViewController {
             if let navigator = navigationController {
                 navigator.pushViewController(vc, animated: true)
             }
