@@ -23,7 +23,7 @@
                                     <navigationItem title="Timer" id="mIg-Tm-fGN">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lRk-9D-hhJ">
                                             <connections>
-                                                <segue destination="94w-4O-QUa" kind="show" id="Jyj-5i-Jbp"/>
+                                                <segue destination="94w-4O-QUa" kind="show" identifier="ToAddTimerView" id="Jyj-5i-Jbp"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -71,12 +71,12 @@
                                     <navigationItem title="Timer" id="mny-ZI-h0Q">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FLn-TY-fAB">
                                             <connections>
-                                                <segue destination="iw2-Bw-fjp" kind="unwind" unwindAction="addTimerWasCanceled:" id="e90-6o-4aD"/>
+                                                <segue destination="iw2-Bw-fjp" kind="unwind" unwindAction="addTimerWasCanceled:" id="P7s-7Q-4mI"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="vwW-4h-Hht">
                                             <connections>
-                                                <segue destination="iw2-Bw-fjp" kind="unwind" unwindAction="addTimer:" id="7Uu-r8-x2G"/>
+                                                <action selector="doneButton:" destination="94w-4O-QUa" id="c4k-6t-6e4"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -88,6 +88,15 @@
                                     <!--2018-11-13 15:48:28 +0000-->
                                 </date>
                             </datePicker>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Timer Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oex-EW-que">
+                                <rect key="frame" x="0.0" y="280" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="gDR-iO-4Ym"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -95,11 +104,19 @@
                             <constraint firstItem="7aN-So-Cv2" firstAttribute="trailing" secondItem="hoS-sH-BsJ" secondAttribute="trailing" id="E49-Rq-Jat"/>
                             <constraint firstItem="7aN-So-Cv2" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" id="JFO-uM-6G0"/>
                             <constraint firstItem="bj9-Kb-brY" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" id="Nk9-J3-JIU"/>
+                            <constraint firstItem="Oex-EW-que" firstAttribute="top" secondItem="7aN-So-Cv2" secondAttribute="bottom" id="QKO-oQ-LS3"/>
                             <constraint firstItem="bj9-Kb-brY" firstAttribute="top" secondItem="hoS-sH-BsJ" secondAttribute="top" id="VDD-SY-ZYO"/>
                             <constraint firstItem="7aN-So-Cv2" firstAttribute="top" secondItem="bj9-Kb-brY" secondAttribute="bottom" id="xnM-Hu-0Gu"/>
+                            <constraint firstItem="Oex-EW-que" firstAttribute="trailing" secondItem="hoS-sH-BsJ" secondAttribute="trailing" id="yIZ-lI-VTg"/>
+                            <constraint firstItem="Oex-EW-que" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" id="zZD-Lw-CdF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hoS-sH-BsJ"/>
                     </view>
+                    <connections>
+                        <outlet property="name" destination="Oex-EW-que" id="aoB-Bv-ie0"/>
+                        <outlet property="timePicker" destination="7aN-So-Cv2" id="Vr0-cZ-cen"/>
+                        <segue destination="iw2-Bw-fjp" kind="unwind" identifier="TimerWasAdded" unwindAction="addTimer:" id="WbD-eG-Xfg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afO-Gt-d2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iw2-Bw-fjp" userLabel="Exit" sceneMemberID="exit"/>
