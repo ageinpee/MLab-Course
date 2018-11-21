@@ -16,6 +16,13 @@ class AccessoriesTableViewController: UITableViewController {
         //tableView.separatorStyle = .none
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Accessories"
+        //navigationItem.largeTitleDisplayMode = .automatic
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

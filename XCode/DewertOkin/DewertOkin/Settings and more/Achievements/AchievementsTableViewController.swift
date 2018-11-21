@@ -19,6 +19,13 @@ class AchievementsTableViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Achievements"
+        //navigationItem.largeTitleDisplayMode = .automatic
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     struct achievement {
         // Establishes the basic Structure of achievements with the type of the variables
         var id: Int
