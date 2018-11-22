@@ -21,7 +21,7 @@ class SettingTableViewController: UITableViewController {
         }}
     
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
-    
+    // Triggers the Test-Achievement
     @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
         clickCount = clickCount + 1
         print("Click count: \(clickCount)")

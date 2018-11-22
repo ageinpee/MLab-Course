@@ -30,7 +30,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B3x-XU-Igp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jhm-Uz-Ae2" id="9I8-1U-wUO"/>
@@ -49,6 +49,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q6o-W9-dCQ"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Reminder" id="qDJ-nh-dfI"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="B3x-XU-Igp" id="R7c-u4-lJ3"/>
                     </connections>
