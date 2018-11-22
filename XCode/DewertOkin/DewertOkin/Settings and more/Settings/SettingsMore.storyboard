@@ -40,6 +40,7 @@
                             <outlet property="delegate" destination="YY3-ND-2xW" id="knq-ej-AUw"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="BXt-Di-Qcv"/>
                     <navigationItem key="navigationItem" id="fOH-g0-Gdv">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="QKf-gA-i0c">
                             <connections>
@@ -47,6 +48,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="barButtonItem" destination="QKf-gA-i0c" id="OwQ-WS-FZP"/>
                     </connections>
