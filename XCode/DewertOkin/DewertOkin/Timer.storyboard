@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Timers-->
+        <!--Timer-->
         <scene sceneID="fgN-gw-0cQ">
             <objects>
                 <viewController id="ROG-fO-02j" customClass="Timers" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Egq-oJ-kuP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ROG-fO-02j" id="OdM-9r-bid"/>
@@ -49,6 +49,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D9c-Sd-kNC"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Timer" id="xT9-aQ-sjV"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Egq-oJ-kuP" id="ARf-Xo-S5b"/>
                     </connections>
