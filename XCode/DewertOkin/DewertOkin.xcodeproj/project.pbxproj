@@ -42,6 +42,7 @@
 		CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */; };
 		CDC3FDED21A48C8500EFF523 /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */; };
 		FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA187F44219C25E700DE3BC0 /* addReminder.swift */; };
+		FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* Remote.storyboard */; };
 		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessorieTableViewCell.swift; sourceTree = "<group>"; };
 		CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
 		FA187F44219C25E700DE3BC0 /* addReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addReminder.swift; sourceTree = "<group>"; };
+		FA2C9CFC21AF28E20018545A /* Remote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Remote.storyboard; sourceTree = "<group>"; };
 		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +198,7 @@
 		03DE1F5A21AEF1E1004F01F3 /* RemoteControl */ = {
 			isa = PBXGroup;
 			children = (
+				FA2C9CFC21AF28E20018545A /* Remote.storyboard */,
 				03DE1F5821AEF1B8004F01F3 /* RemoteControlController.swift */,
 				03DE1F5621AEE28F004F01F3 /* RemoteControl.swift */,
 			);
@@ -406,6 +409,7 @@
 				0357FBE5218607A30043A828 /* Assets.xcassets in Resources */,
 				CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */,
 				0357FBE0218607A30043A828 /* Main.storyboard in Resources */,
+				FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */,
 				03E98760219452B800189C97 /* Presets.storyboard in Resources */,
 				CD945289219C3D0D00280A66 /* AchievementsStoryboard.storyboard in Resources */,
 				CD94528E219C3D9100280A66 /* AccessoriesStoryboard.storyboard in Resources */,
