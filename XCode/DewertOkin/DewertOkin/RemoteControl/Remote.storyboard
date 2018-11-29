@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h1o-HI-eVS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Remote-->
+        <scene sceneID="Qxl-lV-g0M">
+            <objects>
+                <viewController id="h1o-HI-eVS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A7b-hz-zBK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chair_pictogram" translatesAutoresizingMaskIntoConstraints="NO" id="oiM-kw-jvP">
+                                <rect key="frame" x="10" y="157" width="355" height="355"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="355" id="aOq-Fg-b0x"/>
+                                    <constraint firstAttribute="height" constant="355" id="pqI-tf-b93"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-Wp-KTM">
+                                <rect key="frame" x="159" y="532" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="8ES-Eb-V6p"/>
+                                    <constraint firstAttribute="height" constant="56" id="PZ9-U7-3jk"/>
+                                </constraints>
+                                <state key="normal" image="+Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.mask.ToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-iq-42e">
+                                <rect key="frame" x="264" y="532" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="dDe-9e-Mwl"/>
+                                    <constraint firstAttribute="width" constant="56" id="xVg-u9-xhU"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.mask.ToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-jW-udd">
+                                <rect key="frame" x="53" y="532" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="PIT-Pd-fwW"/>
+                                    <constraint firstAttribute="height" constant="56" id="t28-Ko-aAl"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.mask.ToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Chair" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEt-Ft-Val">
+                                <rect key="frame" x="15" y="90" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="Xjl-Wp-KTM" secondAttribute="bottom" constant="30" id="0rS-ah-vZM"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="IkC-iq-42e" secondAttribute="bottom" constant="30" id="3RT-NW-1y3"/>
+                            <constraint firstItem="IkC-iq-42e" firstAttribute="leading" secondItem="Xjl-Wp-KTM" secondAttribute="trailing" constant="49" id="5Xj-TP-QWf"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="IkC-iq-42e" secondAttribute="trailing" constant="55" id="HoG-SM-epZ"/>
+                            <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="uty-hF-LTZ" secondAttribute="top" constant="70" id="KSd-AP-Rdk"/>
+                            <constraint firstItem="Xjl-Wp-KTM" firstAttribute="top" secondItem="oiM-kw-jvP" secondAttribute="bottom" constant="20" id="PrA-ba-yfH"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="FEt-Ft-Val" secondAttribute="trailing" constant="15" id="bl5-Fk-UZj"/>
+                            <constraint firstItem="FEt-Ft-Val" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="15" id="e7B-lb-Wtr"/>
+                            <constraint firstItem="0YV-jW-udd" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="53" id="knf-VC-LPh"/>
+                            <constraint firstItem="oiM-kw-jvP" firstAttribute="centerX" secondItem="FEt-Ft-Val" secondAttribute="centerX" id="s6c-CL-9Ov"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="0YV-jW-udd" secondAttribute="bottom" constant="30" id="x43-RB-06p"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uty-hF-LTZ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Remote" id="Kbj-MF-ozf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B3X-h2-zOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40.799999999999997" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="+Button" width="228" height="229"/>
+        <image name="chair_pictogram" width="636" height="447"/>
+    </resources>
+</document>
