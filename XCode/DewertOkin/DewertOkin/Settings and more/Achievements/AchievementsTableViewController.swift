@@ -42,7 +42,8 @@ class AchievementsTableViewController: UITableViewController {
         "FunAchievements",
         "Other"
     ]
-    // Array(struct) of all achievements in Section 1 of the achievementssection
+    // Array(struct) of all the achievements in Section 1 of the achievementssection
+    // Change these to change the actual displayed Achievement-Label-Text
     var achievementCollection1: [achievement] = [
         achievement(id: 1, title: "achievement1", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
@@ -51,6 +52,8 @@ class AchievementsTableViewController: UITableViewController {
         achievement(id: 5, title: "achievement5", description: "descriptor5", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 6, title: "achievement6", description: "descriptor6", progress: "5/7undefined", image: "LockedTrophy")
     ]
+    // Array(struct) of all the achievements in Section 2 of the achievementssection
+    // Change these to change the actual displayed Achievement-Label-Text
     var achievementCollection2: [achievement] = [
         achievement(id: 1, title: "achievementsec21", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
@@ -59,15 +62,18 @@ class AchievementsTableViewController: UITableViewController {
         achievement(id: 5, title: "achievement5", description: "descriptor5", progress: "5/7undefined", image: "LockedTrophy"),
         achievement(id: 6, title: "achievement6", description: "descriptor6", progress: "5/7undefined", image: "LockedTrophy")
     ]
-    
+    // defines the number of Sections displayed
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    // defines the number of rows per section -- it just counts the entries of achievementCollection1 + achievementCollection2 and gives back the appropriate number of rows.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return achievementCollection1.count + achievementCollection2.count
         
     }
-
+    
+    // Here, all Cells-Labels get their appropriate Text.  At the moment, This takes a cell, puts the Text of one entry of "achievementCollection1"-array into the cell, returns the updated cell.
+    // TODO: improve it, maybe make it recursive?
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
@@ -91,11 +97,11 @@ class AchievementsTableViewController: UITableViewController {
             return cell
         }
     }
-    
+    // defines the height for each row.(achievement)
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-    
+    // dummy for achievement triggering
     public static func didTriggerAchievement(clickCount count: Int) {
         if (count >= 5) {
             print("Achievement triggered!")
