@@ -12,5 +12,42 @@ import UIKit
 
 class RemoteController: UIViewController{
 
+    @IBAction func headUpBtn(_ sender: Any) {
+        
+    }
+    
+    @IBAction func headDownBtn(_ sender: Any) {
+    }
+    
+    @IBAction func FootUpBtn(_ sender: Any) {
+    }
+    
+    @IBAction func FootDownBtn(_ sender: Any) {
+    }
+    
+    
+    @IBAction func RestPosBtn(_ sender: Any) {
+    }
+    
+    @IBAction func FlatPosBtn(_ sender: Any) {
+    }
+    
+    @IBAction func M1Btn(_ sender: Any) {
+    }
+    
+    @IBAction func M2Btn(_ sender: Any) {
+    }
+    
+    @IBAction func SaveBtn(_ sender: Any) {
+    }
+    
+    
+    @IBAction func UblBtn(_ sender: Any) {
+    }
+    
+    @IBAction func TourchBtn(_ sender: Any) {
+    }
+    
+    
 }
 
