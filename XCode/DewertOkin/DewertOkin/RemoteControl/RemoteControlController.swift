@@ -17,6 +17,10 @@ class RemoteControlController: UIViewController {
     var dewertOkinControllerPeripheral: CBPeripheral!
     var commandService = CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B")
     var keycodeUUID = CBUUID(string: "62741525-52F9-8864-B1AB-3B3A8D65950B")
+    var feedbackUUID = CBUUID(string: "62741625-52F9-8864-B1AB-3B3A8D65950B")
+    var csService = CBUUID(string: "90311623-25FA-3346-12EF-FB7A2556AC")
+    var csCommandUUID = CBUUID(string: "90311625-25FA-3346-12EF-FB7A2556AC")
+    var csFeedbackUUID = CBUUID(string: "90311725-25FA-3346-12EF-FB7A2556AC")
     var remoteControl = RemoteControl()
     
     override func viewDidLoad() {
