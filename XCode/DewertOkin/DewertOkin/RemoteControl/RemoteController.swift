@@ -17,6 +17,8 @@ class RemoteController: UIViewController{
     }
     
     @IBAction func headDownBtn(_ sender: Any) {
+        print("asdadasdasdadsadasd is an overload!")
+
     }
     
     @IBAction func FootUpBtn(_ sender: Any) {
