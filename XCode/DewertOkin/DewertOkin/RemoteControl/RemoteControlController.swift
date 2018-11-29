@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RemoteControlController.swift
 //  DewertOkin
 //
 //  Created by Nima Rahrakhshan on 19.11.18.
