@@ -14,6 +14,9 @@ class AccessoriesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //tableView.separatorStyle = .none
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 150
 
     }
     
@@ -86,26 +89,26 @@ class AccessoriesTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return 100
-        case 1:
-            return 60
-        case 2:
-            return 150
-        case 3:
-            return 150
-        case 4:
-            return 60
-        case 5:
-            return 150
-        case 6:
-            return 150
-        default:
-            return 44
-        }
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        switch indexPath.row {
+//        case 0:
+//            return 100
+//        case 1:
+//            return 60
+//        case 2:
+//            return 150
+//        case 3:
+//            return 150
+//        case 4:
+//            return 60
+//        case 5:
+//            return 150
+//        case 6:
+//            return 150
+//        default:
+//            return 44
+//        }
+//    }
     
     var products: [Accessorie] = [
         Accessorie(title: "New Under-Bed-Lighting", description: "This will definitely lighten up your life!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),

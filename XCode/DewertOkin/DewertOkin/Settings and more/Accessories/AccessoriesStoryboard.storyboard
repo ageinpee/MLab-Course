@@ -48,25 +48,40 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="remote" translatesAutoresizingMaskIntoConstraints="NO" id="a3x-qc-0fb">
-                                            <rect key="frame" x="16" y="11" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="remote" translatesAutoresizingMaskIntoConstraints="NO" id="a3x-qc-0fb">
+                                            <rect key="frame" x="16" y="11" width="128" height="127.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="128" id="4AL-Z7-xOa"/>
+                                                <constraint firstAttribute="height" constant="127.5" id="wcj-bA-Roq"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Accessorie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoX-N1-U9T">
-                                            <rect key="frame" x="152" y="11" width="207" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Accessorie Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoX-N1-U9T">
+                                            <rect key="frame" x="192" y="11" width="167" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="a9u-2R-mDq"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Check out this brand new Accessorie for your product!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP5-6t-6zs">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Check out this brand new Accessorie for your product!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP5-6t-6zs">
                                             <rect key="frame" x="152" y="40" width="207" height="99"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gP5-6t-6zs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a3x-qc-0fb" secondAttribute="trailing" constant="8" id="7OR-8P-6Q1"/>
+                                        <constraint firstItem="a3x-qc-0fb" firstAttribute="leading" secondItem="hfI-Hw-jPQ" secondAttribute="leading" constant="16" id="JJT-PR-eDo"/>
+                                        <constraint firstAttribute="trailing" secondItem="EoX-N1-U9T" secondAttribute="trailing" constant="16" id="NXz-9D-xdh"/>
+                                        <constraint firstItem="EoX-N1-U9T" firstAttribute="top" secondItem="hfI-Hw-jPQ" secondAttribute="top" constant="11" id="XD6-no-0dl"/>
+                                        <constraint firstAttribute="bottom" secondItem="a3x-qc-0fb" secondAttribute="bottom" constant="11" id="aaa-7w-Hbe"/>
+                                        <constraint firstItem="gP5-6t-6zs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EoX-N1-U9T" secondAttribute="bottom" constant="8" id="ibC-Wc-h1B"/>
+                                        <constraint firstAttribute="trailing" secondItem="gP5-6t-6zs" secondAttribute="trailing" constant="16" id="l3j-PP-8kg"/>
+                                        <constraint firstAttribute="bottom" secondItem="gP5-6t-6zs" secondAttribute="bottom" constant="10.5" id="nOe-Ns-Oca"/>
+                                        <constraint firstItem="a3x-qc-0fb" firstAttribute="top" secondItem="hfI-Hw-jPQ" secondAttribute="top" constant="11" id="ntn-qT-ESO"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="gP5-6t-6zs" id="JtD-sx-wrY"/>
