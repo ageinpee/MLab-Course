@@ -31,6 +31,9 @@
 		03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987672194631300189C97 /* UserNotificationsUI.framework */; };
 		03EA45C8219B26BF0097F099 /* addTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA45C7219B26BF0097F099 /* addTimer.swift */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		CD3397CD21B2A8A200D749FA /* AchievementsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397CC21B2A8A200D749FA /* AchievementsTracker.swift */; };
+		CD3397CF21B2AB3000D749FA /* AchievementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397CE21B2AB3000D749FA /* AchievementType.swift */; };
+		CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397D021B2B0AF00D749FA /* Achievement.swift */; };
 		CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */; };
 		CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */; };
 		CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD61A9D22192F7990093A990 /* SettingsEntry.swift */; };
@@ -94,6 +97,9 @@
 		03E987672194631300189C97 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		03EA45C7219B26BF0097F099 /* addTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTimer.swift; sourceTree = "<group>"; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CD3397CC21B2A8A200D749FA /* AchievementsTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTracker.swift; sourceTree = "<group>"; };
+		CD3397CE21B2AB3000D749FA /* AchievementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementType.swift; sourceTree = "<group>"; };
+		CD3397D021B2B0AF00D749FA /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMore.storyboard; sourceTree = "<group>"; };
 		CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		CD61A9D22192F7990093A990 /* SettingsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntry.swift; sourceTree = "<group>"; };
@@ -231,8 +237,11 @@
 			isa = PBXGroup;
 			children = (
 				FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */,
+				CD3397D021B2B0AF00D749FA /* Achievement.swift */,
 				CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */,
 				CD83CAF721A340230082475B /* AchievementsTableViewCell.swift */,
+				CD3397CC21B2A8A200D749FA /* AchievementsTracker.swift */,
+				CD3397CE21B2AB3000D749FA /* AchievementType.swift */,
 			);
 			path = Achievements;
 			sourceTree = "<group>";
@@ -439,6 +448,9 @@
 			files = (
 				CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */,
 				CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */,
+				CD3397CD21B2A8A200D749FA /* AchievementsTracker.swift in Sources */,
+				CD3397CF21B2AB3000D749FA /* AchievementType.swift in Sources */,
+				CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */,
 				CD945294219C429400280A66 /* Accessorie.swift in Sources */,
 				FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */,
 				03DE1F5721AEE28F004F01F3 /* RemoteControl.swift in Sources */,
