@@ -35,6 +35,7 @@ class Reminders: UIViewController {
     @IBAction func addReminder(_ sender: UIStoryboardSegue){
         print("Done button was clicked")
         self.tableView.reloadData()
+        AchievementModel.updateRemindersSet()
     }
     
     @IBAction func addReminderWasCanceled(_ sender: UIStoryboardSegue){

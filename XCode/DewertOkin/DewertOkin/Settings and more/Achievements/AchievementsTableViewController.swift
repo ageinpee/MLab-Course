@@ -16,6 +16,8 @@ class AchievementsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 120
         // Do any additional setup after loading the view.
     }
     
@@ -58,25 +60,25 @@ class AchievementsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
             cell.descriptionLabel.text = AchievementModel.achievementCollection1[0].description
             cell.titleLabel.text = AchievementModel.achievementCollection1[0].title
-            //cell.progressLabel.text = AchievementModel.achievementCollection1[0].progress
             cell.progressBar.progress = AchievementModel.barButtonClickCountProgess
+            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[0].image)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
             cell.descriptionLabel.text = AchievementModel.achievementCollection1[1].description
             cell.titleLabel.text = AchievementModel.achievementCollection1[1].title
-            //cell.progressLabel.text = AchievementModel.achievementCollection1[1].progress
-            cell.progressBar.progress = 0.9
+            cell.progressBar.progress = AchievementModel.reminderSetProgress
+            cell.achievementImage.image = UIImage(named: "lock")
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
             return cell
         }
     }
-    // defines the height for each row.(achievement)
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
+//    // defines the height for each row.(achievement)
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 120
+//    }
     
     /*
     // MARK: - Navigation
