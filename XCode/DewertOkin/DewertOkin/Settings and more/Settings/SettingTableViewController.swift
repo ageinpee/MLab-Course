@@ -59,7 +59,7 @@ class SettingTableViewController: UITableViewController {
         
         if (indexPath.row == settingsEntries.firstIndex(of: .darkMode)) {
             let darkModeSwitch = UISwitch()
-            darkModeSwitch.isOn = true
+            darkModeSwitch.isOn = false
             darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchChanged(sender:)), for: .valueChanged)
             cell.accessoryView = darkModeSwitch
         }
@@ -95,6 +95,9 @@ class SettingTableViewController: UITableViewController {
     
     @objc
     private func darkModeSwitchChanged(sender: UISwitch!) {
+        if(!sender.isOn) {
+            AchievementModel.lightAchievementUnlocked()
+        }
         print("Dark Mode switch is on: \(sender.isOn)")
     }
     

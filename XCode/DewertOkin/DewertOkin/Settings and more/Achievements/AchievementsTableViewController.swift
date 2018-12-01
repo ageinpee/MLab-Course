@@ -103,6 +103,13 @@ class AchievementsTableViewController: UITableViewController {
             cell.progressBar.progress = AchievementModel.nightOwlProgress
             cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[4].image)
             return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+            cell.descriptionLabel.text = AchievementModel.achievementCollection1[5].description
+            cell.titleLabel.text = AchievementModel.achievementCollection1[5].title
+            cell.progressBar.progress = AchievementModel.lightProgess
+            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[5].image)
+            return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
             return cell

@@ -30,6 +30,7 @@ class AchievementModel {
     public static var upDownClickCountUnlocked = Float(0.0)
     
     public static var nightOwlProgress = Float(0.0)
+    public static var lightProgess = Float(0.0)
     
     // Array(struct) of all the achievements in Section 1 of the achievementssection
     // Change these to change the actual displayed Achievement-Label-Text
@@ -38,7 +39,8 @@ class AchievementModel {
         Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", progress: "5/7undefined", image: "lock"),
         Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", progress: "5/7undefined", image: "lock"),
         Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", progress: "5/7undefined", image: "lock"),
-        Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", progress: "5/7undefined", image: "lock")
+        Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", progress: "5/7undefined", image: "lock"),
+        Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", progress: "5/7undefined", image: "lock")
     ]
     // Array(struct) of all the achievements in Section 2 of the achievementssection
     // Change these to change the actual displayed Achievement-Label-Text
@@ -106,6 +108,12 @@ class AchievementModel {
         achievementCollection1[4].image = "trophy"
         nightOwlProgress = Float(1.0)
         print("Night Owl achievement unlocked")
+    }
+    
+    public static func lightAchievementUnlocked() {
+        achievementCollection1[5].image = "trophy"
+        lightProgess = Float(1.0)
+        print("Let there be light achievement unlocked")
     }
     
 }
