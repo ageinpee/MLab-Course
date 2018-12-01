@@ -21,14 +21,18 @@ class AchievementModel {
     }
     private static var presetsCount = 0
     private static var settingsClicked = 0
+    
     private static var timeSpentInApp = 0.0
+    public static var timeSpentInAppProgress: Float {
+        return Float(timeSpentInApp / 600.0)
+    }
     
     // Array(struct) of all the achievements in Section 1 of the achievementssection
     // Change these to change the actual displayed Achievement-Label-Text
     public static var achievementCollection1: [Achievement] = [
         Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", progress: "5/7undefined", image: "lock"),
-        Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", progress: "5/7undefined", image: "LockedTrophy"),
-        Achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
+        Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", progress: "5/7undefined", image: "lock"),
+        Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", progress: "5/7undefined", image: "lock"),
         Achievement(id: 4, title: "achievement4", description: "descriptor4", progress: "5/7undefined", image: "LockedTrophy"),
         Achievement(id: 5, title: "achievement5", description: "descriptor5", progress: "5/7undefined", image: "LockedTrophy"),
         Achievement(id: 6, title: "achievement6", description: "descriptor6", progress: "5/7undefined", image: "LockedTrophy")
@@ -60,6 +64,17 @@ class AchievementModel {
         if remindersSet == 3 {
             // Notification triggern
             print("Reminder Achievement Triggered")
+            achievementCollection1[1].image = "trophy"
+        }
+    }
+    
+    public static func updateTimeSpentInAchievements(elapsedTime: TimeInterval) {
+        timeSpentInApp = timeSpentInApp + elapsedTime
+        
+        // Has to be exactly 10
+        if (timeSpentInApp >= 600.0) {
+            print("Veteran achievement unlocked")
+            achievementCollection1[2].image = "trophy"
         }
     }
     
