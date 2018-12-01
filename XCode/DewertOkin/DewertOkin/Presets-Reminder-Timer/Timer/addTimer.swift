@@ -31,11 +31,20 @@ class addTimer: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let time = timePicker.date
+        print(time)
         
         let cal = Calendar(identifier: .gregorian)
         let date = Date()
+        print(date)
         let midnight = cal.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
+        print(midnight)
         let fourAM = cal.date(bySettingHour: 4, minute: 0, second: 0, of: date)!
+        print(fourAM)
+        
+        if (time.compare(midnight) == .orderedDescending && time.compare(fourAM) == .orderedAscending) {
+            // Trigger Nightowl achievement
+            AchievementModel.nightOwlAchievementUnlocked()
+        }
         
         guard let destination = segue.destination as? Timers else { return }
         let addTime = Timer(context: PersistenceService.context)
