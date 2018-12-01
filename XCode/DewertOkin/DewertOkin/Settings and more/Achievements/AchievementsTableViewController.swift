@@ -56,7 +56,7 @@ class AchievementsTableViewController: UITableViewController {
     }
     // defines the number of rows per section -- it just counts the entries of achievementCollection1 + achievementCollection2 and gives back the appropriate number of rows.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AchievementModel.achievementCollection1.count  + AchievementModel.achievementCollection2.count
+        return AchievementModel.achievementCollection1.count +  1
         
     }
     
@@ -100,7 +100,7 @@ class AchievementsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
             cell.descriptionLabel.text = AchievementModel.achievementCollection1[4].description
             cell.titleLabel.text = AchievementModel.achievementCollection1[4].title
-            cell.progressBar.progress = AchievementModel.upDownClickCountUnlocked
+            cell.progressBar.progress = AchievementModel.nightOwlProgress
             cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[4].image)
             return cell
         default:
