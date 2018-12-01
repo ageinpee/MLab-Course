@@ -8,10 +8,12 @@
 
 import Foundation
 
-class AchievementsTracker {
+class AchievementModel {
     
-    
-    private static var barButtonClickCount = 0
+    private static var barButtonClickCount = 0.0
+    public static var barButtonClickCountProgess: Float {
+        return Float(barButtonClickCount / 5.0)
+    }
     private static var remindersSet = 0
     private static var presetsCount = 0
     private static var settingsClicked = 0
@@ -20,7 +22,7 @@ class AchievementsTracker {
     // Array(struct) of all the achievements in Section 1 of the achievementssection
     // Change these to change the actual displayed Achievement-Label-Text
     public static var achievementCollection1: [Achievement] = [
-        Achievement(id: 1, title: "achievement1", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
+        Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", progress: "5/7undefined", image: "LockedTrophy"),
         Achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
         Achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
         Achievement(id: 4, title: "achievement4", description: "descriptor4", progress: "5/7undefined", image: "LockedTrophy"),

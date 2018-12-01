@@ -42,7 +42,7 @@ class AchievementsTableViewController: UITableViewController {
     }
     // defines the number of rows per section -- it just counts the entries of achievementCollection1 + achievementCollection2 and gives back the appropriate number of rows.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AchievementsTracker.achievementCollection1.count  + AchievementsTracker.achievementCollection2.count
+        return AchievementModel.achievementCollection1.count  + AchievementModel.achievementCollection2.count
         
     }
     
@@ -56,15 +56,17 @@ class AchievementsTableViewController: UITableViewController {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementsTracker.achievementCollection1[0].description
-            cell.titleLabel.text = AchievementsTracker.achievementCollection1[0].title
-            cell.progressLabel.text = AchievementsTracker.achievementCollection1[0].progress
+            cell.descriptionLabel.text = AchievementModel.achievementCollection1[0].description
+            cell.titleLabel.text = AchievementModel.achievementCollection1[0].title
+            //cell.progressLabel.text = AchievementModel.achievementCollection1[0].progress
+            cell.progressBar.progress = AchievementModel.barButtonClickCountProgess
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementsTracker.achievementCollection1[1].description
-            cell.titleLabel.text = AchievementsTracker.achievementCollection1[1].title
-            cell.progressLabel.text = AchievementsTracker.achievementCollection1[1].progress
+            cell.descriptionLabel.text = AchievementModel.achievementCollection1[1].description
+            cell.titleLabel.text = AchievementModel.achievementCollection1[1].title
+            //cell.progressLabel.text = AchievementModel.achievementCollection1[1].progress
+            cell.progressBar.progress = 0.9
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
@@ -75,20 +77,6 @@ class AchievementsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-//            as! AchievementTableViewCell
-//
-//        let achievement = achievementSection1[indexPath.row]
-//        cell.AchievementLabel?.text = achievement.title
-//        cell.AchievementDescriptionLabel?.text = achievement.description
-//        cell.AchievementProgressLabel?.text = achievement.progress
-//        cell.AchievementTrophyImageView?.image = UIImage(named: achievement.image)
-//
-//        return cell
-//    }
-        
     
     /*
     // MARK: - Navigation

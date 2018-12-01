@@ -19,7 +19,7 @@ class SettingTableViewController: UITableViewController {
     
     // Triggers the Test-Achievement
     @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
-        AchievementsTracker.updateButtonClickCount()
+        AchievementModel.updateButtonClickCount()
     }
     override func viewDidLoad() {
         super.viewDidLoad()

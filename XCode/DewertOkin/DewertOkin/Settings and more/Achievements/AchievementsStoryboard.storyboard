@@ -48,53 +48,52 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1000Buttonsgeklickt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIu-Iy-a7s">
-                                            <rect key="frame" x="16" y="0.0" width="263" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="Ih7-iJ-9aX">
-                                            <rect key="frame" x="287" y="29" width="80" height="81"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFe-sY-Znl">
-                                            <rect key="frame" x="16" y="11" width="253" height="109"/>
-                                            <string key="text">Klicke 1000 Buttons um das Achievement freizuschalten. langer text zur probe - wenn er zu lang ist werden hoffentlich punkte angezeigt</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="357/1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKV-5u-Hu9">
-                                            <rect key="frame" x="287" y="0.0" width="80" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbD-xE-Kcr">
+                                            <rect key="frame" x="16" y="11" width="225" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="S8G-EV-cHf"/>
+                                                <constraint firstAttribute="height" constant="21" id="Ec3-mZ-sZD"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="xag-05-Vtr">
+                                            <rect key="frame" x="249" y="5" width="110" height="110"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="110" id="3JX-jL-vuf"/>
+                                            </constraints>
+                                        </imageView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eif-Fd-VVN">
+                                            <rect key="frame" x="16" y="39" width="225" height="3"/>
+                                        </progressView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKt-uh-yRp">
+                                            <rect key="frame" x="16" y="50" width="225" height="65"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="zIu-Iy-a7s" firstAttribute="baseline" secondItem="jKV-5u-Hu9" secondAttribute="baseline" id="4pY-lx-IvQ"/>
-                                        <constraint firstItem="zIu-Iy-a7s" firstAttribute="leading" secondItem="aFe-sY-Znl" secondAttribute="leading" id="5e8-Go-Ic7"/>
-                                        <constraint firstItem="jKV-5u-Hu9" firstAttribute="leading" secondItem="Ih7-iJ-9aX" secondAttribute="leading" id="FVE-jq-PDa"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="aFe-sY-Znl" secondAttribute="bottom" constant="-10" id="Ikc-rK-gXP"/>
-                                        <constraint firstItem="jKV-5u-Hu9" firstAttribute="leading" secondItem="zIu-Iy-a7s" secondAttribute="trailing" constant="8" symbolic="YES" id="MhO-FM-2o2"/>
-                                        <constraint firstItem="aFe-sY-Znl" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="topMargin" id="Tdj-J8-LoA"/>
-                                        <constraint firstItem="zIu-Iy-a7s" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="top" id="YwV-Qu-64f"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="jKV-5u-Hu9" secondAttribute="trailing" constant="-8" id="ah7-AN-waz"/>
-                                        <constraint firstItem="Ih7-iJ-9aX" firstAttribute="top" secondItem="jKV-5u-Hu9" secondAttribute="bottom" constant="8" symbolic="YES" id="c8j-b4-5Dy"/>
-                                        <constraint firstItem="jKV-5u-Hu9" firstAttribute="trailing" secondItem="Ih7-iJ-9aX" secondAttribute="trailing" id="imi-6A-yq2"/>
-                                        <constraint firstItem="Ih7-iJ-9aX" firstAttribute="bottom" secondItem="OW8-88-rmB" secondAttribute="bottomMargin" id="ocd-q8-ijk"/>
-                                        <constraint firstItem="zIu-Iy-a7s" firstAttribute="leading" secondItem="OW8-88-rmB" secondAttribute="leadingMargin" id="rN0-lq-T2V"/>
-                                        <constraint firstItem="Ih7-iJ-9aX" firstAttribute="leading" secondItem="aFe-sY-Znl" secondAttribute="trailing" constant="18" id="s9v-py-luk"/>
+                                        <constraint firstItem="xag-05-Vtr" firstAttribute="centerY" secondItem="OW8-88-rmB" secondAttribute="centerY" id="41a-VU-8ak"/>
+                                        <constraint firstItem="ZbD-xE-Kcr" firstAttribute="leading" secondItem="eif-Fd-VVN" secondAttribute="leading" id="FjA-tf-qlJ"/>
+                                        <constraint firstItem="xag-05-Vtr" firstAttribute="leading" secondItem="DKt-uh-yRp" secondAttribute="trailing" constant="8" symbolic="YES" id="G3O-vb-hd4"/>
+                                        <constraint firstItem="ZbD-xE-Kcr" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="topMargin" id="IYf-dj-gYi"/>
+                                        <constraint firstItem="DKt-uh-yRp" firstAttribute="top" secondItem="eif-Fd-VVN" secondAttribute="bottom" constant="9" id="Iif-IS-EmO"/>
+                                        <constraint firstItem="ZbD-xE-Kcr" firstAttribute="leading" secondItem="OW8-88-rmB" secondAttribute="leadingMargin" id="Mgh-lP-iKx"/>
+                                        <constraint firstItem="eif-Fd-VVN" firstAttribute="leading" secondItem="DKt-uh-yRp" secondAttribute="leading" id="csb-dF-DU9"/>
+                                        <constraint firstItem="xag-05-Vtr" firstAttribute="leading" secondItem="ZbD-xE-Kcr" secondAttribute="trailing" constant="8" symbolic="YES" id="gYT-48-bAr"/>
+                                        <constraint firstItem="DKt-uh-yRp" firstAttribute="bottom" secondItem="xag-05-Vtr" secondAttribute="bottom" id="iub-0C-PCU"/>
+                                        <constraint firstItem="xag-05-Vtr" firstAttribute="trailing" secondItem="OW8-88-rmB" secondAttribute="trailingMargin" id="kj5-wO-cdP"/>
+                                        <constraint firstItem="xag-05-Vtr" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="topMargin" constant="-6" id="pKk-oy-SWQ"/>
+                                        <constraint firstItem="eif-Fd-VVN" firstAttribute="top" secondItem="ZbD-xE-Kcr" secondAttribute="bottom" constant="7" id="rqx-C5-EAT"/>
+                                        <constraint firstItem="xag-05-Vtr" firstAttribute="leading" secondItem="eif-Fd-VVN" secondAttribute="trailing" constant="8" symbolic="YES" id="tgx-A6-mrs"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="aFe-sY-Znl" id="W4N-4h-GEU"/>
-                                    <outlet property="imageView" destination="Ih7-iJ-9aX" id="iq8-KG-3JM"/>
-                                    <outlet property="progressLabel" destination="jKV-5u-Hu9" id="pJD-1Q-Mrk"/>
-                                    <outlet property="titleLabel" destination="zIu-Iy-a7s" id="gUx-qA-zEJ"/>
+                                    <outlet property="achievementImage" destination="xag-05-Vtr" id="cbN-a3-BNt"/>
+                                    <outlet property="descriptionLabel" destination="DKt-uh-yRp" id="rIw-QL-iza"/>
+                                    <outlet property="progressBar" destination="eif-Fd-VVN" id="SHa-ay-gQ8"/>
+                                    <outlet property="titleLabel" destination="ZbD-xE-Kcr" id="mNi-nn-hcE"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmptyCell" rowHeight="121" id="Gr2-lX-Vmk" customClass="AchievementsTableViewCell" customModule="DewertOkin" customModuleProvider="target">
@@ -131,6 +130,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="lock" width="512" height="512"/>
+        <image name="trophy" width="960" height="540"/>
     </resources>
 </document>
