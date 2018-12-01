@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class AchievementModel {
     
@@ -54,7 +55,21 @@ class AchievementModel {
         barButtonClickCount = barButtonClickCount + 1
         
         if barButtonClickCount == 5 {
-            // Notification triggern
+           // Trigger the notification
+            let content = UNMutableNotificationContent()
+            content.title = NSString.localizedUserNotificationString(forKey: "Achievement Unlocked!", arguments: nil)
+            content.body = NSString.localizedUserNotificationString(forKey: "Bar Button Achievement unlocked", arguments: nil)
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let request = UNNotificationRequest(identifier: "barButtonAchievement", content: content, trigger: trigger)
+            
+            let center = UNUserNotificationCenter.current()
+            center.add(request) { (error : Error?) in
+                if let theError = error {
+                    print(theError.localizedDescription)
+                }
+            }
+            
             print("BarButton Achievement Triggered")
             achievementCollection1[0].image = "trophy"
         }
