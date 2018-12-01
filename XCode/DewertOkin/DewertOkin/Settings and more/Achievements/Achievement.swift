@@ -13,7 +13,7 @@ struct Achievement {
     var id: Int
     var title: String
     var description: String
-    var progress: String
     var image: String
+    var type: AchievementType
     
 }

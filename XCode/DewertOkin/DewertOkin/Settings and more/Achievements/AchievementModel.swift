@@ -35,22 +35,22 @@ class AchievementModel {
     // Array(struct) of all the achievements in Section 1 of the achievementssection
     // Change these to change the actual displayed Achievement-Label-Text
     public static var achievementCollection1: [Achievement] = [
-        Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", progress: "5/7undefined", image: "lock"),
-        Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", progress: "5/7undefined", image: "lock"),
-        Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", progress: "5/7undefined", image: "lock"),
-        Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", progress: "5/7undefined", image: "lock"),
-        Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", progress: "5/7undefined", image: "lock"),
-        Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", progress: "5/7undefined", image: "lock")
+        Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock", type: .buttonManiac),
+        Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock", type: .onTopOfThings),
+        Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock", type: .veteran),
+        Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock", type: .undecisive),
+        Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock", type: .nightOwl),
+        Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock", type: .letThereBeLight)
     ]
     // Array(struct) of all the achievements in Section 2 of the achievementssection
     // Change these to change the actual displayed Achievement-Label-Text
     public static var achievementCollection2: [Achievement] = [
-        Achievement(id: 1, title: "achievementsec21", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
-        Achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
-        Achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
-        Achievement(id: 4, title: "achievement4", description: "descriptor4", progress: "5/7undefined", image: "LockedTrophy"),
-        Achievement(id: 5, title: "achievement5", description: "descriptor5", progress: "5/7undefined", image: "LockedTrophy"),
-        Achievement(id: 6, title: "achievement6", description: "descriptor6", progress: "5/7undefined", image: "LockedTrophy")
+//        Achievement(id: 1, title: "achievementsec21", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
+//        Achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
+//        Achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
+//        Achievement(id: 4, title: "achievement4", description: "descriptor4", progress: "5/7undefined", image: "LockedTrophy"),
+//        Achievement(id: 5, title: "achievement5", description: "descriptor5", progress: "5/7undefined", image: "LockedTrophy"),
+//        Achievement(id: 6, title: "achievement6", description: "descriptor6", progress: "5/7undefined", image: "LockedTrophy")
     ]
     
     public static func updateButtonClickCount() {
@@ -112,7 +112,7 @@ class AchievementModel {
     
     public static func lightAchievementUnlocked() {
         achievementCollection1[5].image = "trophy"
-        lightProgess = Float(1.0)
+        lightProgess = Float(1)
         print("Let there be light achievement unlocked")
     }
     
