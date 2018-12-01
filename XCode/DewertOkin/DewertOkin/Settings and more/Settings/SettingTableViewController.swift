@@ -15,12 +15,13 @@ class SettingTableViewController: UITableViewController {
     
     private let search = UISearchController(searchResultsController: nil)
     
-    @IBOutlet weak var barButtonItem: UIBarButtonItem!
     
-    // Triggers the Test-Achievement
+    //-----Achievement "Button Maniac"-related-----
+    @IBOutlet weak var barButtonItem: UIBarButtonItem!
     @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
         AchievementModel.updateButtonClickCount()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

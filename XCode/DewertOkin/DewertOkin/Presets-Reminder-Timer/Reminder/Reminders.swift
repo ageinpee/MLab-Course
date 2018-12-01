@@ -35,6 +35,8 @@ class Reminders: UIViewController {
     @IBAction func addReminder(_ sender: UIStoryboardSegue){
         print("Done button was clicked")
         self.tableView.reloadData()
+        
+        //-----Achievement "On Top of Things"-related-----
         AchievementModel.updateRemindersSet()
     }
     

@@ -21,10 +21,13 @@ class AchievementsTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 120
         // Do any additional setup after loading the view.
         
+        ///-----Achievement "Achievement Veteran"-related-----
         timestampStart = Date()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
+        ///-----Achievement "Achievement Veteran"-related-----
         let timestampFinish = Date()
         let timeIntervall = timestampFinish.timeIntervalSince(timestampStart)
         AchievementModel.updateTimeSpentInAchievements(elapsedTime: timeIntervall)
