@@ -12,71 +12,23 @@
         <!--Remote-->
         <scene sceneID="Qxl-lV-g0M">
             <objects>
-                <viewController id="h1o-HI-eVS" sceneMemberID="viewController">
+                <viewController id="h1o-HI-eVS" customClass="RemoteController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7b-hz-zBK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chair_pictogram" translatesAutoresizingMaskIntoConstraints="NO" id="oiM-kw-jvP">
-                                <rect key="frame" x="29.5" y="352" width="355" height="355"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="355" id="aOq-Fg-b0x"/>
-                                    <constraint firstAttribute="height" constant="355" id="pqI-tf-b93"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-Wp-KTM">
-                                <rect key="frame" x="198" y="727" width="56" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="8ES-Eb-V6p"/>
-                                    <constraint firstAttribute="height" constant="56" id="PZ9-U7-3jk"/>
-                                </constraints>
-                                <state key="normal" image="+Button"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="23"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.mask.ToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-iq-42e">
-                                <rect key="frame" x="303" y="727" width="56" height="56"/>
+                                <rect key="frame" x="308" y="717" width="56" height="56"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="dDe-9e-Mwl"/>
-                                    <constraint firstAttribute="width" constant="56" id="xVg-u9-xhU"/>
+                                    <constraint firstAttribute="width" secondItem="IkC-iq-42e" secondAttribute="height" multiplier="1:1" priority="900" id="7Dq-1c-AAk"/>
+                                    <constraint firstAttribute="width" constant="56" id="esd-Ou-S7j"/>
+                                    <constraint firstAttribute="height" constant="56" id="pmF-vp-zKr"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="23"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.mask.ToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="ExtraFunctions:" destination="h1o-HI-eVS" eventType="touchUpInside" id="kyq-eH-FAl"/>
                                     <segue destination="yXn-m8-abf" kind="show" id="M08-Hb-geb"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-jW-udd">
-                                <rect key="frame" x="53" y="727" width="56" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="PIT-Pd-fwW"/>
-                                    <constraint firstAttribute="height" constant="56" id="t28-Ko-aAl"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="23"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.mask.ToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Chair" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEt-Ft-Val">
                                 <rect key="frame" x="15" y="114" width="384" height="21"/>
@@ -84,29 +36,57 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-Wp-KTM">
+                                <rect key="frame" x="179" y="717" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="1tj-Ex-XXt"/>
+                                    <constraint firstAttribute="width" secondItem="Xjl-Wp-KTM" secondAttribute="height" multiplier="1:1" priority="900" id="YD3-gf-GFW"/>
+                                    <constraint firstAttribute="height" constant="56" id="bn0-jd-ch4"/>
+                                </constraints>
+                                <state key="normal" image="+Button"/>
+                                <connections>
+                                    <action selector="AddPresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="Eux-YC-Pdn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-jW-udd">
+                                <rect key="frame" x="50" y="717" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="4nr-Lw-urT"/>
+                                    <constraint firstAttribute="width" constant="56" id="7TS-f7-HfC"/>
+                                    <constraint firstAttribute="width" secondItem="0YV-jW-udd" secondAttribute="height" multiplier="1:1" priority="900" id="J32-lh-94W"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="PresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="JNa-Qb-Z9U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="Xjl-Wp-KTM" secondAttribute="bottom" constant="30" id="0rS-ah-vZM"/>
-                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="IkC-iq-42e" secondAttribute="bottom" constant="30" id="3RT-NW-1y3"/>
-                            <constraint firstItem="IkC-iq-42e" firstAttribute="leading" secondItem="Xjl-Wp-KTM" secondAttribute="trailing" constant="49" id="5Xj-TP-QWf"/>
-                            <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="IkC-iq-42e" secondAttribute="trailing" constant="55" id="HoG-SM-epZ"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="IkC-iq-42e" secondAttribute="trailing" priority="600" constant="50" id="1S3-im-6Mj"/>
+                            <constraint firstItem="0YV-jW-udd" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" priority="600" constant="50" id="6z1-vN-9LH"/>
+                            <constraint firstItem="IkC-iq-42e" firstAttribute="leading" secondItem="Xjl-Wp-KTM" secondAttribute="trailing" priority="600" constant="73" id="BQY-U0-s2W"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="uty-hF-LTZ" secondAttribute="top" constant="70" id="KSd-AP-Rdk"/>
-                            <constraint firstItem="Xjl-Wp-KTM" firstAttribute="top" secondItem="oiM-kw-jvP" secondAttribute="bottom" constant="20" id="PrA-ba-yfH"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="IkC-iq-42e" secondAttribute="bottom" priority="750" constant="40" id="ZfX-k2-tfg"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="FEt-Ft-Val" secondAttribute="trailing" constant="15" id="bl5-Fk-UZj"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="0YV-jW-udd" secondAttribute="bottom" priority="750" constant="40" id="dcf-Ld-aSz"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="15" id="e7B-lb-Wtr"/>
-                            <constraint firstItem="0YV-jW-udd" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="53" id="knf-VC-LPh"/>
-                            <constraint firstItem="oiM-kw-jvP" firstAttribute="centerX" secondItem="FEt-Ft-Val" secondAttribute="centerX" id="s6c-CL-9Ov"/>
-                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="0YV-jW-udd" secondAttribute="bottom" constant="30" id="x43-RB-06p"/>
+                            <constraint firstItem="Xjl-Wp-KTM" firstAttribute="leading" secondItem="0YV-jW-udd" secondAttribute="trailing" priority="600" constant="73" id="eSO-mv-BI7"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="Xjl-Wp-KTM" secondAttribute="bottom" priority="750" constant="40" id="qCE-Cp-YR0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uty-hF-LTZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Remote" id="Kbj-MF-ozf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="AddPresetsButtonObj" destination="Xjl-Wp-KTM" id="Is4-zt-G04"/>
+                        <outlet property="ExtraFunctionsButtonObj" destination="IkC-iq-42e" id="XUJ-Xd-LLK"/>
+                        <outlet property="PresetsButtonObj" destination="0YV-jW-udd" id="Ytd-hR-vis"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3X-h2-zOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.799999999999997" y="26.53673163418291"/>
+            <point key="canvasLocation" x="40.579710144927539" y="26.116071428571427"/>
         </scene>
         <!--Old remote-->
         <scene sceneID="gTB-5d-bMt">
@@ -256,7 +236,6 @@
         <image name="Save" width="627" height="352"/>
         <image name="Torch" width="627" height="457"/>
         <image name="UBL" width="627" height="352"/>
-        <image name="chair_pictogram" width="636" height="447"/>
         <image name="flatPOS" width="627" height="351"/>
         <image name="footDown" width="627" height="352"/>
         <image name="footUp" width="627" height="352"/>
