@@ -60,18 +60,29 @@
                                     <action selector="PresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="JNa-Qb-Z9U"/>
                                 </connections>
                             </button>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="ChairNormal" translatesAutoresizingMaskIntoConstraints="NO" id="J9R-PK-aQG">
+                                <rect key="frame" x="10" y="215" width="394" height="422"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tIL-qN-5kw" appends="YES" id="f3D-AM-JLS"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="IkC-iq-42e" secondAttribute="trailing" priority="600" constant="50" id="1S3-im-6Mj"/>
                             <constraint firstItem="0YV-jW-udd" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" priority="600" constant="50" id="6z1-vN-9LH"/>
                             <constraint firstItem="IkC-iq-42e" firstAttribute="leading" secondItem="Xjl-Wp-KTM" secondAttribute="trailing" priority="600" constant="73" id="BQY-U0-s2W"/>
+                            <constraint firstItem="IkC-iq-42e" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="bottom" constant="80" id="GM9-jp-54I"/>
+                            <constraint firstItem="J9R-PK-aQG" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="10" id="IF6-tE-hn4"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="uty-hF-LTZ" secondAttribute="top" constant="70" id="KSd-AP-Rdk"/>
+                            <constraint firstItem="J9R-PK-aQG" firstAttribute="top" secondItem="FEt-Ft-Val" secondAttribute="bottom" constant="80" id="PQh-Oc-kfc"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="IkC-iq-42e" secondAttribute="bottom" priority="750" constant="40" id="ZfX-k2-tfg"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="FEt-Ft-Val" secondAttribute="trailing" constant="15" id="bl5-Fk-UZj"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="0YV-jW-udd" secondAttribute="bottom" priority="750" constant="40" id="dcf-Ld-aSz"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="15" id="e7B-lb-Wtr"/>
                             <constraint firstItem="Xjl-Wp-KTM" firstAttribute="leading" secondItem="0YV-jW-udd" secondAttribute="trailing" priority="600" constant="73" id="eSO-mv-BI7"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="J9R-PK-aQG" secondAttribute="trailing" constant="10" id="p8u-6u-qAB"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="Xjl-Wp-KTM" secondAttribute="bottom" priority="750" constant="40" id="qCE-Cp-YR0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uty-hF-LTZ"/>
@@ -81,10 +92,16 @@
                     <connections>
                         <outlet property="AddPresetsButtonObj" destination="Xjl-Wp-KTM" id="Is4-zt-G04"/>
                         <outlet property="ExtraFunctionsButtonObj" destination="IkC-iq-42e" id="XUJ-Xd-LLK"/>
+                        <outlet property="Image" destination="J9R-PK-aQG" id="jXg-Mc-YrR"/>
                         <outlet property="PresetsButtonObj" destination="0YV-jW-udd" id="Ytd-hR-vis"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3X-h2-zOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="tIL-qN-5kw">
+                    <connections>
+                        <action selector="handlePanWithRecognizer:" destination="h1o-HI-eVS" id="0J0-yD-BIH"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="26.116071428571427"/>
         </scene>
@@ -231,6 +248,7 @@
     </scenes>
     <resources>
         <image name="+Button" width="228" height="229"/>
+        <image name="ChairNormal" width="804" height="710"/>
         <image name="M1" width="627" height="352"/>
         <image name="M2" width="627" height="352"/>
         <image name="Save" width="627" height="352"/>
