@@ -86,6 +86,20 @@ class AchievementsTableViewController: UITableViewController {
             cell.progressBar.progress = AchievementModel.timeSpentInAppProgress
             cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[2].image)
             return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+            cell.descriptionLabel.text = AchievementModel.achievementCollection1[3].description
+            cell.titleLabel.text = AchievementModel.achievementCollection1[3].title
+            cell.progressBar.progress = AchievementModel.upDownClickCountUnlocked
+            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[3].image)
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+            cell.descriptionLabel.text = AchievementModel.achievementCollection1[4].description
+            cell.titleLabel.text = AchievementModel.achievementCollection1[4].title
+            cell.progressBar.progress = AchievementModel.upDownClickCountUnlocked
+            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[4].image)
+            return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
             return cell

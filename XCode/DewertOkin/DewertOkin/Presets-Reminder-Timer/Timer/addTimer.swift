@@ -31,6 +31,12 @@ class addTimer: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let time = timePicker.date
+        
+        let cal = Calendar(identifier: .gregorian)
+        let date = Date()
+        let midnight = cal.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
+        let fourAM = cal.date(bySettingHour: 4, minute: 0, second: 0, of: date)!
+        
         guard let destination = segue.destination as? Timers else { return }
         let addTime = Timer(context: PersistenceService.context)
         addTime.timerName = name.text!
