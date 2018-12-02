@@ -78,8 +78,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="2xB-tJ-AA8">
                                             <connections>
-                                                <action selector="doneReminder" destination="nr4-g2-C3t" id="mm8-DX-TI7"/>
-                                                <segue destination="mvQ-FM-QPO" kind="unwind" unwindAction="addReminder:" id="99d-Tv-2Th"/>
+                                                <action selector="doneReminder:" destination="nr4-g2-C3t" id="mSm-Hs-U9I"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -127,6 +126,7 @@
                         <outlet property="descriptionTextfield" destination="nsi-wv-fsq" id="31R-j4-YYB"/>
                         <outlet property="nameTextfield" destination="ZBl-rf-Bzb" id="qCw-bQ-ZBD"/>
                         <outlet property="timePicker" destination="PFn-in-XBD" id="uAA-g1-iNC"/>
+                        <segue destination="mvQ-FM-QPO" kind="unwind" identifier="ReminderWasAdded" unwindAction="addReminder:" id="fXd-c4-aPb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylw-8h-bwk" userLabel="First Responder" sceneMemberID="firstResponder"/>

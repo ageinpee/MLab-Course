@@ -68,4 +68,30 @@ extension Reminders: UITableViewDataSource{
         return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            self.reminder.remove(at: indexPath.row)
+            let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+            
+            do {
+                var savedReminder = try PersistenceService.context.fetch(fetchRequest)
+                let managedObectContext = PersistenceService.persistentContainer.viewContext
+                managedObectContext.delete(savedReminder[indexPath.row])
+                savedReminder.remove(at: indexPath.row)
+                try managedObectContext.save()
+            } catch {
+                print("Couldn't delete Timer in Core Data, what the fuck just happened!")
+            }
+            
+            self.tableView.beginUpdates()
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.endUpdates()
+        }
+    }
 }

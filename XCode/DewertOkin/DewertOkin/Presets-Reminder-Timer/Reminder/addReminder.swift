@@ -23,7 +23,7 @@ class addReminder: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func doneReminder(){
+    @IBAction func doneReminder(_ sender: Any){
         if !(nameTextfield.text == ""){
             saved = true
             self.performSegue(withIdentifier: "ReminderWasAdded", sender: self)

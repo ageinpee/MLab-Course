@@ -22,7 +22,7 @@ class addTimer: UIViewController{
         super.viewDidLoad()
     }
     
-    @IBAction func doneButton(_ sender: Any) {
+    @IBAction func doneTimer(_ sender: Any) {
         if !(name.text == ""){
             saved = true
             self.performSegue(withIdentifier: "TimerWasAdded", sender: self)
