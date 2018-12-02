@@ -20,6 +20,7 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
     @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
         AchievementModel.updateButtonClickCount()
+        AchievementModel.saveAchievementProgress()
     }
     
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class SettingTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Sets the title of the surrounding Navigation Controller
-        navigationItem.title = "Settings"
+        navigationItem.title = "More"
         //navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.prefersLargeTitles = true
         search.searchResultsUpdater = self
@@ -116,10 +117,10 @@ class SettingTableViewController: UITableViewController {
     @objc
     private func oldRemoteSwitchChanged(sender: UISwitch!) {
         if (sender.isOn) {
-            RemoteController.useOldRemoteLayout = true
+            //RemoteController.useOldRemoteLayout = true
             print("Using old Remote Layout")
         } else {
-            RemoteController.useOldRemoteLayout = false
+            //RemoteController.useOldRemoteLayout = false
             print("Using fancy Remote Layout")
         }
     }

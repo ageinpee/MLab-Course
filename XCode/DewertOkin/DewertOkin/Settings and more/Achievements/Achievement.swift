@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Achievement {
+struct Achievement: Codable {
     // Establishes the basic Structure of achievements with the type of the variables
     var id: Int
     var title: String

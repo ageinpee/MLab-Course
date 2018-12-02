@@ -76,6 +76,21 @@ class AchievementModel {
     public static var achievementCollection2: [Achievement] = [
     ]
     
+    static func saveAchievementProgress() {
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(AchievementModel.achievementDictionary), forKey: "dictionary")
+        print("Achievement progess saved.")
+    }
+    
+    static func loadAchievementProgress() {
+        if let data: Data = UserDefaults.standard.object(forKey: "dictionary") as? Data {
+            let dict: [AchievementType:Achievement] = try! PropertyListDecoder().decode([AchievementType:Achievement].self, from: data)
+            AchievementModel.achievementDictionary = dict
+            print("Achievement progress loaded.")
+        } else {
+            print("Couldn't load achievement progress.")
+        }
+    }
+    
     // Displays a local notification with the title of the achievement that was unlocked
     private static func displayLocalNotification(forAchievement name: String) {
         let center = UNUserNotificationCenter.current()

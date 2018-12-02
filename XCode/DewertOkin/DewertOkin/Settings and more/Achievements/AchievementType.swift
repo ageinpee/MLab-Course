@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum AchievementType: Hashable {
+enum AchievementType: String, Hashable, Codable {
+    
     case buttonManiac
     case onTopOfThings
     case veteran
