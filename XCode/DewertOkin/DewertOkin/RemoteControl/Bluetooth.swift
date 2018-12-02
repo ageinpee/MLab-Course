@@ -1,5 +1,5 @@
 //
-//  RemoteControlController.swift
+//  Bluetooth.swift
 //  DewertOkin
 //
 //  Created by Nima Rahrakhshan on 19.11.18.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class RemoteControlController: UIViewController {
+class Bluetooth: NSObject {
     
     fileprivate var discoveredPeripheral: CBPeripheral?
     
@@ -22,20 +22,15 @@ class RemoteControlController: UIViewController {
     //var csCommandUUID = CBUUID(string: "90311625-25FA-3346-12EF-FB7A2556AC")
     //var csFeedbackUUID = CBUUID(string: "90311725-25FA-3346-12EF-FB7A2556AC")
     var remoteControl = RemoteControl()
+    var temp: CBCharacteristic!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        centralManager = CBCentralManager(delegate: self, queue: nil)
-    }
-    
-    // Memory warning, possible overload?
-    override func didReceiveMemoryWarning() {
-        print("There is an overload!")
-        super.didReceiveMemoryWarning()
+    func initialize() {
+        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
+
     }
 }
 
-extension RemoteControlController: CBCentralManagerDelegate {
+extension Bluetooth: CBCentralManagerDelegate {
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
@@ -96,9 +91,14 @@ extension RemoteControlController: CBCentralManagerDelegate {
     }
 }
 
-extension RemoteControlController: CBPeripheralDelegate {
+extension Bluetooth: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        guard error == nil else {
+            print("Error discovering the services: \(error!.localizedDescription)")
+            return
+        }
+        
         guard let services = peripheral.services else { return }
         
         for service in services {
@@ -109,6 +109,11 @@ extension RemoteControlController: CBPeripheralDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        guard error == nil else {
+            print("Error discovering the characteristics: \(error!.localizedDescription)")
+            return
+        }
+        
         guard let characteristics = service.characteristics else { return }
         
         // Now we have fetched all the data
@@ -123,21 +128,25 @@ extension RemoteControlController: CBPeripheralDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        guard error == nil else {
+            print("Error updating the characteristics: \(error!.localizedDescription)")
+            return
+        }
+        
         if(characteristic.uuid == keycodeUUID) {
+            temp = characteristic
             let moveUp = remoteControl.getKeycode(name: keycode.m1Out)
-            while(true){
             peripheral.writeValue(moveUp, for: characteristic, type: CBCharacteristicWriteType.withResponse)
-            }
         }
     }
     
-//    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
-//        if(characteristic.isNotifying) {
-//            print("Notification began on \(characteristic)")
-//        } else {
-//            print("Notification stopped on \(characteristic)")
-//        }
-//    }
+    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+        if(characteristic.isNotifying) {
+            print("Notification began on \(characteristic)")
+        } else {
+            print("Notification stopped on \(characteristic)")
+        }
+    }
     
 //    func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
 //        print("The device is now disconnected")

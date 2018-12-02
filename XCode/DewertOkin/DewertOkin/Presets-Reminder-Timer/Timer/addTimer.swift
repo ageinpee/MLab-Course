@@ -16,6 +16,7 @@ class addTimer: UIViewController{
     
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet var name: UITextField!
+    private var saved = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +24,24 @@ class addTimer: UIViewController{
     
     @IBAction func doneButton(_ sender: Any) {
         if !(name.text == ""){
-        self.performSegue(withIdentifier: "TimerWasAdded", sender: self)
+            saved = true
+            self.performSegue(withIdentifier: "TimerWasAdded", sender: self)
         } else {
             print("Invalid Name")
+            // Animation
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let time = timePicker.date
         guard let destination = segue.destination as? Timers else { return }
-        let addTime = Timer(context: PersistenceService.context)
-        addTime.timerName = name.text!
-        addTime.timerTime = time
-        PersistenceService.saveContext()
-        destination.timer.append(addTime)
-    }
-    
-    func notificationCenter(){
-        // Set the current notification center
+        if(saved){
+            let time = timePicker.date
+            let addTime = Timer(context: PersistenceService.context)
+            addTime.timerName = name.text!
+            addTime.timerTime = time
+            PersistenceService.saveContext()
+            destination.timer.append(addTime)
+        }
+        saved = false
     }
 }

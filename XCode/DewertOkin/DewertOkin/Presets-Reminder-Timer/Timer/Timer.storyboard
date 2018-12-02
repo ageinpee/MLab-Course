@@ -73,6 +73,7 @@
                                     <navigationItem title="Timer" id="mny-ZI-h0Q">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FLn-TY-fAB">
                                             <connections>
+                                                <action selector="cancelButton:" destination="94w-4O-QUa" id="i4z-yN-LCP"/>
                                                 <segue destination="iw2-Bw-fjp" kind="unwind" unwindAction="addTimerWasCanceled:" id="P7s-7Q-4mI"/>
                                             </connections>
                                         </barButtonItem>
@@ -115,6 +116,8 @@
                         <viewLayoutGuide key="safeArea" id="hoS-sH-BsJ"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="FLn-TY-fAB" id="Cac-fx-H9r"/>
+                        <outlet property="doneButton" destination="vwW-4h-Hht" id="9co-SV-TfO"/>
                         <outlet property="name" destination="Oex-EW-que" id="aoB-Bv-ie0"/>
                         <outlet property="timePicker" destination="7aN-So-Cv2" id="Vr0-cZ-cen"/>
                         <segue destination="iw2-Bw-fjp" kind="unwind" identifier="TimerWasAdded" unwindAction="addTimer:" id="WbD-eG-Xfg"/>

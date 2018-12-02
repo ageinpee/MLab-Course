@@ -11,10 +11,11 @@ import CoreData
 import UIKit
 import UserNotifications
 import NotificationCenter
+import CoreBluetooth
 
 class Timers: UIViewController{
     
-    var timer = [Timer]()
+    public var timer = [Timer]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,9 +32,8 @@ class Timers: UIViewController{
             print("Couldnt update the TableView, reload!")
         }
     }
-    
+
     @IBAction func addTimer(_ sender: UIStoryboardSegue){
-        //guard let addedTimer = segue.source as? addTimer else { return }
         print("Done button was clicked")
         self.tableView.reloadData()
     }

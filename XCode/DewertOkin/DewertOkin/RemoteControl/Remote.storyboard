@@ -12,7 +12,7 @@
         <!--Remote-->
         <scene sceneID="Qxl-lV-g0M">
             <objects>
-                <viewController id="h1o-HI-eVS" sceneMemberID="viewController">
+                <viewController id="h1o-HI-eVS" customClass="RemoteControlController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7b-hz-zBK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,7 +107,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="+Button" width="228" height="229"/>
-        <image name="chair_pictogram" width="636" height="447"/>
+        <image name="+Button" width="171" height="171.75"/>
+        <image name="chair_pictogram" width="477" height="335.25"/>
     </resources>
 </document>

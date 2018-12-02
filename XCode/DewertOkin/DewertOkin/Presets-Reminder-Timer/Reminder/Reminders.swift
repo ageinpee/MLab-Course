@@ -41,10 +41,9 @@ class Reminders: UIViewController {
         print("Cancel button was clicked")
     }
     
-    func notificationcenter () {
-        
+    func notificationCenter(){
+        // Set the current notification center
     }
-
 }
 
 extension Reminders: UITableViewDataSource{
