@@ -49,6 +49,8 @@ class AchievementsTableViewController: UITableViewController {
         "FunAchievements",
         "Other"
     ]
+    
+    
  
     // defines the number of Sections displayed
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,19 +61,22 @@ class AchievementsTableViewController: UITableViewController {
         return AchievementModel.achievementCollection1.count +  1
         
     }
+    // cellForRowAt indexPath iterates through this array and determines the order in which they are displayed
+    let achievementTypes: [AchievementType] = [.buttonManiac, .onTopOfThings, .veteran, .undecisive, .nightOwl, .letThereBeLight]
     
     private func createAchievementCell(tableview: UITableView, path: IndexPath) -> UITableViewCell {
         
-        if path.row < AchievementModel.achievementCollection1.count {
+        if path.row < AchievementModel.achievementDictionary.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: path) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementModel.achievementCollection1[path.row].description
-            cell.titleLabel.text = AchievementModel.achievementCollection1[path.row].title
-            cell.progressBar.progress = AchievementModel.barButtonClickCountProgess
-            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[path.row].image)
+            if let currentAchievement = AchievementModel.achievementDictionary[achievementTypes[path.row]] {
+                cell.descriptionLabel.text = currentAchievement.description
+                cell.titleLabel.text = currentAchievement.title
+                cell.progressBar.progress = currentAchievement.progress
+                cell.achievementImage.image = UIImage(named: currentAchievement.image)
+            }
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: path)
-            return cell
+            return tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: path)
         }
       
     }

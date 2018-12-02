@@ -15,5 +15,5 @@ struct Achievement {
     var description: String
     var image: String
     var type: AchievementType
-    
+    var progress: Float
 }

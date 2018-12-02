@@ -11,46 +11,69 @@ import UserNotifications
 
 class AchievementModel {
     
-    private static var barButtonClickCount = 0.0
-    public static var barButtonClickCountProgess: Float {
-        return Float(barButtonClickCount / 5.0)
+    private static var barButtonClickCount = 0.0  {
+        didSet {
+            achievementDictionary[.buttonManiac]?.progress = Float(barButtonClickCount / 5.0)
+        }
     }
     
-    private static var remindersSet = 0.0
-    public static var reminderSetProgress: Float {
-        return Float(remindersSet / 3.0)
+    private static var remindersSet = 0.0 {
+        didSet {
+            achievementDictionary[.onTopOfThings]?.progress = Float(remindersSet / 3.0)
+        }
     }
     
-    private static var timeSpentInApp = 0.0
-    public static var timeSpentInAppProgress: Float {
-        return Float(timeSpentInApp / 600.0)
+    private static var timeSpentInApp = 0.0 {
+        didSet {
+            achievementDictionary[.veteran]?.progress = Float(timeSpentInApp / 600.0)
+        }
     }
     
-    private static var upDownClickCount = 0
-    public static var upDownClickCountUnlocked = Float(0.0)
+    private static var upDownClickCountUnlocked = false {
+        didSet {
+            if upDownClickCountUnlocked {
+                achievementDictionary[.undecisive]?.progress = Float(1.0)
+            }
+        }
+    }
     
-    public static var nightOwlProgress = Float(0.0)
-    public static var lightProgess = Float(0.0)
+    private static var nightOwlUnlocked = false {
+        didSet {
+            if nightOwlUnlocked {
+                achievementDictionary[.nightOwl]?.progress = Float(1.0)
+            }
+        }
+    }
+    
+    private static var letThereBeLightUnlocked = false {
+        didSet {
+            achievementDictionary[.letThereBeLight]?.progress = Float(1.0)
+        }
+    }
+    
+    public static var achievementDictionary: [AchievementType:Achievement] = [
+        .buttonManiac : Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock", type: .buttonManiac, progress: 0.0),
+        .onTopOfThings : Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock", type: .onTopOfThings, progress: 0.0),
+        .veteran : Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock", type: .veteran, progress: 0.0),
+        .undecisive : Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock", type: .undecisive, progress: 0.0),
+        .nightOwl : Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock", type: .nightOwl, progress: 0.0),
+        .letThereBeLight : Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock", type: .letThereBeLight, progress: 0.0)
+    ]
+    
     
     // Array(struct) of all the achievements in Section 1 of the achievementssection
     // Change these to change the actual displayed Achievement-Label-Text
     public static var achievementCollection1: [Achievement] = [
-        Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock", type: .buttonManiac),
-        Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock", type: .onTopOfThings),
-        Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock", type: .veteran),
-        Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock", type: .undecisive),
-        Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock", type: .nightOwl),
-        Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock", type: .letThereBeLight)
+        Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock", type: .buttonManiac, progress: 0.0),
+        Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock", type: .onTopOfThings, progress: 0.0),
+        Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock", type: .veteran, progress: 0.0),
+        Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock", type: .undecisive, progress: 0.0),
+        Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock", type: .nightOwl, progress: 0.0),
+        Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock", type: .letThereBeLight, progress: 0.0)
     ]
     // Array(struct) of all the achievements in Section 2 of the achievementssection
     // Change these to change the actual displayed Achievement-Label-Text
     public static var achievementCollection2: [Achievement] = [
-//        Achievement(id: 1, title: "achievementsec21", description: "descriptor1", progress: "5/7undefined", image: "LockedTrophy"),
-//        Achievement(id: 2, title: "achievement2", description: "descriptor2", progress: "5/7undefined", image: "LockedTrophy"),
-//        Achievement(id: 3, title: "achievement3", description: "descriptor3", progress: "5/7undefined", image: "LockedTrophy"),
-//        Achievement(id: 4, title: "achievement4", description: "descriptor4", progress: "5/7undefined", image: "LockedTrophy"),
-//        Achievement(id: 5, title: "achievement5", description: "descriptor5", progress: "5/7undefined", image: "LockedTrophy"),
-//        Achievement(id: 6, title: "achievement6", description: "descriptor6", progress: "5/7undefined", image: "LockedTrophy")
     ]
     
     // Displays a local notification with the title of the achievement that was unlocked
@@ -79,22 +102,25 @@ class AchievementModel {
         barButtonClickCount = barButtonClickCount + 1
         
         if barButtonClickCount == 5 {
+            
            // Trigger the notification
             displayLocalNotification(forAchievement: "Button Maniac")
             print("BarButton Achievement Triggered")
-            achievementCollection1[0].image = "trophy"
+            
+            // Set the trophy image
+            achievementDictionary[.buttonManiac]?.image = "trophy"
         }
     }
     
     // On Top of Things
     public static func updateRemindersSet() {
-        remindersSet = remindersSet + 1
+        remindersSet += 1
         
         if remindersSet == 3 {
             // Notification triggern
             displayLocalNotification(forAchievement: "On Top of Things")
             print("Reminder Achievement Triggered")
-            achievementCollection1[1].image = "trophy"
+            achievementDictionary[.onTopOfThings]?.image = "trophy"
         }
     }
     
@@ -106,31 +132,31 @@ class AchievementModel {
         if (timeSpentInApp >= 600.0) {
             displayLocalNotification(forAchievement: "Veteran")
             print("Veteran achievement unlocked")
-            achievementCollection1[2].image = "trophy"
+            achievementDictionary[.veteran]?.image = "trophy"
         }
     }
     
     // Has to be called from RemoteViewController
     // Undecisive
     public static func undecisiveAchievementUnlocked() {
-        achievementCollection1[3].image = "trophy"
-        upDownClickCountUnlocked = Float(1.0)
+        achievementDictionary[.undecisive]?.image = "trophy"
+        upDownClickCountUnlocked = true
         displayLocalNotification(forAchievement: "Undecisive")
         print("Undecisive achievement unlocked")
     }
     
     // Night Owl
     public static func nightOwlAchievementUnlocked() {
-        achievementCollection1[4].image = "trophy"
-        nightOwlProgress = Float(1.0)
+        achievementDictionary[.nightOwl]?.image = "trophy"
+        nightOwlUnlocked = true
         displayLocalNotification(forAchievement: "Night Owl")
         print("Night Owl achievement unlocked")
     }
     
     // Let there be light
     public static func lightAchievementUnlocked() {
-        achievementCollection1[5].image = "trophy"
-        lightProgess = Float(1)
+        achievementDictionary[.letThereBeLight]?.image = "trophy"
+        letThereBeLightUnlocked = true
         displayLocalNotification(forAchievement: "Let there be Light")
         print("Let there be light achievement unlocked")
     }
