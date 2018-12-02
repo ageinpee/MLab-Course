@@ -48,7 +48,7 @@
                                 </connections>
                             </button>
                             <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="ChairNormal" translatesAutoresizingMaskIntoConstraints="NO" id="J9R-PK-aQG">
-                                <rect key="frame" x="10" y="180" width="394" height="457"/>
+                                <rect key="frame" x="10" y="120" width="394" height="577"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="tIL-qN-5kw" appends="YES" id="f3D-AM-JLS"/>
@@ -70,7 +70,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="7LG-TT-Cct" secondAttribute="bottom" constant="40" id="2c9-np-gla"/>
-                            <constraint firstItem="J9R-PK-aQG" firstAttribute="top" secondItem="A7b-hz-zBK" secondAttribute="top" constant="180" id="4ul-zY-Aw7"/>
+                            <constraint firstItem="J9R-PK-aQG" firstAttribute="top" secondItem="A7b-hz-zBK" secondAttribute="top" constant="120" id="4ul-zY-Aw7"/>
                             <constraint firstItem="J9R-PK-aQG" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="10" id="IF6-tE-hn4"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="uty-hF-LTZ" secondAttribute="top" constant="70" id="KSd-AP-Rdk"/>
                             <constraint firstItem="7LG-TT-Cct" firstAttribute="leading" secondItem="Xjl-Wp-KTM" secondAttribute="trailing" priority="750" constant="50" id="Ocj-Ng-aaM"/>
@@ -78,7 +78,7 @@
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="FEt-Ft-Val" secondAttribute="trailing" constant="15" id="bl5-Fk-UZj"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="0YV-jW-udd" secondAttribute="bottom" priority="750" constant="40" id="dcf-Ld-aSz"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="15" id="e7B-lb-Wtr"/>
-                            <constraint firstItem="Xjl-Wp-KTM" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="bottom" constant="80" id="ljh-FG-BQN"/>
+                            <constraint firstItem="Xjl-Wp-KTM" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="bottom" constant="20" id="ljh-FG-BQN"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="J9R-PK-aQG" secondAttribute="trailing" constant="10" id="p8u-6u-qAB"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="Xjl-Wp-KTM" secondAttribute="bottom" priority="750" constant="40" id="qCE-Cp-YR0"/>
                             <constraint firstItem="Xjl-Wp-KTM" firstAttribute="centerX" secondItem="A7b-hz-zBK" secondAttribute="centerX" priority="800" id="xWU-ic-02g"/>
