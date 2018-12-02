@@ -31,6 +31,7 @@ class RemoteController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("view loading")
         var width = PresetsButtonObj.frame.width
         PresetsButtonObj.layer.cornerRadius = width/2
         PresetsButtonObj.layer.masksToBounds = true
@@ -51,6 +52,7 @@ class RemoteController: UIViewController{
         
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
+        print("view loaded")
     }
     
     
@@ -59,14 +61,17 @@ class RemoteController: UIViewController{
     
     @IBAction func PresetsButton(_ sender: Any) {
         //shall open presets menu/page/sheet to select a preset
+        print("Presets Button pressed")
     }
     
     @IBAction func AddPresetsButton(_ sender: Any) {
         //shall trigger both buttons that are used to save a preset
+        print("Add Presets Button pressed")
     }
     
     @IBAction func ExtraFunctions(_ sender: Any) {
         //maybe a menu with extra functions like massage/ubl/torch etc...
+        print("Extra Functions Button pressed")
     }
     
     
