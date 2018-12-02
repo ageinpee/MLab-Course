@@ -11,19 +11,19 @@ import UserNotifications
 
 class AchievementModel {
     
-    private static var barButtonClickCount = 0.0  {
+    private static var barButtonClickCount: Float = 0.0  {
         didSet {
             achievementDictionary[.buttonManiac]?.progress = Float(barButtonClickCount / 5.0)
         }
     }
     
-    private static var remindersSet = 0.0 {
+    private static var remindersSet: Float = 0.0 {
         didSet {
             achievementDictionary[.onTopOfThings]?.progress = Float(remindersSet / 3.0)
         }
     }
     
-    private static var timeSpentInApp = 0.0 {
+    private static var timeSpentInApp: Float = 0.0 {
         didSet {
             achievementDictionary[.veteran]?.progress = Float(timeSpentInApp / 600.0)
         }
@@ -77,7 +77,18 @@ class AchievementModel {
     ]
     
     static func saveAchievementProgress() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(AchievementModel.achievementDictionary), forKey: "dictionary")
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(try? PropertyListEncoder().encode(AchievementModel.achievementDictionary), forKey: "dictionary")
+        
+        defaults.setValue(barButtonClickCount, forKey: "barButtonClickCount")
+        defaults.setValue(remindersSet, forKey: "remindersSet")
+        defaults.setValue(timeSpentInApp, forKey: "timeSpentInApp")
+        defaults.setValue(upDownClickCountUnlocked, forKey: "upDownClickCountUnlocked")
+        defaults.setValue(nightOwlUnlocked, forKey: "nightOwlUnlocked")
+        defaults.setValue(letThereBeLightUnlocked, forKey: "letThereBeLightUnlocked")
+        
         print("Achievement progess saved.")
     }
     
@@ -85,6 +96,28 @@ class AchievementModel {
         if let data: Data = UserDefaults.standard.object(forKey: "dictionary") as? Data {
             let dict: [AchievementType:Achievement] = try! PropertyListDecoder().decode([AchievementType:Achievement].self, from: data)
             AchievementModel.achievementDictionary = dict
+            
+            let defaults = UserDefaults.standard
+            
+            if let savedBarButtonClickCount = defaults.object(forKey: "barButtonClickCount") as? Float {
+                barButtonClickCount = savedBarButtonClickCount
+            }
+            if let savedRemindersSet = defaults.object(forKey: "remindersSet") as? Float {
+                remindersSet = savedRemindersSet
+            }
+            if let savedTimeSpentInApp = defaults.object(forKey: "timeSpentInApp") as? Float {
+                timeSpentInApp = savedTimeSpentInApp
+            }
+            if let savedUpDownClickCountUnlocked = defaults.object(forKey: "upDownClickCountUnlocked") as? Bool {
+                upDownClickCountUnlocked = savedUpDownClickCountUnlocked
+            }
+            if let savedNightOwlUnlocked = defaults.object(forKey: "nightOwlUnlocked") as? Bool {
+                nightOwlUnlocked = savedNightOwlUnlocked
+            }
+            if let savedLetThereBeLightUnlocked = defaults.object(forKey: "letThereBeLightUnlocked") as? Bool {
+                letThereBeLightUnlocked = savedLetThereBeLightUnlocked
+            }
+            
             print("Achievement progress loaded.")
         } else {
             print("Couldn't load achievement progress.")
@@ -141,7 +174,7 @@ class AchievementModel {
     
     // Veteran
     public static func updateTimeSpentInAchievements(elapsedTime: TimeInterval) {
-        timeSpentInApp = timeSpentInApp + elapsedTime
+        timeSpentInApp = timeSpentInApp + Float(elapsedTime)
         
         // Has to be exactly 10
         if (timeSpentInApp >= 600.0) {

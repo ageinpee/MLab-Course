@@ -20,7 +20,6 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
     @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
         AchievementModel.updateButtonClickCount()
-        AchievementModel.saveAchievementProgress()
     }
     
     override func viewDidLoad() {
