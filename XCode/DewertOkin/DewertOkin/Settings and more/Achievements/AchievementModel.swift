@@ -58,19 +58,23 @@ class AchievementModel {
         
         if barButtonClickCount == 5 {
            // Trigger the notification
+            let center = UNUserNotificationCenter.current()
+            
             let content = UNMutableNotificationContent()
-            content.title = NSString.localizedUserNotificationString(forKey: "Achievement Unlocked!", arguments: nil)
-            content.body = NSString.localizedUserNotificationString(forKey: "Bar Button Achievement unlocked", arguments: nil)
+            content.title = "Achievement Unlocked!"
+            content.body = "Button Maniac"
+            content.sound = UNNotificationSound.default
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let request = UNNotificationRequest(identifier: "barButtonAchievement", content: content, trigger: trigger)
+            let identifier = "ButtonManiacUnlocked"
+            let request = UNNotificationRequest(identifier: identifier,
+                                                content: content, trigger: trigger)
             
-            let center = UNUserNotificationCenter.current()
-            center.add(request) { (error : Error?) in
-                if let theError = error {
-                    print(theError.localizedDescription)
+            center.add(request, withCompletionHandler: { (error) in
+                if let error = error {
+                    print(error)
                 }
-            }
+            })
             
             print("BarButton Achievement Triggered")
             achievementCollection1[0].image = "trophy"
