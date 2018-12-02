@@ -11,10 +11,11 @@ import CoreData
 import UIKit
 import UserNotifications
 import NotificationCenter
+import CoreBluetooth
 
 class Timers: UIViewController{
     
-    var timer = [Timer]()
+    public var timer = [Timer]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,16 +25,15 @@ class Timers: UIViewController{
         let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
         
         do {
-            let timer = try PersistenceService.context.fetch(fetchRequest)
-            self.timer = timer
+            let savedTimer = try PersistenceService.context.fetch(fetchRequest)
+            self.timer = savedTimer
             self.tableView.reloadData()
         } catch {
             print("Couldnt update the TableView, reload!")
         }
     }
-    
+
     @IBAction func addTimer(_ sender: UIStoryboardSegue){
-        //guard let addedTimer = segue.source as? addTimer else { return }
         print("Done button was clicked")
         self.tableView.reloadData()
     }
@@ -66,6 +66,32 @@ extension Timers: UITableViewDataSource{
         cell.accessoryView = mySwitch
         mySwitch.setOn(true,animated:true)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            self.timer.remove(at: indexPath.row)
+            let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
+            
+            do {
+                var savedTimer = try PersistenceService.context.fetch(fetchRequest)
+                let managedObectContext = PersistenceService.persistentContainer.viewContext
+                managedObectContext.delete(savedTimer[indexPath.row])
+                savedTimer.remove(at: indexPath.row)
+                try managedObectContext.save()
+            } catch {
+                print("Couldn't delete Timer in Core Data, what the fuck just happened!")
+            }
+            
+            self.tableView.beginUpdates()
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.endUpdates()
+        }
     }
 }
 

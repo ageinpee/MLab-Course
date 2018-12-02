@@ -16,45 +16,32 @@ class addTimer: UIViewController{
     
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet var name: UITextField!
+    private var saved = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func doneButton(_ sender: Any) {
+    @IBAction func doneTimer(_ sender: Any) {
         if !(name.text == ""){
-        self.performSegue(withIdentifier: "TimerWasAdded", sender: self)
+            saved = true
+            self.performSegue(withIdentifier: "TimerWasAdded", sender: self)
         } else {
             print("Invalid Name")
+            // Animation
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let time = timePicker.date
-        print(time)
-        
-        let cal = Calendar(identifier: .gregorian)
-        let date = Date()
-        print(date)
-        let midnight = cal.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
-        print(midnight)
-        let fourAM = cal.date(bySettingHour: 4, minute: 0, second: 0, of: date)!
-        print(fourAM)
-        
-        if (time.compare(midnight) == .orderedDescending && time.compare(fourAM) == .orderedAscending) {
-            // Trigger Nightowl achievement
-            AchievementModel.nightOwlAchievementUnlocked()
-        }
-        
         guard let destination = segue.destination as? Timers else { return }
-        let addTime = Timer(context: PersistenceService.context)
-        addTime.timerName = name.text!
-        addTime.timerTime = time
-        PersistenceService.saveContext()
-        destination.timer.append(addTime)
-    }
-    
-    func notificationCenter(){
-        // Set the current notification center
+        if(saved){
+            let time = timePicker.date
+            let addTime = Timer(context: PersistenceService.context)
+            addTime.timerName = name.text!
+            addTime.timerTime = time
+            PersistenceService.saveContext()
+            destination.timer.append(addTime)
+        }
+        saved = false
     }
 }
