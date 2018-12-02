@@ -60,60 +60,78 @@ class AchievementsTableViewController: UITableViewController {
         
     }
     
+    private func createAchievementCell(tableview: UITableView, path: IndexPath) -> UITableViewCell {
+        
+        if path.row < AchievementModel.achievementCollection1.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: path) as! AchievementsTableViewCell
+            cell.descriptionLabel.text = AchievementModel.achievementCollection1[path.row].description
+            cell.titleLabel.text = AchievementModel.achievementCollection1[path.row].title
+            cell.progressBar.progress = AchievementModel.barButtonClickCountProgess
+            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[path.row].image)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: path)
+            return cell
+        }
+      
+    }
+    
     // Here, all Cells-Labels get their appropriate Text.  At the moment, This takes a cell, puts the Text of one entry of "achievementCollection1"-array into the cell, returns the updated cell.
     // TODO: improve it, maybe make it recursive?
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementModel.achievementCollection1[0].description
-            cell.titleLabel.text = AchievementModel.achievementCollection1[0].title
-            cell.progressBar.progress = AchievementModel.barButtonClickCountProgess
-            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[0].image)
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementModel.achievementCollection1[1].description
-            cell.titleLabel.text = AchievementModel.achievementCollection1[1].title
-            cell.progressBar.progress = AchievementModel.reminderSetProgress
-            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[1].image)
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementModel.achievementCollection1[2].description
-            cell.titleLabel.text = AchievementModel.achievementCollection1[2].title
-            cell.progressBar.progress = AchievementModel.timeSpentInAppProgress
-            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[2].image)
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementModel.achievementCollection1[3].description
-            cell.titleLabel.text = AchievementModel.achievementCollection1[3].title
-            cell.progressBar.progress = AchievementModel.upDownClickCountUnlocked
-            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[3].image)
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementModel.achievementCollection1[4].description
-            cell.titleLabel.text = AchievementModel.achievementCollection1[4].title
-            cell.progressBar.progress = AchievementModel.nightOwlProgress
-            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[4].image)
-            return cell
-        case 6:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-            cell.descriptionLabel.text = AchievementModel.achievementCollection1[5].description
-            cell.titleLabel.text = AchievementModel.achievementCollection1[5].title
-            cell.progressBar.progress = AchievementModel.lightProgess
-            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[5].image)
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
-            return cell
-        }
+        return createAchievementCell(tableview: tableView, path: indexPath)
+        
+//        switch indexPath.row {
+//        case 0:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+//            return cell
+//        case 1:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[0].description
+//            cell.titleLabel.text = AchievementModel.achievementCollection1[0].title
+//            cell.progressBar.progress = AchievementModel.barButtonClickCountProgess
+//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[0].image)
+//            return cell
+//        case 2:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[1].description
+//            cell.titleLabel.text = AchievementModel.achievementCollection1[1].title
+//            cell.progressBar.progress = AchievementModel.reminderSetProgress
+//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[1].image)
+//            return cell
+//        case 3:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[2].description
+//            cell.titleLabel.text = AchievementModel.achievementCollection1[2].title
+//            cell.progressBar.progress = AchievementModel.timeSpentInAppProgress
+//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[2].image)
+//            return cell
+//        case 4:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[3].description
+//            cell.titleLabel.text = AchievementModel.achievementCollection1[3].title
+//            cell.progressBar.progress = AchievementModel.upDownClickCountUnlocked
+//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[3].image)
+//            return cell
+//        case 5:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[4].description
+//            cell.titleLabel.text = AchievementModel.achievementCollection1[4].title
+//            cell.progressBar.progress = AchievementModel.nightOwlProgress
+//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[4].image)
+//            return cell
+//        case 6:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
+//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[5].description
+//            cell.titleLabel.text = AchievementModel.achievementCollection1[5].title
+//            cell.progressBar.progress = AchievementModel.lightProgess
+//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[5].image)
+//            return cell
+//        default:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
+//            return cell
+//        }
     }
 
     /*
