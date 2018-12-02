@@ -10,7 +10,7 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
     
-    private let settingsEntries: [SettingsEntry] = [.deviceInfo, .achievements, .presets,
+    private let settingsEntries: [SettingsEntry] = [.deviceInfo, .achievements, .presets, .useOldRemote,
                            .accessibilityMode, .accessories, .about, .siri, .darkMode]
     
     private let search = UISearchController(searchResultsController: nil)
@@ -71,6 +71,13 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryView = accessibilityModeSwitch
         }
         
+        if (indexPath.row == settingsEntries.firstIndex(of: .useOldRemote)) {
+            let oldRemoteSwitch = UISwitch()
+            oldRemoteSwitch.isOn = false
+            oldRemoteSwitch.addTarget(self, action: #selector(oldRemoteSwitchChanged(sender:)), for: .valueChanged)
+            cell.accessoryView = oldRemoteSwitch
+        }
+        
         if (indexPath.row == settingsEntries.firstIndex(of: .deviceInfo)) {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .presets)) {
@@ -104,6 +111,17 @@ class SettingTableViewController: UITableViewController {
     @objc
     private func accessibilityModeSwitchChanged(sender: UISwitch!) {
         print("Accessibility Mode switch is on: \(sender.isOn)")
+    }
+    
+    @objc
+    private func oldRemoteSwitchChanged(sender: UISwitch!) {
+        if (sender.isOn) {
+            RemoteController.useOldRemoteLayout = true
+            print("Using old Remote Layout")
+        } else {
+            RemoteController.useOldRemoteLayout = false
+            print("Using fancy Remote Layout")
+        }
     }
     
     @objc
