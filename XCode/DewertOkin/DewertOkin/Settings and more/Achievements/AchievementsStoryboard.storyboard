@@ -48,19 +48,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titeltext" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbD-xE-Kcr">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titeltext" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbD-xE-Kcr">
                                             <rect key="frame" x="16" y="11" width="225" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="Ec3-mZ-sZD"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Ec3-mZ-sZD"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="xag-05-Vtr">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_simple" translatesAutoresizingMaskIntoConstraints="NO" id="xag-05-Vtr">
                                             <rect key="frame" x="249" y="5" width="110" height="110.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="110.5" id="7ae-9F-aRe"/>
                                                 <constraint firstAttribute="width" constant="110" id="8gD-a2-qdS"/>
                                             </constraints>
                                         </imageView>
@@ -68,7 +67,7 @@
                                             <rect key="frame" x="16" y="39" width="225" height="2"/>
                                         </progressView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKt-uh-yRp">
-                                            <rect key="frame" x="16" y="50" width="225" height="65.5"/>
+                                            <rect key="frame" x="16" y="95" width="225" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -79,8 +78,9 @@
                                         <constraint firstItem="ZbD-xE-Kcr" firstAttribute="leading" secondItem="eif-Fd-VVN" secondAttribute="leading" id="FjA-tf-qlJ"/>
                                         <constraint firstItem="xag-05-Vtr" firstAttribute="leading" secondItem="DKt-uh-yRp" secondAttribute="trailing" constant="8" symbolic="YES" id="G3O-vb-hd4"/>
                                         <constraint firstItem="ZbD-xE-Kcr" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="topMargin" id="IYf-dj-gYi"/>
-                                        <constraint firstItem="DKt-uh-yRp" firstAttribute="top" secondItem="eif-Fd-VVN" secondAttribute="bottom" constant="9" id="Iif-IS-EmO"/>
+                                        <constraint firstItem="DKt-uh-yRp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eif-Fd-VVN" secondAttribute="bottom" constant="9" id="Iif-IS-EmO"/>
                                         <constraint firstItem="ZbD-xE-Kcr" firstAttribute="leading" secondItem="OW8-88-rmB" secondAttribute="leadingMargin" id="Mgh-lP-iKx"/>
+                                        <constraint firstAttribute="bottom" secondItem="xag-05-Vtr" secondAttribute="bottom" constant="5" id="b6T-7r-2pE"/>
                                         <constraint firstItem="eif-Fd-VVN" firstAttribute="leading" secondItem="DKt-uh-yRp" secondAttribute="leading" id="csb-dF-DU9"/>
                                         <constraint firstItem="xag-05-Vtr" firstAttribute="leading" secondItem="ZbD-xE-Kcr" secondAttribute="trailing" constant="8" symbolic="YES" id="gYT-48-bAr"/>
                                         <constraint firstItem="DKt-uh-yRp" firstAttribute="bottom" secondItem="xag-05-Vtr" secondAttribute="bottom" id="iub-0C-PCU"/>
@@ -131,6 +131,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="trophy" width="960" height="540"/>
+        <image name="lock_simple" width="75" height="75"/>
     </resources>
 </document>

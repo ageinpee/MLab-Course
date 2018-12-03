@@ -25,16 +25,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended Products" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwl-y9-apK">
-                                            <rect key="frame" x="89" y="22" width="197" height="37"/>
+                                            <rect key="frame" x="89" y="11" width="197" height="37"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="rwl-y9-apK" firstAttribute="centerX" secondItem="Rjh-dh-ev1" secondAttribute="centerX" id="8NL-L7-ihq"/>
-                                        <constraint firstItem="rwl-y9-apK" firstAttribute="top" secondItem="Rjh-dh-ev1" secondAttribute="topMargin" constant="11" id="fZj-Jr-Jf2"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="rwl-y9-apK" secondAttribute="bottom" constant="-10" id="ybc-ly-kEf"/>
+                                        <constraint firstItem="rwl-y9-apK" firstAttribute="centerX" secondItem="Rjh-dh-ev1" secondAttribute="centerX" id="L4u-ap-Zzi"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="rwl-y9-apK" secondAttribute="bottom" constant="1" id="Lph-aR-hIC"/>
+                                        <constraint firstItem="rwl-y9-apK" firstAttribute="top" secondItem="Rjh-dh-ev1" secondAttribute="topMargin" id="hMT-Zb-ifH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
