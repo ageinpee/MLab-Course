@@ -23,11 +23,13 @@ class AchievementModel {
         }
     }
     
-    private static var timeSpentInApp: Float = 0.0 {
+    private static var timeSpentInAchievementsSection: Float = 0.0 {
         didSet {
-            achievementDictionary[.veteran]?.progress = Float(timeSpentInApp / 600.0)
+            achievementDictionary[.veteran]?.progress = Float(timeSpentInAchievementsSection / 600.0)
         }
     }
+    
+    private static var veteranUnlocked = false
     
     private static var upDownClickCountUnlocked = false {
         didSet {
@@ -84,7 +86,8 @@ class AchievementModel {
         
         defaults.setValue(barButtonClickCount, forKey: "barButtonClickCount")
         defaults.setValue(remindersSet, forKey: "remindersSet")
-        defaults.setValue(timeSpentInApp, forKey: "timeSpentInApp")
+        defaults.setValue(timeSpentInAchievementsSection, forKey: "timeSpentInAchievementsSection")
+        defaults.setValue(veteranUnlocked, forKey: "veteranUnlocked")
         defaults.setValue(upDownClickCountUnlocked, forKey: "upDownClickCountUnlocked")
         defaults.setValue(nightOwlUnlocked, forKey: "nightOwlUnlocked")
         defaults.setValue(letThereBeLightUnlocked, forKey: "letThereBeLightUnlocked")
@@ -105,8 +108,11 @@ class AchievementModel {
             if let savedRemindersSet = defaults.object(forKey: "remindersSet") as? Float {
                 remindersSet = savedRemindersSet
             }
-            if let savedTimeSpentInApp = defaults.object(forKey: "timeSpentInApp") as? Float {
-                timeSpentInApp = savedTimeSpentInApp
+            if let savedTimeSpentInAchievementsSection = defaults.object(forKey: "timeSpentInAchievementsSection") as? Float {
+                timeSpentInAchievementsSection = savedTimeSpentInAchievementsSection
+            }
+            if let savedVeteranUnlocked = defaults.object(forKey: "veteranUnlocked") as? Bool {
+                veteranUnlocked = savedVeteranUnlocked
             }
             if let savedUpDownClickCountUnlocked = defaults.object(forKey: "upDownClickCountUnlocked") as? Bool {
                 upDownClickCountUnlocked = savedUpDownClickCountUnlocked
@@ -174,10 +180,10 @@ class AchievementModel {
     
     // Veteran
     public static func updateTimeSpentInAchievements(elapsedTime: TimeInterval) {
-        timeSpentInApp = timeSpentInApp + Float(elapsedTime)
+        timeSpentInAchievementsSection = timeSpentInAchievementsSection + Float(elapsedTime)
         
-        // Has to be exactly 10
-        if (timeSpentInApp >= 600.0) {
+        // TODO: Has to be exactly 600
+        if (timeSpentInAchievementsSection >= 600.0) {
             displayLocalNotification(forAchievement: "Veteran")
             print("Veteran achievement unlocked")
             achievementDictionary[.veteran]?.image = "trophy"
@@ -187,6 +193,7 @@ class AchievementModel {
     // Has to be called from RemoteViewController
     // Undecisive
     public static func undecisiveAchievementUnlocked() {
+        // TODO: Only trigger if it hasn't been unlocked already
         achievementDictionary[.undecisive]?.image = "trophy"
         upDownClickCountUnlocked = true
         displayLocalNotification(forAchievement: "Undecisive")
@@ -195,18 +202,25 @@ class AchievementModel {
     
     // Night Owl
     public static func nightOwlAchievementUnlocked() {
-        achievementDictionary[.nightOwl]?.image = "trophy"
-        nightOwlUnlocked = true
-        displayLocalNotification(forAchievement: "Night Owl")
-        print("Night Owl achievement unlocked")
+        // Only trigger if it hasn't been unlocked already
+        if (!nightOwlUnlocked) {
+            achievementDictionary[.nightOwl]?.image = "trophy"
+            nightOwlUnlocked = true
+            displayLocalNotification(forAchievement: "Night Owl")
+            print("Night Owl achievement unlocked")
+            
+        }
     }
     
     // Let there be light
     public static func lightAchievementUnlocked() {
-        achievementDictionary[.letThereBeLight]?.image = "trophy"
-        letThereBeLightUnlocked = true
-        displayLocalNotification(forAchievement: "Let there be Light")
-        print("Let there be light achievement unlocked")
+        // Only trigger if it hasn't been unlocked already
+        if (!letThereBeLightUnlocked) {
+            achievementDictionary[.letThereBeLight]?.image = "trophy"
+            letThereBeLightUnlocked = true
+            displayLocalNotification(forAchievement: "Let there be Light")
+            print("Let there be light achievement unlocked")
+        }
     }
     
 }
