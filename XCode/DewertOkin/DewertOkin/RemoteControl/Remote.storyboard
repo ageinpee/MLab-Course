@@ -85,7 +85,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uty-hF-LTZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Remote" id="Kbj-MF-ozf"/>
+                    <tabBarItem key="tabBarItem" title="Remote" image="remote_icon" id="8bx-qj-Lc2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="AddPresetsButtonObj" destination="Xjl-Wp-KTM" id="Is4-zt-G04"/>
@@ -245,8 +245,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="+Button" width="228" height="229"/>
-        <image name="ChairNormal" width="804" height="710"/>
+        <image name="+Button" width="171" height="171.75"/>
+        <image name="ChairNormal" width="603" height="532.5"/>
         <image name="M1" width="627" height="352"/>
         <image name="M2" width="627" height="352"/>
         <image name="Save" width="627" height="352"/>
@@ -257,6 +257,7 @@
         <image name="footUp" width="627" height="352"/>
         <image name="headDown" width="627" height="352"/>
         <image name="headUp" width="627" height="352"/>
+        <image name="remote_icon" width="30" height="30"/>
         <image name="restPOS" width="627" height="352"/>
     </resources>
 </document>

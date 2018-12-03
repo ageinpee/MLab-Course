@@ -49,7 +49,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D9c-Sd-kNC"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Timer" id="xT9-aQ-sjV"/>
+                    <tabBarItem key="tabBarItem" title="Timer" image="timer_icon" id="xT9-aQ-sjV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Egq-oJ-kuP" id="ARf-Xo-S5b"/>
@@ -126,4 +126,7 @@
             <point key="canvasLocation" x="650.39999999999998" y="81.409295352323838"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="timer_icon" width="30" height="30"/>
+    </resources>
 </document>

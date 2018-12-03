@@ -49,7 +49,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q6o-W9-dCQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Reminder" id="qDJ-nh-dfI"/>
+                    <tabBarItem key="tabBarItem" title="Reminder" image="reminder_icon" id="qDJ-nh-dfI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="B3x-XU-Igp" id="R7c-u4-lJ3"/>
@@ -135,4 +135,7 @@
             <point key="canvasLocation" x="848.79999999999995" y="97.601199400299862"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reminder_icon" width="24" height="24"/>
+    </resources>
 </document>
