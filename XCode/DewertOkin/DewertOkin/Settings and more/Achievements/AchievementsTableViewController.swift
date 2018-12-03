@@ -58,7 +58,7 @@ class AchievementsTableViewController: UITableViewController {
     }
     // defines the number of rows per section -- it just counts the entries of achievementCollection1 + achievementCollection2 and gives back the appropriate number of rows.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AchievementModel.achievementCollection1.count +  1
+        return AchievementModel.achievementDictionary.count
         
     }
     // cellForRowAt indexPath iterates through this array and determines the order in which they are displayed

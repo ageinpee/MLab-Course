@@ -179,10 +179,11 @@ class AchievementModel {
     }
     
     // Veteran
+    // Doesn't get triggered as long as the Achievements section is on screen.
+    // Leaving it will calculate the new value and trigger the Achievement.
     public static func updateTimeSpentInAchievements(elapsedTime: TimeInterval) {
         timeSpentInAchievementsSection = timeSpentInAchievementsSection + Float(elapsedTime)
         
-        // TODO: Has to be exactly 600
         if (timeSpentInAchievementsSection >= 600.0) {
             displayLocalNotification(forAchievement: "Veteran")
             print("Veteran achievement unlocked")

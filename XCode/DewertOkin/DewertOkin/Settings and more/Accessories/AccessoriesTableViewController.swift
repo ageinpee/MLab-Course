@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class AccessoriesTableViewController: UITableViewController {
 
@@ -51,7 +52,7 @@ class AccessoriesTableViewController: UITableViewController {
             cell.descriptionLabel.text = products[0].description
             cell.productImage.image = UIImage(named: "lichtleiste")
             cell.productImage.contentMode = .scaleAspectFit
-
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
             
             return cell
         case 3:
@@ -60,6 +61,7 @@ class AccessoriesTableViewController: UITableViewController {
             cell.descriptionLabel.text = products[1].description
             cell.productImage.image = UIImage(named: "remote")
             cell.productImage.contentMode = .scaleAspectFit
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
 
             return cell
         case 4:
@@ -72,7 +74,7 @@ class AccessoriesTableViewController: UITableViewController {
             cell.descriptionLabel.text = products[0].description
             cell.productImage.image = UIImage(named: "lichtleiste")
             cell.productImage.contentMode = .scaleAspectFit
-
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
             
             return cell
         case 6:
@@ -81,7 +83,8 @@ class AccessoriesTableViewController: UITableViewController {
             cell.descriptionLabel.text = products[1].description
             cell.productImage.image = UIImage(named: "remote")
             cell.productImage.contentMode = .scaleAspectFit
-
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
+            
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
@@ -113,7 +116,14 @@ class AccessoriesTableViewController: UITableViewController {
     var products: [Accessorie] = [
         Accessorie(title: "New Under-Bed-Lighting", description: "This will definitely lighten up your life!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),
         Accessorie(title: "RGB light strip", description: "For all the colours you need!")
-    ]   
+    ]
+    
+    @objc
+    private func accessorieTapped() {
+        let url = URL(string: "https://www.dewertokin.com/")!
+        let controller = SFSafariViewController(url: url)
+        self.present(controller, animated: true, completion: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.
