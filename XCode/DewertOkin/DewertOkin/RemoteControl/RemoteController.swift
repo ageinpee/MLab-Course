@@ -44,6 +44,10 @@ class RemoteController: UIViewController{
         AddPresetsButtonObj.layer.borderWidth = 1
         AddPresetsButtonObj.layer.borderColor = UIColor.gray.cgColor
         
+        let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
+        swipeRec.direction = .up
+        ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
+        
         width = ExtraFunctionsButtonObj.frame.width
         ExtraFunctionsButtonObj.layer.cornerRadius = width/2
         ExtraFunctionsButtonObj.layer.masksToBounds = true
@@ -53,6 +57,14 @@ class RemoteController: UIViewController{
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
         print("view loaded")
+    }
+    
+    @objc
+    private func showOldRemote() {
+        print("Swipe recognized")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "OldRemote", bundle: nil)
+        let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     
@@ -178,49 +190,5 @@ class RemoteController: UIViewController{
             }
         }
     }
-    
-    
-    
-    //----------------------------------------
-    //----- generic remote design buttons ----
-    
-    @IBAction func headUpBtn(_ sender: Any) {
-        
-    }
-    
-    @IBAction func headDownBtn(_ sender: Any) {
-        print("asdadasdasdadsadasd is an overload!")
-
-    }
-    
-    @IBAction func FootUpBtn(_ sender: Any) {
-    }
-    
-    @IBAction func FootDownBtn(_ sender: Any) {
-    }
-    
-    
-    @IBAction func RestPosBtn(_ sender: Any) {
-    }
-    
-    @IBAction func FlatPosBtn(_ sender: Any) {
-    }
-    
-    @IBAction func M1Btn(_ sender: Any) {
-    }
-    
-    @IBAction func M2Btn(_ sender: Any) {
-    }
-    
-    @IBAction func SaveBtn(_ sender: Any) {
-    }
-    
-    
-    @IBAction func UblBtn(_ sender: Any) {
-    }
-    
-    @IBAction func TourchBtn(_ sender: Any) {
-    }
-    
 }
 
