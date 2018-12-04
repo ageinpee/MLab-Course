@@ -15,17 +15,13 @@ class SettingTableViewController: UITableViewController {
     
     private let search = UISearchController(searchResultsController: nil)
     
-    // TODO: In achievements auslagern
-    public var clickCount: Int = 0 { didSet {
-            AchievementsTableViewController.didTriggerAchievement(clickCount: clickCount)
-        }}
     
+    //-----Achievement "Button Maniac"-related-----
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
-    // Triggers the Test-Achievement
     @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
-        clickCount = clickCount + 1
-        print("Click count: \(clickCount)")
+        AchievementModel.updateButtonClickCount()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,7 +59,7 @@ class SettingTableViewController: UITableViewController {
         
         if (indexPath.row == settingsEntries.firstIndex(of: .darkMode)) {
             let darkModeSwitch = UISwitch()
-            darkModeSwitch.isOn = true
+            darkModeSwitch.isOn = false
             darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchChanged(sender:)), for: .valueChanged)
             cell.accessoryView = darkModeSwitch
         }
@@ -99,6 +95,9 @@ class SettingTableViewController: UITableViewController {
     
     @objc
     private func darkModeSwitchChanged(sender: UISwitch!) {
+        if(!sender.isOn) {
+            AchievementModel.lightAchievementUnlocked()
+        }
         print("Dark Mode switch is on: \(sender.isOn)")
     }
     
