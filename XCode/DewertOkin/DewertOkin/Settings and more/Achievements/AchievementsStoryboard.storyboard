@@ -80,7 +80,6 @@
                                         <constraint firstItem="ZbD-xE-Kcr" firstAttribute="top" secondItem="OW8-88-rmB" secondAttribute="topMargin" id="IYf-dj-gYi"/>
                                         <constraint firstItem="DKt-uh-yRp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eif-Fd-VVN" secondAttribute="bottom" constant="9" id="Iif-IS-EmO"/>
                                         <constraint firstItem="ZbD-xE-Kcr" firstAttribute="leading" secondItem="OW8-88-rmB" secondAttribute="leadingMargin" id="Mgh-lP-iKx"/>
-                                        <constraint firstAttribute="bottom" secondItem="xag-05-Vtr" secondAttribute="bottom" constant="5" id="b6T-7r-2pE"/>
                                         <constraint firstItem="eif-Fd-VVN" firstAttribute="leading" secondItem="DKt-uh-yRp" secondAttribute="leading" id="csb-dF-DU9"/>
                                         <constraint firstItem="xag-05-Vtr" firstAttribute="leading" secondItem="ZbD-xE-Kcr" secondAttribute="trailing" constant="8" symbolic="YES" id="gYT-48-bAr"/>
                                         <constraint firstItem="DKt-uh-yRp" firstAttribute="bottom" secondItem="xag-05-Vtr" secondAttribute="bottom" id="iub-0C-PCU"/>
