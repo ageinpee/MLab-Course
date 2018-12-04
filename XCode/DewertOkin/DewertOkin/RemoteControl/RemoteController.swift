@@ -73,6 +73,14 @@ class RemoteController: UIViewController{
     
     @IBAction func PresetsButton(_ sender: Any) {
         //shall open presets menu/page/sheet to select a preset
+        let alert = UIAlertController(title: "Choose Preset", message: "", preferredStyle: .actionSheet)
+        let preset1 = UIAlertAction(title: "Sleeping", style: .default, handler: nil)
+        let preset2 = UIAlertAction(title: "Reading", style: .default, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(preset1)
+        alert.addAction(preset2)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
         print("Presets Button pressed")
     }
     
@@ -83,6 +91,16 @@ class RemoteController: UIViewController{
     
     @IBAction func ExtraFunctions(_ sender: Any) {
         //maybe a menu with extra functions like massage/ubl/torch etc...
+        let alert = UIAlertController(title: "Choose Feature", message: "", preferredStyle: .actionSheet)
+        let option1 = UIAlertAction(title: "Massage", style: .default, handler: nil)
+        let option2 = UIAlertAction(title: "Under Bed Lighting", style: .default, handler: nil)
+        let option3 = UIAlertAction(title: "Torch", style: .default, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(option1)
+        alert.addAction(option2)
+        alert.addAction(option3)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
         print("Extra Functions Button pressed")
     }
     

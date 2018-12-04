@@ -23,18 +23,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-Wp-KTM">
-                                <rect key="frame" x="179" y="717" width="56" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="1tj-Ex-XXt"/>
-                                    <constraint firstAttribute="width" secondItem="Xjl-Wp-KTM" secondAttribute="height" multiplier="1:1" priority="900" id="YD3-gf-GFW"/>
-                                    <constraint firstAttribute="height" constant="56" id="bn0-jd-ch4"/>
-                                </constraints>
-                                <state key="normal" image="+Button"/>
-                                <connections>
-                                    <action selector="AddPresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="Qwe-8D-j5C"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-jW-udd">
                                 <rect key="frame" x="73" y="717" width="56" height="56"/>
                                 <constraints>
@@ -42,7 +30,7 @@
                                     <constraint firstAttribute="width" constant="56" id="7TS-f7-HfC"/>
                                     <constraint firstAttribute="width" secondItem="0YV-jW-udd" secondAttribute="height" multiplier="1:1" priority="900" id="J32-lh-94W"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Presets"/>
                                 <connections>
                                     <action selector="PresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="ieX-4e-Mfh"/>
                                 </connections>
@@ -61,9 +49,22 @@
                                     <constraint firstAttribute="width" constant="56" id="h1x-6j-5Kk"/>
                                     <constraint firstAttribute="width" secondItem="7LG-TT-Cct" secondAttribute="height" multiplier="1:1" priority="900" id="hX4-x2-4US"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Extras"/>
                                 <connections>
                                     <action selector="ExtraFunctions:" destination="h1o-HI-eVS" eventType="touchUpInside" id="dC0-au-gKQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-Wp-KTM">
+                                <rect key="frame" x="179" y="717" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="1tj-Ex-XXt"/>
+                                    <constraint firstAttribute="width" secondItem="Xjl-Wp-KTM" secondAttribute="height" multiplier="1:1" priority="900" id="YD3-gf-GFW"/>
+                                    <constraint firstAttribute="height" constant="56" id="bn0-jd-ch4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="AddPresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="Qwe-8D-j5C"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -105,7 +106,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="+Button" width="171" height="171.75"/>
         <image name="ChairNormal" width="603" height="532.5"/>
         <image name="remote_icon" width="30" height="30"/>
     </resources>
