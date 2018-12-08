@@ -62,22 +62,6 @@ class AchievementModel {
         .letThereBeLight : Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0)
     ]
     
-    
-    // Array(struct) of all the achievements in Section 1 of the achievementssection
-    // Change these to change the actual displayed Achievement-Label-Text
-//    public static var achievementCollection1: [Achievement] = [
-//        Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock", type: .buttonManiac, progress: 0.0),
-//        Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock", type: .onTopOfThings, progress: 0.0),
-//        Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock", type: .veteran, progress: 0.0),
-//        Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock", type: .undecisive, progress: 0.0),
-//        Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock", type: .nightOwl, progress: 0.0),
-//        Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock", type: .letThereBeLight, progress: 0.0)
-//    ]
-    // Array(struct) of all the achievements in Section 2 of the achievementssection
-    // Change these to change the actual displayed Achievement-Label-Text
-    public static var achievementCollection2: [Achievement] = [
-    ]
-    
     static func saveAchievementProgress() {
         
         let defaults = UserDefaults.standard
@@ -222,6 +206,28 @@ class AchievementModel {
             displayLocalNotification(forAchievement: "Let there be Light")
             print("Let there be light achievement unlocked")
         }
+    }
+    
+    public static func resetAchievements() {
+        barButtonClickCount = 0
+        remindersSet = 0
+        timeSpentInAchievementsSection = 0
+        veteranUnlocked = false
+        upDownClickCountUnlocked = false
+        nightOwlUnlocked = false
+        letThereBeLightUnlocked = false
+        
+        achievementDictionary =  [
+            .buttonManiac : Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock_simple", type: .buttonManiac, progress: 0.0),
+            .onTopOfThings : Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock_simple", type: .onTopOfThings, progress: 0.0),
+            .veteran : Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock_simple", type: .veteran, progress: 0.0),
+            .undecisive : Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock_simple", type: .undecisive, progress: 0.0),
+            .nightOwl : Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0),
+            .letThereBeLight : Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0)
+        ]
+        
+        saveAchievementProgress()
+        print("Achievements reset.")
     }
     
 }

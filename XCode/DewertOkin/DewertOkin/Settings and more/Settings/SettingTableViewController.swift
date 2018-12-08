@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SettingTableViewController: UITableViewController {
     
@@ -105,15 +106,8 @@ class SettingTableViewController: UITableViewController {
     
     @objc
     private func resetAchievements() {
-        AchievementModel.barButtonClickCount = 0
-        AchievementModel.remindersSet = 0
-        AchievementModel.timeSpentInAchievementsSection = 0
-        AchievementModel.veteranUnlocked = false
-        AchievementModel.upDownClickCountUnlocked = false
-        AchievementModel.nightOwlUnlocked = false
-        AchievementModel.letThereBeLightUnlocked = false
-        AchievementModel.saveAchievementProgress()
-        print("Achievements reset.")
+        AchievementModel.resetAchievements()
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
     
     @objc
