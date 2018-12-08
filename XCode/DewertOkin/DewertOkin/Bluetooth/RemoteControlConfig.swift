@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RemoteControl {
+class RemoteControlConfig {
     
     public func getKeycode(name: keycode) -> Data {
         switch name {
