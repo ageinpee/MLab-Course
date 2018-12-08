@@ -11,7 +11,7 @@ import UIKit
 class SettingTableViewController: UITableViewController {
     
     private let settingsEntries: [SettingsEntry] = [.deviceInfo, .achievements, .presets, .useOldRemote,
-                           .accessibilityMode, .accessories, .about, .siri, .darkMode]
+                           .accessibilityMode, .accessories, .about, .darkMode]
     
     private let search = UISearchController(searchResultsController: nil)
     

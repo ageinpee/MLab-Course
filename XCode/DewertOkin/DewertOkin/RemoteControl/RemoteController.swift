@@ -44,6 +44,10 @@ class RemoteController: UIViewController{
         AddPresetsButtonObj.layer.borderWidth = 1
         AddPresetsButtonObj.layer.borderColor = UIColor.gray.cgColor
         
+        let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
+        swipeRec.direction = .up
+        ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
+        
         width = ExtraFunctionsButtonObj.frame.width
         ExtraFunctionsButtonObj.layer.cornerRadius = width/2
         ExtraFunctionsButtonObj.layer.masksToBounds = true
@@ -55,12 +59,28 @@ class RemoteController: UIViewController{
         print("view loaded")
     }
     
+    @objc
+    private func showOldRemote() {
+        print("Swipe recognized")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "OldRemote", bundle: nil)
+        let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
     
     //---------------------------------------
     //----- Fancy Design Remote Actions -----
     
     @IBAction func PresetsButton(_ sender: Any) {
         //shall open presets menu/page/sheet to select a preset
+        let alert = UIAlertController(title: "Choose Preset", message: "", preferredStyle: .actionSheet)
+        let preset1 = UIAlertAction(title: "Sleeping", style: .default, handler: nil)
+        let preset2 = UIAlertAction(title: "Reading", style: .default, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(preset1)
+        alert.addAction(preset2)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
         print("Presets Button pressed")
     }
     
@@ -71,6 +91,16 @@ class RemoteController: UIViewController{
     
     @IBAction func ExtraFunctions(_ sender: Any) {
         //maybe a menu with extra functions like massage/ubl/torch etc...
+        let alert = UIAlertController(title: "Choose Feature", message: "", preferredStyle: .actionSheet)
+        let option1 = UIAlertAction(title: "Massage", style: .default, handler: nil)
+        let option2 = UIAlertAction(title: "Under Bed Lighting", style: .default, handler: nil)
+        let option3 = UIAlertAction(title: "Torch", style: .default, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(option1)
+        alert.addAction(option2)
+        alert.addAction(option3)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
         print("Extra Functions Button pressed")
     }
     
@@ -178,49 +208,5 @@ class RemoteController: UIViewController{
             }
         }
     }
-    
-    
-    
-    //----------------------------------------
-    //----- generic remote design buttons ----
-    
-    @IBAction func headUpBtn(_ sender: Any) {
-        
-    }
-    
-    @IBAction func headDownBtn(_ sender: Any) {
-        print("asdadasdasdadsadasd is an overload!")
-
-    }
-    
-    @IBAction func FootUpBtn(_ sender: Any) {
-    }
-    
-    @IBAction func FootDownBtn(_ sender: Any) {
-    }
-    
-    
-    @IBAction func RestPosBtn(_ sender: Any) {
-    }
-    
-    @IBAction func FlatPosBtn(_ sender: Any) {
-    }
-    
-    @IBAction func M1Btn(_ sender: Any) {
-    }
-    
-    @IBAction func M2Btn(_ sender: Any) {
-    }
-    
-    @IBAction func SaveBtn(_ sender: Any) {
-    }
-    
-    
-    @IBAction func UblBtn(_ sender: Any) {
-    }
-    
-    @IBAction func TourchBtn(_ sender: Any) {
-    }
-    
 }
 
