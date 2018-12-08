@@ -85,6 +85,9 @@ class SettingTableViewController: UITableViewController {
         } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
             cell.accessoryType = .disclosureIndicator
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushAchievementsStoryboard)))
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(resetAchievements))
+            longPress.minimumPressDuration = 2
+            cell.addGestureRecognizer(longPress)
         } else if (indexPath.row == settingsEntries.firstIndex(of: .warranty)) {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .about)) {
@@ -98,6 +101,19 @@ class SettingTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    @objc
+    private func resetAchievements() {
+        AchievementModel.barButtonClickCount = 0
+        AchievementModel.remindersSet = 0
+        AchievementModel.timeSpentInAchievementsSection = 0
+        AchievementModel.veteranUnlocked = false
+        AchievementModel.upDownClickCountUnlocked = false
+        AchievementModel.nightOwlUnlocked = false
+        AchievementModel.letThereBeLightUnlocked = false
+        AchievementModel.saveAchievementProgress()
+        print("Achievements reset.")
     }
     
     @objc

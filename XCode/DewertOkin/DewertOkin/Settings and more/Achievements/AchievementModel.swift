@@ -11,27 +11,27 @@ import UserNotifications
 
 class AchievementModel {
     
-    private static var barButtonClickCount: Float = 0.0  {
+    static var barButtonClickCount: Float = 0.0  {
         didSet {
             achievementDictionary[.buttonManiac]?.progress = Float(barButtonClickCount / 5.0)
         }
     }
     
-    private static var remindersSet: Float = 0.0 {
+    static var remindersSet: Float = 0.0 {
         didSet {
             achievementDictionary[.onTopOfThings]?.progress = Float(remindersSet / 3.0)
         }
     }
     
-    private static var timeSpentInAchievementsSection: Float = 0.0 {
+    static var timeSpentInAchievementsSection: Float = 0.0 {
         didSet {
             achievementDictionary[.veteran]?.progress = Float(timeSpentInAchievementsSection / 600.0)
         }
     }
     
-    private static var veteranUnlocked = false
+    static var veteranUnlocked = false
     
-    private static var upDownClickCountUnlocked = false {
+    static var upDownClickCountUnlocked = false {
         didSet {
             if upDownClickCountUnlocked {
                 achievementDictionary[.undecisive]?.progress = Float(1.0)
@@ -39,7 +39,7 @@ class AchievementModel {
         }
     }
     
-    private static var nightOwlUnlocked = false {
+    static var nightOwlUnlocked = false {
         didSet {
             if nightOwlUnlocked {
                 achievementDictionary[.nightOwl]?.progress = Float(1.0)
@@ -47,7 +47,7 @@ class AchievementModel {
         }
     }
     
-    private static var letThereBeLightUnlocked = false {
+    static var letThereBeLightUnlocked = false {
         didSet {
             achievementDictionary[.letThereBeLight]?.progress = Float(1.0)
         }
