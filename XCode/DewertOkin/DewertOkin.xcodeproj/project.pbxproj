@@ -21,6 +21,8 @@
 		0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0357FBE6218607A30043A828 /* LaunchScreen.storyboard */; };
 		0357FBF3218607A40043A828 /* DewertOkinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBF2218607A40043A828 /* DewertOkinTests.swift */; };
 		0357FBFE218607A40043A828 /* DewertOkinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBFD218607A40043A828 /* DewertOkinUITests.swift */; };
+		03AE0EC021BFB4EA00CEDC81 /* BluetoothPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */; };
+		03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */; };
 		03E98758219447BC00189C97 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E98757219447BC00189C97 /* Timers.swift */; };
 		03E9875C219447E000189C97 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875B219447E000189C97 /* Reminders.swift */; };
 		03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875D2194483D00189C97 /* PersistenceService.swift */; };
@@ -90,6 +92,8 @@
 		0357FBF9218607A40043A828 /* DewertOkinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DewertOkinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0357FBFD218607A40043A828 /* DewertOkinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DewertOkinUITests.swift; sourceTree = "<group>"; };
 		0357FBFF218607A40043A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothPairingViewController.swift; sourceTree = "<group>"; };
+		03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BluetoothPairing.storyboard; sourceTree = "<group>"; };
 		03E98757219447BC00189C97 /* Timers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timers.swift; sourceTree = "<group>"; };
 		03E9875B219447E000189C97 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
 		03E9875D2194483D00189C97 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 		0357FBD9218607A30043A828 /* DewertOkin */ = {
 			isa = PBXGroup;
 			children = (
+				03AE0EBD21BFB47900CEDC81 /* Pairing Process */,
 				0333052121BB346F00603519 /* Bluetooth */,
 				03DE1F5A21AEF1E1004F01F3 /* RemoteControl */,
 				FA397CA621943745000B4912 /* Presets-Reminder-Timer */,
@@ -217,6 +222,15 @@
 				0357FBFF218607A40043A828 /* Info.plist */,
 			);
 			path = DewertOkinUITests;
+			sourceTree = "<group>";
+		};
+		03AE0EBD21BFB47900CEDC81 /* Pairing Process */ = {
+			isa = PBXGroup;
+			children = (
+				03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */,
+				03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */,
+			);
+			path = "Pairing Process";
 			sourceTree = "<group>";
 		};
 		03DE1F5A21AEF1E1004F01F3 /* RemoteControl */ = {
@@ -429,6 +443,7 @@
 				0357FBE0218607A30043A828 /* Main.storyboard in Resources */,
 				CDB5B11621B5B9FE000D92A4 /* OldRemote.storyboard in Resources */,
 				FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */,
+				03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */,
 				CD945289219C3D0D00280A66 /* AchievementsStoryboard.storyboard in Resources */,
 				CD94528E219C3D9100280A66 /* AccessoriesStoryboard.storyboard in Resources */,
 			);
@@ -461,9 +476,9 @@
 				CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */,
 				CD945294219C429400280A66 /* Accessorie.swift in Sources */,
 				FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */,
-				03DE1F5721AEE28F004F01F3 /* RemoteControl.swift in Sources */,
 				CDB5B11821B5BA38000D92A4 /* OldRemoteViewController.swift in Sources */,
 				031EE20521A2EEB600E9E91E /* Timer+CoreDataClass.swift in Sources */,
+				03AE0EC021BFB4EA00CEDC81 /* BluetoothPairingViewController.swift in Sources */,
 				03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */,
 				CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */,
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
@@ -659,13 +674,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BZ5S3LC6UW;
+				DEVELOPMENT_TEAM = 7SN78RF3Z9;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018Nima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -677,13 +692,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BZ5S3LC6UW;
+				DEVELOPMENT_TEAM = 7SN78RF3Z9;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018Nima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -13,7 +13,7 @@ class Bluetooth: NSObject {
     
     var centralManager: CBCentralManager!
     var connectedPeripheral: CBPeripheral?
-    var availablePeripherals: [CBPeripheral]!
+    var availablePeripherals = [CBPeripheral]()
     var characteristics: [CBCharacteristic]!
     var characteristic: CBCharacteristic?
     var bluetoothState: CBManagerState { return self.centralManager.state }
@@ -21,7 +21,7 @@ class Bluetooth: NSObject {
     static var commandService = CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B")
     static var keycodeUUID = CBUUID(string: "62741525-52F9-8864-B1AB-3B3A8D65950B")
     static var feedbackUUID = CBUUID(string: "62741625-52F9-8864-B1AB-3B3A8D65950B")
-    static var remoteControl = RemoteControlConfig()
+    static var remoteControl = RemoteController()
     
     var bluetoothCoordinator: BluetoothCoordinator?
     
@@ -49,6 +49,13 @@ class Bluetooth: NSObject {
         print("Stopping scan")
         self.centralManager.stopScan()
         self.bluetoothCoordinator?.scanStopped()
+    }
+    
+    func retrievePeripherals() -> [CBPeripheral] {
+        guard self.centralManager.state == .poweredOn else { return [] }
+        self.centralManager.scanForPeripherals(withServices: nil)
+        let peripherals = availablePeripherals
+        return peripherals
     }
     
     func connect() {
@@ -91,10 +98,9 @@ extension Bluetooth: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        //        if RSSI.intValue < -15 && RSSI.intValue > -35 {
-        //            print("Device is not in range")
-        //            // Error Message on UI
-        //        }
+        if !availablePeripherals.contains(peripheral){
+            availablePeripherals.append(peripheral)
+        }
         
         // This is not good practice, we should match it with the UUID (Can't implement it, since I dont have access to it rn)
         let deviceName = peripheral.name ?? ""

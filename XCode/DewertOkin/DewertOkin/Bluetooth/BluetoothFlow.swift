@@ -31,6 +31,15 @@ class BluetoothFlow: BluetoothCoordinator {
         self.waitForPeripheralHandler = completion
     }
     
+    override func retrievePeripherals() -> [CBPeripheral] {
+        guard self.bluetoothService?.centralManager.state == .poweredOn else {
+            print("Bluetooth is off")
+            return []
+        }
+        let peripherals = self.bluetoothService?.retrievePeripherals()
+        return peripherals!
+    }
+    
     func pair(completion: @escaping (Bool) -> Void) {
         guard !self.pairing else {
             print("Don't pair, already paired")
@@ -85,7 +94,6 @@ class BluetoothFlow: BluetoothCoordinator {
             print("You are already pairing")
             return
         }
-        
     }
     
     override func disconnected(failure: Bool) {
