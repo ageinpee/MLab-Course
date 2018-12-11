@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f7d-qy-B5L">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Bluetooth Pairing View Controller-->
+        <scene sceneID="pdT-nj-vL6">
+            <objects>
+                <viewController id="f7d-qy-B5L" customClass="BluetoothPairingViewController" customModule="DewertOkin" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FRc-o2-RbW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-v7-JMr">
+                                <rect key="frame" x="51" y="487" width="272" height="63"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3lV-v7-JMr" secondAttribute="height" multiplier="272:63" id="M0R-e5-rKs"/>
+                                </constraints>
+                                <state key="normal" title="Connect"/>
+                                <connections>
+                                    <action selector="connect:" destination="f7d-qy-B5L" eventType="touchUpInside" id="8qb-Gn-MXZ"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vwe-i5-DuG">
+                                <rect key="frame" x="51" y="172" width="272" height="259"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vwe-i5-DuG" secondAttribute="height" multiplier="272:259" id="c9S-3P-04M"/>
+                                </constraints>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4b2-LS-Edn">
+                                <rect key="frame" x="121" y="134" width="133" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4b2-LS-Edn" secondAttribute="height" multiplier="19:3" id="i7Y-e0-SAm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4b2-LS-Edn" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="121" id="1e6-dx-IoP"/>
+                            <constraint firstItem="Vwe-i5-DuG" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="51" id="3sm-Sr-1mh"/>
+                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="3lV-v7-JMr" secondAttribute="trailing" constant="52" id="BwN-Ky-Mr2"/>
+                            <constraint firstItem="3lV-v7-JMr" firstAttribute="top" secondItem="Vwe-i5-DuG" secondAttribute="bottom" constant="56" id="Bxb-LB-fxS"/>
+                            <constraint firstItem="Vwe-i5-DuG" firstAttribute="top" secondItem="AAc-6k-S4J" secondAttribute="top" constant="152" id="Kcm-C8-LTS"/>
+                            <constraint firstItem="Vwe-i5-DuG" firstAttribute="top" secondItem="4b2-LS-Edn" secondAttribute="bottom" constant="17" id="eBD-Vc-RLs"/>
+                            <constraint firstItem="3lV-v7-JMr" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="51" id="jt6-nh-3GG"/>
+                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="Vwe-i5-DuG" secondAttribute="trailing" constant="52" id="oof-Ka-mq7"/>
+                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="4b2-LS-Edn" secondAttribute="trailing" constant="121" id="wQu-db-m1l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AAc-6k-S4J"/>
+                    </view>
+                    <connections>
+                        <outlet property="connectButton" destination="3lV-v7-JMr" id="zBW-LL-deR"/>
+                        <outlet property="tableView" destination="Vwe-i5-DuG" id="Z0U-GP-Fwn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jPd-4n-nd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-268" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+</document>
