@@ -65,7 +65,7 @@ extension Reminders: UITableViewDataSource{
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
         cell.textLabel?.text = reminder[indexPath.row].reminderName
-        cell.detailTextLabel?.text = (reminder[indexPath.row].reminderTime?.toString(dateFormat: "HH:MM"))! + " | " +  reminder[indexPath.row].reminderDescription!
+        cell.detailTextLabel?.text = (reminder[indexPath.row].reminderTime?.toString(dateFormat: "HH:mm"))! + " | " +  reminder[indexPath.row].reminderDescription!
         cell.accessoryView = mySwitch
         mySwitch.setOn(true,animated:true)
         return cell

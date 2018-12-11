@@ -62,7 +62,7 @@ extension Timers: UITableViewDataSource{
         let mySwitch = UISwitch()
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = timer[indexPath.row].timerName
-        cell.detailTextLabel?.text = timer[indexPath.row].timerTime.toString(dateFormat: "HH:MM")
+        cell.detailTextLabel?.text = timer[indexPath.row].timerTime.toString(dateFormat: "HH:mm")
         cell.accessoryView = mySwitch
         mySwitch.setOn(true,animated:true)
         return cell
