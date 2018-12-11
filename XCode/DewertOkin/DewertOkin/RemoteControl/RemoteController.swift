@@ -32,6 +32,19 @@ class RemoteController: UIViewController{
         super.viewDidLoad()
         
         print("view loading")
+
+        setupButtons()
+        
+        let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
+        swipeRec.direction = .up
+        ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
+        
+        Image.image = UIImage(named: "ChairNormal")
+        Image.contentMode = .scaleAspectFit
+        print("view loaded")
+    }
+    
+    private func setupButtons() {
         var width = PresetsButtonObj.frame.width
         PresetsButtonObj.layer.cornerRadius = width/2
         PresetsButtonObj.layer.masksToBounds = true
@@ -44,19 +57,11 @@ class RemoteController: UIViewController{
         AddPresetsButtonObj.layer.borderWidth = 1
         AddPresetsButtonObj.layer.borderColor = UIColor.gray.cgColor
         
-        let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
-        swipeRec.direction = .up
-        ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
-        
         width = ExtraFunctionsButtonObj.frame.width
         ExtraFunctionsButtonObj.layer.cornerRadius = width/2
         ExtraFunctionsButtonObj.layer.masksToBounds = true
         ExtraFunctionsButtonObj.layer.borderWidth = 1
         ExtraFunctionsButtonObj.layer.borderColor = UIColor.gray.cgColor
-        
-        Image.image = UIImage(named: "ChairNormal")
-        Image.contentMode = .scaleAspectFit
-        print("view loaded")
     }
     
     @objc
