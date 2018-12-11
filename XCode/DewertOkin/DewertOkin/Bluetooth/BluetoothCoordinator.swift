@@ -22,6 +22,8 @@ class BluetoothCoordinator {
     
     func scanStopped() { }
     
+    func retrievePeripherals() -> [CBPeripheral] { return [] }
+    
     func connected(peripheral: CBPeripheral) { }
     
     func disconnected(failure: Bool) { }
