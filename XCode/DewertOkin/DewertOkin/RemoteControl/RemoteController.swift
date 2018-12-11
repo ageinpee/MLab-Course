@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import HealthKit
 
 
 class RemoteController: UIViewController{
@@ -18,6 +19,7 @@ class RemoteController: UIViewController{
     @IBOutlet weak var AddPresetsButtonObj: UIButton!
     @IBOutlet weak var ExtraFunctionsButtonObj: UIButton!
     @IBOutlet weak var Image: UIImageView!
+    @IBOutlet weak var stepsLabel: UILabel!
     
     
     //----------------------------------------
@@ -35,9 +37,13 @@ class RemoteController: UIViewController{
 
         setupButtons()
         
+        Health.requestHealthKitPermission()
+        
         let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
         swipeRec.direction = .up
         ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
+        
+        AddPresetsButtonObj.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(displaySteps)))
         
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
@@ -63,6 +69,8 @@ class RemoteController: UIViewController{
         ExtraFunctionsButtonObj.layer.borderWidth = 1
         ExtraFunctionsButtonObj.layer.borderColor = UIColor.gray.cgColor
     }
+    
+  
     
     @objc
     private func showOldRemote() {
@@ -210,6 +218,17 @@ class RemoteController: UIViewController{
             else if recognizer.state == UIGestureRecognizer.State.ended {
                 oldTranslation = 0 //set back to start-value
                 Image.image = UIImage(named: "ChairNormal")
+            }
+        }
+    }
+    
+    @objc
+    private func displaySteps() {
+        guard Health.healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!) == .sharingAuthorized else { return }
+        Health.getLastHoursSteps { (result) in
+            print(result)
+            DispatchQueue.main.async {
+                self.stepsLabel.text = "❤️ \(Int(result))"
             }
         }
     }
