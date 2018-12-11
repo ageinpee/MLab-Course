@@ -12,7 +12,7 @@ import AVFoundation
 class SettingTableViewController: UITableViewController {
     
     private let settingsEntries: [SettingsEntry] = [.deviceInfo, .achievements, .presets, .useOldRemote,
-                           .accessibilityMode, .accessories, .about, .darkMode]
+                        .nearestVendor, .accessories, .about, .darkMode]
     
     private let search = UISearchController(searchResultsController: nil)
     
@@ -72,6 +72,11 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryView = accessibilityModeSwitch
         }
         
+        if (indexPath.row == settingsEntries.firstIndex(of: .nearestVendor)) {
+            cell.accessoryType = .disclosureIndicator
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushVendorStoryboard)))
+        }
+        
         if (indexPath.row == settingsEntries.firstIndex(of: .useOldRemote)) {
             let oldRemoteSwitch = UISwitch()
             oldRemoteSwitch.isOn = false
@@ -102,6 +107,15 @@ class SettingTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    @objc
+    private func pushVendorStoryboard() {
+        if let vc = UIStoryboard(name: "NearestVendor", bundle: nil).instantiateInitialViewController() as? NearestVendorViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(vc, animated: true)
+            }
+        }
     }
     
     @objc

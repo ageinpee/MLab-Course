@@ -19,4 +19,5 @@ enum SettingsEntry: String {
     case darkMode = "Dark Mode"
     case accessories = "Accessories"
     case useOldRemote = "Use Old Remote Layout"
+    case nearestVendor = "Nearest Vendor"
 }
