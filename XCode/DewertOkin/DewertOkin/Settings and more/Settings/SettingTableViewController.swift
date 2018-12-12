@@ -41,6 +41,7 @@ class SettingTableViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         search.searchResultsUpdater = self
         self.navigationItem.searchController = search
+        self.barButtonItem.title = "     "
     }
 
     // MARK: - Table view data source
