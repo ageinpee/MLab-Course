@@ -30,7 +30,7 @@ class NearestVendorViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = "Nearest Vendors"
+        navigationItem.title = "Vendors close to you"
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     

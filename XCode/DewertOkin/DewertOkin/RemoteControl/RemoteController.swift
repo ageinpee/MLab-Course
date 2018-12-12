@@ -165,7 +165,8 @@ class RemoteController: UIViewController{
                         Image.image = UIImage(named: "ChairFeetUp")
                     }
                     oldTranslation = 1
-                    //goUp()
+                    
+                    goUpFeet()
                     print("FeetUp", Int.random(in: 1...100))
                 }
                 else if recognizer.location(in: self.view).y >= viewHeight/2 {
@@ -173,7 +174,8 @@ class RemoteController: UIViewController{
                         Image.image = UIImage(named: "ChairFeetDown")
                     }
                     oldTranslation = -1
-                    //goDown()
+                    
+                    goDownFeet()
                     print("FeetDown", Int.random(in: 1...100))
                 }
             }
@@ -279,6 +281,18 @@ class RemoteController: UIViewController{
         }
         let moveDown = self.remoteControlConfig.getKeycode(name: keycode.m1Out)
         peripheral!.writeValue(moveDown, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+    }
+    
+    func goUpFeet() {
+        guard self.bluetooth.bluetoothState == .poweredOn else {return}
+        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m2In)
+        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+    }
+    
+    func goDownFeet() {
+        guard self.bluetooth.bluetoothState == .poweredOn else {return}
+        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m2Out)
+        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
     
     
