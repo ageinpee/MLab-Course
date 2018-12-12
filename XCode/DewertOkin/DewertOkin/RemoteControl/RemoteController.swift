@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import HealthKit
+import CoreBluetooth
 
 
 class RemoteController: UIViewController{
@@ -21,10 +22,10 @@ class RemoteController: UIViewController{
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var stepsLabel: UILabel!
     
-    
     //----------------------------------------
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
+    var panState = UIGestureRecognizer.State.ended
 
     
     //----------------------------------------
@@ -34,7 +35,8 @@ class RemoteController: UIViewController{
         super.viewDidLoad()
         
         print("view loading")
-
+        
+        self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         setupButtons()
         
         Health.requestHealthKitPermission()
@@ -48,6 +50,14 @@ class RemoteController: UIViewController{
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
         print("view loaded")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.checkBluetoothState()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Connect()
     }
     
     private func setupButtons() {
@@ -70,8 +80,6 @@ class RemoteController: UIViewController{
         ExtraFunctionsButtonObj.layer.borderColor = UIColor.gray.cgColor
     }
     
-  
-    
     @objc
     private func showOldRemote() {
         print("Swipe recognized")
@@ -79,6 +87,15 @@ class RemoteController: UIViewController{
         let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
         self.present(newViewController, animated: true, completion: nil)
     }
+    
+    //---------------------------------------
+    //----- Bluetooth Dependencies ----------
+    var remoteControlConfig = RemoteControlConfig()
+    var bluetooth = Bluetooth.sharedBluetooth
+    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    var peripheral: CBPeripheral?
+    var characteristic: CBCharacteristic?
+    var paired = false
     
     
     //---------------------------------------
@@ -126,6 +143,7 @@ class RemoteController: UIViewController{
         let translation = recognizer.translation(in: self.view)
         
         let viewWidth = self.view.frame.width
+        let viewHeight = self.view.frame.height
         let start = recognizer.location(in: self.view)
         
         if start.x <= viewWidth/2 {
@@ -140,37 +158,32 @@ class RemoteController: UIViewController{
                     Image.image = UIImage(named: "ChairFeetDown")
                 }
             }
-            
-            //-------------------------------------------
-            //-- Status: Changed --> Pan in Action ------
+                //-------------------------------------------
+                //-- Status: Changed --> Pan in Action ------
             else if recognizer.state == UIGestureRecognizer.State.changed {
-                if translation.y < 0 {
+                if recognizer.location(in: self.view).y < viewHeight/2 {
                     if oldTranslation == -1 {
                         Image.image = UIImage(named: "ChairFeetUp")
                     }
                     oldTranslation = 1
-                    
-                    // --> Placeholder <--
-                    // Put Actuator Function for feet up here
-                    // -------------------
+                    //goUp()
+                    print("FeetUp", Int.random(in: 1...100))
                 }
-                
-                else if translation.y >= 0 {
+                else if recognizer.location(in: self.view).y >= viewHeight/2 {
                     if oldTranslation == +1 {
                         Image.image = UIImage(named: "ChairFeetDown")
                     }
                     oldTranslation = -1
-                    
-                    // --> Placeholder <--
-                    // Put Actuator Function for feet down here
-                    // -------------------
+                    //goDown()
+                    print("FeetDown", Int.random(in: 1...100))
                 }
             }
-            
-            //--------------------------------------------------------------------------
-            //-- Status: Ended --> Pan has ended. Reestablish starting-condition --
+                
+                //--------------------------------------------------------------------------
+                //-- Status: Ended --> Pan has ended. Reestablish starting-condition --
             else if recognizer.state == UIGestureRecognizer.State.ended {
                 oldTranslation = 0 //set back to start-value
+                
                 Image.image = UIImage(named: "ChairNormal")
             }
         }
@@ -196,9 +209,8 @@ class RemoteController: UIViewController{
                     }
                     oldTranslation = 1
                     
-                    // --> Placeholder <--
-                    // Put Actuator Function for feet up here
-                    // -------------------
+                    goUp()
+                    print("ChestUp", Int.random(in:1...100))
                 }
                     
                 else if translation.y >= 0 {
@@ -207,9 +219,8 @@ class RemoteController: UIViewController{
                     }
                     oldTranslation = -1
                     
-                    // --> Placeholder <--
-                    // Put Actuator Function for feet down here
-                    // -------------------
+                    goDown()
+                    print("ChestDown", Int.random(in: 1...100))
                 }
             }
                 
@@ -221,6 +232,43 @@ class RemoteController: UIViewController{
             }
         }
     }
+    
+    //-------------------------------------------
+    //------ Bluetooth related functions --------
+    private func Connect() {
+        self.bluetoothFlow.waitForPeripheral {
+            self.bluetoothFlow.pair { result in
+                self.peripheral = self.bluetooth.connectedPeripheral
+                self.characteristic = self.bluetooth.characteristic
+                self.paired = true
+            }
+        }
+    }
+    
+    
+    private func checkBluetoothState() {
+        if self.bluetooth.bluetoothState != .poweredOn {
+            DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                self.checkBluetoothState()
+            }
+        }
+    }
+    
+    func goUp() {
+        guard self.bluetooth.bluetoothState == .poweredOn else {return}
+        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m1In)
+        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+    }
+    
+    func goDown() {
+        guard self.bluetooth.bluetoothState == .poweredOn else {return}
+        let moveDown = self.remoteControlConfig.getKeycode(name: keycode.m1Out)
+        peripheral!.writeValue(moveDown, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+    }
+    
+    
+    //-------------------------------------------
+    //--------                          ---------
     
     @objc
     private func displaySteps() {
