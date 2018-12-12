@@ -34,7 +34,7 @@ class RemoteController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("view loading")
+        //print("view loading")
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         setupButtons()
@@ -49,7 +49,7 @@ class RemoteController: UIViewController{
         
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
-        print("view loaded")
+        //print("view loaded")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,7 +57,6 @@ class RemoteController: UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Connect()
     }
     
     private func setupButtons() {
@@ -210,7 +209,7 @@ class RemoteController: UIViewController{
                     oldTranslation = 1
                     
                     goUp()
-                    print("ChestUp", Int.random(in:1...100))
+                    //print("ChestUp", Int.random(in:1...100))
                 }
                     
                 else if translation.y >= 0 {
@@ -220,7 +219,7 @@ class RemoteController: UIViewController{
                     oldTranslation = -1
                     
                     goDown()
-                    print("ChestDown", Int.random(in: 1...100))
+                    //print("ChestDown", Int.random(in: 1...100))
                 }
             }
                 
@@ -255,13 +254,29 @@ class RemoteController: UIViewController{
     }
     
     func goUp() {
-        guard self.bluetooth.bluetoothState == .poweredOn else {return}
+        guard self.bluetooth.bluetoothState == .poweredOn else { return }
+        guard self.paired else {
+            Connect()
+            return
+        }
+        guard !(self.characteristic == nil) else {
+            self.characteristic = self.bluetooth.characteristic
+            return
+        }
         let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m1In)
         peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
     
     func goDown() {
-        guard self.bluetooth.bluetoothState == .poweredOn else {return}
+        guard self.bluetooth.bluetoothState == .poweredOn else { return }
+        guard self.paired else {
+            Connect()
+            return
+        }
+        guard !(self.characteristic == nil) else {
+            self.characteristic = self.bluetooth.characteristic
+            return
+        }
         let moveDown = self.remoteControlConfig.getKeycode(name: keycode.m1Out)
         peripheral!.writeValue(moveDown, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
