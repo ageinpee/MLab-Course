@@ -100,6 +100,8 @@ class RemoteController: UIViewController{
     //---------------------------------------
     //----- Fancy Design Remote Actions -----
     
+    var underBedLighting: UIAlertAction?
+    
     @IBAction func PresetsButton(_ sender: Any) {
         //shall open presets menu/page/sheet to select a preset
         let alert = UIAlertController(title: "Choose Preset", message: "", preferredStyle: .actionSheet)
@@ -123,6 +125,7 @@ class RemoteController: UIViewController{
         let alert = UIAlertController(title: "Choose Feature", message: "", preferredStyle: .actionSheet)
         let option1 = UIAlertAction(title: "Massage", style: .default, handler: nil)
         let option2 = UIAlertAction(title: "Under Bed Lighting", style: .default, handler: nil)
+        underBedLighting = option2
         let option3 = UIAlertAction(title: "Torch", style: .default, handler: nil)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(option1)
@@ -166,7 +169,7 @@ class RemoteController: UIViewController{
                     }
                     oldTranslation = 1
                     
-                    goUpFeet()
+//                    goUpFeet()
                     print("FeetUp", Int.random(in: 1...100))
                 }
                 else if recognizer.location(in: self.view).y >= viewHeight/2 {
@@ -175,7 +178,7 @@ class RemoteController: UIViewController{
                     }
                     oldTranslation = -1
                     
-                    goDownFeet()
+//                    goDownFeet()
                     print("FeetDown", Int.random(in: 1...100))
                 }
             }
@@ -283,17 +286,17 @@ class RemoteController: UIViewController{
         peripheral!.writeValue(moveDown, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
     
-    func goUpFeet() {
-        guard self.bluetooth.bluetoothState == .poweredOn else {return}
-        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m2In)
-        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-    }
-    
-    func goDownFeet() {
-        guard self.bluetooth.bluetoothState == .poweredOn else {return}
-        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m2Out)
-        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-    }
+//    func goUpFeet() {
+//        guard self.bluetooth.bluetoothState == .poweredOn else {return}
+//        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m2In)
+//        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+//    }
+//
+//    func goDownFeet() {
+//        guard self.bluetooth.bluetoothState == .poweredOn else {return}
+//        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m2Out)
+//        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+//    }
     
     
     //-------------------------------------------
