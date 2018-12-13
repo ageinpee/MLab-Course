@@ -130,7 +130,6 @@ class RemoteController: UIViewController{
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(option1)
         alert.addAction(option2)
-        alert.addAction(option3)
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
         print("Extra Functions Button pressed")

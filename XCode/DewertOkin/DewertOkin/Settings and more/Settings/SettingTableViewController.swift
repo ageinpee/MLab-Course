@@ -41,7 +41,7 @@ class SettingTableViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         search.searchResultsUpdater = self
         self.navigationItem.searchController = search
-        self.barButtonItem.title = "     "
+        self.barButtonItem.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
 
     // MARK: - Table view data source
