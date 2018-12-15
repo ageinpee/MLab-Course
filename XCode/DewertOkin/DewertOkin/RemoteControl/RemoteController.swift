@@ -53,7 +53,6 @@ class RemoteController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.checkBluetoothState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -239,21 +238,10 @@ class RemoteController: UIViewController{
     //-------------------------------------------
     //------ Bluetooth related functions --------
     private func Connect() {
-        self.bluetoothFlow.waitForPeripheral {
-            self.bluetoothFlow.pair { result in
-                self.peripheral = self.bluetooth.connectedPeripheral
-                self.characteristic = self.bluetooth.characteristic
-                self.paired = true
-            }
-        }
-    }
-    
-    
-    private func checkBluetoothState() {
-        if self.bluetooth.bluetoothState != .poweredOn {
-            DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                self.checkBluetoothState()
-            }
+        self.bluetoothFlow.reconnect {
+            self.peripheral = self.bluetooth.connectedPeripheral
+            self.characteristic = self.bluetooth.characteristic
+            self.paired = true
         }
     }
     
