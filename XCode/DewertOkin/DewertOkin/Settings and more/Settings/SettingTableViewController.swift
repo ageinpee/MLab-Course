@@ -60,29 +60,34 @@ class SettingTableViewController: UITableViewController {
         cell.textLabel?.text = settingsEntries[indexPath.row].rawValue
         
         if (indexPath.row == settingsEntries.firstIndex(of: .darkMode)) {
-            let darkModeSwitch = UISwitch()
-            darkModeSwitch.isOn = false
-            darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchChanged(sender:)), for: .valueChanged)
-            cell.accessoryView = darkModeSwitch
+            cell.accessoryView = {
+                let darkModeSwitch = UISwitch()
+                darkModeSwitch.isOn = false
+                darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchChanged(sender:)), for: .valueChanged)
+                return darkModeSwitch
+            }()
         }
         
         if (indexPath.row == settingsEntries.firstIndex(of: .accessibilityMode)) {
-            let accessibilityModeSwitch = UISwitch()
-            accessibilityModeSwitch.isOn = false
-            accessibilityModeSwitch.addTarget(self, action: #selector(accessibilityModeSwitchChanged(sender:)), for: .valueChanged)
-            cell.accessoryView = accessibilityModeSwitch
+            cell.accessoryView = {
+                let accessibilityModeSwitch = UISwitch()
+                accessibilityModeSwitch.isOn = false
+                accessibilityModeSwitch.addTarget(self, action: #selector(accessibilityModeSwitchChanged(sender:)), for: .valueChanged)
+                return accessibilityModeSwitch
+            }()
         }
         
         if (indexPath.row == settingsEntries.firstIndex(of: .nearestVendor)) {
             cell.accessoryType = .disclosureIndicator
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushVendorStoryboard)))
         }
         
         if (indexPath.row == settingsEntries.firstIndex(of: .useOldRemote)) {
-            let oldRemoteSwitch = UISwitch()
-            oldRemoteSwitch.isOn = false
-            oldRemoteSwitch.addTarget(self, action: #selector(oldRemoteSwitchChanged(sender:)), for: .valueChanged)
-            cell.accessoryView = oldRemoteSwitch
+            cell.accessoryView = {
+                let oldRemoteSwitch = UISwitch()
+                oldRemoteSwitch.isOn = false
+                oldRemoteSwitch.addTarget(self, action: #selector(oldRemoteSwitchChanged(sender:)), for: .valueChanged)
+                return oldRemoteSwitch
+            }()
         }
         
         if (indexPath.row == settingsEntries.firstIndex(of: .deviceInfo)) {
@@ -91,7 +96,6 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
             cell.accessoryType = .disclosureIndicator
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushAchievementsStoryboard)))
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(resetAchievements))
             longPress.minimumPressDuration = 2
             cell.addGestureRecognizer(longPress)
@@ -103,11 +107,20 @@ class SettingTableViewController: UITableViewController {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .accessories)) {
             cell.accessoryType = .disclosureIndicator
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pushAccessoriesStoryboard)))
         }
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == settingsEntries.firstIndex(of: .accessories)) {
+            pushAccessoriesStoryboard()
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
+            pushAchievementsStoryboard()
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .nearestVendor)) {
+            pushVendorStoryboard()
+        }
     }
     
     @objc
