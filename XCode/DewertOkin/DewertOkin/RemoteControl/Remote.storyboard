@@ -39,10 +39,14 @@
                             <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="ChairNormal" translatesAutoresizingMaskIntoConstraints="NO" id="J9R-PK-aQG">
                                 <rect key="frame" x="10" y="120" width="394" height="577"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="tIL-qN-5kw" appends="YES" id="f3D-AM-JLS"/>
-                                </connections>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRq-Gx-E26">
+                                <rect key="frame" x="10" y="120" width="197" height="577"/>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LG-TT-Cct" userLabel="Extra Functions Button">
                                 <rect key="frame" x="285" y="717" width="56" height="56"/>
                                 <constraints>
@@ -74,23 +78,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-gs-uD4">
+                                <rect key="frame" x="206" y="120" width="197" height="577"/>
+                                <color key="backgroundColor" red="0.60784316059999999" green="0.13725490870000001" blue="0.57647061349999995" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="7LG-TT-Cct" secondAttribute="bottom" constant="40" id="2c9-np-gla"/>
                             <constraint firstItem="J9R-PK-aQG" firstAttribute="top" secondItem="A7b-hz-zBK" secondAttribute="top" constant="120" id="4ul-zY-Aw7"/>
+                            <constraint firstItem="XRq-Gx-E26" firstAttribute="leading" secondItem="J9R-PK-aQG" secondAttribute="leading" id="9Uc-uA-yZa"/>
+                            <constraint firstItem="XRq-Gx-E26" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="top" id="EbH-pF-aSa"/>
                             <constraint firstItem="6Qi-8C-Su0" firstAttribute="centerX" secondItem="uty-hF-LTZ" secondAttribute="centerX" id="G2d-nq-rM7"/>
                             <constraint firstItem="J9R-PK-aQG" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="10" id="IF6-tE-hn4"/>
+                            <constraint firstItem="kEo-gs-uD4" firstAttribute="width" secondItem="J9R-PK-aQG" secondAttribute="width" multiplier="0.5" id="IUL-NS-rma"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="uty-hF-LTZ" secondAttribute="top" constant="70" id="KSd-AP-Rdk"/>
                             <constraint firstItem="7LG-TT-Cct" firstAttribute="leading" secondItem="Xjl-Wp-KTM" secondAttribute="trailing" priority="750" constant="50" id="Ocj-Ng-aaM"/>
+                            <constraint firstItem="kEo-gs-uD4" firstAttribute="leading" secondItem="XRq-Gx-E26" secondAttribute="trailing" constant="-1" id="Osf-uN-0cb"/>
+                            <constraint firstItem="XRq-Gx-E26" firstAttribute="width" secondItem="J9R-PK-aQG" secondAttribute="width" multiplier="0.5" id="Wex-rD-SsR"/>
                             <constraint firstItem="Xjl-Wp-KTM" firstAttribute="leading" secondItem="0YV-jW-udd" secondAttribute="trailing" priority="800" constant="50" id="bZi-ht-27D"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="FEt-Ft-Val" secondAttribute="trailing" constant="15" id="bl5-Fk-UZj"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="6Qi-8C-Su0" secondAttribute="bottom" constant="8" id="cgB-KJ-779"/>
+                            <constraint firstItem="kEo-gs-uD4" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="top" id="ctM-fn-tu6"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="0YV-jW-udd" secondAttribute="bottom" priority="750" constant="40" id="dcf-Ld-aSz"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="15" id="e7B-lb-Wtr"/>
                             <constraint firstItem="Xjl-Wp-KTM" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="bottom" constant="20" id="ljh-FG-BQN"/>
+                            <constraint firstItem="kEo-gs-uD4" firstAttribute="bottom" secondItem="J9R-PK-aQG" secondAttribute="bottom" id="mfb-cY-TeN"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="J9R-PK-aQG" secondAttribute="trailing" constant="10" id="p8u-6u-qAB"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="Xjl-Wp-KTM" secondAttribute="bottom" priority="750" constant="40" id="qCE-Cp-YR0"/>
+                            <constraint firstItem="XRq-Gx-E26" firstAttribute="bottom" secondItem="J9R-PK-aQG" secondAttribute="bottom" id="xKs-Yx-Ed7"/>
                             <constraint firstItem="Xjl-Wp-KTM" firstAttribute="centerX" secondItem="A7b-hz-zBK" secondAttribute="centerX" priority="800" id="xWU-ic-02g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uty-hF-LTZ"/>
@@ -102,15 +121,12 @@
                         <outlet property="ExtraFunctionsButtonObj" destination="7LG-TT-Cct" id="0Ym-6e-Vhu"/>
                         <outlet property="Image" destination="J9R-PK-aQG" id="jXg-Mc-YrR"/>
                         <outlet property="PresetsButtonObj" destination="0YV-jW-udd" id="Ytd-hR-vis"/>
+                        <outlet property="leftPanArea" destination="XRq-Gx-E26" id="SAM-At-cLd"/>
+                        <outlet property="rightPanArea" destination="kEo-gs-uD4" id="p4n-8f-kEp"/>
                         <outlet property="stepsLabel" destination="6Qi-8C-Su0" id="bqc-9f-2oQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3X-h2-zOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="tIL-qN-5kw">
-                    <connections>
-                        <action selector="handlePanWithRecognizer:" destination="h1o-HI-eVS" id="0J0-yD-BIH"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="26.116071428571427"/>
         </scene>

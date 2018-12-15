@@ -12,7 +12,7 @@ import HealthKit
 import CoreBluetooth
 
 
-class RemoteController: UIViewController{
+class RemoteController: UIViewController, UIGestureRecognizerDelegate{
     
     //----------------------------------------
     //------ Fancy Remote UI-Elements --------
@@ -21,14 +21,13 @@ class RemoteController: UIViewController{
     @IBOutlet weak var ExtraFunctionsButtonObj: UIButton!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var leftPanArea: UIView!
+    @IBOutlet weak var rightPanArea: UIView!
     
     //----------------------------------------
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
     var panState = UIGestureRecognizer.State.ended
-    
-//    var leftSideView = UIView()
-//    var rightSideView = UIView()
 
     
     //----------------------------------------
@@ -41,6 +40,7 @@ class RemoteController: UIViewController{
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         setupButtons()
+        setupPanAreas()
         
         Health.requestHealthKitPermission()
         
@@ -53,18 +53,71 @@ class RemoteController: UIViewController{
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
         
-//        leftSideView = UIView(frame: CGRect(x: Image.bounds.minX, y: Image.bounds.minY, width: Image.bounds.width / 2, height: Image.bounds.height))
-//        leftSideView.backgroundColor = UIColor.red
-//
-//        rightSideView = UIView(frame: CGRect(x: Image.bounds.midX, y: Image.bounds.minY, width: Image.bounds.width / 2, height: Image.bounds.height))
-//        rightSideView.backgroundColor = UIColor.green
-//
-//        Image.addSubview(leftSideView)
-//        Image.addSubview(rightSideView)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+    }
+    
+    private func setupPanAreas() {
+        leftPanArea.isUserInteractionEnabled = true
+        rightPanArea.isUserInteractionEnabled = true
+        let panRecLeft = UIPanGestureRecognizer(target: self, action: #selector(handleLeftPanGesture(recognizer:)))
+        let panRecRight = UIPanGestureRecognizer(target: self, action: #selector(handleRightPanGesture(recognizer:)))
+        leftPanArea.addGestureRecognizer(panRecLeft)
+        rightPanArea.addGestureRecognizer(panRecRight)
+        
+        leftPanArea.backgroundColor = UIColor.clear
+        rightPanArea.backgroundColor = UIColor.clear
+        
+    }
+    
+    @objc
+    private func handleRightPanGesture(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            print("Pan in Right Area ended")
+            
+        case .changed:
+            if(recognizer.translation(in: rightPanArea).y >= 40) {
+                print("moving down" + String(Int(recognizer.translation(in: rightPanArea).y)))
+                Image.image = UIImage(named: "ChairChestDown")
+                goDown()
+            } else if (recognizer.translation(in: rightPanArea).y <= -40) {
+                print("moving up" + String(Int(recognizer.translation(in: rightPanArea).y)))
+                Image.image = UIImage(named: "ChairChestUp")
+                goUp()
+            }
+        case .ended:
+            print("Pan in Right Area ended")
+            Image.image = UIImage(named: "ChairNormal")
+        default: break
+        }
+    }
+    
+    
+    @objc
+    private func handleLeftPanGesture(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            print("Pan in Left Area")
+            break
+        case .changed:
+            if(recognizer.translation(in: leftPanArea).y >= 40) {
+                print("moving down" + String(Int(recognizer.translation(in: leftPanArea).y)))
+                 Image.image = UIImage(named: "ChairFeetDown")
+                // goFeetDown()
+            } else if (recognizer.translation(in: leftPanArea).y <= -40) {
+                print("moving up" + String(Int(recognizer.translation(in: leftPanArea).y)))
+                 Image.image = UIImage(named: "ChairFeetUp")
+                // goFeetUp()
+            }
+            break
+        case .ended:
+            print("Pan in Left Area ended")
+            Image.image = UIImage(named: "ChairNormal")
+            break
+        default: break
+        }
     }
     
     private func setupButtons() {
@@ -155,8 +208,6 @@ class RemoteController: UIViewController{
         let start = recognizer.location(in: self.view)
         
         if start.x <= viewWidth/2 {
-            
-            
             switch recognizer.state {
             case .began:
                 //-------------------------------------------
