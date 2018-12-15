@@ -22,6 +22,9 @@ class Timers: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Timers"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
         
         do {
