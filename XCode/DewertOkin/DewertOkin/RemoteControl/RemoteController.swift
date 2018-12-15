@@ -26,6 +26,9 @@ class RemoteController: UIViewController{
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
     var panState = UIGestureRecognizer.State.ended
+    
+//    var leftSideView = UIView()
+//    var rightSideView = UIView()
 
     
     //----------------------------------------
@@ -49,14 +52,20 @@ class RemoteController: UIViewController{
         
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
-        //print("view loaded")
+        
+//        leftSideView = UIView(frame: CGRect(x: Image.bounds.minX, y: Image.bounds.minY, width: Image.bounds.width / 2, height: Image.bounds.height))
+//        leftSideView.backgroundColor = UIColor.red
+//
+//        rightSideView = UIView(frame: CGRect(x: Image.bounds.midX, y: Image.bounds.minY, width: Image.bounds.width / 2, height: Image.bounds.height))
+//        rightSideView.backgroundColor = UIColor.green
+//
+//        Image.addSubview(leftSideView)
+//        Image.addSubview(rightSideView)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.checkBluetoothState()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
     }
     
     private func setupButtons() {
@@ -126,7 +135,6 @@ class RemoteController: UIViewController{
         let option1 = UIAlertAction(title: "Massage", style: .default, handler: nil)
         let option2 = UIAlertAction(title: "Under Bed Lighting", style: .default, handler: nil)
         underBedLighting = option2
-        let option3 = UIAlertAction(title: "Torch", style: .default, handler: nil)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(option1)
         alert.addAction(option2)
@@ -148,9 +156,12 @@ class RemoteController: UIViewController{
         let start = recognizer.location(in: self.view)
         
         if start.x <= viewWidth/2 {
-            //-------------------------------------------
-            //-- Status: Began --> Setup-phase for Pan --
-            if recognizer.state == UIGestureRecognizer.State.began {
+            
+            
+            switch recognizer.state {
+            case .began:
+                //-------------------------------------------
+                //-- Status: Began --> Setup-phase for Pan --
                 if translation.y < 0 {
                     oldTranslation = 1
                     Image.image = UIImage(named: "ChairFeetUp")
@@ -158,17 +169,16 @@ class RemoteController: UIViewController{
                     oldTranslation = -1
                     Image.image = UIImage(named: "ChairFeetDown")
                 }
-            }
+            case .changed:
                 //-------------------------------------------
                 //-- Status: Changed --> Pan in Action ------
-            else if recognizer.state == UIGestureRecognizer.State.changed {
                 if recognizer.location(in: self.view).y < viewHeight/2 {
                     if oldTranslation == -1 {
                         Image.image = UIImage(named: "ChairFeetUp")
                     }
                     oldTranslation = 1
                     
-//                    goUpFeet()
+                    //                    goUpFeet()
                     print("FeetUp", Int.random(in: 1...100))
                 }
                 else if recognizer.location(in: self.view).y >= viewHeight/2 {
@@ -177,17 +187,17 @@ class RemoteController: UIViewController{
                     }
                     oldTranslation = -1
                     
-//                    goDownFeet()
+                    //                    goDownFeet()
                     print("FeetDown", Int.random(in: 1...100))
                 }
-            }
-                
+            case .ended:
                 //--------------------------------------------------------------------------
                 //-- Status: Ended --> Pan has ended. Reestablish starting-condition --
-            else if recognizer.state == UIGestureRecognizer.State.ended {
                 oldTranslation = 0 //set back to start-value
                 
                 Image.image = UIImage(named: "ChairNormal")
+                
+            default: break
             }
         }
         else if start.x > viewWidth/2 {
