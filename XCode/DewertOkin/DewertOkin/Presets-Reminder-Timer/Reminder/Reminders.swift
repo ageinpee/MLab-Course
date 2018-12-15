@@ -21,6 +21,9 @@ class Reminders: UIViewController {
     override func viewDidLoad () {
         super.viewDidLoad()
         
+        navigationItem.title = "Reminders"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         
         do {
