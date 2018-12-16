@@ -12,9 +12,9 @@ import UIKit
 import UserNotifications
 import NotificationCenter
 
-class addTimer: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class AddTimerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
-    
+    var timerToEdit: (Timer, IndexPath)?
     
     @IBOutlet weak var timePicker: UIDatePicker!
     private var saved = false
@@ -30,6 +30,22 @@ class addTimer: UIViewController, UITableViewDelegate, UITableViewDataSource{
         inputTableView.estimatedRowHeight = 44
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let time = timerToEdit?.0.timerTime {
+            self.timePicker.date = time
+        } else {
+            print("WTF")
+        }
+        
+        if let name = timerToEdit?.0.timerName {
+            if let cell = inputTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextInputTableViewCell {
+                cell.cellTextField.text = name
+                print("heya")
+                inputTableView.reloadData()
+            }
+        }
+    }
+    
     @IBAction func doneTimer(_ sender: Any) {
         
         if let titleText = inputTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextInputTableViewCell {
@@ -43,15 +59,24 @@ class addTimer: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? Timers else { return }
+        guard let destination = segue.destination as? TimerListViewController else { return }
         guard let titleText = inputTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextInputTableViewCell else { return }
         if(saved){
-            let time = timePicker.date
-            let addTime = Timer(context: PersistenceService.context)
-            addTime.timerName = titleText.cellTextField.text
-            addTime.timerTime = time
-            PersistenceService.saveContext()
-            destination.timer.append(addTime)
+            
+            // If oldTimer is not nil, we need to remove the old timer
+            if let oldTimer = timerToEdit {
+                guard destination.timerList.contains(oldTimer.0) else {return}
+                destination.timerList.remove(at: oldTimer.1.row)
+                print("Old timer removed")
+            }
+            // Adding a new timer
+                let newTimer = Timer(context: PersistenceService.context)
+                newTimer.timerName = titleText.cellTextField.text
+                newTimer.timerTime = timePicker.date
+                PersistenceService.saveContext()
+                destination.timerList.append(newTimer)
+
+            
         }
         saved = false
     }
@@ -102,7 +127,6 @@ class addTimer: UIViewController, UITableViewDelegate, UITableViewDataSource{
     private func setPresetLabel(text: String?) {
         if let title = text, let cell = inputTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? PresetTableViewCell {
             cell.presetLabel.text = title
-            print("heya")
             inputTableView.reloadData()
         }
     }

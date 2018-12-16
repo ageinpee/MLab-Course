@@ -13,14 +13,16 @@ import UserNotifications
 import NotificationCenter
 import CoreBluetooth
 
-class Timers: UIViewController{
+class TimerListViewController: UIViewController{
     
-    public var timer = [Timer]()
+    public var timerList = [Timer]()
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
         
         navigationItem.title = "Timers"
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -29,7 +31,7 @@ class Timers: UIViewController{
         
         do {
             let savedTimer = try PersistenceService.context.fetch(fetchRequest)
-            self.timer = savedTimer
+            self.timerList = savedTimer
             self.tableView.reloadData()
         } catch {
             print("Couldnt update the TableView, reload!")
@@ -48,24 +50,43 @@ class Timers: UIViewController{
     func notificationCenter(){
         // Set the current notification center
     }
+    
+    var selectedTimer: (Timer, IndexPath)?
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "TimerDetail") {
+            if let vc = segue.destination as? AddTimerViewController {
+                vc.timerToEdit = selectedTimer
+            }
+        }
+    }
 }
 
-extension Timers: UITableViewDataSource{
+extension TimerListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        selectedTimer = (self.timerList[indexPath.row], indexPath)
+        performSegue(withIdentifier: "TimerDetail", sender: self)
+        print(self.timerList[indexPath.row].timerName)
+        selectedTimer = nil
+    }
+}
+
+extension TimerListViewController: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timer.count
+        return timerList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let mySwitch = UISwitch()
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = timer[indexPath.row].timerName
-        cell.detailTextLabel?.text = timer[indexPath.row].timerTime.toString(dateFormat: "HH:mm")
+        cell.textLabel?.text = timerList[indexPath.row].timerName
+        cell.detailTextLabel?.text = timerList[indexPath.row].timerTime.toString(dateFormat: "HH:mm")
         cell.accessoryView = mySwitch
         mySwitch.setOn(true,animated:true)
         return cell
@@ -78,7 +99,7 @@ extension Timers: UITableViewDataSource{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            self.timer.remove(at: indexPath.row)
+            self.timerList.remove(at: indexPath.row)
             let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
             
             do {
