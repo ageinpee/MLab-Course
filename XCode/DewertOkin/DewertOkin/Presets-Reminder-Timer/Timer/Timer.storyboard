@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m6n-t1-D7e">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="ROG-fO-02j" customClass="Timers" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2E1-Ps-R2l">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Egq-oJ-kuP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ROG-fO-02j" id="OdM-9r-bid"/>
@@ -56,58 +56,126 @@
             <objects>
                 <viewController id="94w-4O-QUa" customClass="addTimer" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KiZ-Pp-lPU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bj9-Kb-brY">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Timer" id="mny-ZI-h0Q">
+                                    <navigationItem title="Add Timer" id="mny-ZI-h0Q">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FLn-TY-fAB">
                                             <connections>
                                                 <segue destination="iw2-Bw-fjp" kind="unwind" unwindAction="addTimerWasCanceled:" id="P7s-7Q-4mI"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="vwW-4h-Hht">
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="vwW-4h-Hht">
                                             <connections>
-                                                <action selector="doneTimer:" destination="94w-4O-QUa" id="Ug6-aj-LCV"/>
+                                                <action selector="doneTimer:" destination="94w-4O-QUa" id="h1C-2v-GG9"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7aN-So-Cv2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="216"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mac-N7-JLB">
+                                <rect key="frame" x="0.0" y="110" width="414" height="123"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="oDJ-AM-2E3"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InputCell" id="Ool-jh-9ok" customClass="TextInputTableViewCell" customModule="DewertOkin" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ool-jh-9ok" id="Yav-Z4-NWz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Titel" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkV-eM-y8U">
+                                                    <rect key="frame" x="15" y="12" width="150" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Titel" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HVI-3i-Vqe">
+                                                    <rect key="frame" x="173" y="7" width="221" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="HVI-3i-Vqe" secondAttribute="trailing" constant="20" id="Vq8-G2-al2"/>
+                                                <constraint firstItem="gkV-eM-y8U" firstAttribute="leading" secondItem="Yav-Z4-NWz" secondAttribute="leading" constant="15" id="ly3-kM-MIc"/>
+                                                <constraint firstItem="HVI-3i-Vqe" firstAttribute="leading" secondItem="gkV-eM-y8U" secondAttribute="trailing" constant="8" id="oOw-kR-ZGS"/>
+                                                <constraint firstItem="HVI-3i-Vqe" firstAttribute="centerY" secondItem="Yav-Z4-NWz" secondAttribute="centerY" id="pcp-h1-m3a"/>
+                                                <constraint firstItem="gkV-eM-y8U" firstAttribute="centerY" secondItem="Yav-Z4-NWz" secondAttribute="centerY" id="xyb-cm-Arg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellTextField" destination="HVI-3i-Vqe" id="KOe-uZ-koW"/>
+                                            <outlet property="cellTitleLabel" destination="gkV-eM-y8U" id="98R-8d-sA9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PresetCell" id="A56-vN-4VX" customClass="PresetTableViewCell" customModule="DewertOkin" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A56-vN-4VX" id="iyq-Sr-99B">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choose Preset" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQ0-YN-vuj">
+                                                    <rect key="frame" x="15" y="12" width="150" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GG-Om-OHz">
+                                                    <rect key="frame" x="353" y="12" width="41" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KQ0-YN-vuj" firstAttribute="leading" secondItem="iyq-Sr-99B" secondAttribute="leading" constant="15" id="CPI-tz-YYu"/>
+                                                <constraint firstItem="KQ0-YN-vuj" firstAttribute="centerY" secondItem="iyq-Sr-99B" secondAttribute="centerY" id="J9O-5e-Lin"/>
+                                                <constraint firstAttribute="trailing" secondItem="6GG-Om-OHz" secondAttribute="trailing" constant="20" id="mCs-1v-bix"/>
+                                                <constraint firstItem="6GG-Om-OHz" firstAttribute="centerY" secondItem="iyq-Sr-99B" secondAttribute="centerY" id="mWa-nU-sBN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="presetLabel" destination="6GG-Om-OHz" id="0NV-xW-5Ub"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7aN-So-Cv2">
+                                <rect key="frame" x="12" y="241" width="382" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="i5k-Jl-o8Y"/>
+                                </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="563816908.07113504">
                                     <!--2018-11-13 15:48:28 +0000-->
                                 </date>
                             </datePicker>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Timer Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oex-EW-que">
-                                <rect key="frame" x="0.0" y="280" width="375" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="gDR-iO-4Ym"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bj9-Kb-brY" firstAttribute="trailing" secondItem="hoS-sH-BsJ" secondAttribute="trailing" id="CCK-SS-W9u"/>
-                            <constraint firstItem="7aN-So-Cv2" firstAttribute="trailing" secondItem="hoS-sH-BsJ" secondAttribute="trailing" id="E49-Rq-Jat"/>
-                            <constraint firstItem="7aN-So-Cv2" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" id="JFO-uM-6G0"/>
-                            <constraint firstItem="bj9-Kb-brY" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" id="Nk9-J3-JIU"/>
-                            <constraint firstItem="Oex-EW-que" firstAttribute="top" secondItem="7aN-So-Cv2" secondAttribute="bottom" id="QKO-oQ-LS3"/>
-                            <constraint firstItem="bj9-Kb-brY" firstAttribute="top" secondItem="hoS-sH-BsJ" secondAttribute="top" id="VDD-SY-ZYO"/>
-                            <constraint firstItem="7aN-So-Cv2" firstAttribute="top" secondItem="bj9-Kb-brY" secondAttribute="bottom" id="xnM-Hu-0Gu"/>
-                            <constraint firstItem="Oex-EW-que" firstAttribute="trailing" secondItem="hoS-sH-BsJ" secondAttribute="trailing" id="yIZ-lI-VTg"/>
-                            <constraint firstItem="Oex-EW-que" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" id="zZD-Lw-CdF"/>
+                            <constraint firstItem="hoS-sH-BsJ" firstAttribute="trailing" secondItem="bj9-Kb-brY" secondAttribute="trailing" id="6Pv-gi-Zf7"/>
+                            <constraint firstItem="7aN-So-Cv2" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" constant="16" id="EkB-vU-rAj"/>
+                            <constraint firstItem="bj9-Kb-brY" firstAttribute="top" secondItem="hoS-sH-BsJ" secondAttribute="top" id="Kof-mp-QeT"/>
+                            <constraint firstItem="hoS-sH-BsJ" firstAttribute="trailing" secondItem="7aN-So-Cv2" secondAttribute="trailing" constant="16" id="NBO-rn-VDx"/>
+                            <constraint firstItem="mac-N7-JLB" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" id="Pwf-9Y-ilf"/>
+                            <constraint firstItem="mac-N7-JLB" firstAttribute="top" secondItem="bj9-Kb-brY" secondAttribute="bottom" constant="22" id="gvW-2h-7g4"/>
+                            <constraint firstItem="7aN-So-Cv2" firstAttribute="top" secondItem="mac-N7-JLB" secondAttribute="bottom" constant="8" id="lRi-vP-fA7"/>
+                            <constraint firstItem="mac-N7-JLB" firstAttribute="trailing" secondItem="hoS-sH-BsJ" secondAttribute="trailing" id="oRV-Q5-5W6"/>
+                            <constraint firstItem="bj9-Kb-brY" firstAttribute="leading" secondItem="hoS-sH-BsJ" secondAttribute="leading" id="pm0-vT-KtT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hoS-sH-BsJ"/>
                     </view>
                     <connections>
-                        <outlet property="name" destination="Oex-EW-que" id="aoB-Bv-ie0"/>
+                        <outlet property="inputTableView" destination="mac-N7-JLB" id="u6f-Kf-6al"/>
+                        <outlet property="navigationBar" destination="bj9-Kb-brY" id="eOY-mL-ESN"/>
                         <outlet property="timePicker" destination="7aN-So-Cv2" id="Vr0-cZ-cen"/>
                         <segue destination="iw2-Bw-fjp" kind="unwind" identifier="TimerWasAdded" unwindAction="addTimer:" id="WbD-eG-Xfg"/>
                     </connections>
@@ -115,7 +183,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afO-Gt-d2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iw2-Bw-fjp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1589.5999999999999" y="81.409295352323838"/>
+            <point key="canvasLocation" x="1588.4057971014495" y="81.026785714285708"/>
         </scene>
         <!--Timer-->
         <scene sceneID="gj4-Fg-Qrk">
@@ -124,7 +192,7 @@
                     <tabBarItem key="tabBarItem" title="Timer" image="timer_icon" id="xT9-aQ-sjV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pHj-WG-saF">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
