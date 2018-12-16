@@ -64,6 +64,7 @@ class AddTimerViewController: UIViewController, UITableViewDelegate, UITableView
         if(saved){
             
             // If oldTimer is not nil, we need to remove the old timer
+            // TODO: Remove old timer from Core Data
             if let oldTimer = timerToEdit {
                 guard destination.timerList.contains(oldTimer.0) else {return}
                 destination.timerList.remove(at: oldTimer.1.row)

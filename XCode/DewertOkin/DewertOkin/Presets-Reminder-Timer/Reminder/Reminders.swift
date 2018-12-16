@@ -14,12 +14,31 @@ import NotificationCenter
 
 class Reminders: UIViewController {
     
-    var reminder = [Reminder]()
+    var reminder = [Reminder]() {
+        didSet {
+            if reminder.isEmpty {
+                let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                noDataLabel.text          = "No reminders set"
+                noDataLabel.textColor     = UIColor.lightGray
+                noDataLabel.textAlignment = .center
+                tableView.backgroundView  = noDataLabel
+                tableView.separatorStyle  = .none
+                tableView.isScrollEnabled = false
+            } else {
+                tableView.separatorStyle = .singleLine
+                tableView.backgroundView = nil
+                tableView.isScrollEnabled = true
+            }
+        }
+        
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad () {
         super.viewDidLoad()
+        
+        tableView.tableFooterView = UIView()
         
         navigationItem.title = "Reminders"
         self.navigationController?.navigationBar.prefersLargeTitles = true

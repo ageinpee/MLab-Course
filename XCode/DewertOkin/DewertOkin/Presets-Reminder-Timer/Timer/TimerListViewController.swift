@@ -15,7 +15,24 @@ import CoreBluetooth
 
 class TimerListViewController: UIViewController{
     
-    public var timerList = [Timer]()
+    public var timerList = [Timer]() {
+        didSet {
+        if timerList.isEmpty {
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "No timers set"
+            noDataLabel.textColor     = UIColor.lightGray
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+            tableView.isScrollEnabled = false
+        } else {
+            tableView.separatorStyle = .singleLine
+            tableView.backgroundView = nil
+            tableView.isScrollEnabled = true
+        }
+        }
+        
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +40,8 @@ class TimerListViewController: UIViewController{
         super.viewDidLoad()
         
         tableView.delegate = self
+        // Remove empty cells from TableView
+        tableView.tableFooterView = UIView()
         
         navigationItem.title = "Timers"
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -63,10 +82,8 @@ class TimerListViewController: UIViewController{
 
 extension TimerListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         selectedTimer = (self.timerList[indexPath.row], indexPath)
         performSegue(withIdentifier: "TimerDetail", sender: self)
-        print(self.timerList[indexPath.row].timerName)
         selectedTimer = nil
     }
 }
@@ -74,6 +91,23 @@ extension TimerListViewController: UITableViewDelegate {
 extension TimerListViewController: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
+//        var numOfSections: Int = 0
+//        if !timerList.isEmpty
+//        {
+//            tableView.separatorStyle = .singleLine
+//            numOfSections            = 1
+//            tableView.backgroundView = nil
+//        }
+//        else
+//        {
+//            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+//            noDataLabel.text          = "No timers set"
+//            noDataLabel.textColor     = UIColor.lightGray
+//            noDataLabel.textAlignment = .center
+//            tableView.backgroundView  = noDataLabel
+//            tableView.separatorStyle  = .none
+//        }
+//        return numOfSections
         return 1
     }
     
