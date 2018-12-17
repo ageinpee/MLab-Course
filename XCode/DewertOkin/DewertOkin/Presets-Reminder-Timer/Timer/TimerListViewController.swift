@@ -50,6 +50,14 @@ class TimerListViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
         
+        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
+            if darkModeEnabled {
+                setDarkTheme()
+            } else {
+                setDefaultTheme()
+            }
+        }
+        
         let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
         
         do {
@@ -88,7 +96,7 @@ class TimerListViewController: UIViewController{
         }
     }
     
-    @objc private func darkModeEnabled(_ notification: Notification) {
+    private func setDarkTheme() {
         self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
         
         //self.view.backgroundColor = UIColor.gray
@@ -100,7 +108,7 @@ class TimerListViewController: UIViewController{
         tableView.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
     }
     
-    @objc private func darkModeDisabled(_ notification: Notification) {
+    private func setDefaultTheme() {
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.largeTitleTextAttributes = nil
         self.navigationController?.navigationBar.titleTextAttributes = nil
@@ -108,6 +116,14 @@ class TimerListViewController: UIViewController{
         self.navigationController?.navigationBar.barStyle =     UIBarStyle.default
         self.tabBarController?.tabBar.barStyle = UIBarStyle.default
         tableView.backgroundColor = .white
+    }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+       setDarkTheme()
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        setDefaultTheme()
     }
 }
 
@@ -215,10 +231,22 @@ class TimerEntryCell: UITableViewCell {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+        
+        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
+            if darkModeEnabled {
+                setDarkTheme()
+            } else {
+                setDefaultTheme()
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
     deinit {
@@ -226,15 +254,23 @@ class TimerEntryCell: UITableViewCell {
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
-    @objc private func darkModeEnabled(_ notification: Notification) {
+    private func setDarkTheme() {
         backgroundColor = UIColor(red: 0.095, green: 0.095, blue: 0.095, alpha: 1.0)
-        textLabel?.textColor = .orange
-        detailTextLabel?.textColor = .orange
+        textLabel?.textColor = .white
+        detailTextLabel?.textColor = .white
     }
     
-    @objc private func darkModeDisabled(_ notification: Notification) {
+    private func setDefaultTheme() {
         backgroundColor = .white
         textLabel?.textColor = .black
         detailTextLabel?.textColor = .black
+    }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        setDarkTheme()
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        setDefaultTheme()
     }
 }

@@ -121,6 +121,7 @@
                         <outlet property="ExtraFunctionsButtonObj" destination="7LG-TT-Cct" id="0Ym-6e-Vhu"/>
                         <outlet property="Image" destination="J9R-PK-aQG" id="jXg-Mc-YrR"/>
                         <outlet property="PresetsButtonObj" destination="0YV-jW-udd" id="Ytd-hR-vis"/>
+                        <outlet property="currentDeviceLabel" destination="FEt-Ft-Val" id="OOU-oC-Jzc"/>
                         <outlet property="leftPanArea" destination="XRq-Gx-E26" id="SAM-At-cLd"/>
                         <outlet property="rightPanArea" destination="kEo-gs-uD4" id="p4n-8f-kEp"/>
                         <outlet property="stepsLabel" destination="6Qi-8C-Su0" id="bqc-9f-2oQ"/>

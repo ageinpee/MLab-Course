@@ -33,26 +33,42 @@ class SettingTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
         
+        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
+            if darkModeEnabled {
+                setDarkTheme()
+            } else {
+                setDefaultTheme()
+            }
+        }
     }
     
-    @objc private func darkModeEnabled(_ notification: Notification) {
+    private func setDarkTheme() {
         self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
-        
-        //self.view.backgroundColor = UIColor.gray
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
-        self.navigationController?.navigationBar.tintColor =     UIColor.orange
-        self.navigationController?.navigationBar.barStyle =     UIBarStyle.blackTranslucent
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
         self.tabBarController?.tabBar.barStyle = UIBarStyle.black
+        //self.navigationController?.tabBarController?.tabBar.unselectedItemTintColor = .white
     }
     
-    @objc private func darkModeDisabled(_ notification: Notification) {
+    private func setDefaultTheme() {
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.largeTitleTextAttributes = nil
         self.navigationController?.navigationBar.titleTextAttributes = nil
-        self.navigationController?.navigationBar.tintColor =     UIColor.white
-        self.navigationController?.navigationBar.barStyle =     UIBarStyle.default
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
         self.tabBarController?.tabBar.barStyle = UIBarStyle.default
+        //self.navigationController?.tabBarController?.tabBar.unselectedItemTintColor = nil
+
+    }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        setDarkTheme()
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        setDefaultTheme()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +100,9 @@ class SettingTableViewController: UITableViewController {
         if (indexPath.row == settingsEntries.firstIndex(of: .darkMode)) {
             cell.accessoryView = {
                 let darkModeSwitch = UISwitch()
-                darkModeSwitch.isOn = false
+                if let darkModeSwitchIsOn = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
+                        darkModeSwitch.isOn = darkModeSwitchIsOn
+                }
                 darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchChanged(sender:)), for: .valueChanged)
                 return darkModeSwitch
             }()
@@ -241,6 +259,14 @@ class SettingsEntryCell: UITableViewCell {
         
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+        
+        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
+            if darkModeEnabled {
+                setDarkTheme()
+            } else {
+                setDefaultTheme()
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -252,13 +278,21 @@ class SettingsEntryCell: UITableViewCell {
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
+    private func setDarkTheme() {
+        backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
+        textLabel?.textColor = .white
+    }
+    
+    private func setDefaultTheme() {
+        backgroundColor = .white
+        textLabel?.textColor = .black
+    }
+    
     @objc private func darkModeEnabled(_ notification: Notification) {
-        backgroundColor = UIColor(red: 0.095, green: 0.095, blue: 0.095, alpha: 1.0)
-        textLabel?.textColor = .orange
+        setDarkTheme()
     }
     
     @objc private func darkModeDisabled(_ notification: Notification) {
-        backgroundColor = .white
-        textLabel?.textColor = .black
+        setDefaultTheme()
     }
 }
