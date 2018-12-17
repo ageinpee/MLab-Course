@@ -25,12 +25,34 @@ class SettingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.register(SettingsEntryCell.self, forCellReuseIdentifier: "SettingCell")
+        
+        tableView.tableFooterView = UIView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+        
+    }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
+        
+        //self.view.backgroundColor = UIColor.gray
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.navigationController?.navigationBar.tintColor =     UIColor.orange
+        self.navigationController?.navigationBar.barStyle =     UIBarStyle.blackTranslucent
+        self.tabBarController?.tabBar.barStyle = UIBarStyle.black
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.largeTitleTextAttributes = nil
+        self.navigationController?.navigationBar.titleTextAttributes = nil
+        self.navigationController?.navigationBar.tintColor =     UIColor.white
+        self.navigationController?.navigationBar.barStyle =     UIBarStyle.default
+        self.tabBarController?.tabBar.barStyle = UIBarStyle.default
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,6 +166,20 @@ class SettingTableViewController: UITableViewController {
             AchievementModel.lightAchievementUnlocked()
         }
         print("Dark Mode switch is on: \(sender.isOn)")
+        
+        if sender.isOn == true {
+            UserDefaults.standard.set(true, forKey: "darkModeEnabled")
+            
+            // Post the notification to let all current view controllers that the app has changed to dark mode, and they should theme themselves to reflect this change.
+            NotificationCenter.default.post(name: .darkModeEnabled, object: nil)
+            
+        } else {
+            
+            UserDefaults.standard.set(false, forKey: "darkModeEnabled")
+            
+            // Post the notification to let all current view controllers that the app has changed to non-dark mode, and they should theme themselves to reflect this change.
+            NotificationCenter.default.post(name: .darkModeDisabled, object: nil)
+        }
     }
     
     @objc
@@ -179,56 +215,50 @@ class SettingTableViewController: UITableViewController {
             }
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 extension SettingTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
+    }
+}
+
+extension Notification.Name {
+    static let darkModeEnabled = Notification.Name("com.project.DewertOkinMLab2018.darkModeEnabled")
+    static let darkModeDisabled = Notification.Name("com.project.DewertOkinMLab2018.darkModeDisabled")
+
+}
+
+class SettingsEntryCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        backgroundColor = UIColor(red: 0.095, green: 0.095, blue: 0.095, alpha: 1.0)
+        textLabel?.textColor = .orange
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        backgroundColor = .white
+        textLabel?.textColor = .black
     }
 }

@@ -18,9 +18,8 @@ class TimerListViewController: UIViewController{
     public var timerList = [Timer]() {
         didSet {
         if timerList.isEmpty {
-            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            let noDataLabel = BackgroundLabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = "No timers set"
-            noDataLabel.textColor     = UIColor.lightGray
             noDataLabel.textAlignment = .center
             tableView.backgroundView  = noDataLabel
             tableView.separatorStyle  = .none
@@ -43,8 +42,13 @@ class TimerListViewController: UIViewController{
         // Remove empty cells from TableView
         tableView.tableFooterView = UIView()
         
+        tableView.register(TimerEntryCell.self, forCellReuseIdentifier: "TimerEntryCell")
+        
         navigationItem.title = "Timers"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
         
         let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
         
@@ -55,6 +59,11 @@ class TimerListViewController: UIViewController{
         } catch {
             print("Couldnt update the TableView, reload!")
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
 
     @IBAction func addTimer(_ sender: UIStoryboardSegue){
@@ -78,6 +87,28 @@ class TimerListViewController: UIViewController{
             }
         }
     }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
+        
+        //self.view.backgroundColor = UIColor.gray
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.navigationController?.navigationBar.tintColor =     UIColor.orange
+        self.navigationController?.navigationBar.barStyle =     UIBarStyle.blackTranslucent
+        self.tabBarController?.tabBar.barStyle = UIBarStyle.black
+        tableView.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.largeTitleTextAttributes = nil
+        self.navigationController?.navigationBar.titleTextAttributes = nil
+        self.navigationController?.navigationBar.tintColor =     UIColor.white
+        self.navigationController?.navigationBar.barStyle =     UIBarStyle.default
+        self.tabBarController?.tabBar.barStyle = UIBarStyle.default
+        tableView.backgroundColor = .white
+    }
 }
 
 extension TimerListViewController: UITableViewDelegate {
@@ -91,23 +122,6 @@ extension TimerListViewController: UITableViewDelegate {
 extension TimerListViewController: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-//        var numOfSections: Int = 0
-//        if !timerList.isEmpty
-//        {
-//            tableView.separatorStyle = .singleLine
-//            numOfSections            = 1
-//            tableView.backgroundView = nil
-//        }
-//        else
-//        {
-//            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-//            noDataLabel.text          = "No timers set"
-//            noDataLabel.textColor     = UIColor.lightGray
-//            noDataLabel.textAlignment = .center
-//            tableView.backgroundView  = noDataLabel
-//            tableView.separatorStyle  = .none
-//        }
-//        return numOfSections
         return 1
     }
     
@@ -118,12 +132,17 @@ extension TimerListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let mySwitch = UISwitch()
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = timerList[indexPath.row].timerName
-        cell.detailTextLabel?.text = timerList[indexPath.row].timerTime.toString(dateFormat: "HH:mm")
-        cell.accessoryView = mySwitch
-        mySwitch.setOn(true,animated:true)
-        return cell
+        //let cell = TimerEntryCell(style: .subtitle, reuseIdentifier: "TimerEntryCell")
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "TimerEntryCell", for: indexPath) as? TimerEntryCell {
+            
+            cell.textLabel?.text = timerList[indexPath.row].timerName
+            cell.detailTextLabel?.text = timerList[indexPath.row].timerTime.toString(dateFormat: "HH:mm")
+            cell.accessoryView = mySwitch
+            mySwitch.setOn(true,animated:true)
+            return cell
+        }
+        print("Error")
+        return TimerEntryCell()
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -162,4 +181,60 @@ extension Date
         return dateFormatter.string(from: self)
     }
     
+}
+
+class BackgroundLabel: UILabel {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        backgroundColor = UIColor(red: 0.095, green: 0.095, blue: 0.095, alpha: 1.0)
+        textColor = .white
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        backgroundColor = .white
+        textColor = .lightGray
+    }
+}
+
+class TimerEntryCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        backgroundColor = UIColor(red: 0.095, green: 0.095, blue: 0.095, alpha: 1.0)
+        textLabel?.textColor = .orange
+        detailTextLabel?.textColor = .orange
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        backgroundColor = .white
+        textLabel?.textColor = .black
+        detailTextLabel?.textColor = .black
+    }
 }
