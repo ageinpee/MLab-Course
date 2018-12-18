@@ -11,7 +11,7 @@ import AVFoundation
 
 class SettingTableViewController: UITableViewController, Themeable {
     
-    private let settingsEntries: [SettingsEntry] = [.deviceInfo, .achievements, .presets, .useOldRemote,
+    private let settingsEntries: [SettingsEntry] = [.manageDevices, .deviceInfo, .achievements, .presets, .useOldRemote,
                         .nearestVendor, .accessories, .about, .darkMode]
     
     private let search = UISearchController(searchResultsController: nil)
@@ -91,6 +91,7 @@ class SettingTableViewController: UITableViewController, Themeable {
         if (indexPath.row == settingsEntries.firstIndex(of: .darkMode)) {
             cell.accessoryView = {
                 let darkModeSwitch = UISwitch()
+                darkModeSwitch.onTintColor = .orange
                 if let darkModeSwitchIsOn = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
                         darkModeSwitch.isOn = darkModeSwitchIsOn
                 }
@@ -138,6 +139,8 @@ class SettingTableViewController: UITableViewController, Themeable {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .accessories)) {
             cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .manageDevices)) {
+            cell.accessoryType = .disclosureIndicator
         }
         // Configure the cell...
 
@@ -151,6 +154,17 @@ class SettingTableViewController: UITableViewController, Themeable {
             pushAchievementsStoryboard()
         } else if (indexPath.row == settingsEntries.firstIndex(of: .nearestVendor)) {
             pushVendorStoryboard()
+        } else if(indexPath.row == settingsEntries.firstIndex(of: .manageDevices)) {
+            pushDevicesStoryboard()
+        }
+    }
+    
+    @objc
+    private func pushDevicesStoryboard() {
+        if let vc = UIStoryboard(name: "Devices", bundle: nil).instantiateViewController(withIdentifier: "DevicesList") as? DevicesTableViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(vc, animated: true)
+            }
         }
     }
     
