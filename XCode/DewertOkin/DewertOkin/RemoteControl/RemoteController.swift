@@ -12,7 +12,7 @@ import HealthKit
 import CoreBluetooth
 
 
-class RemoteController: UIViewController, UIGestureRecognizerDelegate{
+class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable{
     
     //----------------------------------------
     //------ Fancy Remote UI-Elements --------
@@ -37,11 +37,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //print("view loading")
-        
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         setupButtons()
         setupPanAreas()
+        Themes.setupTheming(for: self)
+
         
         Health.requestHealthKitPermission()
         
@@ -54,28 +54,23 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate{
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
         
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
-        
-        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
-            if darkModeEnabled {
-                setDarkTheme()
-            } else {
-                setDefaultTheme()
-            }
-        }
-        
     }
     
-    private func setDarkTheme() {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarStyle
+    }
+    
+    var statusBarStyle: UIStatusBarStyle = .default
+    func setDarkTheme() {
         self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
         
         //self.view.backgroundColor = UIColor.gray
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
-        self.navigationController?.navigationBar.tintColor =     UIColor.orange
-        self.navigationController?.navigationBar.barStyle =     UIBarStyle.blackTranslucent
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
         self.tabBarController?.tabBar.barStyle = UIBarStyle.black
+        statusBarStyle = .lightContent
         self.currentDeviceLabel.textColor = .white
         self.stepsLabel.textColor = .white
         self.PresetsButtonObj.setTitleColor(UIColor.orange, for: .normal)
@@ -83,13 +78,14 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate{
         self.ExtraFunctionsButtonObj.setTitleColor(UIColor.orange, for: .normal)
     }
     
-    private func setDefaultTheme() {
+    func setDefaultTheme() {
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.largeTitleTextAttributes = nil
         self.navigationController?.navigationBar.titleTextAttributes = nil
-        self.navigationController?.navigationBar.tintColor =     UIColor.white
-        self.navigationController?.navigationBar.barStyle =     UIBarStyle.default
+        self.navigationController?.navigationBar.tintColor = nil
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
         self.tabBarController?.tabBar.barStyle = UIBarStyle.default
+        statusBarStyle = .default
         self.currentDeviceLabel.textColor = .black
         self.stepsLabel.textColor = .black
         self.PresetsButtonObj.setTitleColor(nil, for: .normal)
@@ -97,11 +93,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate{
         self.ExtraFunctionsButtonObj.setTitleColor(nil, for: .normal)
     }
     
-    @objc private func darkModeEnabled(_ notification: Notification) {
+    @objc func darkModeEnabled(_ notification: Notification) {
         setDarkTheme()
     }
     
-    @objc private func darkModeDisabled(_ notification: Notification) {
+    @objc func darkModeDisabled(_ notification: Notification) {
         setDefaultTheme()
     }
     
@@ -253,7 +249,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate{
     
     //-------------------------------------------------------------
     
-    
+    // Shouldn't be needed any more
     @IBAction func handlePan(recognizer: UIPanGestureRecognizer) {
         //translation defines the direction of the pan
         let translation = recognizer.translation(in: self.view)

@@ -38,17 +38,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         AchievementModel.loadAchievementProgress()
         
-        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
-            if darkModeEnabled {
-                UITabBar.appearance().unselectedItemTintColor = .white
-                UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
-                UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.orange], for: .selected)
-                
-            } else {
-                UITabBar.appearance().unselectedItemTintColor = nil
-                UITabBarItem.appearance().setTitleTextAttributes(nil, for: .normal)
-            }
-        }
+//        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
+//            if darkModeEnabled {
+//                UITabBar.appearance().unselectedItemTintColor = .white
+//                UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+//                UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.orange], for: .selected)
+//                
+//            } else {
+//                UITabBar.appearance().unselectedItemTintColor = nil
+//                UITabBarItem.appearance().setTitleTextAttributes(nil, for: .normal)
+//                UITabBarItem.appearance().setTitleTextAttributes(nil, for: .selected)
+//            }
+//        }
         
         
         
