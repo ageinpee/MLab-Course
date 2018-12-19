@@ -68,7 +68,7 @@ extension BluetoothPairingViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(availablePeripherals[indexPath.row].name)
+        print(availablePeripherals[indexPath.row].name ?? "error")
     }
     
     

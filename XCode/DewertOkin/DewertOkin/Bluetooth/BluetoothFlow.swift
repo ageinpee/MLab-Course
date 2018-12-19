@@ -11,11 +11,12 @@ import CoreBluetooth
 
 class BluetoothFlow: BluetoothCoordinator {
     
-    let timeout = 15.0
-    var waitForPeripheralHandler: () -> Void = { }
-    var pairingHandler: (Bool) -> Void = { _ in }
-    var pairingWorkitem: DispatchWorkItem?
-    var pairing = false
+    private let timeout = 15.0
+    private var waitForPeripheralHandler: () -> Void = { }
+    private var waitForBluetooth: () -> Void = { }
+    private var pairingHandler: (Bool) -> Void = { _ in }
+    private var pairingWorkitem: DispatchWorkItem?
+    private var pairing = false
     var paired = false
     
     func waitForPeripheral(completion: @escaping () -> Void) {
@@ -25,6 +26,7 @@ class BluetoothFlow: BluetoothCoordinator {
             return
         }
         self.pairing = false
+        self.paired = false
         self.pairingHandler = { _ in }
         
         self.bluetoothService?.startScan()
@@ -61,8 +63,7 @@ class BluetoothFlow: BluetoothCoordinator {
             self.pairingFailed()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkitem!)
-        
-        print("Pairing...")
+
         self.pairingHandler = completion
         self.bluetoothService?.centralManager.connect(peripheral)
         completion(true)
@@ -76,6 +77,7 @@ class BluetoothFlow: BluetoothCoordinator {
         self.pairing = false
         self.pairingHandler = { _ in }
         self.waitForPeripheralHandler = { }
+        self.waitForBluetooth = { }
     }
     
     override func discoveredPeripheral() {
@@ -89,15 +91,31 @@ class BluetoothFlow: BluetoothCoordinator {
         self.pairingWorkitem?.cancel()
     }
     
-    override func reconnect() {
+    func reconnect(completion: @escaping () -> Void) {
         guard !self.pairing else {
             print("You are already pairing")
             return
         }
+        self.paired = false
+        checkBluetoothState {
+            self.waitForPeripheral {
+                self.pair { result in
+                    self.paired = true
+                }
+            }
+        }
+    }
+    
+    private func checkBluetoothState(completion: @escaping () -> Void) {
+        while (self.bluetoothService?.bluetoothState != .poweredOn){
+            print("Bluetooth is not on")
+        }
+        self.waitForBluetooth = completion
     }
     
     override func disconnected(failure: Bool) {
         self.pairingFailed()
+        self.waitForBluetooth = { }
     }
     
     private func pairingFailed() {

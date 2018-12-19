@@ -36,5 +36,4 @@ class BluetoothCoordinator {
     
     func ableToWrite() { }
     
-    func reconnect() { }
 }
