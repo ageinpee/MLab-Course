@@ -38,6 +38,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         AchievementModel.loadAchievementProgress()
         
+        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
+            if darkModeEnabled {
+                
+                
+            } else {
+               UISwitch.appearance().tintColor = nil
+        }
+            
+        }
+        
         return true
     }
     

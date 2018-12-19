@@ -10,7 +10,9 @@ import UIKit
 
 
 
-class AchievementsTableViewController: UITableViewController {
+class AchievementsTableViewController: UITableViewController, Themeable {
+
+    
     
     var timestampStart = Date.distantFuture
     
@@ -19,10 +21,16 @@ class AchievementsTableViewController: UITableViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 120
-        // Do any additional setup after loading the view.
+        
+        Themes.setupTheming(for: self)
         
         ///-----Achievement "Achievement Veteran"-related-----
         timestampStart = Date()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,6 +46,35 @@ class AchievementsTableViewController: UITableViewController {
         navigationItem.title = "Achievements"
         //navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func darkModeEnabled(_ notification: Notification) {
+        setDarkTheme()
+    }
+    
+    func darkModeDisabled(_ notification: Notification) {
+        setDefaultTheme()
+    }
+    
+    func setDarkTheme() {
+        self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
+        self.tabBarController?.tabBar.barStyle = UIBarStyle.black
+        //self.navigationController?.tabBarController?.tabBar.unselectedItemTintColor = .white
+    }
+    
+    func setDefaultTheme() {
+        self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.largeTitleTextAttributes = nil
+        self.navigationController?.navigationBar.titleTextAttributes = nil
+        self.navigationController?.navigationBar.tintColor = nil
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+        self.tabBarController?.tabBar.barStyle = UIBarStyle.default
+        //self.navigationController?.tabBarController?.tabBar.unselectedItemTintColor = nil
+        
     }
     
 
@@ -86,68 +123,7 @@ class AchievementsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         return createAchievementCell(tableview: tableView, path: indexPath)
-        
-//        switch indexPath.row {
-//        case 0:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-//            return cell
-//        case 1:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[0].description
-//            cell.titleLabel.text = AchievementModel.achievementCollection1[0].title
-//            cell.progressBar.progress = AchievementModel.barButtonClickCountProgess
-//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[0].image)
-//            return cell
-//        case 2:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[1].description
-//            cell.titleLabel.text = AchievementModel.achievementCollection1[1].title
-//            cell.progressBar.progress = AchievementModel.reminderSetProgress
-//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[1].image)
-//            return cell
-//        case 3:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[2].description
-//            cell.titleLabel.text = AchievementModel.achievementCollection1[2].title
-//            cell.progressBar.progress = AchievementModel.timeSpentInAppProgress
-//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[2].image)
-//            return cell
-//        case 4:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[3].description
-//            cell.titleLabel.text = AchievementModel.achievementCollection1[3].title
-//            cell.progressBar.progress = AchievementModel.upDownClickCountUnlocked
-//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[3].image)
-//            return cell
-//        case 5:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[4].description
-//            cell.titleLabel.text = AchievementModel.achievementCollection1[4].title
-//            cell.progressBar.progress = AchievementModel.nightOwlProgress
-//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[4].image)
-//            return cell
-//        case 6:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as! AchievementsTableViewCell
-//            cell.descriptionLabel.text = AchievementModel.achievementCollection1[5].description
-//            cell.titleLabel.text = AchievementModel.achievementCollection1[5].title
-//            cell.progressBar.progress = AchievementModel.lightProgess
-//            cell.achievementImage.image = UIImage(named: AchievementModel.achievementCollection1[5].image)
-//            return cell
-//        default:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
-//            return cell
-//        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

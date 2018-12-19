@@ -8,17 +8,19 @@
 
 import UIKit
 
-class AchievementsTableViewCell: UITableViewCell {
+class AchievementsTableViewCell: UITableViewCell, Themeable {
+    
    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var achievementImage: UIImageView!
-    
+        
     //let shapeLayer = CAShapeLayer()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        Themes.setupTheming(for: self)
         // Initialization code
 //        let center = CGPoint(x: 1.8 * self.frame.midX, y: self.frame.midY)
 //
@@ -61,6 +63,26 @@ class AchievementsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func darkModeEnabled(_ notification: Notification) {
+        setDarkTheme()
+    }
+    
+    func darkModeDisabled(_ notification: Notification) {
+        setDefaultTheme()
+    }
+    
+    func setDarkTheme() {
+        backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
+        titleLabel?.textColor = .white
+        descriptionLabel.textColor = .white
+    }
+    
+    func setDefaultTheme() {
+        backgroundColor = .white
+        titleLabel?.textColor = nil
+        descriptionLabel.textColor = nil
     }
 
 }

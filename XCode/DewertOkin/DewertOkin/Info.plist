@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>We need Health Sharing Access!</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>We need Health Access!</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Remote</string>
 	<key>UIMainStoryboardFile</key>
