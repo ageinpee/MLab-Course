@@ -12,7 +12,7 @@ import HealthKit
 import CoreBluetooth
 
 
-class RemoteController: UIViewController{
+class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable{
     
     //----------------------------------------
     //------ Fancy Remote UI-Elements --------
@@ -21,6 +21,9 @@ class RemoteController: UIViewController{
     @IBOutlet weak var ExtraFunctionsButtonObj: UIButton!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var leftPanArea: UIView!
+    @IBOutlet weak var rightPanArea: UIView!
+    @IBOutlet weak var currentDeviceLabel: UILabel!
     
     //----------------------------------------
     //------ Fancy Remote Attributes ---------
@@ -34,10 +37,11 @@ class RemoteController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //print("view loading")
-        
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         setupButtons()
+        setupPanAreas()
+        Themes.setupTheming(for: self)
+
         
         Health.requestHealthKitPermission()
         
@@ -49,13 +53,122 @@ class RemoteController: UIViewController{
         
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
-        //print("view loaded")
+        
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarStyle
+    }
+    
+    var statusBarStyle: UIStatusBarStyle = .default
+    func setDarkTheme() {
+        self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
+        
+        //self.view.backgroundColor = UIColor.gray
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
+        self.tabBarController?.tabBar.barStyle = UIBarStyle.black
+        statusBarStyle = .lightContent
+        self.currentDeviceLabel.textColor = .white
+        self.stepsLabel.textColor = .white
+        self.PresetsButtonObj.setTitleColor(UIColor.orange, for: .normal)
+        self.AddPresetsButtonObj.setTitleColor(UIColor.orange, for: .normal)
+        self.ExtraFunctionsButtonObj.setTitleColor(UIColor.orange, for: .normal)
+    }
+    
+    func setDefaultTheme() {
+        self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.largeTitleTextAttributes = nil
+        self.navigationController?.navigationBar.titleTextAttributes = nil
+        self.navigationController?.navigationBar.tintColor = nil
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+        self.tabBarController?.tabBar.barStyle = UIBarStyle.default
+        statusBarStyle = .default
+        self.currentDeviceLabel.textColor = .black
+        self.stepsLabel.textColor = .black
+        self.PresetsButtonObj.setTitleColor(nil, for: .normal)
+        self.AddPresetsButtonObj.setTitleColor(nil, for: .normal)
+        self.ExtraFunctionsButtonObj.setTitleColor(nil, for: .normal)
+    }
+    
+    @objc func darkModeEnabled(_ notification: Notification) {
+        setDarkTheme()
+    }
+    
+    @objc func darkModeDisabled(_ notification: Notification) {
+        setDefaultTheme()
     }
     
     override func viewWillAppear(_ animated: Bool) {
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+    
+    private func setupPanAreas() {
+        leftPanArea.isUserInteractionEnabled = true
+        rightPanArea.isUserInteractionEnabled = true
+        let panRecLeft = UIPanGestureRecognizer(target: self, action: #selector(handleLeftPanGesture(recognizer:)))
+        let panRecRight = UIPanGestureRecognizer(target: self, action: #selector(handleRightPanGesture(recognizer:)))
+        leftPanArea.addGestureRecognizer(panRecLeft)
+        rightPanArea.addGestureRecognizer(panRecRight)
+        
+        leftPanArea.backgroundColor = UIColor.clear
+        rightPanArea.backgroundColor = UIColor.clear
+        
+    }
+    
+    @objc
+    private func handleRightPanGesture(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            print("Pan in Right Area ended")
+            
+        case .changed:
+            if(recognizer.translation(in: rightPanArea).y >= 40) {
+                print("moving down" + String(Int(recognizer.translation(in: rightPanArea).y)))
+                Image.image = UIImage(named: "ChairChestDown")
+                goDown()
+            } else if (recognizer.translation(in: rightPanArea).y <= -40) {
+                print("moving up" + String(Int(recognizer.translation(in: rightPanArea).y)))
+                Image.image = UIImage(named: "ChairChestUp")
+                goUp()
+            }
+        case .ended:
+            print("Pan in Right Area ended")
+            Image.image = UIImage(named: "ChairNormal")
+        default: break
+        }
+    }
+    
+    
+    @objc
+    private func handleLeftPanGesture(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            print("Pan in Left Area")
+            break
+        case .changed:
+            if(recognizer.translation(in: leftPanArea).y >= 40) {
+                print("moving down" + String(Int(recognizer.translation(in: leftPanArea).y)))
+                 Image.image = UIImage(named: "ChairFeetDown")
+                // goFeetDown()
+            } else if (recognizer.translation(in: leftPanArea).y <= -40) {
+                print("moving up" + String(Int(recognizer.translation(in: leftPanArea).y)))
+                 Image.image = UIImage(named: "ChairFeetUp")
+                // goFeetUp()
+            }
+            break
+        case .ended:
+            print("Pan in Left Area ended")
+            Image.image = UIImage(named: "ChairNormal")
+            break
+        default: break
+        }
     }
     
     private func setupButtons() {
@@ -125,7 +238,6 @@ class RemoteController: UIViewController{
         let option1 = UIAlertAction(title: "Massage", style: .default, handler: nil)
         let option2 = UIAlertAction(title: "Under Bed Lighting", style: .default, handler: nil)
         underBedLighting = option2
-        let option3 = UIAlertAction(title: "Torch", style: .default, handler: nil)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(option1)
         alert.addAction(option2)
@@ -137,7 +249,7 @@ class RemoteController: UIViewController{
     
     //-------------------------------------------------------------
     
-    
+    // Shouldn't be needed any more
     @IBAction func handlePan(recognizer: UIPanGestureRecognizer) {
         //translation defines the direction of the pan
         let translation = recognizer.translation(in: self.view)
@@ -147,9 +259,10 @@ class RemoteController: UIViewController{
         let start = recognizer.location(in: self.view)
         
         if start.x <= viewWidth/2 {
-            //-------------------------------------------
-            //-- Status: Began --> Setup-phase for Pan --
-            if recognizer.state == UIGestureRecognizer.State.began {
+            switch recognizer.state {
+            case .began:
+                //-------------------------------------------
+                //-- Status: Began --> Setup-phase for Pan --
                 if translation.y < 0 {
                     oldTranslation = 1
                     Image.image = UIImage(named: "ChairFeetUp")
@@ -157,17 +270,16 @@ class RemoteController: UIViewController{
                     oldTranslation = -1
                     Image.image = UIImage(named: "ChairFeetDown")
                 }
-            }
+            case .changed:
                 //-------------------------------------------
                 //-- Status: Changed --> Pan in Action ------
-            else if recognizer.state == UIGestureRecognizer.State.changed {
                 if recognizer.location(in: self.view).y < viewHeight/2 {
                     if oldTranslation == -1 {
                         Image.image = UIImage(named: "ChairFeetUp")
                     }
                     oldTranslation = 1
                     
-//                    goUpFeet()
+                    //                    goUpFeet()
                     print("FeetUp", Int.random(in: 1...100))
                 }
                 else if recognizer.location(in: self.view).y >= viewHeight/2 {
@@ -176,17 +288,17 @@ class RemoteController: UIViewController{
                     }
                     oldTranslation = -1
                     
-//                    goDownFeet()
+                    //                    goDownFeet()
                     print("FeetDown", Int.random(in: 1...100))
                 }
-            }
-                
+            case .ended:
                 //--------------------------------------------------------------------------
                 //-- Status: Ended --> Pan has ended. Reestablish starting-condition --
-            else if recognizer.state == UIGestureRecognizer.State.ended {
                 oldTranslation = 0 //set back to start-value
                 
                 Image.image = UIImage(named: "ChairNormal")
+                
+            default: break
             }
         }
         else if start.x > viewWidth/2 {

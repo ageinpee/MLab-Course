@@ -20,4 +20,5 @@ enum SettingsEntry: String {
     case accessories = "Accessories"
     case useOldRemote = "Use Old Remote Layout"
     case nearestVendor = "Nearest Vendor"
+    case manageDevices = "Manage Devices"
 }
