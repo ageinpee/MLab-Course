@@ -42,11 +42,11 @@ class AccessoriesTableViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
             return cell
+//        case 1:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
+//            cell.sectionTitleLabel.text = "Recommended Products"
+//            return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
-            cell.sectionTitleLabel.text = "Recommended Products"
-            return cell
-        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
             cell.titleLabel.text = products[0].title
             cell.descriptionLabel.text = products[0].description
@@ -55,7 +55,7 @@ class AccessoriesTableViewController: UITableViewController {
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
             
             return cell
-        case 3:
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
             cell.titleLabel.text = products[1].title
             cell.descriptionLabel.text = products[1].description
@@ -64,11 +64,11 @@ class AccessoriesTableViewController: UITableViewController {
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
 
             return cell
-        case 4:
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
             cell.sectionTitleLabel.text = "Other customers bought"
             return cell
-        case 5:
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
             cell.titleLabel.text = products[0].title
             cell.descriptionLabel.text = products[0].description
@@ -77,7 +77,7 @@ class AccessoriesTableViewController: UITableViewController {
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
             
             return cell
-        case 6:
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
             cell.titleLabel.text = products[1].title
             cell.descriptionLabel.text = products[1].description
