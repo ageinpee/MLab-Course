@@ -13,7 +13,7 @@
         <!--Bluetooth Pairing View Controller-->
         <scene sceneID="pdT-nj-vL6">
             <objects>
-                <viewController storyboardIdentifier="PairingDeviceList" id="f7d-qy-B5L" customClass="BluetoothPairingViewController" customModule="DewertOkin" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PairingDeviceListView" id="f7d-qy-B5L" customClass="BluetoothPairingViewController" customModule="DewertOkin" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FRc-o2-RbW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,16 +63,17 @@
                     <connections>
                         <outlet property="connectButton" destination="3lV-v7-JMr" id="zBW-LL-deR"/>
                         <outlet property="tableView" destination="Vwe-i5-DuG" id="Z0U-GP-Fwn"/>
+                        <segue destination="ctc-Sd-Oce" kind="show" identifier="PairingSuccess" id="wFd-6L-U0X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPd-4n-nd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-268" y="118.29085457271366"/>
         </scene>
-        <!--Bluetooth Pairing View Controller-->
+        <!--Bluetooth Pairing Success View Controller-->
         <scene sceneID="HJx-Oe-jZ7">
             <objects>
-                <viewController storyboardIdentifier="PairingSuccess" id="ctc-Sd-Oce" customClass="BluetoothPairingViewController" customModule="DewertOkin" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PairingSuccessView" id="ctc-Sd-Oce" customClass="BluetoothPairingSuccessViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N4w-vd-Gwi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

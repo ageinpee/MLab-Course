@@ -26,6 +26,7 @@ class BluetoothPairingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
+        self.tableView.allowsSelection = true
         search = true
     }
     
@@ -40,21 +41,22 @@ class BluetoothPairingViewController: UIViewController {
     func refreshPeripheralsList() {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
         availablePeripherals = bluetoothFlow.retrievePeripherals()
-        DispatchQueue.main.async { self.tableView.reloadData() }
+        self.tableView.reloadData()
         print("Still loading")
         if(search){
-            self.refreshPeripheralsList()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { self.refreshPeripheralsList() })
         }
     }
     
     @IBAction func connect(_ sender: Any) {
-        guard selectedPeripheral != nil else { return }
+        //guard availablePeripherals[0] != nil else { return }
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
+        bluetoothFlow.connect(peripheral: availablePeripherals[0], completion: { _ in
             self.paired = true
             self.search = true
             // An animation would certainly fit in this situation
             self.performSegue(withIdentifier: "PairingSuccess", sender: self)
+            
         })
     }
     
