@@ -34,7 +34,7 @@ class BluetoothPairingViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        search = false
+//        search = false
     }
     
     func refreshPeripheralsList() {
@@ -52,9 +52,12 @@ class BluetoothPairingViewController: UIViewController {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
         bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
             self.paired = true
+            self.search = true
+            // An animation would certainly fit in this situation
+            self.performSegue(withIdentifier: "PairingSuccess", sender: self)
         })
-        
     }
+    
 }
 
 extension BluetoothPairingViewController: UITableViewDataSource, UITableViewDelegate {
