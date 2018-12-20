@@ -17,9 +17,12 @@ class BluetoothPairingSuccessViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { self.showRemote() })
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    func showRemote() {
+        let remoteController = RemoteController()
+        self.navigationController?.pushViewController(remoteController, animated: true)
     }
     
 }

@@ -80,9 +80,6 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmk-Zg-5RA">
                                 <rect key="frame" x="152" y="323" width="70" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Vmk-Zg-5RA" secondAttribute="height" multiplier="10:3" id="s8K-Z0-q8O"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
