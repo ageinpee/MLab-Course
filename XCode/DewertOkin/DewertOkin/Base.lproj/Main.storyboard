@@ -5,39 +5,9 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, M-Lab!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3s-7v-5Zd">
-                                <rect key="frame" x="100" y="270" width="214" height="136"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="J3s-7v-5Zd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="250" id="QEZ-Fm-rBd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J3s-7v-5Zd" secondAttribute="trailing" constant="100" id="eQa-56-sgG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="J3s-7v-5Zd" secondAttribute="bottom" constant="330" id="w7f-OY-JRK"/>
-                            <constraint firstItem="J3s-7v-5Zd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="yKY-eO-7C4"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-535" y="9"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="m9G-Is-ykh">
             <objects>
@@ -48,10 +18,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="g6j-T1-CW4" kind="relationship" relationship="viewControllers" id="zVj-ep-D3p"/>
-                        <segue destination="oak-ZJ-aFi" kind="relationship" relationship="viewControllers" id="s1r-8L-VS4"/>
-                        <segue destination="aTM-0s-ftL" kind="relationship" relationship="viewControllers" id="ErO-zC-lMx"/>
-                        <segue destination="QAh-M1-NRS" kind="relationship" relationship="viewControllers" id="8uh-EU-8Qy"/>
+                        <segue destination="Eng-AA-IXv" kind="relationship" relationship="viewControllers" id="aQq-Yk-lne"/>
+                        <segue destination="oak-ZJ-aFi" kind="relationship" relationship="viewControllers" id="GU9-nG-6hP"/>
+                        <segue destination="aTM-0s-ftL" kind="relationship" relationship="viewControllers" id="9CG-d0-59X"/>
+                        <segue destination="QAh-M1-NRS" kind="relationship" relationship="viewControllers" id="EJL-Li-rBn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22I-ke-JmA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -68,15 +38,15 @@
             </objects>
             <point key="canvasLocation" x="1104" y="64"/>
         </scene>
-        <!--Bluetooth-->
-        <scene sceneID="bik-vX-1aY">
+        <!--Remote-->
+        <scene sceneID="fNc-o2-dp4">
             <objects>
-                <viewControllerPlaceholder storyboardName="Bluetooth" id="g6j-T1-CW4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jxG-Bp-eYo"/>
+                <viewControllerPlaceholder storyboardName="Remote" id="Eng-AA-IXv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="fQc-mS-hv8"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CP4-ZC-zdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adl-EO-Jr0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="-99"/>
+            <point key="canvasLocation" x="1104" y="-86"/>
         </scene>
         <!--Timer-->
         <scene sceneID="ptL-KG-MTf">

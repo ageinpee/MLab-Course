@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VUz-m7-wiu">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reminders-->
+        <scene sceneID="wq5-RV-d5t">
+            <objects>
+                <viewController title="Reminders" id="jhm-Uz-Ae2" customClass="Reminders" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n15-FJ-orz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B3x-XU-Igp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jhm-Uz-Ae2" id="9I8-1U-wUO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="B3x-XU-Igp" secondAttribute="trailing" id="IqW-c0-e8m"/>
+                            <constraint firstItem="B3x-XU-Igp" firstAttribute="top" secondItem="Q6o-W9-dCQ" secondAttribute="top" id="acP-xe-eju"/>
+                            <constraint firstItem="B3x-XU-Igp" firstAttribute="leading" secondItem="n15-FJ-orz" secondAttribute="leading" id="s6F-Ch-000"/>
+                            <constraint firstItem="B3x-XU-Igp" firstAttribute="bottom" secondItem="Q6o-W9-dCQ" secondAttribute="bottom" id="zqm-XH-deF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q6o-W9-dCQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iMi-WQ-bak">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rKP-qR-Liq">
+                            <connections>
+                                <segue destination="nr4-g2-C3t" kind="presentation" id="8iU-h5-w8i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="B3x-XU-Igp" id="R7c-u4-lJ3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZQ-F5-KEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935.20000000000005" y="94.902548725637189"/>
+        </scene>
+        <!--Add Reminders-->
+        <scene sceneID="Dbm-Hx-fvh">
+            <objects>
+                <viewController title="Add Reminders" id="nr4-g2-C3t" customClass="addReminder" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="un2-1w-DRX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjD-We-mpv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Reminder" id="Ej0-x1-pMH">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hPN-ik-rMD">
+                                            <connections>
+                                                <segue destination="mvQ-FM-QPO" kind="unwind" unwindAction="addReminderWasCanceled:" id="6tr-1f-Jc5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="2xB-tJ-AA8">
+                                            <connections>
+                                                <action selector="doneReminder:" destination="nr4-g2-C3t" id="mSm-Hs-U9I"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminders name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-rf-Bzb">
+                                <rect key="frame" x="16" y="288" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PFn-in-XBD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="563879672.14149797">
+                                    <!--2018-11-14 09:14:32 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminders Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nsi-wv-fsq">
+                                <rect key="frame" x="16" y="326" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZBl-rf-Bzb" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" constant="16" id="0kT-2s-BKq"/>
+                            <constraint firstItem="pT0-oQ-2zH" firstAttribute="trailing" secondItem="ZBl-rf-Bzb" secondAttribute="trailing" constant="16" id="2tS-Ed-MxO"/>
+                            <constraint firstItem="pT0-oQ-2zH" firstAttribute="trailing" secondItem="nsi-wv-fsq" secondAttribute="trailing" constant="16" id="3gr-uE-VCB"/>
+                            <constraint firstItem="pT0-oQ-2zH" firstAttribute="trailing" secondItem="nsi-wv-fsq" secondAttribute="trailing" constant="16" id="6LH-zb-FKJ"/>
+                            <constraint firstItem="PFn-in-XBD" firstAttribute="top" secondItem="DjD-We-mpv" secondAttribute="bottom" id="Ez2-Rf-8Td"/>
+                            <constraint firstItem="ZBl-rf-Bzb" firstAttribute="top" secondItem="PFn-in-XBD" secondAttribute="bottom" constant="8" id="Gi2-fM-mh0"/>
+                            <constraint firstItem="PFn-in-XBD" firstAttribute="trailing" secondItem="pT0-oQ-2zH" secondAttribute="trailing" id="Jj3-Pk-sdm"/>
+                            <constraint firstItem="PFn-in-XBD" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" id="QYN-TB-EyX"/>
+                            <constraint firstItem="DjD-We-mpv" firstAttribute="trailing" secondItem="pT0-oQ-2zH" secondAttribute="trailing" id="Qqv-S9-JF6"/>
+                            <constraint firstItem="nsi-wv-fsq" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" constant="16" id="RRY-70-mms"/>
+                            <constraint firstItem="DjD-We-mpv" firstAttribute="leading" secondItem="pT0-oQ-2zH" secondAttribute="leading" id="Uf2-pA-nQ5"/>
+                            <constraint firstItem="DjD-We-mpv" firstAttribute="top" secondItem="pT0-oQ-2zH" secondAttribute="top" id="ZjM-Iz-Txt"/>
+                            <constraint firstItem="pT0-oQ-2zH" firstAttribute="trailing" secondItem="ZBl-rf-Bzb" secondAttribute="trailing" constant="16" id="ibK-BE-OIS"/>
+                            <constraint firstItem="nsi-wv-fsq" firstAttribute="top" secondItem="ZBl-rf-Bzb" secondAttribute="bottom" constant="8" id="wPd-54-PR3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pT0-oQ-2zH"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionTextfield" destination="nsi-wv-fsq" id="31R-j4-YYB"/>
+                        <outlet property="nameTextfield" destination="ZBl-rf-Bzb" id="qCw-bQ-ZBD"/>
+                        <outlet property="timePicker" destination="PFn-in-XBD" id="uAA-g1-iNC"/>
+                        <segue destination="mvQ-FM-QPO" kind="unwind" identifier="ReminderWasAdded" unwindAction="addReminder:" id="fXd-c4-aPb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ylw-8h-bwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mvQ-FM-QPO" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1788" y="97.601199400299862"/>
+        </scene>
+        <!--Reminder-->
+        <scene sceneID="KzA-Qz-DjW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VUz-m7-wiu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reminder" image="reminder_icon" id="qDJ-nh-dfI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wq6-o0-E9t">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jhm-Uz-Ae2" kind="relationship" relationship="rootViewController" id="wyc-OF-9OL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="txo-SD-I1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4" y="94.902548725637189"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="reminder_icon" width="24" height="24"/>
+    </resources>
+</document>

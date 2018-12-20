@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 import UserNotifications
-import NotificationCenter
+//import NotificationCenter
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let center = UNUserNotificationCenter.current()
         // Request permission to display alerts and play sounds.
-        center.requestAuthorization(options: [.alert, .sound])
-        { (granted, error) in
+        let options: UNAuthorizationOptions = [.alert, .sound];
+        center.requestAuthorization(options: options) { (granted, error) in
             // Enable or disable features based on authorization.
             if !granted{
             print("You Need To Grant Permission!")
@@ -33,7 +33,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Notifications not allowed
             }
         }
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        AchievementModel.loadAchievementProgress()
+        
+        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
+            if darkModeEnabled {
+                
+                
+            } else {
+               UISwitch.appearance().tintColor = nil
+        }
+            
+        }
+        
         return true
+    }
+    
+    // Allows Notifications to be displayed while the app is in the foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -44,10 +64,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        AchievementModel.saveAchievementProgress()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        AchievementModel.loadAchievementProgress()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
