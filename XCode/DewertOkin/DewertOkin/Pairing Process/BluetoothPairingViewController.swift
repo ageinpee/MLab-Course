@@ -15,7 +15,9 @@ class BluetoothPairingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var connectButton: UIButton!
     var availablePeripherals = [CBPeripheral]()
+    var selectedPeripheral: CBPeripheral?
     var search = true
+    var paired = false
     
     var remoteControl = RemoteController()
     var bluetooth = Bluetooth.sharedBluetooth
@@ -46,8 +48,12 @@ class BluetoothPairingViewController: UIViewController {
     }
     
     @IBAction func connect(_ sender: Any) {
-        availablePeripherals = bluetoothFlow.retrievePeripherals()
-        DispatchQueue.main.async { self.tableView.reloadData() }
+        guard selectedPeripheral != nil else { return }
+        guard self.bluetooth.bluetoothState == .poweredOn else { return }
+        bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
+            self.paired = true
+        })
+        
     }
 }
 
@@ -68,7 +74,7 @@ extension BluetoothPairingViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(availablePeripherals[indexPath.row].name ?? "error")
+        selectedPeripheral = availablePeripherals[indexPath.row]
     }
     
     

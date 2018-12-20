@@ -350,39 +350,35 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //-------------------------------------------
     //------ Bluetooth related functions --------
     private func Connect() {
-        self.bluetoothFlow.reconnect {
-            self.peripheral = self.bluetooth.connectedPeripheral
-            self.characteristic = self.bluetooth.characteristic
-            self.paired = true
+        self.bluetoothFlow.waitForPeripheral {
+            self.bluetoothFlow.pair { result in
+                self.peripheral = self.bluetooth.connectedPeripheral
+                self.characteristic = self.bluetooth.characteristic
+                self.paired = true
+            }
         }
     }
     
     func goUp() {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        guard self.paired else {
-            Connect()
-            return
-        }
+        guard bluetoothFlow.paired else { return }
         guard !(self.characteristic == nil) else {
             self.characteristic = self.bluetooth.characteristic
             return
         }
         let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m1In)
-        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+        bluetooth.connectedPeripheral!.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
     
     func goDown() {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        guard self.paired else {
-            Connect()
-            return
-        }
+        guard bluetoothFlow.paired else { return }
         guard !(self.characteristic == nil) else {
             self.characteristic = self.bluetooth.characteristic
             return
         }
         let moveDown = self.remoteControlConfig.getKeycode(name: keycode.m1Out)
-        peripheral!.writeValue(moveDown, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+        bluetooth.connectedPeripheral!.writeValue(moveDown, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
     
 //    func goUpFeet() {

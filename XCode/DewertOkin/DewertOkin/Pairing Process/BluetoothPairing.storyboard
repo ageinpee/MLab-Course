@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,44 +19,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-v7-JMr">
-                                <rect key="frame" x="51" y="487" width="272" height="63"/>
+                                <rect key="frame" x="37" y="487" width="301" height="63"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="3lV-v7-JMr" secondAttribute="height" multiplier="272:63" id="M0R-e5-rKs"/>
+                                    <constraint firstAttribute="width" secondItem="3lV-v7-JMr" secondAttribute="height" multiplier="43:9" id="6tN-tX-gD7"/>
                                 </constraints>
                                 <state key="normal" title="Connect"/>
                                 <connections>
                                     <action selector="connect:" destination="f7d-qy-B5L" eventType="touchUpInside" id="8qb-Gn-MXZ"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vwe-i5-DuG">
-                                <rect key="frame" x="51" y="172" width="272" height="259"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Vwe-i5-DuG" secondAttribute="height" multiplier="272:259" id="c9S-3P-04M"/>
-                                </constraints>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4b2-LS-Edn">
-                                <rect key="frame" x="121" y="134" width="133" height="21"/>
+                                <rect key="frame" x="121" y="104" width="133" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="4b2-LS-Edn" secondAttribute="height" multiplier="19:3" id="i7Y-e0-SAm"/>
+                                    <constraint firstAttribute="width" secondItem="4b2-LS-Edn" secondAttribute="height" multiplier="19:3" id="Zr9-TE-Bey"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vwe-i5-DuG">
+                                <rect key="frame" x="37" y="159" width="301" height="281"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vwe-i5-DuG" secondAttribute="height" multiplier="301:281" id="41Z-Ph-HSk"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4b2-LS-Edn" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="121" id="1e6-dx-IoP"/>
-                            <constraint firstItem="Vwe-i5-DuG" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="51" id="3sm-Sr-1mh"/>
-                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="3lV-v7-JMr" secondAttribute="trailing" constant="52" id="BwN-Ky-Mr2"/>
-                            <constraint firstItem="3lV-v7-JMr" firstAttribute="top" secondItem="Vwe-i5-DuG" secondAttribute="bottom" constant="56" id="Bxb-LB-fxS"/>
-                            <constraint firstItem="Vwe-i5-DuG" firstAttribute="top" secondItem="AAc-6k-S4J" secondAttribute="top" constant="152" id="Kcm-C8-LTS"/>
-                            <constraint firstItem="Vwe-i5-DuG" firstAttribute="top" secondItem="4b2-LS-Edn" secondAttribute="bottom" constant="17" id="eBD-Vc-RLs"/>
-                            <constraint firstItem="3lV-v7-JMr" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="51" id="jt6-nh-3GG"/>
-                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="Vwe-i5-DuG" secondAttribute="trailing" constant="52" id="oof-Ka-mq7"/>
-                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="4b2-LS-Edn" secondAttribute="trailing" constant="121" id="wQu-db-m1l"/>
+                            <constraint firstItem="Vwe-i5-DuG" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="37" id="5N2-gb-rTr"/>
+                            <constraint firstItem="Vwe-i5-DuG" firstAttribute="top" secondItem="4b2-LS-Edn" secondAttribute="bottom" constant="34" id="8be-UF-6JI"/>
+                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="3lV-v7-JMr" secondAttribute="trailing" constant="37" id="8tX-cx-dhJ"/>
+                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="Vwe-i5-DuG" secondAttribute="trailing" constant="37" id="9uL-Po-ZtE"/>
+                            <constraint firstItem="4b2-LS-Edn" firstAttribute="top" secondItem="AAc-6k-S4J" secondAttribute="top" constant="84" id="NxU-Py-Y2G"/>
+                            <constraint firstItem="3lV-v7-JMr" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="37" id="eR1-Iq-NOy"/>
+                            <constraint firstItem="AAc-6k-S4J" firstAttribute="trailing" secondItem="4b2-LS-Edn" secondAttribute="trailing" constant="121" id="jPv-SY-f0e"/>
+                            <constraint firstItem="3lV-v7-JMr" firstAttribute="top" secondItem="Vwe-i5-DuG" secondAttribute="bottom" constant="47" id="naz-Ox-8ai"/>
+                            <constraint firstItem="4b2-LS-Edn" firstAttribute="leading" secondItem="AAc-6k-S4J" secondAttribute="leading" constant="121" id="s2D-hX-jv4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AAc-6k-S4J"/>
                     </view>

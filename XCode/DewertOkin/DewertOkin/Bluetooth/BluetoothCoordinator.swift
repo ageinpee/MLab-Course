@@ -14,9 +14,7 @@ class BluetoothCoordinator {
     
     weak var bluetoothService = Bluetooth.sharedBluetooth
     
-    init(bluetoothService: Bluetooth) {
-        self.bluetoothService = bluetoothService
-    }
+    init(bluetoothService: Bluetooth) { self.bluetoothService = bluetoothService }
     
     func scanStarted() { }
     
@@ -24,7 +22,9 @@ class BluetoothCoordinator {
     
     func retrievePeripherals() -> [CBPeripheral] { return [] }
     
-    func connected(peripheral: CBPeripheral) { }
+    func connect(peripheral: CBPeripheral, completion: @escaping (Bool) -> Void) { }
+    
+    func connect() { }
     
     func disconnected(failure: Bool) { }
     
