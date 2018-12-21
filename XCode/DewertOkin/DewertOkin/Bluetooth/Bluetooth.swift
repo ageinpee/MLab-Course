@@ -53,6 +53,7 @@ class Bluetooth: NSObject {
     }
     
     func retrievePeripherals() -> [CBPeripheral] {
+        print("Returning all advertising peripherals")
         guard self.centralManager.state == .poweredOn else { return [] }
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
         let peripherals = availablePeripherals
@@ -64,6 +65,14 @@ class Bluetooth: NSObject {
         guard self.centralManager.state == .poweredOn else { return }
         guard let peripheral = self.connectedPeripheral else { return }
         self.centralManager.connect(peripheral)
+    }
+    
+    func reconnect() {
+        print("Trying to reconnect")
+        guard self.centralManager.state == .poweredOn else { return }
+        self.connectedPeripheral = nil
+        let peripherals = self.centralManager.retrievePeripherals(withIdentifiers: [])
+        self.centralManager.connect(peripherals[0])
     }
     
     func disconnect() {

@@ -15,9 +15,13 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    var bluetooth = Bluetooth.sharedBluetooth
+    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    var paired = false
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Connect()
         // Override point for customization after application launch.
         let center = UNUserNotificationCenter.current()
         // Request permission to display alerts and play sounds.
@@ -69,11 +73,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        Connect()
         AchievementModel.loadAchievementProgress()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        Connect()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -81,5 +87,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Saves changes in the application's managed object context before the application terminates.
         PersistenceService.saveContext()
     }
+    
+    private func Connect() {
+        self.bluetoothFlow.waitForPeripheral {
+            self.bluetoothFlow.pair { result in
+                self.bluetoothFlow.paired = true
+            }
+        }
+    }
+    
 }
 
