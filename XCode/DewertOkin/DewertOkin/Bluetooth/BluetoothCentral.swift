@@ -62,7 +62,7 @@ extension Bluetooth: CBCentralManagerDelegate {
         connectedPeripheral!.delegate = self
         peripheralsList?.append(peripheral.identifier)
         connectedPeripheral!.discoverServices([Bluetooth.commandService]);
-        self.bluetoothCoordinator?.connected(peripheral: connectedPeripheral!)
+        //self.bluetoothCoordinator?.connected(peripheral: connectedPeripheral!)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {

@@ -15,7 +15,10 @@ class BluetoothPairingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var connectButton: UIButton!
     var availablePeripherals = [CBPeripheral]()
-    var search = true
+    var selectedPeripheral: CBPeripheral?
+    var selectedCell: IndexPath?
+    var search: Bool!
+    var paired = false
     
     var remoteControl = RemoteController()
     var bluetooth = Bluetooth.sharedBluetooth
@@ -24,6 +27,8 @@ class BluetoothPairingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.allowsSelection = true
         search = true
     }
     
@@ -31,24 +36,29 @@ class BluetoothPairingViewController: UIViewController {
         self.refreshPeripheralsList()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        search = false
-    }
-    
     func refreshPeripheralsList() {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
         availablePeripherals = bluetoothFlow.retrievePeripherals()
-        DispatchQueue.main.async { self.tableView.reloadData() }
+        self.tableView.reloadData()
+        self.tableView.selectRow(at: selectedCell, animated: true, scrollPosition: UITableView.ScrollPosition .none)
         print("Still loading")
         if(search){
-            self.refreshPeripheralsList()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { self.refreshPeripheralsList() })
         }
     }
     
     @IBAction func connect(_ sender: Any) {
-        availablePeripherals = bluetoothFlow.retrievePeripherals()
-        DispatchQueue.main.async { self.tableView.reloadData() }
+        guard selectedPeripheral != nil else { return }
+        guard self.bluetooth.bluetoothState == .poweredOn else { return }
+        bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
+            self.paired = true
+            self.search = false
+            // An animation would certainly fit in this situation
+            // Before going into connection mode, so a visual feedback is given
+            self.performSegue(withIdentifier: "PairingSuccess", sender: self)
+        })
     }
+    
 }
 
 extension BluetoothPairingViewController: UITableViewDataSource, UITableViewDelegate {
@@ -68,7 +78,8 @@ extension BluetoothPairingViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(availablePeripherals[indexPath.row].name ?? "error")
+        selectedCell = indexPath
+        selectedPeripheral = availablePeripherals[indexPath.row]
     }
     
     
