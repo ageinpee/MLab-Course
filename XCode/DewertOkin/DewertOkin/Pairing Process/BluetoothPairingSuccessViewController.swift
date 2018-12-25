@@ -14,7 +14,6 @@ import CoreGraphics
 class BluetoothPairingSuccessViewController: UIViewController {
     
     let circleLayer = CAShapeLayer()
-    let successLayer = CAShapeLayer()
     var animating: Bool = true
     
     let strokeEndAnimation: CAAnimation = {
@@ -79,14 +78,14 @@ class BluetoothPairingSuccessViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         updateAnimation()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             self.animating = false
             self.updateAnimation()
         })
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
     }
     
     func drawCircle() {
@@ -104,23 +103,6 @@ class BluetoothPairingSuccessViewController: UIViewController {
         circleLayer.path = path.cgPath
         
         view.layer.addSublayer(circleLayer)
-    }
-    
-    func successCircle() {
-        successLayer.fillColor = UIColor.green.cgColor
-        successLayer.strokeColor = UIColor.green.cgColor
-        successLayer.lineWidth = 4
-        
-        let center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
-        let radius = min(self.view.frame.width - 100, self.view.frame.height) / 2 - circleLayer.lineWidth/2
-        let startAngle = CGFloat(-(Double.pi / 2))
-        let endAngle = startAngle + CGFloat(Double.pi * 2)
-        let path = UIBezierPath(arcCenter: CGPoint.zero, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        
-        successLayer.position = center
-        successLayer.path = path.cgPath
-        
-        view.layer.addSublayer(successLayer)
     }
     
     func updateAnimation() {
@@ -157,10 +139,34 @@ class BluetoothPairingSuccessViewController: UIViewController {
         CATransaction.commit()
     }
     
+    func failureAnimation() {
+        circleLayer.strokeColor = UIColor.red.cgColor
+        let failure = UILabel(frame: CGRect.init(x: circleLayer.position.x, y: circleLayer.position.y, width: 100, height: 100))
+        failure.textAlignment = NSTextAlignment.center
+        failure.center = circleLayer.position
+        failure.text = "Failed"
+        failure.textColor = UIColor.green
+        failure.font = UIFont.boldSystemFont(ofSize: 24)
+        self.view.addSubview(failure)
+        
+        CATransaction.begin()
+        
+        CATransaction.setCompletionBlock {
+            print("Success animation did end")
+            self.showPairingProcess()
+        }
+        circleLayer.add(successStrokeAnimation, forKey: "strokeEnd")
+        CATransaction.commit()
+    }
+    
     func showRemote() {
         let remoteController = RemoteController()
         self.present(remoteController, animated: true, completion: nil)
     }
     
+    func showPairingProcess() {
+        let pairingProcess = BluetoothPairingViewController()
+        self.present(pairingProcess, animated: true, completion: nil)
+    }
 }
 

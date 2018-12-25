@@ -57,9 +57,6 @@ class BluetoothPairingViewController: UIViewController {
         bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
             self.paired = true
             self.search = false
-            // An animation would certainly fit in this situation
-            // Before going into connection mode, so a visual feedback is given
-            self.performSegue(withIdentifier: "PairingSuccess", sender: self)
         })
     }
     
