@@ -29,6 +29,9 @@ class BluetoothPairingViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.allowsSelection = true
+        
+        connectButton.layer.cornerRadius = 5
+        self.performSegue(withIdentifier: "PairingSuccess", sender: self)
         search = true
     }
     
@@ -48,6 +51,7 @@ class BluetoothPairingViewController: UIViewController {
     }
     
     @IBAction func connect(_ sender: Any) {
+        self.performSegue(withIdentifier: "PairingSuccess", sender: self)
         guard selectedPeripheral != nil else { return }
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
         bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
