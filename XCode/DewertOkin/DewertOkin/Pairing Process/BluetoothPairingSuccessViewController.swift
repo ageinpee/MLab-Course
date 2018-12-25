@@ -80,7 +80,7 @@ class BluetoothPairingSuccessViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         updateAnimation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             self.animating = false
             self.updateAnimation()
         })
@@ -133,14 +133,33 @@ class BluetoothPairingSuccessViewController: UIViewController {
             circleLayer.removeAnimation(forKey: "strokeEnd")
             circleLayer.removeAnimation(forKey: "strokeStart")
             circleLayer.removeAnimation(forKey: "rotation")
-            circleLayer.strokeColor = UIColor.green.cgColor
-            circleLayer.add(successStrokeAnimation, forKey: "strokeEnd")
+            successAnimation()
         }
+    }
+    
+    func successAnimation() {
+        circleLayer.strokeColor = UIColor.green.cgColor
+        let success = UILabel(frame: CGRect.init(x: circleLayer.position.x, y: circleLayer.position.y, width: 100, height: 100))
+        success.textAlignment = NSTextAlignment.center
+        success.center = circleLayer.position
+        success.text = "Success"
+        success.textColor = UIColor.green
+        success.font = UIFont.boldSystemFont(ofSize: 24)
+        self.view.addSubview(success)
+        
+        CATransaction.begin()
+        
+        CATransaction.setCompletionBlock {
+            print("Success animation did end")
+            self.showRemote()
+        }
+        circleLayer.add(successStrokeAnimation, forKey: "strokeEnd")
+        CATransaction.commit()
     }
     
     func showRemote() {
         let remoteController = RemoteController()
-        self.navigationController?.pushViewController(remoteController, animated: true)
+        self.present(remoteController, animated: true, completion: nil)
     }
     
 }
