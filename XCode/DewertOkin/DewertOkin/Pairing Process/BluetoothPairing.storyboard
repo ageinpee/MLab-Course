@@ -77,21 +77,7 @@
                     <view key="view" contentMode="scaleToFill" id="N4w-vd-Gwi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmk-Zg-5RA">
-                                <rect key="frame" x="152" y="323" width="70" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Vmk-Zg-5RA" firstAttribute="leading" secondItem="5Iu-px-na6" secondAttribute="leading" constant="152" id="9V9-Na-1y8"/>
-                            <constraint firstItem="Vmk-Zg-5RA" firstAttribute="top" secondItem="5Iu-px-na6" secondAttribute="top" constant="303" id="oTX-hI-Svc"/>
-                            <constraint firstItem="5Iu-px-na6" firstAttribute="trailing" secondItem="Vmk-Zg-5RA" secondAttribute="trailing" constant="153" id="t4C-ws-kTV"/>
-                            <constraint firstItem="5Iu-px-na6" firstAttribute="bottom" secondItem="Vmk-Zg-5RA" secondAttribute="bottom" constant="323" id="t6y-9Y-SKq"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5Iu-px-na6"/>
                     </view>
                 </viewController>

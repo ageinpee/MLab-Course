@@ -14,6 +14,7 @@ import CoreGraphics
 class BluetoothPairingSuccessViewController: UIViewController {
     
     let circleLayer = CAShapeLayer()
+    let successLayer = CAShapeLayer()
     var animating: Bool = true
     
     let strokeEndAnimation: CAAnimation = {
@@ -60,6 +61,18 @@ class BluetoothPairingSuccessViewController: UIViewController {
         return animation
     }()
     
+    let successStrokeAnimation: CAAnimation = {
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.duration = 1
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        animation.fillMode = CAMediaTimingFillMode.forwards
+        animation.isRemovedOnCompletion = false
+        
+        return animation
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         drawCircle()
@@ -79,7 +92,7 @@ class BluetoothPairingSuccessViewController: UIViewController {
     func drawCircle() {
         circleLayer.lineWidth = 4
         circleLayer.fillColor = nil
-        circleLayer.strokeColor = UIColor(red: 0.037, green: 0, blue: 0.229, alpha: 1.0).cgColor
+        circleLayer.strokeColor = UIColor.blue.cgColor
         
         let center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
         let radius = min(self.view.frame.width - 100, self.view.frame.height) / 2 - circleLayer.lineWidth/2
@@ -93,15 +106,35 @@ class BluetoothPairingSuccessViewController: UIViewController {
         view.layer.addSublayer(circleLayer)
     }
     
+    func successCircle() {
+        successLayer.fillColor = UIColor.green.cgColor
+        successLayer.strokeColor = UIColor.green.cgColor
+        successLayer.lineWidth = 4
+        
+        let center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        let radius = min(self.view.frame.width - 100, self.view.frame.height) / 2 - circleLayer.lineWidth/2
+        let startAngle = CGFloat(-(Double.pi / 2))
+        let endAngle = startAngle + CGFloat(Double.pi * 2)
+        let path = UIBezierPath(arcCenter: CGPoint.zero, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        
+        successLayer.position = center
+        successLayer.path = path.cgPath
+        
+        view.layer.addSublayer(successLayer)
+    }
+    
     func updateAnimation() {
         if animating {
             circleLayer.add(strokeEndAnimation, forKey: "strokeEnd")
             circleLayer.add(strokeStartAnimation, forKey: "strokeStart")
             circleLayer.add(rotationAnimation, forKey: "rotation")
+
         } else {
-            self.circleLayer.removeAnimation(forKey: "strokeEnd")
-            self.circleLayer.removeAnimation(forKey: "strokeStart")
-            self.circleLayer.removeAnimation(forKey: "rotation")
+            circleLayer.removeAnimation(forKey: "strokeEnd")
+            circleLayer.removeAnimation(forKey: "strokeStart")
+            circleLayer.removeAnimation(forKey: "rotation")
+            circleLayer.strokeColor = UIColor.green.cgColor
+            circleLayer.add(successStrokeAnimation, forKey: "strokeEnd")
         }
     }
     
