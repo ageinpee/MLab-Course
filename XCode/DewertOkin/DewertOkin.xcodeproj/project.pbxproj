@@ -61,6 +61,10 @@
 		CDFFC97021C04776005C5821 /* OkinStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFFC96F21C04776005C5821 /* OkinStore.swift */; };
 		CDFFC97521C07C8B005C5821 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFFC97421C07C8B005C5821 /* Health.swift */; };
 		FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA187F44219C25E700DE3BC0 /* addReminder.swift */; };
+		FA19A2F621D370900032A4E7 /* RFPairingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2F521D370900032A4E7 /* RFPairingController.swift */; };
+		FA19A2F821D370AE0032A4E7 /* RFPairing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */; };
+		FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2F921D370CE0032A4E7 /* CSVReader.swift */; };
+		FA19A2FC21D3722D0032A4E7 /* handsender1.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA19A2FB21D3722D0032A4E7 /* handsender1.csv */; };
 		FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* Remote.storyboard */; };
 		FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC760E21B03592003BEF66 /* RemoteController.swift */; };
 		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
@@ -145,6 +149,10 @@
 		CDFFC97321C073D0005C5821 /* DewertOkin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DewertOkin.entitlements; sourceTree = "<group>"; };
 		CDFFC97421C07C8B005C5821 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		FA187F44219C25E700DE3BC0 /* addReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addReminder.swift; sourceTree = "<group>"; };
+		FA19A2F521D370900032A4E7 /* RFPairingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController.swift; sourceTree = "<group>"; };
+		FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RFPairing.storyboard; sourceTree = "<group>"; };
+		FA19A2F921D370CE0032A4E7 /* CSVReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVReader.swift; sourceTree = "<group>"; };
+		FA19A2FB21D3722D0032A4E7 /* handsender1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1.csv; sourceTree = "<group>"; };
 		FA2C9CFC21AF28E20018545A /* Remote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Remote.storyboard; sourceTree = "<group>"; };
 		FABC760E21B03592003BEF66 /* RemoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteController.swift; sourceTree = "<group>"; };
 		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +225,7 @@
 		0357FBD9218607A30043A828 /* DewertOkin */ = {
 			isa = PBXGroup;
 			children = (
+				FA19A2F421D36F100032A4E7 /* RFPairing */,
 				CDFFC97621C081F3005C5821 /* Health */,
 				03AE0EBD21BFB47900CEDC81 /* Pairing Process */,
 				0333052121BB346F00603519 /* Bluetooth */,
@@ -375,6 +384,17 @@
 			path = Reminder;
 			sourceTree = "<group>";
 		};
+		FA19A2F421D36F100032A4E7 /* RFPairing */ = {
+			isa = PBXGroup;
+			children = (
+				FA19A2FB21D3722D0032A4E7 /* handsender1.csv */,
+				FA19A2F521D370900032A4E7 /* RFPairingController.swift */,
+				FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */,
+				FA19A2F921D370CE0032A4E7 /* CSVReader.swift */,
+			);
+			path = RFPairing;
+			sourceTree = "<group>";
+		};
 		FA397CA621943745000B4912 /* Presets-Reminder-Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,8 +527,10 @@
 				0357FBE0218607A30043A828 /* Main.storyboard in Resources */,
 				CDB5B11621B5B9FE000D92A4 /* OldRemote.storyboard in Resources */,
 				FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */,
+				FA19A2FC21D3722D0032A4E7 /* handsender1.csv in Resources */,
 				CDFFC96C21C04372005C5821 /* NearestVendor.storyboard in Resources */,
 				03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */,
+				FA19A2F821D370AE0032A4E7 /* RFPairing.storyboard in Resources */,
 				CD945289219C3D0D00280A66 /* AchievementsStoryboard.storyboard in Resources */,
 				CD94528E219C3D9100280A66 /* AccessoriesStoryboard.storyboard in Resources */,
 			);
@@ -551,6 +573,8 @@
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
+				FA19A2F621D370900032A4E7 /* RFPairingController.swift in Sources */,
+				FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */,
 				0333052721BB34E800603519 /* BluetoothFlow.swift in Sources */,
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
 				CD1FA50421C5ABFF003A28CE /* PresetTableViewCell.swift in Sources */,
