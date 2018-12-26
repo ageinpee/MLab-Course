@@ -16,10 +16,6 @@ class BluetoothCoordinator {
     
     init(bluetoothService: Bluetooth) { self.bluetoothService = bluetoothService }
     
-    func scanStarted() { }
-    
-    func scanStopped() { }
-    
     func retrievePeripherals() -> [CBPeripheral] { return [] }
     
     func connect(peripheral: CBPeripheral, completion: @escaping (Bool) -> Void) { }
@@ -27,12 +23,6 @@ class BluetoothCoordinator {
     func connect() { }
     
     func disconnected(failure: Bool) { }
-    
-    func bluetoothOff() { }
-    
-    func bluetoothOn() { }
-    
-    func discoveredPeripheral() { }
     
     func ableToWrite() { }
     

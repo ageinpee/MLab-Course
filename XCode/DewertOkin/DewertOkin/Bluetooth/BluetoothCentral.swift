@@ -25,7 +25,6 @@ extension Bluetooth: CBCentralManagerDelegate {
             print("The systems bluetooth is turned off")
             self.stopScan()
             self.disconnect()
-            self.bluetoothCoordinator?.bluetoothOff()
         // Tell the user to power on bluetooth
         case .poweredOn:
             print("The systems bluetooth is turned on")
@@ -62,20 +61,17 @@ extension Bluetooth: CBCentralManagerDelegate {
         connectedPeripheral!.delegate = self
         peripheralsList?.append(peripheral.identifier)
         connectedPeripheral!.discoverServices([Bluetooth.commandService]);
-        //self.bluetoothCoordinator?.connected(peripheral: connectedPeripheral!)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Disconnected from control unit")
         self.bluetoothCoordinator?.disconnected(failure: false)
-        //self.bluetoothCoordinator?.reconnect()
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("Connection to control unit has failed!")
         // Give the user clear feedback in the UI
         self.bluetoothCoordinator?.disconnected(failure: true)
-        //self.bluetoothCoordinator?.reconnect()
     }
     
     

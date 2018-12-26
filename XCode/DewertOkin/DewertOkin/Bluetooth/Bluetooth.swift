@@ -11,6 +11,8 @@ import CoreBluetooth
 
 class Bluetooth: NSObject {
     
+    let defaults = UserDefaults.standard
+    
     var centralManager: CBCentralManager!
     var connectedPeripheral: CBPeripheral?
     var availablePeripherals = [CBPeripheral]()
@@ -43,13 +45,11 @@ class Bluetooth: NSObject {
         self.connectedPeripheral = nil
         guard self.centralManager.state == .poweredOn else { return }
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
-        //self.bluetoothCoordinator?.scanStarted()
     }
     
     func stopScan() {
         print("Stopping scan")
         self.centralManager.stopScan()
-        //self.bluetoothCoordinator?.scanStopped()
     }
     
     func retrievePeripherals() -> [CBPeripheral] {
