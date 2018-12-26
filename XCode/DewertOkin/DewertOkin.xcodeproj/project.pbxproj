@@ -65,6 +65,7 @@
 		FA19A2F821D370AE0032A4E7 /* RFPairing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */; };
 		FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2F921D370CE0032A4E7 /* CSVReader.swift */; };
 		FA19A2FC21D3722D0032A4E7 /* handsender1.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA19A2FB21D3722D0032A4E7 /* handsender1.csv */; };
+		FA19A2FE21D3862E0032A4E7 /* RFPairingControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2FD21D3862E0032A4E7 /* RFPairingControllerExtension.swift */; };
 		FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* Remote.storyboard */; };
 		FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC760E21B03592003BEF66 /* RemoteController.swift */; };
 		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
@@ -153,6 +154,7 @@
 		FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RFPairing.storyboard; sourceTree = "<group>"; };
 		FA19A2F921D370CE0032A4E7 /* CSVReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVReader.swift; sourceTree = "<group>"; };
 		FA19A2FB21D3722D0032A4E7 /* handsender1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1.csv; sourceTree = "<group>"; };
+		FA19A2FD21D3862E0032A4E7 /* RFPairingControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingControllerExtension.swift; sourceTree = "<group>"; };
 		FA2C9CFC21AF28E20018545A /* Remote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Remote.storyboard; sourceTree = "<group>"; };
 		FABC760E21B03592003BEF66 /* RemoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteController.swift; sourceTree = "<group>"; };
 		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 			children = (
 				FA19A2FB21D3722D0032A4E7 /* handsender1.csv */,
 				FA19A2F521D370900032A4E7 /* RFPairingController.swift */,
+				FA19A2FD21D3862E0032A4E7 /* RFPairingControllerExtension.swift */,
 				FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */,
 				FA19A2F921D370CE0032A4E7 /* CSVReader.swift */,
 			);
@@ -572,6 +575,7 @@
 				CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */,
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
+				FA19A2FE21D3862E0032A4E7 /* RFPairingControllerExtension.swift in Sources */,
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
 				FA19A2F621D370900032A4E7 /* RFPairingController.swift in Sources */,
 				FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */,

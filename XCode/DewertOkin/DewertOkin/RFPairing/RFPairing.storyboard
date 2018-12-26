@@ -25,18 +25,21 @@
                                 </constraints>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX4-L8-obO">
-                                <rect key="frame" x="0.0" y="194" width="414" height="216"/>
+                                <rect key="frame" x="50" y="94" width="314" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="J1A-3X-XmB"/>
+                                </constraints>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LX4-L8-obO" firstAttribute="top" secondItem="xUJ-Ky-lRQ" secondAttribute="top" constant="150" id="ITR-ba-9c5"/>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="top" secondItem="xUJ-Ky-lRQ" secondAttribute="top" constant="50" id="ITR-ba-9c5"/>
                             <constraint firstItem="HJh-qs-894" firstAttribute="centerX" secondItem="xUJ-Ky-lRQ" secondAttribute="centerX" id="MK3-2e-Hfm"/>
                             <constraint firstItem="xUJ-Ky-lRQ" firstAttribute="trailing" secondItem="HJh-qs-894" secondAttribute="trailing" constant="-450" id="OkJ-PJ-KkR"/>
-                            <constraint firstItem="LX4-L8-obO" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" id="Vl9-Gk-AHS"/>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" constant="50" id="Vl9-Gk-AHS"/>
                             <constraint firstItem="HJh-qs-894" firstAttribute="top" secondItem="M5b-rO-dC6" secondAttribute="top" constant="650" id="Zb9-c0-Hkc"/>
                             <constraint firstItem="HJh-qs-894" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" constant="-450" id="oBa-qy-N0b"/>
-                            <constraint firstItem="LX4-L8-obO" firstAttribute="trailing" secondItem="xUJ-Ky-lRQ" secondAttribute="trailing" id="v19-kY-R5P"/>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="trailing" secondItem="xUJ-Ky-lRQ" secondAttribute="trailing" constant="-50" id="v19-kY-R5P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xUJ-Ky-lRQ"/>
                     </view>
