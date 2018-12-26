@@ -133,7 +133,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ChairNormal" width="603" height="532.5"/>
-        <image name="remote_icon" width="30" height="30"/>
+        <image name="ChairNormal" width="804" height="710"/>
+        <image name="remote_icon" width="20" height="20"/>
     </resources>
 </document>

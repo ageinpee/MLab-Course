@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8QO-Ky-gdF">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,13 +17,40 @@
                     <view key="view" contentMode="scaleToFill" id="M5b-rO-dC6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedCircle" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-qs-894">
+                                <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HJh-qs-894" secondAttribute="height" multiplier="1:1" id="VW0-dH-Hy1"/>
+                                </constraints>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX4-L8-obO">
+                                <rect key="frame" x="0.0" y="194" width="414" height="216"/>
+                            </pickerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="6ED-og-KeG"/>
+                        <constraints>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="top" secondItem="xUJ-Ky-lRQ" secondAttribute="top" constant="150" id="ITR-ba-9c5"/>
+                            <constraint firstItem="HJh-qs-894" firstAttribute="centerX" secondItem="xUJ-Ky-lRQ" secondAttribute="centerX" id="MK3-2e-Hfm"/>
+                            <constraint firstItem="xUJ-Ky-lRQ" firstAttribute="trailing" secondItem="HJh-qs-894" secondAttribute="trailing" constant="-450" id="OkJ-PJ-KkR"/>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" id="Vl9-Gk-AHS"/>
+                            <constraint firstItem="HJh-qs-894" firstAttribute="top" secondItem="M5b-rO-dC6" secondAttribute="top" constant="650" id="Zb9-c0-Hkc"/>
+                            <constraint firstItem="HJh-qs-894" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" constant="-450" id="oBa-qy-N0b"/>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="trailing" secondItem="xUJ-Ky-lRQ" secondAttribute="trailing" id="v19-kY-R5P"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xUJ-Ky-lRQ"/>
                     </view>
+                    <connections>
+                        <outlet property="dottedCircle" destination="HJh-qs-894" id="Of4-gP-4JF"/>
+                        <outlet property="remotePicker" destination="LX4-L8-obO" id="IW7-Qu-06S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yy0-11-1pP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68" y="140"/>
+            <point key="canvasLocation" x="66.666666666666671" y="139.95535714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dottedCircle" width="1" height="1"/>
+    </resources>
 </document>

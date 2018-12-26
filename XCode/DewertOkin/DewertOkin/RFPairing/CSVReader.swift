@@ -9,7 +9,15 @@
 import Foundation
 
 class CSVReader {
-    public func readDataFromCSV(fileName:String, fileType: String)-> String!{
+    
+    public func readCSV(fileName: String, fileType: String) {
+        var data = readDataFromCSV(fileName: fileName, fileType: fileType)
+        data = cleanRows(file: data!)
+        let csvRows = csv(data: data!)
+        print(csvRows[1][1])
+    }
+    
+    private func readDataFromCSV(fileName:String, fileType: String)-> String!{
         guard let filepath = Bundle.main.path(forResource: fileName, ofType: fileType)
             else {
                 print("File not in bundle")
@@ -43,9 +51,4 @@ class CSVReader {
         }
         return result
     }
-    
-    private var data = readDataFromCSV(fileName: kCSVFileName, fileType: kCSVFileExtension)
-    data = cleanRows(file: data!)
-    let csvRows = csv(data: data!)
-    print(csvRows[1][1])
 }

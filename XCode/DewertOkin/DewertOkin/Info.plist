@@ -25,7 +25,7 @@
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>We need Health Access!</string>
 	<key>UILaunchStoryboardName</key>
-	<string>Remote</string>
+	<string>RFPairing</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
