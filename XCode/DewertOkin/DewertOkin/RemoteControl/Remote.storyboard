@@ -13,7 +13,7 @@
         <!--Remote-->
         <scene sceneID="Qxl-lV-g0M">
             <objects>
-                <viewController id="h1o-HI-eVS" customClass="RemoteController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemoteControl" id="h1o-HI-eVS" customClass="RemoteController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7b-hz-zBK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

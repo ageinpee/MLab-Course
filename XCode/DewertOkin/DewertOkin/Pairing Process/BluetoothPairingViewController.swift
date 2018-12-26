@@ -31,7 +31,6 @@ class BluetoothPairingViewController: UIViewController {
         self.tableView.allowsSelection = true
         
         connectButton.layer.cornerRadius = 5
-        self.performSegue(withIdentifier: "PairingSuccess", sender: self)
         search = true
     }
     
@@ -46,18 +45,20 @@ class BluetoothPairingViewController: UIViewController {
         self.tableView.selectRow(at: selectedCell, animated: true, scrollPosition: UITableView.ScrollPosition .none)
         print("Still loading")
         if(search){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { self.refreshPeripheralsList() })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { self.refreshPeripheralsList() })
         }
     }
     
     @IBAction func connect(_ sender: Any) {
-        self.performSegue(withIdentifier: "PairingSuccess", sender: self)
-        guard selectedPeripheral != nil else { return }
-        guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
-            self.paired = true
-            self.search = false
-        })
+        //guard selectedPeripheral != nil else { return }
+        //guard self.bluetooth.bluetoothState == .poweredOn else { return }
+        self.performSegue(withIdentifier: "PairingConnection", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? BluetoothPairingConnectViewController {
+            destination.selectedPeripheral = self.selectedPeripheral
+        }
     }
     
 }

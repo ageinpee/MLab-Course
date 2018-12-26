@@ -72,11 +72,6 @@ class BluetoothFlow: BluetoothCoordinator {
         self.waitForBluetooth = { }
     }
     
-    override func discoveredPeripheral() {
-        self.bluetoothService?.stopScan()
-        self.waitForPeripheralHandler()
-    }
-    
     override func ableToWrite() {
         guard self.pairing else { return }
         self.bluetoothService?.getCharacteristics()
@@ -98,28 +93,6 @@ class BluetoothFlow: BluetoothCoordinator {
         guard self.bluetoothService?.connectedPeripheral != nil else { return }
         completion(true)
     }
-    
-//    func reconnect(completion: @escaping () -> Void) {
-//        guard !self.pairing else {
-//            print("You are already pairing")
-//            return
-//        }
-//        self.paired = false
-//        checkBluetoothState {
-//            self.waitForPeripheral {
-//                self.pair { result in
-//                    self.paired = true
-//                }
-//            }
-//        }
-//    }
-    
-//    private func checkBluetoothState(completion: @escaping () -> Void) {
-//        while (self.bluetoothService?.bluetoothState != .poweredOn){
-//            print("Bluetooth is not on")
-//        }
-//        self.waitForBluetooth = completion
-//    }
     
     override func disconnected(failure: Bool) {
         self.pairingFailed()

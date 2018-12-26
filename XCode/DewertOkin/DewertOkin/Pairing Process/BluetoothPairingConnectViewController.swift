@@ -11,10 +11,16 @@ import CoreBluetooth
 import UIKit
 import CoreGraphics
 
-class BluetoothPairingSuccessViewController: UIViewController {
+class BluetoothPairingConnectViewController: UIViewController {
     
     let circleLayer = CAShapeLayer()
-    var animating: Bool = true
+    var animating = true
+    var success = true
+    
+    var selectedPeripheral: CBPeripheral?
+    var remoteControl = RemoteController()
+    var bluetooth = Bluetooth.sharedBluetooth
+    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
     
     let strokeEndAnimation: CAAnimation = {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -82,8 +88,23 @@ class BluetoothPairingSuccessViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         updateAnimation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+        connectionState()
+    }
+    
+    func connectionState() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            guard self.animating != false else { return }
+            self.bluetoothFlow.cancel()
             self.animating = false
+            self.success = false
+            self.updateAnimation()
+        })
+        
+        guard self.selectedPeripheral != nil else { return }
+        guard self.bluetooth.bluetoothState == .poweredOn else { return }
+        bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
+            self.animating = false
+            self.success = true
             self.updateAnimation()
         })
     }
@@ -111,11 +132,16 @@ class BluetoothPairingSuccessViewController: UIViewController {
             circleLayer.add(strokeStartAnimation, forKey: "strokeStart")
             circleLayer.add(rotationAnimation, forKey: "rotation")
 
-        } else {
+        } else if !animating && success {
             circleLayer.removeAnimation(forKey: "strokeEnd")
             circleLayer.removeAnimation(forKey: "strokeStart")
             circleLayer.removeAnimation(forKey: "rotation")
             successAnimation()
+        } else if !animating && !success {
+            circleLayer.removeAnimation(forKey: "strokeEnd")
+            circleLayer.removeAnimation(forKey: "strokeStart")
+            circleLayer.removeAnimation(forKey: "rotation")
+            failureAnimation()
         }
     }
     
@@ -145,14 +171,14 @@ class BluetoothPairingSuccessViewController: UIViewController {
         failure.textAlignment = NSTextAlignment.center
         failure.center = circleLayer.position
         failure.text = "Failed"
-        failure.textColor = UIColor.green
+        failure.textColor = UIColor.red
         failure.font = UIFont.boldSystemFont(ofSize: 24)
         self.view.addSubview(failure)
         
         CATransaction.begin()
         
         CATransaction.setCompletionBlock {
-            print("Success animation did end")
+            print("Failure animation did end")
             self.showPairingProcess()
         }
         circleLayer.add(successStrokeAnimation, forKey: "strokeEnd")
@@ -160,13 +186,17 @@ class BluetoothPairingSuccessViewController: UIViewController {
     }
     
     func showRemote() {
-        let remoteController = RemoteController()
-        self.present(remoteController, animated: true, completion: nil)
+        let remoteControl = UIStoryboard(name: "Remote", bundle: nil).instantiateViewController(withIdentifier: "RemoteControl") as UIViewController
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+             self.present(remoteControl, animated: true, completion: nil)
+        })
     }
     
     func showPairingProcess() {
-        let pairingProcess = BluetoothPairingViewController()
-        self.present(pairingProcess, animated: true, completion: nil)
+        let pairingProcess = UIStoryboard(name: "BluetoothPairing", bundle: nil).instantiateViewController(withIdentifier: "PairingDeviceListView") as UIViewController
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            self.present(pairingProcess, animated: true, completion: nil)
+        })
     }
 }
 

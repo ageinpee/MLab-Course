@@ -63,23 +63,24 @@
                     <connections>
                         <outlet property="connectButton" destination="3lV-v7-JMr" id="zBW-LL-deR"/>
                         <outlet property="tableView" destination="Vwe-i5-DuG" id="Z0U-GP-Fwn"/>
-                        <segue destination="ctc-Sd-Oce" kind="show" identifier="PairingSuccess" id="wFd-6L-U0X"/>
+                        <segue destination="ctc-Sd-Oce" kind="show" identifier="PairingConnection" id="1wI-S2-fnR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPd-4n-nd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-268" y="118.29085457271366"/>
         </scene>
-        <!--Bluetooth Pairing Success View Controller-->
+        <!--Title-->
         <scene sceneID="HJx-Oe-jZ7">
             <objects>
-                <viewController storyboardIdentifier="PairingSuccessView" id="ctc-Sd-Oce" customClass="BluetoothPairingSuccessViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PairingSuccessView" id="ctc-Sd-Oce" customClass="BluetoothPairingConnectViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N4w-vd-Gwi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5Iu-px-na6"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="sXn-yz-0aV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vV6-Rm-ojR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
