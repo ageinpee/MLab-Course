@@ -50,8 +50,8 @@ class BluetoothPairingViewController: UIViewController {
     }
     
     @IBAction func connect(_ sender: Any) {
-        //guard selectedPeripheral != nil else { return }
-        //guard self.bluetooth.bluetoothState == .poweredOn else { return }
+        guard selectedPeripheral != nil else { return }
+        guard self.bluetooth.bluetoothState == .poweredOn else { return }
         self.performSegue(withIdentifier: "PairingConnection", sender: self)
     }
     
