@@ -13,6 +13,7 @@
 		0333052521BB34C200603519 /* BluetoothCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052421BB34C200603519 /* BluetoothCoordinator.swift */; };
 		0333052721BB34E800603519 /* BluetoothFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052621BB34E800603519 /* BluetoothFlow.swift */; };
 		0333052921BB352200603519 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052821BB352200603519 /* Bluetooth.swift */; };
+		033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033B2E6B21D398EA00971D08 /* BluetoothBackgroundHandler.swift */; };
 		0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBDA218607A30043A828 /* AppDelegate.swift */; };
 		0357FBDD218607A30043A828 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBDC218607A30043A828 /* ViewController.swift */; };
 		0357FBE0218607A30043A828 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0357FBDE218607A30043A828 /* Main.storyboard */; };
@@ -90,6 +91,7 @@
 		0333052421BB34C200603519 /* BluetoothCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCoordinator.swift; sourceTree = "<group>"; };
 		0333052621BB34E800603519 /* BluetoothFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothFlow.swift; sourceTree = "<group>"; };
 		0333052821BB352200603519 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
+		033B2E6B21D398EA00971D08 /* BluetoothBackgroundHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothBackgroundHandler.swift; sourceTree = "<group>"; };
 		0357FBD7218607A30043A828 /* DewertOkin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DewertOkin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0357FBDA218607A30043A828 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0357FBDC218607A30043A828 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				0333052821BB352200603519 /* Bluetooth.swift */,
 				035B860421C536C300A032AE /* BluetoothCentral.swift */,
 				035B860621C536CE00A032AE /* BluetoothPeripheral.swift */,
+				033B2E6B21D398EA00971D08 /* BluetoothBackgroundHandler.swift */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */,
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
+				033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */,
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
 				0333052721BB34E800603519 /* BluetoothFlow.swift in Sources */,
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
