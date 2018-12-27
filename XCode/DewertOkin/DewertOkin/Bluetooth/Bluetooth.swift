@@ -16,6 +16,7 @@ class Bluetooth: NSObject {
     var centralManager: CBCentralManager!
     var connectedPeripheral: CBPeripheral?
     var availablePeripherals = [CBPeripheral]()
+    var characteristic: CBCharacteristic?
     var bluetoothState: CBManagerState { return self.centralManager.state }
     
     static var commandService = CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B")
