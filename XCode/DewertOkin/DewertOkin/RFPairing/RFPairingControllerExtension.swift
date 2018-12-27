@@ -11,17 +11,19 @@ import UIKit
 
 extension RFPairingController {
     
-    func step1(){
-        UIView.animate(withDuration:3.0, animations: {
-            self.dottedCircle.transform = CGAffineTransform(rotationAngle: CGFloat(90))
-        })
-    }
-    
-    func step2(){
+    func prepareSubview() {
         
-    }
-    
-    func step3(){
+        pairingView.addSubview(rotationView)
+
+        rotationView.layer.bounds = CGRect(x:0, y:0, width:2*dottedCircle.center.y, height:2*dottedCircle.center.y)
         
+        rotationView.backgroundColor = UIColor.white
+        
+        rotationView.addSubview(dottedCircle)
+        rotationView.bringSubviewToFront(dottedCircle)
+        rotationView.addSubview(remotePicker)
+        rotationView.bringSubviewToFront(remotePicker)
+        rotationView.addSubview(submitButton1)
+        rotationView.bringSubviewToFront(submitButton1)
     }
 }
