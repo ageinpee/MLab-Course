@@ -13,7 +13,7 @@ class BluetoothBackgroundHandler {
     
     let remoteController = RemoteControlConfig()
     let bluetooth = Bluetooth.sharedBluetooth
-    let bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    //let bluetoothFlow = BluetoothFlow(bluetoothService: bluetooth)
     
     
     

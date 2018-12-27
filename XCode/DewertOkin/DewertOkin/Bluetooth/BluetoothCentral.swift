@@ -42,7 +42,6 @@ extension Bluetooth: CBCentralManagerDelegate {
         connectedPeripheral = peripheral
         connectedPeripheral!.delegate = self
         defaults.set(peripheral, forKey: "Peripheral")
-        peripheralsList?.append(peripheral.identifier)
         connectedPeripheral!.discoverServices([Bluetooth.commandService])
     }
     
