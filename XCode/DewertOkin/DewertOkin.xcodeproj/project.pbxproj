@@ -61,15 +61,17 @@
 		CDFFC97021C04776005C5821 /* OkinStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFFC96F21C04776005C5821 /* OkinStore.swift */; };
 		CDFFC97521C07C8B005C5821 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFFC97421C07C8B005C5821 /* Health.swift */; };
 		FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA187F44219C25E700DE3BC0 /* addReminder.swift */; };
-		FA19A2F621D370900032A4E7 /* RFPairingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2F521D370900032A4E7 /* RFPairingController.swift */; };
+		FA19A2F621D370900032A4E7 /* RFPairingController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2F521D370900032A4E7 /* RFPairingController1.swift */; };
 		FA19A2F821D370AE0032A4E7 /* RFPairing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */; };
 		FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2F921D370CE0032A4E7 /* CSVReader.swift */; };
 		FA19A2FC21D3722D0032A4E7 /* handsender1.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA19A2FB21D3722D0032A4E7 /* handsender1.csv */; };
-		FA19A2FE21D3862E0032A4E7 /* RFPairingControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2FD21D3862E0032A4E7 /* RFPairingControllerExtension.swift */; };
+		FA19A2FE21D3862E0032A4E7 /* RFPairingController1Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2FD21D3862E0032A4E7 /* RFPairingController1Extension.swift */; };
 		FA19A30021D527500032A4E7 /* rotationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2FF21D527500032A4E7 /* rotationTransition.swift */; };
 		FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* Remote.storyboard */; };
 		FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC760E21B03592003BEF66 /* RemoteController.swift */; };
 		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
+		FAE52D3221D5562700121B54 /* RFPairingController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3121D5562700121B54 /* RFPairingController2.swift */; };
+		FAE52D3421D556DB00121B54 /* RFPairingController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3321D556DB00121B54 /* RFPairingController3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,15 +153,17 @@
 		CDFFC97321C073D0005C5821 /* DewertOkin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DewertOkin.entitlements; sourceTree = "<group>"; };
 		CDFFC97421C07C8B005C5821 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		FA187F44219C25E700DE3BC0 /* addReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addReminder.swift; sourceTree = "<group>"; };
-		FA19A2F521D370900032A4E7 /* RFPairingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController.swift; sourceTree = "<group>"; };
+		FA19A2F521D370900032A4E7 /* RFPairingController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController1.swift; sourceTree = "<group>"; };
 		FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RFPairing.storyboard; sourceTree = "<group>"; };
 		FA19A2F921D370CE0032A4E7 /* CSVReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVReader.swift; sourceTree = "<group>"; };
 		FA19A2FB21D3722D0032A4E7 /* handsender1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1.csv; sourceTree = "<group>"; };
-		FA19A2FD21D3862E0032A4E7 /* RFPairingControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingControllerExtension.swift; sourceTree = "<group>"; };
+		FA19A2FD21D3862E0032A4E7 /* RFPairingController1Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController1Extension.swift; sourceTree = "<group>"; };
 		FA19A2FF21D527500032A4E7 /* rotationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotationTransition.swift; sourceTree = "<group>"; };
 		FA2C9CFC21AF28E20018545A /* Remote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Remote.storyboard; sourceTree = "<group>"; };
 		FABC760E21B03592003BEF66 /* RemoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteController.swift; sourceTree = "<group>"; };
 		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
+		FAE52D3121D5562700121B54 /* RFPairingController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController2.swift; sourceTree = "<group>"; };
+		FAE52D3321D556DB00121B54 /* RFPairingController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,11 +396,13 @@
 			isa = PBXGroup;
 			children = (
 				FA19A2FB21D3722D0032A4E7 /* handsender1.csv */,
-				FA19A2F521D370900032A4E7 /* RFPairingController.swift */,
-				FA19A2FD21D3862E0032A4E7 /* RFPairingControllerExtension.swift */,
+				FA19A2F521D370900032A4E7 /* RFPairingController1.swift */,
+				FA19A2FD21D3862E0032A4E7 /* RFPairingController1Extension.swift */,
 				FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */,
 				FA19A2F921D370CE0032A4E7 /* CSVReader.swift */,
 				FA19A2FF21D527500032A4E7 /* rotationTransition.swift */,
+				FAE52D3121D5562700121B54 /* RFPairingController2.swift */,
+				FAE52D3321D556DB00121B54 /* RFPairingController3.swift */,
 			);
 			path = RFPairing;
 			sourceTree = "<group>";
@@ -566,6 +572,7 @@
 				CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */,
 				CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */,
 				CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */,
+				FAE52D3221D5562700121B54 /* RFPairingController2.swift in Sources */,
 				CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */,
 				CD945294219C429400280A66 /* Accessorie.swift in Sources */,
 				FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */,
@@ -578,9 +585,9 @@
 				CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */,
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
-				FA19A2FE21D3862E0032A4E7 /* RFPairingControllerExtension.swift in Sources */,
+				FA19A2FE21D3862E0032A4E7 /* RFPairingController1Extension.swift in Sources */,
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
-				FA19A2F621D370900032A4E7 /* RFPairingController.swift in Sources */,
+				FA19A2F621D370900032A4E7 /* RFPairingController1.swift in Sources */,
 				FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */,
 				0333052721BB34E800603519 /* BluetoothFlow.swift in Sources */,
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
@@ -604,6 +611,7 @@
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
+				FAE52D3421D556DB00121B54 /* RFPairingController3.swift in Sources */,
 				CDFFC96E21C0438E005C5821 /* NearestVendorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

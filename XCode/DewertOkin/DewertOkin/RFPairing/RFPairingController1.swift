@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RFPairingController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var dottedCircle: UIImageView!
     @IBOutlet weak var remotePicker: UIPickerView!

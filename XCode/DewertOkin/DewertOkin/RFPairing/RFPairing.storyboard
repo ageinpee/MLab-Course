@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pairing Controller-->
+        <!--Pairing Controller1-->
         <scene sceneID="604-qL-UOI">
             <objects>
-                <viewController id="8QO-Ky-gdF" customClass="RFPairingController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8QO-Ky-gdF" customClass="RFPairingController1" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M5b-rO-dC6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="66.666666666666671" y="139.95535714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Pairing Controller2-->
         <scene sceneID="wiV-RB-kh2">
             <objects>
-                <viewController id="0JR-wU-EAa" sceneMemberID="viewController">
+                <viewController id="0JR-wU-EAa" customClass="RFPairingController2" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wgc-MQ-cpI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,6 +102,14 @@
                                 </constraints>
                                 <state key="normal" title="skip RF Pairing"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="socketGrey" translatesAutoresizingMaskIntoConstraints="NO" id="aRL-Qf-n17" userLabel="Socket">
+                                <rect key="frame" x="211" y="233" width="109" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plugGrey" translatesAutoresizingMaskIntoConstraints="NO" id="JCc-dv-h37" userLabel="Plug">
+                                <rect key="frame" x="45" y="248" width="90" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -120,15 +128,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wRg-iK-mLx"/>
                     </view>
+                    <connections>
+                        <outlet property="plugImage" destination="JCc-dv-h37" id="9z6-Ep-Hm7"/>
+                        <outlet property="proceedButton" destination="Wg4-di-WFB" id="EyI-5P-udW"/>
+                        <outlet property="skipButton" destination="vmc-u5-OCC" id="x5p-Hb-hfW"/>
+                        <outlet property="socketImage" destination="aRL-Qf-n17" id="LxM-hq-oyM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E3h-80-huf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="946" y="140"/>
+            <point key="canvasLocation" x="944.92753623188412" y="139.95535714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Pairing Controller3-->
         <scene sceneID="AnI-JY-vVN">
             <objects>
-                <viewController id="u33-Ka-qw8" sceneMemberID="viewController">
+                <viewController id="u33-Ka-qw8" customClass="RFPairingController3" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Va-bd-XVM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,13 +153,25 @@
                                     <constraint firstAttribute="width" secondItem="Z1R-FZ-CjG" secondAttribute="height" multiplier="1:1" id="b5Q-QX-u57"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQv-ZG-DJe">
+                                <rect key="frame" x="50" y="772" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SXd-Hb-8Ox"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Proceed"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="top" secondItem="1Va-bd-XVM" secondAttribute="top" constant="650" id="7MD-8I-9Lb"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="bottom" secondItem="xQv-ZG-DJe" secondAttribute="bottom" constant="50" id="ILa-J7-HgP"/>
+                            <constraint firstItem="xQv-ZG-DJe" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="50" id="XfN-Y8-NRo"/>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="centerX" secondItem="1Va-bd-XVM" secondAttribute="centerX" id="YKi-M9-BCc"/>
+                            <constraint firstItem="xQv-ZG-DJe" firstAttribute="centerX" secondItem="1Va-bd-XVM" secondAttribute="centerX" id="cAV-Kd-JxS"/>
                             <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="Z1R-FZ-CjG" secondAttribute="trailing" constant="-450" id="mOc-4H-zxh"/>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="-450" id="sio-YY-dZJ"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="xQv-ZG-DJe" secondAttribute="trailing" constant="50" id="tao-LF-Oda"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j80-RO-Y5y"/>
                     </view>
@@ -157,5 +183,7 @@
     </scenes>
     <resources>
         <image name="dottedCircle" width="1" height="1"/>
+        <image name="plugGrey" width="100" height="100"/>
+        <image name="socketGrey" width="100" height="100"/>
     </resources>
 </document>

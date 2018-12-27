@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension RFPairingController {
+extension RFPairingController1 {
     
     func prepareSubview() {
         
