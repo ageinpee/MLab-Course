@@ -11,7 +11,7 @@ import AVFoundation
 
 class SettingTableViewController: UITableViewController, Themeable {
     
-    private let settingsEntries: [SettingsEntry] = [.manageDevices, .deviceInfo, .achievements, .presets, .useOldRemote,
+    private let settingsEntries: [SettingsEntry] = [.manageDevices, .deviceInfo, .health, .achievements, .presets, .useOldRemote,
                         .nearestVendor, .accessories, .about, .darkMode]
     
     private let search = UISearchController(searchResultsController: nil)
@@ -141,6 +141,8 @@ class SettingTableViewController: UITableViewController, Themeable {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .manageDevices)) {
             cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .health)) {
+            cell.accessoryType = .disclosureIndicator
         }
         // Configure the cell...
 
@@ -154,8 +156,16 @@ class SettingTableViewController: UITableViewController, Themeable {
             pushAchievementsStoryboard()
         } else if (indexPath.row == settingsEntries.firstIndex(of: .nearestVendor)) {
             pushVendorStoryboard()
-        } else if(indexPath.row == settingsEntries.firstIndex(of: .manageDevices)) {
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .manageDevices)) {
             pushDevicesStoryboard()
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .health)) {
+            pushHealthController()
+        }
+    }
+    
+    private func pushHealthController() {
+        if let navigator = navigationController {
+            navigator.pushViewController(HealthViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
         }
     }
     

@@ -14,7 +14,7 @@ import CoreData
 extension DeviceTimer {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<DeviceTimer> {
-        return NSFetchRequest<DeviceTimer>(entityName: "Timer")
+        return NSFetchRequest<DeviceTimer>(entityName: "DeviceTimer")
     }
 
     @NSManaged public var timerName: String?

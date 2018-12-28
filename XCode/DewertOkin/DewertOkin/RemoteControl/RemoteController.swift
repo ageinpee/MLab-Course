@@ -48,12 +48,10 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         swipeRec.direction = .up
         ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
         
-        AddPresetsButtonObj.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(displaySteps)))
-        
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
         
-        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(displaySteps), userInfo: nil, repeats: true)
+        let timer = Timer.scheduledTimer(timeInterval: 180.0, target: self, selector: #selector(checkSteps), userInfo: nil, repeats: true)
         
     }
     
@@ -397,13 +395,18 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //--------                          ---------
     
     @objc
-    private func displaySteps() {
+    private func checkSteps() {
         guard Health.healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!) == .sharingAuthorized else { return }
         Health.getTodaysSteps { result in
             print(result)
-            DispatchQueue.main.async {
-                //self.stepsLabel.text = "❤️ \(Int(result))"
+            print(Int.random(in: 1...100))
+            
+            if result <= 1000 {
+                print("Steps below 1000")
+            } else {
+                print("Steps above 1000")
             }
+            
         }
     }
 }
