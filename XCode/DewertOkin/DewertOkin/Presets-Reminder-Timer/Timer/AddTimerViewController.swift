@@ -14,7 +14,7 @@ import NotificationCenter
 
 class AddTimerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
-    var timerToEdit: (Timer, IndexPath)?
+    var timerToEdit: (DeviceTimer, IndexPath)?
     
     @IBOutlet weak var timePicker: UIDatePicker!
     private var saved = false
@@ -71,7 +71,7 @@ class AddTimerViewController: UIViewController, UITableViewDelegate, UITableView
                 print("Old timer removed")
             }
             // Adding a new timer
-                let newTimer = Timer(context: PersistenceService.context)
+                let newTimer = DeviceTimer(context: PersistenceService.context)
                 newTimer.timerName = titleText.cellTextField.text
                 newTimer.timerTime = timePicker.date
                 PersistenceService.saveContext()

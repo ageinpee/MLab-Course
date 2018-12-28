@@ -455,6 +455,9 @@
 					0357FBD6218607A30043A828 = {
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};

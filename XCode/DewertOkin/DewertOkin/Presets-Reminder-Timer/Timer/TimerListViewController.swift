@@ -15,7 +15,7 @@ import CoreBluetooth
 
 class TimerListViewController: UIViewController, Themeable{
     
-    public var timerList = [Timer]() {
+    public var timerList = [DeviceTimer]() {
         didSet {
         if timerList.isEmpty {
             let noDataLabel = BackgroundLabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
@@ -49,7 +49,7 @@ class TimerListViewController: UIViewController, Themeable{
         
         Themes.setupTheming(for: self)
         
-        let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
+        let fetchRequest: NSFetchRequest<DeviceTimer> = DeviceTimer.fetchRequest()
         
         do {
             let savedTimer = try PersistenceService.context.fetch(fetchRequest)
@@ -78,7 +78,7 @@ class TimerListViewController: UIViewController, Themeable{
         // Set the current notification center
     }
     
-    var selectedTimer: (Timer, IndexPath)?
+    var selectedTimer: (DeviceTimer, IndexPath)?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "TimerDetail") {
             if let vc = segue.destination as? AddTimerViewController {
@@ -159,7 +159,7 @@ extension TimerListViewController: UITableViewDataSource{
         if editingStyle == .delete {
             
             self.timerList.remove(at: indexPath.row)
-            let fetchRequest: NSFetchRequest<Timer> = Timer.fetchRequest()
+            let fetchRequest: NSFetchRequest<DeviceTimer> = DeviceTimer.fetchRequest()
             
             do {
                 var savedTimer = try PersistenceService.context.fetch(fetchRequest)

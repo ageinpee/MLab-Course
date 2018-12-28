@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 @objc(Timer)
-public class Timer: NSManagedObject {
+public class DeviceTimer: NSManagedObject {
 
 }

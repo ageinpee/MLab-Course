@@ -20,7 +20,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var AddPresetsButtonObj: UIButton!
     @IBOutlet weak var ExtraFunctionsButtonObj: UIButton!
     @IBOutlet weak var Image: UIImageView!
-    @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var leftPanArea: UIView!
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
@@ -54,6 +53,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
         
+        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(displaySteps), userInfo: nil, repeats: true)
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -72,7 +73,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         self.tabBarController?.tabBar.barStyle = UIBarStyle.black
         statusBarStyle = .lightContent
         self.currentDeviceLabel.textColor = .white
-        self.stepsLabel.textColor = .white
         self.PresetsButtonObj.setTitleColor(UIColor.orange, for: .normal)
         self.AddPresetsButtonObj.setTitleColor(UIColor.orange, for: .normal)
         self.ExtraFunctionsButtonObj.setTitleColor(UIColor.orange, for: .normal)
@@ -87,7 +87,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         self.tabBarController?.tabBar.barStyle = UIBarStyle.default
         statusBarStyle = .default
         self.currentDeviceLabel.textColor = .black
-        self.stepsLabel.textColor = .black
         self.PresetsButtonObj.setTitleColor(nil, for: .normal)
         self.AddPresetsButtonObj.setTitleColor(nil, for: .normal)
         self.ExtraFunctionsButtonObj.setTitleColor(nil, for: .normal)
@@ -400,10 +399,10 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @objc
     private func displaySteps() {
         guard Health.healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!) == .sharingAuthorized else { return }
-        Health.getLastHoursSteps { (result) in
+        Health.getTodaysSteps { result in
             print(result)
             DispatchQueue.main.async {
-                self.stepsLabel.text = "❤️ \(Int(result))"
+                //self.stepsLabel.text = "❤️ \(Int(result))"
             }
         }
     }
