@@ -9,13 +9,24 @@
 import Foundation
 import CoreBluetooth
 
-class BluetoothBackgroundHandler {
+class BluetoothBackgroundHandler: BluetoothCoordinator {
     
     let remoteController = RemoteControlConfig()
-    let bluetooth = Bluetooth.sharedBluetooth
-    //let bluetoothFlow = BluetoothFlow(bluetoothService: bluetooth)
+    var availablePeripherals = [CBPeripheral?]()
     
+    override func reconnect() {
+        guard bluetoothService?.centralManager.state == .poweredOn else { return }
+        guard pairing != true else { return }
+        guard paired != true else { return }
+        var onceConnectedPeripherals = defaults.data(forKey: "Peripheral")
+        availablePeripherals = bluetoothService?.retrievePeripherals() ?? []
+        guard availablePeripherals != [] else { return }
+        
+        
+    }
     
-    
+    private func getConnectedPeripherals() {
+        
+    }
     
 }

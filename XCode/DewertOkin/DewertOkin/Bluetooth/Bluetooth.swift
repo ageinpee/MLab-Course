@@ -36,27 +36,27 @@ class Bluetooth: NSObject {
     override init() {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        availablePeripherals = []
+                //availablePeripherals = []
     }
     
     func startScan() {
         print("Starting to scan")
         guard self.centralManager.state == .poweredOn else { return }
         self.connectedPeripheral = nil
-        availablePeripherals = []
+                //availablePeripherals = []
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
     }
     
     func stopScan() {
         print("Stopping scan")
         self.centralManager.stopScan()
-        availablePeripherals = []
+                //availablePeripherals = []
     }
     
     func retrievePeripherals() -> [CBPeripheral] {
         print("Returning all advertising peripherals")
         guard self.centralManager.state == .poweredOn else { return [] }
-        availablePeripherals = []
+                //availablePeripherals = []
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
         let peripherals = availablePeripherals
         return peripherals
@@ -65,7 +65,7 @@ class Bluetooth: NSObject {
     func connect() {
         print("Connecting to peripheral")
         guard self.centralManager.state == .poweredOn else { return }
-        availablePeripherals = []
+                //availablePeripherals = []
         guard let peripheral = self.connectedPeripheral else { return }
         self.centralManager.connect(peripheral)
     }
@@ -73,7 +73,7 @@ class Bluetooth: NSObject {
     func reconnect(peripheral: CBPeripheral) {
         print("Trying to reconnect")
         guard self.centralManager.state == .poweredOn else { return }
-        availablePeripherals = []
+                //availablePeripherals = []
         self.connectedPeripheral = nil
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
         if (availablePeripherals.contains(peripheral)) {
@@ -87,7 +87,7 @@ class Bluetooth: NSObject {
     func disconnect() {
         print("Disconnecting from peripheral")
         guard let peripheral = self.connectedPeripheral else { return }
-        availablePeripherals = []
+        //availablePeripherals = []
         self.centralManager.cancelPeripheralConnection(peripheral)
     }
 }

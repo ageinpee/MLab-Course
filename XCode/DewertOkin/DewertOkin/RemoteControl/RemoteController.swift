@@ -349,19 +349,9 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     //-------------------------------------------
     //------ Bluetooth related functions --------
-    private func Connect() {
-        self.bluetoothFlow.waitForPeripheral {
-            self.bluetoothFlow.pair { result in
-                self.peripheral = self.bluetooth.connectedPeripheral
-                self.characteristic = self.bluetooth.characteristic
-                self.paired = true
-            }
-        }
-    }
     
     func goUp() {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        guard bluetoothFlow.paired else { return }
         guard !(self.characteristic == nil) else {
             self.characteristic = self.bluetooth.characteristic
             return
@@ -372,7 +362,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     func goDown() {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        guard bluetoothFlow.paired else { return }
         guard !(self.characteristic == nil) else {
             self.characteristic = self.bluetooth.characteristic
             return

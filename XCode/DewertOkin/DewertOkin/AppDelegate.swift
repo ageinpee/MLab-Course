@@ -23,17 +23,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let availablePeripherals = defaults.object(forKey: "Peripheral")
-        if availablePeripherals == nil {
-            let pairingProcess = UIStoryboard(name: "BluetoothPairing", bundle: nil).instantiateViewController(withIdentifier: "PairingDeviceListView") as UIViewController
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                //self.present(pairingProcess, animated: true, completion: nil)
-            })
-        } else {
-            // Handle multiple peripherals
-            // Get the closest Peripheral
-            // Set up connection
-        }
+//        let availablePeripherals = defaults.object(forKey: "Peripheral")
+//        if availablePeripherals == nil {
+//            let pairingProcess = UIStoryboard(name: "BluetoothPairing", bundle: nil).instantiateViewController(withIdentifier: "PairingDeviceListView") as UIViewController
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+//                //self.present(pairingProcess, animated: true, completion: nil)
+//            })
+//        } else {
+//            // Handle multiple peripherals
+//            // Get the closest Peripheral
+//            // Set up connection
+//        }
         
         
         

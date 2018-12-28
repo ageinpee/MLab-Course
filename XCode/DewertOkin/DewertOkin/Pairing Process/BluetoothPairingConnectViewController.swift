@@ -15,7 +15,7 @@ class BluetoothPairingConnectViewController: UIViewController {
     
     let circleLayer = CAShapeLayer()
     var animating = true
-    var success = true
+    var success: Bool?
     
     var selectedPeripheral: CBPeripheral?
     var remoteControl = RemoteController()
@@ -83,22 +83,23 @@ class BluetoothPairingConnectViewController: UIViewController {
         drawCircle()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         updateAnimation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         connectionState()
     }
     
     func connectionState() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
-            guard self.animating != false else { return }
-            self.bluetoothFlow.cancel()
-            self.animating = false
-            self.success = false
-            self.updateAnimation()
-        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+//            guard self.animating != false else { return }
+//            guard self.success != true else { return }
+//            self.bluetoothFlow.cancel()
+//            self.animating = false
+//            self.success = false
+//            self.updateAnimation()
+//        })
         
         guard self.selectedPeripheral != nil else { return }
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
@@ -132,12 +133,12 @@ class BluetoothPairingConnectViewController: UIViewController {
             circleLayer.add(strokeStartAnimation, forKey: "strokeStart")
             circleLayer.add(rotationAnimation, forKey: "rotation")
 
-        } else if !animating && success {
+        } else if !animating && success! {
             circleLayer.removeAnimation(forKey: "strokeEnd")
             circleLayer.removeAnimation(forKey: "strokeStart")
             circleLayer.removeAnimation(forKey: "rotation")
             successAnimation()
-        } else if !animating && !success {
+        } else if !animating && !success! {
             circleLayer.removeAnimation(forKey: "strokeEnd")
             circleLayer.removeAnimation(forKey: "strokeStart")
             circleLayer.removeAnimation(forKey: "rotation")

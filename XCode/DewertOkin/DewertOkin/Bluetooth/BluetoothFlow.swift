@@ -16,8 +16,6 @@ class BluetoothFlow: BluetoothCoordinator {
     private var waitForBluetooth: () -> Void = { }
     private var pairingHandler: (Bool) -> Void = { _ in }
     private var pairingWorkitem: DispatchWorkItem?
-    private var pairing = false
-    var paired = false
     
     func waitForPeripheral(completion: @escaping () -> Void) {
         guard !self.pairing else {
@@ -58,7 +56,7 @@ class BluetoothFlow: BluetoothCoordinator {
 
         self.pairingHandler = completion
         self.bluetoothService?.centralManager.connect(peripheral)
-        completion(true)
+        self.paired = true
     }
     
     func cancel() {
@@ -91,7 +89,8 @@ class BluetoothFlow: BluetoothCoordinator {
         self.pairingHandler = completion
         self.bluetoothService?.centralManager.connect(peripheral)
         guard self.bluetoothService?.connectedPeripheral != nil else { return }
-        completion(true)
+        pairing = false
+        paired = true
     }
     
     override func disconnected(failure: Bool) {

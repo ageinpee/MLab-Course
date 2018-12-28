@@ -45,13 +45,14 @@ class BluetoothPairingViewController: UIViewController {
         self.tableView.selectRow(at: selectedCell, animated: true, scrollPosition: UITableView.ScrollPosition .none)
         print("Still loading")
         if(search){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { self.refreshPeripheralsList() })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { self.refreshPeripheralsList() })
         }
     }
     
     @IBAction func connect(_ sender: Any) {
         guard selectedPeripheral != nil else { return }
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
+        search = false
         self.performSegue(withIdentifier: "PairingConnection", sender: self)
     }
     
@@ -84,5 +85,8 @@ extension BluetoothPairingViewController: UITableViewDataSource, UITableViewDele
         selectedPeripheral = availablePeripherals[indexPath.row]
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
     
 }

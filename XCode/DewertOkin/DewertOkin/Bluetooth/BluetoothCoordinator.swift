@@ -9,10 +9,12 @@
 import Foundation
 import CoreBluetooth
 
-// Our Coordinator interface
 class BluetoothCoordinator {
     
+    let defaults = UserDefaults.standard
     weak var bluetoothService = Bluetooth.sharedBluetooth
+    var pairing = false
+    var paired = false
     
     init(bluetoothService: Bluetooth) { self.bluetoothService = bluetoothService }
     
@@ -20,9 +22,9 @@ class BluetoothCoordinator {
     
     func connect(peripheral: CBPeripheral, completion: @escaping (Bool) -> Void) { }
     
-    func connect() { }
-    
     func disconnected(failure: Bool) { }
+    
+    func reconnect() { }
     
     func ableToWrite() { }
     
