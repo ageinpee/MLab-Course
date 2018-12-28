@@ -39,7 +39,7 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submit1:" destination="8QO-Ky-gdF" eventType="touchUpInside" id="OTk-30-wM0"/>
-                                    <segue destination="0JR-wU-EAa" kind="custom" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="va3-3o-T44"/>
+                                    <segue destination="0JR-wU-EAa" kind="custom" identifier="pairingTransition1" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="va3-3o-T44"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,7 +92,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Proceed"/>
                                 <connections>
-                                    <segue destination="u33-Ka-qw8" kind="custom" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="QoW-ME-Ubh"/>
+                                    <segue destination="u33-Ka-qw8" kind="custom" identifier="pairingTransition2" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="QoW-ME-Ubh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-u5-OCC">
@@ -169,17 +169,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Proceed"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-qP-4mq">
+                                <rect key="frame" x="30" y="94" width="354" height="506"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="top" secondItem="1Va-bd-XVM" secondAttribute="top" constant="650" id="7MD-8I-9Lb"/>
+                            <constraint firstItem="3LA-qP-4mq" firstAttribute="top" secondItem="j80-RO-Y5y" secondAttribute="top" constant="50" id="Cf5-YL-I1y"/>
                             <constraint firstItem="j80-RO-Y5y" firstAttribute="bottom" secondItem="xQv-ZG-DJe" secondAttribute="bottom" constant="50" id="ILa-J7-HgP"/>
+                            <constraint firstItem="3LA-qP-4mq" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="30" id="X59-zt-e5v"/>
                             <constraint firstItem="xQv-ZG-DJe" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="50" id="XfN-Y8-NRo"/>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="centerX" secondItem="1Va-bd-XVM" secondAttribute="centerX" id="YKi-M9-BCc"/>
                             <constraint firstItem="xQv-ZG-DJe" firstAttribute="centerX" secondItem="1Va-bd-XVM" secondAttribute="centerX" id="cAV-Kd-JxS"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="3LA-qP-4mq" secondAttribute="trailing" constant="30" id="l4d-nT-k1M"/>
                             <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="Z1R-FZ-CjG" secondAttribute="trailing" constant="-450" id="mOc-4H-zxh"/>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="-450" id="sio-YY-dZJ"/>
                             <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="xQv-ZG-DJe" secondAttribute="trailing" constant="50" id="tao-LF-Oda"/>
+                            <constraint firstItem="Z1R-FZ-CjG" firstAttribute="top" secondItem="3LA-qP-4mq" secondAttribute="bottom" constant="50" id="vOD-Lf-Zbl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j80-RO-Y5y"/>
                     </view>
@@ -187,6 +194,7 @@
                         <outlet property="dottedCircleImage" destination="Z1R-FZ-CjG" id="51a-uQ-u39"/>
                         <outlet property="pairingView" destination="1Va-bd-XVM" id="zsW-rA-M5x"/>
                         <outlet property="proceedButton" destination="xQv-ZG-DJe" id="jSx-SW-6rd"/>
+                        <outlet property="remoteImageView" destination="3LA-qP-4mq" id="iqe-un-e8B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ury-ee-CjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -19,6 +19,9 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var submitButton1: UIButton!
     
     var imageData: [UIImage] = [UIImage]()
+    var remoteIDs: [String] = [String]()
+    
+    var selectedRemote: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +30,14 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         self.remotePicker.dataSource = self
         
         imageData = [UIImage(named: "remote1.png")!, UIImage(named: "remote2.png")!, UIImage(named: "remote3.png")!]
-        
-        //prepareSubview()
+        remoteIDs = ["Remote1", "Remote2", "Remote3"]
+        selectedRemote = remoteIDs[0]
     }
     
-    // Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
+        return 1
     }
     
-    // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return imageData.count
     }
@@ -66,11 +67,21 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        // do something with selected row
+        selectedRemote = remoteIDs[row]
+        print(selectedRemote)
     }
     
     @IBAction func submit1(_ sender: UIButton) {
-        print("xxx")
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "pairingTransition1") {
+            if let vc = segue.destination as? RFPairingController2 {
+                vc.selectedRemote = selectedRemote
+            }
+        }
+        
     }
 }

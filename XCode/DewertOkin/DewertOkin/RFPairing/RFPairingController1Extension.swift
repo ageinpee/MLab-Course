@@ -11,19 +11,4 @@ import UIKit
 
 extension RFPairingController1 {
     
-    func prepareSubview() {
-        
-        pairingView.addSubview(backgroundView)
-
-        backgroundView.layer.bounds = CGRect(x:0, y:0, width:3*dottedCircle.center.y, height:3*dottedCircle.center.y)
-        
-        backgroundView.backgroundColor = UIColor.white
-        
-        backgroundView.addSubview(dottedCircle)
-        backgroundView.bringSubviewToFront(dottedCircle)
-        backgroundView.addSubview(remotePicker)
-        backgroundView.bringSubviewToFront(remotePicker)
-        backgroundView.addSubview(submitButton1)
-        backgroundView.bringSubviewToFront(submitButton1)
-    }
 }
