@@ -170,14 +170,25 @@
                                 <state key="normal" title="Proceed"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-qP-4mq">
-                                <rect key="frame" x="30" y="94" width="354" height="506"/>
+                                <rect key="frame" x="30" y="94" width="354" height="456"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-bD-zEV">
+                                <rect key="frame" x="50" y="580" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jX0-Ta-bCn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gSY-bD-zEV" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="50" id="5wq-OB-crU"/>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="top" secondItem="1Va-bd-XVM" secondAttribute="top" constant="650" id="7MD-8I-9Lb"/>
                             <constraint firstItem="3LA-qP-4mq" firstAttribute="top" secondItem="j80-RO-Y5y" secondAttribute="top" constant="50" id="Cf5-YL-I1y"/>
                             <constraint firstItem="j80-RO-Y5y" firstAttribute="bottom" secondItem="xQv-ZG-DJe" secondAttribute="bottom" constant="50" id="ILa-J7-HgP"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="gSY-bD-zEV" secondAttribute="trailing" constant="50" id="MHw-pg-da1"/>
                             <constraint firstItem="3LA-qP-4mq" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="30" id="X59-zt-e5v"/>
                             <constraint firstItem="xQv-ZG-DJe" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="50" id="XfN-Y8-NRo"/>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="centerX" secondItem="1Va-bd-XVM" secondAttribute="centerX" id="YKi-M9-BCc"/>
@@ -185,8 +196,9 @@
                             <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="3LA-qP-4mq" secondAttribute="trailing" constant="30" id="l4d-nT-k1M"/>
                             <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="Z1R-FZ-CjG" secondAttribute="trailing" constant="-450" id="mOc-4H-zxh"/>
                             <constraint firstItem="Z1R-FZ-CjG" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="-450" id="sio-YY-dZJ"/>
+                            <constraint firstItem="gSY-bD-zEV" firstAttribute="top" secondItem="3LA-qP-4mq" secondAttribute="bottom" constant="30" id="syz-TF-Dhn"/>
                             <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="xQv-ZG-DJe" secondAttribute="trailing" constant="50" id="tao-LF-Oda"/>
-                            <constraint firstItem="Z1R-FZ-CjG" firstAttribute="top" secondItem="3LA-qP-4mq" secondAttribute="bottom" constant="50" id="vOD-Lf-Zbl"/>
+                            <constraint firstItem="Z1R-FZ-CjG" firstAttribute="top" secondItem="3LA-qP-4mq" secondAttribute="bottom" constant="100" id="vOD-Lf-Zbl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j80-RO-Y5y"/>
                     </view>
@@ -195,6 +207,7 @@
                         <outlet property="pairingView" destination="1Va-bd-XVM" id="zsW-rA-M5x"/>
                         <outlet property="proceedButton" destination="xQv-ZG-DJe" id="jSx-SW-6rd"/>
                         <outlet property="remoteImageView" destination="3LA-qP-4mq" id="iqe-un-e8B"/>
+                        <outlet property="textLabel" destination="gSY-bD-zEV" id="XfM-wa-VI6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ury-ee-CjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

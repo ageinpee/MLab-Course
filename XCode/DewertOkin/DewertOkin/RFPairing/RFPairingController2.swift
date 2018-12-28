@@ -18,7 +18,7 @@ class RFPairingController2: UIViewController {
     @IBOutlet var pairingView: UIView!
     let backgroundView = UIView()
     
-    var selectedRemote: String = ""
+    var selectedRemote: Remote = Remote()
     
     override func viewDidLoad() {
         print(selectedRemote)

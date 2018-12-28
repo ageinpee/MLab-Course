@@ -13,32 +13,65 @@ class RFPairingController3: UIViewController {
     
     @IBOutlet weak var dottedCircleImage: UIImageView!
     @IBOutlet weak var proceedButton: UIButton!
+    @IBOutlet weak var textLabel: UILabel!
     
     @IBOutlet var pairingView: UIView!
     let backgroundView = UIView()
     
     @IBOutlet weak var remoteImageView: UIImageView!
     
-    var selectedRemote: String = ""
+    var selectedRemote: Remote = Remote()
     
-    var imageData: [UIImage] = [UIImage]()
-    var remoteIDs: [String] = [String]()
-    var remote: UIImage = UIImage()
+    var remoteImage: UIImage = UIImage()
     
     override func viewDidLoad() {
         
-        imageData = [UIImage(named: "remote1.png")!, UIImage(named: "remote2.png")!, UIImage(named: "remote3.png")!]
-        remoteIDs = ["Remote1", "Remote2", "Remote3"]
-        
-        if remoteIDs.contains(selectedRemote) {
-            let index = remoteIDs.firstIndex(of: selectedRemote)
-            remote = imageData[index!]
-        }
-        else
-        {
+        if selectedRemote.image != nil {
+            remoteImage = selectedRemote.image
+        } else {
             print("ERROR: remote not found")
         }
         
-        remoteImageView.image = remote
+        remoteImageView.image = remoteImage
+        
+        if selectedRemote.highlightList.count == 0 {
+            textLabel.text = "Press any button on your remote"
+        } else {
+            textLabel.text = "Press the shown buttons on your remote"
+            for pos in selectedRemote.highlightList {
+                animate(atPosition: pos)
+            }
+        }
+    }
+    
+    func animate (atPosition: CGPoint) {
+        let animationView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        animationView.center = atPosition
+        
+        let circleBlueView = UIImageView(image: UIImage(named: "circleBlue"))
+        let circleGrayView = UIImageView(image: UIImage(named: "circleGray"))
+        
+        circleGrayView.alpha = 0.5
+        circleGrayView.frame.size = CGSize(width: 80, height: 80)
+        circleBlueView.frame.size = CGSize(width: 80, height: 80)
+        
+        pairingView.addSubview(animationView)
+        
+        animationView.addSubview(circleBlueView)
+        animationView.addSubview(circleGrayView)
+        animationView.contentMode = .scaleAspectFit
+        animationView.layer.anchorPoint = CGPoint(x:0.5, y:0.5)
+        
+        remoteImageView.addSubview(animationView)
+        
+        animationView.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
+        
+        UIView.animate(withDuration: 1.0, delay: 3.0, animations: {
+            animationView.transform = CGAffineTransform.identity
+        })
+        
+        UIView.animate(withDuration: 2.0, delay: 1.0, options: [.repeat, .autoreverse], animations: {
+            animationView.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }, completion: nil)
     }
 }

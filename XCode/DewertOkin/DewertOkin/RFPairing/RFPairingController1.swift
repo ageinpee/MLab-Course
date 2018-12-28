@@ -18,10 +18,9 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var submitButton1: UIButton!
     
-    var imageData: [UIImage] = [UIImage]()
-    var remoteIDs: [String] = [String]()
+    var imageData: [Remote] = [Remote]()
     
-    var selectedRemote: String = ""
+    var selectedRemote: Remote = Remote()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +28,10 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         self.remotePicker.delegate = self
         self.remotePicker.dataSource = self
         
-        imageData = [UIImage(named: "remote1.png")!, UIImage(named: "remote2.png")!, UIImage(named: "remote3.png")!]
-        remoteIDs = ["Remote1", "Remote2", "Remote3"]
-        selectedRemote = remoteIDs[0]
+        imageData = [Remote(withID:"Remote1", withImage:UIImage(named: "remote1.png")!, withHighlights: [CGPoint(x:145, y:185), CGPoint(x:210, y:185)]),
+                     Remote(withID:"Remote2", withImage:UIImage(named: "remote2.png")!),
+                     Remote(withID:"Remote3", withImage:UIImage(named: "remote3.png")!)]
+        selectedRemote = imageData[0]
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -53,21 +53,21 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         
         switch row {
         case 0:
-            imageView.image = imageData[0]
+            imageView.image = imageData[0].image
         case 1:
-            imageView.image = imageData[1]
+            imageView.image = imageData[1].image
         case 2:
-            imageView.image = imageData[2]
+            imageView.image = imageData[2].image
         default:
             imageView.image = nil
-            print("XXX")
+            print("ERROR")
             return imageView
         }
         return imageView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRemote = remoteIDs[row]
+        selectedRemote = imageData[row]
         print(selectedRemote)
     }
     
