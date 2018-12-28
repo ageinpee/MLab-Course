@@ -102,20 +102,26 @@
                                 </constraints>
                                 <state key="normal" title="skip RF Pairing"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="socketGrey" translatesAutoresizingMaskIntoConstraints="NO" id="aRL-Qf-n17" userLabel="Socket">
-                                <rect key="frame" x="211" y="233" width="109" height="102"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="controller2Image" translatesAutoresizingMaskIntoConstraints="NO" id="CfR-0w-Yh1">
+                                <rect key="frame" x="30" y="94" width="354" height="402"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plugGrey" translatesAutoresizingMaskIntoConstraints="NO" id="JCc-dv-h37" userLabel="Plug">
-                                <rect key="frame" x="45" y="248" width="90" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please plug in your control unit." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UY8-rV-pEb">
+                                <rect key="frame" x="30" y="526" width="354" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Jcd-0F-nRb" firstAttribute="top" secondItem="Wgc-MQ-cpI" secondAttribute="top" constant="650" id="0sS-IJ-bZT"/>
+                            <constraint firstItem="UY8-rV-pEb" firstAttribute="top" secondItem="CfR-0w-Yh1" secondAttribute="bottom" constant="30" id="1fb-p9-MsT"/>
                             <constraint firstItem="Jcd-0F-nRb" firstAttribute="centerX" secondItem="Wgc-MQ-cpI" secondAttribute="centerX" id="4ZU-Mp-Tsk"/>
+                            <constraint firstAttribute="bottom" secondItem="CfR-0w-Yh1" secondAttribute="bottom" constant="400" id="75o-qL-5aP"/>
+                            <constraint firstItem="UY8-rV-pEb" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="30" id="GEZ-aK-DVy"/>
+                            <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="CfR-0w-Yh1" secondAttribute="trailing" constant="30" id="ImY-NZ-Il8"/>
                             <constraint firstItem="Wg4-di-WFB" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="50" id="Ing-ra-iq9"/>
+                            <constraint firstItem="CfR-0w-Yh1" firstAttribute="top" secondItem="wRg-iK-mLx" secondAttribute="top" constant="50" id="J0O-a2-ppa"/>
                             <constraint firstItem="vmc-u5-OCC" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="50" id="Mso-Ts-4RK"/>
                             <constraint firstItem="Jcd-0F-nRb" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="-450" id="NuC-jk-8ek"/>
                             <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="Jcd-0F-nRb" secondAttribute="trailing" constant="-450" id="Spd-As-2bf"/>
@@ -124,17 +130,17 @@
                             <constraint firstItem="vmc-u5-OCC" firstAttribute="centerX" secondItem="Wgc-MQ-cpI" secondAttribute="centerX" id="hi8-bD-ajN"/>
                             <constraint firstItem="Wg4-di-WFB" firstAttribute="top" secondItem="vmc-u5-OCC" secondAttribute="bottom" constant="20" id="ism-wu-ysn"/>
                             <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="Wg4-di-WFB" secondAttribute="trailing" constant="50" id="nqe-kk-ImT"/>
+                            <constraint firstItem="CfR-0w-Yh1" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="30" id="ufn-Ul-jSM"/>
                             <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="vmc-u5-OCC" secondAttribute="trailing" constant="50" id="uqb-N6-gus"/>
+                            <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="UY8-rV-pEb" secondAttribute="trailing" constant="30" id="wUZ-Iy-Qwh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wRg-iK-mLx"/>
                     </view>
                     <connections>
                         <outlet property="dottedCircleImage" destination="Jcd-0F-nRb" id="8JH-Vp-Ah0"/>
                         <outlet property="pairingView" destination="Wgc-MQ-cpI" id="isX-ez-mnT"/>
-                        <outlet property="plugImage" destination="JCc-dv-h37" id="9z6-Ep-Hm7"/>
                         <outlet property="proceedButton" destination="Wg4-di-WFB" id="EyI-5P-udW"/>
                         <outlet property="skipButton" destination="vmc-u5-OCC" id="x5p-Hb-hfW"/>
-                        <outlet property="socketImage" destination="aRL-Qf-n17" id="LxM-hq-oyM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E3h-80-huf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,8 +195,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plugGrey" width="100" height="100"/>
+        <image name="controller2Image" width="1708" height="1826"/>
         <image name="quarterCircle" width="1" height="1"/>
-        <image name="socketGrey" width="100" height="100"/>
     </resources>
 </document>
