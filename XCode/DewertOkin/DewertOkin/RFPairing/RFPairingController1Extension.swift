@@ -13,17 +13,17 @@ extension RFPairingController1 {
     
     func prepareSubview() {
         
-        pairingView.addSubview(rotationView)
+        pairingView.addSubview(backgroundView)
 
-        rotationView.layer.bounds = CGRect(x:0, y:0, width:2*dottedCircle.center.y, height:2*dottedCircle.center.y)
+        backgroundView.layer.bounds = CGRect(x:0, y:0, width:3*dottedCircle.center.y, height:3*dottedCircle.center.y)
         
-        rotationView.backgroundColor = UIColor.white
+        backgroundView.backgroundColor = UIColor.white
         
-        rotationView.addSubview(dottedCircle)
-        rotationView.bringSubviewToFront(dottedCircle)
-        rotationView.addSubview(remotePicker)
-        rotationView.bringSubviewToFront(remotePicker)
-        rotationView.addSubview(submitButton1)
-        rotationView.bringSubviewToFront(submitButton1)
+        backgroundView.addSubview(dottedCircle)
+        backgroundView.bringSubviewToFront(dottedCircle)
+        backgroundView.addSubview(remotePicker)
+        backgroundView.bringSubviewToFront(remotePicker)
+        backgroundView.addSubview(submitButton1)
+        backgroundView.bringSubviewToFront(submitButton1)
     }
 }

@@ -18,17 +18,23 @@ class rotationTransition: UIStoryboardSegue, UIViewControllerTransitioningDelega
     func rotate() {
         let toViewController = self.destination
         let fromViewController = self.source
+        let backgroundView = UIView()
+        
+        backgroundView.layer.bounds = fromViewController.view.layer.bounds
+        backgroundView.backgroundColor = UIColor.white
         
         let containerView = fromViewController.view.superview
-        //let originalCenter = fromViewController.view.center
         
         let rotationPoint = CGPoint(x:0.5, y:(1307/896))
         let positionPoint = CGPoint(x:207, y:1307)
         
-        //containerView?.layer.position = positionPoint
-        containerView?.addSubview(toViewController.view)
+        //adding views
+        containerView?.insertSubview(backgroundView, at: 0)
+        containerView?.insertSubview(toViewController.view, at: 2)
         
-        //toViewController.view.center = originalCenter
+        //setup for rotation
+        backgroundView.layer.anchorPoint = rotationPoint
+        backgroundView.layer.position = positionPoint
         fromViewController.view.layer.anchorPoint = rotationPoint
         fromViewController.view.layer.position = positionPoint
         toViewController.view.layer.anchorPoint = rotationPoint

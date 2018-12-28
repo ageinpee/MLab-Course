@@ -14,7 +14,7 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var dottedCircle: UIImageView!
     @IBOutlet weak var remotePicker: UIPickerView!
     @IBOutlet var pairingView: UIView!
-    let rotationView = UIView()
+    let backgroundView = UIView()
     
     @IBOutlet weak var submitButton1: UIButton!
     
@@ -28,7 +28,7 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         
         imageData = [UIImage(named: "remote1.png")!, UIImage(named: "remote2.png")!, UIImage(named: "remote3.png")!]
         
-        prepareSubview()
+        //prepareSubview()
     }
     
     // Number of columns of data

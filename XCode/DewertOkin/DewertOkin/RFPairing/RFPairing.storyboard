@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedCircle" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-qs-894">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-qs-894">
                                 <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HJh-qs-894" secondAttribute="height" multiplier="1:1" id="VW0-dH-Hy1"/>
@@ -78,7 +78,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-0F-nRb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-0F-nRb">
                                 <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jcd-0F-nRb" secondAttribute="height" multiplier="1:1" id="uhP-B5-QMP"/>
@@ -129,6 +129,8 @@
                         <viewLayoutGuide key="safeArea" id="wRg-iK-mLx"/>
                     </view>
                     <connections>
+                        <outlet property="dottedCircleImage" destination="Jcd-0F-nRb" id="8JH-Vp-Ah0"/>
+                        <outlet property="pairingView" destination="Wgc-MQ-cpI" id="isX-ez-mnT"/>
                         <outlet property="plugImage" destination="JCc-dv-h37" id="9z6-Ep-Hm7"/>
                         <outlet property="proceedButton" destination="Wg4-di-WFB" id="EyI-5P-udW"/>
                         <outlet property="skipButton" destination="vmc-u5-OCC" id="x5p-Hb-hfW"/>
@@ -147,7 +149,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dottedCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Z1R-FZ-CjG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Z1R-FZ-CjG">
                                 <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Z1R-FZ-CjG" secondAttribute="height" multiplier="1:1" id="b5Q-QX-u57"/>
@@ -175,6 +177,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j80-RO-Y5y"/>
                     </view>
+                    <connections>
+                        <outlet property="dottedCircleImage" destination="Z1R-FZ-CjG" id="51a-uQ-u39"/>
+                        <outlet property="pairingView" destination="1Va-bd-XVM" id="zsW-rA-M5x"/>
+                        <outlet property="proceedButton" destination="xQv-ZG-DJe" id="jSx-SW-6rd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ury-ee-CjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,8 +189,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dottedCircle" width="1" height="1"/>
         <image name="plugGrey" width="100" height="100"/>
+        <image name="quarterCircle" width="1" height="1"/>
         <image name="socketGrey" width="100" height="100"/>
     </resources>
 </document>

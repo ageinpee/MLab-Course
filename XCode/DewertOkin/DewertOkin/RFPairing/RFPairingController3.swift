@@ -11,6 +11,12 @@ import UIKit
 
 class RFPairingController3: UIViewController {
     
+    @IBOutlet weak var dottedCircleImage: UIImageView!
+    @IBOutlet weak var proceedButton: UIButton!
+    
+    @IBOutlet var pairingView: UIView!
+    let backgroundView = UIView()
+    
     override func viewDidLoad() {
         
     }
