@@ -36,9 +36,12 @@
                                     <action selector="PresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="ieX-4e-Mfh"/>
                                 </connections>
                             </button>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="ChairNormal" translatesAutoresizingMaskIntoConstraints="NO" id="J9R-PK-aQG">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chair_full_normal" translatesAutoresizingMaskIntoConstraints="NO" id="J9R-PK-aQG">
                                 <rect key="frame" x="10" y="120" width="394" height="577"/>
                                 <gestureRecognizers/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chair_normal_arrows" translatesAutoresizingMaskIntoConstraints="NO" id="DnC-Xu-Jbg">
+                                <rect key="frame" x="10" y="120" width="394" height="577"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRq-Gx-E26">
                                 <rect key="frame" x="10" y="120" width="197" height="577"/>
@@ -88,14 +91,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DnC-Xu-Jbg" firstAttribute="bottom" secondItem="J9R-PK-aQG" secondAttribute="bottom" id="19J-GN-Mn5"/>
+                            <constraint firstItem="0YV-jW-udd" firstAttribute="top" secondItem="DnC-Xu-Jbg" secondAttribute="bottom" constant="20" id="206-Rg-Omh"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="7LG-TT-Cct" secondAttribute="bottom" constant="40" id="2c9-np-gla"/>
                             <constraint firstItem="J9R-PK-aQG" firstAttribute="top" secondItem="A7b-hz-zBK" secondAttribute="top" constant="120" id="4ul-zY-Aw7"/>
                             <constraint firstItem="XRq-Gx-E26" firstAttribute="leading" secondItem="J9R-PK-aQG" secondAttribute="leading" id="9Uc-uA-yZa"/>
+                            <constraint firstItem="DnC-Xu-Jbg" firstAttribute="top" secondItem="A7b-hz-zBK" secondAttribute="top" constant="120" id="A6W-m5-we5"/>
                             <constraint firstItem="XRq-Gx-E26" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="top" id="EbH-pF-aSa"/>
                             <constraint firstItem="6Qi-8C-Su0" firstAttribute="centerX" secondItem="uty-hF-LTZ" secondAttribute="centerX" id="G2d-nq-rM7"/>
                             <constraint firstItem="J9R-PK-aQG" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="10" id="IF6-tE-hn4"/>
                             <constraint firstItem="kEo-gs-uD4" firstAttribute="width" secondItem="J9R-PK-aQG" secondAttribute="width" multiplier="0.5" id="IUL-NS-rma"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="DnC-Xu-Jbg" secondAttribute="trailing" constant="10" id="JpN-9I-Z99"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="uty-hF-LTZ" secondAttribute="top" constant="70" id="KSd-AP-Rdk"/>
+                            <constraint firstItem="DnC-Xu-Jbg" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="10" id="NuC-Q1-e7O"/>
                             <constraint firstItem="7LG-TT-Cct" firstAttribute="leading" secondItem="Xjl-Wp-KTM" secondAttribute="trailing" priority="750" constant="50" id="Ocj-Ng-aaM"/>
                             <constraint firstItem="kEo-gs-uD4" firstAttribute="leading" secondItem="XRq-Gx-E26" secondAttribute="trailing" constant="-1" id="Osf-uN-0cb"/>
                             <constraint firstItem="XRq-Gx-E26" firstAttribute="width" secondItem="J9R-PK-aQG" secondAttribute="width" multiplier="0.5" id="Wex-rD-SsR"/>
@@ -133,7 +141,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ChairNormal" width="603" height="532.5"/>
-        <image name="remote_icon" width="30" height="30"/>
+        <image name="chair_full_normal" width="2086" height="1623"/>
+        <image name="chair_normal_arrows" width="2086" height="1623"/>
+        <image name="remote_icon" width="20" height="20"/>
     </resources>
 </document>

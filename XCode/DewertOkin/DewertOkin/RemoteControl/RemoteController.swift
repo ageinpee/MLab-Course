@@ -29,7 +29,16 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
     var panState = UIGestureRecognizer.State.ended
-
+    let filled_style = ["chair_full_normal",
+                        "chair_full_chestUp",
+                        "chair_full_chestDown",
+                        "chair_full_feetUp",
+                        "chair_full_feetDown"]
+    let empty_style = ["chair_empty_normal",
+                       "chair_empty_chestUp",
+                       "chair_empty_chestDown",
+                       "chair_empty_feetUp",
+                       "chair_empty_feetDown"]
     
     //----------------------------------------
     //--------- Fancy Remote Setup -----------
@@ -51,7 +60,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         AddPresetsButtonObj.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(displaySteps)))
         
-        Image.image = UIImage(named: "ChairNormal")
+        Image.image = UIImage(named: "chair_full_normal")
         Image.contentMode = .scaleAspectFit
         
     }
@@ -131,16 +140,16 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         case .changed:
             if(recognizer.translation(in: rightPanArea).y >= 40) {
                 print("moving down" + String(Int(recognizer.translation(in: rightPanArea).y)))
-                Image.image = UIImage(named: "ChairChestDown")
+                Image.image = UIImage(named: "chair_full_chestDown")
                 goDown()
             } else if (recognizer.translation(in: rightPanArea).y <= -40) {
                 print("moving up" + String(Int(recognizer.translation(in: rightPanArea).y)))
-                Image.image = UIImage(named: "ChairChestUp")
+                Image.image = UIImage(named: "chair_full_chestUp")
                 goUp()
             }
         case .ended:
             print("Pan in Right Area ended")
-            Image.image = UIImage(named: "ChairNormal")
+            Image.image = UIImage(named: "chair_full_normal")
         default: break
         }
     }
@@ -155,17 +164,17 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         case .changed:
             if(recognizer.translation(in: leftPanArea).y >= 40) {
                 print("moving down" + String(Int(recognizer.translation(in: leftPanArea).y)))
-                 Image.image = UIImage(named: "ChairFeetDown")
+                 Image.image = UIImage(named: "chair_full_feetDown")
                 // goFeetDown()
             } else if (recognizer.translation(in: leftPanArea).y <= -40) {
                 print("moving up" + String(Int(recognizer.translation(in: leftPanArea).y)))
-                 Image.image = UIImage(named: "ChairFeetUp")
+                 Image.image = UIImage(named: "chair_full_feetUp")
                 // goFeetUp()
             }
             break
         case .ended:
             print("Pan in Left Area ended")
-            Image.image = UIImage(named: "ChairNormal")
+            Image.image = UIImage(named: "chair_full_normal")
             break
         default: break
         }
