@@ -15,7 +15,8 @@ class BluetoothFlow: BluetoothCoordinator {
     private var waitForPeripheralHandler: () -> Void = { }
     private var waitForBluetooth: () -> Void = { }
     private var pairingHandler: (Bool) -> Void = { _ in }
-    private var pairingWorkitem: DispatchWorkItem?
+    private var pairingWorkItem: DispatchWorkItem?
+    private var connectedWorkItem: DispatchWorkItem?
     
     func waitForPeripheral(completion: @escaping () -> Void) {
         guard !self.pairing else {
@@ -51,8 +52,8 @@ class BluetoothFlow: BluetoothCoordinator {
             return
         }
         self.pairing = true
-        self.pairingWorkitem = DispatchWorkItem { self.pairingFailed() }
-        DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkitem!)
+        self.pairingWorkItem = DispatchWorkItem { self.pairingFailed() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkItem!)
 
         self.pairingHandler = completion
         self.bluetoothService?.centralManager.connect(peripheral)
@@ -62,7 +63,7 @@ class BluetoothFlow: BluetoothCoordinator {
     func cancel() {
         self.bluetoothService?.stopScan()
         self.bluetoothService?.disconnect()
-        self.pairingWorkitem?.cancel()
+        self.pairingWorkItem?.cancel()
         
         self.pairing = false
         self.pairingHandler = { _ in }
@@ -73,7 +74,7 @@ class BluetoothFlow: BluetoothCoordinator {
     override func ableToWrite() {
         guard self.pairing else { return }
         self.bluetoothService?.getCharacteristics()
-        self.pairingWorkitem?.cancel()
+        self.pairingWorkItem?.cancel()
     }
     
     override func connect(peripheral: CBPeripheral, completion: @escaping (Bool) -> Void) {
@@ -83,14 +84,19 @@ class BluetoothFlow: BluetoothCoordinator {
             return
         }
         self.pairing = true
-        self.pairingWorkitem = DispatchWorkItem { self.pairingFailed() }
-        DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkitem!)
+        self.pairingWorkItem = DispatchWorkItem { self.pairingFailed() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkItem!)
         
         self.pairingHandler = completion
         self.bluetoothService?.centralManager.connect(peripheral)
-        guard self.bluetoothService?.connectedPeripheral != nil else { return }
-        pairing = false
-        paired = true
+        connectedWorkItem = DispatchWorkItem {
+            if self.bluetoothService?.connectedPeripheral != nil {
+                self.pairing = false
+                self.paired = true
+                self.pairingWorkItem?.cancel()
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + (self.timeout / 2), execute: self.connectedWorkItem!)
     }
     
     override func disconnected(failure: Bool) {
