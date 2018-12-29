@@ -66,6 +66,8 @@
 		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
 		FAE52D3821D784F400121B54 /* deviceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3721D784F400121B54 /* deviceStyle.swift */; };
 		FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */; };
+		FAE52D3C21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */; };
+		FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +154,8 @@
 		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
 		FAE52D3721D784F400121B54 /* deviceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deviceStyle.swift; sourceTree = "<group>"; };
 		FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtension.swift; sourceTree = "<group>"; };
+		FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionDarkMode.swift; sourceTree = "<group>"; };
+		FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionBLE.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,7 +280,9 @@
 				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
 				CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */,
 				FABC760E21B03592003BEF66 /* RemoteController.swift */,
+				FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */,
 				FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */,
+				FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */,
 				FAE52D3721D784F400121B54 /* deviceStyle.swift */,
 			);
 			path = RemoteControl;
@@ -542,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */,
+				FAE52D3C21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift in Sources */,
 				CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */,
 				CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */,
 				CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */,
@@ -549,6 +556,7 @@
 				CD945294219C429400280A66 /* Accessorie.swift in Sources */,
 				FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */,
 				CDFFC97021C04776005C5821 /* OkinStore.swift in Sources */,
+				FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */,
 				CDB5B11821B5BA38000D92A4 /* OldRemoteViewController.swift in Sources */,
 				031EE20521A2EEB600E9E91E /* Timer+CoreDataClass.swift in Sources */,
 				03AE0EC021BFB4EA00CEDC81 /* BluetoothPairingViewController.swift in Sources */,
