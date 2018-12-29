@@ -68,6 +68,7 @@
 		FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */; };
 		FAE52D3C21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */; };
 		FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */; };
+		FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtension.swift; sourceTree = "<group>"; };
 		FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionDarkMode.swift; sourceTree = "<group>"; };
 		FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionBLE.swift; sourceTree = "<group>"; };
+		FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pullUpSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 			children = (
 				FA2C9CFC21AF28E20018545A /* Remote.storyboard */,
 				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
+				FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */,
 				CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */,
 				FABC760E21B03592003BEF66 /* RemoteController.swift */,
 				FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */,
@@ -581,6 +584,7 @@
 				035B860721C536CE00A032AE /* BluetoothPeripheral.swift in Sources */,
 				CDC3FDED21A48C8500EFF523 /* SectionTableViewCell.swift in Sources */,
 				0333052921BB352200603519 /* Bluetooth.swift in Sources */,
+				FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */,
 				03CCD9ED21CB8494007D6109 /* BluetoothPairingSuccessViewController.swift in Sources */,
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
