@@ -66,7 +66,7 @@ class RFPairingController3: UIViewController {
         
         animationView.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
         
-        UIView.animate(withDuration: 1.0, delay: 3.0, animations: {
+        UIView.animate(withDuration: 1.0, delay: 2.5, animations: {
             animationView.transform = CGAffineTransform.identity
         })
         
