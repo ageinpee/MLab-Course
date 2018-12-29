@@ -64,6 +64,8 @@
 		FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* Remote.storyboard */; };
 		FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC760E21B03592003BEF66 /* RemoteController.swift */; };
 		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
+		FAE52D3821D784F400121B54 /* deviceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3721D784F400121B54 /* deviceStyle.swift */; };
+		FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +150,8 @@
 		FA2C9CFC21AF28E20018545A /* Remote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Remote.storyboard; sourceTree = "<group>"; };
 		FABC760E21B03592003BEF66 /* RemoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteController.swift; sourceTree = "<group>"; };
 		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
+		FAE52D3721D784F400121B54 /* deviceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deviceStyle.swift; sourceTree = "<group>"; };
+		FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +276,8 @@
 				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
 				CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */,
 				FABC760E21B03592003BEF66 /* RemoteController.swift */,
+				FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */,
+				FAE52D3721D784F400121B54 /* deviceStyle.swift */,
 			);
 			path = RemoteControl;
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 				CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */,
 				CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */,
 				CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */,
+				FAE52D3821D784F400121B54 /* deviceStyle.swift in Sources */,
 				CD945294219C429400280A66 /* Accessorie.swift in Sources */,
 				FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */,
 				CDFFC97021C04776005C5821 /* OkinStore.swift in Sources */,
@@ -557,6 +564,7 @@
 				031EE20621A2EEB600E9E91E /* Timer+CoreDataProperties.swift in Sources */,
 				03EA45C8219B26BF0097F099 /* AddTimerViewController.swift in Sources */,
 				CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */,
+				FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */,
 				03E98758219447BC00189C97 /* TimerListViewController.swift in Sources */,
 				CD4E7CDB21C99027002D3873 /* DevicesTableViewController.swift in Sources */,
 				FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */,
