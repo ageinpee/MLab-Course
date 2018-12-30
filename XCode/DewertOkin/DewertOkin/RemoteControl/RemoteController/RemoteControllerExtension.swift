@@ -28,19 +28,19 @@ extension RemoteController {
         PresetsButtonObj.layer.cornerRadius = width/2
         PresetsButtonObj.layer.masksToBounds = true
         PresetsButtonObj.layer.borderWidth = 1
-        PresetsButtonObj.layer.borderColor = UIColor.gray.cgColor
+        PresetsButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
         
-        width = AddPresetsButtonObj.frame.width
-        AddPresetsButtonObj.layer.cornerRadius = width/2
-        AddPresetsButtonObj.layer.masksToBounds = true
-        AddPresetsButtonObj.layer.borderWidth = 1
-        AddPresetsButtonObj.layer.borderColor = UIColor.gray.cgColor
+        width = TimerButtonObj.frame.width
+        TimerButtonObj.layer.cornerRadius = width/2
+        TimerButtonObj.layer.masksToBounds = true
+        TimerButtonObj.layer.borderWidth = 1
+        TimerButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
         
         width = ExtraFunctionsButtonObj.frame.width
         ExtraFunctionsButtonObj.layer.cornerRadius = width/2
         ExtraFunctionsButtonObj.layer.masksToBounds = true
         ExtraFunctionsButtonObj.layer.borderWidth = 1
-        ExtraFunctionsButtonObj.layer.borderColor = UIColor.gray.cgColor
+        ExtraFunctionsButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
     }
     
     @objc

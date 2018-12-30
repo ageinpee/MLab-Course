@@ -28,7 +28,7 @@ extension RemoteController {
         self.currentDeviceLabel.textColor = .white
         self.stepsLabel.textColor = .white
         self.PresetsButtonObj.setTitleColor(UIColor.orange, for: .normal)
-        self.AddPresetsButtonObj.setTitleColor(UIColor.orange, for: .normal)
+        self.TimerButtonObj.setTitleColor(UIColor.orange, for: .normal)
         self.ExtraFunctionsButtonObj.setTitleColor(UIColor.orange, for: .normal)
     }
     
@@ -43,7 +43,7 @@ extension RemoteController {
         self.currentDeviceLabel.textColor = .black
         self.stepsLabel.textColor = .black
         self.PresetsButtonObj.setTitleColor(nil, for: .normal)
-        self.AddPresetsButtonObj.setTitleColor(nil, for: .normal)
+        self.TimerButtonObj.setTitleColor(nil, for: .normal)
         self.ExtraFunctionsButtonObj.setTitleColor(nil, for: .normal)
     }
     

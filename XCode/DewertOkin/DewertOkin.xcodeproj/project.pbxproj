@@ -69,6 +69,10 @@
 		FAE52D3C21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */; };
 		FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */; };
 		FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */; };
+		FAE52D4321D7BE5400121B54 /* PresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4221D7BE5400121B54 /* PresetsController.swift */; };
+		FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4421D7BEBF00121B54 /* ExtraFunctionsController.swift */; };
+		FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4621D902E000121B54 /* ExtraFunctionsControllerExtension.swift */; };
+		FAE52D4B21D909BD00121B54 /* PresetsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +162,10 @@
 		FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionDarkMode.swift; sourceTree = "<group>"; };
 		FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionBLE.swift; sourceTree = "<group>"; };
 		FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pullUpSegue.swift; sourceTree = "<group>"; };
+		FAE52D4221D7BE5400121B54 /* PresetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsController.swift; sourceTree = "<group>"; };
+		FAE52D4421D7BEBF00121B54 /* ExtraFunctionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctionsController.swift; sourceTree = "<group>"; };
+		FAE52D4621D902E000121B54 /* ExtraFunctionsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctionsControllerExtension.swift; sourceTree = "<group>"; };
+		FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,11 +289,10 @@
 				FA2C9CFC21AF28E20018545A /* Remote.storyboard */,
 				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
 				FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */,
+				FAE52D4121D7BE0B00121B54 /* RemoteController */,
 				CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */,
-				FABC760E21B03592003BEF66 /* RemoteController.swift */,
-				FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */,
-				FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */,
-				FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */,
+				FAE52D4821D902E600121B54 /* ExtraFunctionsController */,
+				FAE52D4921D9099300121B54 /* PresetsController */,
 				FAE52D3721D784F400121B54 /* deviceStyle.swift */,
 			);
 			path = RemoteControl;
@@ -399,6 +406,35 @@
 				CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */,
 			);
 			path = "Presets-Reminder-Timer";
+			sourceTree = "<group>";
+		};
+		FAE52D4121D7BE0B00121B54 /* RemoteController */ = {
+			isa = PBXGroup;
+			children = (
+				FABC760E21B03592003BEF66 /* RemoteController.swift */,
+				FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */,
+				FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */,
+				FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */,
+			);
+			path = RemoteController;
+			sourceTree = "<group>";
+		};
+		FAE52D4821D902E600121B54 /* ExtraFunctionsController */ = {
+			isa = PBXGroup;
+			children = (
+				FAE52D4421D7BEBF00121B54 /* ExtraFunctionsController.swift */,
+				FAE52D4621D902E000121B54 /* ExtraFunctionsControllerExtension.swift */,
+			);
+			path = ExtraFunctionsController;
+			sourceTree = "<group>";
+		};
+		FAE52D4921D9099300121B54 /* PresetsController */ = {
+			isa = PBXGroup;
+			children = (
+				FAE52D4221D7BE5400121B54 /* PresetsController.swift */,
+				FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */,
+			);
+			path = PresetsController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -569,11 +605,13 @@
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
+				FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */,
 				0333052721BB34E800603519 /* BluetoothFlow.swift in Sources */,
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
 				CD1FA50421C5ABFF003A28CE /* PresetTableViewCell.swift in Sources */,
 				031EE20621A2EEB600E9E91E /* Timer+CoreDataProperties.swift in Sources */,
 				03EA45C8219B26BF0097F099 /* AddTimerViewController.swift in Sources */,
+				FAE52D4321D7BE5400121B54 /* PresetsController.swift in Sources */,
 				CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */,
 				FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */,
 				03E98758219447BC00189C97 /* TimerListViewController.swift in Sources */,
@@ -582,6 +620,7 @@
 				03E9875C219447E000189C97 /* Reminders.swift in Sources */,
 				0333052521BB34C200603519 /* BluetoothCoordinator.swift in Sources */,
 				035B860721C536CE00A032AE /* BluetoothPeripheral.swift in Sources */,
+				FAE52D4B21D909BD00121B54 /* PresetsControllerExtension.swift in Sources */,
 				CDC3FDED21A48C8500EFF523 /* SectionTableViewCell.swift in Sources */,
 				0333052921BB352200603519 /* Bluetooth.swift in Sources */,
 				FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */,
@@ -590,6 +629,7 @@
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
+				FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				CDFFC96E21C0438E005C5821 /* NearestVendorViewController.swift in Sources */,

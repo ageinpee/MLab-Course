@@ -33,7 +33,7 @@
                                 </constraints>
                                 <state key="normal" title="Presets"/>
                                 <connections>
-                                    <action selector="PresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="ieX-4e-Mfh"/>
+                                    <segue destination="7U7-yR-P4u" kind="custom" customClass="pullUpSegue" customModule="DewertOkin" customModuleProvider="target" id="8t9-dl-DFs"/>
                                 </connections>
                             </button>
                             <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chair_full_normal" translatesAutoresizingMaskIntoConstraints="NO" id="J9R-PK-aQG">
@@ -50,29 +50,26 @@
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LG-TT-Cct" userLabel="Extra Functions Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LG-TT-Cct" userLabel="Timer Button">
                                 <rect key="frame" x="285" y="717" width="56" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Bvm-A0-got"/>
                                     <constraint firstAttribute="width" constant="56" id="h1x-6j-5Kk"/>
                                     <constraint firstAttribute="width" secondItem="7LG-TT-Cct" secondAttribute="height" multiplier="1:1" priority="900" id="hX4-x2-4US"/>
                                 </constraints>
-                                <state key="normal" title="Extras"/>
-                                <connections>
-                                    <action selector="ExtraFunctions:" destination="h1o-HI-eVS" eventType="touchUpInside" id="dC0-au-gKQ"/>
-                                </connections>
+                                <state key="normal" title="Timer"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-Wp-KTM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-Wp-KTM" userLabel="Extra Functions Button">
                                 <rect key="frame" x="179" y="717" width="56" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="1tj-Ex-XXt"/>
                                     <constraint firstAttribute="width" secondItem="Xjl-Wp-KTM" secondAttribute="height" multiplier="1:1" priority="900" id="YD3-gf-GFW"/>
                                     <constraint firstAttribute="height" constant="56" id="bn0-jd-ch4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <state key="normal" title="+"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Extras"/>
                                 <connections>
-                                    <action selector="AddPresetsButton:" destination="h1o-HI-eVS" eventType="touchUpInside" id="Qwe-8D-j5C"/>
+                                    <segue destination="dhz-n7-KIU" kind="custom" customClass="pullUpSegue" customModule="DewertOkin" customModuleProvider="target" id="3OI-rJ-yRb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️ 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-8C-Su0">
@@ -125,10 +122,10 @@
                     <tabBarItem key="tabBarItem" title="Remote" image="remote_icon" id="8bx-qj-Lc2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="AddPresetsButtonObj" destination="Xjl-Wp-KTM" id="Is4-zt-G04"/>
-                        <outlet property="ExtraFunctionsButtonObj" destination="7LG-TT-Cct" id="0Ym-6e-Vhu"/>
+                        <outlet property="ExtraFunctionsButtonObj" destination="Xjl-Wp-KTM" id="Fv4-cb-j6u"/>
                         <outlet property="Image" destination="J9R-PK-aQG" id="jXg-Mc-YrR"/>
                         <outlet property="PresetsButtonObj" destination="0YV-jW-udd" id="Ytd-hR-vis"/>
+                        <outlet property="TimerButtonObj" destination="7LG-TT-Cct" id="XWi-Hj-Isc"/>
                         <outlet property="arrowsImageView" destination="DnC-Xu-Jbg" id="oYT-nk-h23"/>
                         <outlet property="currentDeviceLabel" destination="FEt-Ft-Val" id="OOU-oC-Jzc"/>
                         <outlet property="leftPanArea" destination="XRq-Gx-E26" id="SAM-At-cLd"/>
@@ -140,10 +137,135 @@
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="26.116071428571427"/>
         </scene>
+        <!--Extra Functions Controller-->
+        <scene sceneID="xWQ-VC-bVW">
+            <objects>
+                <viewController id="dhz-n7-KIU" customClass="ExtraFunctionsController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bVY-Xs-AHm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="more functions of your device" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA9-hk-D9x">
+                                <rect key="frame" x="50" y="94" width="314" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KyL-s2-RUM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEs-Jp-XXs">
+                                <rect key="frame" x="20" y="164" width="374" height="678"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydd-5b-u6c">
+                                <rect key="frame" x="30" y="74" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1iS-a3-Q30"/>
+                                    <constraint firstAttribute="width" constant="40" id="h4O-An-OHA"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="sYJ-lk-Ai1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZA9-hk-D9x" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="50" id="8a0-62-19L"/>
+                            <constraint firstItem="ydd-5b-u6c" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="30" id="Dyc-UE-jOo"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="ZA9-hk-D9x" secondAttribute="trailing" constant="50" id="KAI-VE-ub5"/>
+                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="20" id="M5A-Uz-M96"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="bottom" constant="20" id="S8s-ej-7IM"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="KEs-Jp-XXs" secondAttribute="trailing" constant="20" id="WIm-Du-VNG"/>
+                            <constraint firstItem="ZA9-hk-D9x" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="50" id="XnG-qo-GQX"/>
+                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="top" secondItem="ZA9-hk-D9x" secondAttribute="bottom" constant="20" id="ekM-o0-ua0"/>
+                            <constraint firstItem="ydd-5b-u6c" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="30" id="nfO-Fd-cyz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p1V-fM-tHG"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="KEs-Jp-XXs" id="d0D-x2-kJH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXG-di-7HQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="26"/>
+        </scene>
+        <!--Presets Controller-->
+        <scene sceneID="xaU-ZF-daG">
+            <objects>
+                <viewController id="7U7-yR-P4u" customClass="PresetsController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UA8-g2-fyu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choose a preset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qv0-SW-Iyx">
+                                <rect key="frame" x="50" y="94" width="314" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="27C-ET-t9u"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="FQT-1T-PTL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Iz-5q-NNV">
+                                <rect key="frame" x="30" y="74" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BAx-BE-lV7"/>
+                                    <constraint firstAttribute="width" constant="40" id="Wdt-KU-GRR"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="cCd-WO-O29"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYZ-ra-aut">
+                                <rect key="frame" x="182" y="762" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="1L2-dU-qd8"/>
+                                    <constraint firstAttribute="height" constant="50" id="KZd-7n-ynb"/>
+                                    <constraint firstAttribute="width" secondItem="AYZ-ra-aut" secondAttribute="height" multiplier="1:1" id="Ufw-DW-yi5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <state key="normal" title="+"/>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-iL-o4J">
+                                <rect key="frame" x="20" y="164" width="374" height="678"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lsk-k0-a00" firstAttribute="trailing" secondItem="ccp-iL-o4J" secondAttribute="trailing" constant="20" id="5pj-xq-m1u"/>
+                            <constraint firstItem="ccp-iL-o4J" firstAttribute="top" secondItem="Qv0-SW-Iyx" secondAttribute="bottom" constant="20" id="8iy-gm-ZpH"/>
+                            <constraint firstItem="4Iz-5q-NNV" firstAttribute="leading" secondItem="Lsk-k0-a00" secondAttribute="leading" constant="30" id="V3J-rn-0K2"/>
+                            <constraint firstItem="Lsk-k0-a00" firstAttribute="bottom" secondItem="ccp-iL-o4J" secondAttribute="bottom" constant="20" id="VBl-a6-NCG"/>
+                            <constraint firstItem="Qv0-SW-Iyx" firstAttribute="leading" secondItem="Lsk-k0-a00" secondAttribute="leading" constant="50" id="Y9d-18-n03"/>
+                            <constraint firstItem="AYZ-ra-aut" firstAttribute="centerX" secondItem="UA8-g2-fyu" secondAttribute="centerX" id="cjw-Ji-EV5"/>
+                            <constraint firstItem="Lsk-k0-a00" firstAttribute="trailing" secondItem="Qv0-SW-Iyx" secondAttribute="trailing" constant="50" id="eva-QO-lAN"/>
+                            <constraint firstItem="Lsk-k0-a00" firstAttribute="bottom" secondItem="AYZ-ra-aut" secondAttribute="bottom" constant="50" id="k0Q-XP-Mjc"/>
+                            <constraint firstItem="4Iz-5q-NNV" firstAttribute="top" secondItem="Lsk-k0-a00" secondAttribute="top" constant="30" id="qBN-i0-KAT"/>
+                            <constraint firstItem="ccp-iL-o4J" firstAttribute="leading" secondItem="Lsk-k0-a00" secondAttribute="leading" constant="20" id="qHq-LC-6bp"/>
+                            <constraint firstItem="Qv0-SW-Iyx" firstAttribute="top" secondItem="Lsk-k0-a00" secondAttribute="top" constant="50" id="rtp-l5-u50"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lsk-k0-a00"/>
+                    </view>
+                    <connections>
+                        <outlet property="addPresetButton" destination="AYZ-ra-aut" id="VZs-SR-aLr"/>
+                        <outlet property="scrollView" destination="ccp-iL-o4J" id="Ltn-ju-eGA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tds-zj-a6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="735"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chair_full_normal" width="2086" height="1623"/>
         <image name="chair_normal_arrows" width="2086" height="1623"/>
         <image name="remote_icon" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cCd-WO-O29"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -12,21 +12,48 @@ import UIKit
 class pullUpSegue: UIStoryboardSegue {
     
     override func perform() {
-        
+        animateSegue()
     }
     
     func animateSegue() {
+        let toViewController = self.destination
+        let fromViewController = self.source
         
-        // Assign the source and destination views to local variables.
-        var firstVCView = self.source.view as UIView!
-        var secondVCView = self.destination.view as UIView!
+        let offset = toViewController.view.bounds.height
+        let containerView = fromViewController.view.superview
         
-        // Get the screen width and height.
-        let screenWidth = UIScreen.main.bounds.size.width
-        let screenHeight = UIScreen.main.bounds.size.height
+        //adding views
+        containerView?.addSubview(toViewController.view)
         
-        // Specify the initial position of the destination view.
-        secondVCView!.frame = CGRect(0.0, screenHeight, screenWidth, screenHeight)
+        toViewController.view.transform = CGAffineTransform(translationX:0, y: offset)
         
+        UIView.animate(withDuration: 0.7, delay: 0, options: .allowUserInteraction, animations: {
+            toViewController.view.transform = CGAffineTransform.identity
+        }) { success in
+            fromViewController.present(toViewController, animated: false, completion: nil)
+        }
+    }
+}
+
+class pullUpUnwindSegue: UIStoryboardSegue {
+    override func perform() {
+        animateUnwindSegue()
+    }
+    
+    func animateUnwindSegue() {
+        let toViewController = self.destination
+        let fromViewController = self.source
+        
+        let offset = toViewController.view.bounds.height
+        let containerView = fromViewController.view.superview
+        
+        //adding views
+        containerView?.insertSubview(toViewController.view, belowSubview: fromViewController.view)
+        
+        UIView.animate(withDuration: 0.7,
+                       delay: 0,
+                       options: .allowUserInteraction,
+                       animations: { fromViewController.view.transform = CGAffineTransform(translationX: 0, y: offset) })
+                        { success in fromViewController.present(toViewController, animated: false, completion: nil) }
     }
 }

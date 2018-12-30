@@ -17,8 +17,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //----------------------------------------
     //------ Fancy Remote UI-Elements --------
     @IBOutlet weak var PresetsButtonObj: UIButton!
-    @IBOutlet weak var AddPresetsButtonObj: UIButton!
     @IBOutlet weak var ExtraFunctionsButtonObj: UIButton!
+    @IBOutlet weak var TimerButtonObj: UIButton!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var arrowsImageView: UIImageView!
     @IBOutlet weak var stepsLabel: UILabel!
@@ -81,7 +81,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         swipeRec.direction = .up
         ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
         
-        AddPresetsButtonObj.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(displaySteps)))
+        ExtraFunctionsButtonObj.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(displaySteps)))
         
         Image.image = currentStyle.stylesImages[0]
         Image.contentMode = .scaleAspectFit
@@ -103,7 +103,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     //---------------------------------------
     //---------- Remote Actions -------------
-    
+    /*
     @IBAction func PresetsButton(_ sender: Any) {
         //shall open presets menu/page/sheet to select a preset
         let alert = UIAlertController(title: "Choose Preset", message: "", preferredStyle: .actionSheet)
@@ -115,11 +115,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
         print("Presets Button pressed")
-    }
-    
-    @IBAction func AddPresetsButton(_ sender: Any) {
-        //shall trigger both buttons that are used to save a preset
-        print("Add Presets Button pressed")
     }
     
     @IBAction func ExtraFunctions(_ sender: Any) {
@@ -135,6 +130,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         self.present(alert, animated: true, completion: nil)
         print("Extra Functions Button pressed")
     }
+ */
     
     
     //-------------------------------------------
