@@ -125,6 +125,7 @@ class RecommendationsLabelCell: UICollectionViewCell {
         let recommendationsSwitch: UISwitch = {
             let newSwitch  = UISwitch()
             newSwitch.isOn = true
+            newSwitch.addTarget(self, action: #selector(handleRecommendationsSliderChange), for: .valueChanged)
             return newSwitch
         }()
         
@@ -134,6 +135,14 @@ class RecommendationsLabelCell: UICollectionViewCell {
         recommendationsSwitch.translatesAutoresizingMaskIntoConstraints = false
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-[v1]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : recommendationsLabel, "v1" : recommendationsSwitch]))
         addConstraint(NSLayoutConstraint(item: recommendationsLabel, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
+    }
+    
+    @objc func handleRecommendationsSliderChange(sender: UISwitch) {
+        if sender.isOn {
+            print("Switch is on")
+        } else {
+            print("Switch is off")
+        }
     }
 }
 
@@ -159,11 +168,14 @@ class StepsViewCell: UICollectionViewCell {
             let label = UILabel()
             label.numberOfLines = 1
             label.textAlignment = .right
+            label.textColor = .lightGray
             return label
         }()
         
-        Health.getTodaysSteps { result in
-            stepsAmountLabel.text = String(Int(result))
+        Health.shared.getStepsForTimeInterval(timeInSeconds: 3600) { steps in
+            if let steps = steps {
+                stepsAmountLabel.text = String(Int(steps))
+            }
         }
         
         addSubview(stepsTextLabel)

@@ -42,7 +42,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         Themes.setupTheming(for: self)
 
         
-        Health.requestHealthKitPermission()
+        Health.shared.requestHealthKitPermission()
         
         let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
         swipeRec.direction = .up
@@ -50,9 +50,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         Image.image = UIImage(named: "ChairNormal")
         Image.contentMode = .scaleAspectFit
-        
-        let timer = Timer.scheduledTimer(timeInterval: 180.0, target: self, selector: #selector(checkSteps), userInfo: nil, repeats: true)
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -394,20 +391,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //-------------------------------------------
     //--------                          ---------
     
-    @objc
-    private func checkSteps() {
-        guard Health.healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!) == .sharingAuthorized else { return }
-        Health.getTodaysSteps { result in
-            print(result)
-            print(Int.random(in: 1...100))
-            
-            if result <= 1000 {
-                print("Steps below 1000")
-            } else {
-                print("Steps above 1000")
-            }
-            
-        }
-    }
+
 }
 

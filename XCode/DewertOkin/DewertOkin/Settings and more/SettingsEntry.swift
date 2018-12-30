@@ -22,4 +22,5 @@ enum SettingsEntry: String {
     case nearestVendor = "Nearest Vendor"
     case manageDevices = "Manage Devices"
     case health = "Health"
+    case test = "Test"
 }

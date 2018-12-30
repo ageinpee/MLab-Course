@@ -12,9 +12,7 @@ import AVFoundation
 class SettingTableViewController: UITableViewController, Themeable {
     
     private let settingsEntries: [SettingsEntry] = [.manageDevices, .deviceInfo, .health, .achievements, .presets, .useOldRemote,
-                        .nearestVendor, .accessories, .about, .darkMode]
-    
-    private let search = UISearchController(searchResultsController: nil)
+                        .nearestVendor, .accessories, .about, .darkMode, .test]
     
     
     //-----Achievement "Button Maniac"-related-----
@@ -68,8 +66,6 @@ class SettingTableViewController: UITableViewController, Themeable {
         navigationItem.title = "More"
         //navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        search.searchResultsUpdater = self
-        self.navigationItem.searchController = search
         self.barButtonItem.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
 
@@ -143,8 +139,9 @@ class SettingTableViewController: UITableViewController, Themeable {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries.firstIndex(of: .health)) {
             cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .test)) {
+            cell.accessoryType = .disclosureIndicator
         }
-        // Configure the cell...
 
         return cell
     }
@@ -160,7 +157,14 @@ class SettingTableViewController: UITableViewController, Themeable {
             pushDevicesStoryboard()
         } else if (indexPath.row == settingsEntries.firstIndex(of: .health)) {
             pushHealthController()
+        } else if (indexPath.row == settingsEntries.firstIndex(of: .test)) {
+            pushTestController()
         }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func pushTestController() {
+        present(UINavigationController(rootViewController: NewTimerListTableViewController()), animated: true, completion: nil)
     }
     
     private func pushHealthController() {

@@ -50,6 +50,9 @@
 		CD94528E219C3D9100280A66 /* AccessoriesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD94528D219C3D9100280A66 /* AccessoriesStoryboard.storyboard */; };
 		CD945294219C429400280A66 /* Accessorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD945293219C429400280A66 /* Accessorie.swift */; };
 		CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */; };
+		CD97E84121D6F5D8009C64E4 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
+		CD97E84321D94250009C64E4 /* NewTimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E84221D94250009C64E4 /* NewTimerTableViewController.swift */; };
+		CD97E84521D986A4009C64E4 /* NewTimerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */; };
 		CDB5B11621B5B9FE000D92A4 /* OldRemote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */; };
 		CDB5B11821B5BA38000D92A4 /* OldRemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */; };
 		CDBCC0BE21C7A85A0014451C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBCC0BD21C7A85A0014451C /* HealthKit.framework */; };
@@ -64,7 +67,6 @@
 		FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA187F44219C25E700DE3BC0 /* addReminder.swift */; };
 		FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* Remote.storyboard */; };
 		FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC760E21B03592003BEF66 /* RemoteController.swift */; };
-		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		CD94528D219C3D9100280A66 /* AccessoriesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccessoriesStoryboard.storyboard; sourceTree = "<group>"; };
 		CD945293219C429400280A66 /* Accessorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessorie.swift; sourceTree = "<group>"; };
 		CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
+		CD97E84221D94250009C64E4 /* NewTimerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimerTableViewController.swift; sourceTree = "<group>"; };
+		CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimerListTableViewController.swift; sourceTree = "<group>"; };
 		CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OldRemote.storyboard; sourceTree = "<group>"; };
 		CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldRemoteViewController.swift; sourceTree = "<group>"; };
 		CDBCC0BD21C7A85A0014451C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -364,6 +368,8 @@
 				03E98757219447BC00189C97 /* TimerListViewController.swift */,
 				031EE20321A2EEB600E9E91E /* Timer+CoreDataClass.swift */,
 				031EE20421A2EEB600E9E91E /* Timer+CoreDataProperties.swift */,
+				CD97E84221D94250009C64E4 /* NewTimerTableViewController.swift */,
+				CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD97E84121D6F5D8009C64E4 /* AchievementsTableViewController.swift in Sources */,
 				CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */,
 				CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */,
 				CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */,
@@ -554,6 +561,7 @@
 				CD1FA50221C593D3003A28CE /* TextInputTableViewCell.swift in Sources */,
 				03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */,
 				CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */,
+				CD97E84521D986A4009C64E4 /* NewTimerListTableViewController.swift in Sources */,
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
 				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
@@ -562,6 +570,7 @@
 				CD1FA50421C5ABFF003A28CE /* PresetTableViewCell.swift in Sources */,
 				031EE20621A2EEB600E9E91E /* Timer+CoreDataProperties.swift in Sources */,
 				03EA45C8219B26BF0097F099 /* AddTimerViewController.swift in Sources */,
+				CD97E84321D94250009C64E4 /* NewTimerTableViewController.swift in Sources */,
 				CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */,
 				03E98758219447BC00189C97 /* TimerListViewController.swift in Sources */,
 				CD4E7CDB21C99027002D3873 /* DevicesTableViewController.swift in Sources */,
@@ -574,10 +583,8 @@
 				03CCD9ED21CB8494007D6109 /* BluetoothPairingSuccessViewController.swift in Sources */,
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
-				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
-				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */,
 				CDFFC96E21C0438E005C5821 /* NearestVendorViewController.swift in Sources */,
 			);
