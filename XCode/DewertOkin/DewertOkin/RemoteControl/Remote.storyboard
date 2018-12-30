@@ -220,6 +220,9 @@
                                     <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="cCd-WO-O29"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-iL-o4J">
+                                <rect key="frame" x="20" y="164" width="374" height="678"/>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYZ-ra-aut">
                                 <rect key="frame" x="182" y="762" width="50" height="50"/>
                                 <constraints>
@@ -229,10 +232,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <state key="normal" title="+"/>
+                                <connections>
+                                    <segue destination="R1M-Df-ija" kind="custom" customClass="pullUpSegue" customModule="DewertOkin" customModuleProvider="target" id="r7J-NU-31I"/>
+                                </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-iL-o4J">
-                                <rect key="frame" x="20" y="164" width="374" height="678"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -259,6 +262,81 @@
             </objects>
             <point key="canvasLocation" x="41" y="735"/>
         </scene>
+        <!--Add Preset Controller-->
+        <scene sceneID="1AI-db-4FM">
+            <objects>
+                <viewController id="R1M-Df-ija" customClass="AddPresetController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4bV-FG-PTD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add a name for your preset, bring your device into the desired position and pick a memoryslot your want it to be saved on" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEU-9y-Kq9">
+                                <rect key="frame" x="50" y="124" width="314" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsJ-6q-wi0">
+                                <rect key="frame" x="30" y="74" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QcJ-4P-iaF"/>
+                                    <constraint firstAttribute="width" constant="40" id="Yhe-oo-QfQ"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="7U7-yR-P4u" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="ezb-3d-8hf"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ye-X0-sWD">
+                                <rect key="frame" x="0.0" y="198" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LYv-zK-uGg"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QD5-ux-GQf">
+                                <rect key="frame" x="0.0" y="258" width="414" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Paw-SJ-IhB">
+                                <rect key="frame" x="167" y="762" width="80" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="BI8-Z9-H7m"/>
+                                    <constraint firstAttribute="height" constant="50" id="gjl-MR-yA4"/>
+                                </constraints>
+                                <state key="normal" title="Finished"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dEU-9y-Kq9" firstAttribute="leading" secondItem="cS5-HC-9Mg" secondAttribute="leading" constant="50" id="4uq-HL-7wq"/>
+                            <constraint firstItem="dEU-9y-Kq9" firstAttribute="top" secondItem="cS5-HC-9Mg" secondAttribute="top" constant="80" id="780-S8-vYq"/>
+                            <constraint firstItem="QD5-ux-GQf" firstAttribute="leading" secondItem="cS5-HC-9Mg" secondAttribute="leading" id="7gv-F9-GFW"/>
+                            <constraint firstItem="Paw-SJ-IhB" firstAttribute="centerX" secondItem="4bV-FG-PTD" secondAttribute="centerX" id="IPM-9L-vH7"/>
+                            <constraint firstItem="cS5-HC-9Mg" firstAttribute="bottom" secondItem="Paw-SJ-IhB" secondAttribute="bottom" constant="50" id="Mig-OO-tzl"/>
+                            <constraint firstItem="UsJ-6q-wi0" firstAttribute="top" secondItem="cS5-HC-9Mg" secondAttribute="top" constant="30" id="N8j-Vd-OlU"/>
+                            <constraint firstItem="cS5-HC-9Mg" firstAttribute="trailing" secondItem="QD5-ux-GQf" secondAttribute="trailing" id="Tzl-M7-hMR"/>
+                            <constraint firstItem="3Ye-X0-sWD" firstAttribute="leading" secondItem="cS5-HC-9Mg" secondAttribute="leading" id="VNy-aX-OA9"/>
+                            <constraint firstItem="Paw-SJ-IhB" firstAttribute="top" secondItem="QD5-ux-GQf" secondAttribute="bottom" constant="50" id="Wy3-4S-ZHY"/>
+                            <constraint firstItem="UsJ-6q-wi0" firstAttribute="leading" secondItem="cS5-HC-9Mg" secondAttribute="leading" constant="30" id="g8O-s6-kuw"/>
+                            <constraint firstItem="cS5-HC-9Mg" firstAttribute="trailing" secondItem="dEU-9y-Kq9" secondAttribute="trailing" constant="50" id="kYq-KQ-cRm"/>
+                            <constraint firstItem="QD5-ux-GQf" firstAttribute="top" secondItem="3Ye-X0-sWD" secondAttribute="bottom" constant="20" id="ogH-gD-73l"/>
+                            <constraint firstItem="cS5-HC-9Mg" firstAttribute="trailing" secondItem="3Ye-X0-sWD" secondAttribute="trailing" id="s8X-YM-Ceo"/>
+                            <constraint firstItem="3Ye-X0-sWD" firstAttribute="top" secondItem="dEU-9y-Kq9" secondAttribute="bottom" constant="20" id="yN0-dh-kaj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cS5-HC-9Mg"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonView" destination="QD5-ux-GQf" id="KJE-HG-Uw7"/>
+                        <outlet property="nameTextfield" destination="3Ye-X0-sWD" id="zWr-jU-l7s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ed-NC-ZLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="735"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chair_full_normal" width="2086" height="1623"/>
@@ -266,6 +344,7 @@
         <image name="remote_icon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ezb-3d-8hf"/>
         <segue reference="cCd-WO-O29"/>
     </inferredMetricsTieBreakers>
 </document>
