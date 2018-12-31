@@ -102,6 +102,7 @@ class NewTimerTableViewController: UITableViewController {
                     return cell
                 case 1:
                     datePicker.frame = CGRect(x: 0, y: 0, width: cell.contentView.frame.width, height: 200)
+                    datePicker.date = selectedTimer.timerTime ?? Date()
                     cell.addSubview(datePicker)
                     
                     datePicker.translatesAutoresizingMaskIntoConstraints = false
@@ -216,6 +217,7 @@ class NewTimerTableViewController: UITableViewController {
     
     @objc
     private func datePickerChangedValue(sender: UIDatePicker) {
+        tableView.cellForRow(at: IndexPath(row: 0, section: 1))?.detailTextLabel?.text = sender.date.toString(dateFormat: "HH:mm")
         print(sender.date)
         
     }
@@ -273,9 +275,10 @@ enum TimerSection {
 }
 
 enum RepeatingOptions: String {
-    case never = "never"
-    case daily = "daily"
-    case weekly = "weekly"
-    case weekdays = "weekdays"
-    case weekends = "weekends"
+    case notSet = "Not Set"
+    case never = "Never"
+    case daily = "Daily"
+    case weekly = "Weekly"
+    case weekdays = "Weekdays"
+    case weekends = "Weekends"
 }

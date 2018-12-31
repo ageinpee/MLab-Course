@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class NewTimerListTableViewController: UITableViewController {
     
@@ -38,6 +39,10 @@ class NewTimerListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getSavedData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scheduleNotifications()
     }
 
     // MARK: - Table view data source
@@ -126,6 +131,42 @@ class NewTimerListTableViewController: UITableViewController {
             self.tableView.reloadData()
         } catch {
             print("Couldn't update the TableView, reload!")
+        }
+    }
+    
+    private func scheduleNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllDeliveredNotifications()
+        center.removeAllPendingNotificationRequests()
+        print("Removed all Notifications")
+        for timer in timerList {
+            let content = UNMutableNotificationContent()
+            if let timerName = timer.timerName, let timerTime = timer.timerTime, let repeats = timer.repeatInterval {
+                content.title = NSString.localizedUserNotificationString(forKey: timerName, arguments: nil)
+                content.body = NSString.localizedUserNotificationString(forKey: "Press to execute preset.", arguments: nil)
+                
+                // Configure the trigger for a 7am wakeup.
+                var dateInfo = DateComponents()
+                dateInfo.hour = Calendar.current.component(.hour, from: timerTime)
+                dateInfo.minute = Calendar.current.component(.minute, from: timerTime)
+                var trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+                if repeats != RepeatingOptions.never.rawValue && repeats != RepeatingOptions.notSet.rawValue {
+                    trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
+                }
+              
+                
+                // Create the request object.
+                let request = UNNotificationRequest(identifier: timerName, content: content, trigger: trigger)
+                
+                // Schedule the request.
+                center.add(request) { (error : Error?) in
+                    if let theError = error {
+                        print(theError.localizedDescription)
+                    }
+                }
+                print("Scheduled Notification for timer \(timerName) at \(timerTime) which repeats: \(trigger.repeats)")
+            }
+
         }
     }
 

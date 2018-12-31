@@ -11,7 +11,11 @@ import AVFoundation
 
 class SettingTableViewController: UITableViewController, Themeable {
     
-    private let settingsEntries: [[SettingsEntry]] = [[.manageDevices, .deviceInfo, .nearestVendor], [.presets, .health, .useOldRemote, .darkMode],[.achievements,.accessories, .test]]
+    private let settingsEntries: [[SettingsEntry]] = [
+        [.manageDevices, .deviceInfo, .nearestVendor],
+        [.presets, .health, .useOldRemote, .darkMode],
+        [.achievements,.accessories, .test]
+    ]
     private let settingsSections = ["Devices and Support", "Preferences", "Other"]
     
     
