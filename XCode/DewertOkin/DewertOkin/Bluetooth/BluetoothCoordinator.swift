@@ -24,7 +24,7 @@ class BluetoothCoordinator {
     
     func disconnected(failure: Bool) { }
     
-    func reconnect() { }
+    func reconnect() -> CBPeripheral? { return nil }
     
     func ableToWrite() { }
     

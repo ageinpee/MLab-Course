@@ -15,7 +15,6 @@ class BluetoothFlow: BluetoothCoordinator {
     private var waitForPeripheralHandler: () -> Void = { }
     private var pairingHandler: (Bool) -> Void = { _ in }
     private var pairingWorkItem: DispatchWorkItem?
-    private var connectedWorkItem: DispatchWorkItem?
     
     func waitForPeripheral(completion: @escaping () -> Void) {
         guard !self.pairing else {
