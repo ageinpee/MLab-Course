@@ -53,17 +53,17 @@ extension RemoteController {
             if(recognizer.translation(in: rightPanArea).y >= 40) {
                 print("moving down" + String(Int(recognizer.translation(in: rightPanArea).y)))
                 arrowsImageView.alpha = 0
-                Image.image = currentStyle.stylesImages[2]
+                Image.image = currentStyle.stylesImages[3]
                 goDown()
             } else if (recognizer.translation(in: rightPanArea).y <= -40) {
                 print("moving up" + String(Int(recognizer.translation(in: rightPanArea).y)))
                 arrowsImageView.alpha = 0
-                Image.image = currentStyle.stylesImages[1]
+                Image.image = currentStyle.stylesImages[2]
                 goUp()
             }
         case .ended:
             print("Pan in Right Area ended")
-            Image.image = currentStyle.stylesImages[0]
+            Image.image = currentStyle.stylesImages[1]
             animateFade(withAlpha: opacity)
         default: break
         }
@@ -80,18 +80,18 @@ extension RemoteController {
             if(recognizer.translation(in: leftPanArea).y >= 40) {
                 print("moving down" + String(Int(recognizer.translation(in: leftPanArea).y)))
                 arrowsImageView.alpha = 0
-                Image.image = currentStyle.stylesImages[4]
+                Image.image = currentStyle.stylesImages[5]
                 // goFeetDown()
             } else if (recognizer.translation(in: leftPanArea).y <= -40) {
                 print("moving up" + String(Int(recognizer.translation(in: leftPanArea).y)))
                 arrowsImageView.alpha = 0
-                Image.image = currentStyle.stylesImages[3]
+                Image.image = currentStyle.stylesImages[4]
                 // goFeetUp()
             }
             break
         case .ended:
             print("Pan in Left Area ended")
-            Image.image = currentStyle.stylesImages[0]
+            Image.image = currentStyle.stylesImages[1]
             animateFade(withAlpha: opacity)
             break
         default: break

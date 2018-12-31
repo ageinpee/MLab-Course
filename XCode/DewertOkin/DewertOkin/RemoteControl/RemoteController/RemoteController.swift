@@ -30,19 +30,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
     var panState = UIGestureRecognizer.State.ended
-    let filledStyle = deviceStyle(withStrings: ["chair_full_normal",
-                                                "chair_full_chestUp",
-                                                "chair_full_chestDown",
-                                                "chair_full_feetUp",
-                                                "chair_full_feetDown"])
-    let emptyStyle = deviceStyle(withStrings: ["chair_empty_normal",
-                                               "chair_empty_chestUp",
-                                               "chair_empty_chestDown",
-                                               "chair_empty_feetUp",
-                                               "chair_empty_feetDown"])
     
-    var currentStyle: deviceStyle = deviceStyle()
-    var opacity = CGFloat(0.5)
+    var deviceType: DeviceType = .NaN
+    
+    var currentStyle: DeviceStyle = DeviceStyle()
+    var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
     var underBedLighting: UIAlertAction?
@@ -69,7 +61,9 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        currentStyle = filledStyle
+        deviceType = DeviceType.bed_2Motors
+        currentStyle.setFilledStyle(forDevice: deviceType)
+        
         setupButtons()
         setupPanAreas()
         
@@ -83,7 +77,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         ExtraFunctionsButtonObj.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(displaySteps)))
         
-        Image.image = currentStyle.stylesImages[0]
+        arrowsImageView.image = currentStyle.stylesImages[0]
+        Image.image = currentStyle.stylesImages[1]
         Image.contentMode = .scaleAspectFit
     }
     
