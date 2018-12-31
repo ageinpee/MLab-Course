@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DeviceTimer" representedClassName="DeviceTimer" syncable="YES">
         <attribute name="isEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="repeatInteval" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repeatInterval" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timerTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
@@ -13,6 +13,6 @@
     </entity>
     <elements>
         <element name="DeviceTimer" positionX="0" positionY="0" width="128" height="103"/>
-        <element name="Reminder" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Reminder" positionX="171.94140625" positionY="6.015625" width="128" height="90"/>
     </elements>
 </model>

@@ -60,6 +60,11 @@ class TimerListViewController: UIViewController, Themeable{
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.pushViewController(NewTimerListTableViewController(), animated: true)
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
@@ -142,7 +147,7 @@ extension TimerListViewController: UITableViewDataSource{
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TimerEntryCell", for: indexPath) as? TimerEntryCell {
             
             cell.textLabel?.text = timerList[indexPath.row].timerName
-            cell.detailTextLabel?.text = timerList[indexPath.row].timerTime.toString(dateFormat: "HH:mm")
+            cell.detailTextLabel?.text = timerList[indexPath.row].timerTime?.toString(dateFormat: "HH:mm")
             cell.accessoryView = mySwitch
             mySwitch.setOn(true,animated:true)
             return cell

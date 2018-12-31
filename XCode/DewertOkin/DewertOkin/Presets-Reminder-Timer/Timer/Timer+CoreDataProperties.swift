@@ -18,6 +18,8 @@ extension DeviceTimer {
     }
 
     @NSManaged public var timerName: String?
-    @NSManaged public var timerTime: Date
+    @NSManaged public var timerTime: Date?
+    @NSManaged public var isEnabled: Bool
+    @NSManaged public var repeatInterval: String?
 
 }
