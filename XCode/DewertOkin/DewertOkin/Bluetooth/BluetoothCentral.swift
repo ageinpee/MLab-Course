@@ -41,7 +41,12 @@ extension Bluetooth: CBCentralManagerDelegate {
         print("Connection to control unit established")
         connectedPeripheral = peripheral
         connectedPeripheral!.delegate = self
-        defaults.set(peripheral.identifier.uuidString, forKey: "Peripheral")
+        
+        if !(onceConnectedPeripherals.contains(peripheral.identifier.uuidString)) {
+        onceConnectedPeripherals.append(peripheral.identifier.uuidString)
+        }
+        
+        defaults.set(onceConnectedPeripherals, forKey: "Peripherals")
         connectedPeripheral!.discoverServices([Bluetooth.commandService])
     }
     

@@ -12,6 +12,7 @@ import CoreBluetooth
 class Bluetooth: NSObject {
     
     let defaults = UserDefaults.standard
+    var onceConnectedPeripherals = [String]()
     
     var centralManager: CBCentralManager!
     var connectedPeripheral: CBPeripheral?
@@ -36,6 +37,7 @@ class Bluetooth: NSObject {
     override init() {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        onceConnectedPeripherals = defaults.stringArray(forKey: "Peripherals") ?? []
                 //availablePeripherals = []
     }
     

@@ -188,10 +188,10 @@
 				0333052221BB349700603519 /* RemoteControlConfig.swift */,
 				0333052421BB34C200603519 /* BluetoothCoordinator.swift */,
 				0333052621BB34E800603519 /* BluetoothFlow.swift */,
+				033B2E6B21D398EA00971D08 /* BluetoothBackgroundHandler.swift */,
 				0333052821BB352200603519 /* Bluetooth.swift */,
 				035B860421C536C300A032AE /* BluetoothCentral.swift */,
 				035B860621C536CE00A032AE /* BluetoothPeripheral.swift */,
-				033B2E6B21D398EA00971D08 /* BluetoothBackgroundHandler.swift */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";

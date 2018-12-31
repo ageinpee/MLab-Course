@@ -18,7 +18,7 @@ class BluetoothBackgroundHandler: BluetoothCoordinator {
         guard bluetoothService?.centralManager.state == .poweredOn else { return }
         guard pairing != true else { return }
         guard paired != true else { return }
-        let onceConnectedPeripherals = defaults.stringArray(forKey: "Peripheral")
+        let onceConnectedPeripherals = defaults.stringArray(forKey: "Peripherals")
         guard onceConnectedPeripherals != [] else { return }
         availablePeripherals = bluetoothService?.retrievePeripherals() ?? []
         guard availablePeripherals != [] else { return } // Display no devices in range
@@ -27,7 +27,7 @@ class BluetoothBackgroundHandler: BluetoothCoordinator {
         availablePeripherals = availablePeripherals.filter { (onceConnectedPeripherals?.contains(($0?.identifier.uuidString)!))! }
         
         // Connect to the last connected peripheral
-        self.connect(peripheral: availablePeripherals.last as! CBPeripheral, completion: {_ in })
+        self.connect(peripheral: availablePeripherals.last!! as CBPeripheral, completion: {_ in })
     }
     
 }
