@@ -28,4 +28,6 @@ class BluetoothCoordinator {
     
     func ableToWrite() { }
     
+    func waitForBluetooth(completion: @escaping (Bool) -> Void) { }
+    
 }

@@ -101,9 +101,11 @@ class BluetoothPairingConnectViewController: UIViewController {
 //            self.updateAnimation()
 //        })
         
+        bluetooth.bluetoothCoordinator = bluetoothFlow
+        
         guard self.selectedPeripheral != nil else { return }
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
+        self.bluetoothFlow.connect(peripheral: self.selectedPeripheral!, completion: { _ in
             self.animating = false
             self.success = true
             self.updateAnimation()

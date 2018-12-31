@@ -18,15 +18,16 @@ class BluetoothBackgroundHandler: BluetoothCoordinator {
         guard bluetoothService?.centralManager.state == .poweredOn else { return }
         guard pairing != true else { return }
         guard paired != true else { return }
-        var onceConnectedPeripherals = defaults.data(forKey: "Peripheral")
+        let onceConnectedPeripherals = defaults.stringArray(forKey: "Peripheral")
+        guard onceConnectedPeripherals != [] else { return }
         availablePeripherals = bluetoothService?.retrievePeripherals() ?? []
-        guard availablePeripherals != [] else { return }
+        guard availablePeripherals != [] else { return } // Display no devices in range
         
+        // Filter all peripherals for once connected peripherals
+        availablePeripherals = availablePeripherals.filter { (onceConnectedPeripherals?.contains(($0?.identifier.uuidString)!))! }
         
-    }
-    
-    private func getConnectedPeripherals() {
-        
+        // Connect to the last connected peripheral
+        self.connect(peripheral: availablePeripherals.last as! CBPeripheral, completion: {_ in })
     }
     
 }

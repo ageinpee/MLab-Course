@@ -70,20 +70,6 @@ class Bluetooth: NSObject {
         self.centralManager.connect(peripheral)
     }
     
-    func reconnect(peripheral: CBPeripheral) {
-        print("Trying to reconnect")
-        guard self.centralManager.state == .poweredOn else { return }
-                //availablePeripherals = []
-        self.connectedPeripheral = nil
-        self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
-        if (availablePeripherals.contains(peripheral)) {
-            self.centralManager.connect(peripheral)
-        } else {
-            print("Device not in range!")
-            // Handle this error visually
-        }
-    }
-    
     func disconnect() {
         print("Disconnecting from peripheral")
         guard let peripheral = self.connectedPeripheral else { return }
