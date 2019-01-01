@@ -13,11 +13,8 @@ class BluetoothFlow: BluetoothCoordinator {
     
     private let timeout = 15.0
     private var waitForPeripheralHandler: () -> Void = { }
-    private var waitForBluetooth: () -> Void = { }
     private var pairingHandler: (Bool) -> Void = { _ in }
-    private var pairingWorkitem: DispatchWorkItem?
-    private var pairing = false
-    var paired = false
+    private var pairingWorkItem: DispatchWorkItem?
     
     func waitForPeripheral(completion: @escaping () -> Void) {
         guard !self.pairing else {
@@ -33,6 +30,20 @@ class BluetoothFlow: BluetoothCoordinator {
         self.waitForPeripheralHandler = completion
     }
     
+    override func connect(peripheral: CBPeripheral, completion: @escaping (Bool) -> Void) {
+        guard !self.pairing else { return }
+        guard self.bluetoothService?.centralManager.state == .poweredOn else {
+            self.pairingFailed()
+            return
+        }
+        self.pairing = true
+        self.pairingWorkItem = DispatchWorkItem { self.pairingFailed() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkItem!)
+        
+        self.pairingHandler = completion
+        self.bluetoothService?.centralManager.connect(peripheral)
+    }
+    
     override func retrievePeripherals() -> [CBPeripheral] {
         guard self.bluetoothService?.centralManager.state == .poweredOn else {
             print("Bluetooth is off")
@@ -41,89 +52,29 @@ class BluetoothFlow: BluetoothCoordinator {
         let peripherals = self.bluetoothService?.retrievePeripherals()
         return peripherals!
     }
-    
-    func pair(completion: @escaping (Bool) -> Void) {
-        guard !self.pairing else { return }
-        guard self.bluetoothService?.centralManager.state == .poweredOn else {
-            self.pairingFailed()
-            return
-        }
-        guard let peripheral = self.bluetoothService?.connectedPeripheral else {
-            self.pairingFailed()
-            return
-        }
-        self.pairing = true
-        self.pairingWorkitem = DispatchWorkItem { self.pairingFailed() }
-        DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkitem!)
 
-        self.pairingHandler = completion
-        self.bluetoothService?.centralManager.connect(peripheral)
-        completion(true)
-    }
-    
     func cancel() {
         self.bluetoothService?.stopScan()
         self.bluetoothService?.disconnect()
-        self.pairingWorkitem?.cancel()
+        self.pairingWorkItem?.cancel()
         
         self.pairing = false
+        self.paired = false
         self.pairingHandler = { _ in }
         self.waitForPeripheralHandler = { }
-        self.waitForBluetooth = { }
-    }
-    
-    override func discoveredPeripheral() {
-        self.bluetoothService?.stopScan()
-        self.waitForPeripheralHandler()
     }
     
     override func ableToWrite() {
         guard self.pairing else { return }
         self.bluetoothService?.getCharacteristics()
-        self.pairingWorkitem?.cancel()
+        self.pairingWorkItem?.cancel()
+        self.pairingHandler(true)
+        self.pairing = false
+        self.paired = true
     }
-    
-    override func connect(peripheral: CBPeripheral, completion: @escaping (Bool) -> Void) {
-        guard !self.pairing else { return }
-        guard self.bluetoothService?.centralManager.state == .poweredOn else {
-            self.pairingFailed()
-            return
-        }
-        self.pairing = true
-        self.pairingWorkitem = DispatchWorkItem { self.pairingFailed() }
-        DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkitem!)
-        
-        self.pairingHandler = completion
-        self.bluetoothService?.centralManager.connect(peripheral)
-        guard self.bluetoothService?.connectedPeripheral != nil else { return }
-        completion(true)
-    }
-    
-//    func reconnect(completion: @escaping () -> Void) {
-//        guard !self.pairing else {
-//            print("You are already pairing")
-//            return
-//        }
-//        self.paired = false
-//        checkBluetoothState {
-//            self.waitForPeripheral {
-//                self.pair { result in
-//                    self.paired = true
-//                }
-//            }
-//        }
-//    }
-    
-//    private func checkBluetoothState(completion: @escaping () -> Void) {
-//        while (self.bluetoothService?.bluetoothState != .poweredOn){
-//            print("Bluetooth is not on")
-//        }
-//        self.waitForBluetooth = completion
-//    }
     
     override func disconnected(failure: Bool) {
         self.pairingFailed()
-        self.waitForBluetooth = { }
     }
     
     private func pairingFailed() {
