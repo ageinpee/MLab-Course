@@ -21,7 +21,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var TimerButtonObj: UIButton!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var arrowsImageView: UIImageView!
-    @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var leftPanArea: UIView!
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
