@@ -14,10 +14,18 @@ extension RemoteController {
     func setupPanAreas() {
         leftPanArea.isUserInteractionEnabled = true
         rightPanArea.isUserInteractionEnabled = true
-        let panRecLeft = UIPanGestureRecognizer(target: self, action: #selector(handleLeftPanGesture(recognizer:)))
-        let panRecRight = UIPanGestureRecognizer(target: self, action: #selector(handleRightPanGesture(recognizer:)))
+        
+        let selectorRight = #selector(handleRightPanGesture(panRecognizer:))
+        let selectorLeft = #selector(handleLeftPanGesture(recognizer:))
+        
+        panRecLeft = UIPanGestureRecognizer(target: self, action: selectorLeft)
+        panRecRight = UIPanGestureRecognizer(target: self, action: selectorRight)
+        
         leftPanArea.addGestureRecognizer(panRecLeft)
         rightPanArea.addGestureRecognizer(panRecRight)
+        
+        panRecLeft.delegate = self
+        panRecRight.delegate = self
         
         leftPanArea.backgroundColor = UIColor.clear
         rightPanArea.backgroundColor = UIColor.clear
@@ -44,25 +52,67 @@ extension RemoteController {
     }
     
     @objc
-    func handleRightPanGesture(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
+    func actionLeft() {
+        if (recognizerState == .began) || (recognizerState == .changed) {
+            print(Date())
+            if translation == .down {
+                print("--> down")
+            }
+            else if translation == .up {
+                print("--> up")
+            }
+        } else {
+            print("end")
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+    
+    @objc
+    func actionRight() {
+        if (recognizerState == .began) || (recognizerState == .changed) {
+            print(Date())
+            if translation == .down {
+                print("--> down")
+                goDown()
+            }
+            else if translation == .up {
+                print("--> up")
+                goUp()
+            }
+        } else {
+            print("end")
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+    
+    @objc
+    func handleRightPanGesture(panRecognizer: UIPanGestureRecognizer) {
+        recognizerState = panRecognizer.state
+        
+        switch panRecognizer.state {
         case .began:
-            print("Pan in Right Area ended")
+            print("Pan in Right Area started")
+            translation = .began
+            timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(actionRight), userInfo: nil, repeats: true)
             
         case .changed:
-            if(recognizer.translation(in: rightPanArea).y >= 40) {
-                print("moving down" + String(Int(recognizer.translation(in: rightPanArea).y)))
+            if(panRecognizer.translation(in: rightPanArea).y >= 40) {
+                translation = .down
                 arrowsImageView.alpha = 0
                 Image.image = currentStyle.stylesImages[3]
-                goDown()
-            } else if (recognizer.translation(in: rightPanArea).y <= -40) {
-                print("moving up" + String(Int(recognizer.translation(in: rightPanArea).y)))
+                
+            } else if (panRecognizer.translation(in: rightPanArea).y <= -40) {
+                translation = .up
                 arrowsImageView.alpha = 0
                 Image.image = currentStyle.stylesImages[2]
                 goUp()
             }
         case .ended:
             print("Pan in Right Area ended")
+            print(Date())
+            translation = .ended
             Image.image = currentStyle.stylesImages[1]
             animateFade(withAlpha: opacity)
         default: break

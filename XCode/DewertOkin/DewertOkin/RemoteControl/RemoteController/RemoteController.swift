@@ -25,6 +25,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
     
+    var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
+    var panRecRight: UIPanGestureRecognizer = UIPanGestureRecognizer()
+    var pressRecLeft: UILongPressGestureRecognizer = UILongPressGestureRecognizer()
+    var pressRecRight: UILongPressGestureRecognizer = UILongPressGestureRecognizer()
+    
     //----------------------------------------
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
@@ -37,6 +42,10 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     var statusBarStyle: UIStatusBarStyle = .default
     var underBedLighting: UIAlertAction?
+    
+    var recognizerState: UIGestureRecognizer.State = .ended
+    var timer: Timer?
+    var translation: Translations = .ended
     
     //---------------------------------------
     //----- Bluetooth Dependencies ----------
@@ -129,4 +138,12 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //--------     Health Kit Funcs     ---------
     
 
+}
+
+
+enum Translations {
+    case began
+    case up
+    case down
+    case ended
 }

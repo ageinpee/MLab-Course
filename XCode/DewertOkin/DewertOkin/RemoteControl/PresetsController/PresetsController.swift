@@ -12,6 +12,8 @@ import UIKit
 class PresetsController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addPresetButton: UIButton!
+    @IBOutlet weak var choosePresetLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
     
     var presetsList: [String] = [String]()
     var presetsData: [String] = [String]()
@@ -19,8 +21,9 @@ class PresetsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presetsList = []//["sleeping", "mornings", "relaxing"]
         
-        presetsList = ["sleeping", "mornings", "relaxing"]
+        checkPresetsList()
         
         setupAddButton()
         createButtons(withText: presetsList)
@@ -32,7 +35,16 @@ class PresetsController: UIViewController {
                 presetsData = senderVC.data
                 presetsList.append(presetsData[0])
             }
+            checkPresetsList()
             createButtons(withText: presetsList)
+        }
+    }
+    
+    func checkPresetsList() {
+        if presetsList.count != 0 {
+            textLabel.isHidden = true
+        } else {
+            choosePresetLabel.isHidden = true
         }
     }
     

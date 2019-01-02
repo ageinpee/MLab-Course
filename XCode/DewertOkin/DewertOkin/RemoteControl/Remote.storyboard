@@ -211,8 +211,22 @@
                                     <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="cCd-WO-O29"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-iL-o4J">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-iL-o4J">
                                 <rect key="frame" x="20" y="164" width="374" height="678"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add your custom presets by clicking the &quot;+&quot;-Button" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nya-Uh-bVf">
+                                        <rect key="frame" x="50" y="300" width="274" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="nya-Uh-bVf" firstAttribute="leading" secondItem="ccp-iL-o4J" secondAttribute="leading" constant="50" id="dgG-wi-Yhw"/>
+                                    <constraint firstAttribute="trailing" secondItem="nya-Uh-bVf" secondAttribute="trailing" constant="50" id="oeQ-zJ-gf6"/>
+                                    <constraint firstItem="nya-Uh-bVf" firstAttribute="top" secondItem="ccp-iL-o4J" secondAttribute="top" constant="300" id="xki-vh-LC8"/>
+                                    <constraint firstItem="nya-Uh-bVf" firstAttribute="centerX" secondItem="ccp-iL-o4J" secondAttribute="centerX" id="z2o-oc-xkT"/>
+                                </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYZ-ra-aut">
                                 <rect key="frame" x="182" y="762" width="50" height="50"/>
@@ -246,7 +260,9 @@
                     </view>
                     <connections>
                         <outlet property="addPresetButton" destination="AYZ-ra-aut" id="VZs-SR-aLr"/>
+                        <outlet property="choosePresetLabel" destination="Qv0-SW-Iyx" id="Nje-Pc-4bi"/>
                         <outlet property="scrollView" destination="ccp-iL-o4J" id="Ltn-ju-eGA"/>
+                        <outlet property="textLabel" destination="nya-Uh-bVf" id="QMw-0N-Gqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tds-zj-a6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,6 +355,7 @@
         <image name="remote_icon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="r7J-NU-31I"/>
         <segue reference="NBl-g8-nGH"/>
         <segue reference="cCd-WO-O29"/>
     </inferredMetricsTieBreakers>
