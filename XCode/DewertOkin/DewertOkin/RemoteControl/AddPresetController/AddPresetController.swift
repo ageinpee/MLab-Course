@@ -17,6 +17,8 @@ class AddPresetController: UIViewController {
     var memoryStates: [MemoryState] = [MemoryState]()
     var selectedMemory: Int = Int()
     
+    var selectedButton: UIButton = UIButton()
+    
     var data: [String] = [String]()
     
     override func viewDidLoad() {
@@ -73,17 +75,21 @@ class AddPresetController: UIViewController {
         {
             memoryStates[sender.tag-1] = .loaded
             selectedMemory = sender.tag-1
-                
+            
+            sender.backgroundColor = UIColor.lightGray
+            sender.alpha = 0.5
+            
+            selectedButton.backgroundColor = UIColor.white
+            selectedButton.alpha = 1
+            selectedButton = sender
+            
             switch sender.tag {
             case 1:
                 print("yyy")
-                sender.backgroundColor = UIColor.lightGray
             case 2:
                 print("zzz")
-                sender.backgroundColor = UIColor.lightGray
             case 3:
                 print("abc")
-                sender.backgroundColor = UIColor.lightGray
             default:
                 print("default")
             }
@@ -91,15 +97,23 @@ class AddPresetController: UIViewController {
     }
     
     @objc func stateButtonActionEnd(sender: UIButton!) {
-        switch sender.tag {
-        case 1:
+        if sender.tag > 0 {
             sender.backgroundColor = UIColor.white
-        case 2:
-            sender.backgroundColor = UIColor.white
-        case 3:
-            sender.backgroundColor = UIColor.white
-        default:
-            print("default")
+            sender.alpha = 1
+            
+            selectedButton.backgroundColor = UIColor.lightGray
+            selectedButton.alpha = 0.75
+            
+            switch sender.tag {
+            case 1:
+                print("xxxx")
+            case 2:
+                print("xyyy")
+            case 3:
+                print("xzzz")
+            default:
+                print("default")
+            }
         }
     }
     
