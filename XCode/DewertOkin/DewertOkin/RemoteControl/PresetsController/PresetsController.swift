@@ -14,14 +14,26 @@ class PresetsController: UIViewController {
     @IBOutlet weak var addPresetButton: UIButton!
     
     var presetsList: [String] = [String]()
+    var presetsData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         presetsList = ["sleeping", "mornings", "relaxing"]
         
         setupAddButton()
         createButtons(withText: presetsList)
+    }
+    
+    @IBAction func unwindFromAddPreset(_ sender: UIStoryboardSegue) {
+        if sender.source is AddPresetController {
+            if let senderVC = sender.source as? AddPresetController {
+                presetsData = senderVC.data
+                presetsList.append(presetsData[0])
+            }
+            createButtons(withText: presetsList)
+        }
     }
     
     func setupAddButton () {

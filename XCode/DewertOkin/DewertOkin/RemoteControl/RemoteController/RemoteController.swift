@@ -61,8 +61,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        deviceType = DeviceType.bed_2Motors
-        currentStyle.setFilledStyle(forDevice: deviceType)
+        deviceType = DeviceType.chair_2Motors
+        currentStyle.setEmptyStyle(forDevice: deviceType)
         
         setupButtons()
         setupPanAreas()
