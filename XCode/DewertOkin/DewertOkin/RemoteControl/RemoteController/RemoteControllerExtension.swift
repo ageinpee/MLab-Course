@@ -16,7 +16,7 @@ extension RemoteController {
         rightPanArea.isUserInteractionEnabled = true
         
         let selectorRight = #selector(handleRightPanGesture(panRecognizer:))
-        let selectorLeft = #selector(handleLeftPanGesture(recognizer:))
+        let selectorLeft = #selector(handleLeftPanGesture(panRecognizer:))
         
         panRecLeft = UIPanGestureRecognizer(target: self, action: selectorLeft)
         panRecRight = UIPanGestureRecognizer(target: self, action: selectorRight)
@@ -121,29 +121,31 @@ extension RemoteController {
     
     
     @objc
-    func handleLeftPanGesture(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
+    func handleLeftPanGesture(panRecognizer: UIPanGestureRecognizer) {
+        recognizerState = panRecognizer.state
+        
+        switch panRecognizer.state {
         case .began:
             print("Pan in Left Area")
-            break
+            translation = .began
+            timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(actionLeft), userInfo: nil, repeats: true)
         case .changed:
-            if(recognizer.translation(in: leftPanArea).y >= 40) {
-                print("moving down" + String(Int(recognizer.translation(in: leftPanArea).y)))
+            if(panRecognizer.translation(in: leftPanArea).y >= 40) {
+                translation = .down
                 arrowsImageView.alpha = 0
                 Image.image = currentStyle.stylesImages[5]
-                // goFeetDown()
-            } else if (recognizer.translation(in: leftPanArea).y <= -40) {
-                print("moving up" + String(Int(recognizer.translation(in: leftPanArea).y)))
+                
+            } else if (panRecognizer.translation(in: leftPanArea).y <= -40) {
+                translation = .up
                 arrowsImageView.alpha = 0
                 Image.image = currentStyle.stylesImages[4]
-                // goFeetUp()
+                
             }
-            break
         case .ended:
             print("Pan in Left Area ended")
+            translation = .ended
             Image.image = currentStyle.stylesImages[1]
             animateFade(withAlpha: opacity)
-            break
         default: break
         }
     }
