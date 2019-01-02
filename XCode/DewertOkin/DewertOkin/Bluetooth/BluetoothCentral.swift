@@ -25,57 +25,40 @@ extension Bluetooth: CBCentralManagerDelegate {
             print("The systems bluetooth is turned off")
             self.stopScan()
             self.disconnect()
-            self.bluetoothCoordinator?.bluetoothOff()
         // Tell the user to power on bluetooth
         case .poweredOn:
             print("The systems bluetooth is turned on")
-            self.bluetoothCoordinator?.bluetoothOn()
         }
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
         if (!availablePeripherals.contains(peripheral)){
             availablePeripherals.append(peripheral)
         }
-        
-        // This is not good practice, we should match it with the UUID (Can't implement it, since I dont have access to it rn)
-        let deviceName = peripheral.name ?? ""
-        if (isOkinDevice(name:deviceName)){
-            connectedPeripheral = peripheral;
-            self.bluetoothCoordinator?.discoveredPeripheral()
-        }
-    }
-    
-    // This should be deleted after the didDiscover function was reworked
-    func isOkinDevice(name: String) -> Bool {
-        if (name.lowercased().range(of:"okin") != nil) {
-            print("The Dewert Okin device was found")
-            return true;
-        }
-        
-        return false;
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connection to control unit established")
+        connectedPeripheral = peripheral
         connectedPeripheral!.delegate = self
-        peripheralsList?.append(peripheral.identifier)
-        connectedPeripheral!.discoverServices([Bluetooth.commandService]);
-        //self.bluetoothCoordinator?.connected(peripheral: connectedPeripheral!)
+        
+        if !(onceConnectedPeripherals.contains(peripheral.identifier.uuidString)) {
+        onceConnectedPeripherals.append(peripheral.identifier.uuidString)
+        }
+        
+        defaults.set(onceConnectedPeripherals, forKey: "Peripherals")
+        connectedPeripheral!.discoverServices([Bluetooth.commandService])
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Disconnected from control unit")
         self.bluetoothCoordinator?.disconnected(failure: false)
-        //self.bluetoothCoordinator?.reconnect()
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("Connection to control unit has failed!")
         // Give the user clear feedback in the UI
         self.bluetoothCoordinator?.disconnected(failure: true)
-        //self.bluetoothCoordinator?.reconnect()
     }
     
     

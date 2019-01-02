@@ -27,7 +27,7 @@ extension Bluetooth: CBPeripheralDelegate {
             if(characteristic.uuid == Bluetooth.keycodeUUID){
                 peripheral.setNotifyValue(true, for: characteristic)
                 self.characteristic = characteristic
-                self.bluetoothCoordinator?.ableToWrite() // Here or in didUpdateValueFor?
+                self.bluetoothCoordinator?.ableToWrite()
             }
         }
     }

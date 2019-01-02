@@ -11,13 +11,15 @@ import Foundation
 import CoreData
 
 
-extension Timer {
+extension DeviceTimer {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Timer> {
-        return NSFetchRequest<Timer>(entityName: "Timer")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<DeviceTimer> {
+        return NSFetchRequest<DeviceTimer>(entityName: "DeviceTimer")
     }
 
     @NSManaged public var timerName: String?
-    @NSManaged public var timerTime: Date
+    @NSManaged public var timerTime: Date?
+    @NSManaged public var isEnabled: Bool
+    @NSManaged public var repeatInterval: String?
 
 }

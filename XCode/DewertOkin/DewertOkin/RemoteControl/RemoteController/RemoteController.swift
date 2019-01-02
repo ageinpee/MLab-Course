@@ -21,7 +21,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var TimerButtonObj: UIButton!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var arrowsImageView: UIImageView!
-    @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var leftPanArea: UIView!
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
@@ -69,13 +68,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         Themes.setupTheming(for: self)
 
-        Health.requestHealthKitPermission()
+        Health.shared.requestHealthKitPermission()
         
         let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
         swipeRec.direction = .up
         ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
-        
-        ExtraFunctionsButtonObj.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(displaySteps)))
         
         arrowsImageView.image = currentStyle.stylesImages[0]
         Image.image = currentStyle.stylesImages[1]
@@ -131,14 +128,5 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //-------------------------------------------
     //--------     Health Kit Funcs     ---------
     
-    @objc
-    private func displaySteps() {
-        guard Health.healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!) == .sharingAuthorized else { return }
-        Health.getLastHoursSteps { (result) in
-            print(result)
-            DispatchQueue.main.async {
-                self.stepsLabel.text = "❤️ \(Int(result))"
-            }
-        }
-    }
+
 }

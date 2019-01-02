@@ -13,7 +13,7 @@
         <!--Remote-->
         <scene sceneID="Qxl-lV-g0M">
             <objects>
-                <viewController id="h1o-HI-eVS" customClass="RemoteController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemoteControl" id="h1o-HI-eVS" customClass="RemoteController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7b-hz-zBK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,12 +72,6 @@
                                     <segue destination="dhz-n7-KIU" kind="custom" customClass="pullUpSegue" customModule="DewertOkin" customModuleProvider="target" id="3OI-rJ-yRb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️ 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-8C-Su0">
-                                <rect key="frame" x="188" y="85" width="38" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-gs-uD4">
                                 <rect key="frame" x="206" y="120" width="197" height="577"/>
                                 <color key="backgroundColor" red="0.60784316059999999" green="0.13725490870000001" blue="0.57647061349999995" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
@@ -95,7 +89,6 @@
                             <constraint firstItem="XRq-Gx-E26" firstAttribute="leading" secondItem="J9R-PK-aQG" secondAttribute="leading" id="9Uc-uA-yZa"/>
                             <constraint firstItem="DnC-Xu-Jbg" firstAttribute="top" secondItem="A7b-hz-zBK" secondAttribute="top" constant="120" id="A6W-m5-we5"/>
                             <constraint firstItem="XRq-Gx-E26" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="top" id="EbH-pF-aSa"/>
-                            <constraint firstItem="6Qi-8C-Su0" firstAttribute="centerX" secondItem="uty-hF-LTZ" secondAttribute="centerX" id="G2d-nq-rM7"/>
                             <constraint firstItem="J9R-PK-aQG" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="10" id="IF6-tE-hn4"/>
                             <constraint firstItem="kEo-gs-uD4" firstAttribute="width" secondItem="J9R-PK-aQG" secondAttribute="width" multiplier="0.5" id="IUL-NS-rma"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="DnC-Xu-Jbg" secondAttribute="trailing" constant="10" id="JpN-9I-Z99"/>
@@ -106,7 +99,6 @@
                             <constraint firstItem="XRq-Gx-E26" firstAttribute="width" secondItem="J9R-PK-aQG" secondAttribute="width" multiplier="0.5" id="Wex-rD-SsR"/>
                             <constraint firstItem="Xjl-Wp-KTM" firstAttribute="leading" secondItem="0YV-jW-udd" secondAttribute="trailing" priority="800" constant="50" id="bZi-ht-27D"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="FEt-Ft-Val" secondAttribute="trailing" constant="15" id="bl5-Fk-UZj"/>
-                            <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="6Qi-8C-Su0" secondAttribute="bottom" constant="8" id="cgB-KJ-779"/>
                             <constraint firstItem="kEo-gs-uD4" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="top" id="ctM-fn-tu6"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="0YV-jW-udd" secondAttribute="bottom" priority="750" constant="40" id="dcf-Ld-aSz"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="15" id="e7B-lb-Wtr"/>
@@ -130,7 +122,6 @@
                         <outlet property="currentDeviceLabel" destination="FEt-Ft-Val" id="OOU-oC-Jzc"/>
                         <outlet property="leftPanArea" destination="XRq-Gx-E26" id="SAM-At-cLd"/>
                         <outlet property="rightPanArea" destination="kEo-gs-uD4" id="p4n-8f-kEp"/>
-                        <outlet property="stepsLabel" destination="6Qi-8C-Su0" id="bqc-9f-2oQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3X-h2-zOP" userLabel="First Responder" sceneMemberID="firstResponder"/>

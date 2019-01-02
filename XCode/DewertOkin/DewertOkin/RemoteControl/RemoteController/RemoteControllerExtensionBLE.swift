@@ -12,13 +12,14 @@ import CoreBluetooth
 extension RemoteController {
     
     func Connect() {
-        self.bluetoothFlow.waitForPeripheral {
-            self.bluetoothFlow.pair { result in
-                self.peripheral = self.bluetooth.connectedPeripheral
-                self.characteristic = self.bluetooth.characteristic
-                self.paired = true
-            }
-        }
+        // OLD CODE? bluetoothFlow has no member pair
+//        self.bluetoothFlow.waitForPeripheral {
+//            self.bluetoothFlow.pair { result in
+//                self.peripheral = self.bluetooth.connectedPeripheral
+//                self.characteristic = self.bluetooth.characteristic
+//                self.paired = true
+//            }
+//        }
     }
     
     func goUp() {

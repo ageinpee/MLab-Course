@@ -26,7 +26,6 @@ extension RemoteController {
         self.tabBarController?.tabBar.barStyle = UIBarStyle.black
         statusBarStyle = .lightContent
         self.currentDeviceLabel.textColor = .white
-        self.stepsLabel.textColor = .white
         self.PresetsButtonObj.setTitleColor(UIColor.orange, for: .normal)
         self.TimerButtonObj.setTitleColor(UIColor.orange, for: .normal)
         self.ExtraFunctionsButtonObj.setTitleColor(UIColor.orange, for: .normal)
@@ -41,7 +40,6 @@ extension RemoteController {
         self.tabBarController?.tabBar.barStyle = UIBarStyle.default
         statusBarStyle = .default
         self.currentDeviceLabel.textColor = .black
-        self.stepsLabel.textColor = .black
         self.PresetsButtonObj.setTitleColor(nil, for: .normal)
         self.TimerButtonObj.setTitleColor(nil, for: .normal)
         self.ExtraFunctionsButtonObj.setTitleColor(nil, for: .normal)

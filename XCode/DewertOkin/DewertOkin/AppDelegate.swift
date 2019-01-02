@@ -17,11 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
-    var paired = false
+    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
+    let defaults = UserDefaults.standard
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Connect()
+        
         // Override point for customization after application launch.
         let center = UNUserNotificationCenter.current()
         // Request permission to display alerts and play sounds.
@@ -44,15 +45,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
             if darkModeEnabled {
-                
-                
             } else {
                UISwitch.appearance().tintColor = nil
-        }
-            
+            }
         }
         
+        UIApplication.shared.setMinimumBackgroundFetchInterval(600)
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        Health.shared.checkSteps { result in
+            switch result {
+            case .noActivity: completionHandler(.noData)
+            case .enoughActivity: completionHandler (.newData)
+            case .error: completionHandler(.failed)
+            }
+        }
+        print("Background fetch works!")
     }
     
     // Allows Notifications to be displayed while the app is in the foreground
@@ -63,6 +74,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
+        // Disconnecting from Device
+        if (bluetooth.connectedPeripheral != nil) {
+            bluetoothFlow.cancel()
+        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -73,26 +89,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        Connect()
         AchievementModel.loadAchievementProgress()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        Connect()
+        
+        // Reconnecting to latest Device
+        let availablePeripheral = bluetoothBackgroundHandler.reconnect()
+        guard availablePeripheral != nil else { return }
+        bluetoothFlow.connect(peripheral: availablePeripheral!, completion: { _ in })
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         PersistenceService.saveContext()
-    }
-    
-    private func Connect() {
-        self.bluetoothFlow.waitForPeripheral {
-            self.bluetoothFlow.pair { result in
-                self.bluetoothFlow.paired = true
-            }
+        
+        // Disconnecting from Device
+        if (bluetooth.connectedPeripheral != nil) {
+            bluetoothFlow.cancel()
         }
     }
     

@@ -11,10 +11,12 @@ import AVFoundation
 
 class SettingTableViewController: UITableViewController, Themeable {
     
-    private let settingsEntries: [SettingsEntry] = [.manageDevices, .deviceInfo, .achievements, .presets, .useOldRemote,
-                        .nearestVendor, .accessories, .about, .darkMode]
-    
-    private let search = UISearchController(searchResultsController: nil)
+    private let settingsEntries: [[SettingsEntry]] = [
+        [.manageDevices, .deviceInfo, .nearestVendor],
+        [.presets, .health, .useOldRemote, .darkMode],
+        [.achievements,.accessories, .test]
+    ]
+    private let settingsSections = ["Devices and Support", "Preferences", "Other"]
     
     
     //-----Achievement "Button Maniac"-related-----
@@ -27,8 +29,6 @@ class SettingTableViewController: UITableViewController, Themeable {
         super.viewDidLoad()
         
         tableView.register(SettingsEntryCell.self, forCellReuseIdentifier: "SettingCell")
-        
-        tableView.tableFooterView = UIView()
         
         Themes.setupTheming(for: self)
     }
@@ -68,27 +68,30 @@ class SettingTableViewController: UITableViewController, Themeable {
         navigationItem.title = "More"
         //navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        search.searchResultsUpdater = self
-        self.navigationItem.searchController = search
         self.barButtonItem.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return settingsEntries.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsEntries.count
+        return settingsEntries[section].count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return settingsSections[section]
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
-        cell.textLabel?.text = settingsEntries[indexPath.row].rawValue
         
-        if (indexPath.row == settingsEntries.firstIndex(of: .darkMode)) {
+        cell.textLabel?.text = settingsEntries[indexPath.section][indexPath.row].rawValue
+        
+        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .darkMode)) {
             cell.accessoryView = {
                 let darkModeSwitch = UISwitch()
                 darkModeSwitch.onTintColor = .orange
@@ -100,20 +103,11 @@ class SettingTableViewController: UITableViewController, Themeable {
             }()
         }
         
-        if (indexPath.row == settingsEntries.firstIndex(of: .accessibilityMode)) {
-            cell.accessoryView = {
-                let accessibilityModeSwitch = UISwitch()
-                accessibilityModeSwitch.isOn = false
-                accessibilityModeSwitch.addTarget(self, action: #selector(accessibilityModeSwitchChanged(sender:)), for: .valueChanged)
-                return accessibilityModeSwitch
-            }()
-        }
-        
-        if (indexPath.row == settingsEntries.firstIndex(of: .nearestVendor)) {
+        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .nearestVendor)) {
             cell.accessoryType = .disclosureIndicator
         }
         
-        if (indexPath.row == settingsEntries.firstIndex(of: .useOldRemote)) {
+        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .useOldRemote)) {
             cell.accessoryView = {
                 let oldRemoteSwitch = UISwitch()
                 oldRemoteSwitch.isOn = false
@@ -122,40 +116,58 @@ class SettingTableViewController: UITableViewController, Themeable {
             }()
         }
         
-        if (indexPath.row == settingsEntries.firstIndex(of: .deviceInfo)) {
+        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .deviceInfo)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .presets)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .presets)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .achievements)) {
             cell.accessoryType = .disclosureIndicator
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(resetAchievements))
             longPress.minimumPressDuration = 2
             cell.addGestureRecognizer(longPress)
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .warranty)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .warranty)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .about)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .about)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .siri)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .siri)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .accessories)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .accessories)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .manageDevices)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .manageDevices)) {
+            cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .health)) {
+            cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .test)) {
             cell.accessoryType = .disclosureIndicator
         }
-        // Configure the cell...
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == settingsEntries.firstIndex(of: .accessories)) {
+        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .accessories)) {
             pushAccessoriesStoryboard()
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .achievements)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .achievements)) {
             pushAchievementsStoryboard()
-        } else if (indexPath.row == settingsEntries.firstIndex(of: .nearestVendor)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .nearestVendor)) {
             pushVendorStoryboard()
-        } else if(indexPath.row == settingsEntries.firstIndex(of: .manageDevices)) {
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .manageDevices)) {
             pushDevicesStoryboard()
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .health)) {
+            pushHealthController()
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .test)) {
+            pushTestController()
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func pushTestController() {
+        present(UINavigationController(rootViewController: NewTimerListTableViewController()), animated: true, completion: nil)
+    }
+    
+    private func pushHealthController() {
+        if let navigator = navigationController {
+            navigator.pushViewController(HealthViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
         }
     }
     

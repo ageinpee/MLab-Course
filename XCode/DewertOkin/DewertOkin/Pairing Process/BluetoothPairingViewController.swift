@@ -18,7 +18,6 @@ class BluetoothPairingViewController: UIViewController {
     var selectedPeripheral: CBPeripheral?
     var selectedCell: IndexPath?
     var search: Bool!
-    var paired = false
     
     var remoteControl = RemoteController()
     var bluetooth = Bluetooth.sharedBluetooth
@@ -29,6 +28,8 @@ class BluetoothPairingViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.allowsSelection = true
+        
+        connectButton.layer.cornerRadius = 5
         search = true
     }
     
@@ -43,20 +44,24 @@ class BluetoothPairingViewController: UIViewController {
         self.tableView.selectRow(at: selectedCell, animated: true, scrollPosition: UITableView.ScrollPosition .none)
         print("Still loading")
         if(search){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { self.refreshPeripheralsList() })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                guard self.search != false else { return } // Asynch task should stop
+                self.refreshPeripheralsList()
+            })
         }
     }
     
     @IBAction func connect(_ sender: Any) {
         guard selectedPeripheral != nil else { return }
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        bluetoothFlow.connect(peripheral: selectedPeripheral!, completion: { _ in
-            self.paired = true
+        self.performSegue(withIdentifier: "PairingConnection", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? BluetoothPairingConnectViewController {
             self.search = false
-            // An animation would certainly fit in this situation
-            // Before going into connection mode, so a visual feedback is given
-            self.performSegue(withIdentifier: "PairingSuccess", sender: self)
-        })
+            destination.selectedPeripheral = self.selectedPeripheral
+        }
     }
     
 }
@@ -82,5 +87,8 @@ extension BluetoothPairingViewController: UITableViewDataSource, UITableViewDele
         selectedPeripheral = availablePeripherals[indexPath.row]
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
     
 }

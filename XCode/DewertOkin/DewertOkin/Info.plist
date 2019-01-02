@@ -21,9 +21,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthShareUsageDescription</key>
-	<string>We need Health Sharing Access!</string>
+	<string>We use the steps you took as an indicator of your activity.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>We need Health Access!</string>
+	<string>We use the steps you took as an indicator of your activity.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Remote</string>
 	<key>UIMainStoryboardFile</key>

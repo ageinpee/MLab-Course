@@ -11,11 +11,12 @@ import CoreBluetooth
 
 class Bluetooth: NSObject {
     
+    let defaults = UserDefaults.standard
+    var onceConnectedPeripherals = [String]()
+    
     var centralManager: CBCentralManager!
     var connectedPeripheral: CBPeripheral?
     var availablePeripherals = [CBPeripheral]()
-    var peripheralsList: [UUID]?
-    var characteristics: [CBCharacteristic]!
     var characteristic: CBCharacteristic?
     var bluetoothState: CBManagerState { return self.centralManager.state }
     
@@ -36,25 +37,28 @@ class Bluetooth: NSObject {
     override init() {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        onceConnectedPeripherals = defaults.stringArray(forKey: "Peripherals") ?? []
+                //availablePeripherals = []
     }
     
     func startScan() {
         print("Starting to scan")
-        self.connectedPeripheral = nil
         guard self.centralManager.state == .poweredOn else { return }
+        self.connectedPeripheral = nil
+                //availablePeripherals = []
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
-        //self.bluetoothCoordinator?.scanStarted()
     }
     
     func stopScan() {
         print("Stopping scan")
         self.centralManager.stopScan()
-        //self.bluetoothCoordinator?.scanStopped()
+                //availablePeripherals = []
     }
     
     func retrievePeripherals() -> [CBPeripheral] {
         print("Returning all advertising peripherals")
         guard self.centralManager.state == .poweredOn else { return [] }
+                //availablePeripherals = []
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
         let peripherals = availablePeripherals
         return peripherals
@@ -63,21 +67,15 @@ class Bluetooth: NSObject {
     func connect() {
         print("Connecting to peripheral")
         guard self.centralManager.state == .poweredOn else { return }
+                //availablePeripherals = []
         guard let peripheral = self.connectedPeripheral else { return }
         self.centralManager.connect(peripheral)
-    }
-    
-    func reconnect() {
-        print("Trying to reconnect")
-        guard self.centralManager.state == .poweredOn else { return }
-        self.connectedPeripheral = nil
-        let peripherals = self.centralManager.retrievePeripherals(withIdentifiers: [])
-        self.centralManager.connect(peripherals[0])
     }
     
     func disconnect() {
         print("Disconnecting from peripheral")
         guard let peripheral = self.connectedPeripheral else { return }
+        //availablePeripherals = []
         self.centralManager.cancelPeripheralConnection(peripheral)
     }
 }
