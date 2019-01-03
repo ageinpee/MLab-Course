@@ -66,76 +66,128 @@ class AccessoriesTableViewController: UITableViewController, Themeable {
         
     }
     
+    var products: [Accessorie] = [
+        Accessorie(title: "New Under-Bed-Lighting", description: "This will definitely lighten up your life!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),
+        Accessorie(title: "RGB light strip", description: "For all the colours you need!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!)
+    ]
+    var productsOtherCustomersbought: [Accessorie] = [
+        Accessorie(title: "New Under-Bed-Lighting", description: "This will definitely lighten up your life!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),
+        Accessorie(title: "RGB light strip", description: "For all the colours you need!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),
+        Accessorie(title: "RGB dance light show", description: "all the colours!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!)
+    ]
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        var count = 0
+        count = products.count + productsOtherCustomersbought.count + 2
+        return count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
-        case 0:
+    case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
             return cell
-//        case 1:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
-//            cell.sectionTitleLabel.text = "Recommended Products"
-//            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
-            cell.titleLabel.text = products[0].title
-            cell.descriptionLabel.text = products[0].description
-            cell.productImage.image = UIImage(named: "lichtleiste")
-            cell.productImage.contentMode = .scaleAspectFit
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
+    case 1...products.count:
+    
+    
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+                cell.titleLabel.text = products[indexPath.row-1].title
+                cell.descriptionLabel.text = products[indexPath.row-1].description
+                cell.productImage.image = UIImage(named: "lichtleiste")
+                // products[n].imageURL
+                cell.productImage.contentMode = .scaleAspectFit
+                cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
+                return cell
+                
+        case products.count+1 :
             
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
-            cell.titleLabel.text = products[1].title
-            cell.descriptionLabel.text = products[1].description
-            cell.productImage.image = UIImage(named: "remote")
-            cell.productImage.contentMode = .scaleAspectFit
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
-
-            return cell
-        case 3:
+        
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
-            cell.sectionTitleLabel.text = "Other customers bought"
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
-            cell.titleLabel.text = products[0].title
-            cell.descriptionLabel.text = products[0].description
-            cell.productImage.image = UIImage(named: "lichtleiste")
-            cell.productImage.contentMode = .scaleAspectFit
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
-            
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
-            cell.titleLabel.text = products[1].title
-            cell.descriptionLabel.text = products[1].description
-            cell.productImage.image = UIImage(named: "remote")
-            cell.productImage.contentMode = .scaleAspectFit
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
-            
-            return cell
+                cell.sectionTitleLabel.text = "Other customers bought"
+                return cell
+        case products.count+2 ... productsOtherCustomersbought.count+products.count+2 :
+        
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+                cell.titleLabel.text = productsOtherCustomersbought[indexPath.row-2-products.count].title
+                cell.descriptionLabel.text = productsOtherCustomersbought[indexPath.row-2-products.count].description
+                cell.productImage.image = UIImage(named: "lichtleiste")
+                // products[n].imageURL
+                cell.productImage.contentMode = .scaleAspectFit
+               cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
+                return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
-            return cell
+            
+            
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
+                        return cell
+            
         }
     }
-    
-    var products: [Accessorie] = [
-        Accessorie(title: "New Under-Bed-Lighting", description: "This will definitely lighten up your life!", imageURL: URL(string: "http://www.google.de")!, targetURL: URL(string: "http://dewertokin.de")!),
-        Accessorie(title: "RGB light strip", description: "For all the colours you need!")
-    ]
-    
+// old code // method, not dynamic but works
+//        switch indexPath.row {
+//        case 0:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
+//            return cell
+//
+//        case products.count+1:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
+//                       cell.sectionTitleLabel.text = "Other customers bought"
+//                       return cell
+
+//        case 1:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+//            cell.titleLabel.text = products[0].title
+//            cell.descriptionLabel.text = products[0].description
+//            cell.productImage.image = UIImage(named: "lichtleiste")
+//            cell.productImage.contentMode = .scaleAspectFit
+//            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
+//
+//            return cell
+//        case 2:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+//            cell.titleLabel.text = products[1].title
+//            cell.descriptionLabel.text = products[1].description
+//            cell.productImage.image = UIImage(named: "remote")
+//            cell.productImage.contentMode = .scaleAspectFit
+//            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
+//
+//            return cell
+//        case 3:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SectionCell", for: indexPath) as! SectionTableViewCell
+//            cell.sectionTitleLabel.text = "Other customers bought"
+//            return cell
+//        case 4:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+//            cell.titleLabel.text = productsOtherCustomersbought[0].title
+//            cell.descriptionLabel.text = productsOtherCustomersbought[0].description
+//            cell.productImage.image = UIImage(named: "lichtleiste")
+//            cell.productImage.contentMode = .scaleAspectFit
+//            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
+//
+//            return cell
+//        case 5:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AccessorieCell", for: indexPath) as! AccessorieTableViewCell
+//            cell.titleLabel.text = productsOtherCustomersbought[1].title
+//            cell.descriptionLabel.text = productsOtherCustomersbought[1].description
+//            cell.productImage.image = UIImage(named: "remote")
+//            cell.productImage.contentMode = .scaleAspectFit
+//            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accessorieTapped)))
+//
+//            return cell
+//        default:
+//
+//
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
+//            return cell
+//        }
+//  }
+        
     @objc
     private func accessorieTapped() {
         let url = URL(string: "https://www.dewertokin.com/")!
