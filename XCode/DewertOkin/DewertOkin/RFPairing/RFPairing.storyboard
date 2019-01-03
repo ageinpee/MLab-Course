@@ -107,7 +107,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please plug in your control unit." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UY8-rV-pEb">
                                 <rect key="frame" x="30" y="526" width="354" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -177,7 +177,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="jX0-Ta-bCn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -216,7 +216,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="controller2Image" width="1708" height="1826"/>
-        <image name="quarterCircle" width="1" height="1"/>
+        <image name="controller2Image" width="819.84002685546875" height="876.47998046875"/>
+        <image name="quarterCircle" width="5497.919921875" height="5505.60009765625"/>
     </resources>
 </document>

@@ -26,11 +26,12 @@ class RFPairingController3: UIViewController {
     
     override func viewDidLoad() {
         
-        if selectedRemote.image != nil {
-            remoteImage = selectedRemote.image
-        } else {
-            print("ERROR: remote not found")
-        }
+//        if selectedRemote.image != nil {
+//            remoteImage = selectedRemote.image
+//        } else {
+//            print("ERROR: remote not found")
+//        }
+        remoteImage = selectedRemote.image
         
         remoteImageView.image = remoteImage
         
@@ -42,6 +43,21 @@ class RFPairingController3: UIViewController {
                 animate(atPosition: pos)
             }
         }
+        
+        proceedButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
+    }
+    
+    @objc
+    private func dismissSelf() {
+        self.dismiss(animated: true)
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.window = UIWindow(frame: UIScreen.main.bounds)
+            delegate.window?.makeKeyAndVisible()
+            delegate.window?.rootViewController = MainViewController()
+        }
+//        present(MainViewController(), animated: true, completion: nil)
+        
+        
     }
     
     func animate (atPosition: CGPoint) {

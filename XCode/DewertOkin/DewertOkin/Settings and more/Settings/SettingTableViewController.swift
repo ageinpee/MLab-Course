@@ -164,6 +164,12 @@ class SettingTableViewController: UITableViewController, Themeable {
     }
     
     private func pushTestController() {
+        if let vc = UIStoryboard(name: "RFPairing", bundle: nil).instantiateInitialViewController() {
+//            if let navigator = navigationController {
+//                navigator.pushViewController(vc, animated: true)
+//            }
+            present(vc, animated: true, completion: nil)
+        }
     }
     
     @objc
