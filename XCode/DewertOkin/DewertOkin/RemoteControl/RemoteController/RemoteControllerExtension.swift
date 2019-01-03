@@ -35,12 +35,51 @@ extension RemoteController {
         TimerButtonObj.layer.masksToBounds = true
         TimerButtonObj.layer.borderWidth = 1
         TimerButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+        TimerButtonObj.addTarget(self, action: #selector(presentTimerController), for: .touchUpInside)
         
         width = ExtraFunctionsButtonObj.frame.width
         ExtraFunctionsButtonObj.layer.cornerRadius = width/2
         ExtraFunctionsButtonObj.layer.masksToBounds = true
         ExtraFunctionsButtonObj.layer.borderWidth = 1
         ExtraFunctionsButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+    }
+    
+    @objc
+    private func presentTimerController() {
+        let nc = UINavigationController(rootViewController: NewTimerListTableViewController())
+        present(nc, animated: true, completion: nil)
+    }
+    
+    func setupPresetGesture() {
+        let gestureRec = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+
+        PresetsButtonObj.addGestureRecognizer(gestureRec)
+    }
+    
+    @objc
+    private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == .began {
+            
+            self.view.addSubview(presetView)
+            
+            let pressedLocation = sender.location(in: self.view)
+            
+            presetView.transform = CGAffineTransform(translationX: 0, y: pressedLocation.y - presetView.frame.height / 2)
+            presetView.alpha = 0
+            
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                self.presetView.transform = CGAffineTransform(translationX: 0, y: pressedLocation.y - self.presetView.frame.height)
+                self.presetView.alpha = 1
+            }) { (Bool) in
+                
+            }
+            
+        } else if sender.state == .ended {
+            presetView.removeFromSuperview()
+        }
+        
+        
     }
     
     @objc

@@ -157,12 +157,20 @@ class SettingTableViewController: UITableViewController, Themeable {
             pushHealthController()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .test)) {
             pushTestController()
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .presets)) {
+            pushPresetsController()
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     private func pushTestController() {
-        present(UINavigationController(rootViewController: NewTimerListTableViewController()), animated: true, completion: nil)
+    }
+    
+    @objc
+    private func pushPresetsController() {
+        if let navigator = navigationController {
+            navigator.pushViewController(SelectPresetViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+        }
     }
     
     private func pushHealthController() {

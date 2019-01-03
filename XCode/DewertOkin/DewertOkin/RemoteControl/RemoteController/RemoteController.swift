@@ -38,6 +38,28 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     var statusBarStyle: UIStatusBarStyle = .default
     var underBedLighting: UIAlertAction?
     
+    let presetView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
+        view.backgroundColor = .white
+        
+        let redView = UIView()
+        let blueView = UIView()
+        redView.backgroundColor = .red
+        blueView.backgroundColor = .blue
+
+        let subviews = [redView, blueView]
+        let stackview = UIStackView(arrangedSubviews: subviews)
+        stackview.distribution = .fillEqually
+        stackview.axis = .vertical
+        
+        view.addSubview(stackview)
+        stackview.frame = view.frame
+        
+        return view
+    }()
+    
+    
     //---------------------------------------
     //----- Bluetooth Dependencies ----------
     var remoteControlConfig = RemoteControlConfig()
@@ -65,6 +87,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         setupButtons()
         setupPanAreas()
+        setupPresetGesture()
         
         Themes.setupTheming(for: self)
 
@@ -73,6 +96,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
         swipeRec.direction = .up
         ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
+        ExtraFunctionsButtonObj.addTarget(self, action: #selector(showExtraFeaturesView), for: .touchUpInside)
         
         arrowsImageView.image = currentStyle.stylesImages[0]
         Image.image = currentStyle.stylesImages[1]
@@ -90,6 +114,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         let storyBoard: UIStoryboard = UIStoryboard(name: "OldRemote", bundle: nil)
         let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
         self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func showExtraFeaturesView() {
+        present(UINavigationController(rootViewController: ExtraFeaturesViewController(collectionViewLayout: UICollectionViewFlowLayout())), animated: true, completion: nil)
     }
     
     

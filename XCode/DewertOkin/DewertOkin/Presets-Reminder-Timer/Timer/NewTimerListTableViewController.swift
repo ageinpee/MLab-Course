@@ -62,7 +62,7 @@ class NewTimerListTableViewController: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TimerEntryCell", for: indexPath) as? TimerEntryCell {
             
             cell.textLabel?.text = timerList[indexPath.row].timerName
-            cell.detailTextLabel?.text = timerList[indexPath.row].timerTime?.toString(dateFormat: "HH:mm")
+            cell.detailTextLabel?.text = timerList[indexPath.row].timerTime?.toString(dateFormat: "HH:mm") ?? "Error" + " | "
             cell.accessoryView = mySwitch
             mySwitch.setOn(true,animated:true)
             return cell
@@ -112,9 +112,15 @@ class NewTimerListTableViewController: UITableViewController {
         present(UINavigationController(rootViewController: NewTimerTableViewController(deviceTimer: nil)), animated: true, completion: nil)
     }
     
+    @objc
+    private func dismissSelf() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     private func setupViews() {
         self.tableView = UITableView(frame: CGRect.zero, style: .grouped)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(presentAddTimerController))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(dismissSelf))
         navigationItem.title = "Timer"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
