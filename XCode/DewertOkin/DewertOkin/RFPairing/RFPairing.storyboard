@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8QO-Ky-gdF">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pairing Controller1-->
+        <scene sceneID="604-qL-UOI">
+            <objects>
+                <viewController id="8QO-Ky-gdF" customClass="RFPairingController1" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M5b-rO-dC6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-qs-894">
+                                <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HJh-qs-894" secondAttribute="height" multiplier="1:1" id="VW0-dH-Hy1"/>
+                                </constraints>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX4-L8-obO" customClass="RFPairingController1">
+                                <rect key="frame" x="0.0" y="94" width="414" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="J1A-3X-XmB"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBO-zX-F5y">
+                                <rect key="frame" x="50" y="772" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BwB-a6-NtP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit1:" destination="8QO-Ky-gdF" eventType="touchUpInside" id="OTk-30-wM0"/>
+                                    <segue destination="0JR-wU-EAa" kind="custom" identifier="pairingTransition1" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="va3-3o-T44"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xUJ-Ky-lRQ" firstAttribute="bottom" secondItem="qBO-zX-F5y" secondAttribute="bottom" constant="50" id="0UJ-vq-HKz"/>
+                            <constraint firstItem="qBO-zX-F5y" firstAttribute="centerX" secondItem="M5b-rO-dC6" secondAttribute="centerX" id="ER0-XX-udl"/>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="top" secondItem="xUJ-Ky-lRQ" secondAttribute="top" constant="50" id="ITR-ba-9c5"/>
+                            <constraint firstItem="HJh-qs-894" firstAttribute="centerX" secondItem="xUJ-Ky-lRQ" secondAttribute="centerX" id="MK3-2e-Hfm"/>
+                            <constraint firstItem="xUJ-Ky-lRQ" firstAttribute="trailing" secondItem="HJh-qs-894" secondAttribute="trailing" constant="-450" id="OkJ-PJ-KkR"/>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" id="Vl9-Gk-AHS"/>
+                            <constraint firstItem="HJh-qs-894" firstAttribute="top" secondItem="M5b-rO-dC6" secondAttribute="top" constant="650" id="Zb9-c0-Hkc"/>
+                            <constraint firstItem="HJh-qs-894" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" constant="-450" id="oBa-qy-N0b"/>
+                            <constraint firstItem="xUJ-Ky-lRQ" firstAttribute="trailing" secondItem="qBO-zX-F5y" secondAttribute="trailing" constant="50" id="uAF-1l-Nkz"/>
+                            <constraint firstItem="qBO-zX-F5y" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" constant="50" id="uTl-FJ-pvK"/>
+                            <constraint firstItem="LX4-L8-obO" firstAttribute="trailing" secondItem="xUJ-Ky-lRQ" secondAttribute="trailing" id="v19-kY-R5P"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xUJ-Ky-lRQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="dottedCircle" destination="HJh-qs-894" id="Of4-gP-4JF"/>
+                        <outlet property="pairingView" destination="M5b-rO-dC6" id="KUW-Ty-gch"/>
+                        <outlet property="remotePicker" destination="LX4-L8-obO" id="IW7-Qu-06S"/>
+                        <outlet property="submitButton1" destination="qBO-zX-F5y" id="BQY-PY-AWb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yy0-11-1pP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66.666666666666671" y="139.95535714285714"/>
+        </scene>
+        <!--Pairing Controller2-->
+        <scene sceneID="wiV-RB-kh2">
+            <objects>
+                <viewController id="0JR-wU-EAa" customClass="RFPairingController2" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wgc-MQ-cpI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-0F-nRb">
+                                <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jcd-0F-nRb" secondAttribute="height" multiplier="1:1" id="uhP-B5-QMP"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wg4-di-WFB">
+                                <rect key="frame" x="50" y="772" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="vLm-hj-fg0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Proceed"/>
+                                <connections>
+                                    <segue destination="u33-Ka-qw8" kind="custom" identifier="pairingTransition2" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="QoW-ME-Ubh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-u5-OCC">
+                                <rect key="frame" x="50" y="722" width="314" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xBz-XT-RbR"/>
+                                </constraints>
+                                <state key="normal" title="skip RF Pairing"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="controller2Image" translatesAutoresizingMaskIntoConstraints="NO" id="CfR-0w-Yh1">
+                                <rect key="frame" x="30" y="94" width="354" height="402"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please plug in your control unit." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UY8-rV-pEb">
+                                <rect key="frame" x="30" y="526" width="354" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jcd-0F-nRb" firstAttribute="top" secondItem="Wgc-MQ-cpI" secondAttribute="top" constant="650" id="0sS-IJ-bZT"/>
+                            <constraint firstItem="UY8-rV-pEb" firstAttribute="top" secondItem="CfR-0w-Yh1" secondAttribute="bottom" constant="30" id="1fb-p9-MsT"/>
+                            <constraint firstItem="Jcd-0F-nRb" firstAttribute="centerX" secondItem="Wgc-MQ-cpI" secondAttribute="centerX" id="4ZU-Mp-Tsk"/>
+                            <constraint firstAttribute="bottom" secondItem="CfR-0w-Yh1" secondAttribute="bottom" constant="400" id="75o-qL-5aP"/>
+                            <constraint firstItem="UY8-rV-pEb" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="30" id="GEZ-aK-DVy"/>
+                            <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="CfR-0w-Yh1" secondAttribute="trailing" constant="30" id="ImY-NZ-Il8"/>
+                            <constraint firstItem="Wg4-di-WFB" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="50" id="Ing-ra-iq9"/>
+                            <constraint firstItem="CfR-0w-Yh1" firstAttribute="top" secondItem="wRg-iK-mLx" secondAttribute="top" constant="50" id="J0O-a2-ppa"/>
+                            <constraint firstItem="vmc-u5-OCC" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="50" id="Mso-Ts-4RK"/>
+                            <constraint firstItem="Jcd-0F-nRb" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="-450" id="NuC-jk-8ek"/>
+                            <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="Jcd-0F-nRb" secondAttribute="trailing" constant="-450" id="Spd-As-2bf"/>
+                            <constraint firstItem="wRg-iK-mLx" firstAttribute="bottom" secondItem="Wg4-di-WFB" secondAttribute="bottom" constant="50" id="Z0y-6Q-W09"/>
+                            <constraint firstItem="Wg4-di-WFB" firstAttribute="centerX" secondItem="Wgc-MQ-cpI" secondAttribute="centerX" id="eLz-4S-7RU"/>
+                            <constraint firstItem="vmc-u5-OCC" firstAttribute="centerX" secondItem="Wgc-MQ-cpI" secondAttribute="centerX" id="hi8-bD-ajN"/>
+                            <constraint firstItem="Wg4-di-WFB" firstAttribute="top" secondItem="vmc-u5-OCC" secondAttribute="bottom" constant="20" id="ism-wu-ysn"/>
+                            <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="Wg4-di-WFB" secondAttribute="trailing" constant="50" id="nqe-kk-ImT"/>
+                            <constraint firstItem="CfR-0w-Yh1" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="30" id="ufn-Ul-jSM"/>
+                            <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="vmc-u5-OCC" secondAttribute="trailing" constant="50" id="uqb-N6-gus"/>
+                            <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="UY8-rV-pEb" secondAttribute="trailing" constant="30" id="wUZ-Iy-Qwh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wRg-iK-mLx"/>
+                    </view>
+                    <connections>
+                        <outlet property="dottedCircleImage" destination="Jcd-0F-nRb" id="8JH-Vp-Ah0"/>
+                        <outlet property="pairingView" destination="Wgc-MQ-cpI" id="isX-ez-mnT"/>
+                        <outlet property="proceedButton" destination="Wg4-di-WFB" id="EyI-5P-udW"/>
+                        <outlet property="skipButton" destination="vmc-u5-OCC" id="x5p-Hb-hfW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E3h-80-huf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.92753623188412" y="139.95535714285714"/>
+        </scene>
+        <!--Pairing Controller3-->
+        <scene sceneID="AnI-JY-vVN">
+            <objects>
+                <viewController id="u33-Ka-qw8" customClass="RFPairingController3" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Va-bd-XVM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Z1R-FZ-CjG">
+                                <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Z1R-FZ-CjG" secondAttribute="height" multiplier="1:1" id="b5Q-QX-u57"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQv-ZG-DJe">
+                                <rect key="frame" x="50" y="772" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SXd-Hb-8Ox"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Proceed"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-qP-4mq">
+                                <rect key="frame" x="30" y="94" width="354" height="456"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-bD-zEV">
+                                <rect key="frame" x="50" y="580" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jX0-Ta-bCn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gSY-bD-zEV" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="50" id="5wq-OB-crU"/>
+                            <constraint firstItem="Z1R-FZ-CjG" firstAttribute="top" secondItem="1Va-bd-XVM" secondAttribute="top" constant="650" id="7MD-8I-9Lb"/>
+                            <constraint firstItem="3LA-qP-4mq" firstAttribute="top" secondItem="j80-RO-Y5y" secondAttribute="top" constant="50" id="Cf5-YL-I1y"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="bottom" secondItem="xQv-ZG-DJe" secondAttribute="bottom" constant="50" id="ILa-J7-HgP"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="gSY-bD-zEV" secondAttribute="trailing" constant="50" id="MHw-pg-da1"/>
+                            <constraint firstItem="3LA-qP-4mq" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="30" id="X59-zt-e5v"/>
+                            <constraint firstItem="xQv-ZG-DJe" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="50" id="XfN-Y8-NRo"/>
+                            <constraint firstItem="Z1R-FZ-CjG" firstAttribute="centerX" secondItem="1Va-bd-XVM" secondAttribute="centerX" id="YKi-M9-BCc"/>
+                            <constraint firstItem="xQv-ZG-DJe" firstAttribute="centerX" secondItem="1Va-bd-XVM" secondAttribute="centerX" id="cAV-Kd-JxS"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="3LA-qP-4mq" secondAttribute="trailing" constant="30" id="l4d-nT-k1M"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="Z1R-FZ-CjG" secondAttribute="trailing" constant="-450" id="mOc-4H-zxh"/>
+                            <constraint firstItem="Z1R-FZ-CjG" firstAttribute="leading" secondItem="j80-RO-Y5y" secondAttribute="leading" constant="-450" id="sio-YY-dZJ"/>
+                            <constraint firstItem="gSY-bD-zEV" firstAttribute="top" secondItem="3LA-qP-4mq" secondAttribute="bottom" constant="30" id="syz-TF-Dhn"/>
+                            <constraint firstItem="j80-RO-Y5y" firstAttribute="trailing" secondItem="xQv-ZG-DJe" secondAttribute="trailing" constant="50" id="tao-LF-Oda"/>
+                            <constraint firstItem="Z1R-FZ-CjG" firstAttribute="top" secondItem="3LA-qP-4mq" secondAttribute="bottom" constant="100" id="vOD-Lf-Zbl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="j80-RO-Y5y"/>
+                    </view>
+                    <connections>
+                        <outlet property="dottedCircleImage" destination="Z1R-FZ-CjG" id="51a-uQ-u39"/>
+                        <outlet property="pairingView" destination="1Va-bd-XVM" id="zsW-rA-M5x"/>
+                        <outlet property="proceedButton" destination="xQv-ZG-DJe" id="jSx-SW-6rd"/>
+                        <outlet property="remoteImageView" destination="3LA-qP-4mq" id="iqe-un-e8B"/>
+                        <outlet property="textLabel" destination="gSY-bD-zEV" id="XfM-wa-VI6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ury-ee-CjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1790" y="140"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="controller2Image" width="1708" height="1826"/>
+        <image name="quarterCircle" width="1" height="1"/>
+    </resources>
+</document>
