@@ -42,15 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         
         AchievementModel.loadAchievementProgress()
-        
-        if let darkModeEnabled = UserDefaults.standard.object(forKey: "darkModeEnabled") as? Bool {
-            if darkModeEnabled {
-            } else {
-               UISwitch.appearance().tintColor = nil
-            }
-        }
-        
+
         UIApplication.shared.setMinimumBackgroundFetchInterval(600)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        window?.rootViewController = MainViewController()
         
         return true
     }

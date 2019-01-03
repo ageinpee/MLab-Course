@@ -15,8 +15,6 @@
 		0333052921BB352200603519 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052821BB352200603519 /* Bluetooth.swift */; };
 		033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033B2E6B21D398EA00971D08 /* BluetoothBackgroundHandler.swift */; };
 		0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBDA218607A30043A828 /* AppDelegate.swift */; };
-		0357FBDD218607A30043A828 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBDC218607A30043A828 /* ViewController.swift */; };
-		0357FBE0218607A30043A828 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0357FBDE218607A30043A828 /* Main.storyboard */; };
 		0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBE1218607A30043A828 /* DewertOkin.xcdatamodeld */; };
 		0357FBE5218607A30043A828 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0357FBE4218607A30043A828 /* Assets.xcassets */; };
 		0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0357FBE6218607A30043A828 /* LaunchScreen.storyboard */; };
@@ -37,6 +35,7 @@
 		03EA45C8219B26BF0097F099 /* AddTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA45C7219B26BF0097F099 /* AddTimerViewController.swift */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CD100F4721DB973200DBAAB9 /* BluetoothPairingConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */; };
+		CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */; };
 		CD1FA50221C593D3003A28CE /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1FA50121C593D3003A28CE /* TextInputTableViewCell.swift */; };
 		CD1FA50421C5ABFF003A28CE /* PresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */; };
 		CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397CC21B2A8A200D749FA /* AchievementModel.swift */; };
@@ -108,8 +107,6 @@
 		033B2E6B21D398EA00971D08 /* BluetoothBackgroundHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothBackgroundHandler.swift; sourceTree = "<group>"; };
 		0357FBD7218607A30043A828 /* DewertOkin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DewertOkin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0357FBDA218607A30043A828 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0357FBDC218607A30043A828 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0357FBDF218607A30043A828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0357FBE2218607A30043A828 /* DewertOkin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DewertOkin.xcdatamodel; sourceTree = "<group>"; };
 		0357FBE4218607A30043A828 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0357FBE7218607A30043A828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -135,6 +132,7 @@
 		03E987672194631300189C97 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		03EA45C7219B26BF0097F099 /* AddTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerViewController.swift; sourceTree = "<group>"; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD1FA50121C593D3003A28CE /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetTableViewCell.swift; sourceTree = "<group>"; };
 		CD3397CC21B2A8A200D749FA /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
@@ -256,8 +254,7 @@
 				FA397CA621943745000B4912 /* Presets-Reminder-Timer */,
 				CD35980E219840EF00B57987 /* Settings and more */,
 				0357FBDA218607A30043A828 /* AppDelegate.swift */,
-				0357FBDC218607A30043A828 /* ViewController.swift */,
-				0357FBDE218607A30043A828 /* Main.storyboard */,
+				CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */,
 				0357FBE4218607A30043A828 /* Assets.xcassets */,
 				0357FBE6218607A30043A828 /* LaunchScreen.storyboard */,
 				0357FBE9218607A30043A828 /* Info.plist */,
@@ -584,7 +581,6 @@
 				03E98764219452D300189C97 /* Reminder.storyboard in Resources */,
 				0357FBE5218607A30043A828 /* Assets.xcassets in Resources */,
 				CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */,
-				0357FBE0218607A30043A828 /* Main.storyboard in Resources */,
 				CDB5B11621B5B9FE000D92A4 /* OldRemote.storyboard in Resources */,
 				FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */,
 				CDFFC96C21C04372005C5821 /* NearestVendor.storyboard in Resources */,
@@ -637,7 +633,6 @@
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
 				033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */,
-				0357FBDD218607A30043A828 /* ViewController.swift in Sources */,
 				FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */,
 				FAE52D4E21D924D400121B54 /* AddPresetController.swift in Sources */,
 				0333052721BB34E800603519 /* BluetoothFlow.swift in Sources */,
@@ -661,6 +656,7 @@
 				0333052921BB352200603519 /* Bluetooth.swift in Sources */,
 				FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */,
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
+				CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
 				FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */,
@@ -702,14 +698,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0357FBDE218607A30043A828 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0357FBDF218607A30043A828 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0357FBE6218607A30043A828 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
