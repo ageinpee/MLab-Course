@@ -81,6 +81,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="Remote"/>
                         <constraints>
                             <constraint firstItem="DnC-Xu-Jbg" firstAttribute="bottom" secondItem="J9R-PK-aQG" secondAttribute="bottom" id="19J-GN-Mn5"/>
                             <constraint firstItem="0YV-jW-udd" firstAttribute="top" secondItem="DnC-Xu-Jbg" secondAttribute="bottom" constant="20" id="206-Rg-Omh"/>
@@ -136,17 +137,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="more functions of your device" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA9-hk-D9x">
-                                <rect key="frame" x="50" y="94" width="314" height="50"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEs-Jp-XXs">
+                                <rect key="frame" x="0.0" y="164" width="414" height="678"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="more functions of your device" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA9-hk-D9x">
+                                        <rect key="frame" x="20" y="20" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="WmB-gZ-1v9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="KyL-s2-RUM"/>
+                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="leading" secondItem="KEs-Jp-XXs" secondAttribute="leading" constant="20" id="7Ic-OQ-bu7"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZA9-hk-D9x" secondAttribute="trailing" constant="20" id="7VL-7c-GSV"/>
+                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="centerX" secondItem="KEs-Jp-XXs" secondAttribute="centerX" id="7aY-K8-wKS"/>
+                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="top" secondItem="KEs-Jp-XXs" secondAttribute="top" constant="20" id="xc9-C8-aaV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEs-Jp-XXs">
-                                <rect key="frame" x="20" y="164" width="374" height="678"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydd-5b-u6c">
                                 <rect key="frame" x="30" y="74" width="40" height="30"/>
@@ -159,28 +168,46 @@
                                     <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="sYJ-lk-Ai1"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-Ju-sBX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="f3m-fw-aji" appends="YES" id="lXD-Zf-xso"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZA9-hk-D9x" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="50" id="8a0-62-19L"/>
+                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="top" secondItem="bVY-Xs-AHm" secondAttribute="top" id="3G4-OH-jzw"/>
+                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="CM0-XS-DFU"/>
                             <constraint firstItem="ydd-5b-u6c" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="30" id="Dyc-UE-jOo"/>
-                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="ZA9-hk-D9x" secondAttribute="trailing" constant="50" id="KAI-VE-ub5"/>
-                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="20" id="M5A-Uz-M96"/>
-                            <constraint firstItem="p1V-fM-tHG" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="bottom" constant="20" id="S8s-ej-7IM"/>
-                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="KEs-Jp-XXs" secondAttribute="trailing" constant="20" id="WIm-Du-VNG"/>
-                            <constraint firstItem="ZA9-hk-D9x" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="50" id="XnG-qo-GQX"/>
-                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="top" secondItem="ZA9-hk-D9x" secondAttribute="bottom" constant="20" id="ekM-o0-ua0"/>
+                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="M5A-Uz-M96"/>
+                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="top" id="QW7-gM-eQ0"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="bottom" id="S8s-ej-7IM"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="KEs-Jp-XXs" secondAttribute="trailing" id="WIm-Du-VNG"/>
                             <constraint firstItem="ydd-5b-u6c" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="30" id="nfO-Fd-cyz"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="aOf-Ju-sBX" secondAttribute="trailing" id="oBA-PR-e6j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p1V-fM-tHG"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="ydd-5b-u6c" id="XCj-lH-m48"/>
+                        <outlet property="globalView" destination="bVY-Xs-AHm" id="eij-Lv-TWl"/>
+                        <outlet property="moreFunctionsLabel" destination="ZA9-hk-D9x" id="I6x-UF-AxW"/>
                         <outlet property="scrollView" destination="KEs-Jp-XXs" id="d0D-x2-kJH"/>
+                        <outlet property="tapView" destination="aOf-Ju-sBX" id="JXv-3K-WEX"/>
+                        <outlet property="view" destination="bVY-Xs-AHm" id="uOH-ww-m6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXG-di-7HQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="f3m-fw-aji">
+                    <connections>
+                        <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="G8l-fL-Fmg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="957" y="26"/>
+            <point key="canvasLocation" x="956.52173913043487" y="25.446428571428569"/>
         </scene>
         <!--Presets Controller-->
         <scene sceneID="xaU-ZF-daG">
@@ -355,8 +382,7 @@
         <image name="remote_icon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r7J-NU-31I"/>
-        <segue reference="NBl-g8-nGH"/>
-        <segue reference="cCd-WO-O29"/>
+        <segue reference="8t9-dl-DFs"/>
+        <segue reference="G8l-fL-Fmg"/>
     </inferredMetricsTieBreakers>
 </document>

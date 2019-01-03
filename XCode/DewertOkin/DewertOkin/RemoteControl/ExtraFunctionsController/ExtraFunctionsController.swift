@@ -12,8 +12,13 @@ import UIKit
 class ExtraFunctionsController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var moreFunctionsLabel: UILabel!
+    @IBOutlet var globalView: UIView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var tapView: UIView!
     
     var functionsList: [String] = [String]()
+    var totalHeight: Int = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +26,9 @@ class ExtraFunctionsController: UIViewController {
         functionsList = ["Massage", "UBL", "Torch", "Massage2"]
         
         createButtons(withText: functionsList)
+        createViews()
+        
     }
-    
     
     @objc func functionsButtonAction(sender: UIButton!) {
         sender.backgroundColor = UIColor.lightGray
