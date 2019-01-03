@@ -294,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tds-zj-a6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="735"/>
+            <point key="canvasLocation" x="41" y="825"/>
         </scene>
         <!--Add Preset Controller-->
         <scene sceneID="1AI-db-4FM">
@@ -373,7 +373,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ed-NC-ZLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Hlx-Ed-2u2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="935" y="735"/>
+            <point key="canvasLocation" x="957" y="825"/>
         </scene>
     </scenes>
     <resources>
@@ -382,7 +382,7 @@
         <image name="remote_icon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8t9-dl-DFs"/>
-        <segue reference="G8l-fL-Fmg"/>
+        <segue reference="NBl-g8-nGH"/>
+        <segue reference="cCd-WO-O29"/>
     </inferredMetricsTieBreakers>
 </document>
