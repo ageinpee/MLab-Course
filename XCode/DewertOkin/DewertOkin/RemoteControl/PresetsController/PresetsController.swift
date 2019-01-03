@@ -13,6 +13,9 @@ class PresetsController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addPresetButton: UIButton!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     var presetsList: [String] = [String]()
     
     override func viewDidLoad() {

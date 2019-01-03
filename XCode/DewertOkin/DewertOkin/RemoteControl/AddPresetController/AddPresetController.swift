@@ -14,6 +14,9 @@ class AddPresetController: UIViewController {
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var nameTextfield: UITextField!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     var memoryStates: [MemoryState] = [MemoryState]()
     
     override func viewDidLoad() {
