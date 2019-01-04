@@ -157,6 +157,14 @@
                                     <constraint firstItem="ZA9-hk-D9x" firstAttribute="top" secondItem="KEs-Jp-XXs" secondAttribute="top" constant="20" id="xc9-C8-aaV"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-Ju-sBX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="f3m-fw-aji" appends="YES" id="lXD-Zf-xso"/>
+                                </connections>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydd-5b-u6c">
                                 <rect key="frame" x="30" y="74" width="40" height="30"/>
                                 <constraints>
@@ -168,26 +176,18 @@
                                     <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="sYJ-lk-Ai1"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-Ju-sBX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="f3m-fw-aji" appends="YES" id="lXD-Zf-xso"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aOf-Ju-sBX" firstAttribute="top" secondItem="bVY-Xs-AHm" secondAttribute="top" id="3G4-OH-jzw"/>
                             <constraint firstItem="aOf-Ju-sBX" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="CM0-XS-DFU"/>
-                            <constraint firstItem="ydd-5b-u6c" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="30" id="Dyc-UE-jOo"/>
                             <constraint firstItem="KEs-Jp-XXs" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="M5A-Uz-M96"/>
                             <constraint firstItem="aOf-Ju-sBX" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="top" id="QW7-gM-eQ0"/>
                             <constraint firstItem="p1V-fM-tHG" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="bottom" id="S8s-ej-7IM"/>
                             <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="KEs-Jp-XXs" secondAttribute="trailing" id="WIm-Du-VNG"/>
-                            <constraint firstItem="ydd-5b-u6c" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="30" id="nfO-Fd-cyz"/>
+                            <constraint firstItem="ydd-5b-u6c" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="30" id="ec5-9e-l8U"/>
                             <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="aOf-Ju-sBX" secondAttribute="trailing" id="oBA-PR-e6j"/>
+                            <constraint firstItem="ydd-5b-u6c" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="30" id="rD9-9F-GQh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p1V-fM-tHG"/>
                     </view>
@@ -382,6 +382,7 @@
         <image name="remote_icon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="r7J-NU-31I"/>
         <segue reference="NBl-g8-nGH"/>
         <segue reference="cCd-WO-O29"/>
     </inferredMetricsTieBreakers>
