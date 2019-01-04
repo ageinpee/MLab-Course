@@ -36,6 +36,8 @@
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CD100F4721DB973200DBAAB9 /* BluetoothPairingConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */; };
 		CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */; };
+		CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */; };
+		CD100F4D21DFF25400DBAAB9 /* ExecutingPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4C21DFF25400DBAAB9 /* ExecutingPresetViewController.swift */; };
 		CD1FA50221C593D3003A28CE /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1FA50121C593D3003A28CE /* TextInputTableViewCell.swift */; };
 		CD1FA50421C5ABFF003A28CE /* PresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */; };
 		CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397CC21B2A8A200D749FA /* AchievementModel.swift */; };
@@ -141,6 +143,8 @@
 		03EA45C7219B26BF0097F099 /* AddTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerViewController.swift; sourceTree = "<group>"; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		CD100F4C21DFF25400DBAAB9 /* ExecutingPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutingPresetViewController.swift; sourceTree = "<group>"; };
 		CD1FA50121C593D3003A28CE /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetTableViewCell.swift; sourceTree = "<group>"; };
 		CD3397CC21B2A8A200D749FA /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
@@ -415,6 +419,8 @@
 				031EE20421A2EEB600E9E91E /* Timer+CoreDataProperties.swift */,
 				CD97E84221D94250009C64E4 /* NewTimerTableViewController.swift */,
 				CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */,
+				CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */,
+				CD100F4C21DFF25400DBAAB9 /* ExecutingPresetViewController.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -701,7 +707,9 @@
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
 				CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
+				CD100F4D21DFF25400DBAAB9 /* ExecutingPresetViewController.swift in Sources */,
 				FAE52D3421D556DB00121B54 /* RFPairingController3.swift in Sources */,
+				CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */,
 				CDFFC96E21C0438E005C5821 /* NearestVendorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
