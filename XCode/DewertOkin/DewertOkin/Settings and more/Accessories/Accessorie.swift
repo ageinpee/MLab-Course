@@ -35,11 +35,12 @@ class Accessorie {
         self.targetURL = nil
     }
     
-    // json data example
-    // let json =   "{ \"accessorie\":
-    // [ { \"title\": \"LED-Leiste\",    \"description\": \"tolle LED leiste für jedermann!\",    \"imageURL\": \"http://www.dewertokin.com\", \"targetURL\": \"http://www,dewertokin.com\"  },
-    // { \"firstName\": \"Angela\", \"lastName\": \"Merkel\", \"isAlive\": true },
-    // { \"firstName\": \"George\", \"lastName\": \"Washington\", \"isAlive\": false } ] }"
+    //--   json stuff , lists of different company info etc.
+    struct AccessorieJSON: Decodable {
+        let title: String
+        let description: String
+        let imageURL: URL
+        let targetURL: URL
+    }
     
-    //
 }
