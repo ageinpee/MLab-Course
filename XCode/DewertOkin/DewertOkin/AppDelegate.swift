@@ -88,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Reconnecting to latest Device
         let availablePeripheral = bluetoothBackgroundHandler.reconnect()
         guard availablePeripheral != nil else { return }
+        bluetooth.bluetoothCoordinator = bluetoothFlow
         bluetoothFlow.connect(peripheral: availablePeripheral!, completion: { _ in })
     }
 

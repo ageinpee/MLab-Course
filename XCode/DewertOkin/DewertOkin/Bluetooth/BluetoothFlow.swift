@@ -37,7 +37,11 @@ class BluetoothFlow: BluetoothCoordinator {
             return
         }
         self.pairing = true
-        self.pairingWorkItem = DispatchWorkItem { self.pairingFailed() }
+        self.pairingWorkItem = DispatchWorkItem {
+            if (self.pairing && !self.paired){
+                self.pairingFailed()
+            }
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + self.timeout, execute: self.pairingWorkItem!)
         
         self.pairingHandler = completion
@@ -54,7 +58,6 @@ class BluetoothFlow: BluetoothCoordinator {
     }
 
     func cancel() {
-        self.bluetoothService?.stopScan()
         self.bluetoothService?.disconnect()
         self.pairingWorkItem?.cancel()
         
@@ -65,7 +68,6 @@ class BluetoothFlow: BluetoothCoordinator {
     }
     
     override func ableToWrite() {
-        guard self.pairing else { return }
         self.bluetoothService?.getCharacteristics()
         self.pairingWorkItem?.cancel()
         self.pairingHandler(true)

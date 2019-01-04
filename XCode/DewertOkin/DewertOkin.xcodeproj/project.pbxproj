@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031CC45321DE43B80025E068 /* DevicesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CC45221DE43B80025E068 /* DevicesListViewController.swift */; };
+		031CC45521DE43C20025E068 /* Devices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031CC45421DE43C20025E068 /* Devices.storyboard */; };
+		031CC45A21DE52FF0025E068 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
 		031EE20521A2EEB600E9E91E /* Timer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE20321A2EEB600E9E91E /* Timer+CoreDataClass.swift */; };
 		031EE20621A2EEB600E9E91E /* Timer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE20421A2EEB600E9E91E /* Timer+CoreDataProperties.swift */; };
 		0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052221BB349700603519 /* RemoteControlConfig.swift */; };
@@ -41,8 +44,6 @@
 		CD1FA50421C5ABFF003A28CE /* PresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */; };
 		CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397CC21B2A8A200D749FA /* AchievementModel.swift */; };
 		CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397D021B2B0AF00D749FA /* Achievement.swift */; };
-		CD4E7CD821C98FF3002D3873 /* Devices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4E7CD721C98FF3002D3873 /* Devices.storyboard */; };
-		CD4E7CDB21C99027002D3873 /* DevicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E7CDA21C99027002D3873 /* DevicesTableViewController.swift */; };
 		CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */; };
 		CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */; };
 		CD61A9D32192F7990093A990 /* SettingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD61A9D22192F7990093A990 /* SettingsEntry.swift */; };
@@ -64,7 +65,6 @@
 		FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA187F44219C25E700DE3BC0 /* addReminder.swift */; };
 		FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* Remote.storyboard */; };
 		FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC760E21B03592003BEF66 /* RemoteController.swift */; };
-		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		031CC45221DE43B80025E068 /* DevicesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListViewController.swift; sourceTree = "<group>"; };
+		031CC45421DE43C20025E068 /* Devices.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Devices.storyboard; sourceTree = "<group>"; };
 		031EE20321A2EEB600E9E91E /* Timer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+CoreDataClass.swift"; sourceTree = "<group>"; };
 		031EE20421A2EEB600E9E91E /* Timer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0333052221BB349700603519 /* RemoteControlConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlConfig.swift; sourceTree = "<group>"; };
@@ -125,8 +127,6 @@
 		CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetTableViewCell.swift; sourceTree = "<group>"; };
 		CD3397CC21B2A8A200D749FA /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
 		CD3397D021B2B0AF00D749FA /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
-		CD4E7CD721C98FF3002D3873 /* Devices.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Devices.storyboard; sourceTree = "<group>"; };
-		CD4E7CDA21C99027002D3873 /* DevicesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesTableViewController.swift; sourceTree = "<group>"; };
 		CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMore.storyboard; sourceTree = "<group>"; };
 		CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		CD61A9D22192F7990093A990 /* SettingsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntry.swift; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 		CD4E7CD921C9900F002D3873 /* Devices */ = {
 			isa = PBXGroup;
 			children = (
-				CD4E7CD721C98FF3002D3873 /* Devices.storyboard */,
-				CD4E7CDA21C99027002D3873 /* DevicesTableViewController.swift */,
+				031CC45421DE43C20025E068 /* Devices.storyboard */,
+				031CC45221DE43B80025E068 /* DevicesListViewController.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -452,7 +452,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Team DewertOkin";
 				TargetAttributes = {
 					0357FBD6218607A30043A828 = {
@@ -501,7 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD4E7CD821C98FF3002D3873 /* Devices.storyboard in Resources */,
+				031CC45521DE43C20025E068 /* Devices.storyboard in Resources */,
 				03E98762219452C400189C97 /* Timer.storyboard in Resources */,
 				0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */,
 				03E98764219452D300189C97 /* Reminder.storyboard in Resources */,
@@ -559,10 +559,10 @@
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
 				CD1FA50421C5ABFF003A28CE /* PresetTableViewCell.swift in Sources */,
 				031EE20621A2EEB600E9E91E /* Timer+CoreDataProperties.swift in Sources */,
+				031CC45321DE43B80025E068 /* DevicesListViewController.swift in Sources */,
 				03EA45C8219B26BF0097F099 /* AddTimerViewController.swift in Sources */,
 				CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */,
 				03E98758219447BC00189C97 /* TimerListViewController.swift in Sources */,
-				CD4E7CDB21C99027002D3873 /* DevicesTableViewController.swift in Sources */,
 				FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */,
 				03E9875C219447E000189C97 /* Reminders.swift in Sources */,
 				0333052521BB34C200603519 /* BluetoothCoordinator.swift in Sources */,
@@ -572,10 +572,9 @@
 				03CCD9ED21CB8494007D6109 /* BluetoothPairingConnectViewController.swift in Sources */,
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
-				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
+				031CC45A21DE52FF0025E068 /* AchievementsTableViewController.swift in Sources */,
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
-				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				CDFFC96E21C0438E005C5821 /* NearestVendorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

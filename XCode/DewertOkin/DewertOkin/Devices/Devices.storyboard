@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CrY-F8-HvF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2vF-NN-zR7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Devices Table View Controller-->
-        <scene sceneID="7hf-49-m2s">
+        <!--Devices List View Controller-->
+        <scene sceneID="5tR-fY-B0J">
             <objects>
-                <tableViewController storyboardIdentifier="DevicesList" id="uAD-wb-puE" customClass="DevicesTableViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iui-YI-occ">
+                <viewController storyboardIdentifier="DevicesList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2vF-NN-zR7" customClass="DevicesListViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XSy-0J-TZL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-dv-o1y">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <outlet property="dataSource" destination="uAD-wb-puE" id="SNL-Dh-HGK"/>
-                            <outlet property="delegate" destination="uAD-wb-puE" id="ePB-0Z-L9b"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="NxB-SZ-Bq3"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u7t-rV-HcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="972" y="-82.3088455772114"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Knv-cd-ze5">
-            <objects>
-                <navigationController storyboardIdentifier="Devices" automaticallyAdjustsScrollViewInsets="NO" id="CrY-F8-HvF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5XL-Mn-OYL">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <constraints>
+                            <constraint firstItem="awo-UE-uw2" firstAttribute="trailing" secondItem="JTQ-dv-o1y" secondAttribute="trailing" id="CKf-EO-EfZ"/>
+                            <constraint firstItem="JTQ-dv-o1y" firstAttribute="top" secondItem="awo-UE-uw2" secondAttribute="top" id="LZw-gm-O0H"/>
+                            <constraint firstItem="JTQ-dv-o1y" firstAttribute="leading" secondItem="awo-UE-uw2" secondAttribute="leading" id="Oxs-BX-IOz"/>
+                            <constraint firstItem="awo-UE-uw2" firstAttribute="bottom" secondItem="JTQ-dv-o1y" secondAttribute="bottom" id="yLd-em-M1C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="awo-UE-uw2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JxZ-xZ-eOh"/>
                     <connections>
-                        <segue destination="uAD-wb-puE" kind="relationship" relationship="rootViewController" id="Ong-FZ-1cB"/>
+                        <outlet property="tableView" destination="JTQ-dv-o1y" id="bpd-LZ-V08"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wxG-Gj-LYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1vH-dE-sqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="-82.3088455772114"/>
+            <point key="canvasLocation" x="1296.8" y="-309.89505247376314"/>
         </scene>
     </scenes>
 </document>

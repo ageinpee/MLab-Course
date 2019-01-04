@@ -26,7 +26,7 @@ extension Bluetooth: CBPeripheralDelegate {
         for characteristic in characteristics {
             if(characteristic.uuid == Bluetooth.keycodeUUID){
                 peripheral.setNotifyValue(true, for: characteristic)
-                self.characteristic = characteristic
+                self.writeCharacteristic = characteristic
                 self.bluetoothCoordinator?.ableToWrite()
             }
         }
@@ -43,6 +43,6 @@ extension Bluetooth: CBPeripheralDelegate {
 
 extension Bluetooth {
     func getCharacteristics() {
-        self.connectedPeripheral?.readValue(for: self.characteristic!)
+        self.connectedPeripheral?.readValue(for: self.writeCharacteristic!)
     }
 }

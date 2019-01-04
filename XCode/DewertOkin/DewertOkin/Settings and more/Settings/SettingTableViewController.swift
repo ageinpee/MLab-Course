@@ -155,18 +155,18 @@ class SettingTableViewController: UITableViewController, Themeable {
         } else if (indexPath.row == settingsEntries.firstIndex(of: .nearestVendor)) {
             pushVendorStoryboard()
         } else if(indexPath.row == settingsEntries.firstIndex(of: .manageDevices)) {
-            pushDevicesStoryboard()
+//            pushDevicesStoryboard()
         }
     }
     
-    @objc
-    private func pushDevicesStoryboard() {
-        if let vc = UIStoryboard(name: "Devices", bundle: nil).instantiateViewController(withIdentifier: "DevicesList") as? DevicesTableViewController {
-            if let navigator = navigationController {
-                navigator.pushViewController(vc, animated: true)
-            }
-        }
-    }
+//    @objc
+//    private func pushDevicesStoryboard() {
+//        if let vc = UIStoryboard(name: "Devices", bundle: nil).instantiateViewController(withIdentifier: "DevicesList") as? DevicesTableViewController {
+//            if let navigator = navigationController {
+//                navigator.pushViewController(vc, animated: true)
+//            }
+//        }
+//    }
     
     @objc
     private func pushVendorStoryboard() {
