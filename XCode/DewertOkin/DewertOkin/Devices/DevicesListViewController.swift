@@ -16,6 +16,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var devicesList = [Devices]()
+    var cellDevicesData = [DevicesData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +38,20 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         
         do {
             let savedDevics = try PersistenceService.context.fetch(fetchRequest)
+            self.cellDevicesData = []
             self.devicesList = savedDevics
+            for devices in devicesList {
+                cellDevicesData.append(DevicesData.init(image: UIImage(named: "chair_pictogram"), name: devices.name, status: "Connected"))
+            }
+            self.registerDevices()
             self.tableView.reloadData()
         } catch {
-            print("Couldnt update the Devices, reload!")
+            print("Couldn't update the Devices, reload!")
         }
+    }
+    
+    func registerDevices() {
+        self.tableView.register(DevicesListCustomCell.self, forCellReuseIdentifier: "customDevicesCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,15 +66,22 @@ extension DevicesListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return devicesList.count
+        return cellDevicesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = devicesList[indexPath.row].name
-        cell.detailTextLabel?.text = devicesList[indexPath.row].uuid
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "customDevicesCell") as! DevicesListCustomCell
+        cell.deviceImage = cellDevicesData[indexPath.row].image
+        cell.deviceName = cellDevicesData[indexPath.row].name
+        cell.deviceStatus = cellDevicesData[indexPath.row].status
         return cell
     }
     
     
+}
+
+struct DevicesData {
+    let image: UIImage?
+    let name: String?
+    let status: String?
 }

@@ -61,7 +61,7 @@ extension Bluetooth: CBCentralManagerDelegate {
         // Give the user clear feedback in the UI
         self.bluetoothCoordinator?.disconnected(failure: true)
     }
-    
+        
     func saveDevice(peripheral: CBPeripheral) {
         let device = Devices(context: PersistenceService.context)
         device.name = peripheral.name
