@@ -164,7 +164,7 @@ class Health {
         
         query.initialResultsHandler = { query, results, error in
             
-            let startDate = Date().addingTimeInterval(-24*60*60)
+            let startDate = Date().addingTimeInterval(-12*60*60)
             
             var stepsArray: [Double] = []
             

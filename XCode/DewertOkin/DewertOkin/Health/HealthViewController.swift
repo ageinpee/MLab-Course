@@ -20,7 +20,8 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Health"
-
+        self.navigationItem.setRightBarButtonItems([UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(handleRefresh))], animated: true)
+        
         self.collectionView!.register(RecommendationsLabelCell.self, forCellWithReuseIdentifier: recommendationsLabel)
         self.collectionView!.register(StepsViewCell.self, forCellWithReuseIdentifier: stepsLabel)
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: defaultCell)
@@ -29,9 +30,6 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
         collectionView.alwaysBounceVertical = true
         
         setupChartData()
-        
-
-        
     }
     
     let dataEntry = [BarChartDataEntry(x: 10, y: 100)]
@@ -41,9 +39,11 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
         view.drawValueAboveBarEnabled = true
         view.legend.enabled = false
         view.leftAxis.axisMinimum = 0
+        view.leftAxis.drawZeroLineEnabled = true
         view.setScaleEnabled(false)
         view.xAxis.drawGridLinesEnabled = false
         view.leftAxis.drawGridLinesEnabled = false
+        view.noDataText = "No step data available."
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -54,10 +54,16 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
         var barChartData = BarChartData(dataSet: barChartDataSet)
         var stepDataArray: [BarChartDataEntry] = []
         
-//        barChartView.data = barChartData
-        
         Health.shared.getLastDaysStepsInHourIntervals { resultsArray in
             print(resultsArray)
+            
+            if resultsArray.filter({ !$0.isZero }).isEmpty {
+                DispatchQueue.main.async {
+                    self.barChartView.data = nil
+                }
+                return
+            }
+            
             var iterator = 0
             for result in resultsArray {
                 stepDataArray.append(BarChartDataEntry(x: Double(iterator), y: result))
@@ -71,6 +77,12 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
                 self.barChartView.data = barChartData
             }
         }
+    }
+    
+    @objc
+    private func handleRefresh() {
+        barChartView.data = nil
+        setupChartData()
     }
 
 
@@ -92,12 +104,10 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
         switch indexPath.row {
         case 0:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recommendationsLabel, for: indexPath) as? RecommendationsLabelCell {
-                cell.backgroundColor = .green
                 return cell
             }
         case 1:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: stepsLabel, for: indexPath) as? StepsViewCell {
-                cell.backgroundColor = .yellow
                 return cell
             }
         case 2:
