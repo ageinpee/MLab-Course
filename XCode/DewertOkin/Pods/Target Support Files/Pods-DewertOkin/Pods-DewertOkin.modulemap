@@ -1,0 +1,6 @@
+framework module Pods_DewertOkin {
+  umbrella header "Pods-DewertOkin-umbrella.h"
+
+  export *
+  module * { export * }
+}
