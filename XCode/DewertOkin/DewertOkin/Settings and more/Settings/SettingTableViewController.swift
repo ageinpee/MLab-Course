@@ -64,9 +64,7 @@ class SettingTableViewController: UITableViewController, Themeable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Sets the title of the surrounding Navigation Controller
         navigationItem.title = "More"
-        //navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.barButtonItem.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
@@ -111,6 +109,9 @@ class SettingTableViewController: UITableViewController, Themeable {
             cell.accessoryView = {
                 let oldRemoteSwitch = UISwitch()
                 oldRemoteSwitch.isOn = false
+                if let oldRemoteSwitchIsOn = UserDefaults.standard.object(forKey: "oldRemoteActivated") as? Bool {
+                    oldRemoteSwitch.isOn = oldRemoteSwitchIsOn
+                }
                 oldRemoteSwitch.addTarget(self, action: #selector(oldRemoteSwitchChanged(sender:)), for: .valueChanged)
                 return oldRemoteSwitch
             }()
@@ -245,13 +246,18 @@ class SettingTableViewController: UITableViewController, Themeable {
     
     @objc
     private func oldRemoteSwitchChanged(sender: UISwitch!) {
-        if (sender.isOn) {
-            //RemoteController.useOldRemoteLayout = true
-            print("Using old Remote Layout")
+        if sender.isOn {
+            UserDefaults.standard.set(true, forKey: "oldRemoteActivated")
         } else {
-            //RemoteController.useOldRemoteLayout = false
-            print("Using fancy Remote Layout")
+            UserDefaults.standard.set(false, forKey: "oldRemoteActivated")
         }
+        
+        // Warning! This re-initializes all ViewControllers in the TabBar (incl. Settings)
+        if let vc = tabBarController as? MainViewController {
+            vc.useNewRemoteStyle = !sender.isOn
+            print("Using \(sender.isOn ? "old" : "new") Remote Layout")
+        }
+
     }
     
     @objc

@@ -10,21 +10,39 @@ import Foundation
 import UIKit
 
 class MainViewController: UITabBarController {
+    
+    var useNewRemoteStyle = true {
+        didSet {
+            setupViews()
+        }
+    }
+    
+    var remoteVC = UIViewController()
+    var reminderVC = UIViewController()
+    var settingsVC = UIViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+    }
+    
+    private func setupViews() {
+        guard let remoteNew = UIStoryboard(name: "Remote", bundle: nil).instantiateInitialViewController(),
+            let remoteOld = UIStoryboard(name: "OldRemote", bundle: nil).instantiateInitialViewController(),
+            let reminder = UIStoryboard(name: "Reminder", bundle: nil).instantiateInitialViewController(),
+            let settings = UIStoryboard(name: "SettingsMore", bundle: nil).instantiateInitialViewController() else { return }
         
-        let remoteVC = UIStoryboard(name: "Remote", bundle: nil).instantiateInitialViewController()!
+        remoteVC = useNewRemoteStyle ? remoteNew : remoteOld
         remoteVC.tabBarItem = UITabBarItem(title: "Remote", image: UIImage(named: "remote_icon"), tag: 0)
-
-        let reminderVC = UIStoryboard(name: "Reminder", bundle: nil).instantiateInitialViewController()!
+        
+        reminderVC = reminder
         reminderVC.tabBarItem = UITabBarItem(title: "Reminder", image: UIImage(named: "reminder_icon"), tag: 1)
         
-        let settingsVC = UIStoryboard(name: "SettingsMore", bundle: nil).instantiateInitialViewController()!
+        settingsVC = settings
         settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
         
         let controllers = [remoteVC, reminderVC, settingsVC]
         
-        viewControllers = controllers
-        
+        setViewControllers(controllers, animated: false)
     }
 }
