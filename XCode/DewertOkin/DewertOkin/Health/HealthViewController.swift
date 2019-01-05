@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Charts
 
 private let recommendationsLabel = "recommendationsLabel"
 private let stepsLabel = "stepsLabel"
+private let defaultCell = "defaultCell"
 
 class HealthViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
@@ -21,25 +23,56 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
 
         self.collectionView!.register(RecommendationsLabelCell.self, forCellWithReuseIdentifier: recommendationsLabel)
         self.collectionView!.register(StepsViewCell.self, forCellWithReuseIdentifier: stepsLabel)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: defaultCell)
 
         collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true
         
-        Health.shared.getLastDaysStepsInHourIntervals { resultsArray in
-            print(resultsArray)
-        }
+        setupChartData()
+        
+
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    let dataEntry = [BarChartDataEntry(x: 10, y: 100)]
+    
+    let barChartView: BarChartView = {
+        let view = BarChartView()
+        view.drawValueAboveBarEnabled = true
+        view.legend.enabled = false
+        view.leftAxis.axisMinimum = 0
+        view.setScaleEnabled(false)
+        view.xAxis.drawGridLinesEnabled = false
+        view.leftAxis.drawGridLinesEnabled = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private func setupChartData() {
+        
+        var barChartDataSet = BarChartDataSet(values: dataEntry, label: "testData")
+        var barChartData = BarChartData(dataSet: barChartDataSet)
+        var stepDataArray: [BarChartDataEntry] = []
+        
+//        barChartView.data = barChartData
+        
+        Health.shared.getLastDaysStepsInHourIntervals { resultsArray in
+            print(resultsArray)
+            var iterator = 0
+            for result in resultsArray {
+                stepDataArray.append(BarChartDataEntry(x: Double(iterator), y: result))
+                iterator += 1
+            }
+            barChartDataSet = BarChartDataSet(values: stepDataArray, label: "Steps")
+            barChartDataSet.setColor(.red)
+            barChartDataSet.drawValuesEnabled = false
+            barChartData = BarChartData(dataSet: barChartDataSet)
+            DispatchQueue.main.async {
+                self.barChartView.data = barChartData
+            }
+        }
     }
-    */
+
 
     // MARK: UICollectionViewDataSource
 
@@ -51,7 +84,7 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 2
+        return 3
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -59,18 +92,32 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
         switch indexPath.row {
         case 0:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recommendationsLabel, for: indexPath) as? RecommendationsLabelCell {
+                cell.backgroundColor = .green
                 return cell
             }
         case 1:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: stepsLabel, for: indexPath) as? StepsViewCell {
+                cell.backgroundColor = .yellow
                 return cell
             }
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: defaultCell, for: indexPath)
+            cell.addSubview(barChartView)
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[v0]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": barChartView]))
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[v0]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": barChartView]))
+
+            return cell
         default: return UICollectionViewCell()
         }
        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if indexPath.item == 2 {
+            return CGSize(width: view.frame.width, height: 300)
+        }
+        
         return CGSize(width: view.frame.width, height: 44)
     }
 

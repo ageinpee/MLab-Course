@@ -65,32 +65,6 @@ class Health {
         healthStore.execute(query)
     }
     
-    func getLastHoursSteps(completion: @escaping (Double) -> Void) {
-        
-        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        
-        let now = Date()
-        let oneHourAgo = Date().addingTimeInterval(-3600)
-        let predicate = HKQuery.predicateForSamples(withStart: oneHourAgo, end: now, options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (_, result, error) in
-            var resultCount = 0.0
-            guard let result = result else {
-                print("Failed to fetch steps rate")
-                completion(resultCount)
-                return
-            }
-            if let sum = result.sumQuantity() {
-                resultCount = sum.doubleValue(for: HKUnit.count())
-            }
-            
-            DispatchQueue.main.async {
-                completion(resultCount)
-            }
-        }
-        healthStore.execute(query)
-    }
-    
     func getStepsForTimeInterval(timeInSeconds: TimeInterval, completion: @escaping (Double?) -> Void) {
         
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
@@ -198,7 +172,10 @@ class Health {
                 print("Time: \(result.startDate), \(result.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0)")
                 stepsArray.append(result.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0)
             })
-            completion(stepsArray)
+            DispatchQueue.main.async {
+                completion(stepsArray)
+            }
+
             
         }
         healthStore.execute(query)

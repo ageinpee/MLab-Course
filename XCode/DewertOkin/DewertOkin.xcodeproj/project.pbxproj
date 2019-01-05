@@ -33,6 +33,7 @@
 		03E987692194631300189C97 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987662194631300189C97 /* UserNotifications.framework */; };
 		03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987672194631300189C97 /* UserNotificationsUI.framework */; };
 		03EA45C8219B26BF0097F099 /* AddTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA45C7219B26BF0097F099 /* AddTimerViewController.swift */; };
+		4B54CBF2759AFFD448783FF0 /* Pods_DewertOkin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CD100F4721DB973200DBAAB9 /* BluetoothPairingConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */; };
 		CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */; };
@@ -142,7 +143,10 @@
 		03E987662194631300189C97 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		03E987672194631300189C97 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		03EA45C7219B26BF0097F099 /* AddTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerViewController.swift; sourceTree = "<group>"; };
+		66B96800A32AF456A1DA4FEE /* Pods-DewertOkin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DewertOkin.release.xcconfig"; path = "Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin.release.xcconfig"; sourceTree = "<group>"; };
+		760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DewertOkin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B0FFC79E97882B928D61CF45 /* Pods-DewertOkin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DewertOkin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin.debug.xcconfig"; sourceTree = "<group>"; };
 		CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		CD100F4C21DFF25400DBAAB9 /* ExecutingPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutingPresetViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 				03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */,
 				85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */,
 				CDBCC0BE21C7A85A0014451C /* HealthKit.framework in Frameworks */,
+				4B54CBF2759AFFD448783FF0 /* Pods_DewertOkin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +257,7 @@
 				0357FBFC218607A40043A828 /* DewertOkinUITests */,
 				0357FBD8218607A30043A828 /* Products */,
 				85919DE521943DCC0026AD28 /* Frameworks */,
+				0728A444595F93E5F45A6BA1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -333,6 +339,15 @@
 			path = RemoteControl;
 			sourceTree = "<group>";
 		};
+		0728A444595F93E5F45A6BA1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0FFC79E97882B928D61CF45 /* Pods-DewertOkin.debug.xcconfig */,
+				66B96800A32AF456A1DA4FEE /* Pods-DewertOkin.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		85919DE521943DCC0026AD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +356,7 @@
 				03E987662194631300189C97 /* UserNotifications.framework */,
 				03E987672194631300189C97 /* UserNotificationsUI.framework */,
 				85919DE621943DCC0026AD28 /* CoreData.framework */,
+				760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -508,9 +524,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0357FC02218607A40043A828 /* Build configuration list for PBXNativeTarget "DewertOkin" */;
 			buildPhases = (
+				073BC044C20DB266B17371E1 /* [CP] Check Pods Manifest.lock */,
 				0357FBD3218607A30043A828 /* Sources */,
 				0357FBD4218607A30043A828 /* Frameworks */,
 				0357FBD5218607A30043A828 /* Resources */,
+				F196D7BB51A2116E85875D76 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -648,6 +666,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		073BC044C20DB266B17371E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DewertOkin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F196D7BB51A2116E85875D76 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0357FBD3218607A30043A828 /* Sources */ = {
@@ -879,6 +944,7 @@
 		};
 		0357FC03218607A40043A828 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0FFC79E97882B928D61CF45 /* Pods-DewertOkin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DewertOkin/DewertOkin.entitlements;
@@ -899,6 +965,7 @@
 		};
 		0357FC04218607A40043A828 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66B96800A32AF456A1DA4FEE /* Pods-DewertOkin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DewertOkin/DewertOkin.entitlements;
