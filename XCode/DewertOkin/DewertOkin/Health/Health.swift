@@ -168,6 +168,41 @@ class Health {
             }
         })
     }
+    /**
+     Returns the amount of steps for the last 24 hours in 1 hour intervals
+     
+     - Parameter completion: Completion closure gets executed once the data have been fetched from the HealthStore
+     - Returns: An array of stepcounts, ordered from oldest to most recent
+     */
+    func getLastDaysStepsInHourIntervals(completion: @escaping ([Double]) -> Void) {
+        guard let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
+            print("Unable to get Step Count.")
+            return
+        }
+        
+        var interval = DateComponents()
+        interval.hour = 1
+        
+        let calendar = Calendar.current
+        let anchorDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: Date())
+        
+        let query = HKStatisticsCollectionQuery(quantityType: stepCountType, quantitySamplePredicate: nil, options: .cumulativeSum, anchorDate: anchorDate!, intervalComponents: interval)
+        
+        query.initialResultsHandler = { query, results, error in
+            
+            let startDate = Date().addingTimeInterval(-24*60*60)
+            
+            var stepsArray: [Double] = []
+            
+            results?.enumerateStatistics(from: startDate, to: Date(), with: { result, stop  in
+                print("Time: \(result.startDate), \(result.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0)")
+                stepsArray.append(result.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0)
+            })
+            completion(stepsArray)
+            
+        }
+        healthStore.execute(query)
+    }
 }
 
 enum HealthCheckReturnValue {

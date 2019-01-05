@@ -25,6 +25,10 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
         collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true
         
+        Health.shared.getLastDaysStepsInHourIntervals { resultsArray in
+            print(resultsArray)
+        }
+        
     }
 
     /*
@@ -70,37 +74,6 @@ class HealthViewController: UICollectionViewController, UICollectionViewDelegate
         return CGSize(width: view.frame.width, height: 44)
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
 
 class RecommendationsLabelCell: UICollectionViewCell {
@@ -119,6 +92,7 @@ class RecommendationsLabelCell: UICollectionViewCell {
             let label = UILabel()
             label.text = "Enable recommendations"
             label.numberOfLines = 0
+            label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
@@ -126,13 +100,13 @@ class RecommendationsLabelCell: UICollectionViewCell {
             let newSwitch  = UISwitch()
             newSwitch.isOn = true
             newSwitch.addTarget(self, action: #selector(handleRecommendationsSliderChange), for: .valueChanged)
+            newSwitch.translatesAutoresizingMaskIntoConstraints = false
             return newSwitch
         }()
         
         addSubview(recommendationsLabel)
         addSubview(recommendationsSwitch)
-        recommendationsLabel.translatesAutoresizingMaskIntoConstraints = false
-        recommendationsSwitch.translatesAutoresizingMaskIntoConstraints = false
+        
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-[v1]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : recommendationsLabel, "v1" : recommendationsSwitch]))
         addConstraint(NSLayoutConstraint(item: recommendationsLabel, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
     }
@@ -161,6 +135,7 @@ class StepsViewCell: UICollectionViewCell {
             let label = UILabel()
             label.text = "Steps taken since sitting down"
             label.numberOfLines = 0
+            label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
@@ -169,6 +144,7 @@ class StepsViewCell: UICollectionViewCell {
             label.numberOfLines = 1
             label.textAlignment = .right
             label.textColor = .lightGray
+            label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
@@ -180,8 +156,7 @@ class StepsViewCell: UICollectionViewCell {
         
         addSubview(stepsTextLabel)
         addSubview(stepsAmountLabel)
-        stepsTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        stepsAmountLabel.translatesAutoresizingMaskIntoConstraints = false
+
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-[v1]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : stepsTextLabel, "v1" : stepsAmountLabel]))
         addConstraint(NSLayoutConstraint(item: stepsTextLabel, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
