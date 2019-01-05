@@ -12,7 +12,7 @@ import UserNotifications
 
 class AlarmViewController: UIViewController {
     
-    let currentTimelabel: UILabel = {
+    private let currentTimelabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 50)
         label.textColor = .black
@@ -21,7 +21,7 @@ class AlarmViewController: UIViewController {
         return label
     }()
     
-    lazy var alarmTimeLabel: UILabel = {
+    private lazy var alarmTimeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textColor = .black
@@ -30,7 +30,7 @@ class AlarmViewController: UIViewController {
         return label
     }()
     
-    let cancelAlarmButton: UIButton = {
+    private let cancelAlarmButton: UIButton = {
         let button = UIButton()
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -43,7 +43,7 @@ class AlarmViewController: UIViewController {
         return button
     }()
     
-    lazy var presetNameLabel: UILabel = {
+    private lazy var presetNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.textColor = .white
@@ -56,13 +56,17 @@ class AlarmViewController: UIViewController {
         return label
     }()
     
-    var clockUpdateTimer: Timer?
+    private var clockUpdateTimer: Timer?
     
     var preset: String?
     
-    var alarmTime: Date = Date().addingTimeInterval(10)
+    var alarmTime: Date = Date().addingTimeInterval(10) {
+        didSet {
+            alarmTime = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: alarmTime))!
+        }
+    }
     
-    var alarmTimer: Timer?
+    private var alarmTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,10 +78,18 @@ class AlarmViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
+        let alert = UIAlertController(title: "Reminder", message: "Please keep the Okin Smart Remote open while you are sleeping. \n Moving the app to the background might keep the selected preset from executing.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Unterstood", style: .default, handler: { action in
+            
+        }))
+        present(alert, animated: true, completion: nil)
+        
         clockUpdateTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             self.currentTimelabel.text = Date().toString(dateFormat: "HH:mm")
         }
-            
+        
         alarmTimer = Timer.scheduledTimer(withTimeInterval: alarmTime.timeIntervalSinceNow, repeats: false, block: { timer in
             weak var pvc = self.presentingViewController
         
@@ -131,6 +143,7 @@ class AlarmViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
         clockUpdateTimer?.invalidate()
         alarmTimer?.invalidate()
         let center = UNUserNotificationCenter.current()
@@ -142,25 +155,30 @@ class AlarmViewController: UIViewController {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: ["okinAlarm"])
         print("Removed other alarms")
-            let content = UNMutableNotificationContent()
-                content.title = NSString.localizedUserNotificationString(forKey: "Your Alarm", arguments: nil)
-                content.body = NSString.localizedUserNotificationString(forKey: "Press to execute preset.", arguments: nil)
-                
-                // Configure the trigger
-                var dateInfo = DateComponents()
-                dateInfo.hour = Calendar.current.component(.hour, from: alarmTime)
-                dateInfo.minute = Calendar.current.component(.minute, from: alarmTime)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
-                
-                // Create the request object.
-                let request = UNNotificationRequest(identifier: "okinAlarm", content: content, trigger: trigger)
-                
-                // Schedule the request.
-                center.add(request) { (error : Error?) in
-                    if let theError = error {
-                        print(theError.localizedDescription)
-                    }
-                }
-                print("Scheduled Notification for alarm at \(alarmTime).")
+        let content = UNMutableNotificationContent()
+        content.title = NSString.localizedUserNotificationString(forKey: "It is time!", arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: "Executing your preset: \(self.preset ?? "<undefined>")", arguments: nil)
+        if #available(iOS 12.0, *) {
+            content.sound = UNNotificationSound.defaultCritical
+        } else {
+            content.sound = .default
+        }
+        
+        // Configure the trigger
+        var dateInfo = DateComponents()
+        dateInfo.hour = Calendar.current.component(.hour, from: alarmTime)
+        dateInfo.minute = Calendar.current.component(.minute, from: alarmTime)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+        
+        // Create the request object.
+        let request = UNNotificationRequest(identifier: "okinAlarm", content: content, trigger: trigger)
+        
+        // Schedule the request.
+        center.add(request) { (error : Error?) in
+            if let theError = error {
+                print(theError.localizedDescription)
+            }
+        }
+        print("Scheduled Notification for alarm at \(alarmTime).")
     }
 }

@@ -13,7 +13,7 @@ class SettingTableViewController: UITableViewController, Themeable {
     
     private let settingsEntries: [[SettingsEntry]] = [
         [.manageDevices, .deviceInfo, .nearestVendor],
-        [.presets, .health, .useOldRemote, .darkMode],
+        [.presets, .alarm, .health, .useOldRemote, .darkMode],
         [.achievements,.accessories, .test]
     ]
     private let settingsSections = ["Devices and Support", "Preferences", "Other"]
@@ -139,6 +139,8 @@ class SettingTableViewController: UITableViewController, Themeable {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .test)) {
             cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .alarm)) {
+            cell.accessoryType = .disclosureIndicator
         }
 
         return cell
@@ -159,13 +161,22 @@ class SettingTableViewController: UITableViewController, Themeable {
             pushTestController()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .presets)) {
             pushPresetsController()
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .alarm)) {
+            pushAlarmViewController()
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     private func pushTestController() {
-
-            present(AlarmViewController(), animated: true, completion: nil)
+        
+        if let vc = UIStoryboard(name: "RFPairing", bundle: nil).instantiateInitialViewController() {
+            present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    @objc
+    private func pushAlarmViewController() {
+        present(AlarmCreationViewController(), animated: true, completion: nil)
     }
     
     @objc

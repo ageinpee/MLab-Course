@@ -23,4 +23,5 @@ enum SettingsEntry: String {
     case manageDevices = "Manage Devices"
     case health = "Health"
     case test = "Test"
+    case alarm = "Alarm"
 }
