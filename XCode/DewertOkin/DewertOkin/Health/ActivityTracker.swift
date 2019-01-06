@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import HealthKit
+import UserNotifications
 
 class ActivityTrackerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -52,7 +53,7 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
         let button = UIButton()
         button.setTitle("Start Tracking", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = UIButton().tintColor
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
@@ -86,6 +87,7 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
         label.numberOfLines = 0
         label.text = "The Okin Smart Remote helps you to stay healthy! Leading experts recommend to get up and move around at least once an hour. \n\nThe Okin Smart Remote can remind you to get up after a time which you can specify above. \nIf you leave the Okin Smart Remote open, we can automatically detect your movement through the sensors of your iPhone and the timer will reset by itself. "
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.adjustsFontForContentSizeCategory = true
         label.textColor = .black
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -95,26 +97,22 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
     
     let shapeLayer = CAShapeLayer()
     
+    var uiUpdateTimer: Timer?
+    
     var activityTimer: Timer?
     
-    var remainingTimeInSeconds: TimeInterval = 30 * 60 {
-        didSet {
-            if isCountDownRunning {
-                
-            } else {
-               
-            }
-        }
-    }
+    var remainingTimeInSeconds: TimeInterval = 30 * 60
     
-    var isCountDownRunning: Bool = false {
+    var countDownSecondsTotal: TimeInterval = 0
+    
+    var countDownIsRunning: Bool = false {
         didSet {
-            if isCountDownRunning {
+            if countDownIsRunning {
                 startStopTrackingButton.setTitle("Stop Tracking", for: .normal)
                 startStopTrackingButton.backgroundColor = .red
             } else {
                 startStopTrackingButton.setTitle("Start Tracking", for: .normal)
-                startStopTrackingButton.backgroundColor = .orange
+                startStopTrackingButton.backgroundColor = UIButton().tintColor
             }
             
         }
@@ -130,37 +128,69 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
         collectionView.alwaysBounceVertical = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["activityReminderBackground"])
+        if countDownIsRunning {
+            shapeLayer.removeAnimation(forKey: "basicAnimation")
+            startCircleAnimation(from: 1 - (remainingTimeInSeconds/countDownSecondsTotal))
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if countDownIsRunning {
+            addBackgroundActivityReminderNotification()
+        }
     }
     
     deinit {
+        uiUpdateTimer?.invalidate()
         activityTimer?.invalidate()
     }
     
     @objc
     private func handleStartStopTracking() {
-        if isCountDownRunning {
-            isCountDownRunning = false
-            activityTimer?.invalidate()
-            remainingTimeInSeconds = 30 * 60
-            shapeLayer.removeAnimation(forKey: "basicAnimation")
-            stepperView.isEnabled = true
-            stepperView.tintColor = UIButton().tintColor
-            self.navigationController?.tabBarItem.badgeValue = nil
+        if countDownIsRunning {
+            resetCountDown()
         } else {
-            startCircleAnimation()
-            activityTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
-            isCountDownRunning = true
-            stepperView.isEnabled = false
-            stepperView.tintColor = .lightGray
+            startCountDown()
         }
+    }
+    
+    private func startCountDown() {
+        startCircleAnimation()
+        uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
+        activityTimer = Timer.scheduledTimer(timeInterval: 180, target: self, selector: #selector(checkForActivity), userInfo: nil, repeats: true)
+        countDownIsRunning = true
+        countDownSecondsTotal = remainingTimeInSeconds
+        stepperView.isEnabled = false
+        stepperView.tintColor = .lightGray
+    }
+    
+    private func resetCountDown() {
+        countDownIsRunning = false
+        uiUpdateTimer?.invalidate()
+        activityTimer?.invalidate()
+        remainingTimeInSeconds = 30 * 60
+        shapeLayer.removeAnimation(forKey: "basicAnimation")
+        stepperView.isEnabled = true
+        stepperView.tintColor = UIButton().tintColor
+        self.navigationController?.tabBarItem.badgeValue = nil
+    }
+    
+    private func activityRecognized() {
+        uiUpdateTimer?.invalidate()
+        activityTimer?.invalidate()
+        // set remaining time to user specified value, for now 30*60
+        remainingTimeInSeconds = 30 * 60
+        shapeLayer.removeAnimation(forKey: "basicAnimation")
+        startCountDown()
     }
     
     @objc
     private func updateCountDown() {
         
-        if isCountDownRunning {
+        if countDownIsRunning {
             self.navigationController?.tabBarItem.badgeValue = String(Int(remainingTimeInSeconds / 60)) + " min"
         } else {
             self.navigationController?.tabBarItem.badgeValue = nil
@@ -169,10 +199,33 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
         if !remainingTimeInSeconds.isZero {
             remainingTimeInSeconds -= 1
         } else {
-            activityTimer?.invalidate()
-            isCountDownRunning = false
+            countDownFinished()
+            resetCountDown()
         }
         countDownLabel.text = String(Int(remainingTimeInSeconds / 60)) + "\nmin"
+    }
+    
+    private func countDownFinished() {
+        displayForegroundActivityReminderNotification()
+    }
+    
+    @objc
+    private func checkForActivity() {
+        Health.shared.getStepsForTimeInterval(timeInSeconds: 300) { result in
+            guard let result = result else { return }
+            print("Result: " + String(result))
+            if result <= 50.0 || result.isZero {
+                // timer keeps running
+                return
+            } else {
+                // timer resets
+                if self.countDownIsRunning {
+                    DispatchQueue.main.async {
+                        self.activityRecognized()
+                    }
+                }
+            }
+        }
     }
     
     private func addAnimation(for cell: UICollectionViewCell) {
@@ -200,8 +253,9 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
     }
     
     @objc
-    private func startCircleAnimation() {
+    private func startCircleAnimation(from value: Double = 0) {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.fromValue = value
         basicAnimation.toValue = 1
         basicAnimation.duration = CFTimeInterval(exactly: remainingTimeInSeconds) ?? 2
         basicAnimation.fillMode = .forwards
@@ -213,6 +267,7 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
     @objc
     private func stepperDidChangeValue() {
         remainingTimeInSeconds = stepperView.value * 60
+        countDownSecondsTotal = remainingTimeInSeconds
         countDownLabel.text = String(Int(remainingTimeInSeconds / 60)) + "\nmin"
         print(stepperView.value)
     }
@@ -234,7 +289,7 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
             
             cell.addSubview(stepperView)
             cell.addConstraint(NSLayoutConstraint(item: stepperView, attribute: .centerX, relatedBy: .equal, toItem: cell.contentView, attribute: .centerX, multiplier: 1, constant: 0))
-            cell.addConstraint(NSLayoutConstraint(item: stepperView, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1.85, constant: 0))
+            cell.addConstraint(NSLayoutConstraint(item: stepperView, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1.88, constant: 0))
             
             addAnimation(for: cell)
         case 2:
@@ -245,8 +300,6 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
         case 3:
             descriptionStackView.addArrangedSubview(descriptionTitleLabel)
             descriptionStackView.addArrangedSubview(descriptionBodyLabel)
-            
-          
             
             cell.addSubview(descriptionStackView)
             cell.addConstraint(NSLayoutConstraint(item: descriptionStackView, attribute: .centerX, relatedBy: .equal, toItem: cell.contentView, attribute: .centerX, multiplier: 1, constant: 0))
@@ -292,6 +345,53 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
         }
         
         return CGSize(width: collectionView.frame.width, height: 44)
+    }
+    
+    private func displayForegroundActivityReminderNotification() {
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Your Activity Reminder"
+        content.body = "It's time to get up!"
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+        let identifier = "activityReminderForeground"
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: content, trigger: trigger)
+        
+        center.add(request, withCompletionHandler: { (error) in
+            if let error = error {
+                print(error)
+            }
+        })
+    }
+    
+    private func addBackgroundActivityReminderNotification() {
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Your Activity Reminder"
+        content.body = "It's time to get up!"
+        content.sound = UNNotificationSound.default
+        
+        let timerFinishesTime = Date().addingTimeInterval(remainingTimeInSeconds)
+        var dateComponent = DateComponents()
+        dateComponent.hour = Calendar(identifier: .gregorian).component(.hour, from: timerFinishesTime)
+        dateComponent.minute = Calendar(identifier: .gregorian).component(.minute, from: timerFinishesTime)
+        dateComponent.second = Calendar(identifier: .gregorian).component(.second, from: timerFinishesTime)
+        
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+        let identifier = "activityReminderBackground"
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: content, trigger: trigger)
+        
+        center.add(request, withCompletionHandler: { (error) in
+            if let error = error {
+                print(error)
+            }
+        })
     }
     
     
