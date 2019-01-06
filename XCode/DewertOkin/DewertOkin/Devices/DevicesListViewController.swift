@@ -67,6 +67,13 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    func showAlert() {
+        let alert = UIAlertController(title: "Couldn't connect to furniture",message: "It seems like the furniture is out of range", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? BluetoothPairingConnectViewController {
             destination.selectedPeripheral = self.deviceToConnect
@@ -127,18 +134,28 @@ extension DevicesListViewController: UITableViewDataSource {
     }
     
     func editAction(at indexPath: IndexPath) -> UIContextualAction {
+        
+        let action = UIContextualAction(style: .destructive, title: "Edit") {
+            (action, view, completion) in
+            
+        }
+        action.backgroundColor = .orange
+        return action
     }
     
     func connectAction(at indexPath: IndexPath) -> UIContextualAction {
         
-        let action = UIContextualAction(style: .destructive, title: "Delete") {
+        let action = UIContextualAction(style: .destructive, title: "Connect") {
             (action, view, completion) in
             
             let device = self.devicesList[indexPath.row]
-            guard self.bluetoothFlow.isInRange(uuid: device.uuid) else { return }
+            guard self.bluetoothFlow.isInRange(uuid: device.uuid) else {
+                self.showAlert()
+                return
+            }
             guard let deviceToBeConnected = self.bluetoothFlow.getPeripheralWithUUID(uuid: device.uuid) else { return }
             self.deviceToConnect = deviceToBeConnected
-            self.performSegue(withIdentifier: "PairingConnection", sender: self)
+            self.performSegue(withIdentifier: "ConnectToDevice", sender: self)
                 
         }
         //action.image =
