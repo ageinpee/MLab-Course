@@ -20,6 +20,7 @@ class MainViewController: UITabBarController {
     var remoteVC = UIViewController()
     var reminderVC = UIViewController()
     var settingsVC = UIViewController()
+    var healthVC = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +39,14 @@ class MainViewController: UITabBarController {
         reminderVC = reminder
         reminderVC.tabBarItem = UITabBarItem(title: "Reminder", image: UIImage(named: "reminder_icon"), tag: 1)
         
-        settingsVC = settings
-        settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
+        healthVC = UINavigationController(rootViewController: ActivityTrackerViewController(collectionViewLayout: UICollectionViewFlowLayout())) 
+        healthVC.tabBarItem = UITabBarItem(title: "Health", image: UIImage(named: "heart_icon_outlined"), selectedImage: UIImage(named: "heart_icon_selected"))
+        healthVC.tabBarItem.badgeValue = "New"
         
-        let controllers = [remoteVC, reminderVC, settingsVC]
+        settingsVC = settings
+        settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
+        
+        let controllers = [remoteVC, healthVC, settingsVC]
         
         setViewControllers(controllers, animated: false)
     }

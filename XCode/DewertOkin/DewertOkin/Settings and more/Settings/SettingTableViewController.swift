@@ -170,9 +170,15 @@ class SettingTableViewController: UITableViewController, Themeable {
     
     private func pushTestController() {
         
-        if let vc = UIStoryboard(name: "RFPairing", bundle: nil).instantiateInitialViewController() {
-            present(vc, animated: true, completion: nil)
-        }
+//        if let vc = UIStoryboard(name: "RFPairing", bundle: nil).instantiateInitialViewController() {
+//            present(vc, animated: true, completion: nil)
+//        }
+        
+//        if let navigator = navigationController {
+//            navigator.pushViewController(ActivityTrackerViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+//        }
+        present(ActivityTrackerViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true, completion: nil)
+        
     }
     
     @objc

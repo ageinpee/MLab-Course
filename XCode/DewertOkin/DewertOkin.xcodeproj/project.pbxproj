@@ -40,6 +40,7 @@
 		CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */; };
 		CD100F4D21DFF25400DBAAB9 /* ExecutingPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4C21DFF25400DBAAB9 /* ExecutingPresetViewController.swift */; };
 		CD100F4F21E0239600DBAAB9 /* AlarmCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4E21E0239500DBAAB9 /* AlarmCreation.swift */; };
+		CD100F5121E21F2B00DBAAB9 /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F5021E21F2B00DBAAB9 /* ActivityTracker.swift */; };
 		CD1FA50221C593D3003A28CE /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1FA50121C593D3003A28CE /* TextInputTableViewCell.swift */; };
 		CD1FA50421C5ABFF003A28CE /* PresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */; };
 		CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397CC21B2A8A200D749FA /* AchievementModel.swift */; };
@@ -151,6 +152,7 @@
 		CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		CD100F4C21DFF25400DBAAB9 /* ExecutingPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutingPresetViewController.swift; sourceTree = "<group>"; };
 		CD100F4E21E0239500DBAAB9 /* AlarmCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCreation.swift; sourceTree = "<group>"; };
+		CD100F5021E21F2B00DBAAB9 /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
 		CD1FA50121C593D3003A28CE /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		CD1FA50321C5ABFF003A28CE /* PresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetTableViewCell.swift; sourceTree = "<group>"; };
 		CD3397CC21B2A8A200D749FA /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			children = (
 				CDFFC97421C07C8B005C5821 /* Health.swift */,
 				CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */,
+				CD100F5021E21F2B00DBAAB9 /* ActivityTracker.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */,
 				FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */,
 				03E98758219447BC00189C97 /* TimerListViewController.swift in Sources */,
+				CD100F5121E21F2B00DBAAB9 /* ActivityTracker.swift in Sources */,
 				CD4E7CDB21C99027002D3873 /* DevicesTableViewController.swift in Sources */,
 				FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */,
 				FA19A30021D527500032A4E7 /* rotationTransition.swift in Sources */,
