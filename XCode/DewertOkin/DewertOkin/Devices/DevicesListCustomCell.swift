@@ -24,12 +24,16 @@ class DevicesListCustomCell: UITableViewCell {
     var deviceNameView: UITextView = {
         var textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isScrollEnabled = false
+        textView.isEditable = false
         return textView
     }()
     
     var deviceStatusView: UITextView = {
         var textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isScrollEnabled = false
+        textView.isEditable = false
         return textView
     }()
     
@@ -61,7 +65,8 @@ class DevicesListCustomCell: UITableViewCell {
     
     func addConstraints() {
         deviceImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        deviceImageView.widthAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        deviceImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        deviceImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         deviceImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         deviceImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         

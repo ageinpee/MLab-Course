@@ -20,6 +20,9 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Devices"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         tableView.delegate = self
         tableView.dataSource = self
         fetchDevices()
@@ -52,6 +55,8 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     
     func registerDevices() {
         self.tableView.register(DevicesListCustomCell.self, forCellReuseIdentifier: "customDevicesCell")
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 200
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,9 +79,13 @@ extension DevicesListViewController: UITableViewDataSource {
         cell.deviceImage = cellDevicesData[indexPath.row].image
         cell.deviceName = cellDevicesData[indexPath.row].name
         cell.deviceStatus = cellDevicesData[indexPath.row].status
+        cell.layoutSubviews()
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
 }
 
