@@ -22,6 +22,10 @@ class BluetoothCoordinator {
     
     func connect(peripheral: CBPeripheral, completion: @escaping (Bool) -> Void) { }
     
+    func isInRange(uuid: String?) -> Bool { return false }
+    
+    func getPeripheralWithUUID(uuid: String?) -> CBPeripheral? { return nil }
+    
     func disconnected(failure: Bool) { }
     
     func reconnect() -> CBPeripheral? { return nil }
