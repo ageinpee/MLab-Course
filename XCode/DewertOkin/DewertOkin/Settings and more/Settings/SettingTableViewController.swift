@@ -14,7 +14,7 @@ class SettingTableViewController: UITableViewController, Themeable {
     private let settingsEntries: [[SettingsEntry]] = [
         [.manageDevices, .deviceInfo, .nearestVendor],
         [.presets, .alarm, .health, .useOldRemote, .darkMode],
-        [.achievements,.accessories, .test]
+        [.achievements,.accessories, .test, .rfpairing]
     ]
     private let settingsSections = ["Devices and Support", "Preferences", "Other"]
     
@@ -142,6 +142,8 @@ class SettingTableViewController: UITableViewController, Themeable {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .alarm)) {
             cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .rfpairing)) {
+            cell.accessoryType = .disclosureIndicator
         }
 
         return cell
@@ -164,20 +166,24 @@ class SettingTableViewController: UITableViewController, Themeable {
             pushPresetsController()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .alarm)) {
             pushAlarmViewController()
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .rfpairing)) {
+            pushRFPairingController()
         }
+        
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    private func pushRFPairingController() {
+        if let vc = UIStoryboard(name: "RFPairing", bundle: nil).instantiateInitialViewController() {
+            present(vc, animated: true, completion: nil)
+        }
+    }
+    
     private func pushTestController() {
-        
-//        if let vc = UIStoryboard(name: "RFPairing", bundle: nil).instantiateInitialViewController() {
-//            present(vc, animated: true, completion: nil)
-//        }
-        
-//        if let navigator = navigationController {
-//            navigator.pushViewController(ActivityTrackerViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
-//        }
-        present(ActivityTrackerViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true, completion: nil)
+        if let vc = UIStoryboard(name: "RFPairing", bundle: nil).instantiateInitialViewController() {
+            present(vc, animated: true, completion: nil)
+        }
         
     }
     
