@@ -45,7 +45,7 @@
         <!--PairingSuccessView-->
         <scene sceneID="X8w-bf-kel">
             <objects>
-                <viewControllerPlaceholder referencedIdentifier="PairingSuccessView" id="1rR-I3-4eR" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="BluetoothPairing" referencedIdentifier="PairingSuccessView" id="1rR-I3-4eR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vX-wq-lIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3224" y="-446"/>

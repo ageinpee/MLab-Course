@@ -137,7 +137,7 @@ extension DevicesListViewController: UITableViewDataSource {
         
         let action = UIContextualAction(style: .destructive, title: "Edit") {
             (action, view, completion) in
-            
+            let alert = UIAlertController(title: "Name of furniture", message: nil, preferredStyle: .alert)
         }
         action.backgroundColor = .orange
         return action
