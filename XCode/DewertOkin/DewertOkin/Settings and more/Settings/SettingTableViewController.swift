@@ -205,14 +205,14 @@ class SettingTableViewController: UITableViewController, Themeable {
         }
     }
     
-    @objc
-    private func pushDevicesStoryboard() {
-        if let vc = UIStoryboard(name: "Devices", bundle: nil).instantiateViewController(withIdentifier: "DevicesList") as? DevicesTableViewController {
-            if let navigator = navigationController {
-                navigator.pushViewController(vc, animated: true)
-            }
-        }
-    }
+//    @objc
+//    private func pushDevicesStoryboard() {
+//        if let vc = UIStoryboard(name: "Devices", bundle: nil).instantiateViewController(withIdentifier: "DevicesList") as? DevicesTableViewController {
+//            if let navigator = navigationController {
+//                navigator.pushViewController(vc, animated: true)
+//            }
+//        }
+//    }
     
     @objc
     private func pushVendorStoryboard() {

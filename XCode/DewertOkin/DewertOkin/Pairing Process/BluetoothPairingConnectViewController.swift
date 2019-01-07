@@ -189,10 +189,15 @@ class BluetoothPairingConnectViewController: UIViewController {
     }
     
     func showRemote() {
-        let remoteControl = UIStoryboard(name: "Remote", bundle: nil).instantiateViewController(withIdentifier: "RemoteControl") as UIViewController
+//        let remoteControl = UIStoryboard(name: "Remote", bundle: nil).instantiateViewController(withIdentifier: "RemoteControl") as UIViewController
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+//             self.present(remoteControl, animated: true, completion: nil)
+//        })
+        let remoteControl = UIStoryboard(name: "Devices", bundle: nil).instantiateViewController(withIdentifier: "DevicesList") as UIViewController
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-             self.present(remoteControl, animated: true, completion: nil)
+            self.present(remoteControl, animated: true, completion: nil)
         })
+
     }
     
     func showPairingProcess() {

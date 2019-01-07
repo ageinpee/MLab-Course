@@ -44,6 +44,7 @@ extension Bluetooth: CBCentralManagerDelegate {
         
         if !(onceConnectedPeripherals.contains(peripheral.identifier.uuidString)) {
         onceConnectedPeripherals.append(peripheral.identifier.uuidString)
+        saveDevice(peripheral: peripheral)
         }
         
         defaults.set(onceConnectedPeripherals, forKey: "Peripherals")
@@ -60,6 +61,13 @@ extension Bluetooth: CBCentralManagerDelegate {
         // Give the user clear feedback in the UI
         self.bluetoothCoordinator?.disconnected(failure: true)
     }
-    
+        
+    func saveDevice(peripheral: CBPeripheral) {
+        let device = Devices(context: PersistenceService.context)
+        device.name = peripheral.name
+        device.type = peripheral.description
+        device.uuid = peripheral.identifier.uuidString
+        PersistenceService.saveContext()
+    }
     
 }

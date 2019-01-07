@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import CoreData
 
 class Bluetooth: NSObject {
     
@@ -17,7 +18,7 @@ class Bluetooth: NSObject {
     var centralManager: CBCentralManager!
     var connectedPeripheral: CBPeripheral?
     var availablePeripherals = [CBPeripheral]()
-    var characteristic: CBCharacteristic?
+    var writeCharacteristic: CBCharacteristic?
     var bluetoothState: CBManagerState { return self.centralManager.state }
     
     static var commandService = CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B")
@@ -38,28 +39,25 @@ class Bluetooth: NSObject {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
         onceConnectedPeripherals = defaults.stringArray(forKey: "Peripherals") ?? []
-                //availablePeripherals = []
     }
     
     func startScan() {
         print("Starting to scan")
         guard self.centralManager.state == .poweredOn else { return }
         self.connectedPeripheral = nil
-                //availablePeripherals = []
+        //self.availablePeripherals = []
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
     }
     
     func stopScan() {
         print("Stopping scan")
         self.centralManager.stopScan()
-                //availablePeripherals = []
     }
     
     func retrievePeripherals() -> [CBPeripheral] {
         print("Returning all advertising peripherals")
         guard self.centralManager.state == .poweredOn else { return [] }
-                //availablePeripherals = []
-        self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
+        self.startScan()
         let peripherals = availablePeripherals
         return peripherals
     }
@@ -67,7 +65,6 @@ class Bluetooth: NSObject {
     func connect() {
         print("Connecting to peripheral")
         guard self.centralManager.state == .poweredOn else { return }
-                //availablePeripherals = []
         guard let peripheral = self.connectedPeripheral else { return }
         self.centralManager.connect(peripheral)
     }
@@ -75,7 +72,6 @@ class Bluetooth: NSObject {
     func disconnect() {
         print("Disconnecting from peripheral")
         guard let peripheral = self.connectedPeripheral else { return }
-        //availablePeripherals = []
         self.centralManager.cancelPeripheralConnection(peripheral)
     }
 }

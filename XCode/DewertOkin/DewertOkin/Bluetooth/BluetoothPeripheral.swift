@@ -26,23 +26,19 @@ extension Bluetooth: CBPeripheralDelegate {
         for characteristic in characteristics {
             if(characteristic.uuid == Bluetooth.keycodeUUID){
                 peripheral.setNotifyValue(true, for: characteristic)
-                self.characteristic = characteristic
+                self.writeCharacteristic = characteristic
                 self.bluetoothCoordinator?.ableToWrite()
             }
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        print("Updating value")
-    }
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) { }
     
-    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-        print("Data successfully updated")
-    }
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) { }
 }
 
 extension Bluetooth {
     func getCharacteristics() {
-        self.connectedPeripheral?.readValue(for: self.characteristic!)
+        self.connectedPeripheral?.readValue(for: self.writeCharacteristic!)
     }
 }
