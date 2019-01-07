@@ -26,7 +26,7 @@ extension RemoteController {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
         guard bluetoothFlow.paired else { return }
         guard !(self.characteristic == nil) else {
-            self.characteristic = self.bluetooth.characteristic
+            self.characteristic = self.bluetooth.writeCharacteristic
             return
         }
         let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m1In)
@@ -37,7 +37,7 @@ extension RemoteController {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
         guard bluetoothFlow.paired else { return }
         guard !(self.characteristic == nil) else {
-            self.characteristic = self.bluetooth.characteristic
+            self.characteristic = self.bluetooth.writeCharacteristic
             return
         }
         let moveDown = self.remoteControlConfig.getKeycode(name: keycode.m1Out)
