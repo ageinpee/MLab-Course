@@ -28,7 +28,7 @@ class MainViewController: UITabBarController {
     }
     
     private func setupViews() {
-        guard let remoteNew = UIStoryboard(name: "Remote", bundle: nil).instantiateInitialViewController(),
+        guard let remoteNew = UIStoryboard(name: "SecondRemote", bundle: nil).instantiateInitialViewController(),
             let remoteOld = UIStoryboard(name: "OldRemote", bundle: nil).instantiateInitialViewController(),
             let reminder = UIStoryboard(name: "Reminder", bundle: nil).instantiateInitialViewController(),
             let settings = UIStoryboard(name: "SettingsMore", bundle: nil).instantiateInitialViewController() else { return }

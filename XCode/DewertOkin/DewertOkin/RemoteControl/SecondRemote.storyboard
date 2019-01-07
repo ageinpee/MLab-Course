@@ -78,6 +78,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="Remote"/>
                         <constraints>
                             <constraint firstItem="DnC-Xu-Jbg" firstAttribute="bottom" secondItem="J9R-PK-aQG" secondAttribute="bottom" id="19J-GN-Mn5"/>
                             <constraint firstItem="0YV-jW-udd" firstAttribute="top" secondItem="DnC-Xu-Jbg" secondAttribute="bottom" constant="20" id="206-Rg-Omh"/>
@@ -123,7 +124,89 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3X-h2-zOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2723" y="1193"/>
+            <point key="canvasLocation" x="40.579710144927539" y="26.116071428571427"/>
+        </scene>
+        <!--Extra Functions Controller-->
+        <scene sceneID="xWQ-VC-bVW">
+            <objects>
+                <viewController storyboardIdentifier="ExtraFunctions" id="dhz-n7-KIU" customClass="ExtraFunctionsController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bVY-Xs-AHm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEs-Jp-XXs">
+                                <rect key="frame" x="0.0" y="164" width="414" height="698"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="more functions of your device" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA9-hk-D9x">
+                                        <rect key="frame" x="20" y="20" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="WmB-gZ-1v9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="leading" secondItem="KEs-Jp-XXs" secondAttribute="leading" constant="20" id="7Ic-OQ-bu7"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZA9-hk-D9x" secondAttribute="trailing" constant="20" id="7VL-7c-GSV"/>
+                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="centerX" secondItem="KEs-Jp-XXs" secondAttribute="centerX" id="7aY-K8-wKS"/>
+                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="top" secondItem="KEs-Jp-XXs" secondAttribute="top" constant="20" id="xc9-C8-aaV"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZA9-hk-D9x" secondAttribute="bottom" constant="608" id="ygO-SL-2y3"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-Ju-sBX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="f3m-fw-aji" appends="YES" id="lXD-Zf-xso"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydd-5b-u6c">
+                                <rect key="frame" x="30" y="74" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1iS-a3-Q30"/>
+                                    <constraint firstAttribute="width" constant="40" id="h4O-An-OHA"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="sYJ-lk-Ai1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="top" secondItem="bVY-Xs-AHm" secondAttribute="top" id="3G4-OH-jzw"/>
+                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="CM0-XS-DFU"/>
+                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="M5A-Uz-M96"/>
+                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="top" id="QW7-gM-eQ0"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="bottom" id="S8s-ej-7IM"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="KEs-Jp-XXs" secondAttribute="trailing" id="WIm-Du-VNG"/>
+                            <constraint firstItem="ydd-5b-u6c" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="30" id="ec5-9e-l8U"/>
+                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="top" secondItem="bVY-Xs-AHm" secondAttribute="top" constant="164" id="l0v-sL-1MH"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="aOf-Ju-sBX" secondAttribute="trailing" id="oBA-PR-e6j"/>
+                            <constraint firstItem="ydd-5b-u6c" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="30" id="rD9-9F-GQh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p1V-fM-tHG"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="ydd-5b-u6c" id="XCj-lH-m48"/>
+                        <outlet property="globalView" destination="bVY-Xs-AHm" id="eij-Lv-TWl"/>
+                        <outlet property="moreFunctionsLabel" destination="ZA9-hk-D9x" id="I6x-UF-AxW"/>
+                        <outlet property="scrollView" destination="KEs-Jp-XXs" id="d0D-x2-kJH"/>
+                        <outlet property="tapView" destination="aOf-Ju-sBX" id="JXv-3K-WEX"/>
+                        <outlet property="view" destination="bVY-Xs-AHm" id="uOH-ww-m6e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXG-di-7HQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="f3m-fw-aji">
+                    <connections>
+                        <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="G8l-fL-Fmg"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="956.52173913043487" y="25.446428571428569"/>
         </scene>
         <!--Presets Controller-->
         <scene sceneID="xaU-ZF-daG">
@@ -145,6 +228,21 @@
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-iL-o4J">
                                 <rect key="frame" x="20" y="164" width="374" height="678"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add your custom presets by clicking the &quot;+&quot;-Button" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nya-Uh-bVf">
+                                        <rect key="frame" x="50" y="300" width="274" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="nya-Uh-bVf" firstAttribute="leading" secondItem="ccp-iL-o4J" secondAttribute="leading" constant="50" id="dgG-wi-Yhw"/>
+                                    <constraint firstAttribute="bottom" secondItem="nya-Uh-bVf" secondAttribute="bottom" constant="337" id="m5O-43-uSq"/>
+                                    <constraint firstAttribute="trailing" secondItem="nya-Uh-bVf" secondAttribute="trailing" constant="50" id="oeQ-zJ-gf6"/>
+                                    <constraint firstItem="nya-Uh-bVf" firstAttribute="top" secondItem="ccp-iL-o4J" secondAttribute="top" constant="300" id="xki-vh-LC8"/>
+                                    <constraint firstItem="nya-Uh-bVf" firstAttribute="centerX" secondItem="ccp-iL-o4J" secondAttribute="centerX" id="z2o-oc-xkT"/>
+                                </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYZ-ra-aut">
                                 <rect key="frame" x="182" y="762" width="50" height="50"/>
@@ -190,12 +288,14 @@
                     </view>
                     <connections>
                         <outlet property="addPresetButton" destination="AYZ-ra-aut" id="VZs-SR-aLr"/>
+                        <outlet property="choosePresetLabel" destination="Qv0-SW-Iyx" id="Nje-Pc-4bi"/>
                         <outlet property="scrollView" destination="ccp-iL-o4J" id="Ltn-ju-eGA"/>
+                        <outlet property="textLabel" destination="nya-Uh-bVf" id="QMw-0N-Gqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tds-zj-a6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1870" y="1193"/>
+            <point key="canvasLocation" x="41" y="825"/>
         </scene>
         <!--Add Preset Controller-->
         <scene sceneID="1AI-db-4FM">
@@ -219,7 +319,7 @@
                                 </constraints>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="backButtonPressed:" destination="R1M-Df-ija" eventType="touchUpInside" id="1rR-q0-rSS"/>
+                                    <segue destination="7U7-yR-P4u" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="NBl-g8-nGH"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ye-X0-sWD">
@@ -242,6 +342,9 @@
                                     <constraint firstAttribute="height" constant="50" id="gjl-MR-yA4"/>
                                 </constraints>
                                 <state key="normal" title="Finished"/>
+                                <connections>
+                                    <segue destination="Hlx-Ed-2u2" kind="unwind" unwindAction="unwindFromAddPreset:" id="29J-p0-IH7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -269,8 +372,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ed-NC-ZLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Hlx-Ed-2u2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1009" y="1193"/>
+            <point key="canvasLocation" x="957" y="825"/>
         </scene>
     </scenes>
     <resources>
@@ -278,4 +382,8 @@
         <image name="chair_normal_arrows" width="1001.280029296875" height="779"/>
         <image name="remote_icon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NBl-g8-nGH"/>
+        <segue reference="G8l-fL-Fmg"/>
+    </inferredMetricsTieBreakers>
 </document>

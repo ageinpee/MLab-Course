@@ -78,12 +78,13 @@
 		FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2F921D370CE0032A4E7 /* CSVReader.swift */; };
 		FA19A2FC21D3722D0032A4E7 /* handsender1.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA19A2FB21D3722D0032A4E7 /* handsender1.csv */; };
 		FA19A30021D527500032A4E7 /* rotationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2FF21D527500032A4E7 /* rotationTransition.swift */; };
-		FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* Remote.storyboard */; };
+		FA2C9CFD21AF28E20018545A /* SecondRemote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2C9CFC21AF28E20018545A /* SecondRemote.storyboard */; };
 		FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC760E21B03592003BEF66 /* RemoteController.swift */; };
 		FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */; };
 		FAE52D3221D5562700121B54 /* RFPairingController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3121D5562700121B54 /* RFPairingController2.swift */; };
 		FAE52D3421D556DB00121B54 /* RFPairingController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3321D556DB00121B54 /* RFPairingController3.swift */; };
 		FAE52D3621D6B54800121B54 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3521D6B54800121B54 /* Remote.swift */; };
+		FAC415AF21DF60E900F4B5AC /* RemoteAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC415AE21DF60E900F4B5AC /* RemoteAnalyzer.swift */; };
 		FAE52D3821D784F400121B54 /* DeviceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3721D784F400121B54 /* DeviceStyle.swift */; };
 		FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */; };
 		FAE52D3C21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */; };
@@ -194,8 +195,9 @@
 		FA19A2F921D370CE0032A4E7 /* CSVReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVReader.swift; sourceTree = "<group>"; };
 		FA19A2FB21D3722D0032A4E7 /* handsender1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1.csv; sourceTree = "<group>"; };
 		FA19A2FF21D527500032A4E7 /* rotationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotationTransition.swift; sourceTree = "<group>"; };
-		FA2C9CFC21AF28E20018545A /* Remote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Remote.storyboard; sourceTree = "<group>"; };
+		FA2C9CFC21AF28E20018545A /* SecondRemote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondRemote.storyboard; sourceTree = "<group>"; };
 		FABC760E21B03592003BEF66 /* RemoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteController.swift; sourceTree = "<group>"; };
+		FAC415AE21DF60E900F4B5AC /* RemoteAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAnalyzer.swift; sourceTree = "<group>"; };
 		FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AchievementsTableViewController.swift; sourceTree = "<group>"; };
 		FAE52D3121D5562700121B54 /* RFPairingController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController2.swift; sourceTree = "<group>"; };
 		FAE52D3321D556DB00121B54 /* RFPairingController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController3.swift; sourceTree = "<group>"; };
@@ -334,7 +336,8 @@
 		03DE1F5A21AEF1E1004F01F3 /* RemoteControl */ = {
 			isa = PBXGroup;
 			children = (
-				FA2C9CFC21AF28E20018545A /* Remote.storyboard */,
+				FA2C9CFC21AF28E20018545A /* SecondRemote.storyboard */,
+				FAC415AE21DF60E900F4B5AC /* RemoteAnalyzer.swift */,
 				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
 				FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */,
 				FAE52D3721D784F400121B54 /* DeviceStyle.swift */,
@@ -654,8 +657,8 @@
 				0357FBE5218607A30043A828 /* Assets.xcassets in Resources */,
 				CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */,
 				CDB5B11621B5B9FE000D92A4 /* OldRemote.storyboard in Resources */,
-				FA2C9CFD21AF28E20018545A /* Remote.storyboard in Resources */,
 				FA19A2FC21D3722D0032A4E7 /* handsender1.csv in Resources */,
+				FA2C9CFD21AF28E20018545A /* SecondRemote.storyboard in Resources */,
 				CDFFC96C21C04372005C5821 /* NearestVendor.storyboard in Resources */,
 				03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */,
 				FA19A2F821D370AE0032A4E7 /* RFPairing.storyboard in Resources */,
@@ -789,6 +792,7 @@
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
 				CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
+				FAC415AF21DF60E900F4B5AC /* RemoteAnalyzer.swift in Sources */,
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
 				FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,

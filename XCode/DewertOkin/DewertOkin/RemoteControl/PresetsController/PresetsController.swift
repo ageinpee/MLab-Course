@@ -12,19 +12,43 @@ import UIKit
 class PresetsController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addPresetButton: UIButton!
+    @IBOutlet weak var choosePresetLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
     
     @IBAction func backButtonPressed(_ sender: Any) {
         self.dismiss(animated: true)
     }
     var presetsList: [String] = [String]()
+    var presetsData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presetsList = ["sleeping", "mornings", "relaxing"]
+        presetsList = []//["sleeping", "mornings", "relaxing"]
+        
+        checkPresetsList()
         
         setupAddButton()
         createButtons(withText: presetsList)
+    }
+    
+    @IBAction func unwindFromAddPreset(_ sender: UIStoryboardSegue) {
+        if sender.source is AddPresetController {
+            if let senderVC = sender.source as? AddPresetController {
+                presetsData = senderVC.data
+                presetsList.append(presetsData[0])
+            }
+            checkPresetsList()
+            createButtons(withText: presetsList)
+        }
+    }
+    
+    func checkPresetsList() {
+        if presetsList.count != 0 {
+            textLabel.isHidden = true
+        } else {
+            choosePresetLabel.isHidden = true
+        }
     }
     
     func setupAddButton () {

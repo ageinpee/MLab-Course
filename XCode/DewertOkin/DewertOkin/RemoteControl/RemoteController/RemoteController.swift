@@ -25,6 +25,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
     
+    var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
+    var panRecRight: UIPanGestureRecognizer = UIPanGestureRecognizer()
+    var pressRecLeft: UILongPressGestureRecognizer = UILongPressGestureRecognizer()
+    var pressRecRight: UILongPressGestureRecognizer = UILongPressGestureRecognizer()
+    
     //----------------------------------------
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
@@ -33,32 +38,15 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     var deviceType: DeviceType = .NaN
     
     var currentStyle: DeviceStyle = DeviceStyle()
+    var device: DeviceObject = DeviceObject()
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
     var underBedLighting: UIAlertAction?
     
-    let presetView: UIView = {
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
-        view.backgroundColor = .white
-        
-        let redView = UIView()
-        let blueView = UIView()
-        redView.backgroundColor = .red
-        blueView.backgroundColor = .blue
-
-        let subviews = [redView, blueView]
-        let stackview = UIStackView(arrangedSubviews: subviews)
-        stackview.distribution = .fillEqually
-        stackview.axis = .vertical
-        
-        view.addSubview(stackview)
-        stackview.frame = view.frame
-        
-        return view
-    }()
-    
+    var recognizerState: UIGestureRecognizer.State = .ended
+    var timer: Timer?
+    var translation: Translations = .ended
     
     //---------------------------------------
     //----- Bluetooth Dependencies ----------
@@ -82,12 +70,19 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        deviceType = DeviceType.bed_2Motors
-        currentStyle.setFilledStyle(forDevice: deviceType)
+        deviceType = DeviceType.chair_2Motors
+        currentStyle.setEmptyStyle(forDevice: deviceType)
+        device = DeviceObject(withID: 0,
+                              named: "Chair 0",
+                              withDescription: "HE150",
+                              asType: .chair_2Motors,
+                              withStyle: currentStyle,
+                              withCMDService: CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B"),
+                              withKeycodeUUID: CBUUID(string: "62741525-52F9-8864-B1AB-3B3A8D65950B"),
+                              withFeedbackUUID: CBUUID(string: "62741625-52F9-8864-B1AB-3B3A8D65950B"))
         
         setupButtons()
         setupPanAreas()
-        setupPresetGesture()
         
         Themes.setupTheming(for: self)
 
@@ -158,4 +153,12 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //--------     Health Kit Funcs     ---------
     
 
+}
+
+
+enum Translations {
+    case began
+    case up
+    case down
+    case ended
 }

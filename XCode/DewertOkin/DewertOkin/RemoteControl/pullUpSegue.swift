@@ -25,6 +25,7 @@ class pullUpSegue: UIStoryboardSegue {
         //adding views
         containerView?.addSubview(toViewController.view)
         
+        toViewController.view.insertSubview(fromViewController.view, at: -1)
         toViewController.view.transform = CGAffineTransform(translationX:0, y: offset)
         
         UIView.animate(withDuration: 0.7, delay: 0, options: .allowUserInteraction, animations: {
