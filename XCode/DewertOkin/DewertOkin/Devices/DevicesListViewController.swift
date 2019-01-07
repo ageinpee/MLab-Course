@@ -74,6 +74,10 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         self.present(alert, animated: true)
     }
     
+    func updateDevicesName(name: String) {
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? BluetoothPairingConnectViewController {
             destination.selectedPeripheral = self.deviceToConnect

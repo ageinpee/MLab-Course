@@ -86,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         // Reconnecting to latest Device
+        guard defaults.data(forKey: "Peripherals") != nil else { return }
         let availablePeripheral = bluetoothBackgroundHandler.reconnect()
         guard availablePeripheral != nil else { return }
         bluetooth.bluetoothCoordinator = bluetoothFlow

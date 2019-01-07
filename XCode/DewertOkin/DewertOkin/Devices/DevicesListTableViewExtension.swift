@@ -59,7 +59,7 @@ extension DevicesListViewController: UITableViewDataSource {
             
         }
         //action.image =
-        action.backgroundColor = .yellow
+        action.backgroundColor = .red
         return action
     }
     
@@ -76,8 +76,9 @@ extension DevicesListViewController: UITableViewDataSource {
             })
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 let newName = alert.textFields?.first?.text
-                
+                self.updateDevicesName(name: newName!)
             }))
+            self.present(alert, animated: true)
         }
         action.backgroundColor = .orange
         return action
