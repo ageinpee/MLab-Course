@@ -28,6 +28,7 @@
 		0357FBFE218607A40043A828 /* DewertOkinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBFD218607A40043A828 /* DewertOkinUITests.swift */; };
 		035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B860421C536C300A032AE /* BluetoothCentral.swift */; };
 		035B860721C536CE00A032AE /* BluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B860621C536CE00A032AE /* BluetoothPeripheral.swift */; };
+		0370112621E33D2100459A51 /* DevicesListTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */; };
 		03AE0EC021BFB4EA00CEDC81 /* BluetoothPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */; };
 		03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */; };
 		03CCD9ED21CB8494007D6109 /* BluetoothPairingConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */; };
@@ -112,6 +113,7 @@
 		0357FBFF218607A40043A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		035B860421C536C300A032AE /* BluetoothCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCentral.swift; sourceTree = "<group>"; };
 		035B860621C536CE00A032AE /* BluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPeripheral.swift; sourceTree = "<group>"; };
+		0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListTableViewExtension.swift; sourceTree = "<group>"; };
 		03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothPairingViewController.swift; sourceTree = "<group>"; };
 		03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BluetoothPairing.storyboard; sourceTree = "<group>"; };
 		03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPairingConnectViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				031CC45421DE43C20025E068 /* Devices.storyboard */,
 				031CC45221DE43B80025E068 /* DevicesListViewController.swift */,
 				034E67C921DF960400E70F88 /* DevicesListCustomCell.swift */,
+				0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				03AE0EC021BFB4EA00CEDC81 /* BluetoothPairingViewController.swift in Sources */,
 				CD1FA50221C593D3003A28CE /* TextInputTableViewCell.swift in Sources */,
 				03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */,
+				0370112621E33D2100459A51 /* DevicesListTableViewExtension.swift in Sources */,
 				CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */,
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
