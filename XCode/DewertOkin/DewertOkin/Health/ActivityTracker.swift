@@ -234,7 +234,6 @@ class ActivityTrackerViewController: UICollectionViewController, UICollectionVie
         remainingTimeInSeconds = stepperView.value * 60
         countDownSecondsTotal = remainingTimeInSeconds
         countDownLabel.text = String(Int(remainingTimeInSeconds / 60)) + "\nmin"
-        print(stepperView.value)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

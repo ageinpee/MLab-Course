@@ -148,13 +148,11 @@ class AlarmViewController: UIViewController {
         alarmTimer?.invalidate()
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: ["okinAlarm"])
-        print("Removed other alarms")
     }
     
     private func scheduleAlarm() {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: ["okinAlarm"])
-        print("Removed other alarms")
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: "It is time!", arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: "Executing your preset: \(self.preset ?? "<undefined>")", arguments: nil)
