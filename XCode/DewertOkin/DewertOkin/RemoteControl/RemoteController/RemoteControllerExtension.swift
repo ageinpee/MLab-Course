@@ -43,12 +43,18 @@ extension RemoteController {
         TimerButtonObj.layer.masksToBounds = true
         TimerButtonObj.layer.borderWidth = 1
         TimerButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+        TimerButtonObj.addTarget(self, action: #selector(pushTimerViewController), for: .touchUpInside)
         
         width = ExtraFunctionsButtonObj.frame.width
         ExtraFunctionsButtonObj.layer.cornerRadius = width/2
         ExtraFunctionsButtonObj.layer.masksToBounds = true
         ExtraFunctionsButtonObj.layer.borderWidth = 1
         ExtraFunctionsButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+    }
+    
+    @objc
+    private func pushTimerViewController() {
+        present(UINavigationController(rootViewController: NewTimerListTableViewController()), animated: true, completion: nil)
     }
     
     @objc

@@ -41,7 +41,6 @@ class MainViewController: UITabBarController {
         
         healthVC = UINavigationController(rootViewController: ActivityTrackerViewController(collectionViewLayout: UICollectionViewFlowLayout())) 
         healthVC.tabBarItem = UITabBarItem(title: "Health", image: UIImage(named: "heart_icon_outlined"), selectedImage: UIImage(named: "heart_icon_selected"))
-        healthVC.tabBarItem.badgeValue = "New"
         
         settingsVC = settings
         settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)

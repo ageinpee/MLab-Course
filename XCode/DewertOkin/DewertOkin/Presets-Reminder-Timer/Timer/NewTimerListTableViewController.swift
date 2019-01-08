@@ -48,12 +48,10 @@ class NewTimerListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return timerList.count
     }
 
@@ -176,4 +174,91 @@ class NewTimerListTableViewController: UITableViewController {
         }
     }
 
+}
+
+class TimerEntryCell: UITableViewCell, Themeable {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        Themes.setupTheming(for: self)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+    
+    func setDarkTheme() {
+        backgroundColor = UIColor(red: 0.095, green: 0.095, blue: 0.095, alpha: 1.0)
+        textLabel?.textColor = .white
+        detailTextLabel?.textColor = .white
+    }
+    
+    func setDefaultTheme() {
+        backgroundColor = .white
+        textLabel?.textColor = .black
+        detailTextLabel?.textColor = .black
+    }
+    
+    @objc func darkModeEnabled(_ notification: Notification) {
+        setDarkTheme()
+    }
+    
+    @objc func darkModeDisabled(_ notification: Notification) {
+        setDefaultTheme()
+    }
+}
+
+class BackgroundLabel: UILabel, Themeable {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        Themes.setupTheming(for: self)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+    
+    @objc func darkModeEnabled(_ notification: Notification) {
+        setDarkTheme()
+    }
+    
+    @objc func darkModeDisabled(_ notification: Notification) {
+        setDefaultTheme()
+    }
+    
+    func setDarkTheme() {
+        backgroundColor = UIColor(red: 0.095, green: 0.095, blue: 0.095, alpha: 1.0)
+        textColor = .lightGray
+    }
+    
+    func setDefaultTheme() {
+        backgroundColor = .white
+        textColor = .lightGray
+    }
+}
+
+
+extension Date
+{
+    func toString( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
 }

@@ -9,6 +9,25 @@
 import UIKit
 import AVFoundation
 
+enum SettingsEntry: String {
+    case deviceInfo = "Device Info"
+    case presets = "Manage Presets"
+    case achievements = "Achievements"
+    case accessibilityMode = "Accessibility Mode"
+    case warranty = "Warranty"
+    case siri = "Siri"
+    case about = "About [Company]"
+    case darkMode = "Dark Mode"
+    case accessories = "Accessories"
+    case useOldRemote = "Use Old Remote Layout"
+    case nearestVendor = "Nearest Vendor"
+    case manageDevices = "Manage Devices"
+    case health = "Health Settings"
+    case test = "Test"
+    case alarm = "Alarm"
+    case rfpairing = "RF Pairing Test"
+}
+
 class SettingTableViewController: UITableViewController, Themeable {
     
     private let settingsEntries: [[SettingsEntry]] = [
@@ -181,10 +200,7 @@ class SettingTableViewController: UITableViewController, Themeable {
     }
     
     private func pushTestController() {
-        if let vc = UIStoryboard(name: "RFPairing", bundle: nil).instantiateInitialViewController() {
-            present(vc, animated: true, completion: nil)
-        }
-        
+        // Present the views you are testing here
     }
     
     @objc
@@ -295,12 +311,6 @@ class SettingTableViewController: UITableViewController, Themeable {
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
 
-}
-
-extension SettingTableViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
 }
 
 extension Notification.Name {

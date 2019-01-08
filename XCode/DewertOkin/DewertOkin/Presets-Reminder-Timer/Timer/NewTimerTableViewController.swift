@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class NewTimerTableViewController: UITableViewController {
     
     let sections: [TimerSection] = [.enabledSwitch, .details]
     var selectedTimer = DeviceTimer()
+    var isEditingPreviouslyCreatedTimer = false
     
     var datePickerVisible = false
     
@@ -21,7 +23,13 @@ class NewTimerTableViewController: UITableViewController {
     
     convenience init(deviceTimer: DeviceTimer?) {
         self.init(style: .grouped)
-        selectedTimer = deviceTimer ?? DeviceTimer(context: PersistenceService.context)
+        
+        if let timer = deviceTimer {
+            isEditingPreviouslyCreatedTimer = true
+            selectedTimer = timer
+        } else {
+            selectedTimer = DeviceTimer(context: PersistenceService.context)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,7 +41,7 @@ class NewTimerTableViewController: UITableViewController {
         
         self.tableView = UITableView(frame: CGRect.zero, style: .grouped)
         
-        self.navigationItem.title = "Add Timer"
+        self.navigationItem.title = isEditingPreviouslyCreatedTimer ? "Edit Timer" : "Add Timer"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
         
@@ -234,6 +242,10 @@ class NewTimerTableViewController: UITableViewController {
     
     @objc
     private func cancelButtonPressed() {
+        // Delete the newly created DeviceTimer object, if the user pressed the Add-Button and then cancel
+        if !isEditingPreviouslyCreatedTimer {
+            PersistenceService.context.delete(selectedTimer)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
