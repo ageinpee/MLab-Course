@@ -26,6 +26,7 @@ enum SettingsEntry: String {
     case test = "Test"
     case alarm = "Alarm"
     case rfpairing = "RF Pairing Test"
+    case bluetoothPairing = "Bluetooth Pairing Test"
 }
 
 class SettingTableViewController: UITableViewController, Themeable {
@@ -33,7 +34,7 @@ class SettingTableViewController: UITableViewController, Themeable {
     private let settingsEntries: [[SettingsEntry]] = [
         [.manageDevices, .deviceInfo, .nearestVendor],
         [.presets, .alarm, .health, .useOldRemote, .darkMode],
-        [.achievements,.accessories, .test, .rfpairing]
+        [.achievements,.accessories, .test, .rfpairing, .bluetoothPairing]
     ]
     private let settingsSections = ["Devices and Support", "Preferences", "Other"]
     
@@ -163,6 +164,8 @@ class SettingTableViewController: UITableViewController, Themeable {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .rfpairing)) {
             cell.accessoryType = .disclosureIndicator
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .bluetoothPairing)) {
+            cell.accessoryType = .disclosureIndicator
         }
 
         return cell
@@ -187,10 +190,18 @@ class SettingTableViewController: UITableViewController, Themeable {
             pushAlarmViewController()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .rfpairing)) {
             pushRFPairingController()
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .bluetoothPairing)) {
+            pushBluetoothPairing()
         }
         
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func pushBluetoothPairing() {
+        if let vc = UIStoryboard(name: "BluetoothPairing", bundle: nil).instantiateInitialViewController() {
+            present(vc, animated: true, completion: nil)
+        }
     }
     
     private func pushRFPairingController() {
