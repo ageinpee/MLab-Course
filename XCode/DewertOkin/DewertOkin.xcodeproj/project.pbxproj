@@ -47,6 +47,7 @@
 		CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397D021B2B0AF00D749FA /* Achievement.swift */; };
 		CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */; };
 		CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */; };
+		CD7D582421E7FF36001C9CA6 /* HealthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D582321E7FF35001C9CA6 /* HealthTableViewController.swift */; };
 		CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD83CAF721A340230082475B /* AchievementsTableViewCell.swift */; };
 		CD945289219C3D0D00280A66 /* AchievementsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */; };
 		CD94528E219C3D9100280A66 /* AccessoriesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD94528D219C3D9100280A66 /* AccessoriesStoryboard.storyboard */; };
@@ -157,6 +158,7 @@
 		CD3397D021B2B0AF00D749FA /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMore.storyboard; sourceTree = "<group>"; };
 		CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		CD7D582321E7FF35001C9CA6 /* HealthTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HealthTableViewController.swift; path = ../../../../../Documents/HealthTableViewController.swift; sourceTree = "<group>"; };
 		CD83CAF721A340230082475B /* AchievementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTableViewCell.swift; sourceTree = "<group>"; };
 		CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementsStoryboard.storyboard; sourceTree = "<group>"; };
 		CD94528D219C3D9100280A66 /* AccessoriesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccessoriesStoryboard.storyboard; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				CDFFC97421C07C8B005C5821 /* Health.swift */,
+				CD7D582321E7FF35001C9CA6 /* HealthTableViewController.swift */,
 				CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */,
 				CD100F5021E21F2B00DBAAB9 /* ActivityTracker.swift */,
 				CD100F5221E368B500DBAAB9 /* ActivityTracker+Helpers.swift */,
@@ -766,6 +769,7 @@
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
 				CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
+				CD7D582421E7FF36001C9CA6 /* HealthTableViewController.swift in Sources */,
 				FAC415AF21DF60E900F4B5AC /* RemoteAnalyzer.swift in Sources */,
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
 				FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */,
