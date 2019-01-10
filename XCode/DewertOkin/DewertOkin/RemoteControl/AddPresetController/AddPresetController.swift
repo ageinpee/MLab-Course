@@ -72,7 +72,7 @@ class AddPresetController: UIViewController {
     @objc func stateButtonAction(sender: UIButton!) {
         if sender.tag < 0 {
             sender.backgroundColor = UIColor.lightGray
-            sender.shake()
+            shake(view: sender, for: 0.2, withTranslation: 500)
         }
         else
         {
@@ -120,6 +120,17 @@ class AddPresetController: UIViewController {
         }
     }
     
+    func shake(view: UIView, for duration: TimeInterval = 0.5, withTranslation translation: CGFloat = 10) {
+        let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.3) {
+            view.transform = CGAffineTransform(translationX: translation, y: 0)
+        }
+        
+        propertyAnimator.addAnimations({
+            view.transform = CGAffineTransform(translationX: 0, y: 0)
+        }, delayFactor: 0.2)
+        
+        propertyAnimator.startAnimation()
+    }
 }
 
 
@@ -128,6 +139,8 @@ class AddPresetController: UIViewController {
 //==================================================
 
 extension UIButton {
+    
+    /*
     func shake(count : Float = 4,for duration : TimeInterval = 0.3,withTranslation translation : Float = 4) {
         
         let animation : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
@@ -139,6 +152,7 @@ extension UIButton {
         animation.toValue = NSValue(cgPoint: CGPoint(x: CGFloat(translation), y: self.center.y))
         layer.add(animation, forKey: "shake")
     }
+ */
 }
 
 enum MemoryState {

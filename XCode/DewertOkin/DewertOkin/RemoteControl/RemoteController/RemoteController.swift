@@ -70,12 +70,12 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        deviceType = DeviceType.chair_2Motors
-        currentStyle.setEmptyStyle(forDevice: deviceType)
+        deviceType = DeviceType.bed_2Motors
+        currentStyle.setFilledStyle(forDevice: deviceType)
         device = DeviceObject(withID: 0,
                               named: "Chair 0",
                               withDescription: "HE150",
-                              asType: .chair_2Motors,
+                              asType: .bed_2Motors,
                               withStyle: currentStyle,
                               withCMDService: CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B"),
                               withKeycodeUUID: CBUUID(string: "62741525-52F9-8864-B1AB-3B3A8D65950B"),
