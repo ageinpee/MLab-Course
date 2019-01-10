@@ -138,23 +138,6 @@ class AddPresetController: UIViewController {
 //==================================================
 //==================================================
 
-extension UIButton {
-    
-    /*
-    func shake(count : Float = 4,for duration : TimeInterval = 0.3,withTranslation translation : Float = 4) {
-        
-        let animation : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        animation.repeatCount = count
-        animation.duration = duration/TimeInterval(animation.repeatCount)
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: CGFloat(-translation), y: self.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: CGFloat(translation), y: self.center.y))
-        layer.add(animation, forKey: "shake")
-    }
- */
-}
-
 enum MemoryState {
     case empty
     case loaded
