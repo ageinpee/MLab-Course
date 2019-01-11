@@ -68,6 +68,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Extras"/>
+                                <connections>
+                                    <segue destination="dhz-n7-KIU" kind="custom" customClass="pullUpSegue" customModule="DewertOkin" customModuleProvider="target" id="AQQ-O3-FGs"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-gs-uD4">
                                 <rect key="frame" x="206" y="120" width="197" height="577"/>
@@ -134,35 +137,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEs-Jp-XXs">
-                                <rect key="frame" x="0.0" y="164" width="414" height="698"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="more functions of your device" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA9-hk-D9x">
-                                        <rect key="frame" x="20" y="20" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="WmB-gZ-1v9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="leading" secondItem="KEs-Jp-XXs" secondAttribute="leading" constant="20" id="7Ic-OQ-bu7"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZA9-hk-D9x" secondAttribute="trailing" constant="20" id="7VL-7c-GSV"/>
-                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="centerX" secondItem="KEs-Jp-XXs" secondAttribute="centerX" id="7aY-K8-wKS"/>
-                                    <constraint firstItem="ZA9-hk-D9x" firstAttribute="top" secondItem="KEs-Jp-XXs" secondAttribute="top" constant="20" id="xc9-C8-aaV"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZA9-hk-D9x" secondAttribute="bottom" constant="608" id="ygO-SL-2y3"/>
-                                </constraints>
-                            </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-Ju-sBX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="f3m-fw-aji" appends="YES" id="lXD-Zf-xso"/>
-                                </connections>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydd-5b-u6c">
                                 <rect key="frame" x="30" y="74" width="40" height="30"/>
                                 <constraints>
@@ -171,40 +145,45 @@
                                 </constraints>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="sYJ-lk-Ai1"/>
+                                    <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="ykU-Up-jrX"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHt-pn-GpR">
+                                <rect key="frame" x="0.0" y="119" width="414" height="743"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOZ-QQ-O6V">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="743"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="iOZ-QQ-O6V" secondAttribute="bottom" constant="19" id="7Jg-QH-B4v"/>
+                                    <constraint firstItem="iOZ-QQ-O6V" firstAttribute="width" secondItem="xHt-pn-GpR" secondAttribute="width" id="AaG-H4-RfL"/>
+                                    <constraint firstItem="iOZ-QQ-O6V" firstAttribute="centerY" secondItem="xHt-pn-GpR" secondAttribute="centerY" id="Xem-Rw-LzZ"/>
+                                    <constraint firstItem="iOZ-QQ-O6V" firstAttribute="centerX" secondItem="xHt-pn-GpR" secondAttribute="centerX" id="YuK-4j-Vys"/>
+                                    <constraint firstItem="iOZ-QQ-O6V" firstAttribute="height" secondItem="xHt-pn-GpR" secondAttribute="height" id="fsh-N8-7Mf"/>
+                                    <constraint firstAttribute="trailing" secondItem="iOZ-QQ-O6V" secondAttribute="trailing" constant="19" id="ktc-Jq-8u1"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="top" secondItem="bVY-Xs-AHm" secondAttribute="top" id="3G4-OH-jzw"/>
-                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="CM0-XS-DFU"/>
-                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="M5A-Uz-M96"/>
-                            <constraint firstItem="aOf-Ju-sBX" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="top" id="QW7-gM-eQ0"/>
-                            <constraint firstItem="p1V-fM-tHG" firstAttribute="bottom" secondItem="KEs-Jp-XXs" secondAttribute="bottom" id="S8s-ej-7IM"/>
-                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="KEs-Jp-XXs" secondAttribute="trailing" id="WIm-Du-VNG"/>
+                            <constraint firstItem="xHt-pn-GpR" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="75" id="IRe-GL-vya"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="bottom" secondItem="xHt-pn-GpR" secondAttribute="bottom" id="WZl-JT-uGu"/>
+                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="xHt-pn-GpR" secondAttribute="trailing" id="agG-9T-50e"/>
+                            <constraint firstItem="xHt-pn-GpR" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" id="bQQ-FR-jSK"/>
                             <constraint firstItem="ydd-5b-u6c" firstAttribute="leading" secondItem="p1V-fM-tHG" secondAttribute="leading" constant="30" id="ec5-9e-l8U"/>
-                            <constraint firstItem="KEs-Jp-XXs" firstAttribute="top" secondItem="bVY-Xs-AHm" secondAttribute="top" constant="164" id="l0v-sL-1MH"/>
-                            <constraint firstItem="p1V-fM-tHG" firstAttribute="trailing" secondItem="aOf-Ju-sBX" secondAttribute="trailing" id="oBA-PR-e6j"/>
                             <constraint firstItem="ydd-5b-u6c" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="30" id="rD9-9F-GQh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p1V-fM-tHG"/>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="ydd-5b-u6c" id="XCj-lH-m48"/>
-                        <outlet property="globalView" destination="bVY-Xs-AHm" id="eij-Lv-TWl"/>
-                        <outlet property="moreFunctionsLabel" destination="ZA9-hk-D9x" id="I6x-UF-AxW"/>
-                        <outlet property="scrollView" destination="KEs-Jp-XXs" id="d0D-x2-kJH"/>
-                        <outlet property="tapView" destination="aOf-Ju-sBX" id="JXv-3K-WEX"/>
+                        <outlet property="contentView" destination="iOZ-QQ-O6V" id="Dkm-H6-Vni"/>
                         <outlet property="view" destination="bVY-Xs-AHm" id="uOH-ww-m6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXG-di-7HQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="f3m-fw-aji">
-                    <connections>
-                        <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="G8l-fL-Fmg"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="f3m-fw-aji"/>
             </objects>
             <point key="canvasLocation" x="956.52173913043487" y="25.446428571428569"/>
         </scene>
@@ -383,7 +362,6 @@
         <image name="remote_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NBl-g8-nGH"/>
-        <segue reference="G8l-fL-Fmg"/>
+        <segue reference="edi-Vw-Fvw"/>
     </inferredMetricsTieBreakers>
 </document>

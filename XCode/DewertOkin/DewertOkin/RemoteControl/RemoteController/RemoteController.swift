@@ -91,11 +91,12 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         impact = UIImpactFeedbackGenerator(style: .light)
         
+        /*
         let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
         swipeRec.direction = .up
         ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
         ExtraFunctionsButtonObj.addTarget(self, action: #selector(showExtraFeaturesView), for: .touchUpInside)
-        
+        */
         arrowsImageView.image = currentStyle.stylesImages[0]
         Image.image = currentStyle.stylesImages[1]
         Image.contentMode = .scaleAspectFit
@@ -113,12 +114,13 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
         self.present(newViewController, animated: true, completion: nil)
     }
-    
+
+    /*
     @objc
     private func showExtraFeaturesView() {
         present(UINavigationController(rootViewController: ExtraFeaturesViewController(collectionViewLayout: UICollectionViewFlowLayout())), animated: true, completion: nil)
     }
-    
+    */
     
     //---------------------------------------
     //---------- Remote Actions -------------
