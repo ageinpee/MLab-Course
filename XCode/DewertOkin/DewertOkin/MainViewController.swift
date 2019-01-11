@@ -21,6 +21,7 @@ class MainViewController: UITabBarController {
     var reminderVC = UIViewController()
     var settingsVC = UIViewController()
     var healthVC = UIViewController()
+    var exploreVC = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,8 @@ class MainViewController: UITabBarController {
         guard let remoteNew = UIStoryboard(name: "SecondRemote", bundle: nil).instantiateInitialViewController(),
             let remoteOld = UIStoryboard(name: "OldRemote", bundle: nil).instantiateInitialViewController(),
             let reminder = UIStoryboard(name: "Reminder", bundle: nil).instantiateInitialViewController(),
-            let settings = UIStoryboard(name: "SettingsMore", bundle: nil).instantiateInitialViewController() else { return }
+            let settings = UIStoryboard(name: "SettingsMore", bundle: nil).instantiateInitialViewController(),
+            let explore = UIStoryboard(name: "Explore", bundle: nil).instantiateInitialViewController() else { return }
         
         remoteVC = useNewRemoteStyle ? remoteNew : remoteOld
         remoteVC.tabBarItem = UITabBarItem(title: "Remote", image: UIImage(named: "remote_icon"), tag: 0)
@@ -42,10 +44,12 @@ class MainViewController: UITabBarController {
         healthVC = UINavigationController(rootViewController: ActivityTrackerViewController(collectionViewLayout: UICollectionViewFlowLayout())) 
         healthVC.tabBarItem = UITabBarItem(title: "Health", image: UIImage(named: "heart_icon_outlined"), selectedImage: UIImage(named: "heart_icon_selected"))
         
+        exploreVC = explore
+        
         settingsVC = settings
         settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
         
-        let controllers = [remoteVC, healthVC, settingsVC]
+        let controllers = [remoteVC, healthVC, exploreVC ,settingsVC]
         
         setViewControllers(controllers, animated: false)
     }

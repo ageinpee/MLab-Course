@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import UIKit
+import MapKit
+
+class ExploreViewController: UIViewController, UITableViewDelegate {
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "Devices"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+}
