@@ -172,12 +172,8 @@ class SettingTableViewController: UITableViewController, Themeable {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .accessories)) {
-            pushAccessoriesStoryboard()
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .achievements)) {
+        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .achievements)) {
             pushAchievementsStoryboard()
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .nearestVendor)) {
-            pushVendorStoryboard()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .manageDevices)) {
             pushDevicesStoryboard()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .health)) {
@@ -242,15 +238,6 @@ class SettingTableViewController: UITableViewController, Themeable {
     }
     
     @objc
-    private func pushVendorStoryboard() {
-        if let vc = UIStoryboard(name: "NearestVendor", bundle: nil).instantiateInitialViewController() as? NearestVendorViewController {
-            if let navigator = navigationController {
-                navigator.pushViewController(vc, animated: true)
-            }
-        }
-    }
-    
-    @objc
     private func resetAchievements() {
         AchievementModel.resetAchievements()
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
@@ -297,15 +284,6 @@ class SettingTableViewController: UITableViewController, Themeable {
             print("Using \(sender.isOn ? "old" : "new") Remote Layout")
         }
 
-    }
-    
-    @objc
-    private func pushAccessoriesStoryboard() {
-        if let vc = UIStoryboard(name: "AccessoriesStoryboard", bundle: nil).instantiateInitialViewController() as? AccessoriesTableViewController {
-            if let navigator = navigationController {
-                navigator.pushViewController(vc, animated: true)
-            }
-        }
     }
     
     @objc
