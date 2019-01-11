@@ -32,9 +32,6 @@
                                     <constraint firstAttribute="width" secondItem="0YV-jW-udd" secondAttribute="height" multiplier="1:1" priority="900" id="J32-lh-94W"/>
                                 </constraints>
                                 <state key="normal" title="Presets"/>
-                                <connections>
-                                    <segue destination="7U7-yR-P4u" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="edi-Vw-Fvw"/>
-                                </connections>
                             </button>
                             <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chair_full_normal" translatesAutoresizingMaskIntoConstraints="NO" id="J9R-PK-aQG">
                                 <rect key="frame" x="10" y="120" width="394" height="577"/>

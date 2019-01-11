@@ -25,6 +25,70 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
     
+    //----------------------------------------
+    //------ Presets UI-Elements -------------
+    
+    // Doesn't get used currently
+    lazy var effectsView: UIVisualEffectView = {
+        let ev = UIVisualEffectView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        ev.effect = UIBlurEffect(style: .extraLight)
+        return ev
+    }()
+    
+    lazy var backgroundLayer: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        view.addGestureRecognizer(backgroundTapGestureRecognizer)
+        return view
+    }()
+    
+    let backgroundTapGestureRecognizer: UITapGestureRecognizer = {
+        let gr = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
+        gr.cancelsTouchesInView = false
+        return gr
+    }()
+    
+    lazy var presetsCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.delegate = self
+        view.dataSource = self
+        view.register(PresetButtonCell.self, forCellWithReuseIdentifier: presetButtonCell)
+        view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: defaultCell)
+        
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    let memoryDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Choose a preset"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let defaultCell = "defaultCell"
+    let presetButtonCell = "presetButtonCell"
+    
+    let presetsNames = ["Sleeping", "Relaxing", "Flat"]
+    
+    @objc
+    func handleBackgroundTap() {
+        print("Background tapped")
+        
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.backgroundLayer.alpha = 0
+            self.presetsCollectionView.alpha = 0
+        }) { (_) in
+            self.presetsCollectionView.removeFromSuperview()
+            self.backgroundLayer.removeFromSuperview()
+        }
+    }
+    
     var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var panRecRight: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var pressRecLeft: UILongPressGestureRecognizer = UILongPressGestureRecognizer()
