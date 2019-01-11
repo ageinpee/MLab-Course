@@ -6,9 +6,6 @@
 //  Copyright © 2019 Team DewertOkin. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 extension ExploreViewController {
     
 }

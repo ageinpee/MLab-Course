@@ -26,6 +26,7 @@
 		035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B860421C536C300A032AE /* BluetoothCentral.swift */; };
 		035B860721C536CE00A032AE /* BluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B860621C536CE00A032AE /* BluetoothPeripheral.swift */; };
 		0370112621E33D2100459A51 /* DevicesListTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */; };
+		0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380565021E9005C00A6502F /* ExploreJSONParser.swift */; };
 		039133C721E7ECB800ECCBBE /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039133C621E7ECB800ECCBBE /* Explore.storyboard */; };
 		039133C921E7ECD500ECCBBE /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133C821E7ECD500ECCBBE /* ExploreViewController.swift */; };
 		039133CB21E7ECE400ECCBBE /* ExploreMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133CA21E7ECE400ECCBBE /* ExploreMap.swift */; };
@@ -138,6 +139,7 @@
 		035B860421C536C300A032AE /* BluetoothCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCentral.swift; sourceTree = "<group>"; };
 		035B860621C536CE00A032AE /* BluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPeripheral.swift; sourceTree = "<group>"; };
 		0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListTableViewExtension.swift; sourceTree = "<group>"; };
+		0380565021E9005C00A6502F /* ExploreJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreJSONParser.swift; sourceTree = "<group>"; };
 		039133C621E7ECB800ECCBBE /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		039133C821E7ECD500ECCBBE /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		039133CA21E7ECE400ECCBBE /* ExploreMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMap.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				039133C821E7ECD500ECCBBE /* ExploreViewController.swift */,
 				039133CA21E7ECE400ECCBBE /* ExploreMap.swift */,
 				039133CC21E7ECF000ECCBBE /* ExploreList.swift */,
+				0380565021E9005C00A6502F /* ExploreJSONParser.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
 				033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */,
 				FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */,
+				0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */,
 				FAE52D4E21D924D400121B54 /* AddPresetController.swift in Sources */,
 				FA19A2F621D370900032A4E7 /* RFPairingController1.swift in Sources */,
 				FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */,

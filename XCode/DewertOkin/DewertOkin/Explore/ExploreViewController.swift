@@ -21,22 +21,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate ,UITabl
         navigationItem.title = "Devices"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        if (CLLocationManager.locationServicesEnabled()) {
-            locationManager.requestAlwaysAuthorization()
-            locationManager.requestWhenInUseAuthorization()
-        }
-        
-        if let userLocation = locationManager.location?.coordinate {
-            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 2000, longitudinalMeters: 2000)
-            mapView.setRegion(viewRegion, animated: true)
-            mapView.showsUserLocation = true
-        }
-        
-        DispatchQueue.main.async {
-            self.locationManager.startUpdatingLocation()
-        }
+        initializeMap(radiusInMeters: 2000.0)
     }
+    
 }
