@@ -34,6 +34,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
     var panState = UIGestureRecognizer.State.ended
+    var impact: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator()
     
     var deviceType: DeviceType = .NaN
     
@@ -87,6 +88,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         Themes.setupTheming(for: self)
 
         Health.shared.requestHealthKitPermission()
+        
+        impact = UIImpactFeedbackGenerator(style: .light)
         
         let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
         swipeRec.direction = .up
