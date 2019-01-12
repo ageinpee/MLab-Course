@@ -105,6 +105,7 @@ class ExtraFeaturesViewController: UICollectionViewController, UICollectionViewD
         
         collectionView.alwaysBounceVertical = true
     }
+    
     @objc
     private func dismissSelf() {
         self.dismiss(animated: true, completion: nil)
