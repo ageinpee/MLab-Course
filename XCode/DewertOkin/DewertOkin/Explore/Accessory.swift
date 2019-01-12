@@ -9,16 +9,16 @@
 import Foundation
 import UIKit
 
-class Accessorie: NSObject {
+class Accessory: NSObject {
     
     let image: UIImage
     let name: String
-    let accessorieDescription: String
+    let accessoryDescription: String
     
-    init(image: UIImage, name: String, accessorieDescription: String) {
+    init(image: UIImage, name: String, accessoryDescription: String) {
         self.image = image
         self.name = name
-        self.accessorieDescription = accessorieDescription
+        self.accessoryDescription = accessoryDescription
         
         super.init()
     }

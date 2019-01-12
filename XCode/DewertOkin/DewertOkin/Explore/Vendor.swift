@@ -16,7 +16,7 @@ class Vendor: NSObject, MKAnnotation {
     let openingHour: Int
     let closingHour: Int
     let telephoneNumber: String
-    // let accessories : [Accessorie]
+    // let accessories : [Accessory]
     let coordinate: CLLocationCoordinate2D
     
     var title: String? {

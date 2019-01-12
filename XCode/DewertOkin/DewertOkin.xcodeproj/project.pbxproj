@@ -28,7 +28,7 @@
 		0370112621E33D2100459A51 /* DevicesListTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */; };
 		0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380565021E9005C00A6502F /* ExploreJSONParser.swift */; };
 		0380565321E901D500A6502F /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380565221E901D500A6502F /* Vendor.swift */; };
-		0380565521E901E300A6502F /* Accessorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380565421E901E300A6502F /* Accessorie.swift */; };
+		0380565521E901E300A6502F /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380565421E901E300A6502F /* Accessory.swift */; };
 		039133C721E7ECB800ECCBBE /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039133C621E7ECB800ECCBBE /* Explore.storyboard */; };
 		039133C921E7ECD500ECCBBE /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133C821E7ECD500ECCBBE /* ExploreViewController.swift */; };
 		039133CB21E7ECE400ECCBBE /* ExploreVendorMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133CA21E7ECE400ECCBBE /* ExploreVendorMap.swift */; };
@@ -135,7 +135,7 @@
 		0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListTableViewExtension.swift; sourceTree = "<group>"; };
 		0380565021E9005C00A6502F /* ExploreJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreJSONParser.swift; sourceTree = "<group>"; };
 		0380565221E901D500A6502F /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
-		0380565421E901E300A6502F /* Accessorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessorie.swift; sourceTree = "<group>"; };
+		0380565421E901E300A6502F /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
 		039133C621E7ECB800ECCBBE /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		039133C821E7ECD500ECCBBE /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		039133CA21E7ECE400ECCBBE /* ExploreVendorMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVendorMap.swift; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 				039133CC21E7ECF000ECCBBE /* ExploreAccessoriesList.swift */,
 				0380565021E9005C00A6502F /* ExploreJSONParser.swift */,
 				0380565221E901D500A6502F /* Vendor.swift */,
-				0380565421E901E300A6502F /* Accessorie.swift */,
+				0380565421E901E300A6502F /* Accessory.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -778,7 +778,7 @@
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				CD100F4D21DFF25400DBAAB9 /* ExecutingPresetViewController.swift in Sources */,
 				FAE52D3421D556DB00121B54 /* RFPairingController3.swift in Sources */,
-				0380565521E901E300A6502F /* Accessorie.swift in Sources */,
+				0380565521E901E300A6502F /* Accessory.swift in Sources */,
 				CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
