@@ -41,9 +41,11 @@ extension ExploreViewController {
     }
     
     func initializeAccessories() {
-        parseAccessories()
-//        let accessorie = Accessory(image: accessories[0].image, name: accessories[0].name, accessoryDescription: accessories[0].accessoryDescription)
-//        print(accessorie.name)
+        let accessoryList = parseAccessories()
+        guard accessoryList.count != 0 else { return }
+        for number in 0..<(accessoryList.count - 1) {
+            let accessorie = Accessory(image: accessoryList[number].image, name: accessoryList[number].name, accessoryDescription: accessoryList[number].accessoryDescription)
+        }
     }
     
 }
