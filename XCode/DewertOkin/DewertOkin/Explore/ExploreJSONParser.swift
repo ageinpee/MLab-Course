@@ -18,20 +18,31 @@ struct VendorData: Decodable {
     let latitude: Double
 }
 
-struct AccessorieData: Decodable {
+struct AccessoryData: Decodable {
     let image: String
     let name: String
-    let accessorieDescription: String
+    let accessoryDescription: String
 }
-func parseVendor() -> [VendorData] {
+
+func parseVendor() {
     
     do {
         let jsonString = Bundle.main.path(forResource: "VendorList", ofType: "json")
-        let jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonString!), options: .alwaysMapped)
+        let jsonURL = URL(fileURLWithPath: jsonString!)
+        let jsonData = try Data(contentsOf: jsonURL)
         let decoder = JSONDecoder()
-        let vendorData = try decoder.decode([VendorData].self, from: jsonData)
-        return vendorData
+        let vendorData = try decoder.decode(VendorData.self, from: jsonData)
     } catch _ { }
     
-    return []
+}
+
+func parseAccessories() {
+    
+    do {
+        let jsonString = Bundle.main.path(forResource: "AccessoriesList", ofType: "json")
+        let jsonURL = URL(fileURLWithPath: jsonString!)
+        let jsonData = try Data(contentsOf: jsonURL)
+        let decoder = JSONDecoder()
+        let accessoryData = try decoder.decode(AccessoryData.self, from: jsonData)
+    } catch _ { }
 }

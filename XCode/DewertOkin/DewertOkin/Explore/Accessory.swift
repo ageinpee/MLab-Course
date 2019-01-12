@@ -11,11 +11,11 @@ import UIKit
 
 class Accessory: NSObject {
     
-    let image: UIImage
+    let image: String
     let name: String
     let accessoryDescription: String
     
-    init(image: UIImage, name: String, accessoryDescription: String) {
+    init(image: String, name: String, accessoryDescription: String) {
         self.image = image
         self.name = name
         self.accessoryDescription = accessoryDescription
