@@ -31,4 +31,10 @@ extension ExploreViewController {
         }
     }
     
+    func initializeVendors() {
+        let vendors = parseVendor()
+        let vendor = Vendor(name: vendors[0].name, street: vendors[0].street, openingHour: vendors[0].openingHour, closingHour: vendors[0].closingHour, telephoneNumber: vendors[0].telephoneNumber, latitude: vendors[0].latitude, longitude: vendors[0].longitude)
+        mapView.addAnnotation(vendor)
+    }
+    
 }

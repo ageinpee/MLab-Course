@@ -22,6 +22,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate ,UITabl
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         initializeMap(radiusInMeters: 2000.0)
+        initializeVendors()
     }
     
 }
