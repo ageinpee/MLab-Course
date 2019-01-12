@@ -24,16 +24,18 @@ struct AccessoryData: Decodable {
     let accessoryDescription: String
 }
 
-func parseVendor() {
+func parseVendor() -> [VendorData] {
     
     do {
         let jsonString = Bundle.main.path(forResource: "VendorList", ofType: "json")
         let jsonURL = URL(fileURLWithPath: jsonString!)
         let jsonData = try Data(contentsOf: jsonURL)
+        print(jsonData)
         let decoder = JSONDecoder()
-        let vendorData = try decoder.decode(VendorData.self, from: jsonData)
+        let vendorData = try! decoder.decode([VendorData].self, from: jsonData)
+        return vendorData
     } catch _ { }
-    
+    return []
 }
 
 func parseAccessories() {
@@ -43,6 +45,6 @@ func parseAccessories() {
         let jsonURL = URL(fileURLWithPath: jsonString!)
         let jsonData = try Data(contentsOf: jsonURL)
         let decoder = JSONDecoder()
-        let accessoryData = try decoder.decode(AccessoryData.self, from: jsonData)
+        let accessoryData = try! decoder.decode(AccessoryData.self, from: jsonData)
     } catch _ { }
 }

@@ -32,9 +32,12 @@ extension ExploreViewController {
     }
     
     func initializeVendors() {
-        parseVendor()
-//        let vendor = Vendor(name: vendors[0].name, street: vendors[0].street, openingHour: vendors[0].openingHour, closingHour: vendors[0].closingHour, telephoneNumber: vendors[0].telephoneNumber, latitude: vendors[0].latitude, longitude: vendors[0].longitude)
-//        mapView.addAnnotation(vendor)
+        let vendorList = parseVendor()
+        guard vendorList.count != 0 else { return }
+        for number in 0..<(vendorList.count - 1) {
+            let vendor = Vendor(name: vendorList[number].name, street: vendorList[number].street, openingHour: vendorList[number].openingHour, closingHour: vendorList[number].closingHour, telephoneNumber: vendorList[number].telephoneNumber, latitude: vendorList[number].latitude, longitude: vendorList[number].longitude)
+            mapView.addAnnotation(vendor)
+        }
     }
     
     func initializeAccessories() {
