@@ -69,7 +69,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Extras"/>
                                 <connections>
-                                    <segue destination="dhz-n7-KIU" kind="custom" customClass="pullUpSegue" customModule="DewertOkin" customModuleProvider="target" id="AQQ-O3-FGs"/>
+                                    <segue destination="dhz-n7-KIU" kind="presentation" modalPresentationStyle="overFullScreen" id="bdx-sA-gOo"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-gs-uD4">
@@ -143,7 +143,9 @@
                                     <constraint firstAttribute="height" constant="30" id="1iS-a3-Q30"/>
                                     <constraint firstAttribute="width" constant="40" id="h4O-An-OHA"/>
                                 </constraints>
-                                <state key="normal" title="Back"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="h1o-HI-eVS" kind="custom" customClass="pullUpUnwindSegue" customModule="DewertOkin" customModuleProvider="target" id="ykU-Up-jrX"/>
                                 </connections>
@@ -161,7 +163,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="QY1-Dg-M6w" firstAttribute="leading" secondItem="iOZ-QQ-O6V" secondAttribute="leading" constant="50" id="7me-Iq-NLW"/>
                                             <constraint firstAttribute="trailing" secondItem="QY1-Dg-M6w" secondAttribute="trailing" constant="50" id="FLw-pt-7Nq"/>
@@ -170,6 +172,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="iOZ-QQ-O6V" secondAttribute="bottom" constant="19" id="7Jg-QH-B4v"/>
                                     <constraint firstItem="iOZ-QQ-O6V" firstAttribute="width" secondItem="xHt-pn-GpR" secondAttribute="width" id="AaG-H4-RfL"/>
@@ -180,7 +183,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xHt-pn-GpR" firstAttribute="top" secondItem="p1V-fM-tHG" secondAttribute="top" constant="75" id="IRe-GL-vya"/>
                             <constraint firstItem="p1V-fM-tHG" firstAttribute="bottom" secondItem="xHt-pn-GpR" secondAttribute="bottom" id="WZl-JT-uGu"/>
@@ -193,8 +196,9 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="iOZ-QQ-O6V" id="Dkm-H6-Vni"/>
+                        <outlet property="globalView" destination="bVY-Xs-AHm" id="scp-0U-TGz"/>
                         <outlet property="noFunctionsLabel" destination="QY1-Dg-M6w" id="fgB-k6-5p3"/>
-                        <outlet property="view" destination="bVY-Xs-AHm" id="uOH-ww-m6e"/>
+                        <outlet property="view" destination="bVY-Xs-AHm" id="0I4-Xy-XzV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXG-di-7HQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@ import UIKit
 
 class ExtraFunctionsController: UIViewController {
     
+    @IBOutlet var globalView: UIView!
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var noFunctionsLabel: UILabel!
@@ -23,12 +24,13 @@ class ExtraFunctionsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        globalView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         noFunctionsLabel.text = "Your device currently has no additionaly features. You can find accessories for your device in the 'Explore' section. "
         noFunctionsLabel.textColor = UIColor.gray
         noFunctionsLabel.isHidden = true
         
         functionsList = [.massage_back, .massage_neck, .massage_legs, .ubl]
-        functionsHexCodes = ["0x00", "0x00", "0x00", "0x00"]
+        functionsHexCodes = ["0x01", "0x02", "0x03", "0x04"]
         
         createButtons(withFunctions: functionsList, withHexCodes: functionsHexCodes)
     }
@@ -42,6 +44,7 @@ class ExtraFunctionsController: UIViewController {
         else if functions.count == 1 {
             // set one button centered horizontally and vertically
             let button = styleButton(withFunction: functions[0])
+            button.tag = 0
             
             contentView.addSubview(button)
             
@@ -59,13 +62,13 @@ class ExtraFunctionsController: UIViewController {
         else if functions.count >= 2 {
             // set the buttons in two columns
             var flagLeftRight = true //true == left, false == right
-            var counterUp = 0 //counts the buttons in the loop
             var offset = 0
             
             for (count, function) in functions.enumerated() {
                 let button = styleButton(withFunction: function)
                 let contentViewHeight = Int(contentView.frame.height)
                 let contentViewWidth = Int(contentView.frame.width)
+                button.tag = count
                 
                 if count % 2 == 0 {
                     offset = offset + contentViewWidth/4 + 80
@@ -95,7 +98,32 @@ class ExtraFunctionsController: UIViewController {
     
     @objc
     func handleButtonPress(sender: UIButton!) {
-        
+        switch sender.tag{
+        case 0:
+            executeFunction(withHex: functionsHexCodes[0])
+        case 1:
+            executeFunction(withHex: functionsHexCodes[1])
+        case 2:
+            executeFunction(withHex: functionsHexCodes[2])
+        case 3:
+            executeFunction(withHex: functionsHexCodes[3])
+        case 4:
+            executeFunction(withHex: functionsHexCodes[4])
+        case 5:
+            executeFunction(withHex: functionsHexCodes[5])
+        case 6:
+            executeFunction(withHex: functionsHexCodes[6])
+        case 7:
+            executeFunction(withHex: functionsHexCodes[7])
+        case 8:
+            executeFunction(withHex: functionsHexCodes[8])
+        default:
+            executeFunction(withHex: "0x00")
+        }
+    }
+    
+    private func executeFunction(withHex hex: String) {
+        print("placehodler for bluetooth function with hexcode \(hex)")
     }
     
     func styleButton(withFunction function: ExtraFunctions) -> UIButton {
