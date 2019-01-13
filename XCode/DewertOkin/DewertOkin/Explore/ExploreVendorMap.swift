@@ -35,9 +35,18 @@ extension ExploreViewController: DetailVendorViewControllerDelegate {
         let vendorList = parseVendor()
         guard vendorList.count != 0 else { return }
         for number in 0..<(vendorList.count - 1) {
-            let vendor = Vendor(name: vendorList[number].name, street: vendorList[number].street, openingHour: vendorList[number].openingHour, closingHour: vendorList[number].closingHour, telephoneNumber: vendorList[number].telephoneNumber, latitude: vendorList[number].latitude, longitude: vendorList[number].longitude)
+            let vendor = Vendor(name: vendorList[number].name, street: vendorList[number].street, openingHour: vendorList[number].openingHour, closingHour: vendorList[number].closingHour, telephoneNumber: vendorList[number].telephoneNumber, accessories: (convertAccessoryData(accessories: vendorList[number].accessories)), latitude: vendorList[number].latitude, longitude: vendorList[number].longitude)
             mapView.addAnnotation(vendor)
         }
+    }
+    
+    func convertAccessoryData(accessories: [AccessoryData]) -> [Accessory] {
+        var accessorieList = [Accessory]()
+        for number in 0..<(accessories.count - 1) {
+            let accessory = Accessory(imageName: accessories[number].imageName, name: accessories[number].name, accessoryDescription: accessories[number].accessoryDescription)
+            accessorieList.append(accessory)
+        }
+        return accessorieList
     }
     
 }

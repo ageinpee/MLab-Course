@@ -16,7 +16,7 @@ class Vendor: NSObject, MKAnnotation {
     let openingHour: Int
     let closingHour: Int
     let telephoneNumber: String
-    // let accessories : [Accessory]
+    let accessories : [Accessory]
     let latitude: Double
     let longitude: Double
     let coordinate: CLLocationCoordinate2D
@@ -29,12 +29,13 @@ class Vendor: NSObject, MKAnnotation {
         return street
     }
     
-    init(name: String, street: String, openingHour: Int, closingHour: Int, telephoneNumber: String, latitude: Double, longitude: Double) {
+    init(name: String, street: String, openingHour: Int, closingHour: Int, telephoneNumber: String, accessories: [Accessory] ,latitude: Double, longitude: Double) {
         self.name = name
         self.street = street
         self.openingHour = openingHour
         self.closingHour = closingHour
         self.telephoneNumber = telephoneNumber
+        self.accessories = accessories
         self.latitude = latitude
         self.longitude = longitude
         self.coordinate = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)

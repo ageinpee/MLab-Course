@@ -23,7 +23,7 @@ class DetailVendorViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         view.backgroundColor = UIColor.clear
-        vendorName.text = displayingVendor.name
+        vendorName.text = displayingVendor.accessories[0].name
     }
     
 }
