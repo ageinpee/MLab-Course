@@ -8,16 +8,16 @@
     "latitude": 53.551086,
     "longitude": 9.993682,
     "accessories": [
-            {
-                "imageName": "HE150",
-                "name": "HE 150 Remote Control",
-                "accessoryDescription": "Macht nichts"
-            },
-            {
-                "imageName": "HE250",
-                "name": "HE 250 Remote Control",
-                "accessoryDescription": "Macht auch nichts"
-            }
+        {
+            "imageName": "TouchRemote",
+            "name": "RF Touch",
+            "accessoryDescription": "Can't Touch This"
+        },
+        {
+            "imageName": "LEDStripe",
+            "name": "LED-Stripe",
+            "accessoryDescription": "Lumos Maxima"
+        }
     ]
  },
  {
@@ -30,14 +30,14 @@
      "longitude": 10.018185,
      "accessories": [
          {
-             "imageName": "HE150",
-             "name": "HE 150 Remote Control",
-             "accessoryDescription": "Macht nichts"
+             "imageName": "TouchRemote",
+             "name": "RF Touch",
+             "accessoryDescription": "Can't Touch This"
          },
          {
-             "imageName": "HE250",
-             "name": "HE 250 Remote Control",
-             "accessoryDescription": "Macht auch nichts"
+             "imageName": "LEDStripe",
+             "name": "LED-Stripe",
+             "accessoryDescription": "Lumos Maxima"
          }
      ]
  }

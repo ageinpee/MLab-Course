@@ -38,6 +38,7 @@
 		039133CD21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133CC21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift */; };
 		03AE0EC021BFB4EA00CEDC81 /* BluetoothPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */; };
 		03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */; };
+		03CA62DE21EBDF51003F3477 /* AccessoryCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CA62DD21EBDF51003F3477 /* AccessoryCustomCell.swift */; };
 		03E9875C219447E000189C97 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875B219447E000189C97 /* Reminders.swift */; };
 		03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875D2194483D00189C97 /* PersistenceService.swift */; };
 		03E98764219452D300189C97 /* Reminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E98763219452D300189C97 /* Reminder.storyboard */; };
@@ -148,6 +149,7 @@
 		039133CC21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreAccessoriesViewController.swift; sourceTree = "<group>"; };
 		03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothPairingViewController.swift; sourceTree = "<group>"; };
 		03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BluetoothPairing.storyboard; sourceTree = "<group>"; };
+		03CA62DD21EBDF51003F3477 /* AccessoryCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCustomCell.swift; sourceTree = "<group>"; };
 		03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPairingConnectViewController.swift; sourceTree = "<group>"; };
 		03E9875B219447E000189C97 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
 		03E9875D2194483D00189C97 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				0380565221E901D500A6502F /* Vendor.swift */,
 				0380565421E901E300A6502F /* Accessory.swift */,
 				0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */,
+				03CA62DD21EBDF51003F3477 /* AccessoryCustomCell.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 				033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */,
 				FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */,
 				0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */,
+				03CA62DE21EBDF51003F3477 /* AccessoryCustomCell.swift in Sources */,
 				FAE52D4E21D924D400121B54 /* AddPresetController.swift in Sources */,
 				FA19A2F621D370900032A4E7 /* RFPairingController1.swift in Sources */,
 				FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */,
