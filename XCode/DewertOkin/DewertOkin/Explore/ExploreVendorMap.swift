@@ -40,12 +40,29 @@ extension ExploreViewController {
         }
     }
     
-    func initializeAccessories() {
-        let accessoryList = parseAccessories()
-        guard accessoryList.count != 0 else { return }
-        for number in 0..<(accessoryList.count - 1) {
-            let accessorie = Accessory(imageName: accessoryList[number].imageName, name: accessoryList[number].name, accessoryDescription: accessoryList[number].accessoryDescription)
-        }
-    }
+}
+
+extension ExploreViewController: MKMapViewDelegate {
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? Vendor else { return nil }
+        let identifier = "identifier"
+        var view: MKMarkerAnnotationView
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            
+            
+            view.markerTintColor = .blue
+            view.glyphTintColor = .blue
+            view.glyphText = ""
+        }
+        return view
+    }
 }

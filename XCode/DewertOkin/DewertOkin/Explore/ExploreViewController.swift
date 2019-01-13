@@ -21,8 +21,8 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate ,UITabl
         navigationItem.title = "Devices"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
+        mapView.delegate = self
         initializeMap(radiusInMeters: 2000.0)
-        initializeAccessories()
         initializeVendors()
     }
     

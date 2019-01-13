@@ -16,6 +16,7 @@ struct VendorData: Decodable {
     let telephoneNumber: String
     let longitude: Double
     let latitude: Double
+    let accessories: [AccessoryData]
 }
 
 struct AccessoryData: Decodable {

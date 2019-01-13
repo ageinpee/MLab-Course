@@ -6,7 +6,19 @@
     "closingHour": 20,
     "telephoneNumber": "666-666-666",
     "latitude": 53.551086,
-    "longitude": 9.993682
+    "longitude": 9.993682,
+    "accessories": [
+            {
+                "imageName": "HE150",
+                "name": "HE 150 Remote Control",
+                "accessoryDescription": "Macht nichts"
+            },
+            {
+                "imageName": "HE250",
+                "name": "HE 250 Remote Control",
+                "accessoryDescription": "Macht auch nichts"
+            }
+    ]
  },
  {
      "name": "Cold Furniture",
@@ -15,6 +27,18 @@
      "closingHour": 20,
      "telephoneNumber": "999-999-999",
      "latitude": 53.551094,
-     "longitude": 10.018185
+     "longitude": 10.018185,
+     "accessories": [
+         {
+             "imageName": "HE150",
+             "name": "HE 150 Remote Control",
+             "accessoryDescription": "Macht nichts"
+         },
+         {
+             "imageName": "HE250",
+             "name": "HE 250 Remote Control",
+             "accessoryDescription": "Macht auch nichts"
+         }
+     ]
  }
 ]
