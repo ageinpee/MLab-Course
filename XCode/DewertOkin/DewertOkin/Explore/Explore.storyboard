@@ -31,15 +31,52 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LO4-Fk-rNs"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FyY-fg-iMa"/>
+                    <navigationItem key="navigationItem" id="FyY-fg-iMa">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="JA1-HT-E6V">
+                            <connections>
+                                <action selector="showAccessoriesList:" destination="txy-Vt-aDp" id="Y94-fh-S2q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="urf-Lw-g1n" id="xwW-P4-m7Y"/>
                         <segue destination="G4K-hp-hJC" kind="presentation" identifier="ShowVendorDetail" id="E4D-db-9SH"/>
+                        <segue destination="qls-k3-uPY" kind="show" identifier="ShowAccessoriesList" id="g41-4C-Pmz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMC-q1-eEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="-274.81259370314842"/>
+        </scene>
+        <!--Explore Accessories View Controller-->
+        <scene sceneID="61a-oi-Wl8">
+            <objects>
+                <viewController id="qls-k3-uPY" customClass="ExploreAccessoriesViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gmW-TR-BY1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PVR-Ar-PAx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PVR-Ar-PAx" firstAttribute="top" secondItem="jMU-0u-70k" secondAttribute="top" id="7fM-7h-SVK"/>
+                            <constraint firstItem="PVR-Ar-PAx" firstAttribute="leading" secondItem="jMU-0u-70k" secondAttribute="leading" id="CCl-hL-0UW"/>
+                            <constraint firstItem="jMU-0u-70k" firstAttribute="bottom" secondItem="PVR-Ar-PAx" secondAttribute="bottom" id="Rta-cP-bnd"/>
+                            <constraint firstItem="jMU-0u-70k" firstAttribute="trailing" secondItem="PVR-Ar-PAx" secondAttribute="trailing" id="cnm-E9-GC3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jMU-0u-70k"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="PVR-Ar-PAx" id="heq-te-KEE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxu-jB-735" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1075" y="490"/>
         </scene>
         <!--Detail Vendor View Controller-->
         <scene sceneID="zw4-F0-2Vt">

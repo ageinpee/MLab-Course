@@ -28,4 +28,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
         initializeVendors()
     }
     
+    @IBAction func showAccessoriesList(_ sender: Any) {
+        performSegue(withIdentifier: "ShowAccessoriesList", sender: self)
+    }
 }

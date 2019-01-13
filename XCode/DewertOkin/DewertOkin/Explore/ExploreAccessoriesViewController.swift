@@ -9,7 +9,16 @@
 import Foundation
 import UIKit
 
-extension ExploreViewController: UITableViewDelegate {
+class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
+    
+    var accessoriesList = [Accessory]()
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "Accessories"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
     
     func initializeAccessories() {
         let accessoryList = parseAccessories()
@@ -18,5 +27,4 @@ extension ExploreViewController: UITableViewDelegate {
             let accessorie = Accessory(imageName: accessoryList[number].imageName, name: accessoryList[number].name, accessoryDescription: accessoryList[number].accessoryDescription)
         }
     }
-    
 }

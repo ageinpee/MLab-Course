@@ -41,7 +41,7 @@ class DetailVendorViewController: UIViewController {
         vendorName.textAlignment = .center
         vendorStreet.text = displayingVendor.street
         vendorStreet.textAlignment = .center
-        vendorWorkingHours.text = "\(displayingVendor.openingHour) + \(displayingVendor.closingHour)"
+        vendorWorkingHours.text = "Opening hours: \(displayingVendor.openingHour) - \(displayingVendor.closingHour)"
         vendorWorkingHours.textAlignment = .center
         vendorTelephoneNumber.text = displayingVendor.telephoneNumber
         vendorTelephoneNumber.textAlignment = .center

@@ -35,7 +35,7 @@
 		039133C721E7ECB800ECCBBE /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039133C621E7ECB800ECCBBE /* Explore.storyboard */; };
 		039133C921E7ECD500ECCBBE /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133C821E7ECD500ECCBBE /* ExploreViewController.swift */; };
 		039133CB21E7ECE400ECCBBE /* ExploreVendorMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133CA21E7ECE400ECCBBE /* ExploreVendorMap.swift */; };
-		039133CD21E7ECF000ECCBBE /* ExploreAccessoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133CC21E7ECF000ECCBBE /* ExploreAccessoriesList.swift */; };
+		039133CD21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039133CC21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift */; };
 		03AE0EC021BFB4EA00CEDC81 /* BluetoothPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */; };
 		03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */; };
 		03E9875C219447E000189C97 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9875B219447E000189C97 /* Reminders.swift */; };
@@ -145,7 +145,7 @@
 		039133C621E7ECB800ECCBBE /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		039133C821E7ECD500ECCBBE /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		039133CA21E7ECE400ECCBBE /* ExploreVendorMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVendorMap.swift; sourceTree = "<group>"; };
-		039133CC21E7ECF000ECCBBE /* ExploreAccessoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreAccessoriesList.swift; sourceTree = "<group>"; };
+		039133CC21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreAccessoriesViewController.swift; sourceTree = "<group>"; };
 		03AE0EBE21BFB4EA00CEDC81 /* BluetoothPairingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothPairingViewController.swift; sourceTree = "<group>"; };
 		03AE0EBF21BFB4EA00CEDC81 /* BluetoothPairing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BluetoothPairing.storyboard; sourceTree = "<group>"; };
 		03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPairingConnectViewController.swift; sourceTree = "<group>"; };
@@ -332,7 +332,7 @@
 				039133C621E7ECB800ECCBBE /* Explore.storyboard */,
 				039133C821E7ECD500ECCBBE /* ExploreViewController.swift */,
 				039133CA21E7ECE400ECCBBE /* ExploreVendorMap.swift */,
-				039133CC21E7ECF000ECCBBE /* ExploreAccessoriesList.swift */,
+				039133CC21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift */,
 				0380565221E901D500A6502F /* Vendor.swift */,
 				0380565421E901E300A6502F /* Accessory.swift */,
 				0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */,
@@ -767,7 +767,7 @@
 				FAE52D5021DA485500121B54 /* DeviceObject.swift in Sources */,
 				FAE52D4321D7BE5400121B54 /* PresetsController.swift in Sources */,
 				FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */,
-				039133CD21E7ECF000ECCBBE /* ExploreAccessoriesList.swift in Sources */,
+				039133CD21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift in Sources */,
 				CD100F5121E21F2B00DBAAB9 /* ActivityTracker.swift in Sources */,
 				FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */,
 				FA19A30021D527500032A4E7 /* rotationTransition.swift in Sources */,
