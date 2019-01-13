@@ -32,7 +32,7 @@
                                     <action selector="connect:" destination="f7d-qy-B5L" eventType="touchUpInside" id="8qb-Gn-MXZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4b2-LS-Edn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4b2-LS-Edn">
                                 <rect key="frame" x="121" y="104" width="133" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4b2-LS-Edn" secondAttribute="height" multiplier="19:3" id="6T9-7s-FUR"/>

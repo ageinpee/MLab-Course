@@ -34,11 +34,44 @@
                     <navigationItem key="navigationItem" id="FyY-fg-iMa"/>
                     <connections>
                         <outlet property="mapView" destination="urf-Lw-g1n" id="xwW-P4-m7Y"/>
+                        <segue destination="G4K-hp-hJC" kind="presentation" identifier="ShowVendorDetail" id="E4D-db-9SH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMC-q1-eEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="-274.81259370314842"/>
+        </scene>
+        <!--Detail Vendor View Controller-->
+        <scene sceneID="zw4-F0-2Vt">
+            <objects>
+                <viewController id="G4K-hp-hJC" customClass="DetailVendorViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="np3-7O-lUD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXm-7x-Y17">
+                                <rect key="frame" x="166" y="323" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="imb-U6-qZO" firstAttribute="bottom" secondItem="vXm-7x-Y17" secondAttribute="bottom" constant="323" id="4yu-03-Wag"/>
+                            <constraint firstItem="vXm-7x-Y17" firstAttribute="leading" secondItem="imb-U6-qZO" secondAttribute="leading" constant="166" id="9Cs-eC-pFC"/>
+                            <constraint firstItem="vXm-7x-Y17" firstAttribute="top" secondItem="imb-U6-qZO" secondAttribute="top" constant="303" id="jGP-Sa-TzY"/>
+                            <constraint firstItem="imb-U6-qZO" firstAttribute="trailing" secondItem="vXm-7x-Y17" secondAttribute="trailing" constant="167" id="uO0-L6-8k0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="imb-U6-qZO"/>
+                    </view>
+                    <connections>
+                        <outlet property="vendorName" destination="vXm-7x-Y17" id="ljZ-UQ-zUJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ChO-o7-a20" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2260" y="-275"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nRC-Hw-6RA">

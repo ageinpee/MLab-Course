@@ -25,6 +25,7 @@
 		0357FBFE218607A40043A828 /* DewertOkinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBFD218607A40043A828 /* DewertOkinUITests.swift */; };
 		0359367D21EA8B8800986EC8 /* VendorList.json in Resources */ = {isa = PBXBuildFile; fileRef = 0359367C21EA8B8800986EC8 /* VendorList.json */; };
 		0359367F21EAA37C00986EC8 /* AccessoriesList.json in Resources */ = {isa = PBXBuildFile; fileRef = 0359367E21EAA37C00986EC8 /* AccessoriesList.json */; };
+		0359368621EB3C6F00986EC8 /* DetailVendorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */; };
 		035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B860421C536C300A032AE /* BluetoothCentral.swift */; };
 		035B860721C536CE00A032AE /* BluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B860621C536CE00A032AE /* BluetoothPeripheral.swift */; };
 		0370112621E33D2100459A51 /* DevicesListTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */; };
@@ -134,6 +135,7 @@
 		0357FBFF218607A40043A828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0359367C21EA8B8800986EC8 /* VendorList.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = VendorList.json; sourceTree = "<group>"; };
 		0359367E21EAA37C00986EC8 /* AccessoriesList.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = AccessoriesList.json; sourceTree = "<group>"; };
+		0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVendorViewController.swift; sourceTree = "<group>"; };
 		035B860421C536C300A032AE /* BluetoothCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCentral.swift; sourceTree = "<group>"; };
 		035B860621C536CE00A032AE /* BluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPeripheral.swift; sourceTree = "<group>"; };
 		0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListTableViewExtension.swift; sourceTree = "<group>"; };
@@ -313,26 +315,27 @@
 			path = DewertOkinUITests;
 			sourceTree = "<group>";
 		};
-		0380565621E9071D00A6502F /* JSON Files */ = {
+		0380565621E9071D00A6502F /* JSON Parser */ = {
 			isa = PBXGroup;
 			children = (
+				0380565021E9005C00A6502F /* ExploreJSONParser.swift */,
+				0359367C21EA8B8800986EC8 /* VendorList.json */,
+				0359367E21EAA37C00986EC8 /* AccessoriesList.json */,
 			);
-			path = "JSON Files";
+			path = "JSON Parser";
 			sourceTree = "<group>";
 		};
 		039133C521E7E94300ECCBBE /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				0380565621E9071D00A6502F /* JSON Files */,
+				0380565621E9071D00A6502F /* JSON Parser */,
 				039133C621E7ECB800ECCBBE /* Explore.storyboard */,
 				039133C821E7ECD500ECCBBE /* ExploreViewController.swift */,
 				039133CA21E7ECE400ECCBBE /* ExploreVendorMap.swift */,
 				039133CC21E7ECF000ECCBBE /* ExploreAccessoriesList.swift */,
-				0380565021E9005C00A6502F /* ExploreJSONParser.swift */,
-				0359367C21EA8B8800986EC8 /* VendorList.json */,
 				0380565221E901D500A6502F /* Vendor.swift */,
 				0380565421E901E300A6502F /* Accessory.swift */,
-				0359367E21EAA37C00986EC8 /* AccessoriesList.json */,
+				0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				CDB5B11821B5BA38000D92A4 /* OldRemoteViewController.swift in Sources */,
 				031EE20521A2EEB600E9E91E /* Timer+CoreDataClass.swift in Sources */,
 				03AE0EC021BFB4EA00CEDC81 /* BluetoothPairingViewController.swift in Sources */,
+				0359368621EB3C6F00986EC8 /* DetailVendorViewController.swift in Sources */,
 				FAE52D3621D6B54800121B54 /* Remote.swift in Sources */,
 				03E9875E2194483D00189C97 /* PersistenceService.swift in Sources */,
 				0370112621E33D2100459A51 /* DevicesListTableViewExtension.swift in Sources */,

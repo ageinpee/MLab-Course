@@ -15,6 +15,8 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate ,UITabl
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
     
+    var selectedVendor: Vendor?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
