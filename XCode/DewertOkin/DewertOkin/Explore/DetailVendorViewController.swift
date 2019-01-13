@@ -18,6 +18,9 @@ class DetailVendorViewController: UIViewController {
     @IBOutlet weak var vendorWorkingHours: UILabel!
     @IBOutlet weak var vendorTelephoneNumber: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var routeButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
     
     var fontSize = 22.0
     
@@ -44,10 +47,13 @@ class DetailVendorViewController: UIViewController {
         vendorTelephoneNumber.textAlignment = .center
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    @IBAction func routeToVendor(_ sender: Any) {
+        
+    }
+    
+    @IBAction func cancelVendorDetail(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         delegate?.removeBlurredBackground()
-        super.touchesEnded(touches, with: event)
     }
     
 }
