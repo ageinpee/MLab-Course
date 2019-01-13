@@ -153,7 +153,21 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOZ-QQ-O6V">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="743"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QY1-Dg-M6w">
+                                                <rect key="frame" x="50" y="361.5" width="314" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="QY1-Dg-M6w" firstAttribute="leading" secondItem="iOZ-QQ-O6V" secondAttribute="leading" constant="50" id="7me-Iq-NLW"/>
+                                            <constraint firstAttribute="trailing" secondItem="QY1-Dg-M6w" secondAttribute="trailing" constant="50" id="FLw-pt-7Nq"/>
+                                            <constraint firstItem="QY1-Dg-M6w" firstAttribute="centerY" secondItem="iOZ-QQ-O6V" secondAttribute="centerY" id="bTL-Up-hYy"/>
+                                            <constraint firstItem="QY1-Dg-M6w" firstAttribute="centerX" secondItem="iOZ-QQ-O6V" secondAttribute="centerX" id="iFd-VS-qee"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -179,6 +193,7 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="iOZ-QQ-O6V" id="Dkm-H6-Vni"/>
+                        <outlet property="noFunctionsLabel" destination="QY1-Dg-M6w" id="fgB-k6-5p3"/>
                         <outlet property="view" destination="bVY-Xs-AHm" id="uOH-ww-m6e"/>
                     </connections>
                 </viewController>
