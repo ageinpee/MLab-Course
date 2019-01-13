@@ -49,6 +49,43 @@ extension ExploreViewController: DetailVendorViewControllerDelegate {
         return accessorieList
     }
     
+    func addBlurredBackground() {
+        let blurredBackgroundView = UIVisualEffectView()
+        
+        blurredBackgroundView.frame = view.frame
+        blurredBackgroundView.effect = UIBlurEffect(style: .light)
+        
+        self.view.addSubview(blurredBackgroundView)
+        self.navigationController!.view.addSubview(blurredBackgroundView)
+        self.tabBarController!.view.addSubview(blurredBackgroundView)
+    }
+    
+    func removeBlurredBackground() {
+        for subview in view.subviews {
+            if subview.isKind(of: UIVisualEffectView.self) {
+                subview.removeFromSuperview()
+            }
+        }
+        for subview in navigationController!.view.subviews {
+            if subview.isKind(of: UIVisualEffectView.self) {
+                subview.removeFromSuperview()
+            }
+        }
+        for subview in tabBarController!.view.subviews {
+            if subview.isKind(of: UIVisualEffectView.self) {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailVendorViewController {
+            destination.displayingVendor = self.selectedVendor
+            destination.modalPresentationStyle = .overFullScreen
+            destination.delegate = self
+        }
+    }
+    
 }
 
 extension ExploreViewController: MKMapViewDelegate {
@@ -63,10 +100,8 @@ extension ExploreViewController: MKMapViewDelegate {
             view = dequeuedView
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
+            view.canShowCallout = false
             view.isUserInteractionEnabled = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             
             view.markerTintColor = .blue
             view.glyphTintColor = .blue
@@ -75,49 +110,13 @@ extension ExploreViewController: MKMapViewDelegate {
         return view
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let location = view.annotation as! Vendor
         self.selectedVendor = location
         self.definesPresentationContext = true
         self.providesPresentationContextTransitionStyle = true
-        addBlurredBackground()
+        self.addBlurredBackground()
         performSegue(withIdentifier: "ShowVendorDetail", sender: self)
     }
     
-    func addBlurredBackground() {
-        let blurredBackgroundView = UIVisualEffectView()
-        
-        blurredBackgroundView.frame = view.frame
-        blurredBackgroundView.effect = UIBlurEffect(style: .light)
-        
-        self.view.addSubview(blurredBackgroundView)
-        self.navigationController!.view.addSubview(blurredBackgroundView)
-        self.tabBarController!.view.addSubview(blurredBackgroundView)
-    }
-    
-    func removeBlurredBackground() {
-        for subview in view.subviews {
-            if subview.isKind(of: UIVisualEffect.self) {
-                subview.removeFromSuperview()
-            }
-        }
-        for subview in navigationController!.view.subviews {
-            if subview.isKind(of: UIVisualEffect.self) {
-                subview.removeFromSuperview()
-            }
-        }
-        for subview in tabBarController!.view.subviews {
-            if subview.isKind(of: UIVisualEffect.self) {
-                subview.removeFromSuperview()
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? DetailVendorViewController {
-            destination.displayingVendor = self.selectedVendor
-            destination.modalPresentationStyle = .overFullScreen
-            destination.delegate = self
-        }
-    }
 }

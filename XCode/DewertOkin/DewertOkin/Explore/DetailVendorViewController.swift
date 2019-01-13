@@ -12,7 +12,14 @@ import UIKit
 class DetailVendorViewController: UIViewController {
     
     var displayingVendor: Vendor!
+    var vendorAccessories = [Accessory]()
     @IBOutlet weak var vendorName: UILabel!
+    @IBOutlet weak var vendorStreet: UILabel!
+    @IBOutlet weak var vendorWorkingHours: UILabel!
+    @IBOutlet weak var vendorTelephoneNumber: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var fontSize = 22.0
     
     weak var delegate: DetailVendorViewControllerDelegate?
     
@@ -23,7 +30,24 @@ class DetailVendorViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         view.backgroundColor = UIColor.clear
-        vendorName.text = displayingVendor.accessories[0].name
+        initializeVendorInformation()
+    }
+    
+    func initializeVendorInformation() {
+        vendorName.text = displayingVendor.name
+        vendorName.textAlignment = .center
+        vendorStreet.text = displayingVendor.street
+        vendorStreet.textAlignment = .center
+        vendorWorkingHours.text = "\(displayingVendor.openingHour) + \(displayingVendor.closingHour)"
+        vendorWorkingHours.textAlignment = .center
+        vendorTelephoneNumber.text = displayingVendor.telephoneNumber
+        vendorTelephoneNumber.textAlignment = .center
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        dismiss(animated: true, completion: nil)
+        delegate?.removeBlurredBackground()
+        super.touchesEnded(touches, with: event)
     }
     
 }

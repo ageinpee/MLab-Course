@@ -6,7 +6,10 @@
 //  Copyright © 2019 Team DewertOkin. All rights reserved.
 //
 
-extension ExploreViewController {
+import Foundation
+import UIKit
+
+extension ExploreViewController: UITableViewDelegate {
     
     func initializeAccessories() {
         let accessoryList = parseAccessories()
