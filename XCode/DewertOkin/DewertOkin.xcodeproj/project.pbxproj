@@ -62,6 +62,7 @@
 		CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDE821A479F600EFF523 /* AccessoriesTableViewController.swift */; };
 		CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */; };
 		CDC3FDED21A48C8500EFF523 /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */; };
+		CDCBA82221EBD97D006BF55F /* NewPresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCBA82121EBD97D006BF55F /* NewPresetsController.swift */; };
 		CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD35A6321B2F5C7006B35FB /* AchievementType.swift */; };
 		CDFFC96C21C04372005C5821 /* NearestVendor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDFFC96B21C04372005C5821 /* NearestVendor.storyboard */; };
 		CDFFC96E21C0438E005C5821 /* NearestVendorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFFC96D21C0438E005C5821 /* NearestVendorViewController.swift */; };
@@ -174,6 +175,7 @@
 		CDC3FDE821A479F600EFF523 /* AccessoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesTableViewController.swift; sourceTree = "<group>"; };
 		CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessorieTableViewCell.swift; sourceTree = "<group>"; };
 		CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
+		CDCBA82121EBD97D006BF55F /* NewPresetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPresetsController.swift; sourceTree = "<group>"; };
 		CDD35A6321B2F5C7006B35FB /* AchievementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementType.swift; sourceTree = "<group>"; };
 		CDFFC96B21C04372005C5821 /* NearestVendor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NearestVendor.storyboard; sourceTree = "<group>"; };
 		CDFFC96D21C0438E005C5821 /* NearestVendorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestVendorViewController.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				FAE52D4221D7BE5400121B54 /* PresetsController.swift */,
+				CDCBA82121EBD97D006BF55F /* NewPresetsController.swift */,
 				FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */,
 			);
 			path = PresetsController;
@@ -762,6 +765,7 @@
 				CD100F5121E21F2B00DBAAB9 /* ActivityTracker.swift in Sources */,
 				FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */,
 				FA19A30021D527500032A4E7 /* rotationTransition.swift in Sources */,
+				CDCBA82221EBD97D006BF55F /* NewPresetsController.swift in Sources */,
 				03E9875C219447E000189C97 /* Reminders.swift in Sources */,
 				0333052521BB34C200603519 /* BluetoothCoordinator.swift in Sources */,
 				035B860721C536CE00A032AE /* BluetoothPeripheral.swift in Sources */,
