@@ -3,5 +3,6 @@ use_frameworks!
 
 target 'DewertOkin' do
 pod 'Charts' 
+pod 'BulletinBoard'
 
 end

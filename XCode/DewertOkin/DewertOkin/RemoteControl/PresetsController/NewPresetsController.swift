@@ -32,15 +32,15 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     let presetButtonCell = "presetButtonCell"
     
     let controlUnitPresets = ["Memory 1", "Memory 2"]
-    let phonePresetsNames = ["Sleeping", "Relaxing", "Flat"]
+    let phonePresetsNames = ["Sleeping", "Relaxing", "Flat", "Sleeping", "Relaxing", "Flat"]
     
-    let colors: [UIColor] = [ #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), .gray]
+    let colors: [UIColor] = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
     
     override func viewDidLoad() {
         collectionView.register(PresetButtonCell.self, forCellWithReuseIdentifier: presetButtonCell)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: defaultCell)
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor.init(white: 0.97, alpha: 1)
         collectionView.alwaysBounceVertical = true
         
         self.navigationItem.title = "Memory"
@@ -134,6 +134,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         print(indexPath)
     }
     
@@ -175,9 +176,44 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func presetButtonEditHandler(preset: String) {
+        showEditSheet(title: preset)
         print("Editing preset \(preset)")
     }
     
+    private func showEditSheet(title: String) {
+//        let page: BLTNPageItem = {
+//            let page = BLTNPageItem(title: title)
+//
+//            page.descriptionText = "Bring the device into the correct position."
+//            page.actionButtonTitle = "Store Position"
+//            page.alternativeButtonTitle = "Cancel"
+//            return page
+//        }()
+//
+//        let bulletinManager: BLTNItemManager = {
+//            let rootItem: BLTNItem = page
+//            let manager = BLTNItemManager(rootItem: rootItem)
+//            manager.backgroundViewStyle = .dimmed
+//            return manager
+//        }()
+//
+//         bulletinManager.showBulletin(above: self)
+//    }
+        
+        let editMenu = UIAlertController(title: title, message: "Choose options for preset \(title)", preferredStyle: .actionSheet)
+        editMenu.addAction(UIAlertAction(title: "Save current position", style: .default, handler: { (_) in
+            
+        }))
+        editMenu.addAction(UIAlertAction(title: "Rename", style: .default, handler: { (_) in
+            
+        }))
+        editMenu.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            
+        }))
+        editMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(editMenu, animated: true, completion: nil)
+    }
 }
 
 class PresetButtonCell: UICollectionViewCell {
@@ -199,6 +235,12 @@ class PresetButtonCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? backgroundColor?.withAlphaComponent(0.8) : backgroundColor?.withAlphaComponent(1)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
