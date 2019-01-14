@@ -32,7 +32,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     let presetButtonCell = "presetButtonCell"
     
     let controlUnitPresets = ["Memory 1", "Memory 2"]
-    let phonePresetsNames = ["Sleeping", "Relaxing", "Flat", "Sleeping", "Relaxing", "Flat"]
+    let phonePresetsNames = ["Sleep", "Relax", "Flat", "Sleep", "Relax", "Flat"]
     
     let colors: [UIColor] = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
     
@@ -144,11 +144,11 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         case 0:
             return CGSize(width: collectionView.frame.width, height: 44)
         case 1:
-            return CGSize(width: collectionView.frame.width/2 - 50, height: collectionView.frame.width/2 - 50)
+            return CGSize(width: collectionView.frame.width/2 - 50, height: collectionView.frame.width/4 - 25)
         case 2:
             return CGSize(width: collectionView.frame.width, height: 44)
         case 3:
-            return CGSize(width: collectionView.frame.width/2 - 50, height: collectionView.frame.width/2 - 50)
+            return CGSize(width: collectionView.frame.width/2 - 50, height: collectionView.frame.width/4 - 25)
         default:
             return CGSize.zero
         }
@@ -181,34 +181,28 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     private func showEditSheet(title: String) {
-//        let page: BLTNPageItem = {
-//            let page = BLTNPageItem(title: title)
-//
-//            page.descriptionText = "Bring the device into the correct position."
-//            page.actionButtonTitle = "Store Position"
-//            page.alternativeButtonTitle = "Cancel"
-//            return page
-//        }()
-//
-//        let bulletinManager: BLTNItemManager = {
-//            let rootItem: BLTNItem = page
-//            let manager = BLTNItemManager(rootItem: rootItem)
-//            manager.backgroundViewStyle = .dimmed
-//            return manager
-//        }()
-//
-//         bulletinManager.showBulletin(above: self)
-//    }
         
         let editMenu = UIAlertController(title: title, message: "Choose options for preset \(title)", preferredStyle: .actionSheet)
         editMenu.addAction(UIAlertAction(title: "Save current position", style: .default, handler: { (_) in
-            
+            // Implement saving preset to Memory 1/2 or iPhone
         }))
         editMenu.addAction(UIAlertAction(title: "Rename", style: .default, handler: { (_) in
-            
+            let renameController = UIAlertController(title: "Rename \(title)", message: "Give this preset a name", preferredStyle: .alert)
+            renameController.addTextField(configurationHandler: { (textfield) in
+                textfield.placeholder = "Preset Name"
+                textfield.text = title
+            })
+            renameController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            renameController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                print("Renaming preset \(title) to \(renameController.textFields?[0].text ?? "ERROR")")
+            }))
+            self.present(renameController, animated: true, completion: {
+                
+            })
         }))
         editMenu.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
-            
+            // Implement deletion of preset from Core Data
+            // Remove cell from collectionView
         }))
         editMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
@@ -231,7 +225,7 @@ class PresetButtonCell: UICollectionViewCell {
         let label = UILabel()
         label.text = ""
         label.textColor = .white
-        label.font = UIFont.preferredFont(forTextStyle: .body).withSize(22)
+        label.font = UIFont.boldSystemFont(ofSize: 22)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -239,6 +233,7 @@ class PresetButtonCell: UICollectionViewCell {
     override var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? backgroundColor?.withAlphaComponent(0.8) : backgroundColor?.withAlphaComponent(1)
+            self.transform = isHighlighted ? CGAffineTransform.init(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
         }
     }
     
@@ -248,9 +243,9 @@ class PresetButtonCell: UICollectionViewCell {
         self.contentView.addConstraint(NSLayoutConstraint(item: presetNameLabel, attribute: .centerX, relatedBy: .equal, toItem: self.contentView, attribute: .centerX, multiplier: 1, constant: 0))
         self.contentView.addConstraint(NSLayoutConstraint(item: presetNameLabel, attribute: .centerY, relatedBy: .equal, toItem: self.contentView, attribute: .centerY, multiplier: 1, constant: 0))
         
+        // Setup card appearance
         layer.cornerRadius = 15
         layer.borderWidth = 3
-        
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         layer.shadowRadius = 12.0
@@ -261,7 +256,7 @@ class PresetButtonCell: UICollectionViewCell {
         backgroundColor = UIButton().tintColor
         
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleEditLongPress(_:)))
-        
+        longPressGR.minimumPressDuration = 0.8
         contentView.addGestureRecognizer(longPressGR)
     }
     
