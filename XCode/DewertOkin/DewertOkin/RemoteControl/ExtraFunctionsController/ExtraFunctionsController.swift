@@ -15,27 +15,30 @@ class ExtraFunctionsController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var noFunctionsLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     
     
-    var functionsList: [ExtraFunctions] = [ExtraFunctions]()
-    var functionsHexCodes: [String] = [String]()
+    var functionsList: [ExtraFunction] = [ExtraFunction]()
     var totalHeight: Int = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        globalView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        globalView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        
         noFunctionsLabel.text = "Your device currently has no additionaly features. You can find accessories for your device in the 'Explore' section. "
         noFunctionsLabel.textColor = UIColor.gray
         noFunctionsLabel.isHidden = true
         
-        functionsList = [.massage_back, .massage_neck, .massage_legs, .ubl]
-        functionsHexCodes = ["0x01", "0x02", "0x03", "0x04"]
+        functionsList = [ExtraFunction(asType: .massage_back, withTitle: "Back Massage", withHex: "0x01"),
+                         ExtraFunction(asType: .massage_neck, withTitle: "Neck Massage", withHex: "0x02"),
+                         ExtraFunction(asType: .massage_legs, withTitle: "Leg Massage", withHex: "0x03"),
+                         ExtraFunction(asType: .ubl, withTitle: "Under Bed Lights", withHex: "0x04")]
         
-        createButtons(withFunctions: functionsList, withHexCodes: functionsHexCodes)
+        createButtons(withFunctions: functionsList)
     }
     
-    func createButtons (withFunctions functions: [ExtraFunctions], withHexCodes: [String]) {
+    func createButtons (withFunctions functions: [ExtraFunction]) {
         print("no implementation at the moment")
         if functions.count == 0 {
             // set Textfield in grey with info where to find extra functions
@@ -100,23 +103,23 @@ class ExtraFunctionsController: UIViewController {
     func handleButtonPress(sender: UIButton!) {
         switch sender.tag{
         case 0:
-            executeFunction(withHex: functionsHexCodes[0])
+            executeFunction(withHex: functionsList[0].hex)
         case 1:
-            executeFunction(withHex: functionsHexCodes[1])
+            executeFunction(withHex: functionsList[1].hex)
         case 2:
-            executeFunction(withHex: functionsHexCodes[2])
+            executeFunction(withHex: functionsList[2].hex)
         case 3:
-            executeFunction(withHex: functionsHexCodes[3])
+            executeFunction(withHex: functionsList[3].hex)
         case 4:
-            executeFunction(withHex: functionsHexCodes[4])
+            executeFunction(withHex: functionsList[4].hex)
         case 5:
-            executeFunction(withHex: functionsHexCodes[5])
+            executeFunction(withHex: functionsList[5].hex)
         case 6:
-            executeFunction(withHex: functionsHexCodes[6])
+            executeFunction(withHex: functionsList[6].hex)
         case 7:
-            executeFunction(withHex: functionsHexCodes[7])
+            executeFunction(withHex: functionsList[7].hex)
         case 8:
-            executeFunction(withHex: functionsHexCodes[8])
+            executeFunction(withHex: functionsList[8].hex)
         default:
             executeFunction(withHex: "0x00")
         }
@@ -126,13 +129,14 @@ class ExtraFunctionsController: UIViewController {
         print("placehodler for bluetooth function with hexcode \(hex)")
     }
     
-    func styleButton(withFunction function: ExtraFunctions) -> UIButton {
+    func styleButton(withFunction function: ExtraFunction) -> UIButton {
         let button = UIButton()
-        button.setTitle(function.rawValue, for: .normal)
+        button.setTitle(function.title, for: .normal)
         button.titleEdgeInsets = UIEdgeInsets(top: 200.0, left: 0.0, bottom: 0.0, right: 0.0)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         
-        switch function {
+        switch function.type {
         case .massage_back:
             button.setBackgroundImage(UIImage(named: "massageBack"), for: .normal)
         case .ubl:
@@ -141,6 +145,8 @@ class ExtraFunctionsController: UIViewController {
             button.setBackgroundImage(UIImage(named: "massageNeck"), for: .normal)
         case .massage_legs:
             button.setBackgroundImage(UIImage(named: "massageLeg"), for: .normal)
+        case .NaN:
+            print("this is not a valid value")
         }
         
         return button
@@ -148,9 +154,31 @@ class ExtraFunctionsController: UIViewController {
     
 }
 
+//====================================================================================
+//====================================================================================
+//====================================================================================
+
+class ExtraFunction {
+    
+    var type: ExtraFunctions = .NaN
+    var title: String = String()
+    var hex: String = String()
+    
+    init() {
+        
+    }
+    
+    init(asType: ExtraFunctions, withTitle: String, withHex: String) {
+        type = asType
+        title = withTitle
+        hex = withHex
+    }
+}
+
 enum ExtraFunctions: String {
     case massage_back
     case massage_neck
     case massage_legs
     case ubl
+    case NaN
 }
