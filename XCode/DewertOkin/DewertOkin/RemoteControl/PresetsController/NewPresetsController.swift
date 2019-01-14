@@ -136,6 +136,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         print(indexPath)
+        dismissSelf()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -232,7 +233,7 @@ class PresetButtonCell: UICollectionViewCell {
     
     override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? backgroundColor?.withAlphaComponent(0.8) : backgroundColor?.withAlphaComponent(1)
+            backgroundColor = isHighlighted ? backgroundColor?.withAlphaComponent(0.9) : backgroundColor?.withAlphaComponent(1)
             self.transform = isHighlighted ? CGAffineTransform.init(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
         }
     }
