@@ -38,6 +38,12 @@ class ExtraFunctionsController: UIViewController {
         createButtons(withFunctions: functionsList)
     }
     
+    
+    @IBAction func dismissVC(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     func createButtons (withFunctions functions: [ExtraFunction]) {
         print("no implementation at the moment")
         if functions.count == 0 {
@@ -46,19 +52,19 @@ class ExtraFunctionsController: UIViewController {
         }
         else if functions.count == 1 {
             // set one button centered horizontally and vertically
-            let button = styleButton(withFunction: functions[0])
+            var button = UIButton()
+            button = styleButton(forButton: button, withFunction: functions[0])
             button.tag = 0
             
             contentView.addSubview(button)
             
             button.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint(item: button, attribute: .leading, relatedBy: .equal, toItem: contentView.superview, attribute: .leading, multiplier: 1, constant: contentView.frame.width/4+20).isActive = true
-            NSLayoutConstraint(item: button, attribute: .trailing, relatedBy: .equal, toItem: contentView.superview, attribute: .trailing, multiplier: 1, constant: contentView.frame.width/4+20).isActive = true
             
             NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: contentView.superview, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
             NSLayoutConstraint(item: button, attribute: .centerY, relatedBy: .equal, toItem: contentView.superview, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
             
-            NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: button, attribute: .width, multiplier: 1/1, constant: 0).isActive = true
+            NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentView.frame.width/3).isActive = true
+            NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentView.frame.width/3).isActive = true
             
             button.addTarget(self, action: #selector(handleButtonPress), for: .touchDown)
         }
@@ -68,7 +74,7 @@ class ExtraFunctionsController: UIViewController {
             var offset = 0
             
             for (count, function) in functions.enumerated() {
-                let button = styleButton(withFunction: function)
+                var button = UIButton()
                 let contentViewHeight = Int(contentView.frame.height)
                 let contentViewWidth = Int(contentView.frame.width)
                 button.tag = count
@@ -92,7 +98,10 @@ class ExtraFunctionsController: UIViewController {
                 NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1, constant: 0).isActive = true
                 NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .width, multiplier: 1, constant: 0).isActive = true
                 
-                NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: contentView.superview, attribute: .bottom, multiplier: 1, constant: CGFloat((-contentViewHeight/functions.count)-offset)).isActive = true
+                NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: contentView.superview, attribute: .bottom, multiplier: 1, constant: CGFloat(((-1/2)*contentViewHeight/functions.count)-offset)).isActive = true
+                
+                button.imageView?.contentMode = .scaleAspectFit
+                button = styleButton(forButton: button, withFunction: function)
                 
                 button.addTarget(self, action: #selector(handleButtonPress), for: .touchDown)
             }
@@ -129,34 +138,77 @@ class ExtraFunctionsController: UIViewController {
         print("placehodler for bluetooth function with hexcode \(hex)")
     }
     
-    func styleButton(withFunction function: ExtraFunction) -> UIButton {
-        let button = UIButton()
+    func styleButton(forButton button: UIButton, withFunction function: ExtraFunction) -> UIButton {
         button.setTitle(function.title, for: .normal)
-        button.titleEdgeInsets = UIEdgeInsets(top: 200.0, left: 0.0, bottom: 0.0, right: 0.0)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         
         switch function.type {
         case .massage_back:
-            button.setBackgroundImage(UIImage(named: "massageBack"), for: .normal)
+            var image = UIImage(named: "massageBackHRWhiteCurly")
+            image = image?.resize(size: CGSize(width: 100, height: 100))
+            button.setImage(image, for: .normal)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -1*(image!.size.width)-20)
+            button.titleEdgeInsets = UIEdgeInsets(top: 200, left: -1*(image!.size.width), bottom: 0, right: 0)
         case .ubl:
-            button.setBackgroundImage(UIImage(named: "ubl"), for: .normal)
+            var image = UIImage(named: "ublHRWhite")
+            image = image?.resize(size: CGSize(width: 100, height: 100))
+            button.setImage(image, for: .normal)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -1*(image!.size.width)-20)
+            button.titleEdgeInsets = UIEdgeInsets(top: 200, left: -1*(image!.size.width), bottom: 0, right: 0)
         case .massage_neck:
-            button.setBackgroundImage(UIImage(named: "massageNeck"), for: .normal)
+            var image = UIImage(named: "massageNeckHRWhiteCurly")
+            image = image?.resize(size: CGSize(width: 100, height: 100))
+            button.setImage(image, for: .normal)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -1*(image!.size.width)-20)
+            button.titleEdgeInsets = UIEdgeInsets(top: 200, left: -1*(image!.size.width), bottom: 0, right: 0)
         case .massage_legs:
-            button.setBackgroundImage(UIImage(named: "massageLeg"), for: .normal)
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            image = image?.resize(size: CGSize(width: 100, height: 100))
+            button.setImage(image, for: .normal)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -1*(image!.size.width)+20)
+            button.titleEdgeInsets = UIEdgeInsets(top: 200, left: -1*(image!.size.width), bottom: 0, right: 0)
         case .NaN:
             print("this is not a valid value")
         }
         
         return button
     }
-    
 }
 
 //====================================================================================
 //====================================================================================
 //====================================================================================
+
+extension UIImage {
+    func resize(width: CGFloat) -> UIImage {
+        let height = (width/self.size.width)*self.size.height
+        return self.resize(size: CGSize(width: width, height: height))
+    }
+    
+    func resize(height: CGFloat) -> UIImage {
+        let width = (height/self.size.height)*self.size.width
+        return self.resize(size: CGSize(width: width, height: height))
+    }
+    
+    func resize(size: CGSize) -> UIImage {
+        let widthRatio  = size.width/self.size.width
+        let heightRatio = size.height/self.size.height
+        var updateSize = size
+        if(widthRatio > heightRatio) {
+            updateSize = CGSize(width:self.size.width*heightRatio, height:self.size.height*heightRatio)
+        } else if heightRatio > widthRatio {
+            updateSize = CGSize(width:self.size.width*widthRatio,  height:self.size.height*widthRatio)
+        }
+        UIGraphicsBeginImageContextWithOptions(updateSize, false, UIScreen.main.scale)
+        self.draw(in: CGRect(origin: .zero, size: updateSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+}
+
+
 
 class ExtraFunction {
     
