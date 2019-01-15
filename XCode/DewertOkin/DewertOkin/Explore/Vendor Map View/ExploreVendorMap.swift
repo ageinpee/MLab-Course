@@ -49,40 +49,10 @@ extension ExploreViewController {
         return accessorieList
     }
     
-//    func addBlurredBackground() {
-//        let blurredBackgroundView = UIVisualEffectView()
-//
-//        blurredBackgroundView.frame = view.frame
-//        blurredBackgroundView.effect = UIBlurEffect(style: .light)
-//
-//        self.view.addSubview(blurredBackgroundView)
-//        self.navigationController!.view.addSubview(blurredBackgroundView)
-//        self.tabBarController!.view.addSubview(blurredBackgroundView)
-//    }
-//
-//    func removeBlurredBackground() {
-//        for subview in view.subviews {
-//            if subview.isKind(of: UIVisualEffectView.self) {
-//                subview.removeFromSuperview()
-//            }
-//        }
-//        for subview in navigationController!.view.subviews {
-//            if subview.isKind(of: UIVisualEffectView.self) {
-//                subview.removeFromSuperview()
-//            }
-//        }
-//        for subview in tabBarController!.view.subviews {
-//            if subview.isKind(of: UIVisualEffectView.self) {
-//                subview.removeFromSuperview()
-//            }
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailVendorViewController {
             destination.displayingVendor = self.selectedVendor
-            destination.modalPresentationStyle = .overFullScreen
-            destination.delegate = self
+            destination.modalPresentationStyle = .custom
         }
     }
     
@@ -115,7 +85,6 @@ extension ExploreViewController: MKMapViewDelegate {
         self.selectedVendor = location
         self.definesPresentationContext = true
         self.providesPresentationContextTransitionStyle = true
-//        self.addBlurredBackground()
         performSegue(withIdentifier: "ShowVendorDetail", sender: self)
     }
     

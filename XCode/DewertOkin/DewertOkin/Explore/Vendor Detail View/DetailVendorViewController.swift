@@ -13,51 +13,86 @@ class DetailVendorViewController: UIViewController {
     
     var displayingVendor: Vendor!
     var vendorAccessories = [Accessory]()
-    @IBOutlet weak var vendorName: UILabel!
-    @IBOutlet weak var vendorStreet: UILabel!
-    @IBOutlet weak var vendorWorkingHours: UILabel!
-    @IBOutlet weak var vendorTelephoneNumber: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var routeButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    
-    
     var fontSize = 22.0
     
-//    weak var delegate: DetailVendorViewControllerDelegate?
+    lazy var backgroundAlphaView: UIView = {
+        let view = UIView(frame: self.view.bounds)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        return view
+    }()
+    let vendorView = UIView()
+    var isPresenting = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white: 1, alpha: 0.3)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor = .clear
+        view.addSubview(backgroundAlphaView)
+        view.addSubview(vendorView)
         initializeVendorInformation()
     }
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        modalPresentationStyle = .custom
+        transitioningDelegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     func initializeVendorInformation() {
-        vendorName.text = displayingVendor.name
-        vendorName.textAlignment = .center
-        vendorStreet.text = displayingVendor.street
-        vendorStreet.textAlignment = .center
-        vendorWorkingHours.text = "Opening hours: \(displayingVendor.openingHour) - \(displayingVendor.closingHour)"
-        vendorWorkingHours.textAlignment = .center
-        vendorTelephoneNumber.text = displayingVendor.telephoneNumber
-        vendorTelephoneNumber.textAlignment = .center
-    }
-    
-    @IBAction func routeToVendor(_ sender: Any) {
-        
-    }
-    
-    @IBAction func cancelVendorDetail(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-        delegate?.removeBlurredBackground()
+        vendorView.backgroundColor = .white
+        vendorView.translatesAutoresizingMaskIntoConstraints = false
+        vendorView.layer.cornerRadius = 8.0
+        vendorView.clipsToBounds = true
+        vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
+        vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
 }
 
-//protocol DetailVendorViewControllerDelegate: class {
-//    func removeBlurredBackground()
-//}
+extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return self as! UIViewControllerAnimatedTransitioning
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return self as! UIViewControllerAnimatedTransitioning
+    }
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 1
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let containerView = transitionContext.containerView
+        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
+        guard let toVC = toViewController else { return }
+        isPresenting = !isPresenting
+        
+        if isPresenting == true {
+            containerView.addSubview(toVC.view)
+            
+            vendorView.frame.origin.y += self.view.frame.height / 2
+            backgroundAlphaView.alpha = 0
+            
+            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
+                self.vendorView.frame.origin.y -= self.view.frame.height / 2
+                self.backgroundAlphaView.alpha = 1
+            }, completion: { (finished) in
+                transitionContext.completeTransition(true)
+            })
+        } else {
+            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
+                self.vendorView.frame.origin.y += self.view.frame.height / 2
+                self.backgroundAlphaView.alpha = 0
+            }, completion: { (finished) in
+                transitionContext.completeTransition(true)
+            })
+        }
+    }
+}
