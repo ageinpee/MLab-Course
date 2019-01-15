@@ -49,6 +49,8 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         tableView.estimatedRowHeight = 100
         
         getSavedData()
+        
+        Health.shared.bulletinManager.showBulletin(above: UIApplication.shared.keyWindow!.rootViewController!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -233,26 +235,6 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
                 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             }
         }
-    }
-    
-    private func showActivityReminder() {
-        let page: BLTNPageItem = {
-            let page = BLTNPageItem(title: "FIXME")
-            
-            page.descriptionText = "Bring the device into the correct position."
-            page.actionButtonTitle = "Store Position"
-            page.alternativeButtonTitle = "Cancel"
-            return page
-        }()
-        
-        let bulletinManager: BLTNItemManager = {
-            let rootItem: BLTNItem = page
-            let manager = BLTNItemManager(rootItem: rootItem)
-            manager.backgroundViewStyle = .dimmed
-            return manager
-        }()
-        
-        bulletinManager.showBulletin(above: self)
     }
     
     

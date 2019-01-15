@@ -9,6 +9,7 @@
 import Foundation
 import HealthKit
 import UserNotifications
+import BLTNBoard
 
 class Health {
     
@@ -32,12 +33,39 @@ class Health {
     var lastBluetoothConnectionMock: Date = Date().addingTimeInterval(-1800)
     var lastBluetoothDisconnectMock: Date = Date().addingTimeInterval(-900)
     
-    var activityReminderTimeIntervalInMinutes = 180
+    var activityReminderTimeIntervalInMinutes = 60
     
     var activityTimer: Timer?
     
+    lazy var page: BLTNPageItem = {
+        let page = BLTNPageItem(title: "Exercise")
+        page.image = UIImage(named: "Arch-Exercise")
+        page.descriptionText = "Your companion recommends you the following Workout:"
+        page.actionButtonTitle = "Do Workout"
+        page.alternativeButtonTitle = "Maybe Later"
+        
+        page.actionHandler = { (item: BLTNActionItem) in
+            print("Action button tapped")
+        }
+        
+        page.alternativeHandler = { (item: BLTNActionItem) in
+            self.bulletinManager.dismissBulletin()
+            print("Maybe later tapped")
+        }
+        
+        return page
+    }()
+    
+    lazy var bulletinManager: BLTNItemManager = {
+        let rootItem: BLTNItem = page
+        let manager = BLTNItemManager(rootItem: rootItem)
+        manager.backgroundViewStyle = .dimmed
+        return manager
+    }()
+    
     let healthStore = HKHealthStore()
     
+    // if tracking is enabled, start this at application launch
     func startActivityTracking() {
         if activityReminderEnabled {
             // Check every 5 minutes, if the user is still sitting down
@@ -46,10 +74,12 @@ class Health {
                 Health.shared.checkActivity(timeInterval: TimeInterval(self.activityReminderTimeIntervalInMinutes * 60), completion: { (HealthCheckReturnValue) in
                     switch HealthCheckReturnValue {
                     case .noActivity:
-                        self.displayLocalNotification(forStepcount: 0, with: "Low activity recognized. Standing up regularly improves your health! 🚴‍♂️")
+                        self.displayLocalNotification(with: "Low activity recognized. Standing up regularly improves your health! 🚴‍♂️")
+                        guard let currentlyDisplayingVC = UIApplication.shared.keyWindow?.rootViewController else {return}
+                        self.showActivityReminder(above: currentlyDisplayingVC)
                         print("No Activity")
                     case .enoughActivity:
-                        self.displayLocalNotification(forStepcount: 0, with: "Enough activity. 😇")
+                        self.displayLocalNotification(with: "Enough activity. 😇")
                         print("Enough activity")
                     case .error:
                         print("Error")
@@ -60,6 +90,7 @@ class Health {
             activityTimer?.invalidate()
         }
     }
+    
     
     func checkActivity(timeInterval: TimeInterval, completion: @escaping (HealthCheckReturnValue) -> Void) {
         // 1. Check if steps in timeInterval are below 50
@@ -98,32 +129,6 @@ class Health {
                 print("User has completed the authorization flow")
             }
         }
-    }
-    
-    func getTodaysSteps(completion: @escaping (Double?) -> Void) {
-        
-        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        
-        let now = Date()
-        let startOfDay = Calendar.current.startOfDay(for: now)
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (_, result, error) in
-            var resultCount: Double? = nil
-            guard let result = result else {
-                print("Failed to fetch steps rate")
-                completion(resultCount)
-                return
-            }
-            if let sum = result.sumQuantity() {
-                resultCount = sum.doubleValue(for: HKUnit.count())
-            }
-            
-            DispatchQueue.main.async {
-                completion(resultCount)
-            }
-        }
-        healthStore.execute(query)
     }
     
     func getStepsForTimeInterval(timeInSeconds: TimeInterval, completion: @escaping (Double?) -> Void) {
@@ -182,16 +187,16 @@ class Health {
         }
     }
     
-    private func displayLocalNotification(forStepcount steps: Double, with text: String) {
+    private func displayLocalNotification(with text: String) {
         let center = UNUserNotificationCenter.current()
         
         let content = UNMutableNotificationContent()
-        content.title = "Background Fetch Result"
+        content.title = "Activity Reminder"
         content.body = text
         content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let identifier = "\(steps)steps"
+        let identifier = "activityReminder"
         let request = UNNotificationRequest(identifier: identifier,
                                             content: content, trigger: trigger)
         
@@ -201,6 +206,13 @@ class Health {
             }
         })
     }
+    
+    
+    
+    func showActivityReminder(above viewcontroller: UIViewController) {
+        bulletinManager.showBulletin(above: viewcontroller)
+    }
+    
     /**
      Returns the amount of steps for the last 24 hours in 1 hour intervals
      
