@@ -23,10 +23,12 @@ class DetailVendorViewController: UIViewController {
     let vendorView = UIView()
     var isPresenting = false
     
+    var panGestureForView = UIPanGestureRecognizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        view.addSubview(backgroundAlphaView)
+        //view.addSubview(backgroundAlphaView)
         view.addSubview(vendorView)
         initializeVendorInformation()
     }
@@ -50,18 +52,29 @@ class DetailVendorViewController: UIViewController {
         vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        panGestureForView = UIPanGestureRecognizer(target: self, action: #selector(DetailVendorViewController.draggedView(_:)))
+        vendorView.isUserInteractionEnabled = true
+        vendorView.addGestureRecognizer(panGestureForView)
     }
     
+    @objc func draggedView(_ sender: UIPanGestureRecognizer) {
+        self.view.bringSubviewToFront(vendorView)
+        let transition = sender.translation(in: self.view)
+        guard (vendorView.center.y <= self.view.frame.height / 2) && transition.y > 0 else { return }
+        vendorView.center = CGPoint(x: vendorView.center.x, y: vendorView.center.y + transition.y)
+        sender.setTranslation(CGPoint.zero, in: self.view)
+    }
 }
 
 extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return self as! UIViewControllerAnimatedTransitioning
+        return (self as! UIViewControllerAnimatedTransitioning)
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return self as! UIViewControllerAnimatedTransitioning
+        return (self as! UIViewControllerAnimatedTransitioning)
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -88,7 +101,7 @@ extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
             })
         } else {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y += self.view.frame.height / 2
+                self.vendorView.frame.origin.y += self.view.frame.height / 3
                 self.backgroundAlphaView.alpha = 0
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
