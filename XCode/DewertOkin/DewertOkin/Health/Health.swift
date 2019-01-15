@@ -14,13 +14,47 @@ class Health {
     
     static let shared = Health()
     
-    var healthRecommendationsEnabled = false
+    // Save in UserDefaults
+    var activityReminderEnabled = false
     
     private init() {
         
     }
     
+    // Needs to be set somewhere in the Bluetooth class
+    var lastBluetoothConnection: Date?
+    var lastBluetoothDisconnect: Date?
+    
+    var lastBluetoothConnectionMock: Date = Date().addingTimeInterval(-1800)
+    var lastBluetoothDisconnectMock: Date = Date().addingTimeInterval(-900)
+    
+    
     let healthStore = HKHealthStore()
+    
+    func checkActivity(timeInterval: TimeInterval, completion: @escaping (HealthCheckReturnValue) -> Void) {
+        // 1. Check if steps in timeInterval are below 50
+        // 2. Check if the last Bluetooth connection happened longer than timeInterval ago
+        // If both are true: Display Activity Reminder
+        checkSteps(timeInterval: timeInterval) { (activity) in
+            switch activity {
+            case .noActivity:
+                // timeInterval is the activity reminder time, difference will be negative
+                if self.lastBluetoothConnectionMock.timeIntervalSinceNow < timeInterval {
+                    self.displayLocalNotification(forStepcount: 0, with: "Low activity recognized. Standing up regularly improves your health! 🚴‍♂️")
+                    completion(.noActivity)
+                } else {
+                    // User didn't take enough steps yet, but last BLE connection is not long enough ago
+                    self.displayLocalNotification(forStepcount: 0, with: "Enough activity. 😇")
+                    completion(.enoughActivity)
+                }
+            case .enoughActivity:
+                self.displayLocalNotification(forStepcount: 0, with: "Enough activity. 😇")
+                completion(.enoughActivity)
+            case .error:
+                completion(.error)
+            }
+        }
+    }
     
     func requestHealthKitPermission() {
         let healthKitTypes: Set = [
@@ -91,29 +125,27 @@ class Health {
         healthStore.execute(query)
     }
     
-    func checkSteps(completion: @escaping (HealthCheckReturnValue) -> Void) {
+    func checkSteps(timeInterval: TimeInterval, completion: @escaping (HealthCheckReturnValue) -> Void) {
         guard healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!) == .sharingAuthorized else {
             print("Error fetching Step Data")
             completion(HealthCheckReturnValue.error)
             return
         }
         
-        guard healthRecommendationsEnabled else {
+        guard activityReminderEnabled else {
             print("Health Recommendations are disabled.")
             completion(.error)
             return
         }
         
-        getStepsForTimeInterval(timeInSeconds: 7200) { result in
+        getStepsForTimeInterval(timeInSeconds: timeInterval) { result in
             if let result = result {
                 print(result)
-                if result < 100 {
-                    print("Low activity: Steps below 100")
-                    self.displayLocalNotification(forStepcount: result, with: "Low activity recognized. Standing up regularly improves your health! 🚴‍♂️")
+                if result < 50 {
+                    print("Low activity: Steps below 50")
                     completion(HealthCheckReturnValue.noActivity)
                 } else {
-                    print("Enough activity: Steps above 100")
-                    self.displayLocalNotification(forStepcount: result, with: "Enough activity. 😇")
+                    print("Enough activity: Steps above 50")
                     completion(HealthCheckReturnValue.enoughActivity)
                 }
             } else {
@@ -180,6 +212,8 @@ class Health {
         }
         healthStore.execute(query)
     }
+    
+    
 }
 
 enum HealthCheckReturnValue {
