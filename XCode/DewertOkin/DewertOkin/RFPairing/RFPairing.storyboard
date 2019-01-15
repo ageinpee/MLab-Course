@@ -18,8 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-qs-894">
+                            <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircleFirstStoryboard" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-qs-894">
                                 <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
+                                <accessibility key="accessibilityConfiguration" identifier="dottedCircle"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HJh-qs-894" secondAttribute="height" multiplier="1:1" id="VW0-dH-Hy1"/>
                                 </constraints>
@@ -78,8 +79,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-0F-nRb">
+                            <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-0F-nRb">
                                 <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
+                                <accessibility key="accessibilityConfiguration" identifier="dottedCircle"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jcd-0F-nRb" secondAttribute="height" multiplier="1:1" id="uhP-B5-QMP"/>
                                 </constraints>
@@ -155,8 +157,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Z1R-FZ-CjG">
+                            <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Z1R-FZ-CjG">
                                 <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
+                                <accessibility key="accessibilityConfiguration" identifier="dottedCircle"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Z1R-FZ-CjG" secondAttribute="height" multiplier="1:1" id="b5Q-QX-u57"/>
                                 </constraints>
@@ -218,5 +221,6 @@
     <resources>
         <image name="controller2Image" width="819.84002685546875" height="876.47998046875"/>
         <image name="quarterCircle" width="5497.919921875" height="5505.60009765625"/>
+        <image name="quarterCircleFirstStoryboard" width="5497.919921875" height="5501.759765625"/>
     </resources>
 </document>
