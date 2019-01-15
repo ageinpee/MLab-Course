@@ -34,7 +34,7 @@ extension ExploreViewController {
     func initializeVendors() {
         let vendorList = parseVendor()
         guard vendorList.count != 0 else { return }
-        for number in 0..<(vendorList.count - 1) {
+        for number in 0..<(vendorList.count) {
             let vendor = Vendor(name: vendorList[number].name, street: vendorList[number].street, openingHour: vendorList[number].openingHour, closingHour: vendorList[number].closingHour, telephoneNumber: vendorList[number].telephoneNumber, accessories: (convertAccessoryData(accessories: vendorList[number].accessories)), latitude: vendorList[number].latitude, longitude: vendorList[number].longitude)
             mapView.addAnnotation(vendor)
         }
@@ -50,8 +50,10 @@ extension ExploreViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let destination = segue.destination as? DetailVendorViewController {
             destination.displayingVendor = self.selectedVendor
+            destination.displayingAnnotation = self.selectedAnnotation
             destination.modalPresentationStyle = .custom
         }
     }
@@ -83,6 +85,8 @@ extension ExploreViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let location = view.annotation as! Vendor
         self.selectedVendor = location
+        self.selectedAnnotation = view
+        view.setSelected(true, animated: true)
         self.definesPresentationContext = true
         self.providesPresentationContextTransitionStyle = true
         performSegue(withIdentifier: "ShowVendorDetail", sender: self)

@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class DetailVendorViewController: UIViewController {
     
     var displayingVendor: Vendor!
+    var displayingAnnotation: MKAnnotationView!
     var vendorAccessories = [Accessory]()
     var fontSize = 22.0
     
@@ -72,6 +74,7 @@ class DetailVendorViewController: UIViewController {
     }
     
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
+        displayingAnnotation.isSelected = false
         dismiss(animated: true, completion: nil)
     }
 }

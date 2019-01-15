@@ -16,6 +16,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     
     var selectedVendor: Vendor?
+    var selectedAnnotation: MKAnnotationView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
