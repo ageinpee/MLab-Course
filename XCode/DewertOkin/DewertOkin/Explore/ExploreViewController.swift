@@ -27,7 +27,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
         initializeMap(radiusInMeters: 2000.0)
         initializeVendors()
     }
-    
+        
     @IBAction func showAccessoriesList(_ sender: Any) {
         performSegue(withIdentifier: "ShowAccessoriesList", sender: self)
     }

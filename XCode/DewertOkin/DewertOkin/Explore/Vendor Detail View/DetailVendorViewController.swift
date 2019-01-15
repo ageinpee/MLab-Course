@@ -24,7 +24,7 @@ class DetailVendorViewController: UIViewController {
     
     var fontSize = 22.0
     
-    weak var delegate: DetailVendorViewControllerDelegate?
+//    weak var delegate: DetailVendorViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +58,6 @@ class DetailVendorViewController: UIViewController {
     
 }
 
-protocol DetailVendorViewControllerDelegate: class {
-    func removeBlurredBackground()
-}
+//protocol DetailVendorViewControllerDelegate: class {
+//    func removeBlurredBackground()
+//}

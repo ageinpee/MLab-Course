@@ -72,13 +72,11 @@ class AccessoryCustomCell: UITableViewCell {
         accessoryImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         accessoryNameView.leftAnchor.constraint(equalTo: self.accessoryImageView.rightAnchor).isActive = true
-        accessoryNameView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        //accessoryNameView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         accessoryNameView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        accessoryNameView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         accessoryDescriptionView.topAnchor.constraint(equalTo: self.accessoryNameView.bottomAnchor).isActive = true
-        accessoryDescriptionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        accessoryDescriptionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        accessoryDescriptionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        accessoryDescriptionView.leftAnchor.constraint(equalTo: self.accessoryImageView.rightAnchor).isActive = true
+        //accessoryDescriptionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 }

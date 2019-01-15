@@ -32,15 +32,15 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         for number in 0..<(accessoryList.count) {
             let accessory = Accessory(imageName: accessoryList[number].imageName, name: accessoryList[number].name, accessoryDescription: accessoryList[number].accessoryDescription)
             accessoriesList.append(accessory)
-            tableView.reloadData()
         }
         registerAccessories()
+        tableView.reloadData()
     }
     
     func registerAccessories() {
         self.tableView.register(AccessoryCustomCell.self, forCellReuseIdentifier: "customAccessoryCell")
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 200
+//        self.tableView.rowHeight = UITableView.automaticDimension
+//        self.tableView.estimatedRowHeight = 200
     }
 }
 
@@ -60,6 +60,7 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
         cell.accessoryImage = image
         cell.accessoryName = accessoriesList[indexPath.row].name
         cell.accessoryDescription = accessoriesList[indexPath.row].accessoryDescription
+        
         cell.layoutSubviews()
         return cell
     }
@@ -68,5 +69,8 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
         return false
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
+    }
     
 }

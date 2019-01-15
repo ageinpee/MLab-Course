@@ -330,15 +330,12 @@
 		039133C521E7E94300ECCBBE /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				03CA62E121EDFAE8003F3477 /* Vendor Map View */,
+				03CA62E021EDFAD2003F3477 /* Accessory View */,
+				03CA62DF21EDFABE003F3477 /* Vendor Detail View */,
 				0380565621E9071D00A6502F /* JSON Parser */,
 				039133C621E7ECB800ECCBBE /* Explore.storyboard */,
 				039133C821E7ECD500ECCBBE /* ExploreViewController.swift */,
-				039133CA21E7ECE400ECCBBE /* ExploreVendorMap.swift */,
-				039133CC21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift */,
-				0380565221E901D500A6502F /* Vendor.swift */,
-				0380565421E901E300A6502F /* Accessory.swift */,
-				0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */,
-				03CA62DD21EBDF51003F3477 /* AccessoryCustomCell.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -351,6 +348,33 @@
 				03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */,
 			);
 			path = "Pairing Process";
+			sourceTree = "<group>";
+		};
+		03CA62DF21EDFABE003F3477 /* Vendor Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */,
+			);
+			path = "Vendor Detail View";
+			sourceTree = "<group>";
+		};
+		03CA62E021EDFAD2003F3477 /* Accessory View */ = {
+			isa = PBXGroup;
+			children = (
+				039133CC21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift */,
+				0380565421E901E300A6502F /* Accessory.swift */,
+				03CA62DD21EBDF51003F3477 /* AccessoryCustomCell.swift */,
+			);
+			path = "Accessory View";
+			sourceTree = "<group>";
+		};
+		03CA62E121EDFAE8003F3477 /* Vendor Map View */ = {
+			isa = PBXGroup;
+			children = (
+				039133CA21E7ECE400ECCBBE /* ExploreVendorMap.swift */,
+				0380565221E901D500A6502F /* Vendor.swift */,
+			);
+			path = "Vendor Map View";
 			sourceTree = "<group>";
 		};
 		03DE1F5A21AEF1E1004F01F3 /* RemoteControl */ = {

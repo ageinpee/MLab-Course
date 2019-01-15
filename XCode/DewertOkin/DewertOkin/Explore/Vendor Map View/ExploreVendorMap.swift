@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-extension ExploreViewController: DetailVendorViewControllerDelegate {
+extension ExploreViewController {
     
     func initializeMap(radiusInMeters: CLLocationDistance) {
         locationManager.delegate = self
@@ -49,34 +49,34 @@ extension ExploreViewController: DetailVendorViewControllerDelegate {
         return accessorieList
     }
     
-    func addBlurredBackground() {
-        let blurredBackgroundView = UIVisualEffectView()
-        
-        blurredBackgroundView.frame = view.frame
-        blurredBackgroundView.effect = UIBlurEffect(style: .light)
-        
-        self.view.addSubview(blurredBackgroundView)
-        self.navigationController!.view.addSubview(blurredBackgroundView)
-        self.tabBarController!.view.addSubview(blurredBackgroundView)
-    }
-    
-    func removeBlurredBackground() {
-        for subview in view.subviews {
-            if subview.isKind(of: UIVisualEffectView.self) {
-                subview.removeFromSuperview()
-            }
-        }
-        for subview in navigationController!.view.subviews {
-            if subview.isKind(of: UIVisualEffectView.self) {
-                subview.removeFromSuperview()
-            }
-        }
-        for subview in tabBarController!.view.subviews {
-            if subview.isKind(of: UIVisualEffectView.self) {
-                subview.removeFromSuperview()
-            }
-        }
-    }
+//    func addBlurredBackground() {
+//        let blurredBackgroundView = UIVisualEffectView()
+//
+//        blurredBackgroundView.frame = view.frame
+//        blurredBackgroundView.effect = UIBlurEffect(style: .light)
+//
+//        self.view.addSubview(blurredBackgroundView)
+//        self.navigationController!.view.addSubview(blurredBackgroundView)
+//        self.tabBarController!.view.addSubview(blurredBackgroundView)
+//    }
+//
+//    func removeBlurredBackground() {
+//        for subview in view.subviews {
+//            if subview.isKind(of: UIVisualEffectView.self) {
+//                subview.removeFromSuperview()
+//            }
+//        }
+//        for subview in navigationController!.view.subviews {
+//            if subview.isKind(of: UIVisualEffectView.self) {
+//                subview.removeFromSuperview()
+//            }
+//        }
+//        for subview in tabBarController!.view.subviews {
+//            if subview.isKind(of: UIVisualEffectView.self) {
+//                subview.removeFromSuperview()
+//            }
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailVendorViewController {
@@ -115,7 +115,7 @@ extension ExploreViewController: MKMapViewDelegate {
         self.selectedVendor = location
         self.definesPresentationContext = true
         self.providesPresentationContextTransitionStyle = true
-        self.addBlurredBackground()
+//        self.addBlurredBackground()
         performSegue(withIdentifier: "ShowVendorDetail", sender: self)
     }
     
