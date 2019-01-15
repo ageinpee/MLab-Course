@@ -15,7 +15,11 @@ class Health {
     static let shared = Health()
     
     // Save in UserDefaults
-    var activityReminderEnabled = false
+    var activityReminderEnabled = false {
+        didSet {
+            startActivityTracking()
+        }
+    }
     
     private init() {
         
@@ -28,8 +32,34 @@ class Health {
     var lastBluetoothConnectionMock: Date = Date().addingTimeInterval(-1800)
     var lastBluetoothDisconnectMock: Date = Date().addingTimeInterval(-900)
     
+    var activityReminderTimeIntervalInMinutes = 180
+    
+    var activityTimer: Timer?
     
     let healthStore = HKHealthStore()
+    
+    func startActivityTracking() {
+        if activityReminderEnabled {
+            // Check every 5 minutes, if the user is still sitting down
+            // and if the lastBluetoothConnection is longer ago than the activity reminder interval
+            activityTimer = Timer.scheduledTimer(withTimeInterval: 300, repeats: true, block: { (timer) in
+                Health.shared.checkActivity(timeInterval: TimeInterval(self.activityReminderTimeIntervalInMinutes * 60), completion: { (HealthCheckReturnValue) in
+                    switch HealthCheckReturnValue {
+                    case .noActivity:
+                        self.displayLocalNotification(forStepcount: 0, with: "Low activity recognized. Standing up regularly improves your health! 🚴‍♂️")
+                        print("No Activity")
+                    case .enoughActivity:
+                        self.displayLocalNotification(forStepcount: 0, with: "Enough activity. 😇")
+                        print("Enough activity")
+                    case .error:
+                        print("Error")
+                    }
+                })
+            })
+        } else {
+            activityTimer?.invalidate()
+        }
+    }
     
     func checkActivity(timeInterval: TimeInterval, completion: @escaping (HealthCheckReturnValue) -> Void) {
         // 1. Check if steps in timeInterval are below 50
@@ -40,15 +70,12 @@ class Health {
             case .noActivity:
                 // timeInterval is the activity reminder time, difference will be negative
                 if self.lastBluetoothConnectionMock.timeIntervalSinceNow < timeInterval {
-                    self.displayLocalNotification(forStepcount: 0, with: "Low activity recognized. Standing up regularly improves your health! 🚴‍♂️")
                     completion(.noActivity)
                 } else {
                     // User didn't take enough steps yet, but last BLE connection is not long enough ago
-                    self.displayLocalNotification(forStepcount: 0, with: "Enough activity. 😇")
                     completion(.enoughActivity)
                 }
             case .enoughActivity:
-                self.displayLocalNotification(forStepcount: 0, with: "Enough activity. 😇")
                 completion(.enoughActivity)
             case .error:
                 completion(.error)
