@@ -37,10 +37,20 @@ class AccessoryCustomCollectionCell: UICollectionViewCell {
         return textView
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//
+//        // Adding all image views to the cell
+//        self.addSubview(accessoryImageView)
+//        self.addSubview(accessoryNameView)
+//        self.addSubview(accessoryDescriptionView)
+//
+//        addConstraints()
+//    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        // Adding all image views to the cell
         self.addSubview(accessoryImageView)
         self.addSubview(accessoryNameView)
         self.addSubview(accessoryDescriptionView)
