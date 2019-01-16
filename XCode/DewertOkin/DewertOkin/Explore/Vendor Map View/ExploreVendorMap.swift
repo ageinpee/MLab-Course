@@ -42,7 +42,7 @@ extension ExploreViewController {
     
     func convertAccessoryData(accessories: [AccessoryData]) -> [Accessory] {
         var accessorieList = [Accessory]()
-        for number in 0..<(accessories.count - 1) {
+        for number in 0..<(accessories.count) {
             let accessory = Accessory(imageName: accessories[number].imageName, name: accessories[number].name, accessoryDescription: accessories[number].accessoryDescription)
             accessorieList.append(accessory)
         }

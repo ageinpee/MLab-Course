@@ -49,10 +49,12 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
+        layout.scrollDirection = UICollectionView.ScrollDirection.vertical
         
         collectionView = UICollectionView(frame: CGRect(x: 0, y: self.view.frame.height / 2, width: self.view.frame.width, height: 100), collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = .white
         collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = true
