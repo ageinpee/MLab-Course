@@ -30,6 +30,8 @@ class BluetoothCoordinator {
     
     func reconnect() -> CBPeripheral? { return nil }
     
+    func checkStatus() -> Bool { return false }
+    
     func ableToWrite() { }
     
     func waitForBluetooth(completion: @escaping (Bool) -> Void) { }
