@@ -126,6 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         bluetoothFlow.connect(peripheral: availablePeripheral!, completion: { _ in })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { self.checkAndReconnectDevice() })
     }
     
     func waitForBluetooth() -> Bool {
