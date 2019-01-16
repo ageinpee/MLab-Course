@@ -27,12 +27,20 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         let view = BarChartView()
         view.drawValueAboveBarEnabled = true
         view.legend.enabled = false
+        view.rightAxis.enabled = false
+        
         view.leftAxis.axisMinimum = 0
         view.leftAxis.drawZeroLineEnabled = true
-        view.setScaleEnabled(false)
-        view.xAxis.drawGridLinesEnabled = false
         view.leftAxis.drawGridLinesEnabled = false
-        view.noDataText = "No step data available."
+        view.leftAxis.granularity = 1
+        view.leftAxis.drawAxisLineEnabled = false
+    
+        view.xAxis.drawGridLinesEnabled = false
+        view.xAxis.labelPosition = .bottom
+        view.xAxis.granularity = 1
+    
+        view.setScaleEnabled(false)
+        view.noDataText = "No exercise data available."
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -50,7 +58,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         
         getSavedData()
         
-        Health.shared.bulletinManager.showBulletin(above: UIApplication.shared.keyWindow!.rootViewController!)
+        //Health.shared.bulletinManager.showBulletin(above: UIApplication.shared.keyWindow!.rootViewController!)
     }
     
     override func viewWillAppear(_ animated: Bool) {

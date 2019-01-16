@@ -37,6 +37,17 @@ class Health {
     
     var activityTimer: Timer?
     
+    var exerciseHistory: [ExerciseEvent] = [
+        // 7 is saturday
+        // 1 is sunday
+        ExerciseEvent(time: Date().addingTimeInterval(-31600), completed: true),
+        ExerciseEvent(time: Date().addingTimeInterval(-150000), completed: false),
+        ExerciseEvent(time: Date().addingTimeInterval(-100200), completed: false),
+        ExerciseEvent(time: Date(), completed: false),
+        ExerciseEvent(time: Date().addingTimeInterval(-240000), completed: true),
+        ExerciseEvent(time: Date().addingTimeInterval(-244800), completed: true)
+    ]
+    
     lazy var page: BLTNPageItem = {
         let page = BLTNPageItem(title: "Exercise")
         page.image = UIImage(named: "Arch-Exercise")
@@ -45,12 +56,14 @@ class Health {
         page.alternativeButtonTitle = "Maybe Later"
         
         page.actionHandler = { (item: BLTNActionItem) in
+            self.exerciseHistory.append(ExerciseEvent(time: Date(), completed: true))
             print("Action button tapped")
         }
         
         page.alternativeHandler = { (item: BLTNActionItem) in
-            self.bulletinManager.dismissBulletin()
             print("Maybe later tapped")
+            self.bulletinManager.dismissBulletin()
+            self.exerciseHistory.append(ExerciseEvent(time: Date(), completed: false))
         }
         
         return page
@@ -259,4 +272,9 @@ enum HealthCheckReturnValue {
     case noActivity
     case enoughActivity
     case error
+}
+
+struct ExerciseEvent {
+    var time: Date
+    var completed: Bool
 }

@@ -66,31 +66,41 @@ class StatisticsCell: UITableViewCell {
         
         var barChartDataSet = BarChartDataSet(values: dataEntry, label: "testData")
         var barChartData = BarChartData(dataSet: barChartDataSet)
-        var stepDataArray: [BarChartDataEntry] = []
         
-        Health.shared.getLastDaysStepsInHourIntervals { resultsArray in
-            print(resultsArray)
-            
-            if resultsArray.filter({ !$0.isZero }).isEmpty {
-                DispatchQueue.main.async {
-                    self.barChart.data = nil
-                }
-                return
-            }
-            
-            var iterator = 0
-            for result in resultsArray {
-                stepDataArray.append(BarChartDataEntry(x: Double(iterator), y: result))
-                iterator += 1
-            }
-            barChartDataSet = BarChartDataSet(values: stepDataArray, label: "Steps")
-            barChartDataSet.setColor(.red)
-            barChartDataSet.drawValuesEnabled = false
-            barChartData = BarChartData(dataSet: barChartDataSet)
+        if Health.shared.exerciseHistory.isEmpty {
             DispatchQueue.main.async {
-                self.barChart.data = barChartData
+                self.barChart.data = nil
+            }
+            return
+        }
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for exercise in Health.shared.exerciseHistory {
+            
+            // Only show entries from last week
+            guard exercise.time.timeIntervalSinceNow >= -7*24*60*60 else { continue }
+            
+            let exerciseDate = Double(Calendar.current.component(.day, from: exercise.time))
+            print(exerciseDate)
+            
+            if exercise.completed {
+                dataEntries.append(BarChartDataEntry(x: exerciseDate, y: 1))
+            } else {
+                dataEntries.append(BarChartDataEntry(x: exerciseDate, y: 0.1))
             }
         }
+        
+        barChartDataSet = BarChartDataSet(values: dataEntries, label: "Exercises")
+        barChartDataSet.setColor(.red)
+        barChartDataSet.drawValuesEnabled = false
+        barChartData = BarChartData(dataSet: barChartDataSet)
+        DispatchQueue.main.async {
+            self.barChart.data = barChartData
+            //self.barChart.animate(xAxisDuration: 2, easingOption: .linear)
+            self.barChart.animate(yAxisDuration: 1.5)
+        }
+        
     }
 }
 
