@@ -25,6 +25,12 @@ class DetailVendorViewController: UIViewController {
     let vendorView = UIView()
     var isPresenting = false
     
+    var vendorName = UILabel()
+    var vendorStreet = UILabel()
+    var vendorOpeningHours = UILabel()
+    var vendorTelephoneNumber = UILabel()
+    
+    
     var panGestureForView = UIPanGestureRecognizer()
     var panGestureForMap = UITapGestureRecognizer()
     
@@ -33,6 +39,7 @@ class DetailVendorViewController: UIViewController {
         view.backgroundColor = .clear
         view.addSubview(backgroundAlphaView)
         view.addSubview(vendorView)
+        initializeVendorView()
         initializeVendorInformation()
     }
     
@@ -46,7 +53,7 @@ class DetailVendorViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    func initializeVendorInformation() {
+    func initializeVendorView() {
         vendorView.backgroundColor = .white
         vendorView.translatesAutoresizingMaskIntoConstraints = false
         vendorView.layer.cornerRadius = 8.0
@@ -63,6 +70,32 @@ class DetailVendorViewController: UIViewController {
         panGestureForMap = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.closeVendorDetail(_:)))
         backgroundAlphaView.isUserInteractionEnabled = true
         backgroundAlphaView.addGestureRecognizer(panGestureForMap)
+    }
+    
+    func initializeVendorInformation() {
+        vendorName = UILabel(frame: CGRect(x: 0, y: vendorView.frame.minY, width: self.view.frame.width, height: 22.0))
+        vendorName.text = displayingVendor.name
+        vendorName.textAlignment = .center
+        vendorStreet = UILabel(frame: CGRect(x: 0, y: vendorName.frame.maxY, width: self.view.frame.width, height: 22.0))
+        vendorStreet.text = displayingVendor.street
+        vendorStreet.textAlignment = .center
+        vendorOpeningHours = UILabel(frame: CGRect(x: 0, y: vendorStreet.frame.maxY, width: self.view.frame.width, height: 22.0))
+        vendorOpeningHours.text = "\(displayingVendor.openingHour)AM - \(displayingVendor.closingHour)PM"
+        vendorOpeningHours.textAlignment = .center
+        vendorTelephoneNumber = UILabel(frame: CGRect(x: 0, y: vendorOpeningHours.frame.maxY, width: self.view.frame.width, height: 22.0))
+        vendorTelephoneNumber.text = displayingVendor.telephoneNumber
+        vendorTelephoneNumber.textAlignment = .center
+        
+        vendorView.addSubview(vendorName)
+        vendorView.addSubview(vendorStreet)
+        vendorView.addSubview(vendorOpeningHours)
+        vendorView.addSubview(vendorTelephoneNumber)
+        
+        vendorName.topAnchor.constraint(equalTo: self.vendorView.topAnchor).isActive = true
+        vendorStreet.topAnchor.constraint(equalTo: self.vendorName.bottomAnchor).isActive = true
+        vendorTelephoneNumber.topAnchor.constraint(equalTo: self.vendorStreet.bottomAnchor).isActive = true
+        vendorOpeningHours.topAnchor.constraint(equalTo: self.vendorTelephoneNumber.bottomAnchor).isActive = true
+        
     }
     
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {

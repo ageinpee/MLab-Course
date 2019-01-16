@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="okinSmartRemote" width="345" height="345"/>
+        <image name="okinSmartRemote" width="690" height="690"/>
     </resources>
 </document>
