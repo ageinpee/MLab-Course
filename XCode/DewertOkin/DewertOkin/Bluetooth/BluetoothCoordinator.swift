@@ -14,7 +14,9 @@ class BluetoothCoordinator {
     let defaults = UserDefaults.standard
     weak var bluetoothService = Bluetooth.sharedBluetooth
     var pairing = false
-    var paired = false
+    var paired: Bool {
+        return bluetoothService?.connectedPeripheral != nil
+    }
     
     init(bluetoothService: Bluetooth) { self.bluetoothService = bluetoothService }
     

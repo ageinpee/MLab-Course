@@ -22,7 +22,6 @@ class BluetoothFlow: BluetoothCoordinator {
             return
         }
         self.pairing = false
-        self.paired = false
         self.pairingHandler = { _ in }
         
         self.bluetoothService?.startScan()
@@ -86,7 +85,6 @@ class BluetoothFlow: BluetoothCoordinator {
         self.pairingWorkItem?.cancel()
         
         self.pairing = false
-        self.paired = false
         self.pairingHandler = { _ in }
         self.waitForPeripheralHandler = { }
     }
@@ -96,12 +94,15 @@ class BluetoothFlow: BluetoothCoordinator {
         self.pairingWorkItem?.cancel()
         self.pairingHandler(true)
         self.pairing = false
-        self.paired = true
     }
     
     override func disconnected(failure: Bool) {
-        self.pairingFailed()
-        self.cancel()
+        if (failure == true){
+            self.pairingFailed()
+            self.cancel()
+        } else {
+            
+        }
     }
     
     private func pairingFailed() {

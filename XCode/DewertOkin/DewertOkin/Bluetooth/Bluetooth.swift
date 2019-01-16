@@ -62,13 +62,6 @@ class Bluetooth: NSObject {
         return peripherals
     }
     
-    func connect() {
-        print("Connecting to peripheral")
-        guard self.centralManager.state == .poweredOn else { return }
-        guard let peripheral = self.connectedPeripheral else { return }
-        self.centralManager.connect(peripheral)
-    }
-    
     func disconnect() {
         print("Disconnecting from peripheral")
         guard let peripheral = self.connectedPeripheral else { return }
