@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0316162E21EFD0BA00E69559 /* DetailVendorTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316162D21EFD0BA00E69559 /* DetailVendorTableView.swift */; };
+		0316163021EFD91600E69559 /* AccessoryCustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316162F21EFD91600E69559 /* AccessoryCustomCollectionCell.swift */; };
 		031CC45321DE43B80025E068 /* DevicesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CC45221DE43B80025E068 /* DevicesListViewController.swift */; };
 		031CC45521DE43C20025E068 /* Devices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031CC45421DE43C20025E068 /* Devices.storyboard */; };
 		031EE20521A2EEB600E9E91E /* Timer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE20321A2EEB600E9E91E /* Timer+CoreDataClass.swift */; };
@@ -112,6 +114,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0316162D21EFD0BA00E69559 /* DetailVendorTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVendorTableView.swift; sourceTree = "<group>"; };
+		0316162F21EFD91600E69559 /* AccessoryCustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCustomCollectionCell.swift; sourceTree = "<group>"; };
 		031CC45221DE43B80025E068 /* DevicesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListViewController.swift; sourceTree = "<group>"; };
 		031CC45421DE43C20025E068 /* Devices.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Devices.storyboard; sourceTree = "<group>"; };
 		031EE20321A2EEB600E9E91E /* Timer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 			isa = PBXGroup;
 			children = (
 				0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */,
+				0316162D21EFD0BA00E69559 /* DetailVendorTableView.swift */,
+				0316162F21EFD91600E69559 /* AccessoryCustomCollectionCell.swift */,
 			);
 			path = "Vendor Detail View";
 			sourceTree = "<group>";
@@ -808,6 +814,7 @@
 				0380565321E901D500A6502F /* Vendor.swift in Sources */,
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
 				CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */,
+				0316163021EFD91600E69559 /* AccessoryCustomCollectionCell.swift in Sources */,
 				039133C921E7ECD500ECCBBE /* ExploreViewController.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
 				FAC415AF21DF60E900F4B5AC /* RemoteAnalyzer.swift in Sources */,
@@ -815,6 +822,7 @@
 				FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
 				CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */,
+				0316162E21EFD0BA00E69559 /* DetailVendorTableView.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				CD100F4D21DFF25400DBAAB9 /* ExecutingPresetViewController.swift in Sources */,
 				FAE52D3421D556DB00121B54 /* RFPairingController3.swift in Sources */,

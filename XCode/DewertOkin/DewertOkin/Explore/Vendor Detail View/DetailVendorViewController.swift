@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class DetailVendorViewController: UIViewController {
+class DetailVendorViewController: UIViewController, UICollectionViewDataSource {
     
     var displayingVendor: Vendor!
     var displayingAnnotation: MKAnnotationView!
@@ -30,6 +30,7 @@ class DetailVendorViewController: UIViewController {
     var vendorOpeningHours = UILabel()
     var vendorTelephoneNumber = UILabel()
     
+    var collectionView: UICollectionView!
     
     var panGestureForView = UIPanGestureRecognizer()
     var panGestureForMap = UITapGestureRecognizer()
@@ -39,8 +40,18 @@ class DetailVendorViewController: UIViewController {
         view.backgroundColor = .clear
         view.addSubview(backgroundAlphaView)
         view.addSubview(vendorView)
+        
         initializeVendorView()
         initializeVendorInformation()
+        
+        vendorAccessories = displayingVendor.accessories
+        
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: vendorTelephoneNumber.frame.maxY, width: self.view.frame.width, height: 100.0))
+        collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        view.addSubview(collectionView)
+        
     }
     
     init() {
