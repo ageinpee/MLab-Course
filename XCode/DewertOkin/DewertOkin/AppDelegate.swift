@@ -39,15 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         
-        UNUserNotificationCenter.current().delegate = self
+        // Bluetooth Reconnection stuff
+        bluetooth.bluetoothCoordinator = bluetoothFlow
+        checkAndReconnectDevice()
         
+        UNUserNotificationCenter.current().delegate = self
         AchievementModel.loadAchievementProgress()
-
         UIApplication.shared.setMinimumBackgroundFetchInterval(600)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
         window?.rootViewController = MainViewController()
         
         return true
@@ -96,7 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Reconnecting to latest Device
         let availablePeripheral = bluetoothBackgroundHandler.reconnect()
         guard availablePeripheral != nil else { return }
-        bluetooth.bluetoothCoordinator = bluetoothFlow
         bluetoothFlow.connect(peripheral: availablePeripheral!, completion: { _ in })
     }
 
@@ -109,6 +109,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if (bluetooth.connectedPeripheral != nil) {
             bluetoothFlow.cancel()
         }
+    }
+    
+    func checkAndReconnectDevice() {
+        guard waitForBluetooth() else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: { self.checkAndReconnectDevice() })
+            return
+        }
+        guard bluetooth.connectedPeripheral == nil else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: { self.checkAndReconnectDevice() })
+            return
+        }
+        let availablePeripheral = bluetoothBackgroundHandler.reconnect()
+        guard availablePeripheral != nil else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: { self.checkAndReconnectDevice() })
+            return
+        }
+        bluetoothFlow.connect(peripheral: availablePeripheral!, completion: { _ in })
+    }
+    
+    func waitForBluetooth() -> Bool {
+        return bluetooth.centralManager.state == .poweredOn
     }
     
 }
