@@ -25,4 +25,8 @@ extension DetailVendorViewController: UICollectionViewDelegate {
         cell.layoutSubviews()
         return cell
     }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
 }
