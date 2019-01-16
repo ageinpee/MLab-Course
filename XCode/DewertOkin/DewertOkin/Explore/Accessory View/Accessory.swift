@@ -14,11 +14,9 @@ class Accessory: NSObject {
     let imageName: String
     let name: String
     let accessoryDescription: String
-    //let image: UIImage
     
     init(imageName: String, name: String, accessoryDescription: String) {
         self.imageName = imageName
-        //self.image = UIImage(named: imageName)!
         self.name = name
         self.accessoryDescription = accessoryDescription
         

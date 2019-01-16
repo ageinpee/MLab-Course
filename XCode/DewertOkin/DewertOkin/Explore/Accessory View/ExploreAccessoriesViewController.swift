@@ -39,8 +39,8 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     
     func registerAccessories() {
         self.tableView.register(AccessoryCustomCell.self, forCellReuseIdentifier: "customAccessoryCell")
-//        self.tableView.rowHeight = UITableView.automaticDimension
-//        self.tableView.estimatedRowHeight = 200
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 100
     }
 }
 
