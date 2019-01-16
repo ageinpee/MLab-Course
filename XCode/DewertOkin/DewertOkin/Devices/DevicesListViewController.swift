@@ -49,7 +49,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
             self.cellDevicesData = []
             self.devicesList = savedDevices
             for devices in devicesList {
-                cellDevicesData.append(DevicesData.init(image: UIImage(named: "chair_pictogram"), name: devices.name, status: "Connected"))
+                cellDevicesData.append(DevicesData.init(image: UIImage(named: "chair_pictogram"), name: devices.name, status: deviceStatus(devices)))
             }
             self.registerDevices()
             self.tableView.reloadData()
@@ -90,7 +90,13 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         } catch {
             print("Devices couldn't be load")
         }
-        
+    }
+    
+    func deviceStatus(device: Devices) -> String {
+        if (bluetooth.connectedPeripheral?.identifier.uuidString == device.uuid) {
+            return "Connected"
+        }
+        return "Not-Connected"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
