@@ -49,7 +49,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
             self.cellDevicesData = []
             self.devicesList = savedDevices
             for devices in devicesList {
-                cellDevicesData.append(DevicesData.init(image: UIImage(named: "chair_pictogram"), name: devices.name, status: deviceStatus(devices)))
+                cellDevicesData.append(DevicesData.init(image: UIImage(named: "chair_pictogram"), name: devices.name, status: deviceStatus(device: devices)))
             }
             self.registerDevices()
             self.tableView.reloadData()

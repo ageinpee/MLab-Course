@@ -68,9 +68,15 @@ class DetailVendorViewController: UIViewController {
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {
         self.view.bringSubviewToFront(vendorView)
         let transition = sender.translation(in: self.view)
-        //guard (vendorView.center.y <= self.view.frame.height / 2) && transition.y > 0 else { return }
-        vendorView.center = CGPoint(x: vendorView.center.x, y: vendorView.center.y + transition.y)
-        sender.setTranslation(CGPoint.zero, in: self.view)
+        let newPosition = CGPoint(x: vendorView.center.x, y: vendorView.center.y + transition.y)
+        if draggableViewArea(newPoint: newPosition){
+            vendorView.center = newPosition
+            sender.setTranslation(CGPoint.zero, in: self.view)
+        }
+    }
+    
+    func draggableViewArea(newPoint: CGPoint) -> Bool {
+        return newPoint.y >= (self.view.frame.height / 2) + (self.view.frame.height / 4) && newPoint.y <= self.view.frame.height
     }
     
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
