@@ -26,6 +26,7 @@ extension DevicesListViewController: UITableViewDataSource {
         cell.deviceImage = cellDevicesData[indexPath.row].image
         cell.deviceName = cellDevicesData[indexPath.row].name
         cell.deviceStatus = cellDevicesData[indexPath.row].status
+        cell.accessoryType = .disclosureIndicator
         cell.layoutSubviews()
         return cell
     }
@@ -34,7 +35,7 @@ extension DevicesListViewController: UITableViewDataSource {
         let delete = deleteAction(at: indexPath)
         let edit = editAction(at: indexPath)
         let connect = connectAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [delete,edit,connect])
+        return UISwipeActionsConfiguration(actions: [connect,edit,delete])
     }
     
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
@@ -76,7 +77,7 @@ extension DevicesListViewController: UITableViewDataSource {
             })
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 let newName = alert.textFields?.first?.text
-                self.updateDevicesName(name: newName!)
+                self.updateDevicesName(newName: newName!, uuid: self.devicesList[indexPath.row].uuid!)
             }))
             self.present(alert, animated: true)
         }

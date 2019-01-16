@@ -64,7 +64,6 @@ class BluetoothFlow: BluetoothCoordinator {
     
     override func disconnected(failure: Bool) {
         self.pairingFailed()
-        self.cancel()
     }
     
     private func pairingFailed() {

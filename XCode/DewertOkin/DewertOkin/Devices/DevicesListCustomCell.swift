@@ -26,6 +26,8 @@ class DevicesListCustomCell: UITableViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
         textView.isEditable = false
+        textView.textAlignment = .center
+        textView.font = UIFont.systemFont(ofSize: 20.0)
         return textView
     }()
     
@@ -34,6 +36,8 @@ class DevicesListCustomCell: UITableViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
         textView.isEditable = false
+        textView.textAlignment = .center
+        textView.font = UIFont.systemFont(ofSize: 20.0)
         return textView
     }()
     
@@ -71,13 +75,11 @@ class DevicesListCustomCell: UITableViewCell {
         deviceImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         deviceNameView.leftAnchor.constraint(equalTo: self.deviceImageView.rightAnchor).isActive = true
-        deviceNameView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         deviceNameView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        deviceNameView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        deviceNameView.bottomAnchor.constraint(equalTo: self.deviceStatusView.topAnchor).isActive = true
         
         deviceStatusView.topAnchor.constraint(equalTo: self.deviceNameView.bottomAnchor).isActive = true
-        deviceStatusView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        deviceStatusView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        deviceStatusView.leftAnchor.constraint(equalTo: self.deviceImageView.rightAnchor).isActive = true
         deviceStatusView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 }

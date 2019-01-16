@@ -44,8 +44,6 @@ class Bluetooth: NSObject {
     func startScan() {
         print("Starting to scan")
         guard self.centralManager.state == .poweredOn else { return }
-        self.connectedPeripheral = nil
-        //self.availablePeripherals = []
         self.centralManager.scanForPeripherals(withServices: [Bluetooth.commandService])
     }
     

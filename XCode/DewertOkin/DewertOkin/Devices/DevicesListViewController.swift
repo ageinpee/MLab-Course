@@ -75,7 +75,21 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         self.present(alert, animated: true)
     }
     
-    func updateDevicesName(name: String) {
+    func updateDevicesName(newName: String, uuid: String) {
+        let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()
+        
+        do {
+            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
+            for device in savedDevices {
+                if device.uuid == uuid {
+                    device.name = newName
+                    try PersistenceService.context.save()
+                }
+            }
+            self.fetchDevices()
+        } catch {
+            print("Devices couldn't be load")
+        }
         
     }
     
