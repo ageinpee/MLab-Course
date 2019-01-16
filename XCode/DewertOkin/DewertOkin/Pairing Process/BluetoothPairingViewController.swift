@@ -22,6 +22,7 @@ class BluetoothPairingViewController: UIViewController {
     var remoteControl = RemoteController()
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class BluetoothPairingViewController: UIViewController {
     
     func refreshPeripheralsList() {
         guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        availablePeripherals = bluetoothFlow.retrievePeripherals()
+        availablePeripherals = bluetoothBackgroundHandler.retrievePeripherals()
         self.tableView.reloadData()
         self.tableView.selectRow(at: selectedCell, animated: true, scrollPosition: UITableView.ScrollPosition .none)
         print("Still loading")

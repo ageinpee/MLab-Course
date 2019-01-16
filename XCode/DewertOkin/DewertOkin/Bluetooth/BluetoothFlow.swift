@@ -45,40 +45,6 @@ class BluetoothFlow: BluetoothCoordinator {
         self.pairingHandler = completion
         self.bluetoothService?.centralManager.connect(peripheral)
     }
-    
-    override func retrievePeripherals() -> [CBPeripheral] {
-        guard self.bluetoothService?.centralManager.state == .poweredOn else {
-            return []
-        }
-        let peripherals = self.bluetoothService?.retrievePeripherals()
-        return peripherals!
-    }
-    
-    override func isInRange(uuid: String?) -> Bool {
-        guard self.bluetoothService?.centralManager.state == .poweredOn else {
-            return false
-        }
-        let peripherals = retrievePeripherals()
-        for peripheral in peripherals {
-            if peripheral.identifier.uuidString == uuid {
-                return true
-            }
-        }
-        return false
-    }
-    
-    override func getPeripheralWithUUID(uuid: String?) -> CBPeripheral? {
-        guard self.bluetoothService?.centralManager.state == .poweredOn else {
-            return nil
-        }
-        let peripherals = retrievePeripherals()
-        for peripheral in peripherals {
-            if peripheral.identifier.uuidString == uuid {
-                return peripheral
-            }
-        }
-        return nil
-    }
 
     func cancel() {
         self.bluetoothService?.disconnect()

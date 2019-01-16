@@ -21,6 +21,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     var remoteControl = RemoteController()
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     
     override func viewDidLoad() {
         super.viewDidLoad()

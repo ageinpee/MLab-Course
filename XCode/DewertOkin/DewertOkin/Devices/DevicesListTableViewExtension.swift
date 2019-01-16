@@ -90,11 +90,11 @@ extension DevicesListViewController: UITableViewDataSource {
             (action, view, completion) in
             
             let device = self.devicesList[indexPath.row]
-            guard self.bluetoothFlow.isInRange(uuid: device.uuid) else {
+            guard self.bluetoothBackgroundHandler.isInRange(uuid: device.uuid) else {
                 self.showAlert()
                 return
             }
-            guard let deviceToBeConnected = self.bluetoothFlow.getPeripheralWithUUID(uuid: device.uuid) else { return }
+            guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
             self.deviceToConnect = deviceToBeConnected
             self.performSegue(withIdentifier: "ConnectToDevice", sender: self)
             

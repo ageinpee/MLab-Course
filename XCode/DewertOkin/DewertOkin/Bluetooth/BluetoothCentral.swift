@@ -54,12 +54,14 @@ extension Bluetooth: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Disconnected from control unit")
         self.bluetoothCoordinator?.disconnected(failure: false)
+        connectedPeripheral = nil
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("Connection to control unit has failed!")
         // Give the user clear feedback in the UI
         self.bluetoothCoordinator?.disconnected(failure: true)
+        connectedPeripheral = nil
     }
         
     func saveDevice(peripheral: CBPeripheral) {
