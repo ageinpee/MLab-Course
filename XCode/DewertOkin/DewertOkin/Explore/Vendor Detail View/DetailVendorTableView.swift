@@ -16,8 +16,13 @@ extension DetailVendorViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customAccessoryCollectionCell", for: indexPath as IndexPath) as! AccessoryCustomCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customAccessoryCollectionCell", for: indexPath) as! AccessoryCustomCollectionCell
+        let image = UIImage(named: vendorAccessories[indexPath.row].imageName)
+        cell.accessoryImage = image
+        cell.accessoryName = vendorAccessories[indexPath.row].name
+        cell.accessoryDescription = vendorAccessories[indexPath.row].accessoryDescription
         
+        cell.layoutSubviews()
         return cell
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class DetailVendorViewController: UIViewController, UICollectionViewDataSource {
+class DetailVendorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var displayingVendor: Vendor!
     var displayingAnnotation: MKAnnotationView!
@@ -46,10 +46,16 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource {
         
         vendorAccessories = displayingVendor.accessories
         
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: vendorTelephoneNumber.frame.maxY, width: self.view.frame.width, height: 100.0))
-        collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
+        
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: self.view.frame.height / 2, width: self.view.frame.width, height: 100), collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = true
         view.addSubview(collectionView)
         
     }
