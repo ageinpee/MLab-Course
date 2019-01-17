@@ -11,14 +11,6 @@ import Charts
 import CoreData
 import UserNotifications
 
-extension CompanionTableViewController {
-    
-    // Handle the activity countdown
-    // Call checkActivity in Health.shared
-    
-    
-}
-
 class StatisticsCell: UITableViewCell {
     
     let dataEntry = [BarChartDataEntry(x: 10, y: 100)]
@@ -46,20 +38,13 @@ class StatisticsCell: UITableViewCell {
     }
     
     private func setupViews() {
-        
-        
         contentView.addSubview(barChart)
         
         contentView.addConstraint(NSLayoutConstraint(item: barChart, attribute: .centerX, relatedBy: .equal, toItem: self.contentView, attribute: .centerX, multiplier: 1, constant: 0))
         contentView.addConstraint(NSLayoutConstraint(item: barChart, attribute: .centerY, relatedBy: .equal, toItem: self.contentView, attribute: .centerY, multiplier: 1, constant: 0))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-32-[v0]-32-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":barChart]))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0(200)]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":barChart]))
-        
-        layoutIfNeeded()
-        layoutSubviews()
     }
-    
-    
     
     
     private func setupChartData() {

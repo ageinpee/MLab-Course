@@ -109,7 +109,8 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
                 let cell = tableView.dequeueReusableCell(withIdentifier: reminderCell, for: indexPath)
                 cell.textLabel?.text = reminderList[indexPath.row].reminderName
                 cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-                cell.detailTextLabel?.text = reminderList[indexPath.row].reminderTime?.toString(dateFormat: "HH:mm") ?? Date().toString(dateFormat: "HH:mm")
+                print(reminderList)
+                cell.detailTextLabel?.text = "\(reminderList[indexPath.row].reminderTime?.toString(dateFormat: "HH:mm") ?? "Error fetching time") | \(reminderList[indexPath.row].reminderRepeatInterval ?? "Error fetching repeat interval")"
                 //cell.accessoryType = .disclosureIndicator
                 cell.accessoryView = UISwitch()
                 return cell
