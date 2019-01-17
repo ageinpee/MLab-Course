@@ -43,21 +43,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         
         initializeVendorView()
         initializeVendorInformation()
-        
-        vendorAccessories = displayingVendor.accessories
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
-        layout.scrollDirection = .horizontal
-        
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: self.vendorView.frame.minY, width: self.view.frame.width, height: 100), collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.backgroundColor = .white
-        collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = true
-        vendorView.addSubview(collectionView)
+        initializeAccessoryCollection()
         
     }
     
@@ -116,6 +102,25 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         
     }
     
+    func initializeAccessoryCollection() {
+        vendorAccessories = displayingVendor.accessories
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
+        layout.scrollDirection = .horizontal
+        
+        let frame = vendorView.convert(CGRect(x: self.view.frame.width / 2, y: self.view.frame.height / 2, width: self.view.frame.width, height: 100), to: collectionView)
+        
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .white
+        collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = true
+        vendorView.addSubview(collectionView)
+    }
+    
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {
         self.view.bringSubviewToFront(vendorView)
         let transition = sender.translation(in: self.view)
@@ -123,6 +128,8 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         if draggableViewArea(newPoint: newPosition){
             vendorView.center = newPosition
             sender.setTranslation(CGPoint.zero, in: self.view)
+        } else if draggableAreaToClose(newPoint: newPosition) {
+            swipeCloseVendorDetail()
         }
     }
     
@@ -130,7 +137,16 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         return newPoint.y >= (self.view.frame.height / 2) + (self.view.frame.height / 4) && newPoint.y <= self.view.frame.height
     }
     
+    func draggableAreaToClose(newPoint: CGPoint) -> Bool {
+        return newPoint.y <= self.view.frame.height
+    }
+    
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
+        displayingAnnotation.isSelected = false
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func swipeCloseVendorDetail() {
         displayingAnnotation.isSelected = false
         dismiss(animated: true, completion: nil)
     }
