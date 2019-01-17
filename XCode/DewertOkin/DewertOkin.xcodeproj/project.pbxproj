@@ -397,7 +397,6 @@
 			children = (
 				FA2C9CFC21AF28E20018545A /* SecondRemote.storyboard */,
 				FAC415AE21DF60E900F4B5AC /* RemoteAnalyzer.swift */,
-				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
 				FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */,
 				9243F4C921F11C8600513B11 /* oldRemote */,
 				9243F4C821F11C7100513B11 /* DeviceManagement */,
@@ -443,6 +442,7 @@
 		9243F4C921F11C8600513B11 /* oldRemote */ = {
 			isa = PBXGroup;
 			children = (
+				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
 				CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */,
 			);
 			path = oldRemote;
