@@ -73,9 +73,8 @@ class BluetoothBackgroundHandler: BluetoothCoordinator {
     
     override func checkStatus() -> Bool {
         guard bluetoothService?.centralManager.state == .poweredOn else { return false }
-        guard pairing != true else { return false }
         guard paired != true else { return true }
-        guard bluetoothService?.connectedPeripheral != nil else { return false }
+        guard (self.bluetoothService?.writeCharacteristic != nil) else { return false }
         return true
     }
     
