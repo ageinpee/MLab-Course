@@ -399,9 +399,8 @@
 				FAC415AE21DF60E900F4B5AC /* RemoteAnalyzer.swift */,
 				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
 				FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */,
-				FAE52D3721D784F400121B54 /* DeviceStyleManager.swift */,
-				FAE52D4F21DA485500121B54 /* DeviceObject.swift */,
-				CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */,
+				9243F4C921F11C8600513B11 /* oldRemote */,
+				9243F4C821F11C7100513B11 /* DeviceManagement */,
 				FAE52D4121D7BE0B00121B54 /* RemoteController */,
 				FAE52D4821D902E600121B54 /* ExtraFunctionsController */,
 				FAE52D4921D9099300121B54 /* PresetsController */,
@@ -430,6 +429,23 @@
 				760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9243F4C821F11C7100513B11 /* DeviceManagement */ = {
+			isa = PBXGroup;
+			children = (
+				FAE52D4F21DA485500121B54 /* DeviceObject.swift */,
+				FAE52D3721D784F400121B54 /* DeviceStyleManager.swift */,
+			);
+			path = DeviceManagement;
+			sourceTree = "<group>";
+		};
+		9243F4C921F11C8600513B11 /* oldRemote */ = {
+			isa = PBXGroup;
+			children = (
+				CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */,
+			);
+			path = oldRemote;
 			sourceTree = "<group>";
 		};
 		CD35980E219840EF00B57987 /* Settings and more */ = {
