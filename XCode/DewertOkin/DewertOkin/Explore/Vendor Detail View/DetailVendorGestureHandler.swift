@@ -43,16 +43,46 @@ extension DetailVendorViewController {
     
     @objc func vendorDetailViewGesture(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
+            
         case .began:
             animateVendorDetailView(to: currentState.opposite, duration: 1.5)
-            transitionAnimator.pauseAnimation()
+            runningAnimators.forEach { $0.pauseAnimation() }
+            animationProgress = runningAnimators.map { $0.fractionComplete }
+            
         case .changed:
             let translation = recognizer.translation(in: vendorView)
-            var fraction = -translation.y / popupOffset
+            var fraction = -translation.y / ((self.view.frame.height / 3) - 100)
             if currentState == .open { fraction *= -1 }
-            transitionAnimator.fractionComplete = fraction
+            if runningAnimators[0].isReversed { fraction *= 1 }
+            
+            for (index, animator) in runningAnimators.enumerated() {
+                animator.fractionComplete = fraction + animationProgress[index]
+            }
+            
         case .ended:
-            transitionAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+            
+            let yVelocity = recognizer.velocity(in: vendorView).y
+            let shouldClose = yVelocity > 0
+            
+            // if there is no motion, continue all animations and exit early
+            if yVelocity == 0 {
+                runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
+                break
+            }
+            
+            // reverse the animations based on their current state and pan motion
+            switch currentState {
+            case .open:
+                if !shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+                if shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+            case .halfOpen:
+                if shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+                if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+            }
+            
+            // continue all animations
+            runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
+            
         default:
             ()
         }
