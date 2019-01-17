@@ -72,7 +72,7 @@ class AddPresetController: UIViewController {
     @objc func stateButtonAction(sender: UIButton!) {
         if sender.tag < 0 {
             sender.backgroundColor = UIColor.lightGray
-            sender.shake()
+            shake(view: sender, for: 0.2, withTranslation: 500)
         }
         else
         {
@@ -120,26 +120,23 @@ class AddPresetController: UIViewController {
         }
     }
     
-}
-
-
-//==================================================
-//==================================================
-//==================================================
-
-extension UIButton {
-    func shake(count : Float = 4,for duration : TimeInterval = 0.3,withTranslation translation : Float = 4) {
+    func shake(view: UIView, for duration: TimeInterval = 0.5, withTranslation translation: CGFloat = 10) {
+        let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.3) {
+            view.transform = CGAffineTransform(translationX: translation, y: 0)
+        }
         
-        let animation : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        animation.repeatCount = count
-        animation.duration = duration/TimeInterval(animation.repeatCount)
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: CGFloat(-translation), y: self.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: CGFloat(translation), y: self.center.y))
-        layer.add(animation, forKey: "shake")
+        propertyAnimator.addAnimations({
+            view.transform = CGAffineTransform(translationX: 0, y: 0)
+        }, delayFactor: 0.2)
+        
+        propertyAnimator.startAnimation()
     }
 }
+
+
+//==================================================
+//==================================================
+//==================================================
 
 enum MemoryState {
     case empty

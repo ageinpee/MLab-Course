@@ -79,14 +79,17 @@ extension ExtraFunctionsController {
     func styleButton(forButton button: UIButton, withFunction function: ExtraFunction) -> UIButton {
         button.setTitle(function.title, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.view.frame.width/23)
+        
+        let imageSize = CGSize(width: self.view.frame.width/4.14,
+                               height: self.view.frame.width/4.14)
         
         switch function.type {
         case .massage_back:
             var image = UIImage(named: "massageBackHRWhiteCurly")
             var imageHighlighted = UIImage(named: "massageBackHRCurlyHighlighted")
-            image = image?.resize(size: CGSize(width: 100, height: 100))
-            imageHighlighted = imageHighlighted?.resize(size: CGSize(width: 100, height: 100))
+            image = image?.resize(size: imageSize)
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
             button.setImage(image, for: .normal)
             button.setImage(imageHighlighted, for: .highlighted)
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -1*(image!.size.width)-20)
@@ -94,8 +97,8 @@ extension ExtraFunctionsController {
         case .ubl:
             var image = UIImage(named: "ublHRWhite")
             var imageHighlighted = UIImage(named: "ublHRHighlighted")
-            image = image?.resize(size: CGSize(width: 100, height: 100))
-            imageHighlighted = imageHighlighted?.resize(size: CGSize(width: 100, height: 100))
+            image = image?.resize(size: imageSize)
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
             button.setImage(image, for: .normal)
             button.setImage(imageHighlighted, for: .highlighted)
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -1.2*(image!.size.width)-20)
@@ -103,8 +106,8 @@ extension ExtraFunctionsController {
         case .massage_neck:
             var image = UIImage(named: "massageNeckHRWhiteCurly")
             var imageHighlighted = UIImage(named: "massageNeckHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: CGSize(width: 100, height: 100))
-            image = image?.resize(size: CGSize(width: 100, height: 100))
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
             button.setImage(image, for: .normal)
             button.setImage(imageHighlighted, for: .highlighted)
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -1*(image!.size.width)-20)
@@ -112,8 +115,8 @@ extension ExtraFunctionsController {
         case .massage_legs:
             var image = UIImage(named: "massageLegHRWhiteCurly")
             var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: CGSize(width: 100, height: 100))
-            image = image?.resize(size: CGSize(width: 100, height: 100))
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
             button.setImage(image, for: .normal)
             button.setImage(imageHighlighted, for: .highlighted)
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -2*(image!.size.width)+20)
