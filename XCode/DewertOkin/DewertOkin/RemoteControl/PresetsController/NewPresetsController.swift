@@ -146,11 +146,16 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         self.characteristic = self.bluetooth.writeCharacteristic
         
         guard (indexPath.section == 1) else { return }
-        if (controlUnitPresets[indexPath.item] == "Memory 1") {
-            triggerCommand(keycode: keycode.memory1)
-        } else if (controlUnitPresets[indexPath.item] == "Memory 2") {
-            triggerCommand(keycode: keycode.memory2)
-        }
+//        if (controlUnitPresets[indexPath.item] == "Memory 1") {
+//            triggerCommand(keycode: keycode.memory1)
+//        } else if (controlUnitPresets[indexPath.item] == "Memory 2") {
+//            triggerCommand(keycode: keycode.memory2)
+//        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.triggerCommand(keycode: keycode.memory1)
+            })
+        
         collectionView.deselectItem(at: indexPath, animated: true)
         dismissSelf()
     }

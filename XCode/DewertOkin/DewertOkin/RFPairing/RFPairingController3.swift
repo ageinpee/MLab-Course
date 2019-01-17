@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreBluetooth
 
 class RFPairingController3: UIViewController {
     
@@ -23,6 +24,11 @@ class RFPairingController3: UIViewController {
     var selectedRemote: Remote = Remote()
     
     var remoteImage: UIImage = UIImage()
+    
+    var remoteControl = RemoteController()
+    var bluetooth = Bluetooth.sharedBluetooth
+    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     
     override func viewDidLoad() {
         
@@ -52,6 +58,7 @@ class RFPairingController3: UIViewController {
     
     @objc
     private func dismissSelf() {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.dismiss(animated: true)
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             delegate.window = UIWindow(frame: UIScreen.main.bounds)
