@@ -31,6 +31,7 @@
 		035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B860421C536C300A032AE /* BluetoothCentral.swift */; };
 		035B860721C536CE00A032AE /* BluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B860621C536CE00A032AE /* BluetoothPeripheral.swift */; };
 		0370112621E33D2100459A51 /* DevicesListTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */; };
+		03786EF821F079A400FD894E /* DetailVendorGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03786EF721F079A400FD894E /* DetailVendorGestureHandler.swift */; };
 		0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380565021E9005C00A6502F /* ExploreJSONParser.swift */; };
 		0380565321E901D500A6502F /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380565221E901D500A6502F /* Vendor.swift */; };
 		0380565521E901E300A6502F /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380565421E901E300A6502F /* Accessory.swift */; };
@@ -69,9 +70,6 @@
 		CDB5B11621B5B9FE000D92A4 /* OldRemote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */; };
 		CDB5B11821B5BA38000D92A4 /* OldRemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */; };
 		CDBCC0BE21C7A85A0014451C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBCC0BD21C7A85A0014451C /* HealthKit.framework */; };
-		CDC3FDE921A479F600EFF523 /* AccessoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDE821A479F600EFF523 /* AccessoriesTableViewController.swift */; };
-		CDC3FDEB21A47AFA00EFF523 /* AccessorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */; };
-		CDC3FDED21A48C8500EFF523 /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */; };
 		CDCBA82221EBD97D006BF55F /* NewPresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCBA82121EBD97D006BF55F /* NewPresetsController.swift */; };
 		CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD35A6321B2F5C7006B35FB /* AchievementType.swift */; };
 		CDFFC97521C07C8B005C5821 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFFC97421C07C8B005C5821 /* Health.swift */; };
@@ -149,6 +147,7 @@
 		035B860421C536C300A032AE /* BluetoothCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCentral.swift; sourceTree = "<group>"; };
 		035B860621C536CE00A032AE /* BluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPeripheral.swift; sourceTree = "<group>"; };
 		0370112521E33D2100459A51 /* DevicesListTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListTableViewExtension.swift; sourceTree = "<group>"; };
+		03786EF721F079A400FD894E /* DetailVendorGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVendorGestureHandler.swift; sourceTree = "<group>"; };
 		0380565021E9005C00A6502F /* ExploreJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreJSONParser.swift; sourceTree = "<group>"; };
 		0380565221E901D500A6502F /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		0380565421E901E300A6502F /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
@@ -189,9 +188,6 @@
 		CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OldRemote.storyboard; sourceTree = "<group>"; };
 		CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldRemoteViewController.swift; sourceTree = "<group>"; };
 		CDBCC0BD21C7A85A0014451C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		CDC3FDE821A479F600EFF523 /* AccessoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesTableViewController.swift; sourceTree = "<group>"; };
-		CDC3FDEA21A47AFA00EFF523 /* AccessorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessorieTableViewCell.swift; sourceTree = "<group>"; };
-		CDC3FDEC21A48C8500EFF523 /* SectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
 		CDCBA82121EBD97D006BF55F /* NewPresetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPresetsController.swift; sourceTree = "<group>"; };
 		CDD35A6321B2F5C7006B35FB /* AchievementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementType.swift; sourceTree = "<group>"; };
 		CDFFC97321C073D0005C5821 /* DewertOkin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DewertOkin.entitlements; sourceTree = "<group>"; };
@@ -370,6 +366,7 @@
 				0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */,
 				0316162D21EFD0BA00E69559 /* DetailVendorTableView.swift */,
 				0316162F21EFD91600E69559 /* AccessoryCustomCollectionCell.swift */,
+				03786EF721F079A400FD894E /* DetailVendorGestureHandler.swift */,
 			);
 			path = "Vendor Detail View";
 			sourceTree = "<group>";
@@ -785,8 +782,6 @@
 				034E67CA21DF960400E70F88 /* DevicesListCustomCell.swift in Sources */,
 				CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */,
 				FAE52D3821D784F400121B54 /* DeviceStyle.swift in Sources */,
-				CD100F5321E368B500DBAAB9 /* ActivityTracker+Helpers.swift in Sources */,
-				CD945294219C429400280A66 /* Accessorie.swift in Sources */,
 				FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */,
 				FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */,
 				CD100F4F21E0239600DBAAB9 /* AlarmCreation.swift in Sources */,
@@ -805,6 +800,7 @@
 				033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */,
 				FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */,
 				0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */,
+				03786EF821F079A400FD894E /* DetailVendorGestureHandler.swift in Sources */,
 				03CA62DE21EBDF51003F3477 /* AccessoryCustomCell.swift in Sources */,
 				FAE52D4E21D924D400121B54 /* AddPresetController.swift in Sources */,
 				FA19A2F621D370900032A4E7 /* RFPairingController1.swift in Sources */,
@@ -818,7 +814,6 @@
 				FAE52D4321D7BE5400121B54 /* PresetsController.swift in Sources */,
 				FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */,
 				039133CD21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift in Sources */,
-				CD100F5121E21F2B00DBAAB9 /* ActivityTracker.swift in Sources */,
 				FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */,
 				FA19A30021D527500032A4E7 /* rotationTransition.swift in Sources */,
 				CDCBA82221EBD97D006BF55F /* NewPresetsController.swift in Sources */,
@@ -847,7 +842,6 @@
 				0380565521E901E300A6502F /* Accessory.swift in Sources */,
 				CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */,
 				CD7D582621E8FC62001C9CA6 /* AddReminderViewController.swift in Sources */,
-				CDFFC96E21C0438E005C5821 /* NearestVendorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

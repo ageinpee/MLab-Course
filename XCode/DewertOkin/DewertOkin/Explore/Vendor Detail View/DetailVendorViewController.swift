@@ -10,26 +10,14 @@ import Foundation
 import UIKit
 import MapKit
 
-enum State {
-    case halfOpen
-    case open
-}
-
-extension State {
-    var opposite: State {
-        switch self {
-        case .open: return .halfOpen
-        case .halfOpen: return .open
-        }
-    }
-}
-
 class DetailVendorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // Data from ExploreMapViewController
     var displayingVendor: Vendor!
     var displayingAnnotation: MKAnnotationView!
     var vendorAccessories = [Accessory]()
     
+    // UI Elements
     lazy var backgroundAlphaView: UIView = {
         let view = UIView(frame: self.view.bounds)
         view.backgroundColor = .clear //UIColor.black.withAlphaComponent(0)
@@ -47,9 +35,12 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     
     var collectionView: UICollectionView!
     
+    // Gesture Recognizer & Animation Elements
     var panGestureForView = UIPanGestureRecognizer()
     var panGestureForMap = UITapGestureRecognizer()
     var panTapAnimation = UITapGestureRecognizer()
+    var animationProgress = [CGFloat]()
+    var runningAnimators = [UIViewPropertyAnimator]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,17 +69,15 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.translatesAutoresizingMaskIntoConstraints = false
         vendorView.layer.cornerRadius = 8.0
         vendorView.clipsToBounds = true
-        //vendorView.frame.origin = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height)
-        vendorView.heightAnchor.constraint(equalToConstant: 800).isActive = true
+        vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: self.view.frame.height / 2)
+        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: (self.view.frame.height / 3) - 100)
         bottomConstraint.isActive = true
         
-        panTapAnimation = UITapGestureRecognizer(target: self, action: #selector(vendorDetailViewTapped(recognizer:)))
+        panTapAnimation = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.vendorDetailViewGesture(recognizer:)))
         vendorView.isUserInteractionEnabled = true
         vendorView.addGestureRecognizer(panTapAnimation)
-        
         panGestureForMap = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.closeVendorDetail(_:)))
         backgroundAlphaView.isUserInteractionEnabled = true
         backgroundAlphaView.addGestureRecognizer(panGestureForMap)
@@ -139,42 +128,6 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.addSubview(collectionView)
     }
     
-    @objc func vendorDetailViewTapped(recognizer: UITapGestureRecognizer) {
-        let state = currentState.opposite
-        let transitionAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 1, animations: {
-            switch state {
-            case .open:
-                self.bottomConstraint.constant = 0
-            case .halfOpen:
-                self.bottomConstraint.constant = self.view.frame.height / 2
-            }
-            self.vendorView.layoutIfNeeded()
-        })
-        transitionAnimator.addCompletion { position in
-            switch position {
-            case .start:
-                self.currentState = state.opposite
-            case .end:
-                self.currentState = state
-            case .current:
-                ()
-            }
-            switch self.currentState {
-            case .open:
-                self.bottomConstraint.constant = 0
-            case .halfOpen:
-                self.bottomConstraint.constant = self.view.frame.height / 2
-            }
-        }
-        transitionAnimator.startAnimation()
-    }
-    
-    @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
-        displayingAnnotation.isSelected = false
-        isPresenting = !isPresenting
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
@@ -200,18 +153,18 @@ extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
         if isPresenting == true {
             containerView.addSubview(toVC.view)
             
-            vendorView.frame.origin.y += self.view.frame.height / 4
+            vendorView.frame.origin.y += self.view.frame.height / 3
             backgroundAlphaView.alpha = 0
             
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y -= self.view.frame.height / 4
+                self.vendorView.frame.origin.y -= self.view.frame.height / 3
                 self.backgroundAlphaView.alpha = 1
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
             })
         } else {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y += self.view.frame.height / 4
+                self.vendorView.frame.origin.y += self.view.frame.height / 3
                 self.backgroundAlphaView.alpha = 0
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
