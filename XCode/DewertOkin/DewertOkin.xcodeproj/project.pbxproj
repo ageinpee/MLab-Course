@@ -87,7 +87,7 @@
 		FAE52D3221D5562700121B54 /* RFPairingController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3121D5562700121B54 /* RFPairingController2.swift */; };
 		FAE52D3421D556DB00121B54 /* RFPairingController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3321D556DB00121B54 /* RFPairingController3.swift */; };
 		FAE52D3621D6B54800121B54 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3521D6B54800121B54 /* Remote.swift */; };
-		FAE52D3821D784F400121B54 /* DeviceStyleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3721D784F400121B54 /* DeviceStyleMatcher.swift */; };
+		FAE52D3821D784F400121B54 /* DeviceStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3721D784F400121B54 /* DeviceStyleManager.swift */; };
 		FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */; };
 		FAE52D3C21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */; };
 		FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */; };
@@ -207,7 +207,7 @@
 		FAE52D3121D5562700121B54 /* RFPairingController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController2.swift; sourceTree = "<group>"; };
 		FAE52D3321D556DB00121B54 /* RFPairingController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFPairingController3.swift; sourceTree = "<group>"; };
 		FAE52D3521D6B54800121B54 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
-		FAE52D3721D784F400121B54 /* DeviceStyleMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStyleMatcher.swift; sourceTree = "<group>"; };
+		FAE52D3721D784F400121B54 /* DeviceStyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStyleManager.swift; sourceTree = "<group>"; };
 		FAE52D3921D78BA100121B54 /* RemoteControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtension.swift; sourceTree = "<group>"; };
 		FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionDarkMode.swift; sourceTree = "<group>"; };
 		FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionBLE.swift; sourceTree = "<group>"; };
@@ -399,7 +399,7 @@
 				FAC415AE21DF60E900F4B5AC /* RemoteAnalyzer.swift */,
 				CDB5B11521B5B9FE000D92A4 /* OldRemote.storyboard */,
 				FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */,
-				FAE52D3721D784F400121B54 /* DeviceStyleMatcher.swift */,
+				FAE52D3721D784F400121B54 /* DeviceStyleManager.swift */,
 				FAE52D4F21DA485500121B54 /* DeviceObject.swift */,
 				CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */,
 				FAE52D4121D7BE0B00121B54 /* RemoteController */,
@@ -784,7 +784,7 @@
 				FAE52D3221D5562700121B54 /* RFPairingController2.swift in Sources */,
 				034E67CA21DF960400E70F88 /* DevicesListCustomCell.swift in Sources */,
 				CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */,
-				FAE52D3821D784F400121B54 /* DeviceStyleMatcher.swift in Sources */,
+				FAE52D3821D784F400121B54 /* DeviceStyleManager.swift in Sources */,
 				FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */,
 				FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */,
 				CD100F4F21E0239600DBAAB9 /* AlarmCreation.swift in Sources */,

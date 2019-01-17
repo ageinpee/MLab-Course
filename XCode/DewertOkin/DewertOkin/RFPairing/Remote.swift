@@ -12,7 +12,6 @@ import UIKit.UIImage
 class Remote {
     var id: String = ""
     var image: UIImage = UIImage()
-    var highlightList: [CGPoint] = [CGPoint]()
     
     init() {
         
@@ -23,9 +22,4 @@ class Remote {
         image = withImage
     }
     
-    init(withID: String, withImage: UIImage, withHighlights: [CGPoint]) {
-        id = withID
-        image = withImage
-        highlightList = withHighlights
-    }
 }

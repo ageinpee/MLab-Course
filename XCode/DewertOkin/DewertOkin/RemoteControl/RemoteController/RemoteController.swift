@@ -38,7 +38,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     var deviceType: DeviceType = .NaN
     
-    var currentStyle: DeviceStyleMatcher = DeviceStyleMatcher()
+    var currentStyle: DeviceStyleManager = DeviceStyleManager()
     var device: DeviceObject = DeviceObject()
     var opacity = CGFloat(0.75)
     

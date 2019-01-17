@@ -9,7 +9,7 @@
 import Foundation
 import UIKit.UIImage
 
-class DeviceStyleMatcher {
+class DeviceStyleManager {
     var stylesString: [String] = [String]()
     var stylesImages: [UIImage] = [UIImage]()
     
@@ -31,6 +31,29 @@ class DeviceStyleMatcher {
             stylesImages.append(UIImage(named: string)!)
         }
     }
+    
+    
+    func getImages(inStyle style: DeviceStyle, forDevice device: DeviceType) -> [UIImage] {
+        switch style {
+        case .empty:
+            setEmptyStyle(forDevice: device)
+        case .filled:
+            setFilledStyle(forDevice: device)
+        }
+        return stylesImages
+    }
+    
+    
+    func setStyle(inStyle style: DeviceStyle, forDevice device: DeviceType) {
+        switch style {
+        case .empty:
+            setEmptyStyle(forDevice: device)
+        case .filled:
+            setFilledStyle(forDevice: device)
+        }
+    }
+    
+    
     
     func setFilledStyle(forDevice: DeviceType) {
         switch forDevice {
@@ -58,6 +81,22 @@ class DeviceStyleMatcher {
             setWithStrings(Strings: filledStyle)
         case .NaN:
             print("no deviceType found")
+        case .chair_1Motors:
+            print("not implemented yet")
+        case .chair_3Motors:
+            print("not implemented yet")
+        case .chair_4Motors:
+            print("not implemented yet")
+        case .chair_5Motors:
+            print("not implemented yet")
+        case .bed_1Motors:
+            print("not implemented yet")
+        case .bed_3Motors:
+            print("not implemented yet")
+        case .bed_4Motors:
+            print("not implemented yet")
+        case .bed_5Motors:
+            print("not implemented yet")
         }
     }
     
@@ -87,6 +126,22 @@ class DeviceStyleMatcher {
             setWithStrings(Strings: filledStyle)
         case .NaN:
             print("no deviceType found")
+        case .chair_1Motors:
+            print("not implemented yet")
+        case .chair_3Motors:
+            print("not implemented yet")
+        case .chair_4Motors:
+            print("not implemented yet")
+        case .chair_5Motors:
+            print("not implemented yet")
+        case .bed_1Motors:
+            print("not implemented yet")
+        case .bed_3Motors:
+            print("not implemented yet")
+        case .bed_4Motors:
+            print("not implemented yet")
+        case .bed_5Motors:
+            print("not implemented yet")
         }
     }
 }

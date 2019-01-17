@@ -126,11 +126,3 @@ class ExtraFunction {
         hex = withHex
     }
 }
-
-enum ExtraFunctions: String {
-    case massage_back
-    case massage_neck
-    case massage_legs
-    case ubl
-    case NaN
-}

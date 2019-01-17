@@ -22,6 +22,7 @@ class RFPairingController3: UIViewController {
     @IBOutlet weak var remoteImageView: UIImageView!
     
     var selectedRemote: Remote = Remote()
+    var device: DeviceObject = DeviceObject()
     
     var remoteImage: UIImage = UIImage()
     
@@ -32,29 +33,32 @@ class RFPairingController3: UIViewController {
     
     override func viewDidLoad() {
         
-        
         remoteImage = selectedRemote.image
-        
         remoteImageView.image = remoteImage
         
-        if selectedRemote.highlightList.count == 0 {
-            textLabel.text = "Press any button on your remote"
-        } else {
-            textLabel.text = "Press the shown buttons on your remote"
-            for pos in selectedRemote.highlightList {
-                animate(atPosition: pos)
-            }
-        }
+        textLabel.text = "As soon as the Control Unit stops flashing, please press any button on your remote. Your device will be paired automatically afterwards."
+        textLabel.textColor = UIColor.gray
         
         layoutConstraints()
         
         let reader = CSVReader()
         let remoteData = reader.readCSV(fileName: "handsender1", fileType: "csv")
+        
+        for row in remoteData {
+            if row[0] == selectedRemote.id {
+                device = DeviceObject(withUUID: UUID().uuidString, named: "New Device", withHandheldID: row[0], withStyle: .empty)
+            }
+        }
     }
     
     @objc
     private func dismissSelf() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        //guard bluetoothBackgroundHandler.checkStatus() else { return }
+        
+        /*
+        insert bluetooth pairing
+         */
+        
         self.dismiss(animated: true)
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             delegate.window = UIWindow(frame: UIScreen.main.bounds)
@@ -63,39 +67,8 @@ class RFPairingController3: UIViewController {
         }
 //        present(MainViewController(), animated: true, completion: nil)
         
-        
     }
-    
-    func animate (atPosition: CGPoint) {
-        let animationView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        animationView.center = atPosition
-        
-        let circleBlueView = UIImageView(image: UIImage(named: "circleBlue"))
-        let circleGrayView = UIImageView(image: UIImage(named: "circleGray"))
-        
-        circleGrayView.alpha = 0.5
-        circleGrayView.frame.size = CGSize(width: 80, height: 80)
-        circleBlueView.frame.size = CGSize(width: 80, height: 80)
-        
-        pairingView.addSubview(animationView)
-        
-        animationView.addSubview(circleBlueView)
-        animationView.addSubview(circleGrayView)
-        animationView.contentMode = .scaleAspectFit
-        animationView.layer.anchorPoint = CGPoint(x:0.5, y:0.5)
-        
-        remoteImageView.addSubview(animationView)
-        
-        animationView.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
-        
-        UIView.animate(withDuration: 1.0, delay: 2.5, animations: {
-            animationView.transform = CGAffineTransform.identity
-        })
-        
-        UIView.animate(withDuration: 2.0, delay: 1.0, options: [.repeat, .autoreverse], animations: {
-            animationView.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        }, completion: nil)
-    }
+
     
     
     

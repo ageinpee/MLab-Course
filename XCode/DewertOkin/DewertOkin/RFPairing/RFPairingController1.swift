@@ -28,9 +28,9 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         self.remotePicker.delegate = self
         self.remotePicker.dataSource = self
         
-        imageData = [Remote(withID:"Remote1", withImage:UIImage(named: "remote1.png")!, withHighlights: [CGPoint(x:145, y:185), CGPoint(x:210, y:185)]),
-                     Remote(withID:"Remote2", withImage:UIImage(named: "remote2.png")!),
-                     Remote(withID:"Remote3", withImage:UIImage(named: "remote3.png")!)]
+        imageData = [Remote(withID:"82418", withImage:UIImage(named: "remote1.png")!), // our remote
+                     Remote(withID:"seating-2", withImage:UIImage(named: "remote2.png")!),
+                     Remote(withID:"bedding-2", withImage:UIImage(named: "remote3.png")!)] // maybe change to a table for demo purposes
         selectedRemote = imageData[0]
         
         layoutConstraints()
