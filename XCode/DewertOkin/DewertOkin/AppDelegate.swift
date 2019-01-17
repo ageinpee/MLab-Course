@@ -55,17 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        Health.shared.checkSteps { result in
-            switch result {
-            case .noActivity: completionHandler(.noData)
-            case .enoughActivity: completionHandler (.newData)
-            case .error: completionHandler(.failed)
-            }
-        }
-        print("Background fetch works!")
-    }
-    
     // Allows Notifications to be displayed while the app is in the foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
@@ -86,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         AchievementModel.saveAchievementProgress()
         isRunning = false
+        Health.shared.activityTimer?.invalidate()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

@@ -37,6 +37,8 @@ extension RemoteController {
         PresetsButtonObj.layer.masksToBounds = true
         PresetsButtonObj.layer.borderWidth = 1
         PresetsButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+        PresetsButtonObj.addTarget(self, action: #selector(showPresetsView), for: .touchUpInside)
+        
         
         width = TimerButtonObj.frame.width
         TimerButtonObj.layer.cornerRadius = width/2
@@ -50,6 +52,13 @@ extension RemoteController {
         ExtraFunctionsButtonObj.layer.masksToBounds = true
         ExtraFunctionsButtonObj.layer.borderWidth = 1
         ExtraFunctionsButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+    }
+    
+    @objc
+    private func showPresetsView() {
+        let nc = UINavigationController(rootViewController: PresetsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
+        present(nc, animated: true, completion: nil)
+
     }
     
     @objc

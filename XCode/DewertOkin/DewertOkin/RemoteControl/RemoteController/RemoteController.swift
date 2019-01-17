@@ -25,6 +25,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
     
+    //----------------------------------------
+    //------ Presets UI-Elements -------------
+    
+  
+    
     var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var panRecRight: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var pressRecLeft: UILongPressGestureRecognizer = UILongPressGestureRecognizer()
