@@ -3,6 +3,7 @@
     <entity name="Devices" representedClassName="Devices" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="presets" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="style" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -11,6 +12,7 @@
         <attribute name="repeatInterval" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timerTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
         <attribute name="reminderDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,8 +21,8 @@
         <attribute name="reminderTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DeviceTimer" positionX="0" positionY="0" width="128" height="103"/>
-        <element name="Devices" positionX="-198" positionY="9" width="128" height="105"/>
+        <element name="Devices" positionX="-198" positionY="9" width="128" height="118"/>
+        <element name="DeviceTimer" positionX="71.1015625" positionY="12.0859375" width="128" height="118"/>
         <element name="Reminder" positionX="-63.95703125" positionY="-11.46484375" width="128" height="90"/>
     </elements>
 </model>
