@@ -79,8 +79,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.layer.cornerRadius = 8.0
         vendorView.clipsToBounds = true
         //vendorView.frame.origin = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height)
-        vendorView.heightAnchor.constraint(equalToConstant: 500).isActive = true
-        //vendorView.bottomAnchor.constraint(equalToConstant: 500).isActive = true
+        vendorView.heightAnchor.constraint(equalToConstant: 800).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: self.view.frame.height / 2)
@@ -89,10 +88,6 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         panTapAnimation = UITapGestureRecognizer(target: self, action: #selector(vendorDetailViewTapped(recognizer:)))
         vendorView.isUserInteractionEnabled = true
         vendorView.addGestureRecognizer(panTapAnimation)
-        
-//        panGestureForView = UIPanGestureRecognizer(target: self, action: #selector(DetailVendorViewController.draggedView(_:)))
-//        vendorView.isUserInteractionEnabled = true
-//        vendorView.addGestureRecognizer(panGestureForView)
         
         panGestureForMap = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.closeVendorDetail(_:)))
         backgroundAlphaView.isUserInteractionEnabled = true
@@ -144,18 +139,6 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.addSubview(collectionView)
     }
     
-    @objc func draggedView(_ sender: UIPanGestureRecognizer) {
-        self.view.bringSubviewToFront(vendorView)
-        let transition = sender.translation(in: self.view)
-        let newPosition = CGPoint(x: vendorView.center.x, y: vendorView.center.y + transition.y)
-        if draggableViewArea(newPoint: newPosition){
-            vendorView.center = newPosition
-            sender.setTranslation(CGPoint.zero, in: self.view)
-        } else if draggableAreaToClose(newPoint: newPosition) {
-            swipeCloseVendorDetail()
-        }
-    }
-    
     @objc func vendorDetailViewTapped(recognizer: UITapGestureRecognizer) {
         let state = currentState.opposite
         let transitionAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 1, animations: {
@@ -186,25 +169,12 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         transitionAnimator.startAnimation()
     }
     
-    func draggableViewArea(newPoint: CGPoint) -> Bool {
-        return newPoint.y >= (self.view.frame.height / 2) + (self.view.frame.height / 4) && newPoint.y <= self.view.frame.height
-    }
-    
-    func draggableAreaToClose(newPoint: CGPoint) -> Bool {
-        return newPoint.y <= self.view.frame.height
-    }
-    
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
         displayingAnnotation.isSelected = false
         isPresenting = !isPresenting
         dismiss(animated: true, completion: nil)
     }
     
-    func swipeCloseVendorDetail() {
-        displayingAnnotation.isSelected = false
-        isPresenting = !isPresenting
-        dismiss(animated: true, completion: nil)
-    }
 }
 
 extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
