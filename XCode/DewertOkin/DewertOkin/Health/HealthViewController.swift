@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import UserNotifications
 
 private let recommendationsLabel = "recommendationsLabel"
 private let stepsLabel = "stepsLabel"

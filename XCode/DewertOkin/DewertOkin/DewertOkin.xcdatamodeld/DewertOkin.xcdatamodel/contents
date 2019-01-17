@@ -15,6 +15,7 @@
     <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
         <attribute name="reminderDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reminderName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminderRepeatInterval" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reminderTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
