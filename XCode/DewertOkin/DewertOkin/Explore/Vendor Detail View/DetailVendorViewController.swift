@@ -21,7 +21,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     // UI Elements
     lazy var backgroundAlphaView: UIView = {
         let view = UIView(frame: self.view.bounds)
-        view.backgroundColor = .clear //UIColor.black.withAlphaComponent(0)
+        view.backgroundColor = .clear
         return view
     }()
     let vendorView = UIView()
@@ -76,7 +76,6 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: (self.view.frame.height / 3) - 100)
         bottomConstraint.isActive = true
         
-//        panTapAnimation = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.vendorDetailViewGesture(recognizer:)))
         panTapAnimation = InstantPanGestureRecognizer()
         panTapAnimation.addTarget(self, action: #selector(DetailVendorViewController.vendorDetailViewGesture(recognizer:)))
         vendorView.isUserInteractionEnabled = true

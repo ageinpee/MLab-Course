@@ -21,7 +21,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Devices"
+        navigationItem.title = "Vendors"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         mapView.delegate = self

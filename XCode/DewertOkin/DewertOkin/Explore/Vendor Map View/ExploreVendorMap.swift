@@ -16,7 +16,6 @@ extension ExploreViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         if (CLLocationManager.locationServicesEnabled()) {
-            locationManager.requestAlwaysAuthorization()
             locationManager.requestWhenInUseAuthorization()
         }
         

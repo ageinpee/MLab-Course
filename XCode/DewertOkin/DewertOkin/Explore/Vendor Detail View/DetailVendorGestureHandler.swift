@@ -34,8 +34,10 @@ extension DetailVendorViewController {
             switch self.currentState {
             case .open:
                 self.bottomConstraint.constant = 0
+                self.backgroundAlphaView.backgroundColor = .clear
             case .halfOpen:
                 self.bottomConstraint.constant = self.view.frame.height / 2
+                self.backgroundAlphaView.backgroundColor = UIColor.black.withAlphaComponent(0)
             }
             self.runningAnimators.removeAll()
         }
@@ -56,7 +58,7 @@ extension DetailVendorViewController {
             let translation = recognizer.translation(in: vendorView)
             var fraction = -translation.y / (self.view.frame.height / 2)
             if currentState == .open { fraction *= -1 }
-            //if runningAnimators[0].isReversed { fraction *= 1 }
+            //if runningAnimators[0].isReversed { fraction *= 1 } //Guarding the runningAnimators with guard
             
             for (index, animator) in runningAnimators.enumerated() {
                 animator.fractionComplete = fraction + animationProgress[index]
