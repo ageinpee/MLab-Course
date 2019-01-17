@@ -38,6 +38,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     let vendorView = UIView()
     var isPresenting = false
     var currentState: State = .halfOpen
+    var bottomConstraint = NSLayoutConstraint()
     
     var vendorName = UILabel()
     var vendorStreet = UILabel()
@@ -48,6 +49,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     
     var panGestureForView = UIPanGestureRecognizer()
     var panGestureForMap = UITapGestureRecognizer()
+    var panTapAnimation = UITapGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,15 +78,21 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.translatesAutoresizingMaskIntoConstraints = false
         vendorView.layer.cornerRadius = 8.0
         vendorView.clipsToBounds = true
-        vendorView.frame.origin = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height)
-        vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
-        vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        //vendorView.frame.origin = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height)
+        vendorView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        //vendorView.bottomAnchor.constraint(equalToConstant: 500).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: self.view.frame.height / 2)
+        bottomConstraint.isActive = true
         
-        panGestureForView = UIPanGestureRecognizer(target: self, action: #selector(DetailVendorViewController.draggedView(_:)))
+        panTapAnimation = UITapGestureRecognizer(target: self, action: #selector(vendorDetailViewTapped(recognizer:)))
         vendorView.isUserInteractionEnabled = true
-        vendorView.addGestureRecognizer(panGestureForView)
+        vendorView.addGestureRecognizer(panTapAnimation)
+        
+//        panGestureForView = UIPanGestureRecognizer(target: self, action: #selector(DetailVendorViewController.draggedView(_:)))
+//        vendorView.isUserInteractionEnabled = true
+//        vendorView.addGestureRecognizer(panGestureForView)
         
         panGestureForMap = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.closeVendorDetail(_:)))
         backgroundAlphaView.isUserInteractionEnabled = true
@@ -146,6 +154,36 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         } else if draggableAreaToClose(newPoint: newPosition) {
             swipeCloseVendorDetail()
         }
+    }
+    
+    @objc func vendorDetailViewTapped(recognizer: UITapGestureRecognizer) {
+        let state = currentState.opposite
+        let transitionAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 1, animations: {
+            switch state {
+            case .open:
+                self.bottomConstraint.constant = 0
+            case .halfOpen:
+                self.bottomConstraint.constant = self.view.frame.height / 2
+            }
+            self.vendorView.layoutIfNeeded()
+        })
+        transitionAnimator.addCompletion { position in
+            switch position {
+            case .start:
+                self.currentState = state.opposite
+            case .end:
+                self.currentState = state
+            case .current:
+                ()
+            }
+            switch self.currentState {
+            case .open:
+                self.bottomConstraint.constant = 0
+            case .halfOpen:
+                self.bottomConstraint.constant = self.view.frame.height / 2
+            }
+        }
+        transitionAnimator.startAnimation()
     }
     
     func draggableViewArea(newPoint: CGPoint) -> Bool {
