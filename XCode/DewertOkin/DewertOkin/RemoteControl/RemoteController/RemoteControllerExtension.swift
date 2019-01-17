@@ -72,9 +72,11 @@ extension RemoteController {
             print(Date())
             if translation == .down {
                 print("--> down")
+                impact.impactOccurred()
             }
             else if translation == .up {
                 print("--> up")
+                impact.impactOccurred()
             }
         } else {
             print("end")
@@ -89,10 +91,12 @@ extension RemoteController {
             print(Date())
             if translation == .down {
                 print("--> down")
+                impact.impactOccurred()
                 goDown()
             }
             else if translation == .up {
                 print("--> up")
+                impact.impactOccurred()
                 goUp()
             }
         } else {

@@ -26,11 +26,7 @@ class RFPairingController3: UIViewController {
     
     override func viewDidLoad() {
         
-//        if selectedRemote.image != nil {
-//            remoteImage = selectedRemote.image
-//        } else {
-//            print("ERROR: remote not found")
-//        }
+        
         remoteImage = selectedRemote.image
         
         remoteImageView.image = remoteImage
@@ -43,6 +39,13 @@ class RFPairingController3: UIViewController {
                 animate(atPosition: pos)
             }
         }
+        
+        remoteImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: remoteImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: pairingView.frame.height/2).isActive = true
+        dottedCircleImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: dottedCircleImage, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
         
         proceedButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
     }

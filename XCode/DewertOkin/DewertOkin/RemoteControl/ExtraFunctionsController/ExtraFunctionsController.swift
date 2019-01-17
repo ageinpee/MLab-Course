@@ -11,65 +11,126 @@ import UIKit
 
 class ExtraFunctionsController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var moreFunctionsLabel: UILabel!
     @IBOutlet var globalView: UIView!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var tapView: UIView!
+    @IBOutlet weak var contentView: UIView!
     
-    var functionsList: [String] = [String]()
+    @IBOutlet weak var noFunctionsLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    
+    
+    var functionsList: [ExtraFunction] = [ExtraFunction]()
     var totalHeight: Int = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        functionsList = ["Massage", "UBL", "Torch", "Massage2"]
+        globalView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
-        createButtons(withText: functionsList)
-        createViews()
+        noFunctionsLabel.text = "Your device currently has no additionaly features. You can find accessories for your device in the 'Explore' section. "
+        noFunctionsLabel.textColor = UIColor.gray
+        noFunctionsLabel.isHidden = true
         
+        functionsList = [ExtraFunction(asType: .massage_back, withTitle: "Back Massage", withHex: "0x01"),
+                         ExtraFunction(asType: .massage_neck, withTitle: "Neck Massage", withHex: "0x02"),
+                         ExtraFunction(asType: .massage_legs, withTitle: "Leg Massage", withHex: "0x03"),
+                         ExtraFunction(asType: .ubl, withTitle: "Under Bed Lights", withHex: "0x04")]
+        
+        createButtons(withFunctions: functionsList)
     }
     
-    @objc func functionsButtonAction(sender: UIButton!) {
-        sender.backgroundColor = UIColor.lightGray
-        sender.alpha = 0.5
-        switch sender.tag {
+    
+    @IBAction func dismissVC(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    func handleButtonPress(sender: UIButton!) {
+        switch sender.tag{
         case 0:
-            print("xxx")
+            executeFunction(withHex: functionsList[0].hex)
         case 1:
-            print("yyy")
+            executeFunction(withHex: functionsList[1].hex)
         case 2:
-            print("zzz")
+            executeFunction(withHex: functionsList[2].hex)
         case 3:
-            print("aaa")
+            executeFunction(withHex: functionsList[3].hex)
         case 4:
-            print("bbb")
+            executeFunction(withHex: functionsList[4].hex)
         case 5:
-            print("ccc")
+            executeFunction(withHex: functionsList[5].hex)
+        case 6:
+            executeFunction(withHex: functionsList[6].hex)
+        case 7:
+            executeFunction(withHex: functionsList[7].hex)
+        case 8:
+            executeFunction(withHex: functionsList[8].hex)
         default:
-            print("default")
+            executeFunction(withHex: "0x00")
         }
     }
     
-    @objc func functionsButtonActionEnd(sender: UIButton!) {
-        sender.backgroundColor = UIColor.white
-        sender.alpha = 1
-        switch sender.tag {
-        case 0:
-            print("xxxx")
-        case 1:
-            print("xyyy")
-        case 2:
-            print("xzzz")
-        case 3:
-            print("xaaa")
-        case 4:
-            print("xbbb")
-        case 5:
-            print("xccc")
-        default:
-            print("default")
-        }
+    private func executeFunction(withHex hex: String) {
+        print("placehodler for bluetooth function with hexcode \(hex)")
     }
     
+    
+}
+
+//====================================================================================
+//====================================================================================
+//====================================================================================
+
+extension UIImage {
+    func resize(width: CGFloat) -> UIImage {
+        let height = (width/self.size.width)*self.size.height
+        return self.resize(size: CGSize(width: width, height: height))
+    }
+    
+    func resize(height: CGFloat) -> UIImage {
+        let width = (height/self.size.height)*self.size.width
+        return self.resize(size: CGSize(width: width, height: height))
+    }
+    
+    func resize(size: CGSize) -> UIImage {
+        let widthRatio  = size.width/self.size.width
+        let heightRatio = size.height/self.size.height
+        var updateSize = size
+        if(widthRatio > heightRatio) {
+            updateSize = CGSize(width:self.size.width*heightRatio, height:self.size.height*heightRatio)
+        } else if heightRatio > widthRatio {
+            updateSize = CGSize(width:self.size.width*widthRatio,  height:self.size.height*widthRatio)
+        }
+        UIGraphicsBeginImageContextWithOptions(updateSize, false, UIScreen.main.scale)
+        self.draw(in: CGRect(origin: .zero, size: updateSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+}
+
+
+
+class ExtraFunction {
+    
+    var type: ExtraFunctions = .NaN
+    var title: String = String()
+    var hex: String = String()
+    
+    init() {
+        
+    }
+    
+    init(asType: ExtraFunctions, withTitle: String, withHex: String) {
+        type = asType
+        title = withTitle
+        hex = withHex
+    }
+}
+
+enum ExtraFunctions: String {
+    case massage_back
+    case massage_neck
+    case massage_legs
+    case ubl
+    case NaN
 }

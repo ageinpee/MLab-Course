@@ -25,8 +25,19 @@ class rotationTransition: UIStoryboardSegue, UIViewControllerTransitioningDelega
         
         let containerView = fromViewController.view.superview
         
-        let rotationPoint = CGPoint(x:0.5, y:(1307/896))
-        let positionPoint = CGPoint(x:207, y:1307)
+        let imageViewList = fromViewController.view.subviews.filter{$0 is UIImageView}
+        print(fromViewController.view.frame.size)
+        var circleImage = UIView()
+        
+        for imageView in imageViewList {
+            if imageView.tag == 42 {
+                circleImage = imageView
+                print(imageView.center)
+            }
+        }
+        
+        let rotationPoint = CGPoint(x:0.5, y:(circleImage.center.y/fromViewController.view.frame.size.height))
+        let positionPoint = CGPoint(x: circleImage.center.x, y: circleImage.center.y)
         
         //adding views
         containerView?.insertSubview(backgroundView, at: 0)
@@ -41,7 +52,7 @@ class rotationTransition: UIStoryboardSegue, UIViewControllerTransitioningDelega
         toViewController.view.layer.position = positionPoint
         toViewController.view.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
         
-        UIView.animate(withDuration: 2.0, delay: 0, options: .allowUserInteraction, animations: {
+        UIView.animate(withDuration: 1.5, delay: 0, options: .allowUserInteraction, animations: {
             toViewController.view.transform = CGAffineTransform.identity
             fromViewController.view.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         }) { success in

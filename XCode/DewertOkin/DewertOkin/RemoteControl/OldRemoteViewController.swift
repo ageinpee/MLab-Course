@@ -9,76 +9,134 @@
 import UIKit
 
 class OldRemoteViewController: UIViewController {
-
-    @IBOutlet weak var flashLightButton: UIButton!
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true)
-    }
+    
+    @IBOutlet weak var remoteView: UIView!
+    
+    @IBOutlet weak var backUpButton: UIButton!
+    @IBOutlet weak var backDownButton: UIButton!
+    @IBOutlet weak var feetUpButton: UIButton!
+    @IBOutlet weak var feetDownButton: UIButton!
+    @IBOutlet weak var bothUpButton: UIButton!
+    @IBOutlet weak var bothDownButton: UIButton!
+    @IBOutlet weak var memory1Button: UIButton!
+    @IBOutlet weak var memory2Button: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var ublButton: UIButton!
+    @IBOutlet weak var torchButton: UIButton!
+    
+    var buttonList: [UIButton] = [UIButton]()
+    var buttonList2: [UIButton] = [UIButton]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownDetected))
-//        swipeDown.direction = .down
-//        flashLightButton.addGestureRecognizer(swipeDown)
-
-        // Do any additional setup after loading the view.
+        
+        buttonList = [backUpButton, backDownButton,
+                      feetUpButton, feetDownButton,
+                      bothUpButton, bothDownButton,
+                      memory1Button, memory2Button,
+                      saveButton, ublButton,
+                      torchButton]
+        buttonList2 = [backUpButton, backDownButton,
+                       feetUpButton, feetDownButton,
+                       bothUpButton, bothDownButton,
+                       memory1Button, memory2Button,
+                       saveButton, ublButton]
+        
+        for button in buttonList {
+            button.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+        }
+        
+        print(remoteView.superview?.frame.size)
+        constrainButtons()
     }
     
-//    @objc
-//    private func swipeDownDetected() {
-//        print("Swipe Down")
-//        self.dismiss(animated: true)
-//    }
+    func constrainButtons() {
+        
+        let frameWidth = (remoteView.superview?.frame.width)!
+        let frameHeight = (remoteView.superview?.frame.height)!
+        
+        let initialOffset = frameHeight/14
+        var offset = frameHeight/14
+        var rowCount = 0
+        
+        
+        for button in buttonList {
+            
+            button.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: frameWidth/5.83).isActive = true
+            NSLayoutConstraint(item: button, attribute: .height
+                , relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: frameHeight/18.66).isActive = true
+            NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: remoteView, attribute: .top, multiplier: 1, constant: offset).isActive = true
+            
+            if rowCount%2 != 0 {
+                offset = offset + initialOffset
+            }
+            rowCount = rowCount+1
+        }
+        
+        var flagLeftRight = true //true == left, false == right
+        for button in buttonList2 {
+            if flagLeftRight {
+                
+                NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: remoteView, attribute: .centerX, multiplier: 1, constant: (frameWidth/4.06)-40).isActive = true
+                
+                flagLeftRight = false
+                
+            } else {
+                
+                NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: remoteView, attribute: .centerX, multiplier: 1, constant: -(frameWidth/4.06)+40).isActive = true
+                
+                flagLeftRight = true
+            }
+        }
+        
+        NSLayoutConstraint(item: torchButton, attribute: .centerX, relatedBy: .equal, toItem: remoteView, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+    }
     
-    //----------------------------------------
-    //----- generic remote design buttons ----
     
-    @IBAction func headUpBtn(_ sender: Any) {
+    @IBAction func backUpAction(_ sender: Any) {
         
     }
     
-    @IBAction func headDownBtn(_ sender: Any) {
-        print("asdadasdasdadsadasd is an overload!")
+    @IBAction func backDownAction(_ sender: Any) {
         
     }
     
-    @IBAction func FootUpBtn(_ sender: Any) {
+    @IBAction func feetUpAction(_ sender: Any) {
+        
     }
     
-    @IBAction func FootDownBtn(_ sender: Any) {
+    @IBAction func feetDownAction(_ sender: Any) {
+        
     }
     
-    
-    @IBAction func RestPosBtn(_ sender: Any) {
+    @IBAction func bothUpAction(_ sender: Any) {
+        
     }
     
-    @IBAction func FlatPosBtn(_ sender: Any) {
+    @IBAction func bothDownAction(_ sender: Any) {
+        
     }
     
-    @IBAction func M1Btn(_ sender: Any) {
+    @IBAction func memory1Action(_ sender: Any) {
+        
     }
     
-    @IBAction func M2Btn(_ sender: Any) {
+    @IBAction func memory2Action(_ sender: Any) {
+        
     }
     
-    @IBAction func SaveBtn(_ sender: Any) {
+    @IBAction func saveAction(_ sender: Any) {
+        
     }
     
-    
-    @IBAction func UblBtn(_ sender: Any) {
+    @IBAction func ublAction(_ sender: Any) {
+        
     }
     
-    @IBAction func TourchBtn(_ sender: Any) {
+    @IBAction func torchAction(_ sender: Any) {
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

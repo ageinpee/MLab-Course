@@ -25,11 +25,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
     
-    //----------------------------------------
-    //------ Presets UI-Elements -------------
-    
-  
-    
     var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var panRecRight: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var pressRecLeft: UILongPressGestureRecognizer = UILongPressGestureRecognizer()
@@ -39,6 +34,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     //------ Fancy Remote Attributes ---------
     var oldTranslation = 0 //used to define in which direction the old translation was going
     var panState = UIGestureRecognizer.State.ended
+    var impact: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator()
     
     var deviceType: DeviceType = .NaN
     
@@ -93,6 +89,14 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
 
         Health.shared.requestHealthKitPermission()
         
+        impact = UIImpactFeedbackGenerator(style: .light)
+        
+        /*
+        let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
+        swipeRec.direction = .up
+        ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
+        ExtraFunctionsButtonObj.addTarget(self, action: #selector(showExtraFeaturesView), for: .touchUpInside)
+        */
         arrowsImageView.image = currentStyle.stylesImages[0]
         Image.image = currentStyle.stylesImages[1]
         Image.contentMode = .scaleAspectFit
@@ -102,6 +106,21 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         arrowsImageView.alpha = 0
         animateFade(withAlpha: opacity)
     }
+    
+    @objc
+    private func showOldRemote() {
+        print("Swipe recognized")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "OldRemote", bundle: nil)
+        let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
+        self.present(newViewController, animated: true, completion: nil)
+    }
+
+    /*
+    @objc
+    private func showExtraFeaturesView() {
+        present(UINavigationController(rootViewController: ExtraFeaturesViewController(collectionViewLayout: UICollectionViewFlowLayout())), animated: true, completion: nil)
+    }
+    */
     
     //---------------------------------------
     //---------- Remote Actions -------------

@@ -32,6 +32,14 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
                      Remote(withID:"Remote2", withImage:UIImage(named: "remote2.png")!),
                      Remote(withID:"Remote3", withImage:UIImage(named: "remote3.png")!)]
         selectedRemote = imageData[0]
+        
+    remotePicker.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: remotePicker, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: pairingView.frame.height/1.5).isActive = true
+        
+    dottedCircle.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: dottedCircle, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
