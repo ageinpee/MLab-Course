@@ -45,6 +45,7 @@ class MainViewController: UITabBarController {
         healthVC.tabBarItem = UITabBarItem(title: "Companion", image: UIImage(named: "heart_icon_outlined"), selectedImage: UIImage(named: "heart_icon_selected"))
         
         exploreVC = explore
+        exploreVC.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
         
         settingsVC = settings
         settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
