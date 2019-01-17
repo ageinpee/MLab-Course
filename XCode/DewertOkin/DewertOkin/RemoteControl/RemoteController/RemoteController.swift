@@ -54,6 +54,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     var remoteControlConfig = RemoteControlConfig()
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
     var paired = false
