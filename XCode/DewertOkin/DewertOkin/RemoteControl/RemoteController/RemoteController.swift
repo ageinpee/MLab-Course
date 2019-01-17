@@ -106,6 +106,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     override func viewDidAppear(_ animated: Bool) {
         arrowsImageView.alpha = 0
         animateFade(withAlpha: opacity)
+        
+        checkBluetoothConnectivity()
     }
     
     @objc
@@ -114,6 +116,53 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         let storyBoard: UIStoryboard = UIStoryboard(name: "OldRemote", bundle: nil)
         let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
         self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    lazy var noConnectionBanner: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: -80, width: self.view.frame.width, height: 80))
+        view.backgroundColor = .red
+        view.layer.cornerRadius = 10
+        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        view.layer.shadowRadius = 12.0
+        view.layer.shadowOpacity = 0.7
+        return view
+    }()
+    
+    let noConnectionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No device connected."
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private func checkBluetoothConnectivity() {
+        if !bluetoothBackgroundHandler.checkStatus() {
+            showNoConnectionBanner()
+        } else {
+            dismissNoConnectionBanner()
+        }
+    }
+    
+    private func showNoConnectionBanner() {
+        guard !self.view.subviews.contains(noConnectionBanner) else {return}
+        self.view.addSubview(noConnectionBanner)
+        noConnectionBanner.addSubview(noConnectionLabel)
+        noConnectionBanner.addConstraint(NSLayoutConstraint.init(item: noConnectionLabel, attribute: .centerX, relatedBy: .equal, toItem: noConnectionBanner, attribute: .centerX, multiplier: 1, constant: 0))
+        noConnectionBanner.addConstraint(NSLayoutConstraint.init(item: noConnectionLabel, attribute: .centerY, relatedBy: .equal, toItem: noConnectionBanner, attribute: .centerY, multiplier: 3/2, constant: 0))
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.noConnectionBanner.transform = CGAffineTransform.init(translationX: 0, y: 80)
+        }) { (_) in
+        }
+    }
+    
+    private func dismissNoConnectionBanner() {
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.noConnectionBanner.transform = CGAffineTransform.init(translationX: 0, y: -80)
+        }) { (_) in
+            self.noConnectionBanner.removeFromSuperview()
+        }
     }
 
     /*
