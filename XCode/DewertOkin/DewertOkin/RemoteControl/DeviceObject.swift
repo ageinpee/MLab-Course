@@ -12,46 +12,71 @@ import CoreBluetooth
 
 class DeviceObject {
     
-    var id: Int = Int()
+    var uuid: String = String()
     var name: String = String()
-    var description: String = String()
-    var type: DeviceType = .NaN
-    var style: DeviceStyle = DeviceStyle()
+    var handheld: String = String()
+    var handheldData: [String] = [String]() // get these data via handsender1.csv file. represents one row matching the handheld
+    var type: String = String() // --> type with enum and string matching
+    var style: String = String() // --> get style via extra class and matching with 'type' and 'style'. style = filled or empty
+    var deviceImages: [UIImage] = [UIImage]() // images loaded by other class
+    var presets: String = String()
+    
+    
     var commandService: CBUUID = CBUUID()
     var keycodeUUID: CBUUID = CBUUID()
     var feedbackUUID: CBUUID = CBUUID()
+    
     var Timers: [String] = [String]()   //placeholder for device specific Timers-array
     var Reminders: [String] = [String]()    //placeholder for device specific Remidners-array
     
     init() {
-    
+        
     }
     
-    init(withID: Int, named: String, withDescription: String, asType: DeviceType, withStyle: DeviceStyle) {
-        id = withID
+    init(withUUID id: UUID,
+         named: String,
+         withHandheld: String,
+         withStyle: DeviceStyle) {
+        uuid = id.uuidString
         name = named
-        description = withDescription
-        type = asType
-        style = withStyle
-    }
-    
-    init(withID: Int, named: String, withDescription: String, asType: DeviceType, withStyle: DeviceStyle, withCMDService: CBUUID, withKeycodeUUID: CBUUID, withFeedbackUUID: CBUUID) {
-        id = withID
-        name = named
-        description = withDescription
-        type = asType
-        style = withStyle
-        commandService = withCMDService
-        keycodeUUID = withKeycodeUUID
-        feedbackUUID = withFeedbackUUID
+        handheld = withHandheld
+        style = withStyle.rawValue
+        
+        //CSVReader.readCSV(fileName: "handsender1.csv", fileType: "csv")
+        
     }
     
 }
 
 
-enum DeviceType {
-    case NaN
-    case chair_2Motors
-    case bed_2Motors
-    case table
+enum DeviceType: String {
+    case NaN = "NaN"
+    case chair_2Motors = "chair_2Motors"
+    case bed_2Motors = "bed_2Motors"
+    case table = "table"
 }
+
+enum DeviceStyle: String {
+    case empty = "empty"
+    case filled = "filled"
+}
+
+
+// ================================================================
+// ========                 NOTES                        ==========
+// ================================================================
+
+//                         CORE DATA
+// ================================================================
+
+// 1) fetch: --> get all devices as array
+// 2) work with as usuall
+// 3) on edit --> save context
+// 4) bleuprint: devices class
+
+
+//                           OTHER
+// =================================================================
+
+// - "skip RF Pairing" Button has to be deleted
+// - 

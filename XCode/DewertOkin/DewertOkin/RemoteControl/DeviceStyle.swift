@@ -9,7 +9,7 @@
 import Foundation
 import UIKit.UIImage
 
-class DeviceStyle {
+class DeviceStyleMatcher {
     var stylesString: [String] = [String]()
     var stylesImages: [UIImage] = [UIImage]()
     
