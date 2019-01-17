@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Timer)
-public class Timer: NSManagedObject {
+@objc(DeviceTimer)
+public class DeviceTimer: NSManagedObject {
 
 }

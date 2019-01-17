@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YF5-Fd-qPP">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Explore View Controller-->
+        <scene sceneID="KpD-pq-GV2">
+            <objects>
+                <viewController id="txy-Vt-aDp" customClass="ExploreViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aBI-sA-6Nh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="urf-Lw-g1n">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="urf-Lw-g1n" firstAttribute="trailing" secondItem="LO4-Fk-rNs" secondAttribute="trailing" id="12o-L4-Q0w"/>
+                            <constraint firstItem="urf-Lw-g1n" firstAttribute="bottom" secondItem="LO4-Fk-rNs" secondAttribute="bottom" id="8VT-Y5-rqk"/>
+                            <constraint firstItem="urf-Lw-g1n" firstAttribute="leading" secondItem="LO4-Fk-rNs" secondAttribute="leading" id="bU2-V3-avX"/>
+                            <constraint firstItem="urf-Lw-g1n" firstAttribute="top" secondItem="LO4-Fk-rNs" secondAttribute="top" id="pLi-5Y-kpX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LO4-Fk-rNs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FyY-fg-iMa">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="JA1-HT-E6V">
+                            <connections>
+                                <action selector="showAccessoriesList:" destination="txy-Vt-aDp" id="Y94-fh-S2q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="urf-Lw-g1n" id="xwW-P4-m7Y"/>
+                        <segue destination="G4K-hp-hJC" kind="presentation" identifier="ShowVendorDetail" id="E4D-db-9SH"/>
+                        <segue destination="qls-k3-uPY" kind="show" identifier="ShowAccessoriesList" id="g41-4C-Pmz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xMC-q1-eEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="-274.81259370314842"/>
+        </scene>
+        <!--Explore Accessories View Controller-->
+        <scene sceneID="61a-oi-Wl8">
+            <objects>
+                <viewController id="qls-k3-uPY" customClass="ExploreAccessoriesViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gmW-TR-BY1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PVR-Ar-PAx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PVR-Ar-PAx" firstAttribute="top" secondItem="jMU-0u-70k" secondAttribute="top" id="7fM-7h-SVK"/>
+                            <constraint firstItem="PVR-Ar-PAx" firstAttribute="leading" secondItem="jMU-0u-70k" secondAttribute="leading" id="CCl-hL-0UW"/>
+                            <constraint firstItem="jMU-0u-70k" firstAttribute="bottom" secondItem="PVR-Ar-PAx" secondAttribute="bottom" id="Rta-cP-bnd"/>
+                            <constraint firstItem="jMU-0u-70k" firstAttribute="trailing" secondItem="PVR-Ar-PAx" secondAttribute="trailing" id="cnm-E9-GC3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jMU-0u-70k"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="PVR-Ar-PAx" id="heq-te-KEE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxu-jB-735" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1075" y="490"/>
+        </scene>
+        <!--Detail Vendor View Controller-->
+        <scene sceneID="zw4-F0-2Vt">
+            <objects>
+                <viewController id="G4K-hp-hJC" customClass="DetailVendorViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="np3-7O-lUD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="imb-U6-qZO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ChO-o7-a20" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2258.4000000000001" y="-276.35467980295567"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nRC-Hw-6RA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YF5-Fd-qPP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P7G-zP-4K6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="txy-Vt-aDp" kind="relationship" relationship="rootViewController" id="SYm-re-wNt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vp7-bC-xIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="-274.81259370314842"/>
+        </scene>
+    </scenes>
+</document>

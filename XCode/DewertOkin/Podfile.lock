@@ -1,0 +1,22 @@
+PODS:
+  - BulletinBoard (3.0.0)
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
+
+DEPENDENCIES:
+  - BulletinBoard
+  - Charts
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BulletinBoard
+    - Charts
+
+SPEC CHECKSUMS:
+  BulletinBoard: 927f4f9fd22503ceecd71bfc830fd65d5996593a
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
+
+PODFILE CHECKSUM: bc847dba935afed4836311b018a62601d5585dcb
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0LU-av-fU0">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Old remote-->
+        <scene sceneID="KYj-oc-ghZ">
+            <objects>
+                <viewController storyboardIdentifier="OldRemote" title="Old remote" id="0LU-av-fU0" customClass="OldRemoteViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fse-ca-Ze6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipq-0m-Wni">
+                                <rect key="frame" x="20" y="94" width="374" height="699"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="remote1" translatesAutoresizingMaskIntoConstraints="NO" id="Bep-xh-Vt7">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="699"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzg-KH-IAG" userLabel="backUp">
+                                        <rect key="frame" x="102" y="63" width="71" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="backUpAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="m1g-iK-zKp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYa-mD-kF6" userLabel="backDown">
+                                        <rect key="frame" x="202" y="63" width="71" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="backDownAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="5MH-bk-umd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rza-o4-nok" userLabel="feetUp">
+                                        <rect key="frame" x="102" y="127" width="71" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="feetUpAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="wpw-hy-x7a"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYT-vm-5dt" userLabel="feetDown">
+                                        <rect key="frame" x="202" y="127" width="71" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="feetDownAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="HfI-VT-Kcc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1GJ-eB-qwX" userLabel="bothUp">
+                                        <rect key="frame" x="102" y="191" width="71" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="bothUpAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="4hl-Fz-dcE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5F-HD-ZfN" userLabel="bothDown">
+                                        <rect key="frame" x="202" y="191" width="71" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="bothDownAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="Iad-r8-yET"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HR-bE-heu" userLabel="Memory1">
+                                        <rect key="frame" x="102" y="256" width="71" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="memory1Action:" destination="0LU-av-fU0" eventType="touchUpInside" id="2oD-a7-56k"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBO-Ww-ocD" userLabel="Memory2">
+                                        <rect key="frame" x="202" y="256" width="71" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="memory2Action:" destination="0LU-av-fU0" eventType="touchUpInside" id="YJe-NG-4sm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBL-VP-R4U" userLabel="save">
+                                        <rect key="frame" x="102" y="321" width="71" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="saveAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="pb1-dX-Gg2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDm-KY-Esa" userLabel="ubl">
+                                        <rect key="frame" x="202" y="321" width="71" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="ublAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="t0W-iO-Fge"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6Y-kg-kVb" userLabel="torch">
+                                        <rect key="frame" x="150" y="384" width="72" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="torchAction:" destination="0LU-av-fU0" eventType="touchUpInside" id="iRQ-Nw-Ffd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Bep-xh-Vt7" firstAttribute="top" secondItem="Ipq-0m-Wni" secondAttribute="top" id="A4K-hq-aTR"/>
+                                    <constraint firstItem="Bep-xh-Vt7" firstAttribute="leading" secondItem="Ipq-0m-Wni" secondAttribute="leading" id="UIf-Sw-EKs"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bep-xh-Vt7" secondAttribute="trailing" id="jNT-Ce-UJ0"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bep-xh-Vt7" secondAttribute="bottom" id="vv5-yd-Lfp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="huo-Rz-D3l" firstAttribute="bottom" secondItem="Ipq-0m-Wni" secondAttribute="bottom" constant="20" id="82s-Q9-1uj"/>
+                            <constraint firstItem="Ipq-0m-Wni" firstAttribute="leading" secondItem="huo-Rz-D3l" secondAttribute="leading" constant="20" id="8Mm-qf-Wd7"/>
+                            <constraint firstItem="Ipq-0m-Wni" firstAttribute="top" secondItem="huo-Rz-D3l" secondAttribute="top" constant="50" id="Gh7-3d-9ra"/>
+                            <constraint firstItem="huo-Rz-D3l" firstAttribute="trailing" secondItem="Ipq-0m-Wni" secondAttribute="trailing" constant="20" id="y19-5X-3Gv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="huo-Rz-D3l"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Remote" id="vWk-GZ-ufA"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="backDownButton" destination="sYa-mD-kF6" id="19s-gN-qoJ"/>
+                        <outlet property="backUpButton" destination="Nzg-KH-IAG" id="j5I-9O-aqe"/>
+                        <outlet property="bothDownButton" destination="G5F-HD-ZfN" id="jf8-EM-sSa"/>
+                        <outlet property="bothUpButton" destination="1GJ-eB-qwX" id="s74-2y-I01"/>
+                        <outlet property="feetDownButton" destination="KYT-vm-5dt" id="2nE-wa-Iud"/>
+                        <outlet property="feetUpButton" destination="rza-o4-nok" id="OfG-CF-doe"/>
+                        <outlet property="memory1Button" destination="5HR-bE-heu" id="1dT-GH-1o5"/>
+                        <outlet property="memory2Button" destination="dBO-Ww-ocD" id="l1D-b2-Xmk"/>
+                        <outlet property="remoteView" destination="Ipq-0m-Wni" id="QEx-g0-SoW"/>
+                        <outlet property="saveButton" destination="EBL-VP-R4U" id="dG6-hb-jcU"/>
+                        <outlet property="torchButton" destination="K6Y-kg-kVb" id="SnC-Y0-mnb"/>
+                        <outlet property="ublButton" destination="QDm-KY-Esa" id="X32-Tk-yHi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Anw-Ne-ccN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40.579710144927539" y="775.44642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="remote1" width="701.280029296875" height="2198.39990234375"/>
+    </resources>
+</document>

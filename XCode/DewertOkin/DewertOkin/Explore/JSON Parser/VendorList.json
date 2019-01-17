@@ -1,0 +1,44 @@
+[
+ {
+    "name": "Hot Furniture",
+    "street": "Grindelallee 129",
+    "openingHour": 8,
+    "closingHour": 20,
+    "telephoneNumber": "666-666-666",
+    "latitude": 53.551086,
+    "longitude": 9.993682,
+    "accessories": [
+        {
+            "imageName": "TouchControl",
+            "name": "RF Touch",
+            "accessoryDescription": "Can't Touch This"
+        },
+        {
+            "imageName": "LEDStripe",
+            "name": "LED-Stripe",
+            "accessoryDescription": "Lumos Maxima"
+        }
+    ]
+ },
+ {
+     "name": "Cold Furniture",
+     "street": "Grindelweg 129",
+     "openingHour": 8,
+     "closingHour": 20,
+     "telephoneNumber": "999-999-999",
+     "latitude": 53.551094,
+     "longitude": 10.018185,
+     "accessories": [
+         {
+             "imageName": "TouchControl",
+             "name": "RF Touch",
+             "accessoryDescription": "Can't Touch This"
+         },
+         {
+             "imageName": "LEDStripe",
+             "name": "LED-Stripe",
+             "accessoryDescription": "Lumos Maxima"
+         }
+     ]
+ }
+]

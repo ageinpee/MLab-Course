@@ -1,0 +1,8 @@
+platform :ios, '11.0'
+use_frameworks!
+
+target 'DewertOkin' do
+pod 'Charts' 
+pod 'BulletinBoard'
+
+end

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2vF-NN-zR7">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Devices List View Controller-->
+        <scene sceneID="5tR-fY-B0J">
+            <objects>
+                <viewController storyboardIdentifier="DevicesList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2vF-NN-zR7" customClass="DevicesListViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XSy-0J-TZL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-dv-o1y">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="awo-UE-uw2" firstAttribute="trailing" secondItem="JTQ-dv-o1y" secondAttribute="trailing" id="CKf-EO-EfZ"/>
+                            <constraint firstItem="JTQ-dv-o1y" firstAttribute="top" secondItem="awo-UE-uw2" secondAttribute="top" id="LZw-gm-O0H"/>
+                            <constraint firstItem="JTQ-dv-o1y" firstAttribute="leading" secondItem="awo-UE-uw2" secondAttribute="leading" id="Oxs-BX-IOz"/>
+                            <constraint firstItem="awo-UE-uw2" firstAttribute="bottom" secondItem="JTQ-dv-o1y" secondAttribute="bottom" id="yLd-em-M1C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="awo-UE-uw2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JxZ-xZ-eOh"/>
+                    <connections>
+                        <outlet property="tableView" destination="JTQ-dv-o1y" id="bpd-LZ-V08"/>
+                        <segue destination="1rR-I3-4eR" kind="show" identifier="ConnectToDevice" id="SVF-3t-Qwk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1vH-dE-sqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2236" y="-309.89505247376314"/>
+        </scene>
+        <!--PairingSuccessView-->
+        <scene sceneID="X8w-bf-kel">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BluetoothPairing" referencedIdentifier="PairingSuccessView" id="1rR-I3-4eR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3vX-wq-lIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3224" y="-446"/>
+        </scene>
+    </scenes>
+</document>

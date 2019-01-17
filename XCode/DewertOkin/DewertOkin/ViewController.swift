@@ -7,17 +7,13 @@
 //
 
 import UIKit
+import CoreBluetooth
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hello Jan")
-        print("Hello Peter")
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        print("Hello World")
-        print("Commit aus XCode")
+
     }
 
 
