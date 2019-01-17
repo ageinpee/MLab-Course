@@ -58,7 +58,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         
         getSavedData()
         
-        //Health.shared.bulletinManager.showBulletin(above: UIApplication.shared.keyWindow!.rootViewController!)
+        Health.shared.bulletinManager.showBulletin(above: UIApplication.shared.keyWindow!.rootViewController!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
