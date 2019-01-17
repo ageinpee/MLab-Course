@@ -12,7 +12,7 @@ import UIKit
 extension DetailVendorViewController {
     
     func animateVendorDetailView(to state: State, duration: TimeInterval) {
-        let state = currentState.opposite
+        guard runningAnimators.isEmpty else { return }
         let transitionAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 1, animations: {
             switch state {
             case .open:
@@ -37,23 +37,26 @@ extension DetailVendorViewController {
             case .halfOpen:
                 self.bottomConstraint.constant = self.view.frame.height / 2
             }
+            self.runningAnimators.removeAll()
         }
         transitionAnimator.startAnimation()
+        
+        runningAnimators.append(transitionAnimator)
     }
     
     @objc func vendorDetailViewGesture(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
             
         case .began:
-            animateVendorDetailView(to: currentState.opposite, duration: 1.5)
+            animateVendorDetailView(to: currentState.opposite, duration: 3)
             runningAnimators.forEach { $0.pauseAnimation() }
             animationProgress = runningAnimators.map { $0.fractionComplete }
             
         case .changed:
             let translation = recognizer.translation(in: vendorView)
-            var fraction = -translation.y / ((self.view.frame.height / 3) - 100)
+            var fraction = -translation.y / (self.view.frame.height / 2)
             if currentState == .open { fraction *= -1 }
-            if runningAnimators[0].isReversed { fraction *= 1 }
+            //if runningAnimators[0].isReversed { fraction *= 1 }
             
             for (index, animator) in runningAnimators.enumerated() {
                 animator.fractionComplete = fraction + animationProgress[index]
@@ -64,13 +67,11 @@ extension DetailVendorViewController {
             let yVelocity = recognizer.velocity(in: vendorView).y
             let shouldClose = yVelocity > 0
             
-            // if there is no motion, continue all animations and exit early
             if yVelocity == 0 {
                 runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
                 break
             }
             
-            // reverse the animations based on their current state and pan motion
             switch currentState {
             case .open:
                 if !shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
@@ -80,7 +81,6 @@ extension DetailVendorViewController {
                 if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
             }
             
-            // continue all animations
             runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
             
         default:
@@ -107,5 +107,13 @@ extension State {
         case .open: return .halfOpen
         case .halfOpen: return .open
         }
+    }
+}
+
+class InstantPanGestureRecognizer: UIPanGestureRecognizer {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+        if (self.state == UIGestureRecognizer.State.began) { return }
+        super.touchesBegan(touches, with: event)
+        self.state = UIGestureRecognizer.State.began
     }
 }

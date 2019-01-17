@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
 import MapKit
 
 class DetailVendorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -38,7 +39,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     // Gesture Recognizer & Animation Elements
     var panGestureForView = UIPanGestureRecognizer()
     var panGestureForMap = UITapGestureRecognizer()
-    var panTapAnimation = UITapGestureRecognizer()
+    var panTapAnimation = InstantPanGestureRecognizer()
     var animationProgress = [CGFloat]()
     var runningAnimators = [UIViewPropertyAnimator]()
     
@@ -75,9 +76,12 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: (self.view.frame.height / 3) - 100)
         bottomConstraint.isActive = true
         
-        panTapAnimation = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.vendorDetailViewGesture(recognizer:)))
+//        panTapAnimation = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.vendorDetailViewGesture(recognizer:)))
+        panTapAnimation = InstantPanGestureRecognizer()
+        panTapAnimation.addTarget(self, action: #selector(DetailVendorViewController.vendorDetailViewGesture(recognizer:)))
         vendorView.isUserInteractionEnabled = true
         vendorView.addGestureRecognizer(panTapAnimation)
+        
         panGestureForMap = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.closeVendorDetail(_:)))
         backgroundAlphaView.isUserInteractionEnabled = true
         backgroundAlphaView.addGestureRecognizer(panGestureForMap)
