@@ -22,26 +22,34 @@ extension RemoteController {
 //        }
     }
     
-    func goUp() {
-        guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        guard bluetoothFlow.paired else { return }
-        guard !(self.characteristic == nil) else {
-            self.characteristic = self.bluetooth.writeCharacteristic
-            return
-        }
-        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m1In)
-        bluetooth.connectedPeripheral!.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+    func moveHeadUp() {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.m1In)
     }
     
-    func goDown() {
-        guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        guard bluetoothFlow.paired else { return }
-        guard !(self.characteristic == nil) else {
-            self.characteristic = self.bluetooth.writeCharacteristic
-            return
-        }
-        let moveDown = self.remoteControlConfig.getKeycode(name: keycode.m1Out)
-        bluetooth.connectedPeripheral!.writeValue(moveDown, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+    func moveHeadDown() {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.m1Out)
+    }
+    
+    func moveFeetUp() {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.m2In)
+    }
+    
+    func moveFeetDown() {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.m2Out)
+    }
+    
+    func triggerCommand(keycode: keycode) {
+        let movement = self.remoteControlConfig.getKeycode(name: keycode)
+        bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+        
     }
     
     //    func goUpFeet() {

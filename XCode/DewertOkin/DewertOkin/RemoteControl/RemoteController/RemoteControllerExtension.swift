@@ -69,17 +69,15 @@ extension RemoteController {
     @objc
     func actionLeft() {
         if (recognizerState == .began) || (recognizerState == .changed) {
-            print(Date())
             if translation == .down {
-                print("--> down")
                 impact.impactOccurred()
+                moveFeetDown()
             }
             else if translation == .up {
-                print("--> up")
                 impact.impactOccurred()
+                moveFeetUp()
             }
         } else {
-            print("end")
             timer?.invalidate()
             timer = nil
         }
@@ -88,19 +86,15 @@ extension RemoteController {
     @objc
     func actionRight() {
         if (recognizerState == .began) || (recognizerState == .changed) {
-            print(Date())
             if translation == .down {
-                print("--> down")
                 impact.impactOccurred()
-                goDown()
+                moveHeadDown()
             }
             else if translation == .up {
-                print("--> up")
                 impact.impactOccurred()
-                goUp()
+                moveHeadUp()
             }
         } else {
-            print("end")
             timer?.invalidate()
             timer = nil
         }
@@ -112,7 +106,6 @@ extension RemoteController {
         
         switch panRecognizer.state {
         case .began:
-            print("Pan in Right Area started")
             translation = .began
             timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(actionRight), userInfo: nil, repeats: true)
             
@@ -126,11 +119,8 @@ extension RemoteController {
                 translation = .up
                 arrowsImageView.alpha = 0
                 Image.image = currentStyle.stylesImages[2]
-                goUp()
             }
         case .ended:
-            print("Pan in Right Area ended")
-            print(Date())
             translation = .ended
             Image.image = currentStyle.stylesImages[1]
             animateFade(withAlpha: opacity)
