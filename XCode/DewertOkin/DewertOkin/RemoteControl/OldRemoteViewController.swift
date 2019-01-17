@@ -46,7 +46,6 @@ class OldRemoteViewController: UIViewController {
             button.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         }
         
-        print(remoteView.superview?.frame.size)
         constrainButtons()
     }
     
