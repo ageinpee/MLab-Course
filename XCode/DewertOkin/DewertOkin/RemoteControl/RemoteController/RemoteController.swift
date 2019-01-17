@@ -93,11 +93,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
 
         Health.shared.requestHealthKitPermission()
         
-        let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
-        swipeRec.direction = .up
-        ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
-        ExtraFunctionsButtonObj.addTarget(self, action: #selector(showExtraFeaturesView), for: .touchUpInside)
-        
         arrowsImageView.image = currentStyle.stylesImages[0]
         Image.image = currentStyle.stylesImages[1]
         Image.contentMode = .scaleAspectFit
@@ -107,20 +102,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         arrowsImageView.alpha = 0
         animateFade(withAlpha: opacity)
     }
-    
-    @objc
-    private func showOldRemote() {
-        print("Swipe recognized")
-        let storyBoard: UIStoryboard = UIStoryboard(name: "OldRemote", bundle: nil)
-        let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
-        self.present(newViewController, animated: true, completion: nil)
-    }
-    
-    @objc
-    private func showExtraFeaturesView() {
-        present(UINavigationController(rootViewController: ExtraFeaturesViewController(collectionViewLayout: UICollectionViewFlowLayout())), animated: true, completion: nil)
-    }
-    
     
     //---------------------------------------
     //---------- Remote Actions -------------
