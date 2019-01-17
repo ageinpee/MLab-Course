@@ -38,7 +38,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     var deviceType: DeviceType = .NaN
     
-    var currentStyle: DeviceStyle = DeviceStyle()
+    var currentStyle: DeviceStyleMatcher = DeviceStyleMatcher()
     var device: DeviceObject = DeviceObject()
     var opacity = CGFloat(0.75)
     
@@ -73,14 +73,14 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         deviceType = DeviceType.chair_2Motors
         currentStyle.setFilledStyle(forDevice: deviceType)
-        device = DeviceObject(withID: 0,
+        /*device = DeviceObject(withID: 0,
                               named: "Chair 0",
                               withDescription: "HE150",
                               asType: .chair_2Motors,
                               withStyle: currentStyle,
                               withCMDService: CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B"),
                               withKeycodeUUID: CBUUID(string: "62741525-52F9-8864-B1AB-3B3A8D65950B"),
-                              withFeedbackUUID: CBUUID(string: "62741625-52F9-8864-B1AB-3B3A8D65950B"))
+                              withFeedbackUUID: CBUUID(string: "62741625-52F9-8864-B1AB-3B3A8D65950B"))*/
         
         setupButtons()
         setupPanAreas()

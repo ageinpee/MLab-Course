@@ -40,14 +40,10 @@ class RFPairingController3: UIViewController {
             }
         }
         
-        remoteImageView.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints()
         
-        NSLayoutConstraint(item: remoteImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: pairingView.frame.height/2).isActive = true
-        dottedCircleImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint(item: dottedCircleImage, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
-        
-        proceedButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
+        let reader = CSVReader()
+        let remoteData = reader.readCSV(fileName: "handsender1", fileType: "csv")
     }
     
     @objc
@@ -92,5 +88,19 @@ class RFPairingController3: UIViewController {
         UIView.animate(withDuration: 2.0, delay: 1.0, options: [.repeat, .autoreverse], animations: {
             animationView.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         }, completion: nil)
+    }
+    
+    
+    
+    
+    func layoutConstraints() {
+        remoteImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: remoteImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: pairingView.frame.height/2).isActive = true
+        dottedCircleImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: dottedCircleImage, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
+        
+        proceedButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
     }
 }

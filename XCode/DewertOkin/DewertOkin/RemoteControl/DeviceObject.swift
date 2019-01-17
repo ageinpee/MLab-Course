@@ -63,7 +63,7 @@ enum DeviceStyle: String {
 
 
 // ================================================================
-// ========                 NOTES                        ==========
+// ========                  NOTES                       ==========
 // ================================================================
 
 //                         CORE DATA
@@ -74,9 +74,7 @@ enum DeviceStyle: String {
 // 3) on edit --> save context
 // 4) bleuprint: devices class
 
-
 //                           OTHER
 // =================================================================
 
 // - "skip RF Pairing" Button has to be deleted
-// - 

@@ -10,11 +10,11 @@ import Foundation
 
 class CSVReader {
     
-    public func readCSV(fileName: String, fileType: String) {
+    public func readCSV(fileName: String, fileType: String) -> [[String]] {
         var data = readDataFromCSV(fileName: fileName, fileType: fileType)
         data = cleanRows(file: data!)
         let csvRows = csv(data: data!)
-        print(csvRows[1][1])
+        return csvRows
     }
     
     private func readDataFromCSV(fileName:String, fileType: String)-> String!{

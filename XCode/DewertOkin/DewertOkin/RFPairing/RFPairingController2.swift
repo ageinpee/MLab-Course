@@ -25,6 +25,21 @@ class RFPairingController2: UIViewController {
     override func viewDidLoad() {
         print(selectedRemote)
         
+        layoutConstraints()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "pairingTransition2") {
+            if let vc = segue.destination as? RFPairingController3 {
+                vc.selectedRemote = selectedRemote
+            }
+        }
+    }
+    
+    
+    
+    func layoutConstraints() {
         plugImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint(item: plugImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: pairingView.frame.height/2).isActive = true
@@ -35,15 +50,5 @@ class RFPairingController2: UIViewController {
         dottedCircleImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint(item: dottedCircleImage, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if(segue.identifier == "pairingTransition2") {
-            if let vc = segue.destination as? RFPairingController3 {
-                vc.selectedRemote = selectedRemote
-            }
-        }
-        
     }
 }
