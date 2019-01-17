@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import CoreBluetooth
 
 class PresetsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, PresetButtonDelegate {
+    
+    var remoteControlConfig = RemoteControlConfig()
+    var bluetooth = Bluetooth.sharedBluetooth
+    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
+    var peripheral: CBPeripheral?
+    var characteristic: CBCharacteristic?
     
     let memoryDescriptionLabel: UILabel = {
         let label = UILabel()
@@ -134,8 +142,28 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        
+        guard (indexPath.section == 1) else { return }
+//        if (controlUnitPresets[indexPath.item] == "Memory 1") {
+//            triggerCommand(keycode: keycode.memory1)
+//        } else if (controlUnitPresets[indexPath.item] == "Memory 2") {
+//            triggerCommand(keycode: keycode.memory2)
+//        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.triggerCommand(keycode: keycode.memory1)
+            })
+        
         collectionView.deselectItem(at: indexPath, animated: true)
         dismissSelf()
+    }
+    
+    func triggerCommand(keycode: keycode) {
+        let movement = self.remoteControlConfig.getKeycode(name: keycode)
+        bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
