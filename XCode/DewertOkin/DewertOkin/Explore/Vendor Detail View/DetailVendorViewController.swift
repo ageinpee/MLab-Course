@@ -10,12 +10,25 @@ import Foundation
 import UIKit
 import MapKit
 
+enum State {
+    case halfOpen
+    case open
+}
+
+extension State {
+    var opposite: State {
+        switch self {
+        case .open: return .halfOpen
+        case .halfOpen: return .open
+        }
+    }
+}
+
 class DetailVendorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var displayingVendor: Vendor!
     var displayingAnnotation: MKAnnotationView!
     var vendorAccessories = [Accessory]()
-    var fontSize = 22.0
     
     lazy var backgroundAlphaView: UIView = {
         let view = UIView(frame: self.view.bounds)
@@ -24,6 +37,8 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     }()
     let vendorView = UIView()
     var isPresenting = false
+    var currentState: State = .halfOpen
+    var bottomConstraint = NSLayoutConstraint()
     
     var vendorName = UILabel()
     var vendorStreet = UILabel()
@@ -34,6 +49,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     
     var panGestureForView = UIPanGestureRecognizer()
     var panGestureForMap = UITapGestureRecognizer()
+    var panTapAnimation = UITapGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,21 +59,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         
         initializeVendorView()
         initializeVendorInformation()
-        
-        vendorAccessories = displayingVendor.accessories
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
-        layout.scrollDirection = .horizontal
-        
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: self.vendorView.frame.minY, width: self.view.frame.width, height: 100), collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.backgroundColor = .white
-        collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = true
-        vendorView.addSubview(collectionView)
+        initializeAccessoryCollection()
         
     }
     
@@ -76,14 +78,21 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.translatesAutoresizingMaskIntoConstraints = false
         vendorView.layer.cornerRadius = 8.0
         vendorView.clipsToBounds = true
-        vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
-        vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        //vendorView.frame.origin = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height)
+        vendorView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        //vendorView.bottomAnchor.constraint(equalToConstant: 500).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: self.view.frame.height / 2)
+        bottomConstraint.isActive = true
         
-        panGestureForView = UIPanGestureRecognizer(target: self, action: #selector(DetailVendorViewController.draggedView(_:)))
+        panTapAnimation = UITapGestureRecognizer(target: self, action: #selector(vendorDetailViewTapped(recognizer:)))
         vendorView.isUserInteractionEnabled = true
-        vendorView.addGestureRecognizer(panGestureForView)
+        vendorView.addGestureRecognizer(panTapAnimation)
+        
+//        panGestureForView = UIPanGestureRecognizer(target: self, action: #selector(DetailVendorViewController.draggedView(_:)))
+//        vendorView.isUserInteractionEnabled = true
+//        vendorView.addGestureRecognizer(panGestureForView)
         
         panGestureForMap = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.closeVendorDetail(_:)))
         backgroundAlphaView.isUserInteractionEnabled = true
@@ -116,6 +125,25 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         
     }
     
+    func initializeAccessoryCollection() {
+        vendorAccessories = displayingVendor.accessories
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
+        layout.scrollDirection = .horizontal
+        
+        let frame = vendorView.convert(CGRect(x: self.view.frame.width / 2, y: self.view.frame.height / 2, width: self.view.frame.width, height: 100), to: collectionView)
+        
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .white
+        collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = true
+        vendorView.addSubview(collectionView)
+    }
+    
     @objc func draggedView(_ sender: UIPanGestureRecognizer) {
         self.view.bringSubviewToFront(vendorView)
         let transition = sender.translation(in: self.view)
@@ -123,15 +151,58 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         if draggableViewArea(newPoint: newPosition){
             vendorView.center = newPosition
             sender.setTranslation(CGPoint.zero, in: self.view)
+        } else if draggableAreaToClose(newPoint: newPosition) {
+            swipeCloseVendorDetail()
         }
+    }
+    
+    @objc func vendorDetailViewTapped(recognizer: UITapGestureRecognizer) {
+        let state = currentState.opposite
+        let transitionAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 1, animations: {
+            switch state {
+            case .open:
+                self.bottomConstraint.constant = 0
+            case .halfOpen:
+                self.bottomConstraint.constant = self.view.frame.height / 2
+            }
+            self.vendorView.layoutIfNeeded()
+        })
+        transitionAnimator.addCompletion { position in
+            switch position {
+            case .start:
+                self.currentState = state.opposite
+            case .end:
+                self.currentState = state
+            case .current:
+                ()
+            }
+            switch self.currentState {
+            case .open:
+                self.bottomConstraint.constant = 0
+            case .halfOpen:
+                self.bottomConstraint.constant = self.view.frame.height / 2
+            }
+        }
+        transitionAnimator.startAnimation()
     }
     
     func draggableViewArea(newPoint: CGPoint) -> Bool {
         return newPoint.y >= (self.view.frame.height / 2) + (self.view.frame.height / 4) && newPoint.y <= self.view.frame.height
     }
     
+    func draggableAreaToClose(newPoint: CGPoint) -> Bool {
+        return newPoint.y <= self.view.frame.height
+    }
+    
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
         displayingAnnotation.isSelected = false
+        isPresenting = !isPresenting
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func swipeCloseVendorDetail() {
+        displayingAnnotation.isSelected = false
+        isPresenting = !isPresenting
         dismiss(animated: true, completion: nil)
     }
 }
@@ -159,18 +230,18 @@ extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
         if isPresenting == true {
             containerView.addSubview(toVC.view)
             
-            vendorView.frame.origin.y += self.view.frame.height / 3
+            vendorView.frame.origin.y += self.view.frame.height / 4
             backgroundAlphaView.alpha = 0
             
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y -= self.view.frame.height / 3
+                self.vendorView.frame.origin.y -= self.view.frame.height / 4
                 self.backgroundAlphaView.alpha = 1
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
             })
         } else {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y += self.view.frame.height / 3
+                self.vendorView.frame.origin.y += self.view.frame.height / 4
                 self.backgroundAlphaView.alpha = 0
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
