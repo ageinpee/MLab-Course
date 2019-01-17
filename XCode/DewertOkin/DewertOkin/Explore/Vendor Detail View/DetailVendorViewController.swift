@@ -10,12 +10,25 @@ import Foundation
 import UIKit
 import MapKit
 
+enum State {
+    case halfOpen
+    case open
+}
+
+extension State {
+    var opposite: State {
+        switch self {
+        case .open: return .halfOpen
+        case .halfOpen: return .open
+        }
+    }
+}
+
 class DetailVendorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var displayingVendor: Vendor!
     var displayingAnnotation: MKAnnotationView!
     var vendorAccessories = [Accessory]()
-    var fontSize = 22.0
     
     lazy var backgroundAlphaView: UIView = {
         let view = UIView(frame: self.view.bounds)
@@ -24,6 +37,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     }()
     let vendorView = UIView()
     var isPresenting = false
+    var currentState: State = .halfOpen
     
     var vendorName = UILabel()
     var vendorStreet = UILabel()
@@ -62,6 +76,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.translatesAutoresizingMaskIntoConstraints = false
         vendorView.layer.cornerRadius = 8.0
         vendorView.clipsToBounds = true
+        vendorView.frame.origin = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height)
         vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -143,11 +158,13 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
         displayingAnnotation.isSelected = false
+        isPresenting = !isPresenting
         dismiss(animated: true, completion: nil)
     }
     
     func swipeCloseVendorDetail() {
         displayingAnnotation.isSelected = false
+        isPresenting = !isPresenting
         dismiss(animated: true, completion: nil)
     }
 }
@@ -175,18 +192,18 @@ extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
         if isPresenting == true {
             containerView.addSubview(toVC.view)
             
-            vendorView.frame.origin.y += self.view.frame.height / 3
+            vendorView.frame.origin.y += self.view.frame.height / 4
             backgroundAlphaView.alpha = 0
             
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y -= self.view.frame.height / 3
+                self.vendorView.frame.origin.y -= self.view.frame.height / 4
                 self.backgroundAlphaView.alpha = 1
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
             })
         } else {
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y += self.view.frame.height / 3
+                self.vendorView.frame.origin.y += self.view.frame.height / 4
                 self.backgroundAlphaView.alpha = 0
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
