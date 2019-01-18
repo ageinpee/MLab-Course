@@ -19,23 +19,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Y6-EX-6ay">
-                                <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="CW4-LG-nsV"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="a7V-Oj-MQn"/>
+                                    <navigationItem title="Title" id="a7V-Oj-MQn">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="POB-DI-hET">
+                                            <connections>
+                                                <action selector="unwindToRemoteViewController:" destination="2vF-NN-zR7" id="s6f-3R-EKE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-dv-o1y">
-                                <rect key="frame" x="0.0" y="97" width="414" height="765"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JTQ-dv-o1y">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="awo-UE-uw2" firstAttribute="trailing" secondItem="JTQ-dv-o1y" secondAttribute="trailing" id="CKf-EO-EfZ"/>
-                            <constraint firstItem="JTQ-dv-o1y" firstAttribute="top" secondItem="awo-UE-uw2" secondAttribute="top" id="LZw-gm-O0H"/>
                             <constraint firstItem="JTQ-dv-o1y" firstAttribute="top" secondItem="5Y6-EX-6ay" secondAttribute="bottom" id="OGX-3I-mxi"/>
                             <constraint firstItem="JTQ-dv-o1y" firstAttribute="leading" secondItem="awo-UE-uw2" secondAttribute="leading" id="Oxs-BX-IOz"/>
                             <constraint firstItem="5Y6-EX-6ay" firstAttribute="leading" secondItem="awo-UE-uw2" secondAttribute="leading" id="aiS-DA-nVe"/>
@@ -47,6 +52,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JxZ-xZ-eOh"/>
                     <connections>
+                        <outlet property="header" destination="5Y6-EX-6ay" id="EGU-e8-mIE"/>
                         <outlet property="tableView" destination="JTQ-dv-o1y" id="bpd-LZ-V08"/>
                         <segue destination="1rR-I3-4eR" kind="show" identifier="ConnectToDevice" id="SVF-3t-Qwk"/>
                     </connections>
