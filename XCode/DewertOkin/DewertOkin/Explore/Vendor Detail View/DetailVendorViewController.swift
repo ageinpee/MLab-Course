@@ -21,7 +21,8 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     // UI Elements
     lazy var backgroundAlphaView: UIView = {
         let view = UIView(frame: self.view.bounds)
-        view.backgroundColor = .clear
+        view.backgroundColor = .black
+        view.alpha = 0
         return view
     }()
     let vendorView = UIView()
@@ -48,7 +49,6 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         super.viewDidLoad()
         vendorViewOffset = self.view.frame.height / 4
         view.backgroundColor = .clear
-        view.addSubview(backgroundAlphaView)
         
         initializeVendorView()
         //initializeVendorInformation()
@@ -67,10 +67,20 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func initializeVendorView() {
+        
+        backgroundAlphaView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backgroundAlphaView)
+        backgroundAlphaView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        backgroundAlphaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        backgroundAlphaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        backgroundAlphaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
         vendorView.backgroundColor = .white
         vendorView.translatesAutoresizingMaskIntoConstraints = false
         vendorView.layer.cornerRadius = 20.0
-        vendorView.clipsToBounds = true
+        vendorView.layer.shadowColor = UIColor.black.cgColor
+        vendorView.layer.shadowOpacity = 0.1
+        vendorView.layer.shadowRadius = 10
         view.addSubview(vendorView)
         vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true

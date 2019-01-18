@@ -17,9 +17,10 @@ extension DetailVendorViewController {
             switch state {
             case .open:
                 self.bottomConstraint.constant = 0
-                //self.vendorView.layer.cornerRadius = 20
+                self.backgroundAlphaView.alpha = 0.5
             case .halfOpen:
                 self.bottomConstraint.constant = self.vendorViewOffset
+                self.backgroundAlphaView.alpha = 0
             }
             self.view.layoutIfNeeded() //vendorView?
         })
@@ -35,7 +36,6 @@ extension DetailVendorViewController {
             switch self.currentState {
             case .open:
                 self.bottomConstraint.constant = 0
-                self.backgroundAlphaView.backgroundColor = .clear
             case .halfOpen:
                 self.bottomConstraint.constant = self.vendorViewOffset
             }
