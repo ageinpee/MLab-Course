@@ -17,10 +17,12 @@ extension DetailVendorViewController {
             switch state {
             case .open:
                 self.bottomConstraint.constant = 0
+                self.backgroundAlphaView.backgroundColor = .black
                 self.backgroundAlphaView.alpha = 0.5
             case .halfOpen:
                 self.bottomConstraint.constant = self.vendorViewOffset
-                self.backgroundAlphaView.alpha = 0
+                self.backgroundAlphaView.backgroundColor = .clear
+                self.backgroundAlphaView.alpha = 0.1
             }
             self.view.layoutIfNeeded() //vendorView?
         })
@@ -47,6 +49,7 @@ extension DetailVendorViewController {
     }
     
     @objc func vendorDetailViewGesture(recognizer: UIPanGestureRecognizer) {
+        
         switch recognizer.state {
             
         case .began:
@@ -91,6 +94,8 @@ extension DetailVendorViewController {
     }
     
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
+        self.backgroundAlphaView.alpha = 0
+        backgroundAlphaView.removeFromSuperview()
         displayingAnnotation.isSelected = false
         isPresenting = !isPresenting
         dismiss(animated: true, completion: nil)

@@ -21,8 +21,8 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     // UI Elements
     lazy var backgroundAlphaView: UIView = {
         let view = UIView(frame: self.view.bounds)
-        view.backgroundColor = .black
-        view.alpha = 0
+        view.backgroundColor = .clear
+        view.alpha = 0.1
         return view
     }()
     let vendorView = UIView()
