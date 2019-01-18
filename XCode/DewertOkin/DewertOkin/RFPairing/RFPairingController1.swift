@@ -28,18 +28,13 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         self.remotePicker.delegate = self
         self.remotePicker.dataSource = self
         
-        imageData = [Remote(withID:"Remote1", withImage:UIImage(named: "remote1.png")!, withHighlights: [CGPoint(x:145, y:185), CGPoint(x:210, y:185)]),
-                     Remote(withID:"Remote2", withImage:UIImage(named: "remote2.png")!),
-                     Remote(withID:"Remote3", withImage:UIImage(named: "remote3.png")!)]
+        imageData = [Remote(withID:"82418", withImage:UIImage(named: "remote1.png")!), // our remote
+                     Remote(withID:"bedding-all", withImage:UIImage(named: "remote2.png")!),
+                     Remote(withID:"84562", withImage:UIImage(named: "remote3.png")!),
+                     Remote(withID:"Table-test", withImage:UIImage(named: "remote4.png")!)]
         selectedRemote = imageData[0]
         
-    remotePicker.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint(item: remotePicker, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: pairingView.frame.height/1.5).isActive = true
-        
-    dottedCircle.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint(item: dottedCircle, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
+        layoutConstraints()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -66,6 +61,8 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
             imageView.image = imageData[1].image
         case 2:
             imageView.image = imageData[2].image
+        case 3:
+            imageView.image = imageData[3].image
         default:
             imageView.image = nil
             print("ERROR")
@@ -91,5 +88,19 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
             }
         }
         
+    }
+    
+    
+    
+    
+    
+    func layoutConstraints() {
+        remotePicker.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: remotePicker, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: pairingView.frame.height/1.5).isActive = true
+        
+        dottedCircle.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: dottedCircle, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
     }
 }

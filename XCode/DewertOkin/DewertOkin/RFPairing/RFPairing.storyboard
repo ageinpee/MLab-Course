@@ -93,13 +93,6 @@
                                     <segue destination="u33-Ka-qw8" kind="custom" identifier="pairingTransition2" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="QoW-ME-Ubh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-u5-OCC">
-                                <rect key="frame" x="50" y="722" width="314" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="xBz-XT-RbR"/>
-                                </constraints>
-                                <state key="normal" title="skip RF Pairing"/>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="controller2Image" translatesAutoresizingMaskIntoConstraints="NO" id="CfR-0w-Yh1">
                                 <rect key="frame" x="30" y="94" width="354" height="424"/>
                             </imageView>
@@ -117,16 +110,12 @@
                             <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="CfR-0w-Yh1" secondAttribute="trailing" constant="30" id="ImY-NZ-Il8"/>
                             <constraint firstItem="Wg4-di-WFB" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="50" id="Ing-ra-iq9"/>
                             <constraint firstItem="CfR-0w-Yh1" firstAttribute="top" secondItem="wRg-iK-mLx" secondAttribute="top" constant="50" id="J0O-a2-ppa"/>
-                            <constraint firstItem="vmc-u5-OCC" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="50" id="Mso-Ts-4RK"/>
                             <constraint firstItem="Jcd-0F-nRb" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="-450" id="NuC-jk-8ek"/>
                             <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="Jcd-0F-nRb" secondAttribute="trailing" constant="-450" id="Spd-As-2bf"/>
                             <constraint firstItem="wRg-iK-mLx" firstAttribute="bottom" secondItem="Wg4-di-WFB" secondAttribute="bottom" constant="50" id="Z0y-6Q-W09"/>
                             <constraint firstItem="Wg4-di-WFB" firstAttribute="centerX" secondItem="Wgc-MQ-cpI" secondAttribute="centerX" id="eLz-4S-7RU"/>
-                            <constraint firstItem="vmc-u5-OCC" firstAttribute="centerX" secondItem="Wgc-MQ-cpI" secondAttribute="centerX" id="hi8-bD-ajN"/>
-                            <constraint firstItem="Wg4-di-WFB" firstAttribute="top" secondItem="vmc-u5-OCC" secondAttribute="bottom" constant="20" id="ism-wu-ysn"/>
                             <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="Wg4-di-WFB" secondAttribute="trailing" constant="50" id="nqe-kk-ImT"/>
                             <constraint firstItem="CfR-0w-Yh1" firstAttribute="leading" secondItem="wRg-iK-mLx" secondAttribute="leading" constant="30" id="ufn-Ul-jSM"/>
-                            <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="vmc-u5-OCC" secondAttribute="trailing" constant="50" id="uqb-N6-gus"/>
                             <constraint firstItem="wRg-iK-mLx" firstAttribute="trailing" secondItem="UY8-rV-pEb" secondAttribute="trailing" constant="30" id="wUZ-Iy-Qwh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wRg-iK-mLx"/>
@@ -137,7 +126,6 @@
                         <outlet property="plugImage" destination="CfR-0w-Yh1" id="eF4-aO-Ha7"/>
                         <outlet property="plugLabel" destination="UY8-rV-pEb" id="hSO-zt-jBb"/>
                         <outlet property="proceedButton" destination="Wg4-di-WFB" id="EyI-5P-udW"/>
-                        <outlet property="skipButton" destination="vmc-u5-OCC" id="x5p-Hb-hfW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E3h-80-huf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -152,7 +140,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="quarterCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Z1R-FZ-CjG">
+                            <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="quarterCircleLastStoryboard" translatesAutoresizingMaskIntoConstraints="NO" id="Z1R-FZ-CjG">
                                 <rect key="frame" x="-450" y="650" width="1314" height="1314"/>
                                 <accessibility key="accessibilityConfiguration" identifier="dottedCircle"/>
                                 <constraints>
@@ -166,6 +154,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Proceed"/>
+                                <connections>
+                                    <action selector="ProceedAction:" destination="u33-Ka-qw8" eventType="touchUpInside" id="UOU-bT-R3y"/>
+                                    <segue destination="UOt-UK-pR9" kind="custom" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="6Ip-Un-Mxe"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-qP-4mq">
                                 <rect key="frame" x="30" y="94" width="354" height="456"/>
@@ -207,10 +199,19 @@
             </objects>
             <point key="canvasLocation" x="1790" y="140"/>
         </scene>
+        <!--SecondRemote-->
+        <scene sceneID="aca-Fp-ajA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SecondRemote" id="UOt-UK-pR9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GLp-vy-plz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2483" y="140"/>
+        </scene>
     </scenes>
     <resources>
         <image name="controller2Image" width="819.84002685546875" height="876.47998046875"/>
         <image name="quarterCircle" width="5497.919921875" height="5505.60009765625"/>
         <image name="quarterCircleFirstStoryboard" width="5497.919921875" height="5501.759765625"/>
+        <image name="quarterCircleLastStoryboard" width="5497.919921875" height="5501.759765625"/>
     </resources>
 </document>

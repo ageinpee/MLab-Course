@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import HealthKit
 import CoreBluetooth
+import CoreData
 
 
 class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable{
@@ -24,6 +25,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var leftPanArea: UIView!
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
+    @IBOutlet weak var devicesListButton: UIButton!
+    
     
     var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var panRecRight: UIPanGestureRecognizer = UIPanGestureRecognizer()
@@ -36,10 +39,9 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     var panState = UIGestureRecognizer.State.ended
     var impact: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator()
     
-    var deviceType: DeviceType = .NaN
+    var devicesList = [Devices]()
     
-    var currentStyle: DeviceStyle = DeviceStyle()
-    var device: DeviceObject = DeviceObject()
+    var device = globalDeviceObject
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
@@ -71,17 +73,25 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        deviceType = DeviceType.chair_2Motors
-        currentStyle.setFilledStyle(forDevice: deviceType)
-        device = DeviceObject(withID: 0,
-                              named: "Chair 0",
-                              withDescription: "HE150",
-                              asType: .chair_2Motors,
-                              withStyle: currentStyle,
-                              withCMDService: CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B"),
-                              withKeycodeUUID: CBUUID(string: "62741525-52F9-8864-B1AB-3B3A8D65950B"),
-                              withFeedbackUUID: CBUUID(string: "62741625-52F9-8864-B1AB-3B3A8D65950B"))
+        fetchDevices()
+        print(devicesList)
         
+        /*
+        device = DeviceObject(withUUID: devicesList[0].uuid!,
+                              named: devicesList[0].name!,
+                              withHandheldID: devicesList[0].handheld!,
+                              withStyle: devicesList[0].style!)
+        globalDeviceObject = device
+        */
+        /*
+        let testDevice = DeviceObject(withUUID: "test1",
+                                      named: "test table",
+                                      withHandheldID: "Table-test",
+                                      withStyle: "empty")
+        device = testDevice
+        */
+        
+        currentDeviceLabel.text = device.name
         setupButtons()
         setupPanAreas()
         
@@ -91,20 +101,14 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         impact = UIImpactFeedbackGenerator(style: .light)
         
-        /*
-        let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
-        swipeRec.direction = .up
-        ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
-        ExtraFunctionsButtonObj.addTarget(self, action: #selector(showExtraFeaturesView), for: .touchUpInside)
-        */
-        arrowsImageView.image = currentStyle.stylesImages[0]
-        Image.image = currentStyle.stylesImages[1]
+        arrowsImageView.image = device.deviceImages[0]
+        Image.image = device.deviceImages[1]
         Image.contentMode = .scaleAspectFit
     }
     
     override func viewDidAppear(_ animated: Bool) {
         arrowsImageView.alpha = 0
-        animateFade(withAlpha: opacity)
+        fadeInArrows(withAlpha: opacity)
         
         checkBluetoothConnectivity()
     }
