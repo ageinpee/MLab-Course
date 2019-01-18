@@ -52,6 +52,8 @@ extension RemoteController {
         ExtraFunctionsButtonObj.layer.masksToBounds = true
         ExtraFunctionsButtonObj.layer.borderWidth = 1
         ExtraFunctionsButtonObj.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+        
+        devicesListButton.setBackgroundImage(UIImage(named: "devices_list"), for: .normal)
     }
     
     @objc

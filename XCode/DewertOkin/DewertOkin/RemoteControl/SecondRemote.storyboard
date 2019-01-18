@@ -76,6 +76,16 @@
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scI-cv-eGy">
+                                <rect key="frame" x="344" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="NKo-uV-5ug"/>
+                                    <constraint firstAttribute="height" constant="50" id="v65-2M-8XN"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="2i9-pd-CzF" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="SgC-u1-H4w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="Remote"/>
@@ -88,6 +98,7 @@
                             <constraint firstItem="DnC-Xu-Jbg" firstAttribute="top" secondItem="A7b-hz-zBK" secondAttribute="top" constant="120" id="A6W-m5-we5"/>
                             <constraint firstItem="XRq-Gx-E26" firstAttribute="top" secondItem="J9R-PK-aQG" secondAttribute="top" id="EbH-pF-aSa"/>
                             <constraint firstItem="J9R-PK-aQG" firstAttribute="leading" secondItem="uty-hF-LTZ" secondAttribute="leading" constant="10" id="IF6-tE-hn4"/>
+                            <constraint firstItem="scI-cv-eGy" firstAttribute="top" secondItem="uty-hF-LTZ" secondAttribute="top" constant="20" id="ILW-Fn-p25"/>
                             <constraint firstItem="kEo-gs-uD4" firstAttribute="width" secondItem="J9R-PK-aQG" secondAttribute="width" multiplier="0.5" id="IUL-NS-rma"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="DnC-Xu-Jbg" secondAttribute="trailing" constant="10" id="JpN-9I-Z99"/>
                             <constraint firstItem="FEt-Ft-Val" firstAttribute="top" secondItem="uty-hF-LTZ" secondAttribute="top" constant="70" id="KSd-AP-Rdk"/>
@@ -104,6 +115,7 @@
                             <constraint firstItem="kEo-gs-uD4" firstAttribute="bottom" secondItem="J9R-PK-aQG" secondAttribute="bottom" id="mfb-cY-TeN"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="J9R-PK-aQG" secondAttribute="trailing" constant="10" id="p8u-6u-qAB"/>
                             <constraint firstItem="uty-hF-LTZ" firstAttribute="bottom" secondItem="Xjl-Wp-KTM" secondAttribute="bottom" priority="750" constant="40" id="qCE-Cp-YR0"/>
+                            <constraint firstItem="uty-hF-LTZ" firstAttribute="trailing" secondItem="scI-cv-eGy" secondAttribute="trailing" constant="20" id="wt5-nv-fiO"/>
                             <constraint firstItem="XRq-Gx-E26" firstAttribute="bottom" secondItem="J9R-PK-aQG" secondAttribute="bottom" id="xKs-Yx-Ed7"/>
                             <constraint firstItem="Xjl-Wp-KTM" firstAttribute="centerX" secondItem="A7b-hz-zBK" secondAttribute="centerX" priority="800" id="xWU-ic-02g"/>
                         </constraints>
@@ -118,6 +130,7 @@
                         <outlet property="TimerButtonObj" destination="7LG-TT-Cct" id="XWi-Hj-Isc"/>
                         <outlet property="arrowsImageView" destination="DnC-Xu-Jbg" id="oYT-nk-h23"/>
                         <outlet property="currentDeviceLabel" destination="FEt-Ft-Val" id="OOU-oC-Jzc"/>
+                        <outlet property="devicesListButton" destination="scI-cv-eGy" id="C9j-oW-xHd"/>
                         <outlet property="leftPanArea" destination="XRq-Gx-E26" id="SAM-At-cLd"/>
                         <outlet property="rightPanArea" destination="kEo-gs-uD4" id="p4n-8f-kEp"/>
                     </connections>
@@ -125,6 +138,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3X-h2-zOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="26.116071428571427"/>
+        </scene>
+        <!--Devices-->
+        <scene sceneID="QEH-EL-Uod">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Devices" id="2i9-pd-CzF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3Y-pZ-1dk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="519" y="-375"/>
         </scene>
         <!--Extra Functions Controller-->
         <scene sceneID="xWQ-VC-bVW">
@@ -212,7 +233,7 @@
     </scenes>
     <resources>
         <image name="chair_full_normal" width="1099.199951171875" height="854.4000244140625"/>
-        <image name="chair_normal_arrows" width="1001.280029296875" height="779"/>
+        <image name="chair_normal_arrows" width="1099.199951171875" height="854.4000244140625"/>
         <image name="remote_icon" width="30" height="30"/>
     </resources>
 </document>
