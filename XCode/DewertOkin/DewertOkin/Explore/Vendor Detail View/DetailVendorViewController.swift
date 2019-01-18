@@ -52,7 +52,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         
         initializeVendorView()
         //initializeVendorInformation()
-        //initializeAccessoryCollection()
+        initializeAccessoryCollection()
         
     }
     
@@ -128,19 +128,26 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorAccessories = displayingVendor.accessories
         
         let layout = UICollectionViewFlowLayout()
+        let width = CGFloat(self.view.frame.width) * CGFloat(vendorAccessories.count)
         layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
         
-        let frame = vendorView.convert(CGRect(x: self.view.frame.width / 2, y: self.view.frame.height / 2, width: self.view.frame.width, height: 100), to: collectionView)
-        
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: (vendorViewOffset * 2) - 150, width: self.view.frame.width, height: 100), collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
         collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = true
+        collectionView.bounces = true
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.isScrollEnabled = true
+        collectionView.isUserInteractionEnabled = true
         vendorView.addSubview(collectionView)
+        collectionView.layoutIfNeeded()
+        collectionView.layoutSubviews()
+        //collectionView.bottomAnchor.constraint(equalTo: vendorView.bottomAnchor).isActive = true
     }
     
 }
