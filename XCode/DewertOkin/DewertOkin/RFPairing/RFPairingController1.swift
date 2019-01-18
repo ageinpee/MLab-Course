@@ -29,8 +29,9 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         self.remotePicker.dataSource = self
         
         imageData = [Remote(withID:"82418", withImage:UIImage(named: "remote1.png")!), // our remote
-                     Remote(withID:"seating-2", withImage:UIImage(named: "remote2.png")!),
-                     Remote(withID:"bedding-2", withImage:UIImage(named: "remote3.png")!)] // maybe change to a table for demo purposes
+                     Remote(withID:"bedding-all", withImage:UIImage(named: "remote2.png")!),
+                     Remote(withID:"84562", withImage:UIImage(named: "remote3.png")!),
+                     Remote(withID:"Table-test", withImage:UIImage(named: "remote4.png")!)]
         selectedRemote = imageData[0]
         
         layoutConstraints()
@@ -60,6 +61,8 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
             imageView.image = imageData[1].image
         case 2:
             imageView.image = imageData[2].image
+        case 3:
+            imageView.image = imageData[3].image
         default:
             imageView.image = nil
             print("ERROR")

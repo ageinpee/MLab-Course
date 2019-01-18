@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreBluetooth
+import CoreData
 
 class RFPairingController3: UIViewController {
     
@@ -20,6 +21,8 @@ class RFPairingController3: UIViewController {
     let backgroundView = UIView()
     
     @IBOutlet weak var remoteImageView: UIImageView!
+    
+    var devicesList = [Devices]()
     
     var selectedRemote: Remote = Remote()
     var device: DeviceObject = DeviceObject()
@@ -41,14 +44,17 @@ class RFPairingController3: UIViewController {
         
         layoutConstraints()
         
+        fetchDevices()
+        
         let reader = CSVReader()
-        let remoteData = reader.readCSV(fileName: "handsender1", fileType: "csv")
+        let remoteData = reader.readCSV(fileName: "handsender1_extended", fileType: "csv")
         
         for row in remoteData {
             if row[0] == selectedRemote.id {
-                device = DeviceObject(withUUID: UUID().uuidString, named: "New Device", withHandheldID: row[0], withStyle: .empty)
+                device = DeviceObject(withUUID: UUID().uuidString, named: "New Device", withHandheldID: row[0], withStyle: DeviceStyle.empty.rawValue)
             }
         }
+        
     }
     
     @objc
@@ -56,8 +62,12 @@ class RFPairingController3: UIViewController {
         //guard bluetoothBackgroundHandler.checkStatus() else { return }
         
         /*
-        insert bluetooth pairing
-         */
+         
+        insert bluetooth pairing process
+         
+ 
+        saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
+        */
         
         self.dismiss(animated: true)
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
@@ -68,8 +78,28 @@ class RFPairingController3: UIViewController {
 //        present(MainViewController(), animated: true, completion: nil)
         
     }
-
     
+    
+    func fetchDevices() {
+        let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()
+        
+        do {
+            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
+            self.devicesList = savedDevices
+        } catch {
+            print("Couldn't update the Devices, reload!")
+        }
+    }
+    
+    
+    func saveDevice(withUUID: String, named: String, forHandheldID: String, withStyle: String) {
+        let device = Devices(context: PersistenceService.context)
+        device.uuid = withUUID
+        device.name = named
+        device.handheld = forHandheldID
+        device.style = withStyle
+        PersistenceService.saveContext()
+    }
     
     
     

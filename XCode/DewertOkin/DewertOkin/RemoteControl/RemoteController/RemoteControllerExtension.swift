@@ -107,23 +107,22 @@ extension RemoteController {
         switch panRecognizer.state {
         case .began:
             translation = .began
+            arrowsImageView.alpha = 0
             timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(actionRight), userInfo: nil, repeats: true)
             
         case .changed:
             if(panRecognizer.translation(in: rightPanArea).y >= 40) {
                 translation = .down
-                arrowsImageView.alpha = 0
-                Image.image = currentStyle.stylesImages[3]
+                Image.image = device.deviceImages[3]
                 
             } else if (panRecognizer.translation(in: rightPanArea).y <= -40) {
                 translation = .up
-                arrowsImageView.alpha = 0
-                Image.image = currentStyle.stylesImages[2]
+                Image.image = device.deviceImages[2]
             }
         case .ended:
             translation = .ended
-            Image.image = currentStyle.stylesImages[1]
-            animateFade(withAlpha: opacity)
+            Image.image = device.deviceImages[1]
+            fadeInArrows(withAlpha: opacity)
         default: break
         }
     }
@@ -137,29 +136,48 @@ extension RemoteController {
         case .began:
             print("Pan in Left Area")
             translation = .began
-            timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(actionLeft), userInfo: nil, repeats: true)
+            arrowsImageView.alpha = 0
+            timer = Timer.scheduledTimer(timeInterval: 0.3,
+                                         target: self,
+                                         selector: #selector(actionLeft),
+                                         userInfo: nil,
+                                         repeats: true)
         case .changed:
             if(panRecognizer.translation(in: leftPanArea).y >= 40) {
                 translation = .down
-                arrowsImageView.alpha = 0
-                Image.image = currentStyle.stylesImages[5]
+                if device.type == "table" {
+                    Image.image = device.deviceImages[3]
+                }
+                else if device.type == "NaN" {
+                    print("no device found")
+                }
+                else {
+                    Image.image = device.deviceImages[5]
+                }
                 
             } else if (panRecognizer.translation(in: leftPanArea).y <= -40) {
                 translation = .up
-                arrowsImageView.alpha = 0
-                Image.image = currentStyle.stylesImages[4]
+                if device.type == "table" {
+                    Image.image = device.deviceImages[2]
+                }
+                else if device.type == "NaN" {
+                    print("no device found")
+                }
+                else {
+                    Image.image = device.deviceImages[4]
+                }
                 
             }
         case .ended:
             print("Pan in Left Area ended")
             translation = .ended
-            Image.image = currentStyle.stylesImages[1]
-            animateFade(withAlpha: opacity)
+            Image.image = device.deviceImages[1]
+            fadeInArrows(withAlpha: opacity)
         default: break
         }
     }
     
-    func animateFade(withAlpha: CGFloat) {
+    func fadeInArrows(withAlpha: CGFloat) {
         UIView.animate(withDuration: 2.0, delay: 5.0, options: [], animations: {
             self.arrowsImageView.alpha = withAlpha
         }, completion: nil)

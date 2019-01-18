@@ -10,16 +10,20 @@ import Foundation
 import UIKit.UIImage
 import CoreBluetooth
 
+
+var globalDeviceObject = DeviceObject()
+
+
 class DeviceObject {
     
-    var uuid: String = String()
-    var name: String = String()
-    var handheldID: String = String() // Art-Nr. of handheld in csv file
+    var uuid: String = ""
+    var name: String = ""
+    var handheldID: String = "" // Art-Nr. of handheld in csv file
     var handheldData: [String] = [String]() // get these data via handsender1.csv file. represents one row matching the handheld
     
     // these parameters are important for the remote screen and the correct visual representation of the remote
-    var type: String = String() // --> type with enum and string matching
-    var style: String = String() // --> get style via extra class and matching with 'type' and 'style'. style = filled or empty
+    var type: String = "NaN" // --> type with enum and string matching
+    var style: String = "empty" // --> get style via extra class and matching with 'type' and 'style'. style = filled or empty
     
     // These parameters values are loaded during init with the help of style and type parameters
     var deviceImages: [UIImage] = [UIImage]() // images loaded by other class
@@ -40,22 +44,26 @@ class DeviceObject {
     var Reminders: [String] = [String]()    //placeholder for device specific Remidners-array
     
     init() {
-        
+        deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+                                                      forDevice: DeviceType(rawValue: type)!)
     }
     
-    init(withUUID id: String, named: String, withHandheldID: String, withStyle: DeviceStyle) {
+    init(withUUID id: String, named: String, withHandheldID: String, withStyle: String) {
         uuid = id
         name = named
         handheldID = withHandheldID
-        style = withStyle.rawValue
+        style = withStyle
         
-        let csvData = CSVReader().readCSV(fileName: "handsender1", fileType: "csv")
+        let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
         
         for row in csvData {
             if row[0] == handheldID {
                 handheldData = row
                 break
             }
+        }
+        if handheldData == [] {
+            print("ERROR - couldn't find handheld data")
         }
         
         initializeFunctionality()
@@ -133,6 +141,14 @@ class DeviceObject {
 }
 
 
+
+
+//===============================================================================//
+//=================               ENUMS                  ========================//
+//===============================================================================//
+
+
+
 enum DeviceType: String { // implemented graphics is marked with <--
     case NaN = "NaN"
     case chair_1Motors = "chair_1Motors"
@@ -176,7 +192,6 @@ enum Memories: String {
     case Mem4 = "Mem4"
     case MemSave = "MemSave"
 }
-
 
 // ================================================================
 // ========                  NOTES                       ==========

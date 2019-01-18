@@ -23,17 +23,36 @@ class ExtraFunctionsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var title = ""
+        for extra in globalDeviceObject.availableExtraFunctions {
+            switch extra {
+            case .massage_back:
+                title = ExtraFunctionsTitle.massage_back.rawValue
+            case .massage_neck:
+                title = ExtraFunctionsTitle.massage_neck.rawValue
+            case .massage_legs:
+                title = ExtraFunctionsTitle.massage_legs.rawValue
+            case .ubl:
+                title = ExtraFunctionsTitle.ubl.rawValue
+            case .NaN:
+                title = ExtraFunctionsTitle.NaN.rawValue
+            }
+            
+            functionsList.append(ExtraFunction(asType: extra, withTitle: title, withHex: "0x00"))//placeholder
+        }
         
         globalView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
-        noFunctionsLabel.text = "Your device currently has no additionaly features. You can find accessories for your device in the 'Explore' section. "
-        noFunctionsLabel.textColor = UIColor.gray
+        noFunctionsLabel.text = "Your device currently has no additional features. You can find accessories for your device in the 'Explore' section. "
+        noFunctionsLabel.textColor = UIColor.lightGray
         noFunctionsLabel.isHidden = true
         
+        /*
         functionsList = [ExtraFunction(asType: .massage_back, withTitle: "Back Massage", withHex: "0x01"),
                          ExtraFunction(asType: .massage_neck, withTitle: "Neck Massage", withHex: "0x02"),
                          ExtraFunction(asType: .massage_legs, withTitle: "Leg Massage", withHex: "0x03"),
                          ExtraFunction(asType: .ubl, withTitle: "Under Bed Lights", withHex: "0x04")]
+         */
         
         createButtons(withFunctions: functionsList)
     }
@@ -125,4 +144,12 @@ class ExtraFunction {
         title = withTitle
         hex = withHex
     }
+}
+
+enum ExtraFunctionsTitle: String {
+    case massage_back = "Massage Back"
+    case massage_neck = "Massage Neck"
+    case massage_legs = "Massage Legs"
+    case ubl = "UBL"
+    case NaN = "NaN"
 }
