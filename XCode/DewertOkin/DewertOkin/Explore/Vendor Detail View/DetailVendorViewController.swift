@@ -51,8 +51,8 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         view.backgroundColor = .clear
         
         initializeVendorView()
-        //initializeVendorInformation()
-        //initializeAccessoryCollection()
+        initializeVendorInformation()
+        initializeAccessoryCollection()
         
     }
     
@@ -78,6 +78,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.backgroundColor = .white
         vendorView.translatesAutoresizingMaskIntoConstraints = false
         vendorView.layer.cornerRadius = 20.0
+        vendorView.clipsToBounds = true
         vendorView.layer.shadowColor = UIColor.black.cgColor
         vendorView.layer.shadowOpacity = 0.1
         vendorView.layer.shadowRadius = 10
@@ -128,19 +129,27 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorAccessories = displayingVendor.accessories
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
+        var width = CGFloat(self.vendorView.frame.width) * CGFloat(vendorAccessories.count)
+        layout.itemSize = CGSize(width: 150, height: 150)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .horizontal
         
-        let frame = vendorView.convert(CGRect(x: self.view.frame.width / 2, y: self.view.frame.height / 2, width: self.view.frame.width, height: 100), to: collectionView)
-        
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: (vendorViewOffset * 2) - 200, width: self.view.frame.width, height: 150), collectionViewLayout: layout)
+        //collectionView.contentSize = CGSize(width: width, height: 150)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
         collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = true
+        collectionView.bounces = true
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.isScrollEnabled = true
+        collectionView.isUserInteractionEnabled = true
         vendorView.addSubview(collectionView)
+        collectionView.layoutIfNeeded()
+        collectionView.layoutSubviews()
+        //collectionView.bottomAnchor.constraint(equalTo: vendorView.bottomAnchor).isActive = true
     }
     
 }
