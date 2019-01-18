@@ -81,6 +81,8 @@ extension ExtraFunctionsController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.view.frame.width/23)
         button.titleEdgeInsets = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.lineBreakMode = .byWordWrapping
 
         
         let imageSize = CGSize(width: self.view.frame.width/4.14,
