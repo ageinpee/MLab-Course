@@ -1,44 +1,172 @@
 [
- {
-    "name": "Hot Furniture",
-    "street": "Grindelallee 129",
-    "openingHour": 8,
-    "closingHour": 20,
-    "telephoneNumber": "666-666-666",
-    "latitude": 53.551086,
-    "longitude": 9.993682,
-    "accessories": [
-        {
-            "imageName": "TouchControl",
-            "name": "RF Touch",
-            "accessoryDescription": "Can't Touch This"
-        },
-        {
-            "imageName": "LEDStripe",
-            "name": "LED-Stripe",
-            "accessoryDescription": "Lumos Maxima"
-        }
-    ]
- },
- {
-     "name": "Cold Furniture",
-     "street": "Grindelweg 129",
-     "openingHour": 8,
-     "closingHour": 20,
-     "telephoneNumber": "999-999-999",
-     "latitude": 53.551094,
-     "longitude": 10.018185,
-     "accessories": [
-         {
-             "imageName": "TouchControl",
-             "name": "RF Touch",
-             "accessoryDescription": "Can't Touch This"
-         },
-         {
-             "imageName": "LEDStripe",
-             "name": "LED-Stripe",
-             "accessoryDescription": "Lumos Maxima"
-         }
-     ]
- }
+    {
+        "name": "Hot Furniture",
+        "street": "Grindelallee 129",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "666-666-666",
+        "latitude": 53.551086,
+        "longitude": 9.993682,
+        "accessories": [
+            {
+                "imageName": "TouchControl",
+                "name": "RF Touch",
+                "accessoryDescription": "Very modern, convenient touch remote control"
+            },
+            {
+                "imageName": "LEDStripe",
+                "name": "LED-Stripe",
+                "accessoryDescription": "Illuminate everything in your living room"
+            }
+        ]
+    },
+    {
+        "name": "Chilly Chairs",
+        "street": "Grindelweg 121",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "999-999-999",
+        "latitude": 53.559128,
+        "longitude": 10.008674,
+        "accessories": [
+            {
+                "imageName": "AKKU POWER PACK 1300",
+                "name": "AKKU POWER PACK 1300",
+                "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+            },
+            {
+                "imageName": "MASSAGEMOTOR MM 65",
+                "name": "MASSAGEMOTOR MM 65",
+                "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
+            }
+        ]
+    },
+    {
+        "name": "Top Tables",
+        "street": "Grindelallee 123",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "777-777-7",
+        "latitude": 53.549775,
+        "longitude": 9.963939,
+        "accessories": [
+            {
+                "imageName": "LEDStripe",
+                "name": "LED-Stripe",
+                "accessoryDescription": "Illuminate everything in your living room"
+            },
+            {
+                "imageName": "AKKU POWER PACK 1300",
+                "name": "AKKU POWER PACK 1300",
+                "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+            }
+        ]
+    },
+    {
+        "name": "DewertOkin GmbH",
+        "street": "Millerntorplatz 1",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "+49 151 11813863",
+        "latitude": 53.550524,
+        "longitude": 9.969058,
+        "accessories": [
+            {
+                "imageName": "MASSAGEMOTOR MM 65",
+                "name": "MASSAGEMOTOR MM 65",
+                "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
+            },
+            {
+                "imageName": "Under-Bed-Lighting",
+                "name": "Under-Bed-Lighting",
+                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+            }
+        ]
+    },
+    {
+        "name": "Best Beds",
+        "street": "Holzweg 007",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "888-888-88",
+        "latitude": 53.58,
+        "longitude": 10.05,
+        "accessories": [
+            {
+                "imageName": "AKKU POWER PACK 1300",
+                "name": "AKKU POWER PACK 1300",
+                "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+            },
+            {
+                "imageName": "MASSAGEMOTOR MM 65",
+                "name": "MASSAGEMOTOR MM 65",
+                "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
+            }
+        ]
+    },
+    {
+        "name": "Buddys Bedstoragecenter",
+        "street": "Mansteinstraße 49",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "333-333-333",
+        "latitude": 53.579125,
+        "longitude": 9.964213,
+        "accessories": [
+            {
+                "imageName": "TouchControl",
+                "name": "RF Touch",
+                "accessoryDescription": "Very modern, convenient touch remote control"
+            },
+            {
+                "imageName": "MASSAGEMOTOR MM 65",
+                "name": "MASSAGEMOTOR MM 65",
+                "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
+            }
+        ]
+    },
+    {
+        "name": "Club Möbelhaus",
+        "street": "Kleiner Grasbrook 122",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "123-321-132",
+        "latitude": 53.527642,
+        "longitude": 9.980984,
+        "accessories": [
+            {
+                "imageName": "Under-Bed-Lighting",
+                "name": "Under-Bed-Lighting",
+                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+            },
+            {
+                "imageName": "MASSAGEMOTOR MM 65",
+                "name": "MASSAGEMOTOR MM 65",
+                "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
+            }
+        ]
+    },
+    {
+        "name": "Furni-Mart",
+        "street": "Mannesmannstraße 59",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "333-555-777",
+        "latitude": 53.565272,
+        "longitude": 9.989209,
+        "accessories": [
+            {
+                "imageName": "TouchControl",
+                "name": "RF Touch",
+                "accessoryDescription": "Very modern, convenient touch remote control"
+            },
+            {
+                "imageName": "Under-Bed-Lighting",
+                "name": "Under-Bed-Lighting",
+                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+            }
+        ]
+    }
+    
+    
 ]

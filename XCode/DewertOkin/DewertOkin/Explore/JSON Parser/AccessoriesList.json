@@ -1,12 +1,27 @@
 [
- {
-    "imageName": "TouchControl",
-    "name": "RF Touch",
-    "accessoryDescription": "Can't Touch This"
- },
- {
-     "imageName": "LEDStripe",
-     "name": "LED-Stripe",
-     "accessoryDescription": "Lumos Maxima"
- }
+    {
+        "imageName": "TouchControl",
+        "name": "RF Touch",
+        "accessoryDescription": "Very modern, convenient touch remote control"
+    },
+    {
+        "imageName": "LEDStripe",
+        "name": "LED-Stripe",
+        "accessoryDescription": "Illuminate everything in your living room"
+    },
+    {
+        "imageName": "AKKU POWER PACK 1300",
+        "name": "AKKU POWER PACK 1300",
+        "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+    },
+    {
+        "imageName": "MASSAGEMOTOR MM 65",
+        "name": "MASSAGEMOTOR MM 65",
+        "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
+    },
+    {
+        "imageName": "Under-Bed-Lighting",
+        "name": "Under-Bed-Lighting",
+        "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+    }
 ]
