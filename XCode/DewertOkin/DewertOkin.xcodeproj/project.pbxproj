@@ -50,8 +50,8 @@
 		03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987672194631300189C97 /* UserNotificationsUI.framework */; };
 		4B54CBF2759AFFD448783FF0 /* Pods_DewertOkin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9220AFB621F1DD85003E2794 /* handsender1_extended.csv */; };
 		9243F4C621F0C78000513B11 /* RemoteControllerExtensionCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */; };
-		9243F4CE21F1418000513B11 /* handsender1_extended.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9243F4CD21F1418000513B11 /* handsender1_extended.csv */; };
 		CD100F4721DB973200DBAAB9 /* BluetoothPairingConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */; };
 		CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */; };
 		CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */; };
@@ -170,8 +170,8 @@
 		66B96800A32AF456A1DA4FEE /* Pods-DewertOkin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DewertOkin.release.xcconfig"; path = "Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin.release.xcconfig"; sourceTree = "<group>"; };
 		760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DewertOkin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9220AFB621F1DD85003E2794 /* handsender1_extended.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1_extended.csv; sourceTree = "<group>"; };
 		9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionCoreData.swift; sourceTree = "<group>"; };
-		9243F4CD21F1418000513B11 /* handsender1_extended.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = handsender1_extended.csv; path = ../../../../../../../../Documents/handsender1_extended.csv; sourceTree = "<group>"; };
 		B0FFC79E97882B928D61CF45 /* Pods-DewertOkin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DewertOkin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin.debug.xcconfig"; sourceTree = "<group>"; };
 		CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
@@ -532,7 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				FA19A2FB21D3722D0032A4E7 /* handsender1.csv */,
-				9243F4CD21F1418000513B11 /* handsender1_extended.csv */,
+				9220AFB621F1DD85003E2794 /* handsender1_extended.csv */,
 				FA19A2F521D370900032A4E7 /* RFPairingController1.swift */,
 				FA19A2F721D370AE0032A4E7 /* RFPairing.storyboard */,
 				FA19A2F921D370CE0032A4E7 /* CSVReader.swift */,
@@ -718,7 +718,7 @@
 				FA19A2FC21D3722D0032A4E7 /* handsender1.csv in Resources */,
 				FA2C9CFD21AF28E20018545A /* SecondRemote.storyboard in Resources */,
 				0359367F21EAA37C00986EC8 /* AccessoriesList.json in Resources */,
-				9243F4CE21F1418000513B11 /* handsender1_extended.csv in Resources */,
+				9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */,
 				03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */,
 				039133C721E7ECB800ECCBBE /* Explore.storyboard in Resources */,
 				0359367D21EA8B8800986EC8 /* VendorList.json in Resources */,
