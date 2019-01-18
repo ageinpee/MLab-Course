@@ -12,7 +12,6 @@ import UIKit
 class RFPairingController2: UIViewController {
     
     @IBOutlet weak var proceedButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var dottedCircleImage: UIImageView!
     @IBOutlet weak var plugImage: UIImageView!
     @IBOutlet weak var plugLabel: UILabel!

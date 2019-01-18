@@ -150,6 +150,6 @@ enum ExtraFunctionsTitle: String {
     case massage_back = "Massage Back"
     case massage_neck = "Massage Neck"
     case massage_legs = "Massage Legs"
-    case ubl = "UBL"
+    case ubl = "Under Bed Lighting"
     case NaN = "NaN"
 }

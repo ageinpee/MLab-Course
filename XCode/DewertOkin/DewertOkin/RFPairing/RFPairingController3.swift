@@ -57,6 +57,19 @@ class RFPairingController3: UIViewController {
         
     }
     
+    @IBAction func ProceedAction(_ sender: Any) {
+        //guard bluetoothBackgroundHandler.checkStatus() else { return }
+        
+        /*
+         
+         insert bluetooth pairing process
+         
+         
+         saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
+         */
+        globalDeviceObject = device
+    }
+    /*
     @objc
     private func dismissSelf() {
         //guard bluetoothBackgroundHandler.checkStatus() else { return }
@@ -69,6 +82,7 @@ class RFPairingController3: UIViewController {
         saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
         */
         
+        
         self.dismiss(animated: true)
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             delegate.window = UIWindow(frame: UIScreen.main.bounds)
@@ -78,6 +92,7 @@ class RFPairingController3: UIViewController {
 //        present(MainViewController(), animated: true, completion: nil)
         
     }
+    */
     
     
     func fetchDevices() {
@@ -111,6 +126,6 @@ class RFPairingController3: UIViewController {
         
         NSLayoutConstraint(item: dottedCircleImage, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
         
-        proceedButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
+        //proceedButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
     }
 }
