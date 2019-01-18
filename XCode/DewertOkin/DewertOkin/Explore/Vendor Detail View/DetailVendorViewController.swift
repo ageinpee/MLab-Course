@@ -22,6 +22,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     lazy var backgroundAlphaView: UIView = {
         let view = UIView(frame: self.view.bounds)
         view.backgroundColor = .clear
+        view.alpha = 0.1
         return view
     }()
     let vendorView = UIView()
@@ -42,12 +43,12 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     var panTapAnimation = InstantPanGestureRecognizer()
     var animationProgress = [CGFloat]()
     var runningAnimators = [UIViewPropertyAnimator]()
+    var vendorViewOffset: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vendorViewOffset = self.view.frame.height / 4
         view.backgroundColor = .clear
-        view.addSubview(backgroundAlphaView)
-        view.addSubview(vendorView)
         
         initializeVendorView()
         initializeVendorInformation()
@@ -66,14 +67,26 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func initializeVendorView() {
+        
+        backgroundAlphaView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backgroundAlphaView)
+        backgroundAlphaView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        backgroundAlphaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        backgroundAlphaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        backgroundAlphaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
         vendorView.backgroundColor = .white
         vendorView.translatesAutoresizingMaskIntoConstraints = false
-        vendorView.layer.cornerRadius = 8.0
+        vendorView.layer.cornerRadius = 20.0
         vendorView.clipsToBounds = true
+        vendorView.layer.shadowColor = UIColor.black.cgColor
+        vendorView.layer.shadowOpacity = 0.1
+        vendorView.layer.shadowRadius = 10
+        view.addSubview(vendorView)
         vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: (self.view.frame.height / 3) - 100)
+        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: vendorViewOffset)
         bottomConstraint.isActive = true
         
         panTapAnimation = InstantPanGestureRecognizer()
@@ -116,19 +129,27 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorAccessories = displayingVendor.accessories
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
+        var width = CGFloat(self.vendorView.frame.width) * CGFloat(vendorAccessories.count)
+        layout.itemSize = CGSize(width: 150, height: 150)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .horizontal
         
-        let frame = vendorView.convert(CGRect(x: self.view.frame.width / 2, y: self.view.frame.height / 2, width: self.view.frame.width, height: 100), to: collectionView)
-        
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: (vendorViewOffset * 2) - 200, width: self.view.frame.width, height: 150), collectionViewLayout: layout)
+        //collectionView.contentSize = CGSize(width: width, height: 150)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
         collectionView.register(AccessoryCustomCollectionCell.self, forCellWithReuseIdentifier: "customAccessoryCollectionCell")
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = true
+        collectionView.bounces = true
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.isScrollEnabled = true
+        collectionView.isUserInteractionEnabled = true
         vendorView.addSubview(collectionView)
+        collectionView.layoutIfNeeded()
+        collectionView.layoutSubviews()
+        //collectionView.bottomAnchor.constraint(equalTo: vendorView.bottomAnchor).isActive = true
     }
     
 }
@@ -156,18 +177,18 @@ extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
         if isPresenting == true {
             containerView.addSubview(toVC.view)
             
-            vendorView.frame.origin.y += self.view.frame.height / 3
+            vendorView.frame.origin.y += self.vendorViewOffset
             backgroundAlphaView.alpha = 0
             
-            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y -= self.view.frame.height / 3
+            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
+                self.vendorView.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.alpha = 1
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
             })
         } else {
-            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y += self.view.frame.height / 3
+            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
+                self.vendorView.frame.origin.y += self.vendorViewOffset
                 self.backgroundAlphaView.alpha = 0
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)

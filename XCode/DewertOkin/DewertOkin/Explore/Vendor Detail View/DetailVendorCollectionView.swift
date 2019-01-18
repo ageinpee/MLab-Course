@@ -20,8 +20,10 @@ extension DetailVendorViewController: UICollectionViewDelegate {
         let image = UIImage(named: vendorAccessories[indexPath.row].imageName)
         cell.accessoryImage = image
         cell.accessoryName = vendorAccessories[indexPath.row].name
-        cell.accessoryDescription = vendorAccessories[indexPath.row].accessoryDescription
-        
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.cornerRadius = 20.0
+        cell.layer.contentsCenter = self.view.frame
         cell.layoutSubviews()
         return cell
     }

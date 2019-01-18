@@ -13,14 +13,18 @@ extension DetailVendorViewController {
     
     func animateVendorDetailView(to state: State, duration: TimeInterval) {
         guard runningAnimators.isEmpty else { return }
-        let transitionAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 1, animations: {
+        let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1, animations: {
             switch state {
             case .open:
                 self.bottomConstraint.constant = 0
+                self.backgroundAlphaView.backgroundColor = .black
+                self.backgroundAlphaView.alpha = 0.5
             case .halfOpen:
-                self.bottomConstraint.constant = self.view.frame.height / 2
+                self.bottomConstraint.constant = self.vendorViewOffset
+                self.backgroundAlphaView.backgroundColor = .clear
+                self.backgroundAlphaView.alpha = 0.1
             }
-            self.vendorView.layoutIfNeeded()
+            self.view.layoutIfNeeded() //vendorView?
         })
         transitionAnimator.addCompletion { position in
             switch position {
@@ -34,10 +38,8 @@ extension DetailVendorViewController {
             switch self.currentState {
             case .open:
                 self.bottomConstraint.constant = 0
-                self.backgroundAlphaView.backgroundColor = .clear
             case .halfOpen:
-                self.bottomConstraint.constant = self.view.frame.height / 2
-                self.backgroundAlphaView.backgroundColor = UIColor.black.withAlphaComponent(0)
+                self.bottomConstraint.constant = self.vendorViewOffset
             }
             self.runningAnimators.removeAll()
         }
@@ -47,18 +49,19 @@ extension DetailVendorViewController {
     }
     
     @objc func vendorDetailViewGesture(recognizer: UIPanGestureRecognizer) {
+        
         switch recognizer.state {
             
         case .began:
-            animateVendorDetailView(to: currentState.opposite, duration: 3)
+            animateVendorDetailView(to: currentState.opposite, duration: 1)
             runningAnimators.forEach { $0.pauseAnimation() }
             animationProgress = runningAnimators.map { $0.fractionComplete }
             
         case .changed:
             let translation = recognizer.translation(in: vendorView)
-            var fraction = -translation.y / (self.view.frame.height / 2)
+            var fraction = -translation.y / self.vendorViewOffset
             if currentState == .open { fraction *= -1 }
-            //if runningAnimators[0].isReversed { fraction *= 1 } //Guarding the runningAnimators with guard
+            if runningAnimators[0].isReversed { fraction *= 1 }
             
             for (index, animator) in runningAnimators.enumerated() {
                 animator.fractionComplete = fraction + animationProgress[index]
@@ -91,6 +94,8 @@ extension DetailVendorViewController {
     }
     
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
+        self.backgroundAlphaView.alpha = 0
+        backgroundAlphaView.removeFromSuperview()
         displayingAnnotation.isSelected = false
         isPresenting = !isPresenting
         dismiss(animated: true, completion: nil)

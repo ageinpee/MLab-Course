@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0316162E21EFD0BA00E69559 /* DetailVendorTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316162D21EFD0BA00E69559 /* DetailVendorTableView.swift */; };
+		0316162E21EFD0BA00E69559 /* DetailVendorCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316162D21EFD0BA00E69559 /* DetailVendorCollectionView.swift */; };
 		0316163021EFD91600E69559 /* AccessoryCustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316162F21EFD91600E69559 /* AccessoryCustomCollectionCell.swift */; };
 		031CC45321DE43B80025E068 /* DevicesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CC45221DE43B80025E068 /* DevicesListViewController.swift */; };
 		031CC45521DE43C20025E068 /* Devices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031CC45421DE43C20025E068 /* Devices.storyboard */; };
@@ -119,7 +119,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0316162D21EFD0BA00E69559 /* DetailVendorTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVendorTableView.swift; sourceTree = "<group>"; };
+		0316162D21EFD0BA00E69559 /* DetailVendorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVendorCollectionView.swift; sourceTree = "<group>"; };
 		0316162F21EFD91600E69559 /* AccessoryCustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCustomCollectionCell.swift; sourceTree = "<group>"; };
 		031CC45221DE43B80025E068 /* DevicesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListViewController.swift; sourceTree = "<group>"; };
 		031CC45421DE43C20025E068 /* Devices.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Devices.storyboard; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				0359368521EB3C6F00986EC8 /* DetailVendorViewController.swift */,
-				0316162D21EFD0BA00E69559 /* DetailVendorTableView.swift */,
+				0316162D21EFD0BA00E69559 /* DetailVendorCollectionView.swift */,
 				0316162F21EFD91600E69559 /* AccessoryCustomCollectionCell.swift */,
 				03786EF721F079A400FD894E /* DetailVendorGestureHandler.swift */,
 			);
@@ -858,7 +858,7 @@
 				FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
 				CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */,
-				0316162E21EFD0BA00E69559 /* DetailVendorTableView.swift in Sources */,
+				0316162E21EFD0BA00E69559 /* DetailVendorCollectionView.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				CDACE3BC21EE5AB90074304C /* Companion.swift in Sources */,
 				CD100F4D21DFF25400DBAAB9 /* ExecutingPresetViewController.swift in Sources */,
@@ -1035,14 +1035,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DewertOkin/DewertOkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BZ5S3LC6UW;
+				DEVELOPMENT_TEAM = 7SN78RF3Z9;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018Nima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1056,14 +1056,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DewertOkin/DewertOkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BZ5S3LC6UW;
+				DEVELOPMENT_TEAM = 7SN78RF3Z9;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018Nima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
