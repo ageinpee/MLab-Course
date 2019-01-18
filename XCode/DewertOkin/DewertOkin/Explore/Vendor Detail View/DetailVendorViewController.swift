@@ -42,6 +42,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     var panTapAnimation = InstantPanGestureRecognizer()
     var animationProgress = [CGFloat]()
     var runningAnimators = [UIViewPropertyAnimator]()
+    var vendorViewOffset = 400.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         
         initializeVendorView()
         initializeVendorInformation()
-        initializeAccessoryCollection()
+        //initializeAccessoryCollection()
         
     }
     
@@ -73,7 +74,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: (self.view.frame.height / 3) - 100)
+        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 800)
         bottomConstraint.isActive = true
         
         panTapAnimation = InstantPanGestureRecognizer()

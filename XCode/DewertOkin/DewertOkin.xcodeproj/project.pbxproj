@@ -1035,14 +1035,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DewertOkin/DewertOkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BZ5S3LC6UW;
+				DEVELOPMENT_TEAM = 7SN78RF3Z9;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018Nima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1056,14 +1056,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DewertOkin/DewertOkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BZ5S3LC6UW;
+				DEVELOPMENT_TEAM = 7SN78RF3Z9;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018Nima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

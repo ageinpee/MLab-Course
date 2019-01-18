@@ -13,14 +13,15 @@ extension DetailVendorViewController {
     
     func animateVendorDetailView(to state: State, duration: TimeInterval) {
         guard runningAnimators.isEmpty else { return }
-        let transitionAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 1, animations: {
+        let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1, animations: {
             switch state {
             case .open:
                 self.bottomConstraint.constant = 0
+                //self.vendorView.layer.cornerRadius = 20
             case .halfOpen:
                 self.bottomConstraint.constant = self.view.frame.height / 2
             }
-            self.vendorView.layoutIfNeeded()
+            self.view.layoutIfNeeded() //vendorView?
         })
         transitionAnimator.addCompletion { position in
             switch position {
@@ -37,7 +38,6 @@ extension DetailVendorViewController {
                 self.backgroundAlphaView.backgroundColor = .clear
             case .halfOpen:
                 self.bottomConstraint.constant = self.view.frame.height / 2
-                self.backgroundAlphaView.backgroundColor = UIColor.black.withAlphaComponent(0)
             }
             self.runningAnimators.removeAll()
         }
@@ -50,7 +50,7 @@ extension DetailVendorViewController {
         switch recognizer.state {
             
         case .began:
-            animateVendorDetailView(to: currentState.opposite, duration: 3)
+            animateVendorDetailView(to: currentState.opposite, duration: 1)
             runningAnimators.forEach { $0.pauseAnimation() }
             animationProgress = runningAnimators.map { $0.fractionComplete }
             
@@ -58,7 +58,7 @@ extension DetailVendorViewController {
             let translation = recognizer.translation(in: vendorView)
             var fraction = -translation.y / (self.view.frame.height / 2)
             if currentState == .open { fraction *= -1 }
-            //if runningAnimators[0].isReversed { fraction *= 1 } //Guarding the runningAnimators with guard
+            if runningAnimators[0].isReversed { fraction *= 1 }
             
             for (index, animator) in runningAnimators.enumerated() {
                 animator.fractionComplete = fraction + animationProgress[index]
