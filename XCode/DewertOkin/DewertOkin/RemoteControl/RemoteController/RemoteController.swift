@@ -122,7 +122,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     }
     
     lazy var noConnectionBanner: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: -80, width: self.view.frame.width, height: 80))
+        let view = UIView(frame: CGRect(x: 0, y: -90, width: self.view.frame.width, height: 80))
         view.backgroundColor = .red
         view.layer.cornerRadius = 10
         view.layer.shadowColor = UIColor.gray.cgColor
