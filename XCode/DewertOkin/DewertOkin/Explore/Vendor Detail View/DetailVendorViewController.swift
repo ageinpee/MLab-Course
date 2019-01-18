@@ -51,7 +51,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         view.backgroundColor = .clear
         
         initializeVendorView()
-        //initializeVendorInformation()
+        initializeVendorInformation()
         initializeAccessoryCollection()
         
     }
@@ -78,6 +78,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.backgroundColor = .white
         vendorView.translatesAutoresizingMaskIntoConstraints = false
         vendorView.layer.cornerRadius = 20.0
+        vendorView.clipsToBounds = true
         vendorView.layer.shadowColor = UIColor.black.cgColor
         vendorView.layer.shadowOpacity = 0.1
         vendorView.layer.shadowRadius = 10
@@ -128,12 +129,13 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorAccessories = displayingVendor.accessories
         
         let layout = UICollectionViewFlowLayout()
-        let width = CGFloat(self.view.frame.width) * CGFloat(vendorAccessories.count)
-        layout.itemSize = CGSize(width: self.view.frame.width, height: 100)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        var width = CGFloat(self.vendorView.frame.width) * CGFloat(vendorAccessories.count)
+        layout.itemSize = CGSize(width: 150, height: 150)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .horizontal
         
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: (vendorViewOffset * 2) - 150, width: self.view.frame.width, height: 100), collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: (vendorViewOffset * 2) - 200, width: self.view.frame.width, height: 150), collectionViewLayout: layout)
+        //collectionView.contentSize = CGSize(width: width, height: 150)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
