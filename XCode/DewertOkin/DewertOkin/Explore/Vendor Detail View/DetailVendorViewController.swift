@@ -42,16 +42,16 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     var panTapAnimation = InstantPanGestureRecognizer()
     var animationProgress = [CGFloat]()
     var runningAnimators = [UIViewPropertyAnimator]()
-    var vendorViewOffset = 400.0
+    var vendorViewOffset: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vendorViewOffset = self.view.frame.height / 4
         view.backgroundColor = .clear
         view.addSubview(backgroundAlphaView)
-        view.addSubview(vendorView)
         
         initializeVendorView()
-        initializeVendorInformation()
+        //initializeVendorInformation()
         //initializeAccessoryCollection()
         
     }
@@ -69,12 +69,13 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     func initializeVendorView() {
         vendorView.backgroundColor = .white
         vendorView.translatesAutoresizingMaskIntoConstraints = false
-        vendorView.layer.cornerRadius = 8.0
+        vendorView.layer.cornerRadius = 20.0
         vendorView.clipsToBounds = true
+        view.addSubview(vendorView)
         vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 800)
+        bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: vendorViewOffset)
         bottomConstraint.isActive = true
         
         panTapAnimation = InstantPanGestureRecognizer()
@@ -157,18 +158,18 @@ extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
         if isPresenting == true {
             containerView.addSubview(toVC.view)
             
-            vendorView.frame.origin.y += self.view.frame.height / 3
+            vendorView.frame.origin.y += self.vendorViewOffset
             backgroundAlphaView.alpha = 0
             
-            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y -= self.view.frame.height / 3
+            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
+                self.vendorView.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.alpha = 1
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)
             })
         } else {
-            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y += self.view.frame.height / 3
+            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
+                self.vendorView.frame.origin.y += self.vendorViewOffset
                 self.backgroundAlphaView.alpha = 0
             }, completion: { (finished) in
                 transitionContext.completeTransition(true)

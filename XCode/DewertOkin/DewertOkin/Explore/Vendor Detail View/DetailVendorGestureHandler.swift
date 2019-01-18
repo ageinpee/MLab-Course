@@ -19,7 +19,7 @@ extension DetailVendorViewController {
                 self.bottomConstraint.constant = 0
                 //self.vendorView.layer.cornerRadius = 20
             case .halfOpen:
-                self.bottomConstraint.constant = self.view.frame.height / 2
+                self.bottomConstraint.constant = self.vendorViewOffset
             }
             self.view.layoutIfNeeded() //vendorView?
         })
@@ -37,7 +37,7 @@ extension DetailVendorViewController {
                 self.bottomConstraint.constant = 0
                 self.backgroundAlphaView.backgroundColor = .clear
             case .halfOpen:
-                self.bottomConstraint.constant = self.view.frame.height / 2
+                self.bottomConstraint.constant = self.vendorViewOffset
             }
             self.runningAnimators.removeAll()
         }
@@ -56,7 +56,7 @@ extension DetailVendorViewController {
             
         case .changed:
             let translation = recognizer.translation(in: vendorView)
-            var fraction = -translation.y / (self.view.frame.height / 2)
+            var fraction = -translation.y / self.vendorViewOffset
             if currentState == .open { fraction *= -1 }
             if runningAnimators[0].isReversed { fraction *= 1 }
             
