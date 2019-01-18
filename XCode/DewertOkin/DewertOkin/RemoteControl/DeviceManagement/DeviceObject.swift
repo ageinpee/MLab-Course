@@ -62,17 +62,19 @@ class DeviceObject {
                 break
             }
         }
-        if handheldData == [] {
+        
+        chooseDeviceType()
+        
+        if !(handheldData == []) {
+            initializeFunctionality()
+            
+            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+                                                          forDevice: DeviceType(rawValue: type)!)
+        }
+        else {
             print("ERROR - couldn't find handheld data")
         }
         
-        initializeFunctionality()
-        chooseDeviceType()
-        
-        deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
-                                                      forDevice: DeviceType(rawValue: type)!)
-        
-        print(uuid, name, handheldID, style, " || ", handheldData, type, deviceImages, " || ", availableMotors, availableMemories, availableExtraFunctions) //debug Print
     }
     
     
