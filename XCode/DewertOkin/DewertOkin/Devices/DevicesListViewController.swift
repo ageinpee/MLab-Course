@@ -14,6 +14,8 @@ import UIKit
 class DevicesListViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var header: UINavigationBar!
+    
     
     var devicesList = [Devices]()
     var cellDevicesData = [DevicesData]()
@@ -27,6 +29,8 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         navigationItem.title = "Devices"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+    
+        header.topItem?.title = "Your Devices"
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -103,6 +107,10 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         if let destination = segue.destination as? BluetoothPairingConnectViewController {
             destination.selectedPeripheral = self.deviceToConnect
         }
+    }
+    @IBAction func unwindToRemoteViewController(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

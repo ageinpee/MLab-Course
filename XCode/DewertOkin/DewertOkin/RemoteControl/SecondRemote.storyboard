@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="50" id="v65-2M-8XN"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="2i9-pd-CzF" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="flipHorizontal" id="SgC-u1-H4w"/>
+                                    <segue destination="2i9-pd-CzF" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="SgC-u1-H4w"/>
                                 </connections>
                             </button>
                         </subviews>

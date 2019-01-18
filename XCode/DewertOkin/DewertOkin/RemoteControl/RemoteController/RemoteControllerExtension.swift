@@ -54,10 +54,6 @@ extension RemoteController {
         
         devicesListButton.setBackgroundImage(UIImage(named: "devices_list"), for: .normal)
         devicesListButton.setBackgroundImage(UIImage(named: "devices_list_highlighted"), for: .highlighted)
-        devicesListButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        devicesListButton.layer.cornerRadius = 10
-        devicesListButton.layer.borderWidth = 1
-        devicesListButton.layer.borderColor = UIColor(rgb: 0x007AFF).cgColor
     }
     
     @objc
