@@ -156,7 +156,6 @@
                                 <state key="normal" title="Proceed"/>
                                 <connections>
                                     <action selector="ProceedAction:" destination="u33-Ka-qw8" eventType="touchUpInside" id="UOU-bT-R3y"/>
-                                    <segue destination="UOt-UK-pR9" kind="custom" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="6Ip-Un-Mxe"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-qP-4mq">
@@ -199,19 +198,11 @@
             </objects>
             <point key="canvasLocation" x="1790" y="140"/>
         </scene>
-        <!--SecondRemote-->
-        <scene sceneID="aca-Fp-ajA">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SecondRemote" id="UOt-UK-pR9" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GLp-vy-plz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2483" y="140"/>
-        </scene>
     </scenes>
     <resources>
         <image name="controller2Image" width="819.84002685546875" height="876.47998046875"/>
-        <image name="quarterCircle" width="5497.919921875" height="5505.60009765625"/>
-        <image name="quarterCircleFirstStoryboard" width="5497.919921875" height="5501.759765625"/>
-        <image name="quarterCircleLastStoryboard" width="5497.919921875" height="5501.759765625"/>
+        <image name="quarterCircle" width="1440" height="1441.9200439453125"/>
+        <image name="quarterCircleFirstStoryboard" width="1440" height="1441"/>
+        <image name="quarterCircleLastStoryboard" width="1440" height="1441"/>
     </resources>
 </document>

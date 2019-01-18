@@ -68,6 +68,12 @@ class RFPairingController3: UIViewController {
          saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
          */
         globalDeviceObject = device
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.view.alpha = 0
+        }) { (_) in
+            UIApplication.shared.keyWindow?.rootViewController = MainViewController()
+        }
     }
     /*
     @objc
