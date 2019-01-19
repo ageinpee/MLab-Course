@@ -11,66 +11,12 @@ import UIKit
 import UIKit.UIGestureRecognizerSubclass
 import MapKit
 
-class DetailVendorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    // Data from ExploreMapViewController
-    var displayingVendor: Vendor!
-    var displayingAnnotation: MKAnnotationView!
-    var vendorAccessories = [Accessory]()
-    
-    // UI Elements
-    lazy var backgroundAlphaView: UIView = {
-        let view = UIView(frame: self.view.bounds)
-        view.backgroundColor = .clear
-        view.alpha = 0.1
-        return view
-    }()
-    var closeButton = UIButton()
-    let vendorView = UIView()
-    var isPresenting = false
-    var currentState: State = .halfOpen
-    var bottomConstraint = NSLayoutConstraint()
-    
-    var vendorName = UILabel()
-    var vendorStreet = UILabel()
-    var vendorOpeningHours = UILabel()
-    var vendorTelephoneNumber = UILabel()
-    
-    var collectionView: UICollectionView!
-    
-    // Gesture Recognizer & Animation Elements
-    var panGestureForView = UIPanGestureRecognizer()
-    var panGestureForMap = UITapGestureRecognizer()
-    var panTapAnimation = InstantPanGestureRecognizer()
-    var animationProgress = [CGFloat]()
-    var runningAnimators = [UIViewPropertyAnimator]()
-    var vendorViewOffset: CGFloat!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        vendorViewOffset = self.view.frame.height / 4
-        view.backgroundColor = .clear
-        
-        initializeVendorView()
-        initializeVendorInformation()
-        initializeAccessoryCollection()
-        
-    }
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        modalPresentationStyle = .custom
-        transitioningDelegate = self
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func initializeVendorView() {
         
         backgroundAlphaView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(backgroundAlphaView)
+        UIApplication.shared.keyWindow?.addSubview(backgroundAlphaView)
         backgroundAlphaView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         backgroundAlphaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         backgroundAlphaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -83,7 +29,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.layer.shadowColor = UIColor.black.cgColor
         vendorView.layer.shadowOpacity = 0.1
         vendorView.layer.shadowRadius = 10
-        view.addSubview(vendorView)
+        UIApplication.shared.keyWindow?.addSubview(vendorView)
         vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -104,13 +50,14 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.addSubview(closeButton)
         
         panTapAnimation = InstantPanGestureRecognizer()
-        panTapAnimation.addTarget(self, action: #selector(DetailVendorViewController.vendorDetailViewGesture(recognizer:)))
+        panTapAnimation.addTarget(self, action: #selector(ExploreViewController.vendorDetailViewGesture(recognizer:)))
         vendorView.isUserInteractionEnabled = true
         vendorView.addGestureRecognizer(panTapAnimation)
         
-        panGestureForMap = UITapGestureRecognizer(target: self, action: #selector(DetailVendorViewController.closeVendorDetail(_:)))
-        backgroundAlphaView.isUserInteractionEnabled = true
-        backgroundAlphaView.addGestureRecognizer(panGestureForMap)
+        let closePanTapAnimation = UITapGestureRecognizer()
+        closePanTapAnimation.addTarget(self, action: #selector(ExploreViewController.closeButtonClicked(recognizer:)))
+        closeButton.isUserInteractionEnabled = true
+        closeButton.addGestureRecognizer(closePanTapAnimation)
     }
     
     func initializeVendorInformation() {
@@ -147,7 +94,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorAccessories = displayingVendor.accessories
         
         let layout = UICollectionViewFlowLayout()
-        var width = CGFloat(self.vendorView.frame.width) * CGFloat(vendorAccessories.count)
+        _ = CGFloat(self.vendorView.frame.width) * CGFloat(vendorAccessories.count)
         layout.itemSize = CGSize(width: 150, height: 150)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .horizontal
@@ -171,47 +118,4 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.trailingAnchor.constraint(equalTo: vendorView.trailingAnchor).isActive = true
     }
     
-}
-
-extension DetailVendorViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return (self as! UIViewControllerAnimatedTransitioning)
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return (self as! UIViewControllerAnimatedTransitioning)
-    }
-    
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1
-    }
-    
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let containerView = transitionContext.containerView
-        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
-        guard let toVC = toViewController else { return }
-        isPresenting = !isPresenting
-        
-        if isPresenting == true {
-            containerView.addSubview(toVC.view)
-            
-            vendorView.frame.origin.y += self.vendorViewOffset
-            backgroundAlphaView.alpha = 0
-            
-            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y -= self.vendorViewOffset
-                self.backgroundAlphaView.alpha = 1
-            }, completion: { (finished) in
-                transitionContext.completeTransition(true)
-            })
-        } else {
-            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
-                self.vendorView.frame.origin.y += self.vendorViewOffset
-                self.backgroundAlphaView.alpha = 0
-            }, completion: { (finished) in
-                transitionContext.completeTransition(true)
-            })
-        }
-    }
 }

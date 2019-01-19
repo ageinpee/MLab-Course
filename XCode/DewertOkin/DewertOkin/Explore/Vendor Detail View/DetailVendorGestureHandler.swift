@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension DetailVendorViewController {
+extension ExploreViewController {
     
     func animateVendorDetailView(to state: State, duration: TimeInterval) {
         guard runningAnimators.isEmpty else { return }
@@ -22,7 +22,7 @@ extension DetailVendorViewController {
             case .halfOpen:
                 self.bottomConstraint.constant = self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .clear
-                self.backgroundAlphaView.alpha = 0.1
+                self.backgroundAlphaView.alpha = 0.0
             }
             self.view.layoutIfNeeded()
         })
@@ -50,17 +50,16 @@ extension DetailVendorViewController {
     
     @objc func vendorDetailViewGesture(recognizer: UIPanGestureRecognizer) {
         
-        let translation = recognizer.translation(in: vendorView)
-        let fraction = translation.y
-        if (fraction > 0 && currentState == .halfOpen) {
-            closeView()
-        }
-        
+//        let translation = recognizer.translation(in: vendorView)
+//        let fraction = translation.y
+//        if (fraction > 0 && currentState == .halfOpen) {
+//            closeDetailView()
+//        }
         
         switch recognizer.state {
             
         case .began:
-            animateVendorDetailView(to: currentState.opposite, duration: 1)
+            animateVendorDetailView(to: currentState.opposite, duration: 4)
             runningAnimators.forEach { $0.pauseAnimation() }
             animationProgress = runningAnimators.map { $0.fractionComplete }
             
@@ -100,44 +99,9 @@ extension DetailVendorViewController {
         }
     }
     
-    @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
-        let transitionAnimator = UIViewPropertyAnimator(duration: 3, dampingRatio: 1, animations: {
-            self.bottomConstraint.constant = self.vendorViewOffset * 2
-            self.backgroundAlphaView.backgroundColor = .clear
-            self.backgroundAlphaView.alpha = 0.1
-            self.view.layoutIfNeeded()
-        })
-        transitionAnimator.addCompletion{_ in
-            self.backgroundAlphaView.removeFromSuperview()
-            self.displayingAnnotation.isSelected = false
-            self.isPresenting = !self.isPresenting
-            self.dismiss(animated: true, completion: nil)
-        }
-        transitionAnimator.startAnimation()
-        
-//        self.backgroundAlphaView.alpha = 0
-//        backgroundAlphaView.removeFromSuperview()
-//        //displayingAnnotation.isSelected = false
-//        isPresenting = !isPresenting
-//        dismiss(animated: true, completion: nil)
+    @objc func closeButtonClicked(recognizer: UITapGestureRecognizer) {
+        closeDetailView()
     }
-    
-    func closeView() {
-        let transitionAnimator = UIViewPropertyAnimator(duration: 3, dampingRatio: 1, animations: {
-            self.bottomConstraint.constant = self.vendorViewOffset * 2
-            self.backgroundAlphaView.backgroundColor = .clear
-            self.backgroundAlphaView.alpha = 0.1
-            self.view.layoutIfNeeded()
-        })
-        transitionAnimator.addCompletion{_ in
-            self.backgroundAlphaView.removeFromSuperview()
-            self.displayingAnnotation.isSelected = false
-            self.isPresenting = !self.isPresenting
-            self.dismiss(animated: true, completion: nil)
-        }
-        transitionAnimator.startAnimation()
-    }
-    
 }
 
 enum State {
