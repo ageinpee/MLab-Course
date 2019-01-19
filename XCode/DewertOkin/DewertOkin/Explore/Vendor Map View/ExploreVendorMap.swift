@@ -96,9 +96,11 @@ extension ExploreViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard view != mapView.userLocation else { return }
         let location = view.annotation as! Vendor
         displayingVendor = location
         displayingAnnotation = view
+        displayingAnnotation.isSelected = true
         displayDetailView()
     }
     

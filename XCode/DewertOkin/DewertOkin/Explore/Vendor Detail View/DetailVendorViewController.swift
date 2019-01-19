@@ -39,8 +39,11 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: vendorViewOffset)
         bottomConstraint.isActive = true
         
-        let closeButton = UIButton(type: .custom)
-        closeButton.frame = CGRect(x: vendorView.frame.minX + 150, y: vendorView.frame.minY + 150, width: 50, height: 50)
+        let panTapAnimation = InstantPanGestureRecognizer()
+        panTapAnimation.addTarget(self, action: #selector(ExploreViewController.vendorDetailViewGesture(recognizer:)))
+        vendorView.addGestureRecognizer(panTapAnimation)
+        
+        closeButton.frame = CGRect(x: self.view.frame.width - 50, y: vendorView.frame.minY + 50, width: 50, height: 50)
         closeButton.setTitleColor(.white, for: .normal)
         closeButton.setTitle("X", for: .normal)
         closeButton.titleLabel?.font = .systemFont(ofSize: 16)
@@ -56,28 +59,28 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         closeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         closeButton.rightAnchor.constraint(equalTo: vendorView.rightAnchor).isActive = true
         closeButton.topAnchor.constraint(equalTo: vendorView.topAnchor).isActive = true
-        
-        let panTapAnimation = InstantPanGestureRecognizer()
-        panTapAnimation.addTarget(self, action: #selector(ExploreViewController.vendorDetailViewGesture(recognizer:)))
-        vendorView.addGestureRecognizer(panTapAnimation)
     }
     
     func initializeVendorInformation() {
         vendorName = UILabel(frame: CGRect(x: 0, y: vendorView.frame.minY + 22, width: self.view.frame.width, height: 22.0))
         vendorName.text = displayingVendor.name
         vendorName.textAlignment = .left
+        vendorName.isUserInteractionEnabled = true
         vendorName.font = UIFont(name: "ArialMT", size: 22.0)
         vendorStreet = UILabel(frame: CGRect(x: 0, y: vendorName.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorStreet.text = displayingVendor.street
         vendorStreet.textAlignment = .left
+        vendorStreet.isUserInteractionEnabled = true
         vendorStreet.font = UIFont(name: "ArialMT", size: 16.0)
         vendorOpeningHours = UILabel(frame: CGRect(x: 0, y: vendorStreet.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorOpeningHours.text = "\(displayingVendor.openingHour)AM - \(displayingVendor.closingHour)PM"
         vendorOpeningHours.textAlignment = .left
+        vendorOpeningHours.isUserInteractionEnabled = true
         vendorOpeningHours.font = UIFont(name: "ArialMT", size: 16.0)
         vendorTelephoneNumber = UILabel(frame: CGRect(x: 0, y: vendorOpeningHours.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorTelephoneNumber.text = displayingVendor.telephoneNumber
         vendorTelephoneNumber.textAlignment = .left
+        vendorTelephoneNumber.isUserInteractionEnabled = true
         vendorTelephoneNumber.font = UIFont(name: "ArialMT", size: 16.0)
         
         vendorView.addSubview(vendorName)
@@ -89,7 +92,6 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorStreet.topAnchor.constraint(equalTo: self.vendorName.bottomAnchor).isActive = true
         vendorTelephoneNumber.topAnchor.constraint(equalTo: self.vendorStreet.bottomAnchor).isActive = true
         vendorOpeningHours.topAnchor.constraint(equalTo: self.vendorTelephoneNumber.bottomAnchor).isActive = true
-        
     }
     
     func initializeAccessoryCollection() {
