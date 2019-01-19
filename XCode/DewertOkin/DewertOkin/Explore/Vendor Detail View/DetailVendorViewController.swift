@@ -149,7 +149,8 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.addSubview(collectionView)
         collectionView.layoutIfNeeded()
         collectionView.layoutSubviews()
-        //collectionView.bottomAnchor.constraint(equalTo: vendorView.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: vendorView.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: vendorView.trailingAnchor).isActive = true
     }
     
 }

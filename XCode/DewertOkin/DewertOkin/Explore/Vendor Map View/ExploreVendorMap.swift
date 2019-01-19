@@ -83,12 +83,16 @@ extension ExploreViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let location = view.annotation as! Vendor
+        mapView.selectAnnotation(location, animated: true)
         self.selectedVendor = location
         self.selectedAnnotation = view
-        view.setSelected(true, animated: true)
         self.definesPresentationContext = true
         self.providesPresentationContextTransitionStyle = true
         performSegue(withIdentifier: "ShowVendorDetail", sender: self)
     }
     
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        let location = view.annotation as! Vendor
+        mapView.deselectAnnotation(location, animated: true)
+    }
 }
