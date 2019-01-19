@@ -16,11 +16,13 @@ extension ExploreViewController {
         let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1, animations: {
             switch state {
             case .open:
-                self.bottomConstraint.constant = 0
+//                self.bottomConstraint.constant = 0
+                self.vendorView.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .black
                 self.backgroundAlphaView.alpha = 0.5
             case .halfOpen:
-                self.bottomConstraint.constant = self.vendorViewOffset
+//                self.bottomConstraint.constant = self.vendorViewOffset
+                self.vendorView.frame.origin.y += self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .clear
                 self.backgroundAlphaView.alpha = 0.0
             }
@@ -59,7 +61,7 @@ extension ExploreViewController {
         switch recognizer.state {
             
         case .began:
-            animateVendorDetailView(to: currentState.opposite, duration: 4)
+            animateVendorDetailView(to: currentState.opposite, duration: 2)
             runningAnimators.forEach { $0.pauseAnimation() }
             animationProgress = runningAnimators.map { $0.fractionComplete }
             

@@ -40,7 +40,6 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
     var collectionView: UICollectionView!
     
     // Gesture Recognizer & Animation Elements
-    var panTapAnimation = InstantPanGestureRecognizer()
     var animationProgress = [CGFloat]()
     var runningAnimators = [UIViewPropertyAnimator]()
     var vendorViewOffset: CGFloat!

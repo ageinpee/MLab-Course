@@ -39,17 +39,17 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         bottomConstraint.isActive = true
         
         closeButton = UIButton(type: .custom)
-        closeButton.frame = CGRect(x: self.view.frame.width - 50, y: 10, width: 40, height: 40)
+        closeButton.frame = CGRect(x: self.view.frame.width - 60, y: 20, width: 50, height: 50)
         closeButton.setTitleColor(.white, for: .normal)
         closeButton.setTitle("X", for: .normal)
         closeButton.titleLabel?.font = .systemFont(ofSize: 16)
         closeButton.layer.borderColor = UIColor.white.cgColor
         closeButton.layer.backgroundColor = UIColor.gray.cgColor
         closeButton.layer.borderWidth = 1
-        closeButton.layer.cornerRadius = 20
+        closeButton.layer.cornerRadius = 30
         vendorView.addSubview(closeButton)
         
-        panTapAnimation = InstantPanGestureRecognizer()
+        let panTapAnimation = InstantPanGestureRecognizer()
         panTapAnimation.addTarget(self, action: #selector(ExploreViewController.vendorDetailViewGesture(recognizer:)))
         vendorView.isUserInteractionEnabled = true
         vendorView.addGestureRecognizer(panTapAnimation)
