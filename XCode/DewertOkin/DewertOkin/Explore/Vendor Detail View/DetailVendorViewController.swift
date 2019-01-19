@@ -39,7 +39,8 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: vendorViewOffset)
         bottomConstraint.isActive = true
         
-        closeButton.frame = CGRect(x: self.view.frame.width - 60, y: 20, width: 50, height: 50)
+        let closeButton = UIButton(type: .custom)
+        closeButton.frame = CGRect(x: vendorView.frame.minX + 150, y: vendorView.frame.minY + 150, width: 50, height: 50)
         closeButton.setTitleColor(.white, for: .normal)
         closeButton.setTitle("X", for: .normal)
         closeButton.titleLabel?.font = .systemFont(ofSize: 16)
@@ -47,6 +48,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         closeButton.layer.backgroundColor = UIColor.gray.cgColor
         closeButton.layer.borderWidth = 1
         closeButton.layer.cornerRadius = 25
+        closeButton.titleLabel?.isUserInteractionEnabled = true
         closeButton.isUserInteractionEnabled = true
         closeButton.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
         vendorView.addSubview(closeButton)

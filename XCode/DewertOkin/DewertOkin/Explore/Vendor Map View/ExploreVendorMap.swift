@@ -65,6 +65,7 @@ extension ExploreViewController {
         transitionAnimator.addCompletion{_ in
             self.backgroundAlphaView.removeFromSuperview()
             self.vendorView.removeFromSuperview()
+            self.displayingAnnotation.isSelected = false
         }
         transitionAnimator.isUserInteractionEnabled = true
         transitionAnimator.startAnimation()

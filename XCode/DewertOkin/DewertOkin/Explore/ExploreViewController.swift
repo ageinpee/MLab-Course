@@ -28,7 +28,6 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
         view.isUserInteractionEnabled = true
         return view
     }()
-    var closeButton = UIButton(type: .custom)
     let vendorView = UIView()
     var currentState: State = .halfOpen
     var bottomConstraint = NSLayoutConstraint()

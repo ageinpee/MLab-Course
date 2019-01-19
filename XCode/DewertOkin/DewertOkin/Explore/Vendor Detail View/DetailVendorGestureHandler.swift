@@ -50,11 +50,11 @@ extension ExploreViewController {
     
     @objc func vendorDetailViewGesture(recognizer: UIPanGestureRecognizer) {
         
-//        let translation = recognizer.translation(in: vendorView)
-//        let fraction = translation.y
-//        if (fraction > 0 && currentState == .halfOpen) {
-//            closeDetailView()
-//        }
+        let translation = recognizer.translation(in: vendorView)
+        let fraction = translation.y
+        if (fraction > 0 && currentState == .halfOpen) {
+            closeDetailView()
+        }
         
         switch recognizer.state {
             
