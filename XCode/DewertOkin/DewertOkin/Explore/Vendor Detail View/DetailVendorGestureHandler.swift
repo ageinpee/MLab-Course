@@ -16,17 +16,14 @@ extension ExploreViewController {
         let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1, animations: {
             switch state {
             case .open:
-//                self.bottomConstraint.constant = 0
                 self.vendorView.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .black
                 self.backgroundAlphaView.alpha = 0.5
             case .halfOpen:
-//                self.bottomConstraint.constant = self.vendorViewOffset
                 self.vendorView.frame.origin.y += self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .clear
                 self.backgroundAlphaView.alpha = 0.0
             }
-            self.view.layoutIfNeeded()
         })
         transitionAnimator.addCompletion { position in
             switch position {
@@ -45,6 +42,7 @@ extension ExploreViewController {
             }
             self.runningAnimators.removeAll()
         }
+        transitionAnimator.isUserInteractionEnabled = true
         transitionAnimator.startAnimation()
         
         runningAnimators.append(transitionAnimator)
@@ -61,7 +59,7 @@ extension ExploreViewController {
         switch recognizer.state {
             
         case .began:
-            animateVendorDetailView(to: currentState.opposite, duration: 2)
+            animateVendorDetailView(to: currentState.opposite, duration: 1)
             runningAnimators.forEach { $0.pauseAnimation() }
             animationProgress = runningAnimators.map { $0.fractionComplete }
             
@@ -101,7 +99,7 @@ extension ExploreViewController {
         }
     }
     
-    @objc func closeButtonClicked(recognizer: UITapGestureRecognizer) {
+    @objc func touchedCloseButton(sender: UIButton!) {
         closeDetailView()
     }
 }

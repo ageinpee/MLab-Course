@@ -29,6 +29,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorView.layer.shadowColor = UIColor.black.cgColor
         vendorView.layer.shadowOpacity = 0.1
         vendorView.layer.shadowRadius = 10
+        vendorView.isUserInteractionEnabled = true
         UIApplication.shared.keyWindow?.addSubview(vendorView)
         vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -38,7 +39,6 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: vendorViewOffset)
         bottomConstraint.isActive = true
         
-        closeButton = UIButton(type: .custom)
         closeButton.frame = CGRect(x: self.view.frame.width - 60, y: 20, width: 50, height: 50)
         closeButton.setTitleColor(.white, for: .normal)
         closeButton.setTitle("X", for: .normal)
@@ -46,18 +46,18 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         closeButton.layer.borderColor = UIColor.white.cgColor
         closeButton.layer.backgroundColor = UIColor.gray.cgColor
         closeButton.layer.borderWidth = 1
-        closeButton.layer.cornerRadius = 30
+        closeButton.layer.cornerRadius = 25
+        closeButton.isUserInteractionEnabled = true
+        closeButton.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
         vendorView.addSubview(closeButton)
+        closeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        closeButton.rightAnchor.constraint(equalTo: vendorView.rightAnchor).isActive = true
+        closeButton.topAnchor.constraint(equalTo: vendorView.topAnchor).isActive = true
         
         let panTapAnimation = InstantPanGestureRecognizer()
         panTapAnimation.addTarget(self, action: #selector(ExploreViewController.vendorDetailViewGesture(recognizer:)))
-        vendorView.isUserInteractionEnabled = true
         vendorView.addGestureRecognizer(panTapAnimation)
-        
-        let closePanTapAnimation = UITapGestureRecognizer()
-        closePanTapAnimation.addTarget(self, action: #selector(ExploreViewController.closeButtonClicked(recognizer:)))
-        closeButton.isUserInteractionEnabled = true
-        closeButton.addGestureRecognizer(closePanTapAnimation)
     }
     
     func initializeVendorInformation() {
@@ -112,8 +112,6 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         collectionView.isScrollEnabled = true
         collectionView.isUserInteractionEnabled = true
         vendorView.addSubview(collectionView)
-        collectionView.layoutIfNeeded()
-        collectionView.layoutSubviews()
         collectionView.leadingAnchor.constraint(equalTo: vendorView.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: vendorView.trailingAnchor).isActive = true
     }

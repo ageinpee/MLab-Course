@@ -25,9 +25,10 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
         let view = UIView(frame: self.view.bounds)
         view.backgroundColor = .clear
         view.alpha = 0.0
+        view.isUserInteractionEnabled = true
         return view
     }()
-    var closeButton = UIButton()
+    var closeButton = UIButton(type: .custom)
     let vendorView = UIView()
     var currentState: State = .halfOpen
     var bottomConstraint = NSLayoutConstraint()
@@ -49,8 +50,10 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
         
         navigationItem.title = "Vendors"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.view.isUserInteractionEnabled = true
         
         mapView.delegate = self
+        mapView.isUserInteractionEnabled = true
         initializeMap(radiusInMeters: 2000.0)
         initializeVendors()
     }
