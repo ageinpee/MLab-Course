@@ -73,7 +73,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        print(globalDeviceObject.handheldData, globalDeviceObject.deviceImages, globalDeviceObject.type)
         device = globalDeviceObject
         
         /*
@@ -106,7 +105,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         arrowsImageView.image = device.deviceImages[0]
         Image.image = device.deviceImages[1]
-        print(Image.image!)
         Image.contentMode = .scaleAspectFit
     }
     

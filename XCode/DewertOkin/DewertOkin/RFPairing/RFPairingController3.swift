@@ -67,7 +67,7 @@ class RFPairingController3: UIViewController {
          
          saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
          */
-        print(device.uuid, device.name, device.handheldID, device.handheldData, device.type)
+        
         globalDeviceObject = device
         
         UIView.animate(withDuration: 1.0, animations: {
