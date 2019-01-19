@@ -63,16 +63,17 @@ class DeviceObject {
             }
         }
         
-        chooseDeviceType()
-        
         if !(handheldData == []) {
             initializeFunctionality()
-            
+            chooseDeviceType()
             deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
                                                           forDevice: DeviceType(rawValue: type)!)
         }
         else {
             print("ERROR - couldn't find handheld data")
+            type = "NaN"
+            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+                                                          forDevice: DeviceType(rawValue: type)!)
         }
         
     }
@@ -152,7 +153,7 @@ class DeviceObject {
 
 
 enum DeviceType: String { // implemented graphics is marked with <--
-    case NaN = "NaN"
+    case NaN = "NaN" // <--
     case chair_1Motors = "chair_1Motors"
     case chair_2Motors = "chair_2Motors" // <--
     case chair_3Motors = "chair_3Motors"

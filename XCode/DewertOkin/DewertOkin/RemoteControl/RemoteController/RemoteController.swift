@@ -41,7 +41,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     var devicesList = [Devices]()
     
-    var device = globalDeviceObject
+    var device: DeviceObject = DeviceObject()
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
@@ -73,10 +73,13 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
+        print(globalDeviceObject.handheldData, globalDeviceObject.deviceImages, globalDeviceObject.type)
+        device = globalDeviceObject
+        
+        /*
         fetchDevices()
         print(devicesList)
         
-        /*
         device = DeviceObject(withUUID: devicesList[0].uuid!,
                               named: devicesList[0].name!,
                               withHandheldID: devicesList[0].handheld!,
@@ -103,6 +106,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         arrowsImageView.image = device.deviceImages[0]
         Image.image = device.deviceImages[1]
+        print(Image.image!)
         Image.contentMode = .scaleAspectFit
     }
     

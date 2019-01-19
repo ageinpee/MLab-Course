@@ -26,13 +26,11 @@ class rotationTransition: UIStoryboardSegue, UIViewControllerTransitioningDelega
         let containerView = fromViewController.view.superview
         
         let imageViewList = fromViewController.view.subviews.filter{$0 is UIImageView}
-        print(fromViewController.view.frame.size)
         var circleImage = UIView()
         
         for imageView in imageViewList {
             if imageView.tag == 42 {
                 circleImage = imageView
-                print(imageView.center)
             }
         }
         

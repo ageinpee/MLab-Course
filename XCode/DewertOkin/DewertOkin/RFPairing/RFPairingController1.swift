@@ -73,7 +73,6 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedRemote = imageData[row]
-        print(selectedRemote)
     }
     
     @IBAction func submit1(_ sender: UIButton) {
