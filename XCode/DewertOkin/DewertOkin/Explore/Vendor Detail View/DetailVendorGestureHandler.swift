@@ -101,15 +101,29 @@ extension DetailVendorViewController {
     }
     
     @objc func closeVendorDetail(_ sender: UIPanGestureRecognizer) {
-        self.backgroundAlphaView.alpha = 0
-        backgroundAlphaView.removeFromSuperview()
-        //displayingAnnotation.isSelected = false
-        isPresenting = !isPresenting
-        dismiss(animated: true, completion: nil)
+        let transitionAnimator = UIViewPropertyAnimator(duration: 3, dampingRatio: 1, animations: {
+            self.bottomConstraint.constant = self.vendorViewOffset * 2
+            self.backgroundAlphaView.backgroundColor = .clear
+            self.backgroundAlphaView.alpha = 0.1
+            self.view.layoutIfNeeded()
+        })
+        transitionAnimator.addCompletion{_ in
+            self.backgroundAlphaView.removeFromSuperview()
+            self.displayingAnnotation.isSelected = false
+            self.isPresenting = !self.isPresenting
+            self.dismiss(animated: true, completion: nil)
+        }
+        transitionAnimator.startAnimation()
+        
+//        self.backgroundAlphaView.alpha = 0
+//        backgroundAlphaView.removeFromSuperview()
+//        //displayingAnnotation.isSelected = false
+//        isPresenting = !isPresenting
+//        dismiss(animated: true, completion: nil)
     }
     
     func closeView() {
-        let transitionAnimator = UIViewPropertyAnimator(duration: 2, dampingRatio: 1, animations: {
+        let transitionAnimator = UIViewPropertyAnimator(duration: 3, dampingRatio: 1, animations: {
             self.bottomConstraint.constant = self.vendorViewOffset * 2
             self.backgroundAlphaView.backgroundColor = .clear
             self.backgroundAlphaView.alpha = 0.1

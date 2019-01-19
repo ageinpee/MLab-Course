@@ -25,6 +25,7 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         view.alpha = 0.1
         return view
     }()
+    var closeButton = UIButton()
     let vendorView = UIView()
     var isPresenting = false
     var currentState: State = .halfOpen
@@ -86,8 +87,21 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
         vendorView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         vendorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vendorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        vendorView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        vendorView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         bottomConstraint = vendorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: vendorViewOffset)
         bottomConstraint.isActive = true
+        
+        closeButton = UIButton(type: .custom)
+        closeButton.frame = CGRect(x: self.view.frame.width - 50, y: 10, width: 40, height: 40)
+        closeButton.setTitleColor(.white, for: .normal)
+        closeButton.setTitle("X", for: .normal)
+        closeButton.titleLabel?.font = .systemFont(ofSize: 16)
+        closeButton.layer.borderColor = UIColor.white.cgColor
+        closeButton.layer.backgroundColor = UIColor.gray.cgColor
+        closeButton.layer.borderWidth = 1
+        closeButton.layer.cornerRadius = 20
+        vendorView.addSubview(closeButton)
         
         panTapAnimation = InstantPanGestureRecognizer()
         panTapAnimation.addTarget(self, action: #selector(DetailVendorViewController.vendorDetailViewGesture(recognizer:)))
@@ -100,18 +114,22 @@ class DetailVendorViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func initializeVendorInformation() {
-        vendorName = UILabel(frame: CGRect(x: 0, y: vendorView.frame.minY, width: self.view.frame.width, height: 22.0))
+        vendorName = UILabel(frame: CGRect(x: 0, y: vendorView.frame.minY + 22, width: self.view.frame.width, height: 22.0))
         vendorName.text = displayingVendor.name
-        vendorName.textAlignment = .center
-        vendorStreet = UILabel(frame: CGRect(x: 0, y: vendorName.frame.maxY, width: self.view.frame.width, height: 22.0))
+        vendorName.textAlignment = .left
+        vendorName.font = UIFont(name: "ArialMT", size: 22.0)
+        vendorStreet = UILabel(frame: CGRect(x: 0, y: vendorName.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorStreet.text = displayingVendor.street
-        vendorStreet.textAlignment = .center
-        vendorOpeningHours = UILabel(frame: CGRect(x: 0, y: vendorStreet.frame.maxY, width: self.view.frame.width, height: 22.0))
+        vendorStreet.textAlignment = .left
+        vendorStreet.font = UIFont(name: "ArialMT", size: 16.0)
+        vendorOpeningHours = UILabel(frame: CGRect(x: 0, y: vendorStreet.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorOpeningHours.text = "\(displayingVendor.openingHour)AM - \(displayingVendor.closingHour)PM"
-        vendorOpeningHours.textAlignment = .center
-        vendorTelephoneNumber = UILabel(frame: CGRect(x: 0, y: vendorOpeningHours.frame.maxY, width: self.view.frame.width, height: 22.0))
+        vendorOpeningHours.textAlignment = .left
+        vendorOpeningHours.font = UIFont(name: "ArialMT", size: 16.0)
+        vendorTelephoneNumber = UILabel(frame: CGRect(x: 0, y: vendorOpeningHours.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorTelephoneNumber.text = displayingVendor.telephoneNumber
-        vendorTelephoneNumber.textAlignment = .center
+        vendorTelephoneNumber.textAlignment = .left
+        vendorTelephoneNumber.font = UIFont(name: "ArialMT", size: 16.0)
         
         vendorView.addSubview(vendorName)
         vendorView.addSubview(vendorStreet)

@@ -92,7 +92,7 @@ extension ExploreViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        let location = view.annotation as! Vendor
-        mapView.deselectAnnotation(location, animated: true)
+//        let location = view.annotation as! Vendor
+//        mapView.deselectAnnotation(location, animated: true)
     }
 }
