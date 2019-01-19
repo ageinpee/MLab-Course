@@ -141,6 +141,57 @@ class DeviceObject {
         }
     }
     
+    func getMotorKeycode(for motor: Motors, with action: Action) -> Data {
+        switch motor {
+        case .M1:
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m1Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m1In)}
+        case .M2:
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m2Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m2In)}
+        case .M3:
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m3Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m3In)}
+        case .M4:
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m4Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m4In)}
+        case .M5:
+            print("not implemented yet, instead M4 is triggered")
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m4Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m4In)}
+        }
+        return Data()
+    }
+    
+    func getExtraFuntionKeycode(for extraFunc: ExtraFunctions) -> Data {
+        switch extraFunc {
+        case .massage_back:
+            return RemoteControlConfig().getKeycode(name: .massage1)
+        case .massage_neck:
+            return RemoteControlConfig().getKeycode(name: .massage2)
+        case .massage_legs:
+            return RemoteControlConfig().getKeycode(name: .massage3)
+        case .ubl:
+            return RemoteControlConfig().getKeycode(name: .ubl)
+        case .NaN:
+            return Data()
+        }
+    }
+    
+    func getMemoryKeycode(for memory: Memories) -> Data{
+        switch memory {
+        case .Mem1:
+            return RemoteControlConfig().getKeycode(name: .memory1)
+        case .Mem2:
+            return RemoteControlConfig().getKeycode(name: .memory2)
+        case .Mem3:
+            return RemoteControlConfig().getKeycode(name: .memory3)
+        case .Mem4:
+            return RemoteControlConfig().getKeycode(name: .memory4)
+        case .MemSave:
+            return RemoteControlConfig().getKeycode(name: .storeMemoryPosition)
+        }
+    }
 }
 
 
@@ -194,6 +245,11 @@ enum Memories: String {
     case Mem3 = "Mem3"
     case Mem4 = "Mem4"
     case MemSave = "MemSave"
+}
+
+enum Action: String {
+    case up = "up"
+    case down = "down"
 }
 
 // ================================================================
