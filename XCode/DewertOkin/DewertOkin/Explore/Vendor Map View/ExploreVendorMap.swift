@@ -48,13 +48,26 @@ extension ExploreViewController {
         return accessorieList
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func displayDetailView() {
+        vendorViewOffset = self.view.frame.height / 4
         
-        if let destination = segue.destination as? DetailVendorViewController {
-            destination.displayingVendor = self.selectedVendor
-            destination.displayingAnnotation = self.selectedAnnotation
-            destination.modalPresentationStyle = .custom
+        initializeVendorView()
+        initializeVendorInformation()
+        initializeAccessoryCollection()
+    }
+    
+    func closeDetailView() {
+        let transitionAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 1, animations: {
+            self.bottomConstraint.constant = self.vendorViewOffset * 2
+            self.backgroundAlphaView.backgroundColor = .clear
+            self.backgroundAlphaView.alpha = 0.0
+        })
+        transitionAnimator.addCompletion{_ in
+            self.backgroundAlphaView.removeFromSuperview()
+            self.vendorView.removeFromSuperview()
         }
+        transitionAnimator.isUserInteractionEnabled = true
+        transitionAnimator.startAnimation()
     }
     
 }
@@ -83,16 +96,12 @@ extension ExploreViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let location = view.annotation as! Vendor
-        mapView.selectAnnotation(location, animated: true)
-        self.selectedVendor = location
-        self.selectedAnnotation = view
-        self.definesPresentationContext = true
-        self.providesPresentationContextTransitionStyle = true
-        performSegue(withIdentifier: "ShowVendorDetail", sender: self)
+        displayingVendor = location
+        displayingAnnotation = view
+        displayDetailView()
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-//        let location = view.annotation as! Vendor
-//        mapView.deselectAnnotation(location, animated: true)
+        closeDetailView()
     }
 }
