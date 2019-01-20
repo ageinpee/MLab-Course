@@ -176,7 +176,148 @@
                 "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
             }
         ]
+    },
+    {
+        "name": "Super-Duper-Mart",
+        "street": "SuperDuperStreet 1337",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "333-357-777",
+        "latitude": 53.600528,
+        "longitude": 9.925694,
+        "accessories": [
+            {
+                "imageName": "BREMSALARM",
+                "name": "BREMSALARM",
+                "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+            },
+            {
+                "imageName": "BLUETOOTH®-RF GATEWAY",
+                "name": "BLUETOOTH®-RF GATEWAY",
+                "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
+            },
+            {
+                "imageName": "Under-Bed-Lighting",
+                "name": "Under-Bed-Lighting",
+                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+            }
+        ]
+    },
+    {
+        "name": "The Inconvienience Store",
+        "street": "Back-Street 27",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "345-654-777",
+        "latitude": 53.597655,
+        "longitude": 9.934984,
+        "accessories": [
+            {
+                "imageName": "TouchControl",
+                "name": "RF Touch",
+                "accessoryDescription": "Very modern, convenient touch remote control"
+            },
+            {
+                "imageName": "Under-Bed-Lighting",
+                "name": "Under-Bed-Lighting",
+                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+            },
+            {
+                "imageName": "BREMSALARM",
+                "name": "BREMSALARM",
+                "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+            }
+        ]
+    },
+    {
+        "name": "Mystery Shack",
+        "street": "Göffelstraße 12",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "339-224-111",
+        "latitude": 53.591975,
+        "longitude": 9.940132,
+        "accessories": [
+            {
+                "imageName": "TouchControl",
+                "name": "RF Touch",
+                "accessoryDescription": "Very modern, convenient touch remote control"
+            },
+            {
+                "imageName": "Under-Bed-Lighting",
+                "name": "Under-Bed-Lighting",
+                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+            },
+            {
+                "imageName": "BLUETOOTH®-RF GATEWAY",
+                "name": "BLUETOOTH®-RF GATEWAY",
+                "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
+            }
+        ]
+    },
+    {
+        "name": "Rupee Store",
+        "street": "Lost Woods-Street 11",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "345-567-789",
+        "latitude": 53.603895,
+        "longitude": 9.940263,
+        "accessories": [
+            {
+                "imageName": "TouchControl",
+                "name": "RF Touch",
+                "accessoryDescription": "Very modern, convenient touch remote control"
+            },
+            {
+                "imageName": "Under-Bed-Lighting",
+                "name": "Under-Bed-Lighting",
+                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+            },
+            {
+                "imageName": "BREMSALARM",
+                "name": "BREMSALARM",
+                "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+            },
+            {
+                "imageName": "BLUETOOTH®-RF GATEWAY",
+                "name": "BLUETOOTH®-RF GATEWAY",
+                "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
+            }
+        ]
+    },
+    {
+        "name": "SkyNet Inc. Furniture KImbH",
+        "street": "Connor-Street 1984",
+        "openingHour": 8,
+        "closingHour": 20,
+        "telephoneNumber": "123-456-789",
+        "latitude": 53.608963,
+        "longitude": 9.926657,
+        "accessories": [
+            {
+                "imageName": "TouchControl",
+                "name": "RF Touch",
+                "accessoryDescription": "Very modern, convenient touch remote control"
+            },
+            {
+                "imageName": "Under-Bed-Lighting",
+                "name": "Under-Bed-Lighting",
+                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+            },
+            {
+                "imageName": "BREMSALARM",
+                "name": "BREMSALARM",
+                "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+            },
+            {
+                "imageName": "BLUETOOTH®-RF GATEWAY",
+                "name": "BLUETOOTH®-RF GATEWAY",
+                "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
+            }
+        ]
     }
     
     
 ]
+

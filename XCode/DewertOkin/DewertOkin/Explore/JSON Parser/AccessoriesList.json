@@ -23,5 +23,15 @@
         "imageName": "Under-Bed-Lighting",
         "name": "Under-Bed-Lighting",
         "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+    },
+    {
+        "imageName": "BREMSALARM",
+        "name": "BREMSALARM",
+        "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+    },
+    {
+        "imageName": "BLUETOOTH®-RF GATEWAY",
+        "name": "BLUETOOTH®-RF GATEWAY",
+        "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
     }
 ]
