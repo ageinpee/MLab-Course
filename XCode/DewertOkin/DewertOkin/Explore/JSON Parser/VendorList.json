@@ -213,7 +213,7 @@
         "longitude": 9.934984,
         "accessories": [
             {
-                "imageName": "TouchRemote",
+                "imageName": "TouchControl",
                 "name": "RF Touch",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
@@ -239,7 +239,7 @@
         "longitude": 9.940132,
         "accessories": [
             {
-                "imageName": "TouchRemote",
+                "imageName": "TouchControl",
                 "name": "RF Touch",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
@@ -265,7 +265,7 @@
         "longitude": 9.940263,
         "accessories": [
             {
-                "imageName": "TouchRemote",
+                "imageName": "TouchControl",
                 "name": "RF Touch",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
@@ -296,7 +296,7 @@
         "longitude": 9.926657,
         "accessories": [
             {
-                "imageName": "TouchRemote",
+                "imageName": "TouchControl",
                 "name": "RF Touch",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
