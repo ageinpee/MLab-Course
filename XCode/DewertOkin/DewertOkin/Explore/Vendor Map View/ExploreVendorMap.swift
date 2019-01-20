@@ -54,6 +54,7 @@ extension ExploreViewController {
         initializeVendorView()
         initializeVendorInformation()
         initializeAccessoryCollection()
+        initializeVendorWebsite()
     }
     
     func closeDetailView() {
@@ -65,7 +66,7 @@ extension ExploreViewController {
         transitionAnimator.addCompletion{_ in
             self.backgroundAlphaView.removeFromSuperview()
             self.vendorView.removeFromSuperview()
-            self.displayingAnnotation.isSelected = false
+            self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
         }
         transitionAnimator.isUserInteractionEnabled = true
         transitionAnimator.startAnimation()
@@ -100,7 +101,6 @@ extension ExploreViewController: MKMapViewDelegate {
         let location = view.annotation as! Vendor
         displayingVendor = location
         displayingAnnotation = view
-        displayingAnnotation.isSelected = true
         displayDetailView()
     }
     
