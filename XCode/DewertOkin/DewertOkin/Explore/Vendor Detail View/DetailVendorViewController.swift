@@ -79,20 +79,6 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorStreet.font = UIFont(name: "ArialMT", size: 16.0)
         vendorStreet.translatesAutoresizingMaskIntoConstraints = false
         
-        vendorOpeningHours = UILabel(frame: CGRect(x: 0, y: vendorStreet.frame.maxY, width: self.view.frame.width, height: 16.0))
-        vendorOpeningHours.text = "\(displayingVendor.openingHour)AM - \(displayingVendor.closingHour)PM"
-        vendorOpeningHours.textAlignment = .left
-        vendorOpeningHours.isUserInteractionEnabled = true
-        vendorOpeningHours.font = UIFont(name: "ArialMT", size: 16.0)
-        vendorOpeningHours.translatesAutoresizingMaskIntoConstraints = false
-        
-        vendorTelephoneNumber = UILabel(frame: CGRect(x: 0, y: vendorOpeningHours.frame.maxY, width: self.view.frame.width, height: 16.0))
-        vendorTelephoneNumber.text = displayingVendor.telephoneNumber
-        vendorTelephoneNumber.textAlignment = .left
-        vendorTelephoneNumber.isUserInteractionEnabled = true
-        vendorTelephoneNumber.font = UIFont(name: "ArialMT", size: 16.0)
-        vendorTelephoneNumber.translatesAutoresizingMaskIntoConstraints = false
-        
         vendorView.addSubview(vendorName)
         vendorView.addSubview(vendorStreet)
         
@@ -103,13 +89,20 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func initializeVendorWebsite() {
-        let website = UIButton.init(type: .custom)
-        website.frame = CGRect(x: self.view.frame.width / 2, y: self.view.frame.height , width: self.view.frame.width, height: 50)
-        website.titleLabel?.text = "Website"
-        website.layer.backgroundColor = UIColor.blue.cgColor
-        website.layer.borderWidth = 1
-        website.layer.cornerRadius = 25
-        vendorView.addSubview(website)
+        
+        vendorWebsite = UIButton.init(type: .custom)
+        vendorWebsite.setTitle("Onlineshop", for: .normal)
+        vendorWebsite.layer.backgroundColor = UIColor.blue.cgColor
+        vendorWebsite.layer.borderWidth = 1
+        vendorWebsite.layer.cornerRadius = 25
+        vendorWebsite.translatesAutoresizingMaskIntoConstraints = false
+        UIApplication.shared.keyWindow?.addSubview(vendorWebsite)
+        
+        vendorWebsite.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        vendorWebsite.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -20).isActive = true
+        vendorWebsite.leftAnchor.constraint(equalTo: vendorView.leftAnchor, constant: 20)
+        vendorWebsite.rightAnchor.constraint(equalTo: vendorView.rightAnchor, constant: -20).isActive = true
+        vendorWebsite.bottomAnchor.constraint(equalTo: vendorView.bottomAnchor, constant: -70).isActive = true
     }
     
     func initializeAccessoryCollection() {
@@ -126,12 +119,12 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         collectionViewName.leftAnchor.constraint(equalTo: self.vendorView.leftAnchor, constant: 10).isActive = true
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 80, height: 80)
+        layout.itemSize = CGSize(width: 70, height: 70)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .horizontal
         
         collectionView = UICollectionView(frame: CGRect(x: 0, y: collectionViewName.frame.maxY, width: self.view.frame.width, height: 100), collectionViewLayout: layout)
-        collectionView.contentSize = CGSize(width: 150, height: 150)
+        collectionView.contentSize = CGSize(width: 100, height: 100)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
