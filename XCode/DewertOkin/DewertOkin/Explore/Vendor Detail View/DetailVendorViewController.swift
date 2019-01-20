@@ -19,6 +19,8 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         UIApplication.shared.keyWindow?.addSubview(backgroundAlphaView)
         backgroundAlphaView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         backgroundAlphaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        backgroundAlphaView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        backgroundAlphaView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         backgroundAlphaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         backgroundAlphaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
@@ -43,55 +45,65 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         panTapAnimation.addTarget(self, action: #selector(ExploreViewController.vendorDetailViewGesture(recognizer:)))
         vendorView.addGestureRecognizer(panTapAnimation)
         
-//        closeButton.frame = CGRect(x: self.view.frame.width - 50, y: vendorView.frame.minY + 50, width: 50, height: 50)
-//        closeButton.setTitleColor(.white, for: .normal)
-//        closeButton.setTitle("X", for: .normal)
-//        closeButton.titleLabel?.font = .systemFont(ofSize: 16)
-//        closeButton.layer.borderColor = UIColor.white.cgColor
-//        closeButton.layer.backgroundColor = UIColor.gray.cgColor
-//        closeButton.layer.borderWidth = 1
-//        closeButton.layer.cornerRadius = 25
-//        closeButton.titleLabel?.isUserInteractionEnabled = true
-//        closeButton.isUserInteractionEnabled = true
-//        closeButton.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
-//        vendorView.addSubview(closeButton)
-//        closeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//        closeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//        closeButton.rightAnchor.constraint(equalTo: vendorView.rightAnchor).isActive = true
-//        closeButton.topAnchor.constraint(equalTo: vendorView.topAnchor).isActive = true
+        closeButton.setTitleColor(.white, for: .normal)
+        closeButton.setTitle("X", for: .normal)
+        closeButton.titleLabel?.font = .systemFont(ofSize: 16)
+        closeButton.layer.borderColor = UIColor.white.cgColor
+        closeButton.layer.backgroundColor = UIColor.gray.cgColor
+        closeButton.layer.borderWidth = 1
+        closeButton.layer.cornerRadius = 25
+        closeButton.titleLabel?.isUserInteractionEnabled = true
+        closeButton.isUserInteractionEnabled = true
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
+        UIApplication.shared.keyWindow?.addSubview(closeButton)
+        closeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        closeButton.rightAnchor.constraint(equalTo: vendorView.rightAnchor, constant: -20).isActive = true
+        closeButton.topAnchor.constraint(equalTo: vendorView.topAnchor, constant: 20).isActive = true
+        closeButton.bottomAnchor.constraint(equalTo: vendorView.topAnchor, constant: 70).isActive = true
     }
     
     func initializeVendorInformation() {
-        vendorName = UILabel(frame: CGRect(x: 0, y: vendorView.frame.minY + 22, width: self.view.frame.width, height: 22.0))
+        //vendorName = UILabel(frame: CGRect(x: 0, y: vendorView.frame.minY + 22, width: self.view.frame.width, height: 22.0))
         vendorName.text = displayingVendor.name
         vendorName.textAlignment = .left
         vendorName.isUserInteractionEnabled = true
-        vendorName.font = UIFont(name: "ArialMT", size: 22.0)
-        vendorStreet = UILabel(frame: CGRect(x: 0, y: vendorName.frame.maxY, width: self.view.frame.width, height: 16.0))
+        vendorName.font = UIFont(name: "ArialMT", size: 20.0)
+        vendorName.translatesAutoresizingMaskIntoConstraints = false
+        
+        //vendorStreet = UILabel(frame: CGRect(x: 0, y: vendorName.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorStreet.text = displayingVendor.street
         vendorStreet.textAlignment = .left
         vendorStreet.isUserInteractionEnabled = true
         vendorStreet.font = UIFont(name: "ArialMT", size: 16.0)
+        vendorStreet.translatesAutoresizingMaskIntoConstraints = false
+        
         vendorOpeningHours = UILabel(frame: CGRect(x: 0, y: vendorStreet.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorOpeningHours.text = "\(displayingVendor.openingHour)AM - \(displayingVendor.closingHour)PM"
         vendorOpeningHours.textAlignment = .left
         vendorOpeningHours.isUserInteractionEnabled = true
         vendorOpeningHours.font = UIFont(name: "ArialMT", size: 16.0)
+        vendorOpeningHours.translatesAutoresizingMaskIntoConstraints = false
+        
         vendorTelephoneNumber = UILabel(frame: CGRect(x: 0, y: vendorOpeningHours.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorTelephoneNumber.text = displayingVendor.telephoneNumber
         vendorTelephoneNumber.textAlignment = .left
         vendorTelephoneNumber.isUserInteractionEnabled = true
         vendorTelephoneNumber.font = UIFont(name: "ArialMT", size: 16.0)
+        vendorTelephoneNumber.translatesAutoresizingMaskIntoConstraints = false
         
         vendorView.addSubview(vendorName)
         vendorView.addSubview(vendorStreet)
-        vendorView.addSubview(vendorOpeningHours)
-        vendorView.addSubview(vendorTelephoneNumber)
+//        vendorView.addSubview(vendorOpeningHours)
+//        vendorView.addSubview(vendorTelephoneNumber)
         
-        vendorName.topAnchor.constraint(equalTo: self.vendorView.topAnchor).isActive = true
+        vendorName.topAnchor.constraint(equalTo: self.vendorView.topAnchor, constant: 10).isActive = true
+        vendorName.leftAnchor.constraint(equalTo: self.vendorView.leftAnchor, constant: 10).isActive = true
         vendorStreet.topAnchor.constraint(equalTo: self.vendorName.bottomAnchor).isActive = true
-        vendorTelephoneNumber.topAnchor.constraint(equalTo: self.vendorStreet.bottomAnchor).isActive = true
-        vendorOpeningHours.topAnchor.constraint(equalTo: self.vendorTelephoneNumber.bottomAnchor).isActive = true
+        vendorStreet.leftAnchor.constraint(equalTo: self.vendorView.leftAnchor, constant: 10).isActive = true
+//        vendorTelephoneNumber.topAnchor.constraint(equalTo: self.vendorStreet.bottomAnchor).isActive = true
+//        vendorOpeningHours.topAnchor.constraint(equalTo: self.vendorTelephoneNumber.bottomAnchor).isActive = true
     }
     
     func initializeVendorWebsite() {
@@ -107,21 +119,24 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
     func initializeAccessoryCollection() {
         vendorAccessories = displayingVendor.accessories
         
-        let collectionViewName = UILabel(frame: CGRect(x: 0, y: vendorTelephoneNumber.frame.maxY, width: self.view.frame.width, height: 20.0))
+        //collectionViewName = UILabel(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 20.0))
         collectionViewName.text = "Compatible Accessories:"
         collectionViewName.textAlignment = .left
         collectionViewName.isUserInteractionEnabled = true
         collectionViewName.font = UIFont(name: "ArialMT", size: 20)
+        collectionViewName.translatesAutoresizingMaskIntoConstraints = false
         vendorView.addSubview(collectionViewName)
         
+        collectionViewName.topAnchor.constraint(equalTo: self.vendorStreet.bottomAnchor, constant: 20).isActive = true
+        collectionViewName.leftAnchor.constraint(equalTo: self.vendorView.leftAnchor, constant: 10).isActive = true
+        
         let layout = UICollectionViewFlowLayout()
-        _ = CGFloat(self.vendorView.frame.width) * CGFloat(vendorAccessories.count)
-        layout.itemSize = CGSize(width: 150, height: 150)
+        layout.itemSize = CGSize(width: 80, height: 80)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .horizontal
         
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: collectionViewName.frame.maxY, width: self.view.frame.width, height: 150), collectionViewLayout: layout)
-        //collectionView.contentSize = CGSize(width: width, height: 150)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: collectionViewName.frame.maxY, width: self.view.frame.width, height: 100), collectionViewLayout: layout)
+        collectionView.contentSize = CGSize(width: 150, height: 150)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
@@ -132,9 +147,15 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         collectionView.alwaysBounceHorizontal = true
         collectionView.isScrollEnabled = true
         collectionView.isUserInteractionEnabled = true
-        vendorView.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        UIApplication.shared.keyWindow?.addSubview(collectionView)
+        
+        collectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        collectionView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: vendorView.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: vendorView.trailingAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: vendorView.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: vendorView.rightAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: collectionViewName.bottomAnchor).isActive = true
     }
     

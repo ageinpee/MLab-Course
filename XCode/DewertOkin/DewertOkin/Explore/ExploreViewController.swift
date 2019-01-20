@@ -37,6 +37,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
     var vendorStreet = UILabel()
     var vendorOpeningHours = UILabel()
     var vendorTelephoneNumber = UILabel()
+    var collectionViewName = UILabel()
     
     var collectionView: UICollectionView!
     

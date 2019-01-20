@@ -65,6 +65,11 @@ extension ExploreViewController {
         })
         transitionAnimator.addCompletion{_ in
             self.backgroundAlphaView.removeFromSuperview()
+            self.closeButton.removeFromSuperview()
+            self.vendorName.removeFromSuperview()
+            self.vendorStreet.removeFromSuperview()
+            self.collectionViewName.removeFromSuperview()
+            self.collectionView.removeFromSuperview()
             self.vendorView.removeFromSuperview()
             self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
         }

@@ -17,10 +17,14 @@ extension ExploreViewController {
             switch state {
             case .open:
                 self.vendorView.frame.origin.y -= self.vendorViewOffset
+                self.closeButton.frame.origin.y -= self.vendorViewOffset
+                self.collectionView.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .black
                 self.backgroundAlphaView.alpha = 0.5
             case .halfOpen:
                 self.vendorView.frame.origin.y += self.vendorViewOffset
+                self.closeButton.frame.origin.y += self.vendorViewOffset
+                self.collectionView.frame.origin.y += self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .clear
                 self.backgroundAlphaView.alpha = 0.0
             }

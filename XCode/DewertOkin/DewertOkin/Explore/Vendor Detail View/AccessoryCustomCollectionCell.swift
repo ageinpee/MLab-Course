@@ -17,6 +17,7 @@ class AccessoryCustomCollectionCell: UICollectionViewCell {
     var accessoryImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -25,6 +26,7 @@ class AccessoryCustomCollectionCell: UICollectionViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
         textView.isEditable = false
+        textView.isUserInteractionEnabled = true
         return textView
     }()
     
@@ -52,12 +54,13 @@ class AccessoryCustomCollectionCell: UICollectionViewCell {
     
     func addConstraints() {
         
+        accessoryImageView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        accessoryImageView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         accessoryImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        accessoryImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        accessoryImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        accessoryImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        accessoryImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         
         accessoryNameView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        accessoryNameView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         accessoryNameView.topAnchor.constraint(equalTo: self.accessoryImageView.bottomAnchor).isActive = true
     }
 }
