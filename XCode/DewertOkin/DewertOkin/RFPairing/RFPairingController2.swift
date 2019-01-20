@@ -22,8 +22,6 @@ class RFPairingController2: UIViewController {
     var selectedRemote: Remote = Remote()
     
     override func viewDidLoad() {
-        print(selectedRemote)
-        
         layoutConstraints()
     }
     

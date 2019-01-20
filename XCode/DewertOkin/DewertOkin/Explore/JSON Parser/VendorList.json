@@ -9,7 +9,7 @@
         "longitude": 9.993682,
         "accessories": [
             {
-                "imageName": "TouchRemote",
+                "imageName": "TouchControl",
                 "name": "RF Touch",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
@@ -17,6 +17,16 @@
                 "imageName": "LEDStripe",
                 "name": "LED-Stripe",
                 "accessoryDescription": "Illuminate everything in your living room"
+            },
+            {
+                "imageName": "AKKU POWER PACK 1300",
+                "name": "AKKU POWER PACK 1300",
+                "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+            },
+            {
+                "imageName": "MASSAGEMOTOR MM 65",
+                "name": "MASSAGEMOTOR MM 65",
+                "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
             }
         ]
     },
@@ -114,7 +124,7 @@
         "longitude": 9.964213,
         "accessories": [
             {
-                "imageName": "TouchRemote",
+                "imageName": "TouchControl",
                 "name": "RF Touch",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
@@ -156,7 +166,7 @@
         "longitude": 9.989209,
         "accessories": [
             {
-                "imageName": "TouchRemote",
+                "imageName": "TouchControl",
                 "name": "RF Touch",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension DetailVendorViewController: UICollectionViewDelegate {
+extension ExploreViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return vendorAccessories.count

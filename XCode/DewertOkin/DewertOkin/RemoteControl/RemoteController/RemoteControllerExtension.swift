@@ -136,7 +136,6 @@ extension RemoteController {
         
         switch panRecognizer.state {
         case .began:
-            print("Pan in Left Area")
             translation = .began
             arrowsImageView.alpha = 0
             timer = Timer.scheduledTimer(timeInterval: 0.3,
@@ -171,7 +170,6 @@ extension RemoteController {
                 
             }
         case .ended:
-            print("Pan in Left Area ended")
             translation = .ended
             Image.image = device.deviceImages[1]
             fadeInArrows(withAlpha: opacity)

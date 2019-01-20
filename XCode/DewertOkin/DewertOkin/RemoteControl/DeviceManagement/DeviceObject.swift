@@ -16,32 +16,32 @@ var globalDeviceObject = DeviceObject()
 
 class DeviceObject {
     
-    var uuid: String = ""
-    var name: String = ""
-    var handheldID: String = "" // Art-Nr. of handheld in csv file
-    var handheldData: [String] = [String]() // get these data via handsender1.csv file. represents one row matching the handheld
+    var uuid: String = ""                                               // Identifier for the device
+    var name: String = ""                                               // Name given by user
+    var handheldID: String = ""                                         // Art-Nr. of handheld in csv file
+    var handheldData: [String] = [String]()                             // all data of a handheld extracted from handsender.csv file
     
     // these parameters are important for the remote screen and the correct visual representation of the remote
-    var type: String = "NaN" // --> type with enum and string matching
-    var style: String = "empty" // --> get style via extra class and matching with 'type' and 'style'. style = filled or empty
+    var type: String = "NaN"                                            // describes the type of a device, eg. chair, table, ...
+    var style: String = "empty"                                         // descibes the style of a device shown in the remote screen. currently containing filled or empty
     
     // These parameters values are loaded during init with the help of style and type parameters
-    var deviceImages: [UIImage] = [UIImage]() // images loaded by other class
+    var deviceImages: [UIImage] = [UIImage]()                           // images loaded by other class
     
     // These parameters values are loaded during init() with the csv file
-    var availableMotors: [Motors] = [Motors]()
-    var availableMemories: [Memories] = [Memories]()
-    var availableExtraFunctions: [ExtraFunctions] = [ExtraFunctions]()
+    var availableMotors: [Motors] = [Motors]()                          // list of available motors
+    var availableMemories: [Memories] = [Memories]()                    // list of available memory functions + save memory
+    var availableExtraFunctions: [ExtraFunctions] = [ExtraFunctions]()  // list of available extra functions
     
     // These parameters are important for the BLE-Service
-    var commandService: CBUUID = CBUUID()
-    var keycodeUUID: CBUUID = CBUUID()
-    var feedbackUUID: CBUUID = CBUUID()
+    var commandService: CBUUID = CBUUID()                               //  \
+    var keycodeUUID: CBUUID = CBUUID()                                  //   } used for BLE service
+    var feedbackUUID: CBUUID = CBUUID()                                 //  /
     
     // These parameters save the device specific features
-    var presets: String = String()
-    var Timers: [String] = [String]()   //placeholder for device specific Timers-array
-    var Reminders: [String] = [String]()    //placeholder for device specific Remidners-array
+    var presets: String = String()                                      // placeholder for device specific presets-array
+    var Timers: [String] = [String]()                                   // placeholder for device specific Timers-array
+    var Reminders: [String] = [String]()                                // placeholder for device specific Remidners-array
     
     init() {
         deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
@@ -63,16 +63,17 @@ class DeviceObject {
             }
         }
         
-        chooseDeviceType()
-        
         if !(handheldData == []) {
             initializeFunctionality()
-            
+            chooseDeviceType()
             deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
                                                           forDevice: DeviceType(rawValue: type)!)
         }
         else {
             print("ERROR - couldn't find handheld data")
+            type = "NaN"
+            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+                                                          forDevice: DeviceType(rawValue: type)!)
         }
         
     }
@@ -140,6 +141,57 @@ class DeviceObject {
         }
     }
     
+    func getMotorKeycode(for motor: Motors, with action: Action) -> Data {
+        switch motor {
+        case .M1:
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m1Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m1In)}
+        case .M2:
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m2Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m2In)}
+        case .M3:
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m3Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m3In)}
+        case .M4:
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m4Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m4In)}
+        case .M5:
+            print("not implemented yet, instead M4 is triggered")
+            if action == .up { return RemoteControlConfig().getKeycode(name: .m4Out)}
+            else if action == .down { return RemoteControlConfig().getKeycode(name: .m4In)}
+        }
+        return Data()
+    }
+    
+    func getExtraFuntionKeycode(for extraFunc: ExtraFunctions) -> Data {
+        switch extraFunc {
+        case .massage_back:
+            return RemoteControlConfig().getKeycode(name: .massage1)
+        case .massage_neck:
+            return RemoteControlConfig().getKeycode(name: .massage2)
+        case .massage_legs:
+            return RemoteControlConfig().getKeycode(name: .massage3)
+        case .ubl:
+            return RemoteControlConfig().getKeycode(name: .ubl)
+        case .NaN:
+            return Data()
+        }
+    }
+    
+    func getMemoryKeycode(for memory: Memories) -> Data{
+        switch memory {
+        case .Mem1:
+            return RemoteControlConfig().getKeycode(name: .memory1)
+        case .Mem2:
+            return RemoteControlConfig().getKeycode(name: .memory2)
+        case .Mem3:
+            return RemoteControlConfig().getKeycode(name: .memory3)
+        case .Mem4:
+            return RemoteControlConfig().getKeycode(name: .memory4)
+        case .MemSave:
+            return RemoteControlConfig().getKeycode(name: .storeMemoryPosition)
+        }
+    }
 }
 
 
@@ -152,7 +204,7 @@ class DeviceObject {
 
 
 enum DeviceType: String { // implemented graphics is marked with <--
-    case NaN = "NaN"
+    case NaN = "NaN" // <--
     case chair_1Motors = "chair_1Motors"
     case chair_2Motors = "chair_2Motors" // <--
     case chair_3Motors = "chair_3Motors"
@@ -193,6 +245,11 @@ enum Memories: String {
     case Mem3 = "Mem3"
     case Mem4 = "Mem4"
     case MemSave = "MemSave"
+}
+
+enum Action: String {
+    case up = "up"
+    case down = "down"
 }
 
 // ================================================================

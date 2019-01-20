@@ -40,7 +40,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="urf-Lw-g1n" id="xwW-P4-m7Y"/>
-                        <segue destination="G4K-hp-hJC" kind="presentation" identifier="ShowVendorDetail" id="E4D-db-9SH"/>
                         <segue destination="qls-k3-uPY" kind="show" identifier="ShowAccessoriesList" id="g41-4C-Pmz"/>
                     </connections>
                 </viewController>
@@ -76,22 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxu-jB-735" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075" y="490"/>
-        </scene>
-        <!--Detail Vendor View Controller-->
-        <scene sceneID="zw4-F0-2Vt">
-            <objects>
-                <viewController id="G4K-hp-hJC" customClass="DetailVendorViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="np3-7O-lUD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="imb-U6-qZO"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ChO-o7-a20" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2258.4000000000001" y="-276.35467980295567"/>
+            <point key="canvasLocation" x="2188" y="-275"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nRC-Hw-6RA">
