@@ -43,6 +43,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         
         let panTapAnimation = InstantPanGestureRecognizer()
         panTapAnimation.addTarget(self, action: #selector(ExploreViewController.vendorDetailViewGesture(recognizer:)))
+        panTapAnimation.cancelsTouchesInView = false
         vendorView.addGestureRecognizer(panTapAnimation)
         
         closeButton.setTitleColor(.white, for: .normal)
@@ -65,14 +66,13 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func initializeVendorInformation() {
-        //vendorName = UILabel(frame: CGRect(x: 0, y: vendorView.frame.minY + 22, width: self.view.frame.width, height: 22.0))
+        
         vendorName.text = displayingVendor.name
         vendorName.textAlignment = .left
         vendorName.isUserInteractionEnabled = true
         vendorName.font = UIFont(name: "ArialMT", size: 20.0)
         vendorName.translatesAutoresizingMaskIntoConstraints = false
         
-        //vendorStreet = UILabel(frame: CGRect(x: 0, y: vendorName.frame.maxY, width: self.view.frame.width, height: 16.0))
         vendorStreet.text = displayingVendor.street
         vendorStreet.textAlignment = .left
         vendorStreet.isUserInteractionEnabled = true
@@ -95,15 +95,11 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         
         vendorView.addSubview(vendorName)
         vendorView.addSubview(vendorStreet)
-//        vendorView.addSubview(vendorOpeningHours)
-//        vendorView.addSubview(vendorTelephoneNumber)
         
         vendorName.topAnchor.constraint(equalTo: self.vendorView.topAnchor, constant: 10).isActive = true
         vendorName.leftAnchor.constraint(equalTo: self.vendorView.leftAnchor, constant: 10).isActive = true
         vendorStreet.topAnchor.constraint(equalTo: self.vendorName.bottomAnchor).isActive = true
         vendorStreet.leftAnchor.constraint(equalTo: self.vendorView.leftAnchor, constant: 10).isActive = true
-//        vendorTelephoneNumber.topAnchor.constraint(equalTo: self.vendorStreet.bottomAnchor).isActive = true
-//        vendorOpeningHours.topAnchor.constraint(equalTo: self.vendorTelephoneNumber.bottomAnchor).isActive = true
     }
     
     func initializeVendorWebsite() {
@@ -119,7 +115,6 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
     func initializeAccessoryCollection() {
         vendorAccessories = displayingVendor.accessories
         
-        //collectionViewName = UILabel(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 20.0))
         collectionViewName.text = "Compatible Accessories:"
         collectionViewName.textAlignment = .left
         collectionViewName.isUserInteractionEnabled = true
