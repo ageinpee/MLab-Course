@@ -52,6 +52,8 @@
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9220AFB621F1DD85003E2794 /* handsender1_extended.csv */; };
 		9243F4C621F0C78000513B11 /* RemoteControllerExtensionCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */; };
+		92FC0B8E21F4DF5A00F8BAC2 /* AboutPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92FC0B8D21F4DF5A00F8BAC2 /* AboutPage.storyboard */; };
+		92FC0B9021F4DF8000F8BAC2 /* AboutPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC0B8F21F4DF8000F8BAC2 /* AboutPageViewController.swift */; };
 		CD100F4721DB973200DBAAB9 /* BluetoothPairingConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */; };
 		CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */; };
 		CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */; };
@@ -172,6 +174,8 @@
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9220AFB621F1DD85003E2794 /* handsender1_extended.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1_extended.csv; sourceTree = "<group>"; };
 		9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionCoreData.swift; sourceTree = "<group>"; };
+		92FC0B8D21F4DF5A00F8BAC2 /* AboutPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutPage.storyboard; sourceTree = "<group>"; };
+		92FC0B8F21F4DF8000F8BAC2 /* AboutPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPageViewController.swift; sourceTree = "<group>"; };
 		B0FFC79E97882B928D61CF45 /* Pods-DewertOkin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DewertOkin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin.debug.xcconfig"; sourceTree = "<group>"; };
 		CD100F4821DE7B9000DBAAB9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
@@ -487,6 +491,8 @@
 			isa = PBXGroup;
 			children = (
 				CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */,
+				92FC0B8F21F4DF8000F8BAC2 /* AboutPageViewController.swift */,
+				92FC0B8D21F4DF5A00F8BAC2 /* AboutPage.storyboard */,
 				CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */,
 			);
 			path = Settings;
@@ -712,6 +718,7 @@
 				031CC45521DE43C20025E068 /* Devices.storyboard in Resources */,
 				0357FBE8218607A30043A828 /* LaunchScreen.storyboard in Resources */,
 				03E98764219452D300189C97 /* Reminder.storyboard in Resources */,
+				92FC0B8E21F4DF5A00F8BAC2 /* AboutPage.storyboard in Resources */,
 				0357FBE5218607A30043A828 /* Assets.xcassets in Resources */,
 				CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */,
 				CDB5B11621B5B9FE000D92A4 /* OldRemote.storyboard in Resources */,
@@ -862,6 +869,7 @@
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				CDACE3BC21EE5AB90074304C /* Companion.swift in Sources */,
 				CD100F4D21DFF25400DBAAB9 /* ExecutingPresetViewController.swift in Sources */,
+				92FC0B9021F4DF8000F8BAC2 /* AboutPageViewController.swift in Sources */,
 				FAE52D3421D556DB00121B54 /* RFPairingController3.swift in Sources */,
 				0380565521E901E300A6502F /* Accessory.swift in Sources */,
 				CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */,
