@@ -42,10 +42,10 @@ class MainViewController: UITabBarController {
         reminderVC.tabBarItem = UITabBarItem(title: "Reminder", image: UIImage(named: "reminder_icon"), tag: 1)
         
         healthVC = UINavigationController(rootViewController: CompanionTableViewController())
-        healthVC.tabBarItem = UITabBarItem(title: "Companion", image: UIImage(named: "heart_icon_outlined"), selectedImage: UIImage(named: "heart_icon_selected"))
+        healthVC.tabBarItem = UITabBarItem(title: "Companion", image: UIImage(named: "companion"), selectedImage: UIImage(named: "companion_blue"))
         
         exploreVC = explore
-        exploreVC.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
+        exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(named: "explore_icon"), selectedImage: UIImage(named: "explore_icon_blue"))
         
         settingsVC = settings
         settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
