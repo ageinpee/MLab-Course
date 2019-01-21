@@ -10,22 +10,22 @@
         "accessories": [
             {
                 "imageName": "TouchControl",
-                "name": "RF Touch",
+                "name": "Touch Remote",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
             {
                 "imageName": "LEDStripe",
-                "name": "LED-Stripe",
+                "name": "LED Stripe",
                 "accessoryDescription": "Illuminate everything in your living room"
             },
             {
                 "imageName": "AKKU POWER PACK 1300",
-                "name": "AKKU POWER PACK 1300",
-                "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+                "name": "Akku Power Pack",
+                "accessoryDescription": "Makes your device usable without the power grid connection"
             },
             {
                 "imageName": "MASSAGEMOTOR MM 65",
-                "name": "MASSAGEMOTOR MM 65",
+                "name": "Massagemotor",
                 "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
             }
         ]
@@ -41,12 +41,12 @@
         "accessories": [
             {
                 "imageName": "AKKU POWER PACK 1300",
-                "name": "AKKU POWER PACK 1300",
-                "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+                "name": "Akku Power Pack",
+                "accessoryDescription": "Makes your device usable without the power grid connection"
             },
             {
                 "imageName": "MASSAGEMOTOR MM 65",
-                "name": "MASSAGEMOTOR MM 65",
+                "name": "Massagemotor",
                 "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
             }
         ]
@@ -62,13 +62,13 @@
         "accessories": [
             {
                 "imageName": "LEDStripe",
-                "name": "LED-Stripe",
+                "name": "LED Stripe",
                 "accessoryDescription": "Illuminate everything in your living room"
             },
             {
                 "imageName": "AKKU POWER PACK 1300",
-                "name": "AKKU POWER PACK 1300",
-                "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+                "name": "Akku Power Pack",
+                "accessoryDescription": "Makes your device usable without the power grid connection"
             }
         ]
     },
@@ -83,13 +83,28 @@
         "accessories": [
             {
                 "imageName": "MASSAGEMOTOR MM 65",
-                "name": "MASSAGEMOTOR MM 65",
+                "name": "Massagemotor",
                 "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
             },
             {
+                "imageName": "SatelliteIconAccessory",
+                "name": "Satellite Speaker",
+                "accessoryDescription": "Improve your furniture with satellite sound speakers"
+            },
+            {
+                "imageName": "SubwooferIconAccessory",
+                "name": "Subwoofer Speaker",
+                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
+            },
+            {
+                "imageName": "MonitorArmIconAccessory",
+                "name": "Monitor Arm",
+                "accessoryDescription": "Motorized monitor arm for your desk"
+            },
+            {
                 "imageName": "Under-Bed-Lighting",
-                "name": "Under-Bed-Lighting",
-                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+                "name": "Under Bed Lighting",
+                "accessoryDescription": "Very convenient, glare-free extendable under bed lighting"
             }
         ]
     },
@@ -104,12 +119,12 @@
         "accessories": [
             {
                 "imageName": "AKKU POWER PACK 1300",
-                "name": "AKKU POWER PACK 1300",
-                "accessoryDescription": "Makes your device usable even without connection to the Power-Grid"
+                "name": "Akku Power Pack",
+                "accessoryDescription": "Makes your device usable without the power grid connection"
             },
             {
                 "imageName": "MASSAGEMOTOR MM 65",
-                "name": "MASSAGEMOTOR MM 65",
+                "name": "Massagemotor",
                 "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
             }
         ]
@@ -124,13 +139,23 @@
         "longitude": 9.964213,
         "accessories": [
             {
+                "imageName": "SatelliteIconAccessory",
+                "name": "Satellite Speaker",
+                "accessoryDescription": "Improve your furniture with satellite sound speakers"
+            },
+            {
+                "imageName": "SubwooferIconAccessory",
+                "name": "Subwoofer Speaker",
+                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
+            },
+            {
                 "imageName": "TouchControl",
-                "name": "RF Touch",
+                "name": "Touch Remote",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
             {
                 "imageName": "MASSAGEMOTOR MM 65",
-                "name": "MASSAGEMOTOR MM 65",
+                "name": "Massagemotor",
                 "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
             }
         ]
@@ -145,13 +170,28 @@
         "longitude": 9.980984,
         "accessories": [
             {
+                "imageName": "SatelliteIconAccessory",
+                "name": "Satellite Speaker",
+                "accessoryDescription": "Improve your furniture with satellite sound speakers"
+            },
+            {
+                "imageName": "MonitorArmIconAccessory",
+                "name": "Monitor Arm",
+                "accessoryDescription": "Motorized monitor arm for your desk"
+            },
+            {
                 "imageName": "Under-Bed-Lighting",
-                "name": "Under-Bed-Lighting",
-                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+                "name": "Under Bed Lighting",
+                "accessoryDescription": "Very convenient, glare-free extendable under bed lighting"
+            },
+            {
+                "imageName": "SubwooferIconAccessory",
+                "name": "Subwoofer Speaker",
+                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
             },
             {
                 "imageName": "MASSAGEMOTOR MM 65",
-                "name": "MASSAGEMOTOR MM 65",
+                "name": "Massagemotor",
                 "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
             }
         ]
@@ -167,13 +207,13 @@
         "accessories": [
             {
                 "imageName": "TouchControl",
-                "name": "RF Touch",
+                "name": "Touch Remote",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
             {
                 "imageName": "Under-Bed-Lighting",
-                "name": "Under-Bed-Lighting",
-                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+                "name": "Under Bed Lighting",
+                "accessoryDescription": "Very convenient, glare-free extendable under bed lighting"
             }
         ]
     },
@@ -188,18 +228,18 @@
         "accessories": [
             {
                 "imageName": "BREMSALARM",
-                "name": "BREMSALARM",
-                "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+                "name": "Bremsalarm",
+                "accessoryDescription": "Convenient audiovisual way to get notified in case of brake release"
             },
             {
                 "imageName": "BLUETOOTH®-RF GATEWAY",
-                "name": "BLUETOOTH®-RF GATEWAY",
-                "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
+                "name": "Bluetooth-RF Gateway",
+                "accessoryDescription": "Extends your furniture with bluetooth functionality"
             },
             {
                 "imageName": "Under-Bed-Lighting",
-                "name": "Under-Bed-Lighting",
-                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+                "name": "Under Bed Lighting",
+                "accessoryDescription": "Very convenient, glare-free extendable under bed lighting"
             }
         ]
     },
@@ -214,18 +254,28 @@
         "accessories": [
             {
                 "imageName": "TouchControl",
-                "name": "RF Touch",
+                "name": "Touch Remote",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
             {
+                "imageName": "SatelliteIconAccessory",
+                "name": "Satellite Speaker",
+                "accessoryDescription": "Improve your furniture with satellite sound speakers"
+            },
+            {
+                "imageName": "MonitorArmIconAccessory",
+                "name": "Monitor Arm",
+                "accessoryDescription": "Motorized monitor arm for your desk"
+            },
+            {
                 "imageName": "Under-Bed-Lighting",
-                "name": "Under-Bed-Lighting",
-                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+                "name": "Under Bed Lighting",
+                "accessoryDescription": "Very convenient, glare-free extendable under bed lighting"
             },
             {
                 "imageName": "BREMSALARM",
-                "name": "BREMSALARM",
-                "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+                "name": "Bremsalarm",
+                "accessoryDescription": "Convenient audiovisual way to get notified in case of brake release"
             }
         ]
     },
@@ -240,18 +290,23 @@
         "accessories": [
             {
                 "imageName": "TouchControl",
-                "name": "RF Touch",
+                "name": "Touch Remote",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
             {
-                "imageName": "Under-Bed-Lighting",
-                "name": "Under-Bed-Lighting",
-                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+                "imageName": "SubwooferIconAccessory",
+                "name": "Subwoofer Speaker",
+                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
+            },
+            {
+                "imageName": "MonitorArmIconAccessory",
+                "name": "Monitor Arm",
+                "accessoryDescription": "Motorized monitor arm for your desk"
             },
             {
                 "imageName": "BLUETOOTH®-RF GATEWAY",
-                "name": "BLUETOOTH®-RF GATEWAY",
-                "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
+                "name": "Bluetooth-RF Gateway",
+                "accessoryDescription": "Extends your furniture with bluetooth functionality"
             }
         ]
     },
@@ -265,24 +320,29 @@
         "longitude": 9.940263,
         "accessories": [
             {
-                "imageName": "TouchControl",
-                "name": "RF Touch",
-                "accessoryDescription": "Very modern, convenient touch remote control"
+                "imageName": "SatelliteIconAccessory",
+                "name": "Satellite Speaker",
+                "accessoryDescription": "Improve your furniture with satellite sound speakers"
             },
             {
-                "imageName": "Under-Bed-Lighting",
-                "name": "Under-Bed-Lighting",
-                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+                "imageName": "SubwooferIconAccessory",
+                "name": "Subwoofer Speaker",
+                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
+            },
+            {
+                "imageName": "MonitorArmIconAccessory",
+                "name": "Monitor Arm",
+                "accessoryDescription": "Motorized monitor arm for your desk"
             },
             {
                 "imageName": "BREMSALARM",
-                "name": "BREMSALARM",
-                "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+                "name": "Bremsalarm",
+                "accessoryDescription": "Convenient audiovisual way to get notified in case of brake release"
             },
             {
                 "imageName": "BLUETOOTH®-RF GATEWAY",
-                "name": "BLUETOOTH®-RF GATEWAY",
-                "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
+                "name": "Bluetooth-RF Gateway",
+                "accessoryDescription": "Extends your furniture with bluetooth functionality"
             }
         ]
     },
@@ -297,23 +357,23 @@
         "accessories": [
             {
                 "imageName": "TouchControl",
-                "name": "RF Touch",
+                "name": "Touch Remote",
                 "accessoryDescription": "Very modern, convenient touch remote control"
             },
             {
                 "imageName": "Under-Bed-Lighting",
-                "name": "Under-Bed-Lighting",
-                "accessoryDescription": "Very convenient, glare-free, versatilely applicable Under-Bed-Lighting"
+                "name": "Under Bed Lighting",
+                "accessoryDescription": "Very convenient, glare-free extendable under bed lighting"
             },
             {
                 "imageName": "BREMSALARM",
-                "name": "BREMSALARM",
-                "accessoryDescription": "Very convenient audiovisual way to get notified if the Brake is getting released"
+                "name": "Bremsalarm",
+                "accessoryDescription": "Convenient audiovisual way to get notified in case of brake release"
             },
             {
                 "imageName": "BLUETOOTH®-RF GATEWAY",
-                "name": "BLUETOOTH®-RF GATEWAY",
-                "accessoryDescription": "With the help of this Tool, there is nothing standing in your way, using your furniture with the powerful Companio App for DewertOkin Products"
+                "name": "Bluetooth-RF Gateway",
+                "accessoryDescription": "Extends your furniture with bluetooth functionality"
             }
         ]
     }
