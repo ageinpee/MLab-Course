@@ -44,8 +44,34 @@ class DeviceObject {
     var Reminders: [String] = [String]()                                // placeholder for device specific Remidners-array
     
     init() {
-        deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
-                                                      forDevice: DeviceType(rawValue: type)!)
+        uuid = "test_chair"
+        name = "My Chair"
+        handheldID = "84562"
+        style = "empty"
+        
+        let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
+        
+        for row in csvData {
+            if row[0] == handheldID {
+                handheldData = row
+                break
+            }
+        }
+        
+        if !(handheldData == []) {
+            initializeFunctionality()
+            chooseDeviceType()
+            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+                                                          forDevice: DeviceType(rawValue: type)!)
+        }
+        else {
+            print("ERROR - couldn't find handheld data")
+            type = "NaN"
+            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+                                                          forDevice: DeviceType(rawValue: type)!)
+        }
+        //deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+        //                                              forDevice: DeviceType(rawValue: type)!)
     }
     
     init(withUUID id: String, named: String, withHandheldID: String, withStyle: String) {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class ExploreViewController: UIViewController, CLLocationManagerDelegate {
+class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
@@ -35,8 +35,8 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate {
     
     var vendorName = UILabel()
     var vendorStreet = UILabel()
-    var vendorOpeningHours = UILabel()
-    var vendorTelephoneNumber = UILabel()
+    var vendorWebsite = UIButton()
+    var collectionViewName = UILabel()
     
     var collectionView: UICollectionView!
     

@@ -17,10 +17,16 @@ extension ExploreViewController {
             switch state {
             case .open:
                 self.vendorView.frame.origin.y -= self.vendorViewOffset
+                self.closeButton.frame.origin.y -= self.vendorViewOffset
+                self.collectionView.frame.origin.y -= self.vendorViewOffset
+                self.vendorWebsite.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .black
                 self.backgroundAlphaView.alpha = 0.5
             case .halfOpen:
                 self.vendorView.frame.origin.y += self.vendorViewOffset
+                self.closeButton.frame.origin.y += self.vendorViewOffset
+                self.collectionView.frame.origin.y += self.vendorViewOffset
+                self.vendorWebsite.frame.origin.y += self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .clear
                 self.backgroundAlphaView.alpha = 0.0
             }
@@ -50,11 +56,11 @@ extension ExploreViewController {
     
     @objc func vendorDetailViewGesture(recognizer: UIPanGestureRecognizer) {
         
-        let translation = recognizer.translation(in: vendorView)
-        let fraction = translation.y
-        if (fraction > 0 && currentState == .halfOpen) {
-            closeDetailView()
-        }
+//        let translation = recognizer.translation(in: vendorView)
+//        let fraction = translation.y
+//        if (fraction > 0 && currentState == .halfOpen) {
+//            closeDetailView()
+//        }
         
         switch recognizer.state {
             
@@ -101,6 +107,14 @@ extension ExploreViewController {
     
     @objc func touchedCloseButton(sender: UIButton!) {
         closeDetailView()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard vendorView.superview != nil else { return false }
+        if ((touch.view?.isDescendant(of: vendorView))!){
+            return true
+        }
+        return false
     }
 }
 

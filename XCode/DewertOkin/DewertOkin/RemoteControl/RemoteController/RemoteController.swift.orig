@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import HealthKit
 import CoreBluetooth
-import CoreData
 
 
 class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable{
@@ -25,8 +24,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var leftPanArea: UIView!
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
-    @IBOutlet weak var devicesListButton: UIButton!
     
+    //----------------------------------------
+    //------ Presets UI-Elements -------------
+    
+  
     
     var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var panRecRight: UIPanGestureRecognizer = UIPanGestureRecognizer()
@@ -39,8 +41,9 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     var panState = UIGestureRecognizer.State.ended
     var impact: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator()
     
-    var devicesList = [Devices]()
+    var deviceType: DeviceType = .NaN
     
+    var currentStyle: DeviceStyle = DeviceStyle()
     var device: DeviceObject = DeviceObject()
     var opacity = CGFloat(0.75)
     
@@ -56,9 +59,9 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     var remoteControlConfig = RemoteControlConfig()
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
-    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
+    var paired = false
     
     //----------------------------------------
     //--------- Fancy Remote Setup -----------
@@ -73,30 +76,17 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        device = globalDeviceObject
+        deviceType = DeviceType.chair_2Motors
+        currentStyle.setEmptyStyle(forDevice: deviceType)
+        device = DeviceObject(withID: 0,
+                              named: "Chair 0",
+                              withDescription: "HE150",
+                              asType: .chair_2Motors,
+                              withStyle: currentStyle,
+                              withCMDService: CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B"),
+                              withKeycodeUUID: CBUUID(string: "62741525-52F9-8864-B1AB-3B3A8D65950B"),
+                              withFeedbackUUID: CBUUID(string: "62741625-52F9-8864-B1AB-3B3A8D65950B"))
         
-        /*
-        fetchDevices()
-        print(devicesList)
-        
-        device = DeviceObject(withUUID: devicesList[0].uuid!,
-                              named: devicesList[0].name!,
-                              withHandheldID: devicesList[0].handheld!,
-                              withStyle: devicesList[0].style!)
-        globalDeviceObject = device
-        */
-        /*
-        let testDevice = DeviceObject(withUUID: "test1",
-                                      named: "test table",
-                                      withHandheldID: "Table-test",
-                                      withStyle: "empty")
-        device = testDevice
- 
-        let testDevice2 = DeviceObject(withUUID: "test2", named: "My Chair", withHandheldID: "84562", withStyle: "empty")
-        device = testDevice2
-        */
-        
-        currentDeviceLabel.text = device.name
         setupButtons()
         setupPanAreas()
         
@@ -104,73 +94,35 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
 
         Health.shared.requestHealthKitPermission()
         
+<<<<<<< HEAD
+=======
         impact = UIImpactFeedbackGenerator(style: .light)
         
-        arrowsImageView.image = device.deviceImages[0]
-        Image.image = device.deviceImages[1]
+        /*
+        let swipeRec = UISwipeGestureRecognizer(target: self, action: #selector(showOldRemote))
+        swipeRec.direction = .up
+        ExtraFunctionsButtonObj.addGestureRecognizer(swipeRec)
+        ExtraFunctionsButtonObj.addTarget(self, action: #selector(showExtraFeaturesView), for: .touchUpInside)
+        */
+>>>>>>> Remote
+        arrowsImageView.image = currentStyle.stylesImages[0]
+        Image.image = currentStyle.stylesImages[1]
         Image.contentMode = .scaleAspectFit
     }
     
     override func viewDidAppear(_ animated: Bool) {
         arrowsImageView.alpha = 0
-        fadeInArrows(withAlpha: opacity)
-        
-        checkBluetoothConnectivity()
+        animateFade(withAlpha: opacity)
     }
     
+<<<<<<< HEAD
+=======
     @objc
     private func showOldRemote() {
         print("Swipe recognized")
         let storyBoard: UIStoryboard = UIStoryboard(name: "OldRemote", bundle: nil)
         let newViewController = storyBoard.instantiateInitialViewController() as! OldRemoteViewController
         self.present(newViewController, animated: true, completion: nil)
-    }
-    
-    lazy var noConnectionBanner: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: -90, width: self.view.frame.width, height: 80))
-        view.backgroundColor = .red
-        view.layer.cornerRadius = 10
-        view.layer.shadowColor = UIColor.gray.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        view.layer.shadowRadius = 12.0
-        view.layer.shadowOpacity = 0.7
-        return view
-    }()
-    
-    let noConnectionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "No device connected."
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private func checkBluetoothConnectivity() {
-        if !bluetoothBackgroundHandler.checkStatus() {
-            showNoConnectionBanner()
-        } else {
-            dismissNoConnectionBanner()
-        }
-    }
-    
-    private func showNoConnectionBanner() {
-        guard !self.view.subviews.contains(noConnectionBanner) else {return}
-        self.view.addSubview(noConnectionBanner)
-        noConnectionBanner.addSubview(noConnectionLabel)
-        noConnectionBanner.addConstraint(NSLayoutConstraint.init(item: noConnectionLabel, attribute: .centerX, relatedBy: .equal, toItem: noConnectionBanner, attribute: .centerX, multiplier: 1, constant: 0))
-        noConnectionBanner.addConstraint(NSLayoutConstraint.init(item: noConnectionLabel, attribute: .centerY, relatedBy: .equal, toItem: noConnectionBanner, attribute: .centerY, multiplier: 3/2, constant: 0))
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.noConnectionBanner.transform = CGAffineTransform.init(translationX: 0, y: 80)
-        }) { (_) in
-        }
-    }
-    
-    private func dismissNoConnectionBanner() {
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.noConnectionBanner.transform = CGAffineTransform.init(translationX: 0, y: -80)
-        }) { (_) in
-            self.noConnectionBanner.removeFromSuperview()
-        }
     }
 
     /*
@@ -180,6 +132,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     }
     */
     
+>>>>>>> Remote
     //---------------------------------------
     //---------- Remote Actions -------------
     /*
