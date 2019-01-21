@@ -44,6 +44,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         let panTapAnimation = InstantPanGestureRecognizer()
         panTapAnimation.addTarget(self, action: #selector(ExploreViewController.vendorDetailViewGesture(recognizer:)))
         panTapAnimation.cancelsTouchesInView = false
+        panTapAnimation.delegate = self
         vendorView.addGestureRecognizer(panTapAnimation)
         
         closeButton.setTitleColor(.white, for: .normal)

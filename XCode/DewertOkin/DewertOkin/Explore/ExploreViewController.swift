@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class ExploreViewController: UIViewController, CLLocationManagerDelegate {
+class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()

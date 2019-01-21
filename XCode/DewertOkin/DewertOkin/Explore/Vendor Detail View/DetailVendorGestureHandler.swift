@@ -108,6 +108,14 @@ extension ExploreViewController {
     @objc func touchedCloseButton(sender: UIButton!) {
         closeDetailView()
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard vendorView.superview != nil else { return false }
+        if ((touch.view?.isDescendant(of: vendorView))!){
+            return true
+        }
+        return false
+    }
 }
 
 enum State {
