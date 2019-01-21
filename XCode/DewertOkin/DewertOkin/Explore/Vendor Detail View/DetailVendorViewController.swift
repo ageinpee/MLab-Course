@@ -16,7 +16,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
     func initializeVendorView() {
         
         backgroundAlphaView.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
+        //backgroundAlphaView.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
         UIApplication.shared.keyWindow?.addSubview(backgroundAlphaView)
         backgroundAlphaView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         backgroundAlphaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -95,14 +95,14 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorWebsite = UIButton.init(type: .custom)
         vendorWebsite.setTitle("Onlineshop", for: .normal)
         vendorWebsite.layer.backgroundColor = UIColor.blue.cgColor
-        vendorWebsite.layer.borderWidth = 1
+        vendorWebsite.layer.borderWidth = 0
         vendorWebsite.layer.cornerRadius = 25
         vendorWebsite.translatesAutoresizingMaskIntoConstraints = false
         UIApplication.shared.keyWindow?.addSubview(vendorWebsite)
         
         vendorWebsite.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        vendorWebsite.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -20).isActive = true
-        vendorWebsite.leftAnchor.constraint(equalTo: vendorView.leftAnchor, constant: 20)
+        vendorWebsite.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -40).isActive = true
+        vendorWebsite.leftAnchor.constraint(equalTo: vendorView.leftAnchor, constant: 20).isActive = true
         vendorWebsite.rightAnchor.constraint(equalTo: vendorView.rightAnchor, constant: -20).isActive = true
         vendorWebsite.bottomAnchor.constraint(equalTo: vendorView.bottomAnchor, constant: -70).isActive = true
     }
