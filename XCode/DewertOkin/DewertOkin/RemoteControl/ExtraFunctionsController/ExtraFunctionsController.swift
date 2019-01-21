@@ -92,6 +92,14 @@ class ExtraFunctionsController: UIViewController {
         print("placehodler for bluetooth function with hexcode \(hex)")
     }
     
+    // Call this when Extras is empty and the user presses the explore button
+    private func movetoExplore() {
+        self.dismiss(animated: true) {
+            if let tabbar = UIApplication.shared.keyWindow?.rootViewController as? MainViewController {
+                tabbar.selectedIndex = 2
+            }
+        }
+    }
     
 }
 
