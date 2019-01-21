@@ -16,6 +16,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
     func initializeVendorView() {
         
         backgroundAlphaView.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
         UIApplication.shared.keyWindow?.addSubview(backgroundAlphaView)
         backgroundAlphaView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         backgroundAlphaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
