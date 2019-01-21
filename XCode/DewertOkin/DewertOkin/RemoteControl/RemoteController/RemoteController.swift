@@ -91,6 +91,9 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
                                       withHandheldID: "Table-test",
                                       withStyle: "empty")
         device = testDevice
+ 
+        let testDevice2 = DeviceObject(withUUID: "test2", named: "My Chair", withHandheldID: "84562", withStyle: "empty")
+        device = testDevice2
         */
         
         currentDeviceLabel.text = device.name
