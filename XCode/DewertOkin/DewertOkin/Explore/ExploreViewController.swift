@@ -67,7 +67,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     
     override func viewDidAppear(_ animated: Bool) {
         let filter = defaults.stringArray(forKey: "FilterAccessories")
-        guard (filter?.count)! > 0 else { return }
+        guard !(filter?.isEmpty ?? true) else { return }
         initializeAccessories(name: filter!)
         for vendorNumber in 0..<(filteredVendors.count) {
             let temp = filteredVendors[vendorNumber]!.accessories.filter { filteredAccessories.contains($0) }

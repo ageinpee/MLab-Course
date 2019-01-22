@@ -12,7 +12,10 @@ import UIKit
 class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     
     var accessoriesList = [Accessory]()
+    var selectedAccessories = [Accessory]()
     @IBOutlet weak var tableView: UITableView!
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +74,10 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("gg")
     }
     
 }
