@@ -16,7 +16,6 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
     func initializeVendorView() {
         
         backgroundAlphaView.translatesAutoresizingMaskIntoConstraints = false
-        //backgroundAlphaView.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
         UIApplication.shared.keyWindow?.addSubview(backgroundAlphaView)
         backgroundAlphaView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         backgroundAlphaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -24,6 +23,12 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         backgroundAlphaView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         backgroundAlphaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         backgroundAlphaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
+        let backgroundTapAnimation = InstantPanGestureRecognizer()
+        backgroundTapAnimation.addTarget(self, action: #selector(ExploreViewController.closeVendorDetails(recognizer:)))
+        backgroundTapAnimation.cancelsTouchesInView = false
+        backgroundTapAnimation.delegate = self
+        backgroundAlphaView.addGestureRecognizer(backgroundTapAnimation)
         
         vendorView.backgroundColor = .white
         vendorView.translatesAutoresizingMaskIntoConstraints = false
@@ -138,7 +143,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         collectionView.isScrollEnabled = true
         collectionView.isUserInteractionEnabled = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        UIApplication.shared.keyWindow?.addSubview(collectionView)
+        vendorView.addSubview(collectionView)
         
         collectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         collectionView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true

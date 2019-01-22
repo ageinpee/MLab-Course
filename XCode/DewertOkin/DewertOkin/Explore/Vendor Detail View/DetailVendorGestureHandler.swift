@@ -18,7 +18,7 @@ extension ExploreViewController {
             case .open:
                 self.vendorView.frame.origin.y -= self.vendorViewOffset
                 self.closeButton.frame.origin.y -= self.vendorViewOffset
-                self.collectionView.frame.origin.y -= self.vendorViewOffset
+                //self.collectionView.frame.origin.y -= self.vendorViewOffset
                 self.vendorWebsite.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .black
                 self.backgroundAlphaView.alpha = 0.5
@@ -55,13 +55,7 @@ extension ExploreViewController {
     }
     
     @objc func vendorDetailViewGesture(recognizer: UIPanGestureRecognizer) {
-        
-//        let translation = recognizer.translation(in: vendorView)
-//        let fraction = translation.y
-//        if (fraction > 0 && currentState == .halfOpen) {
-//            closeDetailView()
-//        }
-        
+    
         switch recognizer.state {
             
         case .began:
@@ -109,7 +103,15 @@ extension ExploreViewController {
         closeDetailView()
     }
     
+    @objc func closeVendorDetails(recognizer: UIPanGestureRecognizer) {
+        closeDetailView()
+    }
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard backgroundAlphaView.superview != nil else { return false }
+        if ((touch.view?.isDescendant(of: backgroundAlphaView))!){
+            return true
+        }
         guard vendorView.superview != nil else { return false }
         if ((touch.view?.isDescendant(of: vendorView))!){
             return true

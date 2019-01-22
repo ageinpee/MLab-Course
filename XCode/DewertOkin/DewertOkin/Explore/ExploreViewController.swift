@@ -14,6 +14,9 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
+    var filteredVendors = [Vendor?]()
+    var filteredAccessories = [Accessory?]()
+    let defaults = UserDefaults.standard
     
     // Data from ExploreMapViewController
     var displayingVendor: Vendor!
@@ -56,6 +59,22 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
         mapView.isUserInteractionEnabled = true
         initializeMap(radiusInMeters: 2000.0)
         initializeVendors()
+        
+        for vendor in filteredVendors {
+            mapView.addAnnotation(vendor!)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        for vendor in filteredVendors {
+            mapView.addAnnotation(vendor!)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        for vendor in filteredVendors {
+            mapView.addAnnotation(vendor!)
+        }
     }
         
     @IBAction func showAccessoriesList(_ sender: Any) {

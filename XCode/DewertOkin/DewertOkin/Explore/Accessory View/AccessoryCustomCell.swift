@@ -76,5 +76,6 @@ class AccessoryCustomCell: UITableViewCell {
         
         accessoryDescriptionView.topAnchor.constraint(equalTo: self.accessoryNameView.bottomAnchor).isActive = true
         accessoryDescriptionView.leftAnchor.constraint(equalTo: self.accessoryImageView.rightAnchor).isActive = true
+        accessoryDescriptionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
     }
 }

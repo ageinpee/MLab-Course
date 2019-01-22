@@ -33,10 +33,12 @@ extension ExploreViewController {
     func initializeVendors() {
         let vendorList = parseVendor()
         guard vendorList.count != 0 else { return }
+        var tempVendor = [Vendor]()
         for number in 0..<(vendorList.count) {
             let vendor = Vendor(name: vendorList[number].name, street: vendorList[number].street, openingHour: vendorList[number].openingHour, closingHour: vendorList[number].closingHour, telephoneNumber: vendorList[number].telephoneNumber, accessories: (convertAccessoryData(accessories: vendorList[number].accessories)), latitude: vendorList[number].latitude, longitude: vendorList[number].longitude)
-            mapView.addAnnotation(vendor)
+            tempVendor.append(vendor)
         }
+        filteredVendors = tempVendor
     }
     
     func convertAccessoryData(accessories: [AccessoryData]) -> [Accessory] {
@@ -73,6 +75,7 @@ extension ExploreViewController {
             self.collectionView.removeFromSuperview()
             self.vendorView.removeFromSuperview()
             self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
+            self.runningAnimators.removeAll()
         }
         transitionAnimator.isUserInteractionEnabled = true
         transitionAnimator.startAnimation()
@@ -95,8 +98,8 @@ extension ExploreViewController: MKMapViewDelegate {
             view.canShowCallout = false
             view.isUserInteractionEnabled = true
             
-            view.markerTintColor = .blue
-            view.glyphTintColor = .blue
+            view.markerTintColor = .red
+            view.glyphTintColor = .red
             view.glyphText = ""
         }
         return view
