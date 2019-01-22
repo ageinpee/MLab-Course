@@ -66,19 +66,36 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        for vendor in filteredVendors {
-            mapView.addAnnotation(vendor!)
+        let filter = defaults.stringArray(forKey: "FilterAccessories")
+        guard (filter?.count)! > 0 else { return }
+        initializeAccessories(name: filter!)
+        for vendorNumber in 0..<(filteredVendors.count) {
+            let temp = filteredVendors[vendorNumber]!.accessories.filter { filteredAccessories.contains($0) }
+            if (temp.count > 0){
+                mapView.addAnnotation(filteredVendors[vendorNumber]!)
+            }
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        for vendor in filteredVendors {
-            mapView.addAnnotation(vendor!)
-        }
+        // I think I need to reset all accessories, who knows men
     }
         
     @IBAction func showAccessoriesList(_ sender: Any) {
         performSegue(withIdentifier: "ShowAccessoriesList", sender: self)
+    }
+    
+    func initializeAccessories(name: [String]) {
+        let accessoryList = parseAccessories()
+        guard accessoryList.count != 0 else { return }
+        var tempAcc = [Accessory]()
+        for number in 0..<(accessoryList.count) {
+            if (name.contains(accessoryList[number].name)){
+                let accessory = Accessory(imageName: accessoryList[number].imageName, name: accessoryList[number].name, accessoryDescription: accessoryList[number].accessoryDescription)
+                tempAcc.append(accessory)
+            }
+        }
+        filteredAccessories = tempAcc
     }
     
     override func didReceiveMemoryWarning() {
