@@ -165,9 +165,6 @@ class DeviceObject {
             else if i == 19 && value == "ja" {
                 availableMemories.append(.Mem4)
             }
-            else if i == 20 && value == "ja" {
-                availableMemories.append(.MemSave)
-            }
             else if i == 22 && value == "ja" {
                 availableExtraFunctions.append(.ubl)
             }
@@ -211,9 +208,6 @@ class DeviceObject {
             }
             else if i == 19 && value == "ja" {
                 availableMemories.append(.Mem4)
-            }
-            else if i == 20 && value == "ja" {
-                availableMemories.append(.MemSave)
             }
         }
     }
@@ -368,20 +362,3 @@ enum Action: String {
     case up = "up"
     case down = "down"
 }
-
-// ================================================================
-// ========                  NOTES                       ==========
-// ================================================================
-
-//                         CORE DATA
-// ================================================================
-
-// 1) fetch: --> get all devices as array
-// 2) work with as usuall
-// 3) on edit --> save context
-// 4) bleuprint: devices class
-
-//                           OTHER
-// =================================================================
-
-// - "skip RF Pairing" Button has to be deleted
