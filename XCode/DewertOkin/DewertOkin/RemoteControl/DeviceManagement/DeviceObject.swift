@@ -44,10 +44,10 @@ class DeviceObject {
     var Reminders: [String] = [String]()                                // placeholder for device specific Remidners-array
     
     init() {
-        uuid = "test_chair"
+        uuid = UUID().uuidString
         name = "My Chair"
         handheldID = "84562"
-        style = "empty"
+        style = "filled"
         
         let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
         

@@ -77,14 +77,6 @@ class ExtraFunctionsController: UIViewController {
             executeFunction(withHex: functionsList[3].hex)
         case 4:
             executeFunction(withHex: functionsList[4].hex)
-        case 5:
-            executeFunction(withHex: functionsList[5].hex)
-        case 6:
-            executeFunction(withHex: functionsList[6].hex)
-        case 7:
-            executeFunction(withHex: functionsList[7].hex)
-        case 8:
-            executeFunction(withHex: functionsList[8].hex)
         default:
             executeFunction(withHex: "0x00")
         }
