@@ -26,7 +26,6 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
     let barChartView: BarChartView = {
         let view = BarChartView()
         view.drawValueAboveBarEnabled = true
-        view.legend.enabled = false
         view.rightAxis.enabled = false
         
         view.leftAxis.axisMinimum = 0
@@ -38,6 +37,9 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         view.xAxis.drawGridLinesEnabled = false
         view.xAxis.labelPosition = .bottom
         view.xAxis.granularity = 1
+        view.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"])
+        
+        view.legend.enabled = true
     
         view.setScaleEnabled(false)
         view.noDataText = "No exercise data available."
@@ -53,6 +55,8 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         
         self.navigationItem.title = "Companion"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Achievements", style: .plain, target: self, action: #selector(showAchievements)), animated: false)
         
         tableView.estimatedRowHeight = 100
         
@@ -109,7 +113,6 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
                 let cell = tableView.dequeueReusableCell(withIdentifier: reminderCell, for: indexPath)
                 cell.textLabel?.text = reminderList[indexPath.row].reminderName
                 cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-                print(reminderList)
                 cell.detailTextLabel?.text = "\(reminderList[indexPath.row].reminderTime?.toString(dateFormat: "HH:mm") ?? "Error fetching time") | \(reminderList[indexPath.row].reminderRepeatInterval ?? "Error fetching repeat interval")"
                 //cell.accessoryType = .disclosureIndicator
                 cell.accessoryView = UISwitch()
@@ -248,6 +251,12 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         }
     }
     
+    @objc
+    private func showAchievements() {
+        if let vc = UIStoryboard(name: "AchievementsStoryboard", bundle: nil).instantiateInitialViewController() as? AchievementsTableViewController {
+            present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+        }
+    }
     
     private func addActivityReminderNotification() {
         let center = UNUserNotificationCenter.current()
