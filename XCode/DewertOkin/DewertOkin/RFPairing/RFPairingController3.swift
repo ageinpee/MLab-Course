@@ -16,6 +16,7 @@ class RFPairingController3: UIViewController {
     @IBOutlet weak var dottedCircleImage: UIImageView!
     @IBOutlet weak var proceedButton: UIButton!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var deviceNameTextfield: UITextField!
     
     @IBOutlet var pairingView: UIView!
     let backgroundView = UIView()
@@ -51,7 +52,7 @@ class RFPairingController3: UIViewController {
         
         for row in remoteData {
             if row[0] == selectedRemote.id {
-                device = DeviceObject(withUUID: UUID().uuidString, named: "New Device", withHandheldID: row[0], withStyle: DeviceStyle.empty.rawValue)
+                device = DeviceObject(withUUID: UUID().uuidString, named: "New Device", withHandheldID: row[0], withStyle: DeviceStyle.filled .rawValue)
             }
         }
         
@@ -60,13 +61,18 @@ class RFPairingController3: UIViewController {
     @IBAction func ProceedAction(_ sender: Any) {
         //guard bluetoothBackgroundHandler.checkStatus() else { return }
         
+        device.name = "New Device"
+        if deviceNameTextfield.text! != "" {
+            device.name = deviceNameTextfield.text!
+        }
+        
         /*
          
          insert bluetooth pairing process
          
-         
-         saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
          */
+         saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
+ 
         
         globalDeviceObject = device
         

@@ -16,6 +16,7 @@ class ExtraFunctionsController: UIViewController {
     
     @IBOutlet weak var noFunctionsLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var exploreButton: UIButton!
     
     
     var functionsList: [ExtraFunction] = [ExtraFunction]()
@@ -46,6 +47,7 @@ class ExtraFunctionsController: UIViewController {
         noFunctionsLabel.text = "Your device currently has no additional features. You can find accessories for your device in the 'Explore' section. "
         noFunctionsLabel.textColor = UIColor.lightGray
         noFunctionsLabel.isHidden = true
+        exploreButton.isHidden = true
         
         /*
         functionsList = [ExtraFunction(asType: .massage_back, withTitle: "Back Massage", withHex: "0x01"),
@@ -75,14 +77,6 @@ class ExtraFunctionsController: UIViewController {
             executeFunction(withHex: functionsList[3].hex)
         case 4:
             executeFunction(withHex: functionsList[4].hex)
-        case 5:
-            executeFunction(withHex: functionsList[5].hex)
-        case 6:
-            executeFunction(withHex: functionsList[6].hex)
-        case 7:
-            executeFunction(withHex: functionsList[7].hex)
-        case 8:
-            executeFunction(withHex: functionsList[8].hex)
         default:
             executeFunction(withHex: "0x00")
         }
@@ -100,6 +94,11 @@ class ExtraFunctionsController: UIViewController {
             }
         }
     }
+    
+    @IBAction func exploreButtonAction(_ sender: Any) {
+        movetoExplore()
+    }
+    
     
 }
 
@@ -132,25 +131,6 @@ extension UIImage {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage!
-    }
-}
-
-
-
-class ExtraFunction {
-    
-    var type: ExtraFunctions = .NaN
-    var title: String = String()
-    var hex: String = String()
-    
-    init() {
-        
-    }
-    
-    init(asType: ExtraFunctions, withTitle: String, withHex: String) {
-        type = asType
-        title = withTitle
-        hex = withHex
     }
 }
 

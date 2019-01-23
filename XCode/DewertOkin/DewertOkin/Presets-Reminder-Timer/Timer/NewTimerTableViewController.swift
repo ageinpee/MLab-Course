@@ -234,6 +234,7 @@ class NewTimerTableViewController: UITableViewController {
     private func doneButtonPressed() {
         selectedTimer.timerName = nameTextField.text
         selectedTimer.timerTime = datePicker.date
+        selectedTimer.deviceUUID = UUID(uuidString: globalDeviceObject.uuid)!
         
         PersistenceService.saveContext()
         

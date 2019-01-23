@@ -13,15 +13,6 @@ import UserNotifications
 
 class StatisticsCell: UITableViewCell {
     
-    let dataEntry = [BarChartDataEntry(x: 10, y: 100)]
-    
-    lazy var testView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     var barChart: BarChartView = BarChartView(frame: .zero) {
         didSet {
             setupViews()
@@ -49,9 +40,6 @@ class StatisticsCell: UITableViewCell {
     
     private func setupChartData() {
         
-        var barChartDataSet = BarChartDataSet(values: dataEntry, label: "testData")
-        var barChartData = BarChartData(dataSet: barChartDataSet)
-        
         if Health.shared.exerciseHistory.isEmpty {
             DispatchQueue.main.async {
                 self.barChart.data = nil
@@ -59,8 +47,20 @@ class StatisticsCell: UITableViewCell {
             return
         }
         
-        var dataEntries: [BarChartDataEntry] = []
+        var dataEntriesAllExerciseReminders: [BarChartDataEntry] = []
+        var dataEntriesCompletedExercises: [BarChartDataEntry] = []
         
+        let today = Date()
+        let yesterday = Date().addingTimeInterval(-86400)
+        let twoDaysAgo = Date().addingTimeInterval(-172800)
+        let threeDaysAgo = Date().addingTimeInterval(-259200)
+        let fourDaysAgo = Date().addingTimeInterval(-345600)
+        let fiveDaysAgo = Date().addingTimeInterval(-432000)
+        let sixDaysAgo = Date().addingTimeInterval(-518400)
+        
+        var totalExercises: [Int] = [0, 0, 0, 0, 0, 0, 0]
+        var completedExercises: [Int] = [0, 0, 0, 0, 0, 0, 0]
+    
         for exercise in Health.shared.exerciseHistory {
             
             // Only show entries from last week
@@ -69,20 +69,86 @@ class StatisticsCell: UITableViewCell {
             let exerciseDate = Double(Calendar.current.component(.day, from: exercise.time))
             print(exerciseDate)
             
-            if exercise.completed {
-                dataEntries.append(BarChartDataEntry(x: exerciseDate, y: 1))
-            } else {
-                dataEntries.append(BarChartDataEntry(x: exerciseDate, y: 0.1))
+            if Calendar.current.isDate(exercise.time, inSameDayAs: today) {
+                print("today")
+                totalExercises[0] += 1
+                if exercise.completed {
+                    completedExercises[0] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: yesterday) {
+                print("yesterday")
+                totalExercises[1] += 1
+                if exercise.completed {
+                    completedExercises[1] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: twoDaysAgo) {
+                print("2 days ago")
+                totalExercises[2] += 1
+                if exercise.completed {
+                    completedExercises[2] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: threeDaysAgo) {
+                print("3 days ago")
+                totalExercises[3] += 1
+                if exercise.completed {
+                    completedExercises[3] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: fourDaysAgo) {
+                print("4 days ago")
+                totalExercises[4] += 1
+                if exercise.completed {
+                    completedExercises[4] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: fiveDaysAgo) {
+                print("5 days ago")
+                totalExercises[5] += 1
+                if exercise.completed {
+                    completedExercises[5] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: sixDaysAgo) {
+                print("6 days ago")
+                totalExercises[6] += 1
+                if exercise.completed {
+                    completedExercises[6] += 1
+                }
             }
         }
         
-        barChartDataSet = BarChartDataSet(values: dataEntries, label: "Exercises")
-        barChartDataSet.setColor(.red)
-        barChartDataSet.drawValuesEnabled = false
-        barChartData = BarChartData(dataSet: barChartDataSet)
+        for (i, exercise) in totalExercises.enumerated() {
+            dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: Double(i), y: Double(exercise)))
+        }
+        
+        for (i, exercise) in completedExercises.enumerated() {
+            dataEntriesCompletedExercises.append(BarChartDataEntry(x: Double(i), y: Double(exercise)))
+        }
+        
+        let totalChartDataSet = BarChartDataSet(values: dataEntriesAllExerciseReminders, label: "Exercise Recommendations")
+        let completedChartDataSet1 = BarChartDataSet(values: dataEntriesCompletedExercises, label: "Completed Exercises")
+        
+        totalChartDataSet.setColor(.lightGray)
+        completedChartDataSet1.setColor(.red)
+        totalChartDataSet.drawValuesEnabled = false
+        completedChartDataSet1.drawValuesEnabled = false
+        
+        let dataSets: [BarChartDataSet] = [totalChartDataSet, completedChartDataSet1]
+        
+        let chartData = BarChartData(dataSets: dataSets)
+        
+        let groupSpace = 0.3
+        let barSpace = 0.05
+        let barWidth = 0.3
+        
+        chartData.barWidth = barWidth
+        let gg = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+        barChart.xAxis.axisMaximum = gg * Double(6)
+        barChart.xAxis.axisMinimum = 0
+
+        chartData.groupBars(fromX: 0, groupSpace: groupSpace, barSpace: barSpace)
+        
+        chartData.notifyDataChanged()
+        
         DispatchQueue.main.async {
-            self.barChart.data = barChartData
-            //self.barChart.animate(xAxisDuration: 2, easingOption: .linear)
+            self.barChart.data = chartData
             self.barChart.animate(yAxisDuration: 1.5)
         }
         

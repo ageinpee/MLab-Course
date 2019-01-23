@@ -52,6 +52,7 @@
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9220AFB621F1DD85003E2794 /* handsender1_extended.csv */; };
 		9243F4C621F0C78000513B11 /* RemoteControllerExtensionCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */; };
+		927A423721F8938E00E97CB7 /* ExtraFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A423621F8938E00E97CB7 /* ExtraFunction.swift */; };
 		92FC0B8E21F4DF5A00F8BAC2 /* AboutPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92FC0B8D21F4DF5A00F8BAC2 /* AboutPage.storyboard */; };
 		92FC0B9021F4DF8000F8BAC2 /* AboutPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC0B8F21F4DF8000F8BAC2 /* AboutPageViewController.swift */; };
 		CD100F4721DB973200DBAAB9 /* BluetoothPairingConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCD9EC21CB8494007D6109 /* BluetoothPairingConnectViewController.swift */; };
@@ -174,6 +175,7 @@
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9220AFB621F1DD85003E2794 /* handsender1_extended.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1_extended.csv; sourceTree = "<group>"; };
 		9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionCoreData.swift; sourceTree = "<group>"; };
+		927A423621F8938E00E97CB7 /* ExtraFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunction.swift; sourceTree = "<group>"; };
 		92FC0B8D21F4DF5A00F8BAC2 /* AboutPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutPage.storyboard; sourceTree = "<group>"; };
 		92FC0B8F21F4DF8000F8BAC2 /* AboutPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPageViewController.swift; sourceTree = "<group>"; };
 		B0FFC79E97882B928D61CF45 /* Pods-DewertOkin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DewertOkin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 			children = (
 				FAE52D4F21DA485500121B54 /* DeviceObject.swift */,
 				FAE52D3721D784F400121B54 /* DeviceStyleManager.swift */,
+				927A423621F8938E00E97CB7 /* ExtraFunction.swift */,
 			);
 			path = DeviceManagement;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				0357FBE3218607A30043A828 /* DewertOkin.xcdatamodeld in Sources */,
 				031EE20621A2EEB600E9E91E /* Timer+CoreDataProperties.swift in Sources */,
 				9243F4C621F0C78000513B11 /* RemoteControllerExtensionCoreData.swift in Sources */,
+				927A423721F8938E00E97CB7 /* ExtraFunction.swift in Sources */,
 				031CC45321DE43B80025E068 /* DevicesListViewController.swift in Sources */,
 				CD97E84321D94250009C64E4 /* NewTimerTableViewController.swift in Sources */,
 				FAE52D5021DA485500121B54 /* DeviceObject.swift in Sources */,
@@ -1043,14 +1047,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DewertOkin/DewertOkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7SN78RF3Z9;
+				DEVELOPMENT_TEAM = BZ5S3LC6UW;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018Nima;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1064,14 +1068,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DewertOkin/DewertOkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7SN78RF3Z9;
+				DEVELOPMENT_TEAM = BZ5S3LC6UW;
 				INFOPLIST_FILE = DewertOkin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018Nima;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinMLab2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

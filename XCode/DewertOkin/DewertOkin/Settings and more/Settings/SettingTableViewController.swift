@@ -11,20 +11,12 @@ import AVFoundation
 
 enum SettingsEntry: String {
     case deviceInfo = "Device Info"
-    case presets = "Manage Presets"
     case achievements = "Achievements"
-    case accessibilityMode = "Accessibility Mode"
-    case warranty = "Warranty"
     case siri = "Siri"
     case about = "About [Company]"
     case darkMode = "Dark Mode"
-    case accessories = "Accessories"
     case useOldRemote = "Use Old Remote Layout"
-    case nearestVendor = "Nearest Vendor"
-    case manageDevices = "Manage Devices"
-    case health = "Health Settings"
     case test = "Test"
-    case alarm = "Alarm"
     case rfpairing = "RF Pairing Test"
     case bluetoothPairing = "Bluetooth Pairing Test"
 }
@@ -32,9 +24,9 @@ enum SettingsEntry: String {
 class SettingTableViewController: UITableViewController, Themeable {
     
     private let settingsEntries: [[SettingsEntry]] = [
-        [.manageDevices, .deviceInfo, .nearestVendor],
-        [.presets, .alarm, .health, .useOldRemote, .darkMode],
-        [.achievements,.accessories, .test, .rfpairing, .bluetoothPairing]
+        [.deviceInfo],
+        [.useOldRemote, .darkMode],
+        [.achievements, .test, .rfpairing, .bluetoothPairing]
     ]
     private let settingsSections = ["Devices and Support", "Preferences", "Other"]
     
@@ -121,10 +113,6 @@ class SettingTableViewController: UITableViewController, Themeable {
             }()
         }
         
-        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .nearestVendor)) {
-            cell.accessoryType = .disclosureIndicator
-        }
-        
         if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .useOldRemote)) {
             cell.accessoryView = {
                 let oldRemoteSwitch = UISwitch()
@@ -139,28 +127,16 @@ class SettingTableViewController: UITableViewController, Themeable {
         
         if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .deviceInfo)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .presets)) {
-            cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .achievements)) {
             cell.accessoryType = .disclosureIndicator
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(resetAchievements))
             longPress.minimumPressDuration = 2
             cell.addGestureRecognizer(longPress)
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .warranty)) {
-            cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .about)) {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .siri)) {
             cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .accessories)) {
-            cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .manageDevices)) {
-            cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .health)) {
-            cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .test)) {
-            cell.accessoryType = .disclosureIndicator
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .alarm)) {
             cell.accessoryType = .disclosureIndicator
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .rfpairing)) {
             cell.accessoryType = .disclosureIndicator
@@ -174,16 +150,8 @@ class SettingTableViewController: UITableViewController, Themeable {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .achievements)) {
             pushAchievementsStoryboard()
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .manageDevices)) {
-            pushDevicesStoryboard()
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .health)) {
-            pushHealthController()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .test)) {
             pushTestController()
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .presets)) {
-            pushPresetsController()
-        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .alarm)) {
-            pushAlarmViewController()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .rfpairing)) {
             pushRFPairingController()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .bluetoothPairing)) {
