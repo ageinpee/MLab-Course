@@ -357,11 +357,11 @@ enum Motors: String {
 }
 
 enum Memories: String {
-    case Mem1 = "Mem1"
-    case Mem2 = "Mem2"
-    case Mem3 = "Mem3"
-    case Mem4 = "Mem4"
-    case MemSave = "MemSave"
+    case Mem1 = "Memory 1"
+    case Mem2 = "Memory 2"
+    case Mem3 = "Memory 3"
+    case Mem4 = "Memory 4"
+    case MemSave = "Save Memory"
 }
 
 enum Action: String {
