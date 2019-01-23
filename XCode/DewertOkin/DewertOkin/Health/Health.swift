@@ -125,7 +125,10 @@ class Health {
             switch activity {
             case .noActivity:
                 // timeInterval is the activity reminder time, difference will be negative
-                if self.lastMovementRegisteredAt.timeIntervalSinceNow < timeInterval {
+                print(self.lastMovementRegisteredAt)
+                print(timeInterval)
+                print(self.lastMovementRegisteredAt.timeIntervalSinceNow)
+                if self.lastMovementRegisteredAt.timeIntervalSinceNow < -timeInterval {
                     completion(.noActivity)
                 } else {
                     // User didn't take enough steps yet, but enough movement was registered in the time period
