@@ -24,8 +24,15 @@ class AchievementsTableViewController: UITableViewController, Themeable {
         
         Themes.setupTheming(for: self)
         
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(dismissSelf)), animated: false)
+        
         ///-----Achievement "Achievement Veteran"-related-----
         timestampStart = Date()
+    }
+    
+    @objc
+    private func dismissSelf() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     deinit {

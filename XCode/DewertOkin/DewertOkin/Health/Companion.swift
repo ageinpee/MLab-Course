@@ -56,6 +56,8 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         self.navigationItem.title = "Companion"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
+        self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Achievements", style: .plain, target: self, action: #selector(showAchievements)), animated: false)
+        
         tableView.estimatedRowHeight = 100
         
         getSavedData()
@@ -249,6 +251,12 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         }
     }
     
+    @objc
+    private func showAchievements() {
+        if let vc = UIStoryboard(name: "AchievementsStoryboard", bundle: nil).instantiateInitialViewController() as? AchievementsTableViewController {
+            present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+        }
+    }
     
     private func addActivityReminderNotification() {
         let center = UNUserNotificationCenter.current()
