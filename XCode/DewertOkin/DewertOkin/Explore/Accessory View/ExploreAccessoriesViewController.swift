@@ -12,7 +12,7 @@ import UIKit
 class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     
     var accessoriesList = [Accessory]()
-    var selectedAccessories = [Accessory]()
+    var selectedAccessories = [String]()
     @IBOutlet weak var tableView: UITableView!
     
     let defaults = UserDefaults.standard
@@ -22,11 +22,19 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         
         navigationItem.title = "Accessories"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "test", style: .done, target: self, action: #selector(filterVendors(_:)))
         
         tableView.delegate = self
         tableView.dataSource = self
         initializeAccessories()
         //tableView.beginUpdates()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        for cell in tableView.visibleCells {
+            cell.accessoryType = .none
+            selectedAccessories = []
+        }
     }
     
     func initializeAccessories() {
@@ -43,7 +51,12 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     func registerAccessories() {
         self.tableView.register(AccessoryCustomCell.self, forCellReuseIdentifier: "customAccessoryCell")
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = (self.view.frame.height / 5)
+    }
+    
+    @objc func filterVendors(_ sender: Any) {
+        defaults.set(selectedAccessories, forKey: "FilterAccessories")
+        _ = navigationController?.popViewController(animated: true)
     }
 }
 
@@ -73,11 +86,22 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return (self.view.frame.height / 5)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("gg")
+        let cell = self.tableView.cellForRow(at: indexPath) as! AccessoryCustomCell
+        if !(selectedAccessories.contains(accessoriesList[indexPath.row].name)){
+            selectedAccessories.append(accessoriesList[indexPath.row].name)
+            cell.accessoryType = .checkmark
+            cell.isSelected = false
+        } else {
+            cell.accessoryType = .none
+            cell.isSelected = false
+            selectedAccessories = selectedAccessories.filter { $0 != cell.accessoryName}
+        }
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    }
 }

@@ -143,7 +143,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         collectionView.isScrollEnabled = true
         collectionView.isUserInteractionEnabled = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        vendorView.addSubview(collectionView)
+        UIApplication.shared.keyWindow?.addSubview(collectionView)
         
         collectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         collectionView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true

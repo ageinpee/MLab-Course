@@ -63,6 +63,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         
         getSavedData()
         
+        Health.shared.showActivityReminder(above: UIApplication.shared.keyWindow!.rootViewController!)
         //Health.shared.bulletinManager.showBulletin(above: UIApplication.shared.keyWindow!.rootViewController!)
     }
     
