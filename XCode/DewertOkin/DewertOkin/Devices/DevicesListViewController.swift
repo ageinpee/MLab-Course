@@ -109,8 +109,13 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         }
     }
     @IBAction func unwindToRemoteViewController(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
+        
+        if let mainVC = UIApplication.shared.keyWindow?.rootViewController as? MainViewController {
+            if let remoteVC = mainVC.viewControllers?[0] as? RemoteController {
+                remoteVC.viewDidLoad()
+            }
+        }
     }
 }
 

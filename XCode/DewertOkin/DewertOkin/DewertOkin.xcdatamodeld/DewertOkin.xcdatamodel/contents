@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Devices" representedClassName="Devices" syncable="YES" codeGenerationType="class">
+        <attribute name="extraFunctions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="handheld" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="presets" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,7 +23,7 @@
         <attribute name="reminderTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Devices" positionX="-198" positionY="9" width="128" height="135"/>
+        <element name="Devices" positionX="-198" positionY="9" width="128" height="150"/>
         <element name="DeviceTimer" positionX="71.1015625" positionY="12.0859375" width="128" height="118"/>
         <element name="Reminder" positionX="-63.95703125" positionY="-11.46484375" width="128" height="90"/>
     </elements>
