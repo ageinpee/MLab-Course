@@ -14,6 +14,7 @@ import UserNotifications
 import BLTNBoard
 
 class CompanionTableViewController: UITableViewController, TimeIntervalSelectionDelegate {
+    
 
     let defaultCell = "defaultCell"
     let statisticsCell = "statisticsCell"
@@ -91,7 +92,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
             cell.textLabel?.text = "Activity Reminder"
             cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body).withSize(22)
             cell.textLabel?.numberOfLines = 0
-            cell.detailTextLabel?.text = "Enable reminders to stand up every \(Health.shared.activityReminderTimeIntervalInMinutes) min."
+            cell.detailTextLabel?.text = "Enable reminders to stand up every \(Int(Health.shared.activityReminderTimeIntervalInMinutes)) min."
             cell.detailTextLabel?.numberOfLines = 0
             cell.accessoryView = {
                 let activitySwitch = UISwitch()
@@ -320,7 +321,9 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         }
     }
     
-    func selectedTimeInterval(minutes: Int) {
+    func selectedTimeInterval(minutes: Float) {
         Health.shared.activityReminderTimeIntervalInMinutes = minutes
+        Health.shared.activityTimer?.invalidate()
+        Health.shared.startActivityTracking()
     }
 }

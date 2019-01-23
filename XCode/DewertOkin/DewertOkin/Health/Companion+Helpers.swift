@@ -66,47 +66,37 @@ class StatisticsCell: UITableViewCell {
             // Only show entries from last week
             guard exercise.time.timeIntervalSinceNow >= -7*24*60*60 else { continue }
             
-            let exerciseDate = Double(Calendar.current.component(.day, from: exercise.time))
-            print(exerciseDate)
-            
             if Calendar.current.isDate(exercise.time, inSameDayAs: today) {
-                print("today")
                 totalExercises[0] += 1
                 if exercise.completed {
                     completedExercises[0] += 1
                 }
             } else if Calendar.current.isDate(exercise.time, inSameDayAs: yesterday) {
-                print("yesterday")
                 totalExercises[1] += 1
                 if exercise.completed {
                     completedExercises[1] += 1
                 }
             } else if Calendar.current.isDate(exercise.time, inSameDayAs: twoDaysAgo) {
-                print("2 days ago")
                 totalExercises[2] += 1
                 if exercise.completed {
                     completedExercises[2] += 1
                 }
             } else if Calendar.current.isDate(exercise.time, inSameDayAs: threeDaysAgo) {
-                print("3 days ago")
                 totalExercises[3] += 1
                 if exercise.completed {
                     completedExercises[3] += 1
                 }
             } else if Calendar.current.isDate(exercise.time, inSameDayAs: fourDaysAgo) {
-                print("4 days ago")
                 totalExercises[4] += 1
                 if exercise.completed {
                     completedExercises[4] += 1
                 }
             } else if Calendar.current.isDate(exercise.time, inSameDayAs: fiveDaysAgo) {
-                print("5 days ago")
                 totalExercises[5] += 1
                 if exercise.completed {
                     completedExercises[5] += 1
                 }
             } else if Calendar.current.isDate(exercise.time, inSameDayAs: sixDaysAgo) {
-                print("6 days ago")
                 totalExercises[6] += 1
                 if exercise.completed {
                     completedExercises[6] += 1
@@ -173,7 +163,7 @@ enum ReminderSection: String {
 
 class TimeIntervalSelectionTableViewController: UITableViewController {
     
-    let timeIntervals = [30, 60, 90, 120, 150, 180]
+    let timeIntervals: [Float] = [30, 60, 90, 120, 150, 180, 1/6]
     let timeCell = "timeCell"
     
     var delegate: TimeIntervalSelectionDelegate?
@@ -187,7 +177,7 @@ class TimeIntervalSelectionTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: timeCell, for: indexPath)
-        cell.textLabel?.text = "\(timeIntervals[indexPath.row]) min"
+        cell.textLabel?.text = "\(Int(timeIntervals[indexPath.row])) min"
         cell.accessoryType = selectedRow.contains(indexPath) ? .checkmark : .none
         return cell
     }
@@ -223,5 +213,5 @@ class TimeIntervalSelectionTableViewController: UITableViewController {
 }
 
 protocol TimeIntervalSelectionDelegate {
-    func selectedTimeInterval(minutes: Int)
+    func selectedTimeInterval(minutes: Float)
 }
