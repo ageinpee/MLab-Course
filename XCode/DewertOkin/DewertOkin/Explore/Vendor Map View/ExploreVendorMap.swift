@@ -74,8 +74,10 @@ extension ExploreViewController {
             self.collectionViewName.removeFromSuperview()
             self.collectionView.removeFromSuperview()
             self.vendorView.removeFromSuperview()
+            if (self.currentState == .open){
+                self.currentState = self.currentState.opposite
+            }
             self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
-            self.runningAnimators.removeAll()
         }
         transitionAnimator.isUserInteractionEnabled = true
         transitionAnimator.startAnimation()
