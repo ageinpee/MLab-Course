@@ -58,6 +58,17 @@ class StatisticsCell: UITableViewCell {
         
         var dataEntriesAllExerciseReminders: [BarChartDataEntry] = []
         var dataEntriesCompletedExercises: [BarChartDataEntry] = []
+        
+        let today = Date()
+        let yesterday = Date().addingTimeInterval(-86400)
+        let twoDaysAgo = Date().addingTimeInterval(-172800)
+        let threeDaysAgo = Date().addingTimeInterval(-259200)
+        let fourDaysAgo = Date().addingTimeInterval(-345600)
+        let fiveDaysAgo = Date().addingTimeInterval(-432000)
+        let sixDaysAgo = Date().addingTimeInterval(-518400)
+        
+        var totalExercises: [Int] = [0, 0, 0, 0, 0, 0, 0]
+        var completedExercises: [Int] = [0, 0, 0, 0, 0, 0, 0]
     
         for exercise in Health.shared.exerciseHistory {
             
@@ -67,16 +78,64 @@ class StatisticsCell: UITableViewCell {
             let exerciseDate = Double(Calendar.current.component(.day, from: exercise.time))
             print(exerciseDate)
             
-            if exercise.completed {
-                dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: exerciseDate, y: 3))
-                dataEntriesCompletedExercises.append(BarChartDataEntry(x: exerciseDate, y: 1))
-            } else {
-                dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: exerciseDate, y: 0.1))
-                dataEntriesCompletedExercises.append(BarChartDataEntry(x: exerciseDate, y: 2))
+            if Calendar.current.isDate(exercise.time, inSameDayAs: today) {
+                print("today")
+                totalExercises[0] += 1
+                if exercise.completed {
+                    completedExercises[0] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: yesterday) {
+                print("yesterday")
+                totalExercises[1] += 1
+                if exercise.completed {
+                    completedExercises[1] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: twoDaysAgo) {
+                print("2 days ago")
+                totalExercises[2] += 1
+                if exercise.completed {
+                    completedExercises[2] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: threeDaysAgo) {
+                print("3 days ago")
+                totalExercises[3] += 1
+                if exercise.completed {
+                    completedExercises[3] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: fourDaysAgo) {
+                print("4 days ago")
+                totalExercises[4] += 1
+                if exercise.completed {
+                    completedExercises[4] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: fiveDaysAgo) {
+                print("5 days ago")
+                totalExercises[5] += 1
+                if exercise.completed {
+                    completedExercises[5] += 1
+                }
+            } else if Calendar.current.isDate(exercise.time, inSameDayAs: sixDaysAgo) {
+                print("6 days ago")
+                totalExercises[6] += 1
+                if exercise.completed {
+                    completedExercises[6] += 1
+                }
             }
         }
+        print(totalExercises)
+        print(completedExercises)
         
-        let chartDataSet = BarChartDataSet(values: dataEntriesAllExerciseReminders, label: "Reminders")
+        //dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: exerciseDate, y: 3))
+        
+        for (i, exercise) in totalExercises.enumerated() {
+            dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: Double(i), y: Double(exercise)))
+        }
+        
+        for (i, exercise) in completedExercises.enumerated() {
+            dataEntriesCompletedExercises.append(BarChartDataEntry(x: Double(i), y: Double(exercise)))
+        }
+        
+        let chartDataSet = BarChartDataSet(values: dataEntriesAllExerciseReminders, label: "Total")
         let chartDataSet1 = BarChartDataSet(values: dataEntriesCompletedExercises, label: "Completed")
         
         chartDataSet.setColor(.red)
@@ -89,8 +148,7 @@ class StatisticsCell: UITableViewCell {
         let chartData = BarChartData(dataSets: dataSets)
         chartData.barWidth = 0.3
         //chartData.groupWidth(groupSpace: 0.3, barSpace: 0.05)
-        chartData.groupBars(fromX: 19, groupSpace: 0.3, barSpace: 0.05)
-        
+        chartData.groupBars(fromX: 0, groupSpace: 0.3, barSpace: 0.05)
         
         DispatchQueue.main.async {
             self.barChart.data = chartData
