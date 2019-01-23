@@ -13,15 +13,6 @@ import UserNotifications
 
 class StatisticsCell: UITableViewCell {
     
-    let dataEntry = [BarChartDataEntry(x: 10, y: 100)]
-    
-    lazy var testView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     var barChart: BarChartView = BarChartView(frame: .zero) {
         didSet {
             setupViews()
@@ -122,10 +113,6 @@ class StatisticsCell: UITableViewCell {
                 }
             }
         }
-        print(totalExercises)
-        print(completedExercises)
-        
-        //dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: exerciseDate, y: 3))
         
         for (i, exercise) in totalExercises.enumerated() {
             dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: Double(i), y: Double(exercise)))
@@ -135,24 +122,33 @@ class StatisticsCell: UITableViewCell {
             dataEntriesCompletedExercises.append(BarChartDataEntry(x: Double(i), y: Double(exercise)))
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntriesAllExerciseReminders, label: "Total")
-        let chartDataSet1 = BarChartDataSet(values: dataEntriesCompletedExercises, label: "Completed")
+        let totalChartDataSet = BarChartDataSet(values: dataEntriesAllExerciseReminders, label: "Exercise Recommendations")
+        let completedChartDataSet1 = BarChartDataSet(values: dataEntriesCompletedExercises, label: "Completed Exercises")
         
-        chartDataSet.setColor(.red)
-        chartDataSet1.setColor(.green)
-        chartDataSet.drawValuesEnabled = true
-        chartDataSet1.drawValuesEnabled = true
+        totalChartDataSet.setColor(.lightGray)
+        completedChartDataSet1.setColor(.red)
+        totalChartDataSet.drawValuesEnabled = false
+        completedChartDataSet1.drawValuesEnabled = false
         
-        let dataSets: [BarChartDataSet] = [chartDataSet, chartDataSet1]
+        let dataSets: [BarChartDataSet] = [totalChartDataSet, completedChartDataSet1]
         
         let chartData = BarChartData(dataSets: dataSets)
-        chartData.barWidth = 0.3
-        //chartData.groupWidth(groupSpace: 0.3, barSpace: 0.05)
-        chartData.groupBars(fromX: 0, groupSpace: 0.3, barSpace: 0.05)
+        
+        let groupSpace = 0.3
+        let barSpace = 0.05
+        let barWidth = 0.3
+        
+        chartData.barWidth = barWidth
+        let gg = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+        barChart.xAxis.axisMaximum = gg * Double(6)
+        barChart.xAxis.axisMinimum = 0
+
+        chartData.groupBars(fromX: 0, groupSpace: groupSpace, barSpace: barSpace)
+        
+        chartData.notifyDataChanged()
         
         DispatchQueue.main.async {
             self.barChart.data = chartData
-            //self.barChart.animate(xAxisDuration: 2, easingOption: .linear)
             self.barChart.animate(yAxisDuration: 1.5)
         }
         

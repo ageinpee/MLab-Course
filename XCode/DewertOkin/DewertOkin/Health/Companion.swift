@@ -26,7 +26,6 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
     let barChartView: BarChartView = {
         let view = BarChartView()
         view.drawValueAboveBarEnabled = true
-        view.legend.enabled = false
         view.rightAxis.enabled = false
         
         view.leftAxis.axisMinimum = 0
@@ -39,6 +38,8 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         view.xAxis.labelPosition = .bottom
         view.xAxis.granularity = 1
         view.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"])
+        
+        view.legend.enabled = true
     
         view.setScaleEnabled(false)
         view.noDataText = "No exercise data available."

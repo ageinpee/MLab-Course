@@ -43,9 +43,16 @@ class Health {
         ExerciseEvent(time: Date().addingTimeInterval(-31600), completed: true),
         ExerciseEvent(time: Date().addingTimeInterval(-150000), completed: false),
         ExerciseEvent(time: Date().addingTimeInterval(-100200), completed: false),
-        ExerciseEvent(time: Date(), completed: false),
+        ExerciseEvent(time: Date().addingTimeInterval(-000000), completed: false),
         ExerciseEvent(time: Date().addingTimeInterval(-240000), completed: true),
-        ExerciseEvent(time: Date().addingTimeInterval(-244800), completed: true)
+        ExerciseEvent(time: Date().addingTimeInterval(-244800), completed: false),
+        ExerciseEvent(time: Date().addingTimeInterval(-329534), completed: true),
+        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
+        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
+        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
+        ExerciseEvent(time: Date().addingTimeInterval(-444392), completed: true),
+        ExerciseEvent(time: Date().addingTimeInterval(-398538), completed: true),
+        ExerciseEvent(time: Date().addingTimeInterval(-548839), completed: false)
     ]
     
     lazy var page: BLTNPageItem = {
