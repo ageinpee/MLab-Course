@@ -62,9 +62,6 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         tableView.estimatedRowHeight = 100
         
         getSavedData()
-        
-        Health.shared.showActivityReminder(above: UIApplication.shared.keyWindow!.rootViewController!)
-        //Health.shared.bulletinManager.showBulletin(above: UIApplication.shared.keyWindow!.rootViewController!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +94,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
             cell.detailTextLabel?.numberOfLines = 0
             cell.accessoryView = {
                 let activitySwitch = UISwitch()
-                activitySwitch.isOn = true
+                activitySwitch.isOn = Health.shared.activityReminderEnabled
                 activitySwitch.onTintColor = .red
                 activitySwitch.addTarget(self, action: #selector(activityReminderValueChanged(sender:)), for: .valueChanged)
                 return activitySwitch

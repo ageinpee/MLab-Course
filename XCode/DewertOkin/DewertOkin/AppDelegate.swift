@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Activity Tracker will only work in the foreground
         Health.shared.lastMovementRegisteredAt = Date()
+        Health.shared.loadHealthSettings()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()

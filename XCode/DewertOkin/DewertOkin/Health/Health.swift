@@ -19,6 +19,7 @@ class Health {
     var activityReminderEnabled = true {
         didSet {
             startActivityTracking()
+            saveHealthSettings()
         }
     }
     
@@ -79,6 +80,16 @@ class Health {
     }()
     
     let healthStore = HKHealthStore()
+    
+    func loadHealthSettings() {
+        if let actRmdEnabled = UserDefaults.standard.object(forKey: "activityReminderEnabled") as? Bool {
+            activityReminderEnabled = actRmdEnabled
+        }
+    }
+    
+    func saveHealthSettings() {
+        UserDefaults.standard.set(activityReminderEnabled, forKey: "activityReminderEnabled")
+    }
     
     // if tracking is enabled, start this at application launch
     func startActivityTracking() {
