@@ -98,8 +98,8 @@ class DeviceObject {
         else {
             print("ERROR - couldn't find handheld data")
             type = "NaN"
-            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
-                                                          forDevice: DeviceType(rawValue: type)!)
+            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style) ?? .filled,
+                                                          forDevice: DeviceType(rawValue: type) ?? .NaN)
         }
     }
     

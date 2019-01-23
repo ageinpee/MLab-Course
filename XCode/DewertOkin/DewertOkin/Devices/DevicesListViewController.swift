@@ -52,8 +52,15 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
             let savedDevices = try PersistenceService.context.fetch(fetchRequest)
             self.cellDevicesData = []
             self.devicesList = savedDevices
+            var deviceObject = DeviceObject()
             for devices in devicesList {
-                cellDevicesData.append(DevicesData.init(image: UIImage(named: "chair_pictogram"), name: devices.name, status: deviceStatus(device: devices)))
+                deviceObject = DeviceObject(withUUID: devices.uuid ?? UUID().uuidString,
+                                            named: devices.name ?? "unknown device",
+                                            withHandheldID: devices.handheld ?? "82418" ,
+                                            withStyle: devices.style ?? "filled")
+                cellDevicesData.append(DevicesData.init(image: deviceObject.deviceImages[1],
+                                                        name: devices.name,
+                                                        status: deviceStatus(device: devices)))
             }
             self.registerDevices()
             self.tableView.reloadData()

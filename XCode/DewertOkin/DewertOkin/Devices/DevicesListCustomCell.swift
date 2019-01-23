@@ -18,6 +18,7 @@ class DevicesListCustomCell: UITableViewCell {
     var deviceImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
