@@ -12,7 +12,7 @@ import UIKit
 class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     
     var accessoriesList = [Accessory]()
-    var selectedAccessories = [Accessory]()
+    var selectedAccessories = [String]()
     @IBOutlet weak var tableView: UITableView!
     
     let defaults = UserDefaults.standard
@@ -28,6 +28,13 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = self
         initializeAccessories()
         //tableView.beginUpdates()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        for cell in tableView.visibleCells {
+            cell.accessoryType = .none
+            selectedAccessories = []
+        }
     }
     
     func initializeAccessories() {
@@ -48,7 +55,8 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     }
     
     @objc func filterVendors(_ sender: Any) {
-        
+        defaults.set(selectedAccessories, forKey: "FilterAccessories")
+        _ = navigationController?.popViewController(animated: true)
     }
 }
 
@@ -83,15 +91,17 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = self.tableView.cellForRow(at: indexPath) as! AccessoryCustomCell
-        cell.accessoryType = .checkmark
-        if !(selectedAccessories.contains(accessoriesList[indexPath.row])){
-                selectedAccessories.append(accessoriesList[indexPath.row])
-            }
+        if !(selectedAccessories.contains(accessoriesList[indexPath.row].name)){
+            selectedAccessories.append(accessoriesList[indexPath.row].name)
+            cell.accessoryType = .checkmark
+            cell.isSelected = false
+        } else {
+            cell.accessoryType = .none
+            cell.isSelected = false
+            selectedAccessories = selectedAccessories.filter { $0 != cell.accessoryName}
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = self.tableView.cellForRow(at: indexPath) as! AccessoryCustomCell
-        cell.accessoryType = .none
-        selectedAccessories = selectedAccessories.filter { $0.name != selectedAccessories[indexPath.row].name}
     }
 }
