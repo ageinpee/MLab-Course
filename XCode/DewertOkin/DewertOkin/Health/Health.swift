@@ -53,13 +53,25 @@ class Health {
     
     lazy var page: BLTNPageItem = {
         let page = BLTNPageItem(title: "Exercise")
-        page.image = UIImage(named: "Arch-Exercise")
-        page.descriptionText = "Your companion recommends you the following Workout:"
+        
+        switch globalDeviceObject.type {
+        case "chair_2Motors":
+            page.image = UIImage(named: "Squad-Exercise")
+        case "bed_2Motors":
+            page.image = UIImage(named: "Arch-Exercise")
+        case "table":
+            page.image = UIImage(named: "Wrist-Exercise")
+        default:
+            print("Error setting exercise image: Device Type not found.")
+        }
+        
+        page.descriptionText = "Your companion recommends the following Workout to you:"
         page.actionButtonTitle = "Do Workout"
         page.alternativeButtonTitle = "Maybe Later"
         
         page.actionHandler = { (item: BLTNActionItem) in
             self.exerciseHistory.append(ExerciseEvent(time: Date(), completed: true))
+            self.bulletinManager.dismissBulletin()
             print("Action button tapped")
         }
         
@@ -128,7 +140,8 @@ class Health {
                 print(self.lastMovementRegisteredAt)
                 print(timeInterval)
                 print(self.lastMovementRegisteredAt.timeIntervalSinceNow)
-                if self.lastMovementRegisteredAt.timeIntervalSinceNow < -timeInterval {
+                // +1 because of timer inaccuracy
+                if self.lastMovementRegisteredAt.timeIntervalSinceNow < -timeInterval + 1 {
                     completion(.noActivity)
                 } else {
                     // User didn't take enough steps yet, but enough movement was registered in the time period
@@ -240,6 +253,10 @@ class Health {
     
     
     func showActivityReminder(above viewcontroller: UIViewController) {
+        guard !bulletinManager.isShowingBulletin else {
+            print("Already showing bulletin. Returning.")
+            return
+        }
         bulletinManager.showBulletin(above: viewcontroller)
     }
     
