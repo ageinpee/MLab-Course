@@ -49,9 +49,6 @@ class StatisticsCell: UITableViewCell {
     
     private func setupChartData() {
         
-        var barChartDataSet = BarChartDataSet(values: dataEntry, label: "testData")
-        var barChartData = BarChartData(dataSet: barChartDataSet)
-        
         if Health.shared.exerciseHistory.isEmpty {
             DispatchQueue.main.async {
                 self.barChart.data = nil
@@ -59,8 +56,9 @@ class StatisticsCell: UITableViewCell {
             return
         }
         
-        var dataEntries: [BarChartDataEntry] = []
-        
+        var dataEntriesAllExerciseReminders: [BarChartDataEntry] = []
+        var dataEntriesCompletedExercises: [BarChartDataEntry] = []
+    
         for exercise in Health.shared.exerciseHistory {
             
             // Only show entries from last week
@@ -70,18 +68,32 @@ class StatisticsCell: UITableViewCell {
             print(exerciseDate)
             
             if exercise.completed {
-                dataEntries.append(BarChartDataEntry(x: exerciseDate, y: 1))
+                dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: exerciseDate, y: 3))
+                dataEntriesCompletedExercises.append(BarChartDataEntry(x: exerciseDate, y: 1))
             } else {
-                dataEntries.append(BarChartDataEntry(x: exerciseDate, y: 0.1))
+                dataEntriesAllExerciseReminders.append(BarChartDataEntry(x: exerciseDate, y: 0.1))
+                dataEntriesCompletedExercises.append(BarChartDataEntry(x: exerciseDate, y: 2))
             }
         }
         
-        barChartDataSet = BarChartDataSet(values: dataEntries, label: "Exercises")
-        barChartDataSet.setColor(.red)
-        barChartDataSet.drawValuesEnabled = false
-        barChartData = BarChartData(dataSet: barChartDataSet)
+        let chartDataSet = BarChartDataSet(values: dataEntriesAllExerciseReminders, label: "Reminders")
+        let chartDataSet1 = BarChartDataSet(values: dataEntriesCompletedExercises, label: "Completed")
+        
+        chartDataSet.setColor(.red)
+        chartDataSet1.setColor(.green)
+        chartDataSet.drawValuesEnabled = true
+        chartDataSet1.drawValuesEnabled = true
+        
+        let dataSets: [BarChartDataSet] = [chartDataSet, chartDataSet1]
+        
+        let chartData = BarChartData(dataSets: dataSets)
+        chartData.barWidth = 0.3
+        //chartData.groupWidth(groupSpace: 0.3, barSpace: 0.05)
+        chartData.groupBars(fromX: 19, groupSpace: 0.3, barSpace: 0.05)
+        
+        
         DispatchQueue.main.async {
-            self.barChart.data = barChartData
+            self.barChart.data = chartData
             //self.barChart.animate(xAxisDuration: 2, easingOption: .linear)
             self.barChart.animate(yAxisDuration: 1.5)
         }
