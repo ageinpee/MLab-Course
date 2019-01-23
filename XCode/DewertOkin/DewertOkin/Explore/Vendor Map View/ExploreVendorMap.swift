@@ -74,8 +74,10 @@ extension ExploreViewController {
             self.collectionViewName.removeFromSuperview()
             self.collectionView.removeFromSuperview()
             self.vendorView.removeFromSuperview()
+            if (self.currentState == .open){
+                self.currentState = self.currentState.opposite
+            }
             self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
-            self.runningAnimators.removeAll()
         }
         transitionAnimator.isUserInteractionEnabled = true
         transitionAnimator.startAnimation()
@@ -107,10 +109,11 @@ extension ExploreViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard view != mapView.userLocation else { return }
-        let location = view.annotation as! Vendor
+        if let location = view.annotation as? Vendor {
         displayingVendor = location
         displayingAnnotation = view
         displayDetailView()
+        }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {

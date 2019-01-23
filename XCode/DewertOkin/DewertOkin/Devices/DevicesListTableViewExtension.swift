@@ -101,6 +101,10 @@ extension DevicesListViewController: UITableViewDataSource {
             
         }
         //action.image =
+        globalDeviceObject = DeviceObject(withUUID: devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
+                                          named: devicesList[indexPath.row].name ?? "ERROR - no entry found",
+                                          withHandheldID: devicesList[indexPath.row].handheld ?? "NaN",
+                                          withStyle: devicesList[indexPath.row].style ?? "filled")
         action.backgroundColor = .blue
         return action
     }

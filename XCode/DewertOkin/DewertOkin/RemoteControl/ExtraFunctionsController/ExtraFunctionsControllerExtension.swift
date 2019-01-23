@@ -16,6 +16,10 @@ extension ExtraFunctionsController {
         if functions.count == 0 {
             // set Textfield in grey with info where to find extra functions
             noFunctionsLabel.isHidden = false
+            exploreButton.isHidden = false
+            exploreButton.layer.borderColor = UIColor.white.cgColor
+            exploreButton.layer.borderWidth = 2
+            exploreButton.layer.cornerRadius = 10
         }
         else if functions.count == 1 {
             // set one button centered horizontally and vertically

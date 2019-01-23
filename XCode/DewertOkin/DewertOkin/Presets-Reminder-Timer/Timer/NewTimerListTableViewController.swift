@@ -128,6 +128,8 @@ class NewTimerListTableViewController: UITableViewController {
     
     private func getSavedData() {
         let fetchRequest: NSFetchRequest<DeviceTimer> = DeviceTimer.fetchRequest()
+        let predicateUUID = NSPredicate(format: "deviceUUID = %@", globalDeviceObject.uuid)
+        fetchRequest.predicate = predicateUUID
         
         do {
             let savedTimer = try PersistenceService.context.fetch(fetchRequest)

@@ -25,9 +25,14 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Title" id="a7V-Oj-MQn">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="POB-DI-hET">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="POB-DI-hET">
                                             <connections>
                                                 <action selector="unwindToRemoteViewController:" destination="2vF-NN-zR7" id="s6f-3R-EKE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Anu-2z-jHW">
+                                            <connections>
+                                                <segue destination="95K-hM-mn4" kind="presentation" id="gY4-9Z-w7e"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -60,6 +65,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vH-dE-sqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2234.7826086956525" y="-310.04464285714283"/>
+        </scene>
+        <!--RFPairing-->
+        <scene sceneID="vgm-O1-zqi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RFPairing" id="95K-hM-mn4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2gh-Co-beo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3057" y="-621"/>
         </scene>
         <!--PairingSuccessView-->
         <scene sceneID="X8w-bf-kel">

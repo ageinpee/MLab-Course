@@ -44,10 +44,10 @@ class DeviceObject {
     var Reminders: [String] = [String]()                                // placeholder for device specific Remidners-array
     
     init() {
-        uuid = "test_chair"
+        uuid = UUID().uuidString
         name = "My Chair"
         handheldID = "84562"
-        style = "empty"
+        style = "filled"
         
         let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
         
@@ -101,9 +101,40 @@ class DeviceObject {
             deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
                                                           forDevice: DeviceType(rawValue: type)!)
         }
-        
     }
     
+    init(withUUID id: String, named: String, withHandheldID: String, withStyle: String, withExtraFunctions: [String]) {
+        uuid = id
+        name = named
+        handheldID = withHandheldID
+        style = withStyle
+        for f in withExtraFunctions {
+            availableExtraFunctions.append(ExtraFunctions(rawValue: f) ?? .NaN)
+        }
+        
+        let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
+        
+        for row in csvData {
+            if row[0] == handheldID {
+                handheldData = row
+                break
+            }
+        }
+        
+        if !(handheldData == []) {
+            initializeFunctionalityWithoutExtraFunctions()
+            chooseDeviceType()
+            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+                                                          forDevice: DeviceType(rawValue: type)!)
+        }
+        else {
+            print("ERROR - couldn't find handheld data")
+            type = "NaN"
+            deviceImages = DeviceStyleManager().getImages(inStyle: DeviceStyle(rawValue: style)!,
+                                                          forDevice: DeviceType(rawValue: type)!)
+        }
+        
+    }
     
     private func initializeFunctionality() {
         for (i, value) in handheldData.enumerated() {
@@ -148,6 +179,41 @@ class DeviceObject {
             }
             else if i == 27 && value == "ja" {
                 availableExtraFunctions.append(.massage_legs)
+            }
+        }
+    }
+    
+    private func initializeFunctionalityWithoutExtraFunctions() {
+        for (i, value) in handheldData.enumerated() {
+            if i == 4 && value == "ja" { // only check for M1 up to save performance.
+                availableMotors.append(.M1)
+            }
+            else if i == 6 && value == "ja" {
+                availableMotors.append(.M2)
+            }
+            else if i == 8 && value == "ja" {
+                availableMotors.append(.M3)
+            }
+            else if i == 10 && value == "ja" {
+                availableMotors.append(.M4)
+            }
+            else if i == 12 && value == "ja" {
+                availableMotors.append(.M5)
+            }
+            else if i == 16 && value == "ja" {
+                availableMemories.append(.Mem1)
+            }
+            else if i == 17 && value == "ja" {
+                availableMemories.append(.Mem2)
+            }
+            else if i == 18 && value == "ja" {
+                availableMemories.append(.Mem3)
+            }
+            else if i == 19 && value == "ja" {
+                availableMemories.append(.Mem4)
+            }
+            else if i == 20 && value == "ja" {
+                availableMemories.append(.MemSave)
             }
         }
     }
@@ -218,6 +284,31 @@ class DeviceObject {
             return RemoteControlConfig().getKeycode(name: .storeMemoryPosition)
         }
     }
+    
+    
+    func convertExtraFunctionsToString() -> String {
+        var output = ""
+        for (i,f) in availableExtraFunctions.enumerated() {
+            if i == availableExtraFunctions.count-1 {
+                output.append(f.rawValue + ";")
+            }
+            else {
+                output.append(f.rawValue)
+            }
+        }
+        return output
+    }
+    
+    func convertStringToExtraFunctions(withString: String) -> [ExtraFunctions] {
+        var output = [ExtraFunctions]()
+        let stringArray = withString.components(separatedBy: ";")
+        for string in stringArray {
+            output.append(ExtraFunctions(rawValue: string) ?? .NaN)
+        }
+        return output
+    }
+    
+    
 }
 
 
@@ -266,11 +357,11 @@ enum Motors: String {
 }
 
 enum Memories: String {
-    case Mem1 = "Mem1"
-    case Mem2 = "Mem2"
-    case Mem3 = "Mem3"
-    case Mem4 = "Mem4"
-    case MemSave = "MemSave"
+    case Mem1 = "Memory 1"
+    case Mem2 = "Memory 2"
+    case Mem3 = "Memory 3"
+    case Mem4 = "Memory 4"
+    case MemSave = "Save Memory"
 }
 
 enum Action: String {

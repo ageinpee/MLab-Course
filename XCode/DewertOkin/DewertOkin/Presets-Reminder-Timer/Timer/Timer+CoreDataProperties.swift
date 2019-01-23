@@ -21,5 +21,6 @@ extension DeviceTimer {
     @NSManaged public var timerTime: Date?
     @NSManaged public var isEnabled: Bool
     @NSManaged public var repeatInterval: String?
+    @NSManaged public var deviceUUID: UUID
 
 }
