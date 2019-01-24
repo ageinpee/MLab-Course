@@ -121,8 +121,97 @@ extension ExtraFunctionsController {
             image = image?.resize(size: imageSize)
             button.setBackgroundImage(image, for: .normal)
             button.setBackgroundImage(imageHighlighted, for: .highlighted)
-        case .NaN:
+            
+            
+            
+            //AccessoryNames
+            
+        case .satellite_speaker:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        case .subwoofer_speaker:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        case .massage_motor:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        case .under_bed_lighting:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        case .light_strip:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        case .seat_heating:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        case .hands_free_kit:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        case .rgb_lighting_control_unit:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        case .rgb_lighting_strip:
+            var image = UIImage(named: "massageLegHRWhiteCurly")
+            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
+            imageHighlighted = imageHighlighted?.resize(size: imageSize)
+            image = image?.resize(size: imageSize)
+            button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(imageHighlighted, for: .highlighted)
+            
+            
+        //was case .NaN: before
+        default:
             print("this is not a valid value")
+            
+            
         }
         
         return button
