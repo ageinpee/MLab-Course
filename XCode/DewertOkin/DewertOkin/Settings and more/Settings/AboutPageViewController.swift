@@ -13,5 +13,6 @@ class AboutPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "About this app"
     }
 }
