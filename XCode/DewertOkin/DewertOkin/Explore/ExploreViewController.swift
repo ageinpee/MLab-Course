@@ -59,14 +59,18 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
         initializeMap(radiusInMeters: 2000.0)
         initializeVendors()
         
-        for vendor in filteredVendors {
-            mapView.addAnnotation(vendor!)
-        }
+        defaults.set([], forKey: "FilterAccessories")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let filter = defaults.stringArray(forKey: "FilterAccessories")
-        guard !(filter?.isEmpty ?? true) else { return }
+        guard !(filter?.isEmpty ?? true) else {
+            initializeVendors()
+            for vendor in filteredVendors {
+                mapView.addAnnotation(vendor!)
+            }
+            return
+        }
         initializeVendors()
         let allAnnotations = mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
