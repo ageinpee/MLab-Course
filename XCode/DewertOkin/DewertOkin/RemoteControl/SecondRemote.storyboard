@@ -66,7 +66,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Extras"/>
                                 <connections>
-                                    <segue destination="dhz-n7-KIU" kind="presentation" modalPresentationStyle="overFullScreen" id="bdx-sA-gOo"/>
+                                    <segue destination="Rcp-G2-Dt1" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="6W3-1k-fei"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEo-gs-uD4">
@@ -163,7 +163,15 @@
                 <viewControllerPlaceholder storyboardName="Devices" id="2i9-pd-CzF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3Y-pZ-1dk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="572" y="-52"/>
+            <point key="canvasLocation" x="394" y="474"/>
+        </scene>
+        <!--NewExtraFunctions-->
+        <scene sceneID="zr0-8m-2hX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewExtraFunctions" id="Rcp-G2-Dt1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgs-WE-DLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7" y="474"/>
         </scene>
         <!--Extra Functions Controller-->
         <scene sceneID="xWQ-VC-bVW">

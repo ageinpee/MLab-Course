@@ -57,7 +57,7 @@ class ExtraFunctionsController: UIViewController {
 //            case title = ExtraFunctionsTitle.rgb_lighting_strip.rawValue
             }
             
-            functionsList.append(ExtraFunction(asType: extra, withTitle: title, withHex: hex))//placeholder
+            //functionsList.append(ExtraFunction(asType: extra, withTitle: title, withHex: hex))//placeholder
         }
         
         globalView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
