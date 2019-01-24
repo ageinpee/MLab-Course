@@ -59,7 +59,7 @@ extension DevicesListViewController: UITableViewDataSource {
             }
             
         }
-        //action.image =
+        
         action.backgroundColor = .red
         return action
     }
@@ -100,11 +100,12 @@ extension DevicesListViewController: UITableViewDataSource {
             self.performSegue(withIdentifier: "ConnectToDevice", sender: self)
             
         }
-        //action.image =
+        
         globalDeviceObject = DeviceObject(withUUID: devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
                                           named: devicesList[indexPath.row].name ?? "ERROR - no entry found",
                                           withHandheldID: devicesList[indexPath.row].handheld ?? "NaN",
-                                          withStyle: devicesList[indexPath.row].style ?? "filled")
+                                          withStyle: devicesList[indexPath.row].style ?? "filled",
+                                          withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: devicesList[indexPath.row].extraFunctions ?? ""))
         action.backgroundColor = .blue
         return action
     }
