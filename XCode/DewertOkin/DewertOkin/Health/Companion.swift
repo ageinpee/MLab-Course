@@ -257,6 +257,12 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         }
     }
     
+    func updateChartData() {
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? StatisticsCell {
+            cell.setupChartData()
+        }
+    }
+    
     private func addActivityReminderNotification() {
         let center = UNUserNotificationCenter.current()
         

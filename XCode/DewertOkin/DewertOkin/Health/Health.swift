@@ -39,7 +39,7 @@ class Health {
         ExerciseEvent(time: Date().addingTimeInterval(-31600), completed: true),
         ExerciseEvent(time: Date().addingTimeInterval(-150000), completed: false),
         ExerciseEvent(time: Date().addingTimeInterval(-100200), completed: false),
-        ExerciseEvent(time: Date().addingTimeInterval(-000000), completed: false),
+        //ExerciseEvent(time: Date().addingTimeInterval(-000000), completed: false),
         ExerciseEvent(time: Date().addingTimeInterval(-240000), completed: true),
         ExerciseEvent(time: Date().addingTimeInterval(-244800), completed: false),
         ExerciseEvent(time: Date().addingTimeInterval(-329534), completed: true),
@@ -73,12 +73,17 @@ class Health {
             self.exerciseHistory.append(ExerciseEvent(time: Date(), completed: true))
             self.bulletinManager.dismissBulletin()
             print("Action button tapped")
+            print(self.exerciseHistory)
+            // Setup chart data
+            self.updateStatisticsChart()
         }
         
         page.alternativeHandler = { (item: BLTNActionItem) in
             print("Maybe later tapped")
             self.bulletinManager.dismissBulletin()
             self.exerciseHistory.append(ExerciseEvent(time: Date(), completed: false))
+            // Setup chart data
+            self.updateStatisticsChart()
         }
         
         return page
@@ -101,6 +106,22 @@ class Health {
     
     func saveHealthSettings() {
         UserDefaults.standard.set(activityReminderEnabled, forKey: "activityReminderEnabled")
+    }
+    
+    // This works, don't ask 😅
+    func updateStatisticsChart() {
+        if let mainVC = UIApplication.shared.keyWindow?.rootViewController as? MainViewController {
+            guard let vcs = mainVC.viewControllers else { return }
+            for vc in vcs {
+                if vc is UINavigationController {
+                    for child in vc.children {
+                        if let companionViewController = child as? CompanionTableViewController {
+                            companionViewController.updateChartData()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     // if tracking is enabled, start this at application launch
