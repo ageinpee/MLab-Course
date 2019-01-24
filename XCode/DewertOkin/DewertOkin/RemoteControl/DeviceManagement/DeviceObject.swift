@@ -103,14 +103,12 @@ class DeviceObject {
         }
     }
     
-    init(withUUID id: String, named: String, withHandheldID: String, withStyle: String, withExtraFunctions: [String]) {
+    init(withUUID id: String, named: String, withHandheldID: String, withStyle: String, withExtraFunctions: [ExtraFunctions]) {
         uuid = id
         name = named
         handheldID = withHandheldID
         style = withStyle
-        for f in withExtraFunctions {
-            availableExtraFunctions.append(ExtraFunctions(rawValue: f) ?? .NaN)
-        }
+        availableExtraFunctions = withExtraFunctions
         
         let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
         
@@ -280,10 +278,10 @@ class DeviceObject {
     }
     
     
-    func convertExtraFunctionsToString() -> String {
+    func convertExtraFunctionsToString(functions: [ExtraFunctions]) -> String {
         var output = ""
-        for (i,f) in availableExtraFunctions.enumerated() {
-            if i == availableExtraFunctions.count-1 {
+        for (i,f) in functions.enumerated() {
+            if i == functions.count-1 {
                 output.append(f.rawValue + ";")
             }
             else {

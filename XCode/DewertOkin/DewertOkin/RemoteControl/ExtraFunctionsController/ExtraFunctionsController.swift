@@ -25,21 +25,26 @@ class ExtraFunctionsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var title = ""
+        var hex = Data()
         for extra in globalDeviceObject.availableExtraFunctions {
             switch extra {
             case .massage_back:
                 title = ExtraFunctionsTitle.massage_back.rawValue
+                hex = RemoteControlConfig().getKeycode(name: .massage1)
             case .massage_neck:
                 title = ExtraFunctionsTitle.massage_neck.rawValue
+                hex = RemoteControlConfig().getKeycode(name: .massage2)
             case .massage_legs:
                 title = ExtraFunctionsTitle.massage_legs.rawValue
+                hex = RemoteControlConfig().getKeycode(name: .massage3)
             case .ubl:
                 title = ExtraFunctionsTitle.ubl.rawValue
+                hex = RemoteControlConfig().getKeycode(name: .ubl)
             case .NaN:
                 title = ExtraFunctionsTitle.NaN.rawValue
             }
             
-            functionsList.append(ExtraFunction(asType: extra, withTitle: title, withHex: "0x00"))//placeholder
+            functionsList.append(ExtraFunction(asType: extra, withTitle: title, withHex: hex))//placeholder
         }
         
         globalView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
@@ -78,11 +83,11 @@ class ExtraFunctionsController: UIViewController {
         case 4:
             executeFunction(withHex: functionsList[4].hex)
         default:
-            executeFunction(withHex: "0x00")
+            executeFunction(withHex: Data())
         }
     }
     
-    private func executeFunction(withHex hex: String) {
+    private func executeFunction(withHex hex: Data) {
         print("placehodler for bluetooth function with hexcode \(hex)")
     }
     
