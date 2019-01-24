@@ -68,35 +68,35 @@ class NewExtraFunctionsController: UIViewController {
     func handleButtonPress(sender: UIButton!) {
         switch sender.tag{      // tag defines bluetoothfunction to call
         case 0:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.massage_back]?.1 ?? Data())
         case 1:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.massage_neck]?.1 ?? Data())
         case 2:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.massage_legs]?.1 ?? Data())
         case 3:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.ubl]?.1 ?? Data())
         case 4:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.satellite_speaker]?.1 ?? Data())
         case 5:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.subwoofer_speaker]?.1 ?? Data())
         case 6:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.massage_motor]?.1 ?? Data())
         case 7:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.under_bed_lighting]?.1 ?? Data())
         case 8:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.light_strip]?.1 ?? Data())
         case 9:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.seat_heating]?.1 ?? Data())
         case 10:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.hands_free_kit]?.1 ?? Data())
         case 11:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.rgb_lighting_strip]?.1 ?? Data())
         case 12:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.rgb_lighting_control_unit]?.1 ?? Data())
         case 13:
-            executeFunction(withHex: Data())
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.NaN]?.1 ?? Data())
         default:
-            executeFunction(withHex: Data())
+            print("something went wrong, can't find the correct function data")
         }
     }
     
