@@ -88,6 +88,9 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     }
         
     @IBAction func showAccessoriesList(_ sender: Any) {
+        if (vendorView.isDescendant(of: self.view)) {
+            closeDetailView()
+        }
         performSegue(withIdentifier: "ShowAccessoriesList", sender: self)
     }
     

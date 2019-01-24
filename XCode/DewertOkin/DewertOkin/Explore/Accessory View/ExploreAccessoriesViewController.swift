@@ -26,6 +26,10 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let holdToBuyGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(buyingAccessory(_:)))
+        holdToBuyGestureRecognizer.minimumPressDuration = 1.0
+        tableView.addGestureRecognizer(holdToBuyGestureRecognizer)
         initializeAccessories()
     }
     
@@ -54,6 +58,15 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     @objc func filterVendors(_ sender: Any) {
         defaults.set(selectedAccessories, forKey: "FilterAccessories")
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func buyingAccessory(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let cell = sender.location(in: self.tableView)
+            if let indexPath = tableView.indexPathForRow(at: cell) {
+                print("HAHA")
+            }
+        }
     }
 }
 
