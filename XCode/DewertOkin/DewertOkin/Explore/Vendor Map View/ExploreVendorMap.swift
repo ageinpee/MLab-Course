@@ -64,6 +64,7 @@ extension ExploreViewController {
             self.bottomConstraint.constant = self.vendorViewOffset * 2
             self.backgroundAlphaView.backgroundColor = .clear
             self.backgroundAlphaView.alpha = 0.0
+            self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
         })
         transitionAnimator.addCompletion{_ in
             self.backgroundAlphaView.removeFromSuperview()
@@ -77,7 +78,6 @@ extension ExploreViewController {
             if (self.currentState == .open){
                 self.currentState = self.currentState.opposite
             }
-            self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
         }
         transitionAnimator.isUserInteractionEnabled = true
         transitionAnimator.startAnimation()

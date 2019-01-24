@@ -66,8 +66,8 @@ class AccessoryCustomCell: UITableViewCell {
     func addConstraints() {
         
         accessoryImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        accessoryImageView.widthAnchor.constraint(equalToConstant: (self.frame.height / 5)).isActive = true
-        accessoryImageView.heightAnchor.constraint(equalToConstant: (self.frame.height / 5)).isActive = true
+        accessoryImageView.heightAnchor.constraint(equalToConstant: (self.frame.height / 6)).isActive = true
+        accessoryImageView.widthAnchor.constraint(equalTo: accessoryImageView.heightAnchor).isActive = true
         accessoryImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         accessoryImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         

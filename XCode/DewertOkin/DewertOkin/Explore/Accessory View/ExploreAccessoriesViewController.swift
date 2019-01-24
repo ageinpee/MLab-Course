@@ -51,7 +51,7 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     func registerAccessories() {
         self.tableView.register(AccessoryCustomCell.self, forCellReuseIdentifier: "customAccessoryCell")
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = (self.view.frame.height / 5)
+        self.tableView.estimatedRowHeight = (self.view.frame.height / 6)
     }
     
     @objc func filterVendors(_ sender: Any) {
@@ -86,7 +86,7 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (self.view.frame.height / 5)
+        return (self.view.frame.height / 6)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

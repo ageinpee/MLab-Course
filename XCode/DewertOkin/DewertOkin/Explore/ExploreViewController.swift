@@ -15,7 +15,6 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
     var filteredVendors = [Vendor?]()
-    var filteredAccessories = [Accessory?]()
     let defaults = UserDefaults.standard
     
     // Data from ExploreMapViewController
@@ -68,11 +67,11 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     override func viewDidAppear(_ animated: Bool) {
         let filter = defaults.stringArray(forKey: "FilterAccessories")
         guard !(filter?.isEmpty ?? true) else { return }
-        initializeAccessories(name: filter!)
+        initializeVendors()
         let allAnnotations = mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
         for vendorNumber in 0..<(filteredVendors.count) {
-            let temp = filteredVendors[vendorNumber]!.accessories.filter { filteredAccessories.contains($0) }
+            let temp = filteredVendors[vendorNumber]!.accessories.filter { (filter?.contains($0.name))! }
             if (temp.count > 0){
                 mapView.addAnnotation(filteredVendors[vendorNumber]!)
             }
@@ -85,19 +84,6 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
         
     @IBAction func showAccessoriesList(_ sender: Any) {
         performSegue(withIdentifier: "ShowAccessoriesList", sender: self)
-    }
-    
-    func initializeAccessories(name: [String]) {
-        let accessoryList = parseAccessories()
-        guard accessoryList.count != 0 else { return }
-        var tempAcc = [Accessory]()
-        for number in 0..<(accessoryList.count) {
-            if (name.contains(accessoryList[number].name)){
-                let accessory = Accessory(imageName: accessoryList[number].imageName, name: accessoryList[number].name, accessoryDescription: accessoryList[number].accessoryDescription)
-                tempAcc.append(accessory)
-            }
-        }
-        filteredAccessories = tempAcc
     }
     
     override func didReceiveMemoryWarning() {
