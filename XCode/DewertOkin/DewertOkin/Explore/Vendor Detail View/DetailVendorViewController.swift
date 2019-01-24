@@ -130,7 +130,7 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorWebsite.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -40).isActive = true
         vendorWebsite.leftAnchor.constraint(equalTo: vendorView.leftAnchor, constant: 20).isActive = true
         vendorWebsite.rightAnchor.constraint(equalTo: vendorView.rightAnchor, constant: -20).isActive = true
-        vendorWebsite.bottomAnchor.constraint(equalTo: vendorView.bottomAnchor, constant: -70).isActive = true
+        vendorWebsite.topAnchor.constraint(equalTo: vendorTelephone.bottomAnchor, constant: 20).isActive = true
     }
     
     func initializeAccessoryCollection() {

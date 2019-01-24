@@ -56,8 +56,10 @@ class AccessoryCustomCollectionCell: UICollectionViewCell {
         
         accessoryImageView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20).isActive = true
         accessoryImageView.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -20).isActive = true
-        accessoryImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        accessoryImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        accessoryImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
+        accessoryImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        accessoryImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        accessoryImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
         
 //        accessoryNameView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
 //        accessoryNameView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
