@@ -76,7 +76,7 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         do {
             let savedDevices = try PersistenceService.context.fetch(fetchRequest)
             let currentDevice = globalDeviceObject
-            let ubl: ExtraFunctions = ExtraFunctions(rawValue: "ubl")! // Universell machen. peter
+            let ubl: ExtraFunctions = ExtraFunctions(rawValue: accessory.name)!
             guard !(currentDevice.availableExtraFunctions.contains(ubl)) else { return }
             currentDevice.availableExtraFunctions.append(ubl)
             for device in savedDevices {
