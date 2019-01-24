@@ -38,6 +38,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     var vendorName = UILabel()
     var vendorStreet = UILabel()
     var vendorWebsite = UIButton()
+    var vendorTelephone = UIButton()
     var collectionViewName = UILabel()
     
     var collectionView: UICollectionView!

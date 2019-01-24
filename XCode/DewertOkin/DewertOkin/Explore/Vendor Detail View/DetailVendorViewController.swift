@@ -95,6 +95,23 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorStreet.leftAnchor.constraint(equalTo: self.vendorView.leftAnchor, constant: 10).isActive = true
     }
     
+    func initializeVendorTelephone() {
+        
+        vendorTelephone = UIButton.init(type: .custom)
+        vendorTelephone.setTitle(displayingVendor.telephoneNumber, for: .normal)
+        vendorTelephone.layer.backgroundColor = UIColor.blue.cgColor
+        vendorTelephone.layer.borderWidth = 0
+        vendorTelephone.layer.cornerRadius = 25
+        vendorTelephone.translatesAutoresizingMaskIntoConstraints = false
+        UIApplication.shared.keyWindow?.addSubview(vendorTelephone)
+        
+        vendorTelephone.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        vendorTelephone.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -40).isActive = true
+        vendorTelephone.leftAnchor.constraint(equalTo: vendorView.leftAnchor, constant: 20).isActive = true
+        vendorTelephone.rightAnchor.constraint(equalTo: vendorView.rightAnchor, constant: -20).isActive = true
+        vendorTelephone.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20).isActive = true
+    }
+    
     func initializeVendorWebsite() {
         
         vendorWebsite = UIButton.init(type: .custom)

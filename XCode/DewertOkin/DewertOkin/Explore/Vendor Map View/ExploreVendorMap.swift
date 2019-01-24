@@ -56,6 +56,7 @@ extension ExploreViewController {
         initializeVendorView()
         initializeVendorInformation()
         initializeAccessoryCollection()
+        initializeVendorTelephone()
         initializeVendorWebsite()
     }
     
