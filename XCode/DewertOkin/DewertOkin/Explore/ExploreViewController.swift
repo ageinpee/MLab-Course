@@ -14,6 +14,8 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
+    var filteredVendors = [Vendor?]()
+    let defaults = UserDefaults.standard
     
     // Data from ExploreMapViewController
     var displayingVendor: Vendor!
@@ -36,6 +38,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     var vendorName = UILabel()
     var vendorStreet = UILabel()
     var vendorWebsite = UIButton()
+    var vendorTelephone = UIButton()
     var collectionViewName = UILabel()
     
     var collectionView: UICollectionView!
@@ -56,6 +59,32 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
         mapView.isUserInteractionEnabled = true
         initializeMap(radiusInMeters: 2000.0)
         initializeVendors()
+        
+        defaults.set([], forKey: "FilterAccessories")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let filter = defaults.stringArray(forKey: "FilterAccessories")
+        guard !(filter?.isEmpty ?? true) else {
+            initializeVendors()
+            for vendor in filteredVendors {
+                mapView.addAnnotation(vendor!)
+            }
+            return
+        }
+        initializeVendors()
+        let allAnnotations = mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        for vendorNumber in 0..<(filteredVendors.count) {
+            let temp = filteredVendors[vendorNumber]!.accessories.filter { (filter?.contains($0.name))! }
+            if (temp.count > 0){
+                mapView.addAnnotation(filteredVendors[vendorNumber]!)
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // I think I need to reset all accessories, who knows men
     }
         
     @IBAction func showAccessoriesList(_ sender: Any) {

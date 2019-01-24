@@ -33,10 +33,12 @@ extension ExploreViewController {
     func initializeVendors() {
         let vendorList = parseVendor()
         guard vendorList.count != 0 else { return }
+        var tempVendor = [Vendor]()
         for number in 0..<(vendorList.count) {
             let vendor = Vendor(name: vendorList[number].name, street: vendorList[number].street, openingHour: vendorList[number].openingHour, closingHour: vendorList[number].closingHour, telephoneNumber: vendorList[number].telephoneNumber, accessories: (convertAccessoryData(accessories: vendorList[number].accessories)), latitude: vendorList[number].latitude, longitude: vendorList[number].longitude)
-            mapView.addAnnotation(vendor)
+            tempVendor.append(vendor)
         }
+        filteredVendors = tempVendor
     }
     
     func convertAccessoryData(accessories: [AccessoryData]) -> [Accessory] {
@@ -54,6 +56,7 @@ extension ExploreViewController {
         initializeVendorView()
         initializeVendorInformation()
         initializeAccessoryCollection()
+        initializeVendorTelephone()
         initializeVendorWebsite()
     }
     
@@ -62,17 +65,21 @@ extension ExploreViewController {
             self.bottomConstraint.constant = self.vendorViewOffset * 2
             self.backgroundAlphaView.backgroundColor = .clear
             self.backgroundAlphaView.alpha = 0.0
+            self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
         })
         transitionAnimator.addCompletion{_ in
             self.backgroundAlphaView.removeFromSuperview()
             self.vendorWebsite.removeFromSuperview()
+            self.vendorTelephone.removeFromSuperview()
             self.closeButton.removeFromSuperview()
             self.vendorName.removeFromSuperview()
             self.vendorStreet.removeFromSuperview()
             self.collectionViewName.removeFromSuperview()
             self.collectionView.removeFromSuperview()
             self.vendorView.removeFromSuperview()
-            self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
+            if (self.currentState == .open){
+                self.currentState = self.currentState.opposite
+            }
         }
         transitionAnimator.isUserInteractionEnabled = true
         transitionAnimator.startAnimation()
@@ -93,10 +100,11 @@ extension ExploreViewController: MKMapViewDelegate {
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = false
+            view.animatesWhenAdded = true
             view.isUserInteractionEnabled = true
             
-            view.markerTintColor = .blue
-            view.glyphTintColor = .blue
+            view.markerTintColor = .red
+            view.glyphTintColor = .red
             view.glyphText = ""
         }
         return view
@@ -104,10 +112,11 @@ extension ExploreViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard view != mapView.userLocation else { return }
-        let location = view.annotation as! Vendor
+        if let location = view.annotation as? Vendor {
         displayingVendor = location
         displayingAnnotation = view
         displayDetailView()
+        }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {

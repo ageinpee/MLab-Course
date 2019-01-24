@@ -42,17 +42,15 @@ class OldRemoteViewController: UIViewController {
                        memory1Button, memory2Button,
                        saveButton, ublButton]
         
-        for button in buttonList {
-            button.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-        }
-        
         constrainButtons()
     }
     
     func constrainButtons() {
         
-        let frameWidth = (remoteView.superview?.frame.width)!
-        let frameHeight = (remoteView.superview?.frame.height)!
+        guard let superView = remoteView.superview else { return }
+        
+        let frameWidth = superView.frame.width
+        let frameHeight = superView.frame.height
         
         let initialOffset = frameHeight/14
         var offset = frameHeight/14

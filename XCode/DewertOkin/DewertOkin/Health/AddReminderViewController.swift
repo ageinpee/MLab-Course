@@ -224,6 +224,7 @@ class NewReminderTableViewController: UITableViewController {
     private func doneButtonPressed() {
         selectedReminder.reminderName = nameTextField.text
         selectedReminder.reminderTime = datePicker.date
+        selectedReminder.deviceUUID = UUID(uuidString: globalDeviceObject.uuid)!
         
         PersistenceService.saveContext()
         

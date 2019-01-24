@@ -16,7 +16,6 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
     func initializeVendorView() {
         
         backgroundAlphaView.translatesAutoresizingMaskIntoConstraints = false
-        //backgroundAlphaView.addTarget(self, action: #selector(touchedCloseButton(sender:)), for: .touchUpInside)
         UIApplication.shared.keyWindow?.addSubview(backgroundAlphaView)
         backgroundAlphaView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         backgroundAlphaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -24,6 +23,12 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         backgroundAlphaView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         backgroundAlphaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         backgroundAlphaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
+        let backgroundTapAnimation = InstantPanGestureRecognizer()
+        backgroundTapAnimation.addTarget(self, action: #selector(ExploreViewController.closeVendorDetails(recognizer:)))
+        backgroundTapAnimation.cancelsTouchesInView = false
+        backgroundTapAnimation.delegate = self
+        backgroundAlphaView.addGestureRecognizer(backgroundTapAnimation)
         
         vendorView.backgroundColor = .white
         vendorView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,6 +95,25 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorStreet.leftAnchor.constraint(equalTo: self.vendorView.leftAnchor, constant: 10).isActive = true
     }
     
+    func initializeVendorTelephone() {
+        
+        vendorTelephone = UIButton.init(type: .custom)
+        vendorTelephone.setTitle(displayingVendor.telephoneNumber, for: .normal)
+        vendorTelephone.layer.backgroundColor = UIColor.blue.cgColor
+        vendorTelephone.layer.borderWidth = 0
+        vendorTelephone.layer.cornerRadius = 25
+        vendorTelephone.isUserInteractionEnabled = true
+        vendorTelephone.translatesAutoresizingMaskIntoConstraints = false
+        UIApplication.shared.keyWindow?.addSubview(vendorTelephone)
+        vendorTelephone.addTarget(self, action: #selector(callVendor(sender:)), for: .touchUpInside)
+        
+        vendorTelephone.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        vendorTelephone.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -40).isActive = true
+        vendorTelephone.leftAnchor.constraint(equalTo: vendorView.leftAnchor, constant: 20).isActive = true
+        vendorTelephone.rightAnchor.constraint(equalTo: vendorView.rightAnchor, constant: -20).isActive = true
+        vendorTelephone.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20).isActive = true
+    }
+    
     func initializeVendorWebsite() {
         
         vendorWebsite = UIButton.init(type: .custom)
@@ -97,14 +121,16 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorWebsite.layer.backgroundColor = UIColor.blue.cgColor
         vendorWebsite.layer.borderWidth = 0
         vendorWebsite.layer.cornerRadius = 25
+        vendorWebsite.isUserInteractionEnabled = true
         vendorWebsite.translatesAutoresizingMaskIntoConstraints = false
         UIApplication.shared.keyWindow?.addSubview(vendorWebsite)
+        vendorWebsite.addTarget(self, action: #selector(showVendorWebstore(sender:)), for: .touchUpInside)
         
         vendorWebsite.heightAnchor.constraint(equalToConstant: 50).isActive = true
         vendorWebsite.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -40).isActive = true
         vendorWebsite.leftAnchor.constraint(equalTo: vendorView.leftAnchor, constant: 20).isActive = true
         vendorWebsite.rightAnchor.constraint(equalTo: vendorView.rightAnchor, constant: -20).isActive = true
-        vendorWebsite.bottomAnchor.constraint(equalTo: vendorView.bottomAnchor, constant: -70).isActive = true
+        vendorWebsite.topAnchor.constraint(equalTo: vendorTelephone.bottomAnchor, constant: 20).isActive = true
     }
     
     func initializeAccessoryCollection() {

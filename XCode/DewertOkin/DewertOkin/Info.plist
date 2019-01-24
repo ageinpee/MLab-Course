@@ -33,7 +33,7 @@
 		<string>fetch</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>Remote</string>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>RFPairing</string>
 	<key>UIRequiredDeviceCapabilities</key>

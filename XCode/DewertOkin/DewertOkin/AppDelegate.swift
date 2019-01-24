@@ -46,7 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         UNUserNotificationCenter.current().delegate = self
         AchievementModel.loadAchievementProgress()
-        UIApplication.shared.setMinimumBackgroundFetchInterval(600)
+        
+        // Activity Tracker will only work in the foreground
+        Health.shared.lastMovementRegisteredAt = Date()
+        Health.shared.loadHealthSettings()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()

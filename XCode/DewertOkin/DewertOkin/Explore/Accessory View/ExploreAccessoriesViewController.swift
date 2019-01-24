@@ -12,18 +12,26 @@ import UIKit
 class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     
     var accessoriesList = [Accessory]()
+    var selectedAccessories = [String]()
     @IBOutlet weak var tableView: UITableView!
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Accessories"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Apply", style: .done, target: self, action: #selector(filterVendors(_:)))
         
         tableView.delegate = self
         tableView.dataSource = self
         initializeAccessories()
-        //tableView.beginUpdates()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        selectedAccessories = defaults.stringArray(forKey: "FilterAccessories") ?? []
+        tableView.reloadData()
     }
     
     func initializeAccessories() {
@@ -40,7 +48,12 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     func registerAccessories() {
         self.tableView.register(AccessoryCustomCell.self, forCellReuseIdentifier: "customAccessoryCell")
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = (self.view.frame.height / 6)
+    }
+    
+    @objc func filterVendors(_ sender: Any) {
+        defaults.set(selectedAccessories, forKey: "FilterAccessories")
+        _ = navigationController?.popViewController(animated: true)
     }
 }
 
@@ -60,6 +73,11 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
         cell.accessoryImage = image
         cell.accessoryName = accessoriesList[indexPath.row].name
         cell.accessoryDescription = accessoriesList[indexPath.row].accessoryDescription
+        if (selectedAccessories.contains(cell.accessoryName!)) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         
         cell.layoutSubviews()
         return cell
@@ -70,7 +88,22 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return (self.view.frame.height / 6)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = self.tableView.cellForRow(at: indexPath) as! AccessoryCustomCell
+        if !(selectedAccessories.contains(accessoriesList[indexPath.row].name)){
+            selectedAccessories.append(accessoriesList[indexPath.row].name)
+            cell.accessoryType = .checkmark
+            cell.isSelected = true
+        } else if (selectedAccessories.contains(accessoriesList[indexPath.row].name)) {
+            cell.accessoryType = .none
+            cell.isSelected = false
+            selectedAccessories = selectedAccessories.filter { $0 != cell.accessoryName}
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    }
 }

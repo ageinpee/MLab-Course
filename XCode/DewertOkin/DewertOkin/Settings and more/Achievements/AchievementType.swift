@@ -16,4 +16,12 @@ enum AchievementType: String, Hashable, Codable {
     case undecisive
     case nightOwl
     case letThereBeLight
+    /*
+    case exerciseApprentice
+    case exerciseManiac
+    case exerciseMaster
+    case firstStreak
+    case streakItHard
+    case streakLikeABoss
+ */
 }
