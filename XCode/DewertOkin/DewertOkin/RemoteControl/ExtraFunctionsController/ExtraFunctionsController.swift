@@ -45,7 +45,7 @@ class ExtraFunctionsController: UIViewController {
         globalView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         noFunctionsLabel.text = "Your device currently has no additional features. You can find accessories for your device in the 'Explore' section. "
-        noFunctionsLabel.textColor = UIColor.lightGray
+        noFunctionsLabel.textColor = UIColor.white
         noFunctionsLabel.isHidden = true
         exploreButton.isHidden = true
         
