@@ -52,6 +52,7 @@
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		9201DBEF21FA0463003D5FF2 /* NewExtraFunctionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */; };
 		9201DBF121FA4404003D5FF2 /* NewExtraFunctions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201DBF021FA4404003D5FF2 /* NewExtraFunctions.storyboard */; };
+		9201DBF321FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201DBF221FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift */; };
 		9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9220AFB621F1DD85003E2794 /* handsender1_extended.csv */; };
 		9243F4C621F0C78000513B11 /* RemoteControllerExtensionCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */; };
 		927A423721F8938E00E97CB7 /* ExtraFunctionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A423621F8938E00E97CB7 /* ExtraFunctionObject.swift */; };
@@ -177,6 +178,7 @@
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExtraFunctionsController.swift; sourceTree = "<group>"; };
 		9201DBF021FA4404003D5FF2 /* NewExtraFunctions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewExtraFunctions.storyboard; sourceTree = "<group>"; };
+		9201DBF221FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExtraFunctionsControllerExtension.swift; sourceTree = "<group>"; };
 		9220AFB621F1DD85003E2794 /* handsender1_extended.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1_extended.csv; sourceTree = "<group>"; };
 		9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionCoreData.swift; sourceTree = "<group>"; };
 		927A423621F8938E00E97CB7 /* ExtraFunctionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctionObject.swift; sourceTree = "<group>"; };
@@ -581,10 +583,11 @@
 		FAE52D4821D902E600121B54 /* ExtraFunctionsController */ = {
 			isa = PBXGroup;
 			children = (
+				9201DBF021FA4404003D5FF2 /* NewExtraFunctions.storyboard */,
 				FAE52D4421D7BEBF00121B54 /* ExtraFunctionsController.swift */,
 				FAE52D4621D902E000121B54 /* ExtraFunctionsControllerExtension.swift */,
 				9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */,
-				9201DBF021FA4404003D5FF2 /* NewExtraFunctions.storyboard */,
+				9201DBF221FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift */,
 			);
 			path = ExtraFunctionsController;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */,
 				03786EF821F079A400FD894E /* DetailVendorGestureHandler.swift in Sources */,
 				03CA62DE21EBDF51003F3477 /* AccessoryCustomCell.swift in Sources */,
+				9201DBF321FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift in Sources */,
 				FAE52D4E21D924D400121B54 /* AddPresetController.swift in Sources */,
 				FA19A2F621D370900032A4E7 /* RFPairingController1.swift in Sources */,
 				FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */,

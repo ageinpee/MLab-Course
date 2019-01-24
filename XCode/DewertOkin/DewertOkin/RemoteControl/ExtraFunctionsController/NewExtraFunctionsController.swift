@@ -17,25 +17,24 @@ class NewExtraFunctionsController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var exploreButton: UIButton!
     @IBOutlet weak var noFunctionsLabel: UILabel!
-    
 
-    
-    var functionsMetadata = [ExtraFunctions.massage_back: ("Massage Back", Data(), UIImage(named: "massageBackHRWhiteCurly"), UIImage(named: "massageBackHRCurlyHighlighted")),
-                             ExtraFunctions.massage_neck: ("Massage Neck", Data(), UIImage(named: "massageNeckHRWhiteCurly"), UIImage(named: "massageNeckHRCurlyHighlighted")),
-                             ExtraFunctions.massage_legs: ("Massage Legs", Data(), UIImage(named: "massageLegHRWhiteCurly"), UIImage(named: "massageLegHRCurlyHighlighted")),
-                             ExtraFunctions.ubl: ("Under Bed Lighting", Data(), UIImage(named: "ublHRWhite"), UIImage(named: "ublHRHighlighted")),
+    // [ Extrafunction-Enum-Entry: (Title | Data for Bluetooth | Image for .normal | Image for .highlighted | tag)]
+    var functionsMetadata = [ExtraFunctions.massage_back: ("Massage Back", Data(), UIImage(named: "massageBackHRWhiteCurly"), UIImage(named: "massageBackHRCurlyHighlighted"), 0),
+                             ExtraFunctions.massage_neck: ("Massage Neck", Data(), UIImage(named: "massageNeckHRWhiteCurly"), UIImage(named: "massageNeckHRCurlyHighlighted"), 1),
+                             ExtraFunctions.massage_legs: ("Massage Legs", Data(), UIImage(named: "massageLegHRWhiteCurly"), UIImage(named: "massageLegHRCurlyHighlighted"), 2),
+                             ExtraFunctions.ubl: ("Under Bed Lighting", Data(), UIImage(named: "ublHRWhite"), UIImage(named: "ublHRHighlighted"), 3),
                              //Extrafunctions from Explore
-                             ExtraFunctions.satellite_speaker: ("Satellite Speaker", Data(), UIImage(named: ""), UIImage(named: "")),
-                             ExtraFunctions.subwoofer_speaker: ("Subwoofer Speaker", Data(), UIImage(named: ""), UIImage(named: "")),
-                             ExtraFunctions.massage_motor: ("Massage Motor", Data(), UIImage(named: ""), UIImage(named: "")),
-                             ExtraFunctions.under_bed_lighting: ("Under Bed Lighting", Data(), UIImage(named: ""), UIImage(named: "")),
-                             ExtraFunctions.light_strip: ("Light Strip", Data(), UIImage(named: ""), UIImage(named: "")),
-                             ExtraFunctions.seat_heating: ("Seat Heating", Data(), UIImage(named: ""), UIImage(named: "")),
-                             ExtraFunctions.hands_free_kit: ("Hands Free Kit", Data(), UIImage(named: ""), UIImage(named: "")),
-                             ExtraFunctions.rgb_lighting_strip: ("RGB Strip", Data(), UIImage(named: ""), UIImage(named: "")),
-                             ExtraFunctions.rgb_lighting_control_unit: ("RGB Control Box", Data(), UIImage(named: ""), UIImage(named: "")),
+                             ExtraFunctions.satellite_speaker: ("Satellite Speaker", Data(), UIImage(named: ""), UIImage(named: ""), 4),
+                             ExtraFunctions.subwoofer_speaker: ("Subwoofer Speaker", Data(), UIImage(named: ""), UIImage(named: ""), 5),
+                             ExtraFunctions.massage_motor: ("Massage Motor", Data(), UIImage(named: ""), UIImage(named: ""), 6),
+                             ExtraFunctions.under_bed_lighting: ("Under Bed Lighting", Data(), UIImage(named: ""), UIImage(named: ""), 7),
+                             ExtraFunctions.light_strip: ("Light Strip", Data(), UIImage(named: ""), UIImage(named: ""), 8),
+                             ExtraFunctions.seat_heating: ("Seat Heating", Data(), UIImage(named: ""), UIImage(named: ""), 9),
+                             ExtraFunctions.hands_free_kit: ("Hands Free Kit", Data(), UIImage(named: ""), UIImage(named: ""), 10),
+                             ExtraFunctions.rgb_lighting_strip: ("RGB Strip", Data(), UIImage(named: ""), UIImage(named: ""), 11),
+                             ExtraFunctions.rgb_lighting_control_unit: ("RGB Control Box", Data(), UIImage(named: ""), UIImage(named: ""), 12),
                              //Default Handler
-                             ExtraFunctions.NaN: ("NaN", Data(), UIImage(named: ""), UIImage(named: ""))]
+                             ExtraFunctions.NaN: ("NaN", Data(), UIImage(named: ""), UIImage(named: ""), 13)]
     
     override func viewDidLoad() {
         self.device = globalDeviceObject
@@ -43,12 +42,10 @@ class NewExtraFunctionsController: UIViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
         self.noFunctionsLabel.isHidden = true
-        setStaticButtons()
-        setDynamicButtons()
+        self.setStaticButtons()
+        self.setDynamicButtons()
         
     }
-    
-    
     
     @IBAction func dismissVC(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -67,69 +64,44 @@ class NewExtraFunctionsController: UIViewController {
         }
     }
     
-    
-    
-    
-    
-    
-    private func setStaticButtons() {
-        self.backButton.layer.borderColor = UIColor.white.cgColor
-        self.backButton.layer.borderWidth = 1
-        self.backButton.layer.cornerRadius = 10
-        
-        self.exploreButton.layer.borderColor = UIColor.white.cgColor
-        self.exploreButton.layer.borderWidth = 1
-        self.exploreButton.layer.cornerRadius = 10
-        self.exploreButton.isHidden = true
-    }
-    
-    
-    
-    
-    
-    private func setDynamicButtons() {
-        if self.device.availableExtraFunctions.count == 0 {
-            self.exploreButton.isHidden = false
-            self.noFunctionsLabel.isHidden = false
-        }
-        else if self.device.availableExtraFunctions.count == 1 {
-            let button = styleButton(withFunction: self.device.availableExtraFunctions[0],
-                                     imageSize: CGSize(width: 100, height: 100))
-            button.tag = 0
-            
-            contentView.addSubview(button)
-            
-            button.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: contentView.superview, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-            NSLayoutConstraint(item: button, attribute: .centerY, relatedBy: .equal, toItem: contentView.superview, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-            NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentView.frame.width/3).isActive = true
-            NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentView.frame.width/3).isActive = true
-            
-            //button.addTarget(self, action: #selector(handleButtonPress), for: .touchDown)
-        }
-        else if self.device.availableExtraFunctions.count > 1 {
-            
+    @objc
+    func handleButtonPress(sender: UIButton!) {
+        switch sender.tag{      // tag defines bluetoothfunction to call
+        case 0:
+            executeFunction(withHex: Data())
+        case 1:
+            executeFunction(withHex: Data())
+        case 2:
+            executeFunction(withHex: Data())
+        case 3:
+            executeFunction(withHex: Data())
+        case 4:
+            executeFunction(withHex: Data())
+        case 5:
+            executeFunction(withHex: Data())
+        case 6:
+            executeFunction(withHex: Data())
+        case 7:
+            executeFunction(withHex: Data())
+        case 8:
+            executeFunction(withHex: Data())
+        case 9:
+            executeFunction(withHex: Data())
+        case 10:
+            executeFunction(withHex: Data())
+        case 11:
+            executeFunction(withHex: Data())
+        case 12:
+            executeFunction(withHex: Data())
+        case 13:
+            executeFunction(withHex: Data())
+        default:
+            executeFunction(withHex: Data())
         }
     }
     
-    
-    private func styleButton(withFunction: ExtraFunctions, imageSize: CGSize) -> UIButton {
-        let button = UIButton()
-        button.setTitle(functionsMetadata[withFunction]?.0, for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.view.frame.width/23)
-        button.titleEdgeInsets = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
-        button.titleLabel?.textAlignment = .center
-        button.titleLabel?.lineBreakMode = .byWordWrapping
-        
-        var image = functionsMetadata[withFunction]?.2
-        var imageHighlighted = functionsMetadata[withFunction]?.3
-        image = image?.resize(size: imageSize)
-        imageHighlighted = imageHighlighted?.resize(size: imageSize)
-        button.setBackgroundImage(image, for: .normal)
-        button.setBackgroundImage(imageHighlighted, for: .highlighted)
-        
-        return button
+    private func executeFunction(withHex hex: Data) {
+        print("placehodler for bluetooth function with hexcode \(hex)")
     }
     
 }
