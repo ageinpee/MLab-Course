@@ -28,7 +28,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var devicesListButton: UIButton!
     @IBOutlet weak var header: UINavigationBar!
     
-    
     var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var panRecRight: UIPanGestureRecognizer = UIPanGestureRecognizer()
     var pressRecLeft: UILongPressGestureRecognizer = UILongPressGestureRecognizer()
