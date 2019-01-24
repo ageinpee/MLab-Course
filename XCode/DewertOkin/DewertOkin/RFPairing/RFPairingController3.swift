@@ -11,7 +11,7 @@ import UIKit
 import CoreBluetooth
 import CoreData
 
-class RFPairingController3: UIViewController {
+class RFPairingController3: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var dottedCircleImage: UIImageView!
     @IBOutlet weak var proceedButton: UIButton!
@@ -47,6 +47,8 @@ class RFPairingController3: UIViewController {
         
         fetchDevices()
         
+        deviceNameTextfield.delegate = self
+        
         let reader = CSVReader()
         let remoteData = reader.readCSV(fileName: "handsender1_extended", fileType: "csv")
         
@@ -56,6 +58,11 @@ class RFPairingController3: UIViewController {
             }
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @IBAction func ProceedAction(_ sender: Any) {
