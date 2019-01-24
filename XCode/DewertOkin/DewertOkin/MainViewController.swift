@@ -48,7 +48,8 @@ class MainViewController: UITabBarController {
         exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(named: "explore_icon"), selectedImage: UIImage(named: "explore_icon_blue"))
         
         settingsVC = settings
-        settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
+        //settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
+        settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings_icon"), selectedImage: UIImage(named: "settings_icon_highlighted"))
         
         let controllers = [remoteVC, healthVC, exploreVC ,settingsVC]
         
