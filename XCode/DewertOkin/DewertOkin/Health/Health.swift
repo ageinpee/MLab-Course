@@ -56,11 +56,11 @@ class Health {
         
         switch globalDeviceObject.type {
         case "chair_2Motors":
-            page.image = UIImage(named: "Squad-Exercise")
+            page.image = UIImage(named: "Squad-Exercise")?.resize(size: CGSize(width: 200, height: 200))
         case "bed_2Motors":
-            page.image = UIImage(named: "Arch-Exercise")
+            page.image = UIImage(named: "Arch-Exercise")?.resize(size: CGSize(width: 200, height: 200))
         case "table":
-            page.image = UIImage(named: "Wrist-Exercise")
+            page.image = UIImage(named: "Wrist-Exercise")?.resize(size: CGSize(width: 200, height: 200))
         default:
             print("Error setting exercise image: Device Type not found.")
         }
@@ -106,6 +106,25 @@ class Health {
     
     func saveHealthSettings() {
         UserDefaults.standard.set(activityReminderEnabled, forKey: "activityReminderEnabled")
+    }
+    
+    func updateBulletinImage() {
+        switch globalDeviceObject.type {
+        case "chair_2Motors":
+            page.image = UIImage(named: "Squad-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+        case "bed_2Motors":
+            page.image = UIImage(named: "Arch-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+        case "table":
+            page.image = UIImage(named: "Wrist-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+        default:
+            print("Error setting exercise image: Device Type not found.")
+        }
+        bulletinManager = {
+            let manager = BLTNItemManager(rootItem: page)
+            manager.backgroundViewStyle = .dimmed
+            return manager
+        }()
+        
     }
     
     // This works, don't ask 😅

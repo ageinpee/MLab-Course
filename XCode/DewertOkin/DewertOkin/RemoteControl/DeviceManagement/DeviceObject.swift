@@ -11,7 +11,11 @@ import UIKit.UIImage
 import CoreBluetooth
 
 
-var globalDeviceObject = DeviceObject()
+var globalDeviceObject = DeviceObject() {
+    didSet {
+        Health.shared.updateBulletinImage()
+    }
+}
 
 
 class DeviceObject {
