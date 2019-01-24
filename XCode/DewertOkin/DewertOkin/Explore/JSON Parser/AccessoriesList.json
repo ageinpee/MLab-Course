@@ -10,43 +10,38 @@
         "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
     },
     {
-        "imageName": "MonitorArmIconAccessory",
-        "name": "Monitor Arm",
-        "accessoryDescription": "Motorized monitor arm for your desk"
+        "imageName": "MassageMotorIconAccessory",
+        "name": "Massage Motor",
+        "accessoryDescription": "Massage motor for your chair"
     },
     {
-        "imageName": "TouchControl",
-        "name": "Touch Remote",
-        "accessoryDescription": "Very modern, convenient touch remote control"
-    },
-    {
-        "imageName": "LEDStripe",
-        "name": "LED Stripe",
-        "accessoryDescription": "Illuminate everything in your living room"
-    },
-    {
-        "imageName": "AKKU POWER PACK 1300",
-        "name": "Akku Power Pack",
-        "accessoryDescription": "Makes your device usable without the power grid connection"
-    },
-    {
-        "imageName": "MASSAGEMOTOR MM 65",
-        "name": "Massagemotor",
-        "accessoryDescription": "Accessory to extend your furniture with massage-capabilities"
-    },
-    {
-        "imageName": "Under-Bed-Lighting",
+        "imageName": "UnderBedLightingIconAccessory",
         "name": "Under Bed Lighting",
-        "accessoryDescription": "Very convenient, glare-free extendable under bed lighting"
+        "accessoryDescription": "Lighting attached under your bed"
     },
     {
-        "imageName": "BREMSALARM",
-        "name": "Bremsalarm",
-        "accessoryDescription": "Convenient audiovisual way to get notified in case of brake release"
+        "imageName": "LightStripIconAccessory",
+        "name": "Light Strip",
+        "accessoryDescription": "Lighting for universal attachment"
     },
     {
-        "imageName": "BLUETOOTH®-RF GATEWAY",
-        "name": "Bluetooth-RF Gateway",
-        "accessoryDescription": "Extends your furniture with bluetooth functionality"
+        "imageName": "SeatHeatingIconAccessory",
+        "name": "Seat Heating",
+        "accessoryDescription": "Heating system for your chair"
+    },
+    {
+        "imageName": "HandsFreeKitIconAccessory",
+        "name": "Hands Free Kit",
+        "accessoryDescription": " Makes picking up calls more convenient"
+    },
+    {
+        "imageName": "RGBControlUnitIconAccessory",
+        "name": "RGB Lighting Control Unit",
+        "accessoryDescription": "Control Unit to enable RGB lighting with fitting devices"
+    },
+    {
+        "imageName": "RGBLightingStripIconAccessory",
+        "name": "RGB Lighting Strip",
+        "accessoryDescription": "RGB lighting for your devices. Needs a RGB Control Unit"
     }
 ]
