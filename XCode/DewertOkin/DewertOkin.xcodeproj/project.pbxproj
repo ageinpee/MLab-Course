@@ -50,6 +50,7 @@
 		03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987672194631300189C97 /* UserNotificationsUI.framework */; };
 		4B54CBF2759AFFD448783FF0 /* Pods_DewertOkin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		9201DBEF21FA0463003D5FF2 /* NewExtraFunctionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */; };
 		9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9220AFB621F1DD85003E2794 /* handsender1_extended.csv */; };
 		9243F4C621F0C78000513B11 /* RemoteControllerExtensionCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */; };
 		927A423721F8938E00E97CB7 /* ExtraFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A423621F8938E00E97CB7 /* ExtraFunction.swift */; };
@@ -173,6 +174,7 @@
 		66B96800A32AF456A1DA4FEE /* Pods-DewertOkin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DewertOkin.release.xcconfig"; path = "Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin.release.xcconfig"; sourceTree = "<group>"; };
 		760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DewertOkin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExtraFunctionsController.swift; sourceTree = "<group>"; };
 		9220AFB621F1DD85003E2794 /* handsender1_extended.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1_extended.csv; sourceTree = "<group>"; };
 		9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionCoreData.swift; sourceTree = "<group>"; };
 		927A423621F8938E00E97CB7 /* ExtraFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunction.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 			children = (
 				FAE52D4421D7BEBF00121B54 /* ExtraFunctionsController.swift */,
 				FAE52D4621D902E000121B54 /* ExtraFunctionsControllerExtension.swift */,
+				9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */,
 			);
 			path = ExtraFunctionsController;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */,
 				0380565321E901D500A6502F /* Vendor.swift in Sources */,
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
+				9201DBEF21FA0463003D5FF2 /* NewExtraFunctionsController.swift in Sources */,
 				CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */,
 				0316163021EFD91600E69559 /* AccessoryCustomCollectionCell.swift in Sources */,
 				039133C921E7ECD500ECCBBE /* ExploreViewController.swift in Sources */,
