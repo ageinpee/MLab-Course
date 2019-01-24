@@ -261,7 +261,7 @@ class DeviceObject {
             return RemoteControlConfig().getKeycode(name: .massage3)
         case .ubl:
             return RemoteControlConfig().getKeycode(name: .ubl)
-        case .NaN:
+        default:
             return Data()
         }
     }
@@ -342,6 +342,21 @@ enum ExtraFunctions: String {
     case massage_legs = "massage_legs"
     case ubl = "ubl"
     case NaN = "NaN"
+    
+    //Accessory names
+    case satellite_speaker = "Satellite Speaker"
+    case subwoofer_speaker = "Subwoofer Speaker"
+    case massage_motor = "Massage Motor"
+    case under_bed_lighting = "Under Bed Lighting"
+    case light_strip = "Light Strip"
+    case seat_heating = "Seat Heating"
+    case hands_free_kit = "Hands Free Kit"
+    case rgb_lighting_control_unit = "RGB Lighting Control Unit"
+    case rgb_lighting_strip = "RGB Lighting Strip"
+    
+    
+    
+    
 }
 
 enum Motors: String {
