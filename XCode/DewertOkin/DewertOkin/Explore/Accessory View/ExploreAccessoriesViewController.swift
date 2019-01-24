@@ -75,28 +75,21 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         
         do {
             let savedDevices = try PersistenceService.context.fetch(fetchRequest)
+            let currentDevice = globalDeviceObject
+            let ubl: ExtraFunctions = ExtraFunctions(rawValue: "ubl")! // Universell machen. peter
+            guard !(currentDevice.availableExtraFunctions.contains(ubl)) else { return }
+            currentDevice.availableExtraFunctions.append(ubl)
+            for device in savedDevices {
+                if device.uuid == currentDevice.uuid {
+                    device.extraFunctions = DeviceObject().convertExtraFunctionsToString(functions: currentDevice.availableExtraFunctions)
+                }
+            }
+            PersistenceService.saveContext()
+        } catch {
+            print("asd")
         }
     }
     
-    func fetchDevices() {
-        do {
-            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
-            var deviceObject = DeviceObject()
-            for devices in devicesList {
-                deviceObject = DeviceObject(withUUID: devices.uuid ?? UUID().uuidString,
-                                            named: devices.name ?? "unknown device",
-                                            withHandheldID: devices.handheld ?? "82418" ,
-                                            withStyle: devices.style ?? "filled",
-                                            withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: devices.extraFunctions ?? "")
-                )
-                cellDevicesData.append(DevicesData.init(image: deviceObject.deviceImages[1],
-                                                        name: devices.name,
-                                                        status: deviceStatus(device: devices)))
-            }
-        } catch {
-            print("Couldn't update the Devices, reload!")
-        }
-    }
 }
 
 extension ExploreAccessoriesViewController: UITableViewDataSource {
