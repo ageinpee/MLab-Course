@@ -19,6 +19,7 @@ extension ExploreViewController {
                 self.vendorView.frame.origin.y -= self.vendorViewOffset
                 self.closeButton.frame.origin.y -= self.vendorViewOffset
                 self.collectionView.frame.origin.y -= self.vendorViewOffset
+                self.vendorTelephone.frame.origin.y -= self.vendorViewOffset
                 self.vendorWebsite.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .black
                 self.backgroundAlphaView.alpha = 0.5
@@ -26,6 +27,7 @@ extension ExploreViewController {
                 self.vendorView.frame.origin.y += self.vendorViewOffset
                 self.closeButton.frame.origin.y += self.vendorViewOffset
                 self.collectionView.frame.origin.y += self.vendorViewOffset
+                self.vendorTelephone.frame.origin.y += self.vendorViewOffset
                 self.vendorWebsite.frame.origin.y += self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .clear
                 self.backgroundAlphaView.alpha = 0.0
@@ -105,6 +107,14 @@ extension ExploreViewController {
     
     @objc func closeVendorDetails(recognizer: UIPanGestureRecognizer) {
         closeDetailView()
+    }
+    
+    @objc func callVendor(sender: UIButton!) {
+        print("You are calling this Vendor")
+    }
+    
+    @objc func showVendorWebstore(sender: UIButton!) {
+        UIApplication.shared.open(URL(string: "https://www.dewertokin.com/de/")!, options: [:], completionHandler: nil)
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
