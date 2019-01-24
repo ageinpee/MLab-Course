@@ -38,7 +38,7 @@ class StatisticsCell: UITableViewCell {
     }
     
     
-    private func setupChartData() {
+    func setupChartData() {
         
         if Health.shared.exerciseHistory.isEmpty {
             DispatchQueue.main.async {

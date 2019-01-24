@@ -26,6 +26,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     @IBOutlet weak var rightPanArea: UIView!
     @IBOutlet weak var currentDeviceLabel: UILabel!
     @IBOutlet weak var devicesListButton: UIButton!
+    @IBOutlet weak var header: UINavigationBar!
     
     
     var panRecLeft: UIPanGestureRecognizer = UIPanGestureRecognizer()
@@ -97,6 +98,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         */
         
         currentDeviceLabel.text = device.name
+        currentDeviceLabel.isHidden = true
+        header.topItem?.title = device.name
         setupButtons()
         setupPanAreas()
         
