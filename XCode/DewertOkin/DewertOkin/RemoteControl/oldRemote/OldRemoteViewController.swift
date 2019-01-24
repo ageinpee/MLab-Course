@@ -42,10 +42,6 @@ class OldRemoteViewController: UIViewController {
                        memory1Button, memory2Button,
                        saveButton, ublButton]
         
-        for button in buttonList {
-            button.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-        }
-        
         constrainButtons()
     }
     
