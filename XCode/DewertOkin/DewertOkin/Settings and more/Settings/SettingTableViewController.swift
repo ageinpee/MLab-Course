@@ -24,7 +24,7 @@ enum SettingsEntry: String {
 class SettingTableViewController: UITableViewController, Themeable {
     
     private let settingsEntries: [[SettingsEntry]] = [
-        [.deviceInfo],
+        [.deviceInfo, .about],
         [.useOldRemote, .darkMode],
         [.achievements, .test, .rfpairing, .bluetoothPairing]
     ]
@@ -156,10 +156,19 @@ class SettingTableViewController: UITableViewController, Themeable {
             pushRFPairingController()
         } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .bluetoothPairing)) {
             pushBluetoothPairing()
+        } else if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .about)) {
+            pushAboutPage()
         }
         
-        
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func pushAboutPage() {
+        if let vc = UIStoryboard(name: "AboutPage", bundle: nil).instantiateInitialViewController() {
+            if let navigator = navigationController {
+                navigator.pushViewController(vc, animated: true)
+            }
+        }
     }
     
     private func pushBluetoothPairing() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3rj-i3-qgk">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,25 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--About Page View Controller-->
         <scene sceneID="c7y-4l-fGy">
             <objects>
-                <viewController id="3rj-i3-qgk" sceneMemberID="viewController">
+                <viewController id="3rj-i3-qgk" customClass="AboutPageViewController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LO8-0i-zcf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg4-vT-7KY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="mG9-km-XY2"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="About this App" id="JQI-Ve-q6p">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="GHv-Ur-LGV"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This App has been made in the MLab course of the University of Hamburg. The projects customer is DewertOkin. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsi-Nx-bcW">
                                 <rect key="frame" x="20" y="108" width="374" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -36,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The icons in this app have been taken from icons8 (https://icons8.de/). " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvr-7X-JBg">
-                                <rect key="frame" x="20" y="189" width="374" height="41"/>
+                                <rect key="frame" x="20" y="172.5" width="374" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -44,15 +33,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qvr-7X-JBg" firstAttribute="top" secondItem="zsi-Nx-bcW" secondAttribute="bottom" constant="20" id="0Vy-4b-9h9"/>
-                            <constraint firstItem="Rg4-vT-7KY" firstAttribute="leading" secondItem="ZFX-et-m5l" secondAttribute="leading" id="0un-vJ-L3s"/>
-                            <constraint firstItem="zsi-Nx-bcW" firstAttribute="leading" secondItem="ZFX-et-m5l" secondAttribute="leading" constant="20" id="3s2-ub-e4S"/>
-                            <constraint firstItem="zsi-Nx-bcW" firstAttribute="top" secondItem="Rg4-vT-7KY" secondAttribute="bottom" constant="20" id="9Dc-pk-qWF"/>
-                            <constraint firstItem="ZFX-et-m5l" firstAttribute="trailing" secondItem="qvr-7X-JBg" secondAttribute="trailing" constant="20" id="Ij2-oJ-Py4"/>
-                            <constraint firstItem="qvr-7X-JBg" firstAttribute="leading" secondItem="ZFX-et-m5l" secondAttribute="leading" constant="20" id="PiB-pb-brQ"/>
-                            <constraint firstItem="Rg4-vT-7KY" firstAttribute="top" secondItem="ZFX-et-m5l" secondAttribute="top" id="dLX-i2-qTa"/>
-                            <constraint firstItem="Rg4-vT-7KY" firstAttribute="trailing" secondItem="ZFX-et-m5l" secondAttribute="trailing" id="lqW-48-zDM"/>
-                            <constraint firstItem="ZFX-et-m5l" firstAttribute="trailing" secondItem="zsi-Nx-bcW" secondAttribute="trailing" constant="20" id="wlx-8c-c07"/>
+                            <constraint firstItem="zsi-Nx-bcW" firstAttribute="leading" secondItem="LO8-0i-zcf" secondAttribute="leadingMargin" id="1za-ju-rfJ"/>
+                            <constraint firstItem="qvr-7X-JBg" firstAttribute="firstBaseline" secondItem="zsi-Nx-bcW" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="3l1-JN-NcS"/>
+                            <constraint firstItem="zsi-Nx-bcW" firstAttribute="leading" secondItem="qvr-7X-JBg" secondAttribute="leading" id="5GW-80-shC"/>
+                            <constraint firstItem="zsi-Nx-bcW" firstAttribute="trailing" secondItem="qvr-7X-JBg" secondAttribute="trailing" id="LMr-lx-KpJ"/>
+                            <constraint firstItem="zsi-Nx-bcW" firstAttribute="top" secondItem="ZFX-et-m5l" secondAttribute="top" constant="64" id="Nnk-ZW-l5v"/>
+                            <constraint firstItem="zsi-Nx-bcW" firstAttribute="trailing" secondItem="LO8-0i-zcf" secondAttribute="trailingMargin" id="t6x-G0-Men"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZFX-et-m5l"/>
                     </view>
