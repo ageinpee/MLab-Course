@@ -98,6 +98,7 @@ extension ExploreViewController: MKMapViewDelegate {
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = false
+            view.animatesWhenAdded = true
             view.isUserInteractionEnabled = true
             
             view.markerTintColor = .red

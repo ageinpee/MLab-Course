@@ -27,16 +27,11 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         initializeAccessories()
-        //tableView.beginUpdates()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         selectedAccessories = defaults.stringArray(forKey: "FilterAccessories") ?? []
         tableView.reloadData()
-        
-//        for cell in tableView.visibleCells {
-//            cell.accessoryType = .none
-//        }
     }
     
     func initializeAccessories() {
@@ -80,6 +75,8 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
         cell.accessoryDescription = accessoriesList[indexPath.row].accessoryDescription
         if (selectedAccessories.contains(cell.accessoryName!)) {
             cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
         }
         
         cell.layoutSubviews()
@@ -100,7 +97,7 @@ extension ExploreAccessoriesViewController: UITableViewDataSource {
             selectedAccessories.append(accessoriesList[indexPath.row].name)
             cell.accessoryType = .checkmark
             cell.isSelected = true
-        } else {
+        } else if (selectedAccessories.contains(accessoriesList[indexPath.row].name)) {
             cell.accessoryType = .none
             cell.isSelected = false
             selectedAccessories = selectedAccessories.filter { $0 != cell.accessoryName}
