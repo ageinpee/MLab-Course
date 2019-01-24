@@ -14,11 +14,6 @@
                 "accessoryDescription": "Improve your furniture with satellite sound speakers"
             },
             {
-                "imageName": "SubwooferIconAccessory",
-                "name": "Subwoofer Speaker",
-                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
-            },
-            {
                 "imageName": "MassageMotorIconAccessory",
                 "name": "Massage Motor",
                 "accessoryDescription": "Massage motor for your chair"
@@ -55,16 +50,6 @@
                 "accessoryDescription": "Improve your furniture with satellite sound speakers"
             },
             {
-                "imageName": "MassageMotorIconAccessory",
-                "name": "Massage Motor",
-                "accessoryDescription": "Massage motor for your chair"
-            },
-            {
-                "imageName": "UnderBedLightingIconAccessory",
-                "name": "Under Bed Lighting",
-                "accessoryDescription": "Lighting Attached under your bed"
-            },
-            {
                 "imageName": "LightStripIconAccessory",
                 "name": "Light Strip",
                 "accessoryDescription": "Lighting for universal attachment"
@@ -73,11 +58,6 @@
                 "imageName": "SeatHeatingIconAccessory",
                 "name": "Seat Heating",
                 "accessoryDescription": "Heating system for your chair"
-            },
-            {
-                "imageName": "HandsFreeKitIconAccessory",
-                "name": "Hands Free Kit",
-                "accessoryDescription": " Makes picking up calls more convenient"
             },
             {
                 "imageName": "RGBControlUnitIconAccessory",
@@ -106,24 +86,9 @@
                 "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
             },
             {
-                "imageName": "MassageMotorIconAccessory",
-                "name": "Massage Motor",
-                "accessoryDescription": "Massage motor for your chair"
-            },
-            {
                 "imageName": "UnderBedLightingIconAccessory",
                 "name": "Under Bed Lighting",
                 "accessoryDescription": "Lighting Attached under your bed"
-            },
-            {
-                "imageName": "LightStripIconAccessory",
-                "name": "Light Strip",
-                "accessoryDescription": "Lighting for universal attachment"
-            },
-            {
-                "imageName": "SeatHeatingIconAccessory",
-                "name": "Seat Heating",
-                "accessoryDescription": "Heating system for your chair"
             },
             {
                 "imageName": "HandsFreeKitIconAccessory",
@@ -169,7 +134,7 @@
         ]
     },
     {
-        "name": "Best Beds",
+        "name": "The Inconvienience Store",
         "street": "Holzweg 007",
         "openingHour": 8,
         "closingHour": 20,
@@ -177,16 +142,6 @@
         "latitude": 53.58,
         "longitude": 10.05,
         "accessories": [
-            {
-                "imageName": "SatelliteIconAccessory",
-                "name": "Satellite Speaker",
-                "accessoryDescription": "Improve your furniture with satellite sound speakers"
-            },
-            {
-                "imageName": "SubwooferIconAccessory",
-                "name": "Subwoofer Speaker",
-                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
-            },
             {
                 "imageName": "MassageMotorIconAccessory",
                 "name": "Massage Motor",
@@ -229,11 +184,6 @@
                 "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
             },
             {
-                "imageName": "MassageMotorIconAccessory",
-                "name": "Massage Motor",
-                "accessoryDescription": "Massage motor for your chair"
-            },
-            {
                 "imageName": "LightStripIconAccessory",
                 "name": "Light Strip",
                 "accessoryDescription": "Lighting for universal attachment"
@@ -273,11 +223,6 @@
                 "imageName": "SatelliteIconAccessory",
                 "name": "Satellite Speaker",
                 "accessoryDescription": "Improve your furniture with satellite sound speakers"
-            },
-            {
-                "imageName": "SubwooferIconAccessory",
-                "name": "Subwoofer Speaker",
-                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
             },
             {
                 "imageName": "UnderBedLightingIconAccessory",
@@ -372,11 +317,6 @@
                 "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
             },
             {
-                "imageName": "MassageMotorIconAccessory",
-                "name": "Massage Motor",
-                "accessoryDescription": "Massage motor for your chair"
-            },
-            {
                 "imageName": "UnderBedLightingIconAccessory",
                 "name": "Under Bed Lighting",
                 "accessoryDescription": "Lighting Attached under your bed"
@@ -404,7 +344,7 @@
         ]
     },
     {
-        "name": "The Inconvienience Store",
+        "name": "Furry Furniture",
         "street": "Back-Street 27",
         "openingHour": 8,
         "closingHour": 20,
@@ -421,11 +361,6 @@
                 "imageName": "SubwooferIconAccessory",
                 "name": "Subwoofer Speaker",
                 "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
-            },
-            {
-                "imageName": "MassageMotorIconAccessory",
-                "name": "Massage Motor",
-                "accessoryDescription": "Massage motor for your chair"
             },
             {
                 "imageName": "UnderBedLightingIconAccessory",
@@ -482,16 +417,6 @@
                 "imageName": "HandsFreeKitIconAccessory",
                 "name": "Hands Free Kit",
                 "accessoryDescription": " Makes picking up calls more convenient"
-            },
-            {
-                "imageName": "RGBControlUnitIconAccessory",
-                "name": "RGB Lighting Control Unit",
-                "accessoryDescription": "Control Unit to enable RGB Lighting with fitting devices"
-            },
-            {
-                "imageName": "RGBLightingStripIconAccessory",
-                "name": "RGB Lighting Strip",
-                "accessoryDescription": "RGB Lighting for your Devices. Needs a RGB Control Unit"
             }
         ]
     },
@@ -513,16 +438,6 @@
                 "imageName": "SubwooferIconAccessory",
                 "name": "Subwoofer Speaker",
                 "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
-            },
-            {
-                "imageName": "MassageMotorIconAccessory",
-                "name": "Massage Motor",
-                "accessoryDescription": "Massage motor for your chair"
-            },
-            {
-                "imageName": "UnderBedLightingIconAccessory",
-                "name": "Under Bed Lighting",
-                "accessoryDescription": "Lighting Attached under your bed"
             },
             {
                 "imageName": "LightStripIconAccessory",
