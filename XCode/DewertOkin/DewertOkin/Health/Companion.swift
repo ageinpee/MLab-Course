@@ -38,7 +38,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         view.xAxis.drawGridLinesEnabled = false
         view.xAxis.labelPosition = .bottom
         view.xAxis.granularity = 1
-        view.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"])
+        view.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"])
         
         view.legend.enabled = true
     
