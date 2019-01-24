@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     
@@ -63,9 +64,37 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     @objc func buyingAccessory(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let cell = sender.location(in: self.tableView)
-            if let indexPath = tableView.indexPathForRow(at: cell) {
-                print("HAHA")
+            if let indexPath = tableView.indexPathForRow(at: cell) {
+                addExtraToDevice(accessory: accessoriesList[indexPath.row])
             }
+        }
+    }
+    
+    func addExtraToDevice(accessory: Accessory) {
+        let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()
+        
+        do {
+            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
+        }
+    }
+    
+    func fetchDevices() {
+        do {
+            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
+            var deviceObject = DeviceObject()
+            for devices in devicesList {
+                deviceObject = DeviceObject(withUUID: devices.uuid ?? UUID().uuidString,
+                                            named: devices.name ?? "unknown device",
+                                            withHandheldID: devices.handheld ?? "82418" ,
+                                            withStyle: devices.style ?? "filled",
+                                            withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: devices.extraFunctions ?? "")
+                )
+                cellDevicesData.append(DevicesData.init(image: deviceObject.deviceImages[1],
+                                                        name: devices.name,
+                                                        status: deviceStatus(device: devices)))
+            }
+        } catch {
+            print("Couldn't update the Devices, reload!")
         }
     }
 }
