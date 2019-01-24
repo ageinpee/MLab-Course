@@ -69,6 +69,8 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
         let filter = defaults.stringArray(forKey: "FilterAccessories")
         guard !(filter?.isEmpty ?? true) else { return }
         initializeAccessories(name: filter!)
+        let allAnnotations = mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
         for vendorNumber in 0..<(filteredVendors.count) {
             let temp = filteredVendors[vendorNumber]!.accessories.filter { filteredAccessories.contains($0) }
             if (temp.count > 0){

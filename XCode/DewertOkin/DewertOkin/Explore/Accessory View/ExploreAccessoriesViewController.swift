@@ -22,7 +22,7 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         
         navigationItem.title = "Accessories"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "test", style: .done, target: self, action: #selector(filterVendors(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Apply", style: .done, target: self, action: #selector(filterVendors(_:)))
         
         tableView.delegate = self
         tableView.dataSource = self
