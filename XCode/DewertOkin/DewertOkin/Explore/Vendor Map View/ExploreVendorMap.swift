@@ -70,6 +70,7 @@ extension ExploreViewController {
         transitionAnimator.addCompletion{_ in
             self.backgroundAlphaView.removeFromSuperview()
             self.vendorWebsite.removeFromSuperview()
+            self.vendorTelephone.removeFromSuperview()
             self.closeButton.removeFromSuperview()
             self.vendorName.removeFromSuperview()
             self.vendorStreet.removeFromSuperview()

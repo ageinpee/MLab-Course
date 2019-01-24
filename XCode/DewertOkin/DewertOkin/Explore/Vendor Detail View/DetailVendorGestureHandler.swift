@@ -19,6 +19,7 @@ extension ExploreViewController {
                 self.vendorView.frame.origin.y -= self.vendorViewOffset
                 self.closeButton.frame.origin.y -= self.vendorViewOffset
                 self.collectionView.frame.origin.y -= self.vendorViewOffset
+                self.vendorTelephone.frame.origin.y -= self.vendorViewOffset
                 self.vendorWebsite.frame.origin.y -= self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .black
                 self.backgroundAlphaView.alpha = 0.5
@@ -26,6 +27,7 @@ extension ExploreViewController {
                 self.vendorView.frame.origin.y += self.vendorViewOffset
                 self.closeButton.frame.origin.y += self.vendorViewOffset
                 self.collectionView.frame.origin.y += self.vendorViewOffset
+                self.vendorTelephone.frame.origin.y += self.vendorViewOffset
                 self.vendorWebsite.frame.origin.y += self.vendorViewOffset
                 self.backgroundAlphaView.backgroundColor = .clear
                 self.backgroundAlphaView.alpha = 0.0
