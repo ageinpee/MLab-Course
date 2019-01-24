@@ -109,6 +109,14 @@ extension ExploreViewController {
         closeDetailView()
     }
     
+    @objc func callVendor(sender: UIButton!) {
+        print("You are calling this Vendor")
+    }
+    
+    @objc func showVendorWebstore(sender: UIButton!) {
+        UIApplication.shared.open(URL(string: "https://www.dewertokin.com/de/")!, options: [:], completionHandler: nil)
+    }
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         guard backgroundAlphaView.superview != nil else { return false }
         if ((touch.view?.isDescendant(of: backgroundAlphaView))!){

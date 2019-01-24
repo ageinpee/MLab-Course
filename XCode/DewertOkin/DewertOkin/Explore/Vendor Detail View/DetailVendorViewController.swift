@@ -102,8 +102,10 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorTelephone.layer.backgroundColor = UIColor.blue.cgColor
         vendorTelephone.layer.borderWidth = 0
         vendorTelephone.layer.cornerRadius = 25
+        vendorTelephone.isUserInteractionEnabled = true
         vendorTelephone.translatesAutoresizingMaskIntoConstraints = false
         UIApplication.shared.keyWindow?.addSubview(vendorTelephone)
+        vendorTelephone.addTarget(self, action: #selector(callVendor(sender:)), for: .touchUpInside)
         
         vendorTelephone.heightAnchor.constraint(equalToConstant: 50).isActive = true
         vendorTelephone.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -40).isActive = true
@@ -119,8 +121,10 @@ extension ExploreViewController: UICollectionViewDataSource, UICollectionViewDel
         vendorWebsite.layer.backgroundColor = UIColor.blue.cgColor
         vendorWebsite.layer.borderWidth = 0
         vendorWebsite.layer.cornerRadius = 25
+        vendorWebsite.isUserInteractionEnabled = true
         vendorWebsite.translatesAutoresizingMaskIntoConstraints = false
         UIApplication.shared.keyWindow?.addSubview(vendorWebsite)
+        vendorWebsite.addTarget(self, action: #selector(showVendorWebstore(sender:)), for: .touchUpInside)
         
         vendorWebsite.heightAnchor.constraint(equalToConstant: 50).isActive = true
         vendorWebsite.widthAnchor.constraint(equalTo: vendorView.widthAnchor, constant: -40).isActive = true
