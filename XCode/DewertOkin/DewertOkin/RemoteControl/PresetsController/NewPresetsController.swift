@@ -40,7 +40,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     let presetButtonCell = "presetButtonCell"
 
     let controlUnitPresets = globalDeviceObject.availableMemories.map { $0.rawValue }
-    let phonePresetsNames = ["Sleep", "Relax", "Flat"]
+    var phonePresetsNames = ["Sleep", "Relax", "Flat"]
     
     let colors: [UIColor] = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
     
@@ -102,7 +102,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         case 1:
             // Presets on the control unit
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presetButtonCell, for: indexPath) as? PresetButtonCell {
-                cell.preset = controlUnitPresets[indexPath.item]
+                cell.presetName = controlUnitPresets[indexPath.item]
                 cell.delegate = self
                 cell.layer.borderColor = cell.backgroundColor?.cgColor
                 return cell
@@ -121,7 +121,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
             switch indexPath.item {
             case phonePresetsNames.count:
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presetButtonCell, for: indexPath) as? PresetButtonCell {
-                    cell.preset = "New Preset"
+                    cell.presetName = "New Preset"
                     cell.delegate = self
                     cell.presetNameLabel.text = "+"
                     cell.presetNameLabel.font = UIFont.preferredFont(forTextStyle: .headline).withSize(30)
@@ -131,7 +131,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                 }
             default:
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presetButtonCell, for: indexPath) as? PresetButtonCell {
-                    cell.preset = phonePresetsNames[indexPath.item]
+                    cell.presetName = phonePresetsNames[indexPath.item]
                     cell.delegate = self
                     cell.backgroundColor = colors[indexPath.item]
                     cell.layer.borderColor = cell.backgroundColor?.cgColor
@@ -149,11 +149,6 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         self.characteristic = self.bluetooth.writeCharacteristic
         
         guard (indexPath.section == 1) else { return }
-//        if (controlUnitPresets[indexPath.item] == "Memory 1") {
-//            triggerCommand(keycode: keycode.memory1)
-//        } else if (controlUnitPresets[indexPath.item] == "Memory 2") {
-//            triggerCommand(keycode: keycode.memory2)
-//        }
         
         DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
             self.triggerCommand(keycode: keycode.memory1)
@@ -206,12 +201,14 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         }
     }
     
-    func presetButtonEditHandler(preset: String) {
-        showEditSheet(title: preset)
+    func presetButtonEditHandler(preset: String, cell: PresetButtonCell) {
+        if let index = collectionView.indexPath(for: cell) {
+            showEditSheet(title: preset, indexPath: index, cell: cell)
+        }
         print("Editing preset \(preset)")
     }
     
-    private func showEditSheet(title: String) {
+    private func showEditSheet(title: String, indexPath: IndexPath, cell: PresetButtonCell) {
         
         let editMenu = UIAlertController(title: title, message: "Choose options for preset \(title)", preferredStyle: .actionSheet)
         editMenu.addAction(UIAlertAction(title: "Save current position", style: .default, handler: { (_) in
@@ -219,12 +216,15 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         }))
         editMenu.addAction(UIAlertAction(title: "Rename", style: .default, handler: { (_) in
             let renameController = UIAlertController(title: "Rename \(title)", message: "Give this preset a name", preferredStyle: .alert)
+            
             renameController.addTextField(configurationHandler: { (textfield) in
                 textfield.placeholder = "Preset Name"
                 textfield.text = title
             })
             renameController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             renameController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                self.phonePresetsNames[indexPath.item] = renameController.textFields?[0].text ?? "ERROR"
+                cell.presetName = renameController.textFields?[0].text
                 print("Renaming preset \(title) to \(renameController.textFields?[0].text ?? "ERROR")")
             }))
             self.present(renameController, animated: true, completion: {
@@ -244,11 +244,13 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
 class PresetButtonCell: UICollectionViewCell {
     
     // This has to be changed to a preset object
-    var preset: String? {
+    var presetName: String? {
         didSet {
-            presetNameLabel.text = preset
+            presetNameLabel.text = presetName
         }
     }
+    
+    var presetView: PresetsCollectionViewController?
     
     var delegate: PresetButtonDelegate?
     
@@ -293,10 +295,9 @@ class PresetButtonCell: UICollectionViewCell {
     
     @objc
     private func handleEditLongPress(_ sender: UILongPressGestureRecognizer) {
-        
         switch sender.state {
         case .began:
-            delegate?.presetButtonEditHandler(preset: preset ?? "ERROR")
+            delegate?.presetButtonEditHandler(preset: presetName ?? "ERROR", cell: self)
             print("Began")
         default:
             break
@@ -310,6 +311,6 @@ class PresetButtonCell: UICollectionViewCell {
 }
 
 protocol PresetButtonDelegate {
-    func presetButtonEditHandler(preset: String)
+    func presetButtonEditHandler(preset: String, cell: PresetButtonCell)
 }
 
