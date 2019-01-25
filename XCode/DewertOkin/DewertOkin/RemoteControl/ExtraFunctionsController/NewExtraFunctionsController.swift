@@ -47,8 +47,6 @@ class NewExtraFunctionsController: UIViewController {
         
         self.scrollView.isScrollEnabled = true
         self.scrollView.isUserInteractionEnabled = true
-        print(self.contentView.bounds.size)
-        print(self.contentView.bounds.size)
         self.scrollView.contentSize = self.contentView.bounds.size
     }
     
