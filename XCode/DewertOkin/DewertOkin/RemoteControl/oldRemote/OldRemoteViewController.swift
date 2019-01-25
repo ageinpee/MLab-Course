@@ -12,6 +12,7 @@ import CoreBluetooth
 class OldRemoteViewController: UIViewController {
     
     @IBOutlet weak var remoteView: UIView!
+    @IBOutlet weak var deviceNameLabel: UILabel!
     
     @IBOutlet weak var backUpButton: UIButton!
     @IBOutlet weak var backDownButton: UIButton!
@@ -40,13 +41,13 @@ class OldRemoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buttonList = [backUpButton, backDownButton,
+        self.buttonList = [backUpButton, backDownButton,
                       feetUpButton, feetDownButton,
                       bothUpButton, bothDownButton,
                       memory1Button, memory2Button,
                       saveButton, ublButton,
                       torchButton]
-        buttonList2 = [backUpButton, backDownButton,
+        self.buttonList2 = [backUpButton, backDownButton,
                        feetUpButton, feetDownButton,
                        bothUpButton, bothDownButton,
                        memory1Button, memory2Button,
@@ -54,6 +55,7 @@ class OldRemoteViewController: UIViewController {
         
         constrainButtons()
         
+        self.deviceNameLabel.text = globalDeviceObject.name
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
     }
     
