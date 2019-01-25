@@ -18,26 +18,28 @@ class NewExtraFunctionsController: UIViewController {
     @IBOutlet weak var exploreButton: UIButton!
     @IBOutlet weak var noFunctionsLabel: UILabel!
 
-    // [ Extrafunction-Enum-Entry: (Title | Data for Bluetooth | Image for .normal | Image for .highlighted | tag)]
+    // [ Extrafunction-Enum-Entry: (Title | Data for Bluetooth | Image for .normal | Image for .highlighted | tag for functionallity)]
     var functionsMetadata = [ExtraFunctions.massage_back: ("Massage Back", Data(), UIImage(named: "massageBackHRWhiteCurly"), UIImage(named: "massageBackHRCurlyHighlighted"), 0),
                              ExtraFunctions.massage_neck: ("Massage Neck", Data(), UIImage(named: "massageNeckHRWhiteCurly"), UIImage(named: "massageNeckHRCurlyHighlighted"), 1),
                              ExtraFunctions.massage_legs: ("Massage Legs", Data(), UIImage(named: "massageLegHRWhiteCurly"), UIImage(named: "massageLegHRCurlyHighlighted"), 2),
                              ExtraFunctions.ubl: ("Under Bed Lighting", Data(), UIImage(named: "ublHRWhite"), UIImage(named: "ublHRHighlighted"), 3),
                              //Extrafunctions from Explore
-                             ExtraFunctions.satellite_speaker: ("Satellite Speaker", Data(), UIImage(named: ""), UIImage(named: ""), 4),
-                             ExtraFunctions.subwoofer_speaker: ("Subwoofer Speaker", Data(), UIImage(named: ""), UIImage(named: ""), 5),
-                             ExtraFunctions.massage_motor: ("Massage Motor", Data(), UIImage(named: ""), UIImage(named: ""), 6),
-                             ExtraFunctions.under_bed_lighting: ("Under Bed Lighting", Data(), UIImage(named: ""), UIImage(named: ""), 7),
-                             ExtraFunctions.light_strip: ("Light Strip", Data(), UIImage(named: ""), UIImage(named: ""), 8),
-                             ExtraFunctions.seat_heating: ("Seat Heating", Data(), UIImage(named: ""), UIImage(named: ""), 9),
-                             ExtraFunctions.hands_free_kit: ("Hands Free Kit", Data(), UIImage(named: ""), UIImage(named: ""), 10),
-                             ExtraFunctions.rgb_lighting_strip: ("RGB Strip", Data(), UIImage(named: ""), UIImage(named: ""), 11),
-                             ExtraFunctions.rgb_lighting_control_unit: ("RGB Control Box", Data(), UIImage(named: ""), UIImage(named: ""), 12),
+                             ExtraFunctions.satellite_speaker: ("Satellite Speaker", Data(), UIImage(named: "satellite_speaker"), UIImage(named: "satellite_speaker_highlighted"), 4),
+                             ExtraFunctions.subwoofer_speaker: ("Subwoofer Speaker", Data(), UIImage(named: "subwoofer_speaker"), UIImage(named: "subwoofer_speaker_highlighted"), 5),
+                             ExtraFunctions.massage_motor: ("Massage Motor", Data(), UIImage(named: "massage_motor"), UIImage(named: "massage_motor_highlighted"), 6),
+                             ExtraFunctions.under_bed_lighting: ("Under Bed Lighting", Data(), UIImage(named: "ublHRWhite"), UIImage(named: "ublHRHighlighted"), 7),
+                             ExtraFunctions.light_strip: ("Light Strip", Data(), UIImage(named: "ublHRWhite"), UIImage(named: "ublHRHighlighted"), 8),
+                             ExtraFunctions.seat_heating: ("Seat Heating", Data(), UIImage(named: "seat_heating"), UIImage(named: "seat_heating_highlighted"), 9),
+                             ExtraFunctions.hands_free_kit: ("Hands Free Kit", Data(), UIImage(named: "hands_free_kit"), UIImage(named: "hands_free_kit_highlighted"), 10),
+                             ExtraFunctions.rgb_lighting_strip: ("RGB Strip", Data(), UIImage(named: "rgb_strip"), UIImage(named: "rgb_strip_highlighted"), 11),
+                             ExtraFunctions.rgb_lighting_control_unit: ("RGB Control Box", Data(), UIImage(named: "rgb_strip_controller"), UIImage(named: "rgb_strip_controller_highlighted"), 12),
                              //Default Handler
-                             ExtraFunctions.NaN: ("NaN", Data(), UIImage(named: ""), UIImage(named: ""), 13)]
+                             ExtraFunctions.NaN: ("NaN", Data(), UIImage(named: "NaN"), UIImage(named: "NaN_highlighted"), 13)]
     
     override func viewDidLoad() {
         self.device = globalDeviceObject
+        //test:
+        globalDeviceObject.availableExtraFunctions = [.massage_back, .massage_neck, .massage_legs, .ubl, .satellite_speaker, .subwoofer_speaker, .massage_motor, .under_bed_lighting, .light_strip, .seat_heating, .hands_free_kit, .rgb_lighting_strip, .rgb_lighting_control_unit, .NaN]
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         

@@ -20,41 +20,49 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vX-nB-Hr4">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                            </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfs-uG-HRV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="724"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your device currently has no additional functionallity. You can discover accessories in the Explore tab. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibD-Z6-9fC">
-                                        <rect key="frame" x="30" y="400" width="354" height="61"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqU-sw-SPP">
-                                        <rect key="frame" x="50" y="580" width="314" height="44"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FN4-IK-kyN">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkR-s7-N6b">
+                                                <rect key="frame" x="30" y="574" width="354" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="Mlt-yZ-Dbi"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="discover accessorize">
+                                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your device currently has no additional functionallity. You can discover accessories in the Explore tab. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evR-6t-PgT">
+                                                <rect key="frame" x="50" y="400" width="314" height="61"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="SCh-A1-Mh0"/>
+                                            <constraint firstItem="evR-6t-PgT" firstAttribute="top" secondItem="FN4-IK-kyN" secondAttribute="top" constant="400" id="2lT-2l-JNE"/>
+                                            <constraint firstItem="TkR-s7-N6b" firstAttribute="centerX" secondItem="FN4-IK-kyN" secondAttribute="centerX" id="6pp-qK-Ih5"/>
+                                            <constraint firstAttribute="bottom" secondItem="TkR-s7-N6b" secondAttribute="bottom" constant="200" id="ETO-2c-F3Y"/>
+                                            <constraint firstItem="TkR-s7-N6b" firstAttribute="leading" secondItem="FN4-IK-kyN" secondAttribute="leading" constant="30" id="I6I-61-Ugg"/>
+                                            <constraint firstItem="evR-6t-PgT" firstAttribute="leading" secondItem="FN4-IK-kyN" secondAttribute="leading" constant="50" id="Mg2-yH-Yz0"/>
+                                            <constraint firstAttribute="trailing" secondItem="TkR-s7-N6b" secondAttribute="trailing" constant="30" id="uje-HO-C4P"/>
+                                            <constraint firstAttribute="trailing" secondItem="evR-6t-PgT" secondAttribute="trailing" constant="50" id="vji-fO-Ikd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="discover accessories">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="exploreButtonAction:" destination="sxl-o5-2Q5" eventType="touchUpInside" id="Ipp-P3-RGM"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="ibD-Z6-9fC" firstAttribute="top" secondItem="RLk-dM-TJO" secondAttribute="top" constant="400" id="EzG-ga-rFZ"/>
-                                    <constraint firstItem="RLk-dM-TJO" firstAttribute="trailing" secondItem="DqU-sw-SPP" secondAttribute="trailing" constant="50" id="YzQ-Wx-GVV"/>
-                                    <constraint firstItem="ibD-Z6-9fC" firstAttribute="leading" secondItem="bfs-uG-HRV" secondAttribute="leading" constant="30" id="hdw-D4-nW4"/>
-                                    <constraint firstItem="DqU-sw-SPP" firstAttribute="centerX" secondItem="bfs-uG-HRV" secondAttribute="centerX" id="m0M-Ul-KCZ"/>
-                                    <constraint firstItem="DqU-sw-SPP" firstAttribute="leading" secondItem="RLk-dM-TJO" secondAttribute="leading" constant="50" id="sd7-dj-rnr"/>
-                                    <constraint firstAttribute="trailing" secondItem="ibD-Z6-9fC" secondAttribute="trailing" constant="30" id="tXc-uC-eaE"/>
-                                    <constraint firstItem="RLk-dM-TJO" firstAttribute="bottom" secondItem="DqU-sw-SPP" secondAttribute="bottom" constant="100" id="u3l-dx-Ipo"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="centerX" secondItem="3vX-nB-Hr4" secondAttribute="centerX" id="5gr-X8-hmp"/>
+                                    <constraint firstAttribute="bottom" secondItem="FN4-IK-kyN" secondAttribute="bottom" id="8C9-FK-i8h"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="height" secondItem="3vX-nB-Hr4" secondAttribute="height" priority="250" id="PaI-vE-xEC"/>
+                                    <constraint firstAttribute="trailing" secondItem="FN4-IK-kyN" secondAttribute="trailing" id="eyb-9E-RbP"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="centerY" secondItem="3vX-nB-Hr4" secondAttribute="centerY" id="jxC-1b-g9Y"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="width" secondItem="3vX-nB-Hr4" secondAttribute="width" id="xcr-D2-eaQ"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="leading" secondItem="3vX-nB-Hr4" secondAttribute="leading" id="y8v-iN-iqQ"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="RLk-dM-TJO"/>
-                            </view>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smO-5U-nZO">
                                 <rect key="frame" x="20" y="768" width="374" height="44"/>
                                 <constraints>
@@ -72,8 +80,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6hr-YC-5YW" firstAttribute="trailing" secondItem="bfs-uG-HRV" secondAttribute="trailing" id="11u-pj-1wh"/>
-                            <constraint firstItem="bfs-uG-HRV" firstAttribute="top" secondItem="6hr-YC-5YW" secondAttribute="top" id="2KI-Wc-Afz"/>
                             <constraint firstItem="6hr-YC-5YW" firstAttribute="bottom" secondItem="smO-5U-nZO" secondAttribute="bottom" constant="50" id="5DD-qL-7Ip"/>
                             <constraint firstItem="3vX-nB-Hr4" firstAttribute="top" secondItem="6hr-YC-5YW" secondAttribute="top" id="CEc-LM-0Zz"/>
                             <constraint firstItem="6hr-YC-5YW" firstAttribute="trailing" secondItem="smO-5U-nZO" secondAttribute="trailing" constant="20" id="HP8-4T-ChR"/>
@@ -81,17 +87,15 @@
                             <constraint firstItem="3vX-nB-Hr4" firstAttribute="leading" secondItem="6hr-YC-5YW" secondAttribute="leading" id="W6A-jV-cOb"/>
                             <constraint firstItem="smO-5U-nZO" firstAttribute="centerX" secondItem="lLa-e9-Seh" secondAttribute="centerX" id="itk-th-LOg"/>
                             <constraint firstItem="smO-5U-nZO" firstAttribute="leading" secondItem="6hr-YC-5YW" secondAttribute="leading" constant="20" id="mru-2Q-1Gg"/>
-                            <constraint firstItem="bfs-uG-HRV" firstAttribute="leading" secondItem="6hr-YC-5YW" secondAttribute="leading" id="ucl-Kd-2Rm"/>
-                            <constraint firstAttribute="top" secondItem="bfs-uG-HRV" secondAttribute="bottom" constant="-768" id="vQY-id-JqP"/>
                             <constraint firstItem="6hr-YC-5YW" firstAttribute="trailing" secondItem="3vX-nB-Hr4" secondAttribute="trailing" id="yyr-E9-I8Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6hr-YC-5YW"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="smO-5U-nZO" id="gd4-w0-JQQ"/>
-                        <outlet property="contentView" destination="bfs-uG-HRV" id="zDk-cs-Zug"/>
-                        <outlet property="exploreButton" destination="DqU-sw-SPP" id="l11-nF-1xL"/>
-                        <outlet property="noFunctionsLabel" destination="ibD-Z6-9fC" id="7UE-3Q-whR"/>
+                        <outlet property="contentView" destination="FN4-IK-kyN" id="TBC-m3-E8j"/>
+                        <outlet property="exploreButton" destination="TkR-s7-N6b" id="hpV-yY-fqT"/>
+                        <outlet property="noFunctionsLabel" destination="evR-6t-PgT" id="Dz2-14-sUG"/>
                         <outlet property="scrollView" destination="3vX-nB-Hr4" id="mTL-7A-8H3"/>
                     </connections>
                 </viewController>
