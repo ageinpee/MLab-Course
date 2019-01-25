@@ -94,7 +94,7 @@ extension NewExtraFunctionsController {
         imageHighlighted = imageHighlighted?.resize(size: imageSize)
         button.setImage(image, for: .normal)
         button.setImage(imageHighlighted, for: .highlighted)
-        button.titleEdgeInsets = UIEdgeInsets(top: 200, left: -imageSize.width, bottom: 0, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 200, left: -100, bottom: 0, right: 0)
         
         button.tag = functionsMetadata[withFunction]?.4 ?? 13
         return button
