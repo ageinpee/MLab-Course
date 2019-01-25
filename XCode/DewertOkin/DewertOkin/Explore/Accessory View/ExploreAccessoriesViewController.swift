@@ -63,8 +63,8 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     @objc func buyingAccessory(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let cell = sender.location(in: self.tableView)
-            if let indexPath = tableView.indexPathForRow(at: cell) {
-                print("HAHA")
+            if let indexPath = tableView.indexPathForRow(at: cell) {
+                print("Buy Item")
             }
         }
     }
