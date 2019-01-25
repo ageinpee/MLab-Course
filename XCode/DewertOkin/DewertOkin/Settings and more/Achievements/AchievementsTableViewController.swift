@@ -167,11 +167,6 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         return view
     }()
     
-    @objc
-    private func test() {
-        print("Success")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -205,7 +200,7 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
             let buttonTitle = achievementTitles[indexPath.row]
-            let presetView = createAchievementBlock(achievementTitle: buttonTitle)
+            let presetView = createAchievementBlock(achievementTitle: buttonTitle, backgroundColor: colors[indexPath.item])
             cell.addSubview(presetView)
             presetView.translatesAutoresizingMaskIntoConstraints = false
             // UNSAFE
@@ -214,15 +209,14 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
             cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : presetView]))
             cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0" : presetView]))
             cell.addConstraint(NSLayoutConstraint(item: presetView, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1, constant: 0))
-        presetView.addSubview(progressView)
-        progressView.backgroundColor = colors[indexPath.item]
+
         
         
         //cell.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
         return cell
     }
     
-    private func createAchievementBlock(achievementTitle: String) -> UIView {
+    private func createAchievementBlock(achievementTitle: String, backgroundColor: UIColor) -> UIView {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.borderWidth = 5
@@ -240,6 +234,16 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0))
         view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
         view.isUserInteractionEnabled = true
+        
+        view.addSubview(progressView)
+        // Doesn't work
+        progressView.backgroundColor = backgroundColor
+        progressView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        progressView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        progressView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        progressView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        
         return view
     }
 }
