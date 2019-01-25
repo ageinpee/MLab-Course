@@ -252,9 +252,10 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
     
     @objc
     private func showAchievements() {
-        if let vc = UIStoryboard(name: "AchievementsStoryboard", bundle: nil).instantiateInitialViewController() as? AchievementsTableViewController {
-            present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
-        }
+//        if let vc = UIStoryboard(name: "AchievementsStoryboard", bundle: nil).instantiateInitialViewController() as? AchievementsTableViewController {
+//            present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+//        }
+        self.present(UINavigationController(rootViewController: AchievementsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())), animated: true, completion: nil)
     }
     
     func updateChartData() {

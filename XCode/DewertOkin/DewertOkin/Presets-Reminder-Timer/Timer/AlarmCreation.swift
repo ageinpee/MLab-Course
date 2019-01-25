@@ -114,7 +114,7 @@ class AlarmCreationViewController: UIViewController {
     
     @objc
     private func handleSelectPresetButton() {
-        self.present(SelectPresetViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+   
     }
     
     @objc

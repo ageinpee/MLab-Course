@@ -63,8 +63,7 @@
 		CD100F4B21DFC89100DBAAB9 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */; };
 		CD100F4D21DFF25400DBAAB9 /* ExecutingPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4C21DFF25400DBAAB9 /* ExecutingPresetViewController.swift */; };
 		CD100F4F21E0239600DBAAB9 /* AlarmCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100F4E21E0239500DBAAB9 /* AlarmCreation.swift */; };
-		CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397CC21B2A8A200D749FA /* AchievementModel.swift */; };
-		CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3397D021B2B0AF00D749FA /* Achievement.swift */; };
+		CD540F9521FAEF15000B65C6 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD540F9421FAEF14000B65C6 /* AchievementModel.swift */; };
 		CD55480C2191BDE300182CE0 /* SettingsMore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */; };
 		CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */; };
 		CD7D582621E8FC62001C9CA6 /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D582521E8FC62001C9CA6 /* AddReminderViewController.swift */; };
@@ -79,7 +78,6 @@
 		CDB5B11821B5BA38000D92A4 /* OldRemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */; };
 		CDBCC0BE21C7A85A0014451C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBCC0BD21C7A85A0014451C /* HealthKit.framework */; };
 		CDCBA82221EBD97D006BF55F /* NewPresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCBA82121EBD97D006BF55F /* NewPresetsController.swift */; };
-		CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD35A6321B2F5C7006B35FB /* AchievementType.swift */; };
 		CDFFC97521C07C8B005C5821 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFFC97421C07C8B005C5821 /* Health.swift */; };
 		FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA187F44219C25E700DE3BC0 /* addReminder.swift */; };
 		FA19A2F621D370900032A4E7 /* RFPairingController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA19A2F521D370900032A4E7 /* RFPairingController1.swift */; };
@@ -189,8 +187,7 @@
 		CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		CD100F4C21DFF25400DBAAB9 /* ExecutingPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutingPresetViewController.swift; sourceTree = "<group>"; };
 		CD100F4E21E0239500DBAAB9 /* AlarmCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCreation.swift; sourceTree = "<group>"; };
-		CD3397CC21B2A8A200D749FA /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
-		CD3397D021B2B0AF00D749FA /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		CD540F9421FAEF14000B65C6 /* AchievementModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
 		CD55480B2191BDE300182CE0 /* SettingsMore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMore.storyboard; sourceTree = "<group>"; };
 		CD55480D2191BE4F00182CE0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		CD7D582521E8FC62001C9CA6 /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
@@ -205,7 +202,6 @@
 		CDB5B11721B5BA38000D92A4 /* OldRemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldRemoteViewController.swift; sourceTree = "<group>"; };
 		CDBCC0BD21C7A85A0014451C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CDCBA82121EBD97D006BF55F /* NewPresetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPresetsController.swift; sourceTree = "<group>"; };
-		CDD35A6321B2F5C7006B35FB /* AchievementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementType.swift; sourceTree = "<group>"; };
 		CDFFC97321C073D0005C5821 /* DewertOkin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DewertOkin.entitlements; sourceTree = "<group>"; };
 		CDFFC97421C07C8B005C5821 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		FA187F44219C25E700DE3BC0 /* addReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addReminder.swift; sourceTree = "<group>"; };
@@ -487,11 +483,9 @@
 			isa = PBXGroup;
 			children = (
 				FAD177E92191C3D70031E4E3 /* AchievementsTableViewController.swift */,
-				CD3397D021B2B0AF00D749FA /* Achievement.swift */,
+				CD540F9421FAEF14000B65C6 /* AchievementModel.swift */,
 				CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */,
 				CD83CAF721A340230082475B /* AchievementsTableViewCell.swift */,
-				CD3397CC21B2A8A200D749FA /* AchievementModel.swift */,
-				CDD35A6321B2F5C7006B35FB /* AchievementType.swift */,
 			);
 			path = Achievements;
 			sourceTree = "<group>";
@@ -823,10 +817,8 @@
 				CD100F4721DB973200DBAAB9 /* BluetoothPairingConnectViewController.swift in Sources */,
 				CD55480E2191BE4F00182CE0 /* SettingTableViewController.swift in Sources */,
 				FAE52D3C21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift in Sources */,
-				CD3397CD21B2A8A200D749FA /* AchievementModel.swift in Sources */,
 				FAE52D3221D5562700121B54 /* RFPairingController2.swift in Sources */,
 				034E67CA21DF960400E70F88 /* DevicesListCustomCell.swift in Sources */,
-				CD3397D121B2B0AF00D749FA /* Achievement.swift in Sources */,
 				FAE52D3821D784F400121B54 /* DeviceStyleManager.swift in Sources */,
 				FA187F45219C25E700DE3BC0 /* addReminder.swift in Sources */,
 				FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */,
@@ -842,7 +834,6 @@
 				039133CB21E7ECE400ECCBBE /* ExploreVendorMap.swift in Sources */,
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDACE3BE21EE5C000074304C /* Companion+Helpers.swift in Sources */,
-				CDD35A6421B2F5C7006B35FB /* AchievementType.swift in Sources */,
 				033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */,
 				FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */,
 				0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */,
@@ -865,6 +856,7 @@
 				039133CD21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift in Sources */,
 				FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */,
 				FA19A30021D527500032A4E7 /* rotationTransition.swift in Sources */,
+				CD540F9521FAEF15000B65C6 /* AchievementModel.swift in Sources */,
 				CDCBA82221EBD97D006BF55F /* NewPresetsController.swift in Sources */,
 				03E9875C219447E000189C97 /* Reminders.swift in Sources */,
 				0333052521BB34C200603519 /* BluetoothCoordinator.swift in Sources */,

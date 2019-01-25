@@ -238,4 +238,28 @@ class AchievementModel {
     
 }
 
+enum AchievementType: String, Hashable, Codable {
+    
+    case buttonManiac
+    case onTopOfThings
+    case veteran
+    case undecisive
+    case nightOwl
+    case letThereBeLight
+    case exerciseApprentice
+    case exerciseManiac
+    case exerciseMaster
+    case firstStreak
+    case streakItHard
+    case streakLikeABoss
+}
 
+struct Achievement: Codable {
+    // Establishes the basic Structure of achievements with the type of the variables
+    var id: Int
+    var title: String
+    var description: String
+    var image: String
+    var type: AchievementType
+    var progress: Float
+}

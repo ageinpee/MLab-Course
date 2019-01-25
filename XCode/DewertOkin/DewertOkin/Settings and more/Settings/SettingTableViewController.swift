@@ -30,13 +30,6 @@ class SettingTableViewController: UITableViewController, Themeable {
     ]
     private let settingsSections = ["Devices and Support", "Preferences", "Other"]
     
-    
-    //-----Achievement "Button Maniac"-related-----
-    @IBOutlet weak var barButtonItem: UIBarButtonItem!
-    @IBAction func barButtonClicked(_ sender: UIBarButtonItem) {
-        AchievementModel.updateButtonClickCount()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,7 +71,6 @@ class SettingTableViewController: UITableViewController, Themeable {
         super.viewWillAppear(animated)
         navigationItem.title = "More"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.barButtonItem.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
 
     // MARK: - Table view data source
@@ -194,9 +186,6 @@ class SettingTableViewController: UITableViewController, Themeable {
     
     @objc
     private func pushPresetsController() {
-        if let navigator = navigationController {
-            navigator.pushViewController(SelectPresetViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
-        }
     }
     
     private func pushHealthController() {
