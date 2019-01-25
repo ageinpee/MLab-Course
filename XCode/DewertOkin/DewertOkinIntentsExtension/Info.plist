@@ -25,16 +25,11 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>IntentsRestrictedWhileLocked</key>
-			<array>
-				<string>INSearchForMessagesIntent</string>
-				<string>INSetMessageAttributeIntent</string>
-				<string>INSendMessageIntent</string>
-			</array>
+			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>INSendMessageIntent</string>
-				<string>INSearchForMessagesIntent</string>
-				<string>INSetMessageAttributeIntent</string>
+				<string>INStartWorkoutIntent</string>
+				<string>INEndWorkoutIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
