@@ -10,18 +10,13 @@ import Intents
 
 class IntentHandler: INExtension {
     
-    func handle(startWorkout intent: INStartWorkoutIntent, completion: @escaping (INStartWorkoutIntentResponse) -> Void) {
-        
-        let userActivity: NSUserActivity? = nil // What is the user currently doing? (Background)
-        guard let spokenPhrase = intent.workoutName?.spokenPhrase else {
-            completion(INStartWorkoutIntentResponse(code: .failureNoMatchingWorkout, userActivity: userActivity))
-            return
+    override func handler(for intent: INIntent) -> Any? {
+        if intent is INStartWorkoutIntent {
+            return StartWorkoutIntentHandler()
         }
-        
-        completion(INStartWorkoutIntentResponse(code: .continueInApp, userActivity: userActivity))
+        else if intent is INEndWorkoutIntent {
+            return StopWorkoutIntentHandler()
+        }
     }
     
-    func handle(endWorkout intent: INEndWorkoutIntent, completion: @escaping (INEndWorkoutIntentResponse) -> Void) {
-        
-    }
 }

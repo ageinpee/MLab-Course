@@ -16,6 +16,10 @@
 		0325CA1B21FAD9C000337F64 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325CA1A21FAD9C000337F64 /* IntentHandler.swift */; };
 		0325CA3021FAD9C100337F64 /* DewertOkinIntentsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0325CA1821FAD9C000337F64 /* DewertOkinIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0325CA3921FAE01A00337F64 /* SiriController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325CA3821FAE01A00337F64 /* SiriController.swift */; };
+		0325CA3B21FAED0400337F64 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0325CA3A21FAED0400337F64 /* Intents.framework */; };
+		0325CA3D21FAF77300337F64 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0325CA3C21FAF77300337F64 /* AppIntentVocabulary.plist */; };
+		0325CA3F21FAFA8100337F64 /* StartWorkoutIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325CA3E21FAFA8100337F64 /* StartWorkoutIntentHandler.swift */; };
+		0325CA4121FAFA9100337F64 /* StopWorkoutIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325CA4021FAFA9100337F64 /* StopWorkoutIntentHandler.swift */; };
 		0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052221BB349700603519 /* RemoteControlConfig.swift */; };
 		0333052521BB34C200603519 /* BluetoothCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052421BB34C200603519 /* BluetoothCoordinator.swift */; };
 		0333052721BB34E800603519 /* BluetoothFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052621BB34E800603519 /* BluetoothFlow.swift */; };
@@ -157,6 +161,10 @@
 		0325CA1C21FAD9C000337F64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0325CA2221FAD9C100337F64 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		0325CA3821FAE01A00337F64 /* SiriController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriController.swift; sourceTree = "<group>"; };
+		0325CA3A21FAED0400337F64 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		0325CA3C21FAF77300337F64 /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		0325CA3E21FAFA8100337F64 /* StartWorkoutIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutIntentHandler.swift; sourceTree = "<group>"; };
+		0325CA4021FAFA9100337F64 /* StopWorkoutIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWorkoutIntentHandler.swift; sourceTree = "<group>"; };
 		0333052221BB349700603519 /* RemoteControlConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlConfig.swift; sourceTree = "<group>"; };
 		0333052421BB34C200603519 /* BluetoothCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCoordinator.swift; sourceTree = "<group>"; };
 		0333052621BB34E800603519 /* BluetoothFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothFlow.swift; sourceTree = "<group>"; };
@@ -269,6 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0325CA3B21FAED0400337F64 /* Intents.framework in Frameworks */,
 				03E987682194631300189C97 /* NotificationCenter.framework in Frameworks */,
 				03E987692194631300189C97 /* UserNotifications.framework in Frameworks */,
 				03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */,
@@ -308,6 +317,8 @@
 			children = (
 				0325CA1A21FAD9C000337F64 /* IntentHandler.swift */,
 				0325CA1C21FAD9C000337F64 /* Info.plist */,
+				0325CA3E21FAFA8100337F64 /* StartWorkoutIntentHandler.swift */,
+				0325CA4021FAFA9100337F64 /* StopWorkoutIntentHandler.swift */,
 			);
 			path = DewertOkinIntentsExtension;
 			sourceTree = "<group>";
@@ -371,6 +382,7 @@
 				CDFFC97321C073D0005C5821 /* DewertOkin.entitlements */,
 				0357FBE1218607A30043A828 /* DewertOkin.xcdatamodeld */,
 				03E9875D2194483D00189C97 /* PersistenceService.swift */,
+				0325CA3C21FAF77300337F64 /* AppIntentVocabulary.plist */,
 			);
 			path = DewertOkin;
 			sourceTree = "<group>";
@@ -484,6 +496,7 @@
 		85919DE521943DCC0026AD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0325CA3A21FAED0400337F64 /* Intents.framework */,
 				CDBCC0BD21C7A85A0014451C /* HealthKit.framework */,
 				03E987652194631300189C97 /* NotificationCenter.framework */,
 				03E987662194631300189C97 /* UserNotifications.framework */,
@@ -821,6 +834,7 @@
 				9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */,
 				03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */,
 				039133C721E7ECB800ECCBBE /* Explore.storyboard in Resources */,
+				0325CA3D21FAF77300337F64 /* AppIntentVocabulary.plist in Resources */,
 				0359367D21EA8B8800986EC8 /* VendorList.json in Resources */,
 				FA19A2F821D370AE0032A4E7 /* RFPairing.storyboard in Resources */,
 				CD945289219C3D0D00280A66 /* AchievementsStoryboard.storyboard in Resources */,
@@ -898,6 +912,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0325CA1B21FAD9C000337F64 /* IntentHandler.swift in Sources */,
+				0325CA4121FAFA9100337F64 /* StopWorkoutIntentHandler.swift in Sources */,
+				0325CA3F21FAFA8100337F64 /* StartWorkoutIntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,8 +1048,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = V25RP6ZNZ5;
 				INFOPLIST_FILE = DewertOkinIntentsExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1043,7 +1059,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.uhh.mlabdewertokin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = DewertOkin;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1054,8 +1070,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = V25RP6ZNZ5;
 				INFOPLIST_FILE = DewertOkinIntentsExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1065,7 +1081,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.uhh.mlabdewertokin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = DewertOkin;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

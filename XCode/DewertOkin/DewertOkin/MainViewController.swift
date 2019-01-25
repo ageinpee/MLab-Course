@@ -40,7 +40,7 @@ class MainViewController: UITabBarController {
             
         }
         
-        INVocabulary.shared().setVocabularyStrings(["Move Head Up", "Move Head Down", "Move Feet Up", "Move Feet Down", "Trigger Memory 1", "Trigger Memory 2"], of: .workoutActivityName)
+        //INVocabulary.shared().setVocabularyStrings(<#T##vocabulary: NSOrderedSet##NSOrderedSet#>, of: <#T##INVocabularyStringType#>)
         
         remoteVC = useNewRemoteStyle ? remoteNew : remoteOld
         remoteVC.tabBarItem = UITabBarItem(title: "Remote", image: UIImage(named: "remote_icon"), tag: 0)
