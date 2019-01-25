@@ -136,18 +136,19 @@ class AchievementsTableViewController: UITableViewController, Themeable {
 
 class AchievementsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    
-//    let achievements: [Achievement] = [ AchievementModel.achievementDictionary[AchievementType.exerciseApprentice]! ]
+    let colors: [UIColor] = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
     
     let achievements: [Achievement] = {
         var list: [Achievement] = []
         for element in AchievementModel.achievementDictionary {
             list.append(element.value)
         }
-        return list
+        return list.sorted(by: { (a1, a2) -> Bool in
+            return a1.id < a2.id
+        })
     }()
     
-    lazy var achievementList: [String] = achievements.map({ $0.title })
+    lazy var achievementTitles: [String] = achievements.map({ $0.title })
     
     let reuseIdentifier = "defaultCell"
     
@@ -158,6 +159,12 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         label.textColor = .darkGray
         label.textAlignment = .center
         return label
+    }()
+    
+    let progressView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     @objc
@@ -187,7 +194,7 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return achievementList.count + 1
+        return achievementTitles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -197,36 +204,42 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-        if indexPath.row == 0 {
-            cell.addSubview(descriptionLabel)
-            descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : descriptionLabel]))
-            cell.addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1, constant: 0))
-        } else {
-            let buttonTitle = achievementList[indexPath.row - 1]
-            let newButton = createPresetButton(buttonTitle: buttonTitle)
-            cell.addSubview(newButton)
-            newButton.translatesAutoresizingMaskIntoConstraints = false
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : newButton]))
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0" : newButton]))
-            cell.addConstraint(NSLayoutConstraint(item: newButton, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1, constant: 0))
-        }
+            let buttonTitle = achievementTitles[indexPath.row]
+            let presetView = createAchievementBlock(achievementTitle: buttonTitle)
+            cell.addSubview(presetView)
+            presetView.translatesAutoresizingMaskIntoConstraints = false
+            // UNSAFE
+            presetView.backgroundColor = .white
+            presetView.layer.borderColor = colors[indexPath.item].cgColor
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : presetView]))
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0" : presetView]))
+            cell.addConstraint(NSLayoutConstraint(item: presetView, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1, constant: 0))
+        presetView.addSubview(progressView)
+        progressView.backgroundColor = colors[indexPath.item]
+        
         
         //cell.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
         return cell
     }
     
-    private func createPresetButton(buttonTitle: String) -> UIButton {
-        let button = UIButton()
-        button.setTitle(buttonTitle, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = collectionView.tintColor
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.contentEdgeInsets = UIEdgeInsets(top: button.contentEdgeInsets.top + 5, left: button.contentEdgeInsets.left + 5, bottom: button.contentEdgeInsets.bottom + 5, right: button.contentEdgeInsets.right + 5)
-        button.isUserInteractionEnabled = true
-        button.addTarget(self, action: #selector(test), for: .touchUpInside)
-        return button
+    private func createAchievementBlock(achievementTitle: String) -> UIView {
+        let view = UIView()
+        view.layer.cornerRadius = 15
+        view.layer.borderWidth = 5
+        view.layer.borderColor = UIColor.white.cgColor
+        
+        let titleLabel: UILabel = {
+           let label = UILabel()
+            label.text = achievementTitle
+            label.textColor = .black
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        view.addSubview(titleLabel)
+        view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
+        view.isUserInteractionEnabled = true
+        return view
     }
 }
