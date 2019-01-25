@@ -31,7 +31,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to show you the nearest vendors around you.</string>
 	<key>NSUserActivityTypes</key>
-	<array/>
+	<array>
+		<string>de.uhh.mlabdewertokin.command</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

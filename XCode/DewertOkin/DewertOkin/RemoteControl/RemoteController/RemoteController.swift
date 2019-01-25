@@ -11,6 +11,7 @@ import UIKit
 import HealthKit
 import CoreBluetooth
 import CoreData
+import Intents
 
 
 class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable{
@@ -68,6 +69,10 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
+    //----------------------------------------
+    //--------- Siri -------------------------
+    let siriControl = SiriController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -112,6 +117,27 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         Image.image = device.deviceImages[1]
         Image.contentMode = .scaleAspectFit
         print("viewDidLoad success")
+    }
+    
+    @IBAction func moveHeadUpActivity(sender: UIButton) {
+        let activity = NSUserActivity(activityType: "de.uhh.mlabdewertokin.command")
+        activity.title = "Move Head Up"
+        //activity.userInfo = ["head" : "up"]
+        activity.isEligibleForSearch = true
+        if #available(iOS 12.0, *) {
+            activity.isEligibleForPrediction = true
+            activity.persistentIdentifier = NSUserActivityPersistentIdentifier("de.uhh.mlabdewertokin.command")
+        } else {
+            // Fallback on earlier versions
+        }
+        view.userActivity = activity
+        activity.becomeCurrent()
+        
+        itDidWork()
+    }
+    
+    func itDidWork(){
+        print("aha")
     }
     
     override func viewDidAppear(_ animated: Bool) {

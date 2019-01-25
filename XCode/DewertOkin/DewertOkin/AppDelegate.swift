@@ -130,10 +130,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        guard let intent = userActivity.interaction?.intent as? INStartWorkoutIntent else {
-            return false
-        }
-        print(intent)
+        
+        let viewController = window?.rootViewController as! RemoteController
+        viewController.itDidWork()
+        
         return true
     }
     
