@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
     
@@ -64,10 +65,11 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         if sender.state == .began {
             let cell = sender.location(in: self.tableView)
             if let indexPath = tableView.indexPathForRow(at: cell) {
-                print("Buy Item")
+                print("buying device")
             }
         }
     }
+    
 }
 
 extension ExploreAccessoriesViewController: UITableViewDataSource {

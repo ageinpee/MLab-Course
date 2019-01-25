@@ -113,7 +113,6 @@ class DeviceObject {
         handheldID = withHandheldID
         style = withStyle
         availableExtraFunctions = withExtraFunctions
-        print(availableExtraFunctions)
         
         let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
         

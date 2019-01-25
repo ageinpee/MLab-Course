@@ -75,27 +75,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         device = globalDeviceObject
         
-        /*
-        fetchDevices()
-        print(devicesList)
-        
-        device = DeviceObject(withUUID: devicesList[0].uuid!,
-                              named: devicesList[0].name!,
-                              withHandheldID: devicesList[0].handheld!,
-                              withStyle: devicesList[0].style!)
-        globalDeviceObject = device
-        */
-        /*
-        let testDevice = DeviceObject(withUUID: "test1",
-                                      named: "test table",
-                                      withHandheldID: "Table-test",
-                                      withStyle: "empty")
-        device = testDevice
- 
-        let testDevice2 = DeviceObject(withUUID: "test2", named: "My Chair", withHandheldID: "84562", withStyle: "empty")
-        device = testDevice2
-        */
-        
         currentDeviceLabel.text = device.name
         currentDeviceLabel.isHidden = true
         header.topItem?.title = device.name
@@ -111,7 +90,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         arrowsImageView.image = device.deviceImages[0]
         Image.image = device.deviceImages[1]
         Image.contentMode = .scaleAspectFit
-        print("viewDidLoad success")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -175,50 +153,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
             self.noConnectionBanner.removeFromSuperview()
         }
     }
-
-    /*
-    @objc
-    private func showExtraFeaturesView() {
-        present(UINavigationController(rootViewController: ExtraFeaturesViewController(collectionViewLayout: UICollectionViewFlowLayout())), animated: true, completion: nil)
-    }
-    */
-    
-    //---------------------------------------
-    //---------- Remote Actions -------------
-    /*
-    @IBAction func PresetsButton(_ sender: Any) {
-        //shall open presets menu/page/sheet to select a preset
-        let alert = UIAlertController(title: "Choose Preset", message: "", preferredStyle: .actionSheet)
-        let preset1 = UIAlertAction(title: "Sleeping", style: .default, handler: nil)
-        let preset2 = UIAlertAction(title: "Reading", style: .default, handler: nil)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(preset1)
-        alert.addAction(preset2)
-        alert.addAction(cancel)
-        self.present(alert, animated: true, completion: nil)
-        print("Presets Button pressed")
-    }
-    
-    @IBAction func ExtraFunctions(_ sender: Any) {
-        //maybe a menu with extra functions like massage/ubl/torch etc...
-        let alert = UIAlertController(title: "Choose Feature", message: "", preferredStyle: .actionSheet)
-        let option1 = UIAlertAction(title: "Massage", style: .default, handler: nil)
-        let option2 = UIAlertAction(title: "Under Bed Lighting", style: .default, handler: nil)
-        underBedLighting = option2
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(option1)
-        alert.addAction(option2)
-        alert.addAction(cancel)
-        self.present(alert, animated: true, completion: nil)
-        print("Extra Functions Button pressed")
-    }
- */
-    
-    
-    //-------------------------------------------
-    //--------     Health Kit Funcs     ---------
-    
-
 }
 
 
