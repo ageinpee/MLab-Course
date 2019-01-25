@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vX-nB-Hr4">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3vX-nB-Hr4">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FN4-IK-kyN">
@@ -54,13 +54,12 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="centerX" secondItem="3vX-nB-Hr4" secondAttribute="centerX" id="5gr-X8-hmp"/>
-                                    <constraint firstAttribute="bottom" secondItem="FN4-IK-kyN" secondAttribute="bottom" id="8C9-FK-i8h"/>
-                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="height" secondItem="3vX-nB-Hr4" secondAttribute="height" priority="250" id="PaI-vE-xEC"/>
-                                    <constraint firstAttribute="trailing" secondItem="FN4-IK-kyN" secondAttribute="trailing" id="eyb-9E-RbP"/>
-                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="centerY" secondItem="3vX-nB-Hr4" secondAttribute="centerY" id="jxC-1b-g9Y"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="top" secondItem="3vX-nB-Hr4" secondAttribute="top" id="4eJ-Xs-4Z2"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="leading" secondItem="3vX-nB-Hr4" secondAttribute="leading" id="P4x-dV-5In"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="height" secondItem="3vX-nB-Hr4" secondAttribute="height" priority="100" id="PaI-vE-xEC"/>
+                                    <constraint firstAttribute="bottom" secondItem="FN4-IK-kyN" secondAttribute="bottom" id="hxg-Fx-8I4"/>
+                                    <constraint firstAttribute="trailing" secondItem="FN4-IK-kyN" secondAttribute="trailing" id="tR1-Mx-dU9"/>
                                     <constraint firstItem="FN4-IK-kyN" firstAttribute="width" secondItem="3vX-nB-Hr4" secondAttribute="width" id="xcr-D2-eaQ"/>
-                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="leading" secondItem="3vX-nB-Hr4" secondAttribute="leading" id="y8v-iN-iqQ"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smO-5U-nZO">

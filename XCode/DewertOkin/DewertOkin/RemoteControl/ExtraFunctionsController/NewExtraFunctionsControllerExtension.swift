@@ -31,30 +31,30 @@ extension NewExtraFunctionsController {
             self.noFunctionsLabel.isHidden = false
         }
         else if self.device.availableExtraFunctions.count == 1 {
-            let button = styleButton(withFunction: self.device.availableExtraFunctions[0])
+            let button = self.styleButton(withFunction: self.device.availableExtraFunctions[0])
             
-            contentView.addSubview(button)
+            self.contentView.addSubview(button)
             
             button.translatesAutoresizingMaskIntoConstraints = true
             button.center = CGPoint(x: self.contentView.bounds.midX,
                                      y: self.contentView.bounds.midY)
             button.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
             
-            button.addTarget(self, action: #selector(handleButtonPress), for: .touchDown)
+            button.addTarget(self, action: #selector(self.handleButtonPress), for: .touchDown)
         }
         else if self.device.availableExtraFunctions.count > 1 {
             var flagLeftRight = true //true == left, false == right
             var offset = 0
             
             for (count, function) in self.device.availableExtraFunctions.enumerated() {
-                let button = styleButton(withFunction: function)
-                let contentViewWidth = Int(contentView.frame.width)
+                let button = self.styleButton(withFunction: function)
+                let contentViewWidth = Int(self.contentView.frame.width)
                 
                 if count % 2 == 0 {
                     offset = offset + contentViewWidth/4 + 80
                 }
                 
-                contentView.addSubview(button)
+                self.contentView.addSubview(button)
                 button.translatesAutoresizingMaskIntoConstraints = true
                 if flagLeftRight {
                     button.center = CGPoint(x: ((self.contentView.bounds.midX) - CGFloat(contentViewWidth) / CGFloat(5)),
@@ -70,9 +70,10 @@ extension NewExtraFunctionsController {
                 
                 button.imageView?.contentMode = .scaleAspectFill
                 
-                button.addTarget(self, action: #selector(handleButtonPress), for: .touchDown)
+                button.addTarget(self, action: #selector(self.handleButtonPress), for: .touchDown)
             }
         }
+        
     }
     
     

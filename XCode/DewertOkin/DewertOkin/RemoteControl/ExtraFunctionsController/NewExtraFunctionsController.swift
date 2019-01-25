@@ -38,8 +38,6 @@ class NewExtraFunctionsController: UIViewController {
     
     override func viewDidLoad() {
         self.device = globalDeviceObject
-        //test:
-        globalDeviceObject.availableExtraFunctions = [.massage_back, .massage_neck, .massage_legs, .ubl, .satellite_speaker, .subwoofer_speaker, .massage_motor, .under_bed_lighting, .light_strip, .seat_heating, .hands_free_kit, .rgb_lighting_strip, .rgb_lighting_control_unit, .NaN]
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
@@ -47,6 +45,11 @@ class NewExtraFunctionsController: UIViewController {
         self.setStaticButtons()
         self.setDynamicButtons()
         
+        self.scrollView.isScrollEnabled = true
+        self.scrollView.isUserInteractionEnabled = true
+        print(self.contentView.bounds.size)
+        print(self.contentView.bounds.size)
+        self.scrollView.contentSize = self.contentView.bounds.size
     }
     
     @IBAction func dismissVC(_ sender: Any) {
