@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Intents
 
 class MainViewController: UITabBarController {
     
@@ -34,6 +35,12 @@ class MainViewController: UITabBarController {
             let reminder = UIStoryboard(name: "Reminder", bundle: nil).instantiateInitialViewController(),
             let settings = UIStoryboard(name: "SettingsMore", bundle: nil).instantiateInitialViewController(),
             let explore = UIStoryboard(name: "Explore", bundle: nil).instantiateInitialViewController() else { return }
+        
+        INPreferences.requestSiriAuthorization { (status) in
+            
+        }
+        
+        INVocabulary.shared().setVocabularyStrings(["Move Head Up", "Move Head Down", "Move Feet Up", "Move Feet Down", "Trigger Memory 1", "Trigger Memory 2"], of: .workoutActivityName)
         
         remoteVC = useNewRemoteStyle ? remoteNew : remoteOld
         remoteVC.tabBarItem = UITabBarItem(title: "Remote", image: UIImage(named: "remote_icon"), tag: 0)
