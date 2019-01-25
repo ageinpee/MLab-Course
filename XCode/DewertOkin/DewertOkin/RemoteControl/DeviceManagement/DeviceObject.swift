@@ -113,6 +113,7 @@ class DeviceObject {
         handheldID = withHandheldID
         style = withStyle
         availableExtraFunctions = withExtraFunctions
+        print(availableExtraFunctions)
         
         let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
         
@@ -297,7 +298,8 @@ class DeviceObject {
     
     func convertStringToExtraFunctions(withString: String) -> [ExtraFunctions] {
         var output = [ExtraFunctions]()
-        let stringArray = withString.components(separatedBy: ";")
+        var stringArray = withString.components(separatedBy: ";")
+        if stringArray.count != 0 { stringArray.removeLast() }
         for string in stringArray {
             output.append(ExtraFunctions(rawValue: string) ?? .NaN)
         }

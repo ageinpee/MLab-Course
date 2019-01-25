@@ -78,7 +78,11 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
          insert bluetooth pairing process
          
          */
-         saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
+         saveDevice(withUUID: device.uuid,
+                    named: device.name,
+                    forHandheldID: device.handheldID,
+                    withStyle: device.style,
+                    withExtraFucntions: DeviceObject().convertExtraFunctionsToString(functions: device.availableExtraFunctions))
  
         
         globalDeviceObject = device
@@ -127,12 +131,13 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
     }
     
     
-    func saveDevice(withUUID: String, named: String, forHandheldID: String, withStyle: String) {
+    func saveDevice(withUUID: String, named: String, forHandheldID: String, withStyle: String, withExtraFucntions: String) {
         let device = Devices(context: PersistenceService.context)
         device.uuid = withUUID
         device.name = named
         device.handheld = forHandheldID
         device.style = withStyle
+        device.extraFunctions = withExtraFucntions
         PersistenceService.saveContext()
     }
     

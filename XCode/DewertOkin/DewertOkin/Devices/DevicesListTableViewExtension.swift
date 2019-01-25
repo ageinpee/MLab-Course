@@ -98,14 +98,14 @@ extension DevicesListViewController: UITableViewDataSource {
             guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
             self.deviceToConnect = deviceToBeConnected
             self.performSegue(withIdentifier: "ConnectToDevice", sender: self)
-            
         }
         
-        globalDeviceObject = DeviceObject(withUUID: devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
-                                          named: devicesList[indexPath.row].name ?? "ERROR - no entry found",
-                                          withHandheldID: devicesList[indexPath.row].handheld ?? "NaN",
-                                          withStyle: devicesList[indexPath.row].style ?? "filled",
-                                          withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: devicesList[indexPath.row].extraFunctions ?? ""))
+        globalDeviceObject = DeviceObject(withUUID: self.devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
+                                          named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
+                                          withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
+                                          withStyle: self.devicesList[indexPath.row].style ?? "filled",
+                                          withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
+        
         action.backgroundColor = .blue
         return action
     }
