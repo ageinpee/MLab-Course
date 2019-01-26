@@ -36,9 +36,9 @@ class MainViewController: UITabBarController {
             let settings = UIStoryboard(name: "SettingsMore", bundle: nil).instantiateInitialViewController(),
             let explore = UIStoryboard(name: "Explore", bundle: nil).instantiateInitialViewController() else { return }
         
-        INPreferences.requestSiriAuthorization { (status) in
-            
-        }
+//        INPreferences.requestSiriAuthorization { (status) in
+//
+//        }
         
         //INVocabulary.shared().setVocabularyStrings(<#T##vocabulary: NSOrderedSet##NSOrderedSet#>, of: <#T##INVocabularyStringType#>)
         
