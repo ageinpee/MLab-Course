@@ -203,7 +203,26 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     
     func presetButtonEditHandler(preset: String, cell: PresetButtonCell) {
         if let index = collectionView.indexPath(for: cell) {
-            showEditSheet(title: preset, indexPath: index, cell: cell)
+            print(index)
+            if index.item == phonePresetsNames.count {
+                let renameController = UIAlertController(title: "Add current position as preset", message: "Give this preset a name", preferredStyle: .alert)
+                
+                renameController.addTextField(configurationHandler: { (textfield) in
+                    textfield.placeholder = "Preset Name"
+                    textfield.text = ""
+                })
+                renameController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                renameController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    self.phonePresetsNames.append(renameController.textFields?[0].text ?? "")
+                    cell.presetName = renameController.textFields?[0].text
+                    self.collectionView.reloadSections([3])
+                }))
+                self.present(renameController, animated: true, completion: {
+                    
+                })
+            } else {
+                showEditSheet(title: preset, indexPath: index, cell: cell)
+            }
         }
         print("Editing preset \(preset)")
     }
@@ -249,8 +268,6 @@ class PresetButtonCell: UICollectionViewCell {
             presetNameLabel.text = presetName
         }
     }
-    
-    var presetView: PresetsCollectionViewController?
     
     var delegate: PresetButtonDelegate?
     
