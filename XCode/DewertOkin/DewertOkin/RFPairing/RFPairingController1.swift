@@ -17,6 +17,7 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
     let backgroundView = UIView()
     
     @IBOutlet weak var submitButton1: UIButton!
+    @IBOutlet weak var explainationLabel: UILabel!
     
     var imageData: [Remote] = [Remote]()
     
@@ -34,7 +35,16 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
                      Remote(withID:"Table-test", withImage:UIImage(named: "remote4.png")!)]
         selectedRemote = imageData[0]
         
+        self.explainationLabel.alpha = 0.0
+        
         layoutConstraints()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        UIView.animate(withDuration: 2.0, delay: 3.0, options: [], animations: {
+            self.explainationLabel.alpha = 1.0
+        }, completion: nil)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
