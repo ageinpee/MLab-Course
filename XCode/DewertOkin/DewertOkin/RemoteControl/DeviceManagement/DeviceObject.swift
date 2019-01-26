@@ -285,7 +285,7 @@ class DeviceObject {
     func convertExtraFunctionsToString(functions: [ExtraFunctions]) -> String {
         var output = ""
         for (i,f) in functions.enumerated() {
-            if i == functions.count-1 {
+            if i != functions.count-1 {
                 output.append(f.rawValue + ";")
             }
             else {
@@ -298,7 +298,7 @@ class DeviceObject {
     func convertStringToExtraFunctions(withString: String) -> [ExtraFunctions] {
         var output = [ExtraFunctions]()
         var stringArray = withString.components(separatedBy: ";")
-        if stringArray.count != 0 { stringArray.removeLast() }
+        if stringArray == [""] { stringArray = [] }
         for string in stringArray {
             output.append(ExtraFunctions(rawValue: string) ?? .NaN)
         }
