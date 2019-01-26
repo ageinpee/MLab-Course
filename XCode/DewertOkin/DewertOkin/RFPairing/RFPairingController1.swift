@@ -42,6 +42,9 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        self.remotePicker.subviews.forEach( {
+            $0.isHidden = $0.frame.height < 1.0
+        } )
         return imageData.count
     }
     
