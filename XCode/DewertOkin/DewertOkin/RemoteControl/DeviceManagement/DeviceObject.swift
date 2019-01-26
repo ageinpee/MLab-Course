@@ -27,7 +27,7 @@ class DeviceObject {
     
     // these parameters are important for the remote screen and the correct visual representation of the remote
     var type: String = "NaN"                                            // describes the type of a device, eg. chair, table, ...
-    var style: String = "empty"                                         // descibes the style of a device shown in the remote screen. currently containing filled or empty
+    var style: String = "filled"                                         // descibes the style of a device shown in the remote screen. currently containing filled or empty
     
     // These parameters values are loaded during init with the help of style and type parameters
     var deviceImages: [UIImage] = [UIImage]()                           // images loaded by other class
@@ -49,8 +49,8 @@ class DeviceObject {
     
     init() {
         uuid = UUID().uuidString
-        name = "My Chair"
-        handheldID = "84562"
+        name = "No Device"
+        handheldID = "no-device"
         style = "filled"
         
         let csvData = CSVReader().readCSV(fileName: "handsender1_extended", fileType: "csv")
@@ -261,7 +261,7 @@ class DeviceObject {
             return RemoteControlConfig().getKeycode(name: .massage3)
         case .ubl:
             return RemoteControlConfig().getKeycode(name: .ubl)
-        case .NaN:
+        default:
             return Data()
         }
     }
@@ -297,7 +297,8 @@ class DeviceObject {
     
     func convertStringToExtraFunctions(withString: String) -> [ExtraFunctions] {
         var output = [ExtraFunctions]()
-        let stringArray = withString.components(separatedBy: ";")
+        var stringArray = withString.components(separatedBy: ";")
+        if stringArray.count != 0 { stringArray.removeLast() }
         for string in stringArray {
             output.append(ExtraFunctions(rawValue: string) ?? .NaN)
         }
@@ -342,6 +343,21 @@ enum ExtraFunctions: String {
     case massage_legs = "massage_legs"
     case ubl = "ubl"
     case NaN = "NaN"
+    
+    //Accessory names
+    case satellite_speaker = "Satellite Speaker"
+    case subwoofer_speaker = "Subwoofer Speaker"
+    case massage_motor = "Massage Motor"
+    case under_bed_lighting = "Under Bed Lighting"
+    case light_strip = "Light Strip"
+    case seat_heating = "Seat Heating"
+    case hands_free_kit = "Hands Free Kit"
+    case rgb_lighting_control_unit = "RGB Lighting Control Unit"
+    case rgb_lighting_strip = "RGB Lighting Strip"
+    
+    
+    
+    
 }
 
 enum Motors: String {

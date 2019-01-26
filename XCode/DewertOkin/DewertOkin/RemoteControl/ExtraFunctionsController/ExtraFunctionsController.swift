@@ -40,11 +40,24 @@ class ExtraFunctionsController: UIViewController {
             case .ubl:
                 title = ExtraFunctionsTitle.ubl.rawValue
                 hex = RemoteControlConfig().getKeycode(name: .ubl)
-            case .NaN:
+            
+            // was case .NaN: before
+            default:
                 title = ExtraFunctionsTitle.NaN.rawValue
+                
+                //AccessoryNames
+//            case title = ExtraFunctionsTitle.satellite_speaker.rawValue
+//            case title = ExtraFunctionsTitle.subwoofer_speaker.rawValue
+//            case title = ExtraFunctionsTitle.massage_motor.rawValue
+//            case title = ExtraFunctionsTitle.under_bed_lighting.rawValue"
+//            case title = ExtraFunctionsTitle.light_strip.rawValue
+//            case title = ExtraFunctionsTitle.seat_heating.rawValue
+//            case title = ExtraFunctionsTitle.hands_free_kit.rawValue
+//            case title = ExtraFunctionsTitle.rgb_lighting_control_unit.rawValue"
+//            case title = ExtraFunctionsTitle.rgb_lighting_strip.rawValue
             }
             
-            functionsList.append(ExtraFunction(asType: extra, withTitle: title, withHex: hex))//placeholder
+            //functionsList.append(ExtraFunction(asType: extra, withTitle: title, withHex: hex))//placeholder
         }
         
         globalView.backgroundColor = UIColor.black.withAlphaComponent(0.8)

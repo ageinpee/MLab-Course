@@ -61,32 +61,47 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         _ = navigationController?.popViewController(animated: true)
     }
     
+    
+    private let extraFuncDict = ["Massage Back" : ExtraFunctions.massage_back,
+                                 "Massage Neck" : ExtraFunctions.massage_neck,
+                                 "Massage Legs" : ExtraFunctions.massage_legs,
+                                 "Under Bed Lighting" : ExtraFunctions.ubl,
+                                 //Extrafunctions from Explore
+                                 "Satellite Speaker": ExtraFunctions.satellite_speaker,
+                                 "Subwoofer Speaker": ExtraFunctions.subwoofer_speaker,
+                                 "Massage Motor" : ExtraFunctions.massage_motor,
+                                 "Under_Bed_Lighting" : ExtraFunctions.under_bed_lighting,
+                                 "Light Strip" : ExtraFunctions.light_strip,
+                                 "Seat Heating" : ExtraFunctions.seat_heating,
+                                 "Hands Free Kit" : ExtraFunctions.hands_free_kit,
+                                 "RGB Lighting Strip" : ExtraFunctions.rgb_lighting_strip,
+                                 "RGB Lighting Control Unit" : ExtraFunctions.rgb_lighting_control_unit,
+                                 //Default Handler
+                                 "NaN" : ExtraFunctions.NaN]
+    
+    func saveDevice(withUUID: String, named: String, forHandheldID: String, withStyle: String, withExtraFucntions: String) {
+        let device = Devices(context: PersistenceService.context)
+        device.uuid = withUUID
+        device.name = named
+        device.handheld = forHandheldID
+        device.style = withStyle
+        device.extraFunctions = withExtraFucntions
+        PersistenceService.saveContext()
+    }
+    
     @objc func buyingAccessory(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let cell = sender.location(in: self.tableView)
             if let indexPath = tableView.indexPathForRow(at: cell) {
-                addExtraToDevice(accessory: accessoriesList[indexPath.row])
+                print("buying device")
+                print(accessoriesList[indexPath.row])
+                globalDeviceObject.availableExtraFunctions.append(extraFuncDict[accessoriesList[indexPath.row].name] ?? .NaN)
+                saveDevice(withUUID: globalDeviceObject.uuid,
+                           named: globalDeviceObject.name,
+                           forHandheldID: globalDeviceObject.handheldID,
+                           withStyle: globalDeviceObject.style,
+                           withExtraFucntions: DeviceObject().convertExtraFunctionsToString(functions: globalDeviceObject.availableExtraFunctions))
             }
-        }
-    }
-    
-    func addExtraToDevice(accessory: Accessory) {
-        let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()
-        
-        do {
-            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
-            let currentDevice = globalDeviceObject
-            let ubl: ExtraFunctions = ExtraFunctions(rawValue: accessory.name)!
-            guard !(currentDevice.availableExtraFunctions.contains(ubl)) else { return }
-            currentDevice.availableExtraFunctions.append(ubl)
-            for device in savedDevices {
-                if device.uuid == currentDevice.uuid {
-                    device.extraFunctions = DeviceObject().convertExtraFunctionsToString(functions: currentDevice.availableExtraFunctions)
-                }
-            }
-            PersistenceService.saveContext()
-        } catch {
-            print("asd")
         }
     }
     

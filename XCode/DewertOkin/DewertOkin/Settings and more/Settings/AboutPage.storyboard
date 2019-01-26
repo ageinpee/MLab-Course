@@ -18,34 +18,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This App has been made in the MLab course of the University of Hamburg. The projects customer is DewertOkin. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsi-Nx-bcW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This App is a product of the MLab course of the University of Hamburg. The projects customer is DewertOkin. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsi-Nx-bcW">
                                 <rect key="frame" x="20" y="108" width="374" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The icons in this app have been taken from icons8 (https://icons8.de/). " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvr-7X-JBg">
-                                <rect key="frame" x="20" y="172.5" width="374" height="41"/>
+                                <rect key="frame" x="20" y="300.5" width="374" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJf-Ez-vuL">
+                                <rect key="frame" x="20" y="199" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructor: Lloyd Montgomery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ya-Of-ach">
+                                <rect key="frame" x="20" y="249.5" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zsi-Nx-bcW" firstAttribute="leading" secondItem="LO8-0i-zcf" secondAttribute="leadingMargin" id="1za-ju-rfJ"/>
-                            <constraint firstItem="qvr-7X-JBg" firstAttribute="firstBaseline" secondItem="zsi-Nx-bcW" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="3l1-JN-NcS"/>
+                            <constraint firstItem="9Ya-Of-ach" firstAttribute="leading" secondItem="ZFX-et-m5l" secondAttribute="leading" constant="20" id="3pS-sM-yjr"/>
                             <constraint firstItem="zsi-Nx-bcW" firstAttribute="leading" secondItem="qvr-7X-JBg" secondAttribute="leading" id="5GW-80-shC"/>
+                            <constraint firstItem="ZFX-et-m5l" firstAttribute="trailing" secondItem="9Ya-Of-ach" secondAttribute="trailing" constant="20" id="Bzf-fH-zJc"/>
+                            <constraint firstItem="qvr-7X-JBg" firstAttribute="top" secondItem="9Ya-Of-ach" secondAttribute="bottom" constant="30" id="IRH-A2-8AW"/>
                             <constraint firstItem="zsi-Nx-bcW" firstAttribute="trailing" secondItem="qvr-7X-JBg" secondAttribute="trailing" id="LMr-lx-KpJ"/>
                             <constraint firstItem="zsi-Nx-bcW" firstAttribute="top" secondItem="ZFX-et-m5l" secondAttribute="top" constant="64" id="Nnk-ZW-l5v"/>
+                            <constraint firstItem="9Ya-Of-ach" firstAttribute="top" secondItem="eJf-Ez-vuL" secondAttribute="bottom" constant="30" id="a2I-jP-bcf"/>
+                            <constraint firstItem="eJf-Ez-vuL" firstAttribute="top" secondItem="zsi-Nx-bcW" secondAttribute="bottom" constant="30" id="fVr-2h-xMO"/>
+                            <constraint firstItem="eJf-Ez-vuL" firstAttribute="leading" secondItem="ZFX-et-m5l" secondAttribute="leading" constant="20" id="oJn-OX-utV"/>
                             <constraint firstItem="zsi-Nx-bcW" firstAttribute="trailing" secondItem="LO8-0i-zcf" secondAttribute="trailingMargin" id="t6x-G0-Men"/>
+                            <constraint firstItem="ZFX-et-m5l" firstAttribute="trailing" secondItem="eJf-Ez-vuL" secondAttribute="trailing" constant="20" id="uhD-bI-tcZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZFX-et-m5l"/>
                     </view>
+                    <connections>
+                        <outlet property="teamlabel" destination="eJf-Ez-vuL" id="Tr8-Ec-Tj8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5j-IP-DAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-68" y="58"/>
+            <point key="canvasLocation" x="-68.115942028985515" y="57.589285714285708"/>
         </scene>
     </scenes>
 </document>
