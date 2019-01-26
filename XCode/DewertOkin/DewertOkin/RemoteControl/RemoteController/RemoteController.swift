@@ -78,7 +78,25 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        device = globalDeviceObject
+        let lastConnectedDeviceUUID = UserDefaults.standard.string(forKey: "lastConnectedDevice_uuid")
+        if lastConnectedDeviceUUID != "" {
+            fetchDevices()
+            for d in self.devicesList {
+                if d.uuid == lastConnectedDeviceUUID {
+                    globalDeviceObject = DeviceObject(withUUID: d.uuid ?? UUID().uuidString,
+                                                       named: d.name ?? "error while fetching",
+                                                       withHandheldID: d.handheld ?? "no-device",
+                                                       withStyle: d.style ?? "filled",
+                                                       withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: d.extraFunctions ?? "") )
+                    self.device = globalDeviceObject
+                    break
+                }
+                else
+                {
+                    self.device = globalDeviceObject
+                }
+            }
+        }
         
         currentDeviceLabel.text = device.name
         currentDeviceLabel.isHidden = true
