@@ -1,9 +1,9 @@
 //
-//  ExtraFunctionsControllerExtension.swift
+//  NewExtraFunctionsControllerExtension.swift
 //  DewertOkin
 //
-//  Created by MacBook-Benutzer on 30.12.18.
-//  Copyright © 2018 Team DewertOkin. All rights reserved.
+//  Created by Henrik Peters on 24.01.19.
+//  Copyright © 2019 Team DewertOkin. All rights reserved.
 //
 
 import Foundation
@@ -11,209 +11,95 @@ import UIKit
 
 extension ExtraFunctionsController {
     
-    func createButtons(withFunctions functions: [ExtraFunction]) {
-        print("no implementation at the moment")
-        if functions.count == 0 {
-            // set Textfield in grey with info where to find extra functions
-            noFunctionsLabel.isHidden = false
-            exploreButton.isHidden = false
-            exploreButton.layer.borderColor = UIColor.white.cgColor
-            exploreButton.layer.borderWidth = 2
-            exploreButton.layer.cornerRadius = 10
+    func setStaticButtons() {
+        self.backButton.layer.borderColor = UIColor.white.cgColor
+        self.backButton.layer.borderWidth = 1
+        self.backButton.layer.cornerRadius = 10
+        
+        self.exploreButton.layer.borderColor = UIColor.white.cgColor
+        self.exploreButton.layer.borderWidth = 1
+        self.exploreButton.layer.cornerRadius = 10
+        self.exploreButton.isHidden = true
+    }
+    
+    
+    
+    
+    func setDynamicButtons() {
+        if self.device.availableExtraFunctions.count == 0 {
+            self.exploreButton.isHidden = false
+            self.noFunctionsLabel.isHidden = false
         }
-        else if functions.count == 1 {
-            // set one button centered horizontally and vertically
-            var button = UIButton()
-            button = styleButton(forButton: button, withFunction: functions[0])
-            button.tag = 0
+        else if self.device.availableExtraFunctions.count == 1 {
+            let button = self.styleButton(withFunction: self.device.availableExtraFunctions[0])
             
-            contentView.addSubview(button)
+            self.contentView.addSubview(button)
             
-            button.translatesAutoresizingMaskIntoConstraints = false
+            button.translatesAutoresizingMaskIntoConstraints = true
+            button.center = CGPoint(x: self.contentView.bounds.midX,
+                                     y: self.contentView.bounds.midY)
+            button.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
             
-            NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: contentView.superview, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-            NSLayoutConstraint(item: button, attribute: .centerY, relatedBy: .equal, toItem: contentView.superview, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-            
-            NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentView.frame.width/3).isActive = true
-            NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentView.frame.width/3).isActive = true
-            
-            button.addTarget(self, action: #selector(handleButtonPress), for: .touchDown)
+            button.addTarget(self, action: #selector(self.handleButtonPress), for: .touchDown)
         }
-        else if functions.count >= 2 {
-            // set the buttons in two columns
+        else if self.device.availableExtraFunctions.count > 1 {
             var flagLeftRight = true //true == left, false == right
             var offset = 0
             
-            for (count, function) in functions.enumerated() {
-                var button = UIButton()
-                let contentViewHeight = Int(contentView.frame.height)
-                let contentViewWidth = Int(contentView.frame.width)
-                button.tag = count
+            for (count, function) in self.device.availableExtraFunctions.enumerated() {
+                let button = self.styleButton(withFunction: function)
+                let contentViewWidth = Int(self.contentView.frame.width)
                 
                 if count % 2 == 0 {
                     offset = offset + contentViewWidth/4 + 80
                 }
                 
-                contentView.addSubview(button)
-                button.translatesAutoresizingMaskIntoConstraints = false
-                
+                self.contentView.addSubview(button)
+                button.translatesAutoresizingMaskIntoConstraints = true
                 if flagLeftRight {
-                    NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: contentView.superview, attribute: .centerX, multiplier: 1, constant: CGFloat(-contentViewWidth/4)).isActive = true
+                    button.center = CGPoint(x: ((self.contentView.bounds.midX) - CGFloat(contentViewWidth) / CGFloat(5)),
+                                            y: ((self.contentView.bounds.midY) + CGFloat(300)) - CGFloat(offset))
                     flagLeftRight = false
                 }
                 else {
-                    NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: contentView.superview, attribute: .centerX, multiplier: 1, constant: CGFloat(contentViewWidth/4)).isActive = true
+                    button.center = CGPoint(x: ((self.contentView.bounds.midX) + CGFloat(contentViewWidth) / CGFloat(5)),
+                                            y: ((self.contentView.bounds.midY) + CGFloat(300)) - CGFloat(offset))
                     flagLeftRight = true
                 }
+                button.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
                 
-                NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1, constant: 0).isActive = true
-                NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .width, multiplier: 1, constant: 0).isActive = true
+                button.imageView?.contentMode = .scaleAspectFill
                 
-                NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: contentView.superview, attribute: .bottom, multiplier: 1, constant: CGFloat(((-1/2)*contentViewHeight/functions.count)-offset)).isActive = true
-                
-                button.imageView?.contentMode = .scaleAspectFit
-                button = styleButton(forButton: button, withFunction: function)
-                
-                button.addTarget(self, action: #selector(handleButtonPress), for: .touchDown)
+                button.addTarget(self, action: #selector(self.handleButtonPress), for: .touchDown)
             }
         }
+        
     }
     
     
-    func styleButton(forButton button: UIButton, withFunction function: ExtraFunction) -> UIButton {
-        button.setTitle(function.title, for: .normal)
+    
+    
+    private func styleButton(withFunction: ExtraFunctions) -> UIButton {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height:100))
+        button.setTitle(functionsMetadata[withFunction]?.0, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.view.frame.width/23)
-        button.titleEdgeInsets = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.lineBreakMode = .byWordWrapping
-
         
-        let imageSize = CGSize(width: self.view.frame.width/4.14,
-                               height: self.view.frame.width/4.14)
+        var image = functionsMetadata[withFunction]?.2
+        var imageHighlighted = functionsMetadata[withFunction]?.3
         
-        switch function.type {
-        case .massage_back:
-            var image = UIImage(named: "massageBackHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageBackHRCurlyHighlighted")
-            image = image?.resize(size: imageSize)
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-        case .ubl:
-            var image = UIImage(named: "ublHRWhite")
-            var imageHighlighted = UIImage(named: "ublHRHighlighted")
-            image = image?.resize(size: imageSize)
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-        case .massage_neck:
-            var image = UIImage(named: "massageNeckHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageNeckHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-        case .massage_legs:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-            
-            //AccessoryNames
-            
-        case .satellite_speaker:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        case .subwoofer_speaker:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        case .massage_motor:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        case .under_bed_lighting:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        case .light_strip:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        case .seat_heating:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        case .hands_free_kit:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        case .rgb_lighting_control_unit:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        case .rgb_lighting_strip:
-            var image = UIImage(named: "massageLegHRWhiteCurly")
-            var imageHighlighted = UIImage(named: "massageLegHRCurlyHighlighted")
-            imageHighlighted = imageHighlighted?.resize(size: imageSize)
-            image = image?.resize(size: imageSize)
-            button.setBackgroundImage(image, for: .normal)
-            button.setBackgroundImage(imageHighlighted, for: .highlighted)
-            
-            
-        //was case .NaN: before
-        default:
-            print("this is not a valid value")
-            
-            
-        }
+        let imageSize = CGSize(width: (image?.size.width ?? 1400)/14, height: 100)
+        image = image?.resize(size: imageSize)
+        imageHighlighted = imageHighlighted?.resize(size: imageSize)
+        button.setImage(image, for: .normal)
+        button.setImage(imageHighlighted, for: .highlighted)
+        button.titleEdgeInsets = UIEdgeInsets(top: 200, left: -100, bottom: 0, right: 0)
         
+        button.tag = functionsMetadata[withFunction]?.4 ?? 13
         return button
     }
+    
+    
 }
