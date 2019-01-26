@@ -110,12 +110,36 @@
                                     <constraint firstAttribute="bottom" secondItem="Bep-xh-Vt7" secondAttribute="bottom" id="vv5-yd-Lfp"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFQ-V8-kfJ" userLabel="devicesList">
+                                <rect key="frame" x="354" y="54" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8Mo-fJ-BP4"/>
+                                    <constraint firstAttribute="width" constant="30" id="PWk-nU-HyN"/>
+                                </constraints>
+                                <state key="normal" image="devices_list2"/>
+                                <connections>
+                                    <segue destination="qdB-i5-zvo" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="0Ev-FW-acL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6G-CQ-txk">
+                                <rect key="frame" x="186" y="54" width="42" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="loM-va-OBx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="huo-Rz-D3l" firstAttribute="bottom" secondItem="Ipq-0m-Wni" secondAttribute="bottom" constant="20" id="82s-Q9-1uj"/>
                             <constraint firstItem="Ipq-0m-Wni" firstAttribute="leading" secondItem="huo-Rz-D3l" secondAttribute="leading" constant="20" id="8Mm-qf-Wd7"/>
+                            <constraint firstItem="dFQ-V8-kfJ" firstAttribute="top" secondItem="huo-Rz-D3l" secondAttribute="top" constant="10" id="AYG-QF-3E4"/>
                             <constraint firstItem="Ipq-0m-Wni" firstAttribute="top" secondItem="huo-Rz-D3l" secondAttribute="top" constant="50" id="Gh7-3d-9ra"/>
+                            <constraint firstItem="w6G-CQ-txk" firstAttribute="centerX" secondItem="huo-Rz-D3l" secondAttribute="centerX" id="S8R-rf-GfS"/>
+                            <constraint firstItem="w6G-CQ-txk" firstAttribute="top" secondItem="huo-Rz-D3l" secondAttribute="top" constant="10" id="ST8-iU-XXc"/>
+                            <constraint firstAttribute="trailing" secondItem="dFQ-V8-kfJ" secondAttribute="trailing" constant="30" id="jHR-Zs-QvF"/>
                             <constraint firstItem="huo-Rz-D3l" firstAttribute="trailing" secondItem="Ipq-0m-Wni" secondAttribute="trailing" constant="20" id="y19-5X-3Gv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="huo-Rz-D3l"/>
@@ -127,6 +151,7 @@
                         <outlet property="backUpButton" destination="Nzg-KH-IAG" id="j5I-9O-aqe"/>
                         <outlet property="bothDownButton" destination="G5F-HD-ZfN" id="jf8-EM-sSa"/>
                         <outlet property="bothUpButton" destination="1GJ-eB-qwX" id="s74-2y-I01"/>
+                        <outlet property="deviceNameLabel" destination="w6G-CQ-txk" id="YP1-1l-Fa6"/>
                         <outlet property="feetDownButton" destination="KYT-vm-5dt" id="2nE-wa-Iud"/>
                         <outlet property="feetUpButton" destination="rza-o4-nok" id="OfG-CF-doe"/>
                         <outlet property="memory1Button" destination="5HR-bE-heu" id="1dT-GH-1o5"/>
@@ -141,8 +166,17 @@
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="775.44642857142856"/>
         </scene>
+        <!--Devices-->
+        <scene sceneID="a9A-If-d8P">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Devices" id="qdB-i5-zvo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fTR-Sg-Efx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712" y="574"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="devices_list2" width="180" height="180"/>
         <image name="remote1" width="701.280029296875" height="2198.39990234375"/>
     </resources>
 </document>

@@ -13,6 +13,9 @@
 		031CC45521DE43C20025E068 /* Devices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031CC45421DE43C20025E068 /* Devices.storyboard */; };
 		031EE20521A2EEB600E9E91E /* Timer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE20321A2EEB600E9E91E /* Timer+CoreDataClass.swift */; };
 		031EE20621A2EEB600E9E91E /* Timer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE20421A2EEB600E9E91E /* Timer+CoreDataProperties.swift */; };
+		0325CA3921FAE01A00337F64 /* SiriController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325CA3821FAE01A00337F64 /* SiriController.swift */; };
+		0325CA3B21FAED0400337F64 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0325CA3A21FAED0400337F64 /* Intents.framework */; };
+		0325CA3D21FAF77300337F64 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0325CA3C21FAF77300337F64 /* AppIntentVocabulary.plist */; };
 		0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052221BB349700603519 /* RemoteControlConfig.swift */; };
 		0333052521BB34C200603519 /* BluetoothCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052421BB34C200603519 /* BluetoothCoordinator.swift */; };
 		0333052721BB34E800603519 /* BluetoothFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333052621BB34E800603519 /* BluetoothFlow.swift */; };
@@ -50,9 +53,9 @@
 		03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E987672194631300189C97 /* UserNotificationsUI.framework */; };
 		4B54CBF2759AFFD448783FF0 /* Pods_DewertOkin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */; };
 		85919DE721943DCC0026AD28 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85919DE621943DCC0026AD28 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		9201DBEF21FA0463003D5FF2 /* NewExtraFunctionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */; };
+		9201DBEF21FA0463003D5FF2 /* ExtraFunctionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201DBEE21FA0463003D5FF2 /* ExtraFunctionsController.swift */; };
 		9201DBF121FA4404003D5FF2 /* NewExtraFunctions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9201DBF021FA4404003D5FF2 /* NewExtraFunctions.storyboard */; };
-		9201DBF321FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201DBF221FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift */; };
+		9201DBF321FA6875003D5FF2 /* ExtraFunctionsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201DBF221FA6875003D5FF2 /* ExtraFunctionsControllerExtension.swift */; };
 		9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9220AFB621F1DD85003E2794 /* handsender1_extended.csv */; };
 		9243F4C621F0C78000513B11 /* RemoteControllerExtensionCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */; };
 		927A423721F8938E00E97CB7 /* ExtraFunctionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A423621F8938E00E97CB7 /* ExtraFunctionObject.swift */; };
@@ -98,8 +101,6 @@
 		FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */; };
 		FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */; };
 		FAE52D4321D7BE5400121B54 /* PresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4221D7BE5400121B54 /* PresetsController.swift */; };
-		FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4421D7BEBF00121B54 /* ExtraFunctionsController.swift */; };
-		FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4621D902E000121B54 /* ExtraFunctionsControllerExtension.swift */; };
 		FAE52D4B21D909BD00121B54 /* PresetsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */; };
 		FAE52D4E21D924D400121B54 /* AddPresetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4D21D924D400121B54 /* AddPresetController.swift */; };
 		FAE52D5021DA485500121B54 /* DeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4F21DA485500121B54 /* DeviceObject.swift */; };
@@ -122,6 +123,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0325CA3721FAD9C100337F64 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0316162D21EFD0BA00E69559 /* DetailVendorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVendorCollectionView.swift; sourceTree = "<group>"; };
 		0316162F21EFD91600E69559 /* AccessoryCustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCustomCollectionCell.swift; sourceTree = "<group>"; };
@@ -129,6 +143,10 @@
 		031CC45421DE43C20025E068 /* Devices.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Devices.storyboard; sourceTree = "<group>"; };
 		031EE20321A2EEB600E9E91E /* Timer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+CoreDataClass.swift"; sourceTree = "<group>"; };
 		031EE20421A2EEB600E9E91E /* Timer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0325CA2221FAD9C100337F64 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		0325CA3821FAE01A00337F64 /* SiriController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriController.swift; sourceTree = "<group>"; };
+		0325CA3A21FAED0400337F64 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		0325CA3C21FAF77300337F64 /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		0333052221BB349700603519 /* RemoteControlConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlConfig.swift; sourceTree = "<group>"; };
 		0333052421BB34C200603519 /* BluetoothCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCoordinator.swift; sourceTree = "<group>"; };
 		0333052621BB34E800603519 /* BluetoothFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothFlow.swift; sourceTree = "<group>"; };
@@ -174,9 +192,9 @@
 		66B96800A32AF456A1DA4FEE /* Pods-DewertOkin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DewertOkin.release.xcconfig"; path = "Pods/Target Support Files/Pods-DewertOkin/Pods-DewertOkin.release.xcconfig"; sourceTree = "<group>"; };
 		760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DewertOkin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85919DE621943DCC0026AD28 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExtraFunctionsController.swift; sourceTree = "<group>"; };
+		9201DBEE21FA0463003D5FF2 /* ExtraFunctionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctionsController.swift; sourceTree = "<group>"; };
 		9201DBF021FA4404003D5FF2 /* NewExtraFunctions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewExtraFunctions.storyboard; sourceTree = "<group>"; };
-		9201DBF221FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExtraFunctionsControllerExtension.swift; sourceTree = "<group>"; };
+		9201DBF221FA6875003D5FF2 /* ExtraFunctionsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctionsControllerExtension.swift; sourceTree = "<group>"; };
 		9220AFB621F1DD85003E2794 /* handsender1_extended.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handsender1_extended.csv; sourceTree = "<group>"; };
 		9243F4C521F0C78000513B11 /* RemoteControllerExtensionCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionCoreData.swift; sourceTree = "<group>"; };
 		927A423621F8938E00E97CB7 /* ExtraFunctionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctionObject.swift; sourceTree = "<group>"; };
@@ -223,8 +241,6 @@
 		FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionBLE.swift; sourceTree = "<group>"; };
 		FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pullUpSegue.swift; sourceTree = "<group>"; };
 		FAE52D4221D7BE5400121B54 /* PresetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsController.swift; sourceTree = "<group>"; };
-		FAE52D4421D7BEBF00121B54 /* ExtraFunctionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctionsController.swift; sourceTree = "<group>"; };
-		FAE52D4621D902E000121B54 /* ExtraFunctionsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctionsControllerExtension.swift; sourceTree = "<group>"; };
 		FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsControllerExtension.swift; sourceTree = "<group>"; };
 		FAE52D4D21D924D400121B54 /* AddPresetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresetController.swift; sourceTree = "<group>"; };
 		FAE52D4F21DA485500121B54 /* DeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceObject.swift; sourceTree = "<group>"; };
@@ -235,6 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0325CA3B21FAED0400337F64 /* Intents.framework in Frameworks */,
 				03E987682194631300189C97 /* NotificationCenter.framework in Frameworks */,
 				03E987692194631300189C97 /* UserNotifications.framework in Frameworks */,
 				03E9876A2194631300189C97 /* UserNotificationsUI.framework in Frameworks */,
@@ -261,6 +278,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0325CA1121FA183000337F64 /* Siri */ = {
+			isa = PBXGroup;
+			children = (
+				0325CA3821FAE01A00337F64 /* SiriController.swift */,
+			);
+			path = Siri;
+			sourceTree = "<group>";
+		};
 		0333052121BB346F00603519 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +325,7 @@
 		0357FBD9218607A30043A828 /* DewertOkin */ = {
 			isa = PBXGroup;
 			children = (
+				0325CA1121FA183000337F64 /* Siri */,
 				039133C521E7E94300ECCBBE /* Explore */,
 				FA19A2F421D36F100032A4E7 /* RFPairing */,
 				CDFFC97621C081F3005C5821 /* Health */,
@@ -317,6 +343,7 @@
 				CDFFC97321C073D0005C5821 /* DewertOkin.entitlements */,
 				0357FBE1218607A30043A828 /* DewertOkin.xcdatamodeld */,
 				03E9875D2194483D00189C97 /* PersistenceService.swift */,
+				0325CA3C21FAF77300337F64 /* AppIntentVocabulary.plist */,
 			);
 			path = DewertOkin;
 			sourceTree = "<group>";
@@ -430,12 +457,14 @@
 		85919DE521943DCC0026AD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0325CA3A21FAED0400337F64 /* Intents.framework */,
 				CDBCC0BD21C7A85A0014451C /* HealthKit.framework */,
 				03E987652194631300189C97 /* NotificationCenter.framework */,
 				03E987662194631300189C97 /* UserNotifications.framework */,
 				03E987672194631300189C97 /* UserNotificationsUI.framework */,
 				85919DE621943DCC0026AD28 /* CoreData.framework */,
 				760ACA889C33095547297AF1 /* Pods_DewertOkin.framework */,
+				0325CA2221FAD9C100337F64 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -578,10 +607,8 @@
 			isa = PBXGroup;
 			children = (
 				9201DBF021FA4404003D5FF2 /* NewExtraFunctions.storyboard */,
-				FAE52D4421D7BEBF00121B54 /* ExtraFunctionsController.swift */,
-				FAE52D4621D902E000121B54 /* ExtraFunctionsControllerExtension.swift */,
-				9201DBEE21FA0463003D5FF2 /* NewExtraFunctionsController.swift */,
-				9201DBF221FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift */,
+				9201DBEE21FA0463003D5FF2 /* ExtraFunctionsController.swift */,
+				9201DBF221FA6875003D5FF2 /* ExtraFunctionsControllerExtension.swift */,
 			);
 			path = ExtraFunctionsController;
 			sourceTree = "<group>";
@@ -616,6 +643,7 @@
 				0357FBD4218607A30043A828 /* Frameworks */,
 				0357FBD5218607A30043A828 /* Resources */,
 				F196D7BB51A2116E85875D76 /* [CP] Embed Pods Frameworks */,
+				0325CA3721FAD9C100337F64 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -668,13 +696,16 @@
 		0357FBCF218607A30043A828 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Team DewertOkin";
 				TargetAttributes = {
 					0357FBD6218607A30043A828 = {
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -737,6 +768,7 @@
 				9220AFB721F1DD85003E2794 /* handsender1_extended.csv in Resources */,
 				03AE0EC121BFB4EA00CEDC81 /* BluetoothPairing.storyboard in Resources */,
 				039133C721E7ECB800ECCBBE /* Explore.storyboard in Resources */,
+				0325CA3D21FAF77300337F64 /* AppIntentVocabulary.plist in Resources */,
 				0359367D21EA8B8800986EC8 /* VendorList.json in Resources */,
 				9201DBF121FA4404003D5FF2 /* NewExtraFunctions.storyboard in Resources */,
 				FA19A2F821D370AE0032A4E7 /* RFPairing.storyboard in Resources */,
@@ -835,11 +867,10 @@
 				CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */,
 				CDACE3BE21EE5C000074304C /* Companion+Helpers.swift in Sources */,
 				033B2E6C21D398EA00971D08 /* BluetoothBackgroundHandler.swift in Sources */,
-				FAE52D4521D7BEBF00121B54 /* ExtraFunctionsController.swift in Sources */,
 				0380565121E9005C00A6502F /* ExploreJSONParser.swift in Sources */,
 				03786EF821F079A400FD894E /* DetailVendorGestureHandler.swift in Sources */,
 				03CA62DE21EBDF51003F3477 /* AccessoryCustomCell.swift in Sources */,
-				9201DBF321FA6875003D5FF2 /* NewExtraFunctionsControllerExtension.swift in Sources */,
+				9201DBF321FA6875003D5FF2 /* ExtraFunctionsControllerExtension.swift in Sources */,
 				FAE52D4E21D924D400121B54 /* AddPresetController.swift in Sources */,
 				FA19A2F621D370900032A4E7 /* RFPairingController1.swift in Sources */,
 				FA19A2FA21D370CE0032A4E7 /* CSVReader.swift in Sources */,
@@ -866,14 +897,14 @@
 				FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */,
 				0380565321E901D500A6502F /* Vendor.swift in Sources */,
 				035B860521C536C300A032AE /* BluetoothCentral.swift in Sources */,
-				9201DBEF21FA0463003D5FF2 /* NewExtraFunctionsController.swift in Sources */,
+				9201DBEF21FA0463003D5FF2 /* ExtraFunctionsController.swift in Sources */,
 				CD100F4921DE7B9000DBAAB9 /* MainViewController.swift in Sources */,
 				0316163021EFD91600E69559 /* AccessoryCustomCollectionCell.swift in Sources */,
 				039133C921E7ECD500ECCBBE /* ExploreViewController.swift in Sources */,
 				0357FBDB218607A30043A828 /* AppDelegate.swift in Sources */,
 				FAC415AF21DF60E900F4B5AC /* RemoteAnalyzer.swift in Sources */,
+				0325CA3921FAE01A00337F64 /* SiriController.swift in Sources */,
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
-				FAE52D4721D902E000121B54 /* ExtraFunctionsControllerExtension.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
 				CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */,
 				0316162E21EFD0BA00E69559 /* DetailVendorCollectionView.swift in Sources */,
@@ -1135,7 +1166,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DewertOkinUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1144,6 +1177,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DewertOkin;
@@ -1154,7 +1188,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DewertOkinUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1163,6 +1199,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.DewertOkinUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DewertOkin;

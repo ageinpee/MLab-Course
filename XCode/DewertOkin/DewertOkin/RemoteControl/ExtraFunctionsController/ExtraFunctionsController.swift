@@ -1,107 +1,63 @@
 //
-//  ExtraFunctionsController.swift
+//  NewExtraFunctionsController.swift
 //  DewertOkin
 //
-//  Created by MacBook-Benutzer on 29.12.18.
-//  Copyright © 2018 Team DewertOkin. All rights reserved.
+//  Created by Henrik Peters on 24.01.19.
+//  Copyright © 2019 Team DewertOkin. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 class ExtraFunctionsController: UIViewController {
+    var device = globalDeviceObject
+    var impact: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator()
     
-    @IBOutlet var globalView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    
-    @IBOutlet weak var noFunctionsLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var exploreButton: UIButton!
-    
-    
-    var functionsList: [ExtraFunction] = [ExtraFunction]()
-    var totalHeight: Int = Int()
+    @IBOutlet weak var noFunctionsLabel: UILabel!
+
+    // [ Extrafunction-Enum-Entry: (Title | Data for Bluetooth | Image for .normal | Image for .highlighted | tag for functionallity)]
+    var functionsMetadata = [ExtraFunctions.massage_back: ("Massage Back", Data(), UIImage(named: "massageBackHRWhiteCurly"), UIImage(named: "massageBackHRCurlyHighlighted"), 0),
+                             ExtraFunctions.massage_neck: ("Massage Neck", Data(), UIImage(named: "massageNeckHRWhiteCurly"), UIImage(named: "massageNeckHRCurlyHighlighted"), 1),
+                             ExtraFunctions.massage_legs: ("Massage Legs", Data(), UIImage(named: "massageLegHRWhiteCurly"), UIImage(named: "massageLegHRCurlyHighlighted"), 2),
+                             ExtraFunctions.ubl: ("Under Bed Lighting", Data(), UIImage(named: "ublHRWhite"), UIImage(named: "ublHRHighlighted"), 3),
+                             //Extrafunctions from Explore
+                             ExtraFunctions.satellite_speaker: ("Satellite Speaker", Data(), UIImage(named: "satellite_speaker"), UIImage(named: "satellite_speaker_highlighted"), 4),
+                             ExtraFunctions.subwoofer_speaker: ("Subwoofer Speaker", Data(), UIImage(named: "subwoofer_speaker"), UIImage(named: "subwoofer_speaker_highlighted"), 5),
+                             ExtraFunctions.massage_motor: ("Massage Motor", Data(), UIImage(named: "massage_motor"), UIImage(named: "massage_motor_highlighted"), 6),
+                             ExtraFunctions.under_bed_lighting: ("Under Bed Lighting", Data(), UIImage(named: "ublHRWhite"), UIImage(named: "ublHRHighlighted"), 7),
+                             ExtraFunctions.light_strip: ("Light Strip", Data(), UIImage(named: "ublHRWhite"), UIImage(named: "ublHRHighlighted"), 8),
+                             ExtraFunctions.seat_heating: ("Seat Heating", Data(), UIImage(named: "seat_heating"), UIImage(named: "seat_heating_highlighted"), 9),
+                             ExtraFunctions.hands_free_kit: ("Hands Free Kit", Data(), UIImage(named: "hands_free_kit"), UIImage(named: "hands_free_kit_highlighted"), 10),
+                             ExtraFunctions.rgb_lighting_strip: ("RGB Strip", Data(), UIImage(named: "rgb_strip"), UIImage(named: "rgb_strip_highlighted"), 11),
+                             ExtraFunctions.rgb_lighting_control_unit: ("RGB Control Box", Data(), UIImage(named: "rgb_strip_controller"), UIImage(named: "rgb_strip_controller_highlighted"), 12),
+                             //Default Handler
+                             ExtraFunctions.NaN: ("NaN", Data(), UIImage(named: "NaN"), UIImage(named: "NaN_highlighted"), 13)]
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        var title = ""
-        var hex = Data()
-        for extra in globalDeviceObject.availableExtraFunctions {
-            switch extra {
-            case .massage_back:
-                title = ExtraFunctionsTitle.massage_back.rawValue
-                hex = RemoteControlConfig().getKeycode(name: .massage1)
-            case .massage_neck:
-                title = ExtraFunctionsTitle.massage_neck.rawValue
-                hex = RemoteControlConfig().getKeycode(name: .massage2)
-            case .massage_legs:
-                title = ExtraFunctionsTitle.massage_legs.rawValue
-                hex = RemoteControlConfig().getKeycode(name: .massage3)
-            case .ubl:
-                title = ExtraFunctionsTitle.ubl.rawValue
-                hex = RemoteControlConfig().getKeycode(name: .ubl)
-            
-            // was case .NaN: before
-            default:
-                title = ExtraFunctionsTitle.NaN.rawValue
-                
-                //AccessoryNames
-//            case title = ExtraFunctionsTitle.satellite_speaker.rawValue
-//            case title = ExtraFunctionsTitle.subwoofer_speaker.rawValue
-//            case title = ExtraFunctionsTitle.massage_motor.rawValue
-//            case title = ExtraFunctionsTitle.under_bed_lighting.rawValue"
-//            case title = ExtraFunctionsTitle.light_strip.rawValue
-//            case title = ExtraFunctionsTitle.seat_heating.rawValue
-//            case title = ExtraFunctionsTitle.hands_free_kit.rawValue
-//            case title = ExtraFunctionsTitle.rgb_lighting_control_unit.rawValue"
-//            case title = ExtraFunctionsTitle.rgb_lighting_strip.rawValue
-            }
-            
-            //functionsList.append(ExtraFunction(asType: extra, withTitle: title, withHex: hex))//placeholder
-        }
+        self.device = globalDeviceObject
+        self.impact = UIImpactFeedbackGenerator(style: .light)
         
-        globalView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
-        noFunctionsLabel.text = "Your device currently has no additional features. You can find accessories for your device in the 'Explore' section. "
-        noFunctionsLabel.textColor = UIColor.white
-        noFunctionsLabel.isHidden = true
-        exploreButton.isHidden = true
+        self.noFunctionsLabel.isHidden = true
+        self.setStaticButtons()
+        self.setDynamicButtons()
         
-        /*
-        functionsList = [ExtraFunction(asType: .massage_back, withTitle: "Back Massage", withHex: "0x01"),
-                         ExtraFunction(asType: .massage_neck, withTitle: "Neck Massage", withHex: "0x02"),
-                         ExtraFunction(asType: .massage_legs, withTitle: "Leg Massage", withHex: "0x03"),
-                         ExtraFunction(asType: .ubl, withTitle: "Under Bed Lights", withHex: "0x04")]
-         */
-        
-        createButtons(withFunctions: functionsList)
+        self.scrollView.isScrollEnabled = true
+        self.scrollView.isUserInteractionEnabled = true
+        self.scrollView.contentSize = self.contentView.bounds.size
     }
-    
     
     @IBAction func dismissVC(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc
-    func handleButtonPress(sender: UIButton!) {
-        switch sender.tag{
-        case 0:
-            executeFunction(withHex: functionsList[0].hex)
-        case 1:
-            executeFunction(withHex: functionsList[1].hex)
-        case 2:
-            executeFunction(withHex: functionsList[2].hex)
-        case 3:
-            executeFunction(withHex: functionsList[3].hex)
-        case 4:
-            executeFunction(withHex: functionsList[4].hex)
-        default:
-            executeFunction(withHex: Data())
-        }
-    }
-    
-    private func executeFunction(withHex hex: Data) {
-        print("placehodler for bluetooth function with hexcode \(hex)")
+    @IBAction func exploreButtonAction(_ sender: Any) {
+        movetoExplore()
     }
     
     // Call this when Extras is empty and the user presses the explore button
@@ -113,16 +69,51 @@ class ExtraFunctionsController: UIViewController {
         }
     }
     
-    @IBAction func exploreButtonAction(_ sender: Any) {
-        movetoExplore()
+    @objc
+    func handleButtonPress(sender: UIButton!) {
+        self.impact.impactOccurred()
+        switch sender.tag{      // tag defines bluetoothfunction to call
+        case 0:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.massage_back]?.1 ?? Data())
+        case 1:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.massage_neck]?.1 ?? Data())
+        case 2:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.massage_legs]?.1 ?? Data())
+        case 3:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.ubl]?.1 ?? Data())
+        case 4:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.satellite_speaker]?.1 ?? Data())
+        case 5:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.subwoofer_speaker]?.1 ?? Data())
+        case 6:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.massage_motor]?.1 ?? Data())
+        case 7:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.under_bed_lighting]?.1 ?? Data())
+        case 8:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.light_strip]?.1 ?? Data())
+        case 9:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.seat_heating]?.1 ?? Data())
+        case 10:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.hands_free_kit]?.1 ?? Data())
+        case 11:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.rgb_lighting_strip]?.1 ?? Data())
+        case 12:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.rgb_lighting_control_unit]?.1 ?? Data())
+        case 13:
+            executeFunction(withHex: functionsMetadata[ExtraFunctions.NaN]?.1 ?? Data())
+        default:
+            print("something went wrong, can't find the correct function data")
+        }
     }
     
+    private func executeFunction(withHex hex: Data) {
+        print("placehodler for bluetooth function with hexcode \(hex)")
+    }
     
 }
 
-//====================================================================================
-//====================================================================================
-//====================================================================================
+
+
 
 extension UIImage {
     func resize(width: CGFloat) -> UIImage {
@@ -150,12 +141,4 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return newImage!
     }
-}
-
-enum ExtraFunctionsTitle: String {
-    case massage_back = "Massage Back"
-    case massage_neck = "Massage Neck"
-    case massage_legs = "Massage Legs"
-    case ubl = "Under Bed Lighting"
-    case NaN = "NaN"
 }

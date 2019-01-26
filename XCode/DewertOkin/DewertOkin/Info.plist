@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSSiriUsageDescription</key>
+	<string>Control your furniture with voice.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -28,9 +30,14 @@
 	<string>We use your location to show you the nearest vendors around you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to show you the nearest vendors around you.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>de.uhh.mlabdewertokin.command</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>location</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

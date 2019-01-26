@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New Extra Functions Controller-->
+        <!--Extra Functions Controller-->
         <scene sceneID="9JB-Oj-dXv">
             <objects>
-                <viewController id="sxl-o5-2Q5" customClass="NewExtraFunctionsController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sxl-o5-2Q5" customClass="ExtraFunctionsController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lLa-e9-Seh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

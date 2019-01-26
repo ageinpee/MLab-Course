@@ -106,7 +106,26 @@ class AchievementsTableViewController: UITableViewController, Themeable {
         
     }
     // cellForRowAt indexPath iterates through this array and determines the order in which they are displayed
-    let achievementTypes: [AchievementType] = [.onTopOfThings, .veteran, .undecisive, .nightOwl, .letThereBeLight, .buttonManiac]
+    
+    let achievementTypes: [AchievementType] =
+    [
+            .onTopOfThings,
+            .veteran,
+            .undecisive,
+            .nightOwl,
+            .letThereBeLight,
+            .buttonManiac,
+            .exerciseApprentice,
+            .exerciseManiac,
+            .exerciseMaster,
+            .firstStreak,
+            .streakItHard,
+            .streakLikeABoss
+    ]
+    
+    
+    
+    
     
     private func createAchievementCell(tableview: UITableView, path: IndexPath) -> UITableViewCell {
         
