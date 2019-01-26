@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
-//import NotificationCenter
+import Intents
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -127,6 +127,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func waitForBluetooth() -> Bool {
         return bluetooth.centralManager.state == .poweredOn
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        let viewController = window?.rootViewController as! RemoteController
+        viewController.itDidWork()
+        
+        return true
     }
     
 }
