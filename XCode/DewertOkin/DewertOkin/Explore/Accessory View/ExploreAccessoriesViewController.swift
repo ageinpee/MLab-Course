@@ -93,8 +93,6 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         if sender.state == .began {
             let cell = sender.location(in: self.tableView)
             if let indexPath = tableView.indexPathForRow(at: cell) {
-                print("buying device")
-                print(accessoriesList[indexPath.row])
                 globalDeviceObject.availableExtraFunctions.append(extraFuncDict[accessoriesList[indexPath.row].name] ?? .NaN)
                 saveDevice(withUUID: globalDeviceObject.uuid,
                            named: globalDeviceObject.name,
