@@ -13,7 +13,7 @@ enum SettingsEntry: String {
     case deviceInfo = "Device Info"
     case achievements = "Achievements"
     case siri = "Siri"
-    case about = "About [Company]"
+    case about = "About"
     case darkMode = "Dark Mode"
     case useOldRemote = "Use Old Remote Layout"
     case test = "Test"
@@ -24,11 +24,10 @@ enum SettingsEntry: String {
 class SettingTableViewController: UITableViewController, Themeable {
     
     private let settingsEntries: [[SettingsEntry]] = [
-        [.deviceInfo, .about],
-        [.useOldRemote, .darkMode],
-        [.achievements, .test, .rfpairing, .bluetoothPairing]
+        [.about],
+        [.useOldRemote, .darkMode]
     ]
-    private let settingsSections = ["Devices and Support", "Preferences", "Other"]
+    private let settingsSections = ["Devices and Support", "Preferences"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +68,7 @@ class SettingTableViewController: UITableViewController, Themeable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "More"
+        navigationItem.title = "Settings"
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 
