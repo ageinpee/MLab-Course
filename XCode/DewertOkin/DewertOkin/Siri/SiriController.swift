@@ -23,19 +23,6 @@ extension RemoteController {
         
         return INShortcut(userActivity: activity)
         
-        //getCommandToTrigger(command: activity.title!)
-    }
-    
-    func getCommandToTrigger(command: String) {
-        switch command {
-            case "Move Head Up": moveHeadUp()
-            case "Move Head Down": moveHeadDown()
-            case "Move Feet Up": moveFeetUp()
-            case "Move Feet Down": moveFeetDown()
-            //case "Trigger Memory 1": triggerMemory1()
-            //case "Trigger Memory 2": triggerMemory2()
-            default: ()
-        }
     }
     
     func initializeAllCommands() {
@@ -62,27 +49,39 @@ extension RemoteController {
     }
     
     func startHeadUp() {
-        print("it works")
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.m1In)
     }
     
     func startHeadDown() {
-        print("it works")
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.m1Out)
     }
     
     func startFeetUp() {
-        print("it works")
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.m2In)
     }
     
     func startFeetDown() {
-        print("it works")
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.m2Out)
     }
     
     func triggerMemory1() {
-        print("it works")
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.memory1)
     }
     
     func triggerMemory2() {
-        print("it works")
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        triggerCommand(keycode: keycode.memory2)
     }
     
     func stopHeadUp() {
