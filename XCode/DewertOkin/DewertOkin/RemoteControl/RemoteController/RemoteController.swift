@@ -122,7 +122,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         arrowsImageView.alpha = 0
         fadeInArrows(withAlpha: opacity)
         
-        checkBluetoothConnectivity()
+        // Disabled for demonstration purposes
+        //checkBluetoothConnectivity()
     }
     
     @objc
