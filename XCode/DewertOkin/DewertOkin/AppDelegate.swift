@@ -134,19 +134,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let viewController: RemoteController = RemoteController()
         
         if (userActivity.title == "Move Head Up") {
-            viewController.moveHeadUp()
+            viewController.startHeadUp()
             return true
         }
         else if (userActivity.title == "Move Head Down") {
-            viewController.moveHeadDown()
+            viewController.startHeadDown()
             return true
         }
         else if (userActivity.title == "Move Feet Up") {
-            viewController.moveFeetUp()
+            viewController.startFeetUp()
             return true
         }
         else if (userActivity.title == "Move Feet Down") {
-            viewController.moveFeetDown()
+            viewController.startFeetDown()
             return true
         }
         else if (userActivity.title == "Trigger Memory 1") {
