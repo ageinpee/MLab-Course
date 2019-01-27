@@ -86,6 +86,7 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
  
         
         globalDeviceObject = device
+        UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
         
         UIView.animate(withDuration: 1.0, animations: {
             self.view.alpha = 0
