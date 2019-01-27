@@ -56,6 +56,7 @@ extension RemoteController {
             (_) in
             self.triggerCommand(keycode: keycode.m1In)
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
     }
     
     func startHeadDown() {
@@ -66,6 +67,7 @@ extension RemoteController {
             (_) in
             self.triggerCommand(keycode: keycode.m1Out)
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
     }
     
     func startFeetUp() {
@@ -76,6 +78,7 @@ extension RemoteController {
             (_) in
             self.triggerCommand(keycode: keycode.m2In)
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
     }
     
     func startFeetDown() {
@@ -86,6 +89,7 @@ extension RemoteController {
             (_) in
             self.triggerCommand(keycode: keycode.m2Out)
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
     }
     
     func triggerMemory1() {
