@@ -168,6 +168,8 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
     }()
     
     lazy var achievementTitles: [String] = achievements.map({ $0.title })
+    lazy var achievementDescriptions: [String] = achievements.map({ $0.description })
+    lazy var achievementProgress: [Float] = achievements.map({ $0.progress })
     
     let reuseIdentifier = "defaultCell"
     
@@ -179,12 +181,7 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         label.textAlignment = .center
         return label
     }()
-    
-    let progressView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,24 +215,66 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-            let buttonTitle = achievementTitles[indexPath.row]
-            let presetView = createAchievementBlock(achievementTitle: buttonTitle, backgroundColor: colors[indexPath.item])
-            cell.addSubview(presetView)
-            presetView.translatesAutoresizingMaskIntoConstraints = false
-            // UNSAFE
-            presetView.backgroundColor = .white
-            presetView.layer.borderColor = colors[indexPath.item].cgColor
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : presetView]))
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0" : presetView]))
-            cell.addConstraint(NSLayoutConstraint(item: presetView, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1, constant: 0))
-
+        let shapeLayer = CAShapeLayer()
+        
+        let progressView: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+        
+        let presetView = createAchievementBlock(achievementTitle: achievementTitles[indexPath.row], achievementDescription: achievementDescriptions[indexPath.row], backgroundColor: colors[indexPath.item])
+        
+        cell.addSubview(presetView)
+        cell.addSubview(progressView)
+        
+        presetView.translatesAutoresizingMaskIntoConstraints = false
+        // UNSAFE
+        presetView.backgroundColor = colors[indexPath.item]
+        presetView.layer.borderColor = colors[indexPath.item].cgColor
+        
+        //progressView.backgroundColor = colors[indexPath.item].withAlphaComponent(0.3)
         
         
-        //cell.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
+        cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v1(80)]-8-[v0]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : presetView, "v1": progressView]))
+        cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0" : presetView]))
+        cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0" : progressView]))
+        cell.addConstraint(NSLayoutConstraint(item: presetView, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1, constant: 0))
+        
+        let center = CGPoint(x: 40, y: 33)
+        
+        let circularPath = UIBezierPath(arcCenter: center, radius: 30, startAngle: -CGFloat.pi/2, endAngle: 2*CGFloat.pi, clockwise: true)
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.strokeColor = colors[indexPath.item].cgColor
+        shapeLayer.lineCap = .round
+        
+        let trackLayer = CAShapeLayer()
+        trackLayer.path = circularPath.cgPath
+        trackLayer.lineCap = .round
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.fillColor = UIColor.clear.cgColor
+        trackLayer.lineWidth = 3
+        
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = 5
+        shapeLayer.strokeEnd = 0
+        
+        progressView.layer.addSublayer(trackLayer)
+        progressView.layer.addSublayer(shapeLayer)
+        
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.toValue = achievementProgress[indexPath.item]
+        basicAnimation.duration = 2
+        basicAnimation.fillMode = .forwards
+        basicAnimation.isRemovedOnCompletion = false
+        shapeLayer.add(basicAnimation, forKey: "basicAnimation")
+        print("Animates Stroke")
+        
+        
         return cell
     }
     
-    private func createAchievementBlock(achievementTitle: String, backgroundColor: UIColor) -> UIView {
+    private func createAchievementBlock(achievementTitle: String, achievementDescription: String, backgroundColor: UIColor) -> UIView {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.borderWidth = 5
@@ -244,24 +283,28 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         let titleLabel: UILabel = {
            let label = UILabel()
             label.text = achievementTitle
-            label.textColor = .black
+            label.textColor = .white
+            label.font = UIFont.boldSystemFont(ofSize: 18)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        let descriptionLabel: UILabel = {
+            let label = UILabel()
+            label.text = achievementDescription
+            label.textColor = .white
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
         view.addSubview(titleLabel)
-        view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 2/3, constant: 0))
         view.addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
+        
+        view.addSubview(descriptionLabel)
+        view.addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 4/3, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
+        
         view.isUserInteractionEnabled = true
-        
-        view.addSubview(progressView)
-        // Doesn't work
-        progressView.backgroundColor = backgroundColor
-        progressView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        progressView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        progressView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        progressView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
         
         return view
     }
