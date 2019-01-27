@@ -155,7 +155,7 @@ class AchievementsTableViewController: UITableViewController, Themeable {
 
 class AchievementsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let colors: [UIColor] = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
+    let colors: [UIColor] = [#colorLiteral(red: 0.8039215686, green: 0.4980392157, blue: 0.1960784314, alpha: 1), #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
     
     let achievements: [Achievement] = {
         var list: [Achievement] = []
@@ -187,9 +187,8 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.backgroundColor = .white
         
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Achievements"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSelf(_:)))
         
         collectionView.alwaysBounceVertical = true
     }
@@ -244,7 +243,7 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         
         let circularPath = UIBezierPath(arcCenter: center, radius: 30, startAngle: -CGFloat.pi/2, endAngle: 2*CGFloat.pi, clockwise: true)
         shapeLayer.path = circularPath.cgPath
-        shapeLayer.strokeColor = colors[indexPath.item].cgColor
+        
         shapeLayer.lineCap = .round
         
         let trackLayer = CAShapeLayer()
@@ -254,8 +253,8 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineWidth = 1
         
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 5
+
+        shapeLayer.lineWidth = 6
         shapeLayer.strokeEnd = 0
         
         progressView.layer.addSublayer(trackLayer)
@@ -266,7 +265,16 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         basicAnimation.duration = 2
         basicAnimation.fillMode = .forwards
         basicAnimation.isRemovedOnCompletion = false
-        shapeLayer.add(basicAnimation, forKey: "basicAnimation")
+        
+        if achievementProgress[indexPath.item] >= 1.0 {
+            shapeLayer.fillColor = colors[indexPath.item].cgColor
+            shapeLayer.strokeColor = colors[indexPath.item].cgColor
+        } else {
+            shapeLayer.fillColor = UIColor.clear.cgColor
+            shapeLayer.strokeColor = colors[indexPath.item].cgColor
+            shapeLayer.add(basicAnimation, forKey: "basicAnimation")
+        }
+        
         
         
         return cell
@@ -277,6 +285,14 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         view.layer.cornerRadius = 15
         view.layer.borderWidth = 5
         view.layer.borderColor = UIColor.white.cgColor
+        
+        // Setup card appearance
+        view.layer.cornerRadius = 15
+        view.layer.borderWidth = 3
+        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        view.layer.shadowRadius = 10.0
+        view.layer.shadowOpacity = 0.6
         
         let titleLabel: UILabel = {
            let label = UILabel()

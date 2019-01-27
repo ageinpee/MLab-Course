@@ -60,18 +60,17 @@ class AchievementModel {
     }
     
     public static var achievementDictionary: [AchievementType:Achievement] = [
-        .buttonManiac : Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock_simple", type: .buttonManiac, progress: 0.23),
-        .onTopOfThings : Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock_simple", type: .onTopOfThings, progress: 0.0),
-        .veteran : Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock_simple", type: .veteran, progress: 0.0),
-        .undecisive : Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock_simple", type: .undecisive, progress: 0.75),
-        .nightOwl : Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0),
-        .letThereBeLight : Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0),
-        .exerciseApprentice : Achievement(id: 7, title: "Exercise Apprentice", description: "Do your recommended exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 0.0),
-        .exerciseManiac : Achievement(id: 8, title: "Exercise Maniac", description: "Do your recommended exercises 50 times", image: "lock_simple", type: .exerciseManiac, progress: 0.0),
-        .exerciseMaster : Achievement(id: 9, title: "Exercise Master", description: "Do your recommended exercise 100 times", image: "lock_simple", type: .exerciseMaster, progress: 0.0),
-        .firstStreak : Achievement(id: 10, title: "First Streak!", description: "Do your exercise for 25 times in a row!", image: "lock_simple", type: .firstStreak, progress: 0.0),
-        .streakItHard : Achievement(id: 11, title: "Streak it hard!", description: "Do your exercise for 50 times in a row!", image: "lock_simple", type: .streakItHard, progress: 0.0),
-        .streakLikeABoss : Achievement(id: 12, title: "STREAK LIKE A BOSS!", description: "Do your exercise for 100 times in a row", image: "lock_simple", type: .streakLikeABoss, progress: 0.0)
+        .exerciseApprentice : Achievement(id: 1, title: "Exercise Apprentice", description: "Do your recommended exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 0.0),
+        .exerciseManiac : Achievement(id: 2, title: "Exercise Maniac", description: "Do your recommended exercises 50 times", image: "lock_simple", type: .exerciseManiac, progress: 0.0),
+        .exerciseMaster : Achievement(id: 3, title: "Exercise Master", description: "Do your recommended exercise 100 times", image: "lock_simple", type: .exerciseMaster, progress: 0.0),
+        .firstStreak : Achievement(id: 4, title: "First Streak!", description: "Do your exercise for 25 times in a row!", image: "lock_simple", type: .firstStreak, progress: 0.0),
+        .streakItHard : Achievement(id: 5, title: "Streak it hard!", description: "Do your exercise for 50 times in a row!", image: "lock_simple", type: .streakItHard, progress: 0.0),
+        .streakLikeABoss : Achievement(id: 6, title: "STREAK LIKE A BOSS!", description: "Do your exercise for 100 times in a row", image: "lock_simple", type: .streakLikeABoss, progress: 0.0),
+        .onTopOfThings : Achievement(id: 7, title: "On Top of Things", description: "Set 3 Reminders", image: "lock_simple", type: .onTopOfThings, progress: 0.0),
+        .veteran : Achievement(id: 8, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock_simple", type: .veteran, progress: 0.0),
+        .nightOwl : Achievement(id: 9, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0),
+        .letThereBeLight : Achievement(id: 10, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0)
+
     ]
     
     static func saveAchievementProgress() {
@@ -229,19 +228,18 @@ class AchievementModel {
         nightOwlUnlocked = false
         letThereBeLightUnlocked = false
         
-        achievementDictionary =  [
-            .buttonManiac : Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock_simple", type: .buttonManiac, progress: 0.0),
-            .onTopOfThings : Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock_simple", type: .onTopOfThings, progress: 0.0),
-            .veteran : Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock_simple", type: .veteran, progress: 0.0),
-            .undecisive : Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock_simple", type: .undecisive, progress: 0.0),
-            .nightOwl : Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0),
-            .letThereBeLight : Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0),
-            .exerciseApprentice : Achievement(id: 7, title: "Exercise Apprentice", description: "Do your recommended exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 0.0),
-            .exerciseManiac : Achievement(id: 8, title: "Exercise Maniac", description: "Do your recommended exercises 50 times", image: "lock_simple", type: .exerciseManiac, progress: 0.0),
-            .exerciseMaster : Achievement(id: 9, title: "Exercise Master", description: "Do your recommended exercise 100 times", image: "lock_simple", type: .exerciseMaster, progress: 0.0),
-            .firstStreak : Achievement(id: 10, title: "First Streak!", description: "Do your exercise for 25 times in a row!", image: "lock_simple", type: .firstStreak, progress: 0.0),
-            .streakItHard : Achievement(id: 11, title: "Streak it hard!", description: "Do your exercise for 50 times in a row!", image: "lock_simple", type: .streakItHard, progress: 0.0),
-            .streakLikeABoss : Achievement(id: 12, title: "STREAK LIKE A BOSS!", description: "Do your exercise for 100 times in a row", image: "lock_simple", type: .streakLikeABoss, progress: 0.0)
+        achievementDictionary = [
+            .exerciseApprentice : Achievement(id: 1, title: "Exercise Apprentice", description: "Do your recommended exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 0.0),
+            .exerciseManiac : Achievement(id: 2, title: "Exercise Maniac", description: "Do your recommended exercises 50 times", image: "lock_simple", type: .exerciseManiac, progress: 0.0),
+            .exerciseMaster : Achievement(id: 3, title: "Exercise Master", description: "Do your recommended exercise 100 times", image: "lock_simple", type: .exerciseMaster, progress: 0.0),
+            .firstStreak : Achievement(id: 4, title: "First Streak!", description: "Do your exercise for 25 times in a row!", image: "lock_simple", type: .firstStreak, progress: 0.0),
+            .streakItHard : Achievement(id: 5, title: "Streak it hard!", description: "Do your exercise for 50 times in a row!", image: "lock_simple", type: .streakItHard, progress: 0.0),
+            .streakLikeABoss : Achievement(id: 6, title: "STREAK LIKE A BOSS!", description: "Do your exercise for 100 times in a row", image: "lock_simple", type: .streakLikeABoss, progress: 0.0),
+            .onTopOfThings : Achievement(id: 7, title: "On Top of Things", description: "Set 3 Reminders", image: "lock_simple", type: .onTopOfThings, progress: 0.0),
+            .veteran : Achievement(id: 8, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock_simple", type: .veteran, progress: 0.0),
+            .nightOwl : Achievement(id: 9, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0),
+            .letThereBeLight : Achievement(id: 10, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0)
+            
         ]
         
         saveAchievementProgress()

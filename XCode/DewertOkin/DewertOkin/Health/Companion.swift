@@ -20,7 +20,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
     let statisticsCell = "statisticsCell"
     let reminderCell = "reminderCell"
     
-    let tableViewSections = ["Statistics", "Main Reminder", "Other Reminders"]
+    let tableViewSections = ["Statistics", "Main Reminder", "Other Reminders", "Achievements"]
 
     public var reminderList = [Reminder]()
     
@@ -56,8 +56,6 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         
         self.navigationItem.title = "Companion"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Achievements", style: .plain, target: self, action: #selector(showAchievements)), animated: false)
         
         tableView.estimatedRowHeight = 100
         
@@ -117,6 +115,11 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
                 cell.accessoryView = UISwitch()
                 return cell
             }
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: defaultCell, for: indexPath)
+            cell.textLabel?.text = "Achievements"
+            cell.accessoryType = .disclosureIndicator
+            return cell
         default:
             break
         }
@@ -132,6 +135,8 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
             return 1
         case 2:
             return reminderList.count + 1
+        case 3:
+            return 1
         default:
             return 0
         }
@@ -156,6 +161,8 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
             default:
                 present(UINavigationController(rootViewController: NewReminderTableViewController(reminder: reminderList[indexPath.row])), animated: true, completion: nil)
             }
+        case 3:
+            showAchievements()
         default:
             break
         }
@@ -252,10 +259,9 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
     
     @objc
     private func showAchievements() {
-//        if let vc = UIStoryboard(name: "AchievementsStoryboard", bundle: nil).instantiateInitialViewController() as? AchievementsTableViewController {
-//            present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
-//        }
-        self.present(UINavigationController(rootViewController: AchievementsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())), animated: true, completion: nil)
+        if let navigator = navigationController {
+            navigator.pushViewController(AchievementsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+        }
     }
     
     func updateChartData() {
