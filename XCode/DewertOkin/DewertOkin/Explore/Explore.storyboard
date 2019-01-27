@@ -32,6 +32,7 @@
                         <viewLayoutGuide key="safeArea" id="LO4-Fk-rNs"/>
                     </view>
                     <navigationItem key="navigationItem" id="FyY-fg-iMa">
+                        <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="JA1-HT-E6V">
                             <connections>
                                 <action selector="showAccessoriesList:" destination="txy-Vt-aDp" id="Y94-fh-S2q"/>

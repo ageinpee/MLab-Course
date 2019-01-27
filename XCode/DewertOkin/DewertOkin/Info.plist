@@ -32,7 +32,16 @@
 	<string>We use your location to show you the nearest vendors around you.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>de.uhh.mlabdewertokin.command</string>
+		<string>de.uhh.mlabdewertokin.startHeadUp</string>
+		<string>de.uhh.mlabdewertokin.startHeadDown</string>
+		<string>de.uhh.mlabdewertokin.startFeetUp</string>
+		<string>de.uhh.mlabdewertokin.startFeetDown</string>
+		<string>de.uhh.mlabdewertokin.triggerMemory1</string>
+		<string>de.uhh.mlabdewertokin.triggerMemory2</string>
+		<string>de.uhh.mlabdewertokin.stopHeadUp</string>
+		<string>de.uhh.mlabdewertokin.stopHeadDown</string>
+		<string>de.uhh.mlabdewertokin.stopFeetUp</string>
+		<string>de.uhh.mlabdewertokin.stopFeetDown</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

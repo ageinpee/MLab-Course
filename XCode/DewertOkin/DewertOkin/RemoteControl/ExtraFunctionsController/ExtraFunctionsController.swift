@@ -12,6 +12,7 @@ import UIKit
 class ExtraFunctionsController: UIViewController {
     var device = globalDeviceObject
     var impact: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator()
+    var offsetDown: Int = Int()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -43,13 +44,24 @@ class ExtraFunctionsController: UIViewController {
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
+        print(self.view.bounds.size)
+        self.offsetDown = ((200*(self.device.availableExtraFunctions.count/2))-Int(self.contentView.bounds.size.height))
+        
         self.noFunctionsLabel.isHidden = true
         self.setStaticButtons()
         self.setDynamicButtons()
         
         self.scrollView.isScrollEnabled = true
         self.scrollView.isUserInteractionEnabled = true
-        self.scrollView.contentSize = self.contentView.bounds.size
+        self.scrollView.alwaysBounceVertical = true
+        self.scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: CGFloat(400 + 250*(self.device.availableExtraFunctions.count/2)))//self.contentView.bounds.size
+        self.scrollView.contentInset = .init(top: CGFloat((800 + 200*(self.device.availableExtraFunctions.count/2))-Int(self.contentView.bounds.size.height)),
+                                             left: 0,
+                                             bottom: 0,
+                                             right: 0)
+        
+        //let bottomOffset = CGPoint(x: 0, y: (scrollView.contentSize.height - scrollView.bounds.size.height)/2)
+        //self.scrollView.setContentOffset(bottomOffset, animated: true)
     }
     
     @IBAction func dismissVC(_ sender: Any) {

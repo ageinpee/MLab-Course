@@ -58,12 +58,12 @@ extension ExtraFunctionsController {
                 button.translatesAutoresizingMaskIntoConstraints = true
                 if flagLeftRight {
                     button.center = CGPoint(x: ((self.contentView.bounds.midX) - CGFloat(contentViewWidth) / CGFloat(5)),
-                                            y: ((self.contentView.bounds.midY) + CGFloat(300)) - CGFloat(offset))
+                                            y: ((self.contentView.bounds.midY) + CGFloat(300)) - CGFloat(offset) )//+ CGFloat(self.offsetDown))
                     flagLeftRight = false
                 }
                 else {
                     button.center = CGPoint(x: ((self.contentView.bounds.midX) + CGFloat(contentViewWidth) / CGFloat(5)),
-                                            y: ((self.contentView.bounds.midY) + CGFloat(300)) - CGFloat(offset))
+                                            y: ((self.contentView.bounds.midY) + CGFloat(300)) - CGFloat(offset) )//+ CGFloat(self.offsetDown))
                     flagLeftRight = true
                 }
                 button.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]

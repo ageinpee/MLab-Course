@@ -105,6 +105,7 @@ extension DevicesListViewController: UITableViewDataSource {
                                           withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
                                           withStyle: self.devicesList[indexPath.row].style ?? "filled",
                                           withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
+        UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
         
         action.backgroundColor = .blue
         return action

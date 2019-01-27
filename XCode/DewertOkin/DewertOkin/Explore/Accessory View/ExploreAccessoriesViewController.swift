@@ -89,16 +89,30 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
         PersistenceService.saveContext()
     }
     
+    func updateDevicesFunctions(newExtraFunctions: String, uuid: String) {
+        let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()
+        
+        do {
+            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
+            for device in savedDevices {
+                if device.uuid == uuid {
+                    device.extraFunctions = newExtraFunctions
+                    try PersistenceService.context.save()
+                }
+            }
+        } catch {
+            print("Devices couldn't be loaded")
+        }
+    }
+    
     @objc func buyingAccessory(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let cell = sender.location(in: self.tableView)
             if let indexPath = tableView.indexPathForRow(at: cell) {
+                tableView.cellForRow(at: indexPath)?.isHighlighted = false
                 globalDeviceObject.availableExtraFunctions.append(extraFuncDict[accessoriesList[indexPath.row].name] ?? .NaN)
-                saveDevice(withUUID: globalDeviceObject.uuid,
-                           named: globalDeviceObject.name,
-                           forHandheldID: globalDeviceObject.handheldID,
-                           withStyle: globalDeviceObject.style,
-                           withExtraFucntions: DeviceObject().convertExtraFunctionsToString(functions: globalDeviceObject.availableExtraFunctions))
+                self.updateDevicesFunctions(newExtraFunctions: DeviceObject().convertExtraFunctionsToString(functions: globalDeviceObject.availableExtraFunctions),
+                                            uuid: globalDeviceObject.uuid)
             }
         }
     }

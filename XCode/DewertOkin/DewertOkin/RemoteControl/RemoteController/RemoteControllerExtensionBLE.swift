@@ -11,17 +11,6 @@ import CoreBluetooth
 
 extension RemoteController {
     
-    func Connect() {
-        // OLD CODE? bluetoothFlow has no member pair
-//        self.bluetoothFlow.waitForPeripheral {
-//            self.bluetoothFlow.pair { result in
-//                self.peripheral = self.bluetooth.connectedPeripheral
-//                self.characteristic = self.bluetooth.characteristic
-//                self.paired = true
-//            }
-//        }
-    }
-    
     func moveHeadUp() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
@@ -49,18 +38,6 @@ extension RemoteController {
     func triggerCommand(keycode: keycode) {
         let movement = self.remoteControlConfig.getKeycode(name: keycode)
         bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-        
     }
     
-    //    func goUpFeet() {
-    //        guard self.bluetooth.bluetoothState == .poweredOn else {return}
-    //        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m2In)
-    //        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-    //    }
-    //
-    //    func goDownFeet() {
-    //        guard self.bluetooth.bluetoothState == .poweredOn else {return}
-    //        let moveUp = self.remoteControlConfig.getKeycode(name: keycode.m2Out)
-    //        peripheral?.writeValue(moveUp, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-    //    }
 }

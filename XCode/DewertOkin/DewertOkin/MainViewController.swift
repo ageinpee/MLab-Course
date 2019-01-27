@@ -40,8 +40,6 @@ class MainViewController: UITabBarController {
 //
 //        }
         
-        //INVocabulary.shared().setVocabularyStrings(<#T##vocabulary: NSOrderedSet##NSOrderedSet#>, of: <#T##INVocabularyStringType#>)
-        
         remoteVC = useNewRemoteStyle ? remoteNew : remoteOld
         remoteVC.tabBarItem = UITabBarItem(title: "Remote", image: UIImage(named: "remote_icon"), tag: 0)
         

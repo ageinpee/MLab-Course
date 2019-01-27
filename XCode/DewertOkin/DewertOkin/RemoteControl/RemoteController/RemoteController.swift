@@ -60,6 +60,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
+    var bluetoothTimer: Timer?
     
     //----------------------------------------
     //--------- Fancy Remote Setup -----------
@@ -69,16 +70,30 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
-    //----------------------------------------
-    //--------- Siri -------------------------
-    let siriControl = SiriController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         
-        device = globalDeviceObject
+        let lastConnectedDeviceUUID = UserDefaults.standard.string(forKey: "lastConnectedDevice_uuid")
+        if lastConnectedDeviceUUID != "" {
+            fetchDevices()
+            for d in self.devicesList {
+                if d.uuid == lastConnectedDeviceUUID {
+                    globalDeviceObject = DeviceObject(withUUID: d.uuid ?? UUID().uuidString,
+                                                       named: d.name ?? "error while fetching",
+                                                       withHandheldID: d.handheld ?? "no-device",
+                                                       withStyle: d.style ?? "filled",
+                                                       withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: d.extraFunctions ?? "") )
+                    self.device = globalDeviceObject
+                    break
+                }
+                else
+                {
+                    self.device = globalDeviceObject
+                }
+            }
+        }
         
         currentDeviceLabel.text = device.name
         currentDeviceLabel.isHidden = true
@@ -95,27 +110,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         arrowsImageView.image = device.deviceImages[0]
         Image.image = device.deviceImages[1]
         Image.contentMode = .scaleAspectFit
-    }
-    
-    @IBAction func moveHeadUpActivity(sender: UIButton) {
-        let activity = NSUserActivity(activityType: "de.uhh.mlabdewertokin.command")
-        activity.title = "Move Head Up"
-        //activity.userInfo = ["head" : "up"]
-        activity.isEligibleForSearch = true
-        if #available(iOS 12.0, *) {
-            activity.isEligibleForPrediction = true
-            activity.persistentIdentifier = NSUserActivityPersistentIdentifier("de.uhh.mlabdewertokin.command")
-        } else {
-            // Fallback on earlier versions
-        }
-        view.userActivity = activity
-        activity.becomeCurrent()
         
-        itDidWork()
-    }
-    
-    func itDidWork(){
-        print("aha")
+        initializeAllCommands()
     }
     
     override func viewDidAppear(_ animated: Bool) {

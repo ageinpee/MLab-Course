@@ -131,10 +131,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
-        let viewController = window?.rootViewController as! RemoteController
-        viewController.itDidWork()
+        let viewController: RemoteController = RemoteController()
         
-        return true
+        if (userActivity.title == "Move Head Up") {
+            viewController.startHeadUp()
+            return true
+        }
+        else if (userActivity.title == "Move Head Down") {
+            viewController.startHeadDown()
+            return true
+        }
+        else if (userActivity.title == "Move Feet Up") {
+            viewController.startFeetUp()
+            return true
+        }
+        else if (userActivity.title == "Move Feet Down") {
+            viewController.startFeetDown()
+            return true
+        }
+        else if (userActivity.title == "Trigger Memory 1") {
+            viewController.triggerMemory1()
+            return true
+        }
+        else if (userActivity.title == "Trigger Memory 1") {
+            viewController.triggerMemory2()
+            return true
+        }
+        else if (userActivity.title == "Stop Head Up") {
+            viewController.stopHeadUp()
+            return true
+        }
+        else if (userActivity.title == "Stop Head Down") {
+            viewController.stopHeadDown()
+            return true
+        }
+        else if (userActivity.title == "Stop Feet Up") {
+            viewController.stopFeetUp()
+            return true
+        }
+        else if (userActivity.title == "Stop Feet Down") {
+            viewController.stopFeetDown()
+            return true
+        }
+        
+        return false
     }
     
 }

@@ -716,7 +716,7 @@
 								enabled = 0;
 							};
 							com.apple.Siri = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};

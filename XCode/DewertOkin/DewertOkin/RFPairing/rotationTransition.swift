@@ -50,7 +50,7 @@ class rotationTransition: UIStoryboardSegue, UIViewControllerTransitioningDelega
         toViewController.view.layer.position = positionPoint
         toViewController.view.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
         
-        UIView.animate(withDuration: 1.5, delay: 0, options: .allowUserInteraction, animations: {
+        UIView.animate(withDuration: 1.2, delay: 0, options: .allowUserInteraction, animations: {
             toViewController.view.transform = CGAffineTransform.identity
             fromViewController.view.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         }) { success in

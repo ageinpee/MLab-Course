@@ -40,6 +40,12 @@
                                     <segue destination="0JR-wU-EAa" kind="custom" identifier="pairingTransition1" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="va3-3o-T44"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choose your device by pulling on the remote above" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-hL-Tkt">
+                                <rect key="frame" x="20" y="711" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -48,7 +54,10 @@
                             <constraint firstItem="LX4-L8-obO" firstAttribute="top" secondItem="xUJ-Ky-lRQ" secondAttribute="top" constant="50" id="ITR-ba-9c5"/>
                             <constraint firstItem="HJh-qs-894" firstAttribute="centerX" secondItem="xUJ-Ky-lRQ" secondAttribute="centerX" id="MK3-2e-Hfm"/>
                             <constraint firstItem="xUJ-Ky-lRQ" firstAttribute="trailing" secondItem="HJh-qs-894" secondAttribute="trailing" constant="-450" id="OkJ-PJ-KkR"/>
+                            <constraint firstItem="xUJ-Ky-lRQ" firstAttribute="trailing" secondItem="CeA-hL-Tkt" secondAttribute="trailing" constant="20" id="Ru3-kk-LZM"/>
                             <constraint firstItem="LX4-L8-obO" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" id="Vl9-Gk-AHS"/>
+                            <constraint firstItem="CeA-hL-Tkt" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" constant="20" id="hQV-WU-bw7"/>
+                            <constraint firstItem="qBO-zX-F5y" firstAttribute="top" secondItem="CeA-hL-Tkt" secondAttribute="bottom" constant="20" id="lZ2-oy-Wkt"/>
                             <constraint firstItem="HJh-qs-894" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" constant="-450" id="oBa-qy-N0b"/>
                             <constraint firstItem="xUJ-Ky-lRQ" firstAttribute="trailing" secondItem="qBO-zX-F5y" secondAttribute="trailing" constant="50" id="uAF-1l-Nkz"/>
                             <constraint firstItem="qBO-zX-F5y" firstAttribute="leading" secondItem="xUJ-Ky-lRQ" secondAttribute="leading" constant="50" id="uTl-FJ-pvK"/>
@@ -58,6 +67,7 @@
                     </view>
                     <connections>
                         <outlet property="dottedCircle" destination="HJh-qs-894" id="Of4-gP-4JF"/>
+                        <outlet property="explainationLabel" destination="CeA-hL-Tkt" id="eL3-9f-mDp"/>
                         <outlet property="pairingView" destination="M5b-rO-dC6" id="KUW-Ty-gch"/>
                         <outlet property="remotePicker" destination="LX4-L8-obO" id="IW7-Qu-06S"/>
                         <outlet property="submitButton1" destination="qBO-zX-F5y" id="BQY-PY-AWb"/>

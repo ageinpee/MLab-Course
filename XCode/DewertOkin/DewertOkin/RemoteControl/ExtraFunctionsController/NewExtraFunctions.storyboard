@@ -13,55 +13,21 @@
         <!--Extra Functions Controller-->
         <scene sceneID="9JB-Oj-dXv">
             <objects>
-                <viewController id="sxl-o5-2Q5" customClass="ExtraFunctionsController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lLa-e9-Seh">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="sxl-o5-2Q5" customClass="ExtraFunctionsController" customModule="DewertOkin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleAspectFit" id="lLa-e9-Seh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3vX-nB-Hr4">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" pagingEnabled="YES" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="3vX-nB-Hr4">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FN4-IK-kyN">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkR-s7-N6b">
-                                                <rect key="frame" x="30" y="574" width="354" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="Mlt-yZ-Dbi"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="discover accessorize">
-                                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="exploreButtonAction:" destination="sxl-o5-2Q5" eventType="touchUpInside" id="ypb-2d-BGE"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your device currently has no additional functionallity. You can discover accessories in the Explore tab. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evR-6t-PgT">
-                                                <rect key="frame" x="50" y="400" width="314" height="61"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                    <view contentMode="scaleAspectFit" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FN4-IK-kyN">
+                                        <rect key="frame" x="500" y="-500" width="414" height="896"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="evR-6t-PgT" firstAttribute="top" secondItem="FN4-IK-kyN" secondAttribute="top" constant="400" id="2lT-2l-JNE"/>
-                                            <constraint firstItem="TkR-s7-N6b" firstAttribute="centerX" secondItem="FN4-IK-kyN" secondAttribute="centerX" id="6pp-qK-Ih5"/>
-                                            <constraint firstAttribute="bottom" secondItem="TkR-s7-N6b" secondAttribute="bottom" constant="200" id="ETO-2c-F3Y"/>
-                                            <constraint firstItem="TkR-s7-N6b" firstAttribute="leading" secondItem="FN4-IK-kyN" secondAttribute="leading" constant="30" id="I6I-61-Ugg"/>
-                                            <constraint firstItem="evR-6t-PgT" firstAttribute="leading" secondItem="FN4-IK-kyN" secondAttribute="leading" constant="50" id="Mg2-yH-Yz0"/>
-                                            <constraint firstAttribute="trailing" secondItem="TkR-s7-N6b" secondAttribute="trailing" constant="30" id="uje-HO-C4P"/>
-                                            <constraint firstAttribute="trailing" secondItem="evR-6t-PgT" secondAttribute="trailing" constant="50" id="vji-fO-Ikd"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="top" secondItem="3vX-nB-Hr4" secondAttribute="top" id="4eJ-Xs-4Z2"/>
-                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="leading" secondItem="3vX-nB-Hr4" secondAttribute="leading" id="P4x-dV-5In"/>
-                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="height" secondItem="3vX-nB-Hr4" secondAttribute="height" priority="100" id="PaI-vE-xEC"/>
-                                    <constraint firstAttribute="bottom" secondItem="FN4-IK-kyN" secondAttribute="bottom" id="hxg-Fx-8I4"/>
-                                    <constraint firstAttribute="trailing" secondItem="FN4-IK-kyN" secondAttribute="trailing" id="tR1-Mx-dU9"/>
+                                    <constraint firstItem="FN4-IK-kyN" firstAttribute="height" secondItem="3vX-nB-Hr4" secondAttribute="height" id="XsJ-Vs-ZTO"/>
                                     <constraint firstItem="FN4-IK-kyN" firstAttribute="width" secondItem="3vX-nB-Hr4" secondAttribute="width" id="xcr-D2-eaQ"/>
                                 </constraints>
                             </scrollView>
@@ -79,17 +45,41 @@
                                     <action selector="dismissVC:" destination="sxl-o5-2Q5" eventType="touchUpInside" id="tCo-Cs-kFh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your device currently has no additional functionallity. You can discover accessories in the Explore tab. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evR-6t-PgT">
+                                <rect key="frame" x="50" y="444" width="314" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkR-s7-N6b">
+                                <rect key="frame" x="30" y="574" width="354" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="MUZ-9F-akC"/>
+                                    <constraint firstAttribute="height" constant="44" id="Mlt-yZ-Dbi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="discover accessorize">
+                                    <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="exploreButtonAction:" destination="sxl-o5-2Q5" eventType="touchUpInside" id="ypb-2d-BGE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="evR-6t-PgT" firstAttribute="leading" secondItem="6hr-YC-5YW" secondAttribute="leading" constant="50" id="3V5-sJ-ljG"/>
                             <constraint firstItem="6hr-YC-5YW" firstAttribute="bottom" secondItem="smO-5U-nZO" secondAttribute="bottom" constant="50" id="5DD-qL-7Ip"/>
-                            <constraint firstItem="3vX-nB-Hr4" firstAttribute="top" secondItem="6hr-YC-5YW" secondAttribute="top" id="CEc-LM-0Zz"/>
+                            <constraint firstItem="evR-6t-PgT" firstAttribute="top" secondItem="6hr-YC-5YW" secondAttribute="top" constant="400" id="9j0-5a-fki"/>
                             <constraint firstItem="6hr-YC-5YW" firstAttribute="trailing" secondItem="smO-5U-nZO" secondAttribute="trailing" constant="20" id="HP8-4T-ChR"/>
-                            <constraint firstItem="6hr-YC-5YW" firstAttribute="bottom" secondItem="3vX-nB-Hr4" secondAttribute="bottom" id="MmY-zj-d35"/>
-                            <constraint firstItem="3vX-nB-Hr4" firstAttribute="leading" secondItem="6hr-YC-5YW" secondAttribute="leading" id="W6A-jV-cOb"/>
+                            <constraint firstItem="smO-5U-nZO" firstAttribute="top" secondItem="TkR-s7-N6b" secondAttribute="bottom" constant="150" id="HiC-Ty-umb"/>
+                            <constraint firstItem="3vX-nB-Hr4" firstAttribute="height" secondItem="lLa-e9-Seh" secondAttribute="height" id="MfT-SL-SFF"/>
+                            <constraint firstItem="3vX-nB-Hr4" firstAttribute="width" secondItem="lLa-e9-Seh" secondAttribute="width" id="Sjk-u0-l1Z"/>
+                            <constraint firstItem="TkR-s7-N6b" firstAttribute="leading" secondItem="6hr-YC-5YW" secondAttribute="leading" constant="30" id="XfU-RI-1Bw"/>
+                            <constraint firstItem="6hr-YC-5YW" firstAttribute="trailing" secondItem="TkR-s7-N6b" secondAttribute="trailing" constant="30" id="bic-e2-X4R"/>
                             <constraint firstItem="smO-5U-nZO" firstAttribute="centerX" secondItem="lLa-e9-Seh" secondAttribute="centerX" id="itk-th-LOg"/>
                             <constraint firstItem="smO-5U-nZO" firstAttribute="leading" secondItem="6hr-YC-5YW" secondAttribute="leading" constant="20" id="mru-2Q-1Gg"/>
-                            <constraint firstItem="6hr-YC-5YW" firstAttribute="trailing" secondItem="3vX-nB-Hr4" secondAttribute="trailing" id="yyr-E9-I8Z"/>
+                            <constraint firstItem="6hr-YC-5YW" firstAttribute="trailing" secondItem="evR-6t-PgT" secondAttribute="trailing" constant="50" id="mtN-0D-8Sr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6hr-YC-5YW"/>
                     </view>

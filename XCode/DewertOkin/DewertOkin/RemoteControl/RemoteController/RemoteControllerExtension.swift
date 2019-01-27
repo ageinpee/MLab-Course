@@ -105,21 +105,46 @@ extension RemoteController {
     @objc
     func handleRightPanGesture(panRecognizer: UIPanGestureRecognizer) {
         recognizerState = panRecognizer.state
+        let deviceType = DeviceType(rawValue: self.device.type)!
         
         switch panRecognizer.state {
         case .began:
             translation = .began
             arrowsImageView.alpha = 0
-            timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(actionRight), userInfo: nil, repeats: true)
-            
+            if bluetoothBackgroundHandler.checkStatus(){
+                timer = Timer.scheduledTimer(timeInterval: 0.3,
+                                             target: self,
+                                             selector: #selector(actionRight),
+                                             userInfo: nil,
+                                             repeats: true)
+            }
         case .changed:
             if(panRecognizer.translation(in: rightPanArea).y >= 40) {
                 translation = .down
-                Image.image = device.deviceImages[3]
+                switch deviceType {
+                case .chair_2Motors:
+                    Image.image = device.deviceImages[3]
+                case .bed_2Motors:
+                    Image.image = device.deviceImages[3]
+                case .table:
+                    Image.image = device.deviceImages[3]
+                default:
+                    print("no device found")
+                }
                 
             } else if (panRecognizer.translation(in: rightPanArea).y <= -40) {
                 translation = .up
-                Image.image = device.deviceImages[2]
+                switch deviceType {
+                case .chair_2Motors:
+                    Image.image = device.deviceImages[2]
+                case .bed_2Motors:
+                    Image.image = device.deviceImages[2]
+                case .table:
+                    Image.image = device.deviceImages[2]
+                default:
+                    print("no device found")
+                    
+                }
             }
         case .ended:
             translation = .ended
@@ -133,39 +158,44 @@ extension RemoteController {
     @objc
     func handleLeftPanGesture(panRecognizer: UIPanGestureRecognizer) {
         recognizerState = panRecognizer.state
+        let deviceType = DeviceType(rawValue: self.device.type)!
         
         switch panRecognizer.state {
         case .began:
             translation = .began
             arrowsImageView.alpha = 0
-            timer = Timer.scheduledTimer(timeInterval: 0.3,
-                                         target: self,
-                                         selector: #selector(actionLeft),
-                                         userInfo: nil,
-                                         repeats: true)
+            if bluetoothBackgroundHandler.checkStatus() {
+                timer = Timer.scheduledTimer(timeInterval: 0.3,
+                                             target: self,
+                                             selector: #selector(actionLeft),
+                                             userInfo: nil,
+                                             repeats: true)
+            }
         case .changed:
             if(panRecognizer.translation(in: leftPanArea).y >= 40) {
                 translation = .down
-                if device.type == "table" {
-                    Image.image = device.deviceImages[3]
-                }
-                else if device.type == "NaN" {
-                    print("no device found")
-                }
-                else {
+                switch deviceType {
+                case .chair_2Motors:
                     Image.image = device.deviceImages[5]
+                case .bed_2Motors:
+                    Image.image = device.deviceImages[5]
+                case .table:
+                    Image.image = device.deviceImages[3]
+                default:
+                    print("no device found")
                 }
                 
             } else if (panRecognizer.translation(in: leftPanArea).y <= -40) {
                 translation = .up
-                if device.type == "table" {
-                    Image.image = device.deviceImages[2]
-                }
-                else if device.type == "NaN" {
-                    print("no device found")
-                }
-                else {
+                switch deviceType {
+                case .chair_2Motors:
                     Image.image = device.deviceImages[4]
+                case .bed_2Motors:
+                    Image.image = device.deviceImages[4]
+                case .table:
+                    Image.image = device.deviceImages[2]
+                default:
+                    print("no device found")
                 }
                 
             }
