@@ -178,7 +178,6 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         label.text = "Placeholder Text"
         label.numberOfLines = 0
         label.textColor = .darkGray
-        label.textAlignment = .center
         return label
     }()
 
@@ -253,7 +252,7 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         trackLayer.lineCap = .round
         trackLayer.strokeColor = UIColor.lightGray.cgColor
         trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.lineWidth = 3
+        trackLayer.lineWidth = 1
         
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 5
@@ -268,7 +267,6 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         basicAnimation.fillMode = .forwards
         basicAnimation.isRemovedOnCompletion = false
         shapeLayer.add(basicAnimation, forKey: "basicAnimation")
-        print("Animates Stroke")
         
         
         return cell
@@ -293,6 +291,8 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
             label.text = achievementDescription
             label.textColor = .white
             label.translatesAutoresizingMaskIntoConstraints = false
+            label.textAlignment = .center
+            label.lineBreakMode = .byTruncatingTail
             return label
         }()
         
@@ -303,6 +303,7 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         view.addSubview(descriptionLabel)
         view.addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 4/3, constant: 0))
         view.addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1, constant: -16))
         
         view.isUserInteractionEnabled = true
         

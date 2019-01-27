@@ -60,10 +60,10 @@ class AchievementModel {
     }
     
     public static var achievementDictionary: [AchievementType:Achievement] = [
-        .buttonManiac : Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock_simple", type: .buttonManiac, progress: 0.0),
+        .buttonManiac : Achievement(id: 1, title: "Button Maniac", description: "Clicked the BarButton 5 times", image: "lock_simple", type: .buttonManiac, progress: 0.23),
         .onTopOfThings : Achievement(id: 2, title: "On Top of Things", description: "Set 3 Reminders", image: "lock_simple", type: .onTopOfThings, progress: 0.0),
         .veteran : Achievement(id: 3, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock_simple", type: .veteran, progress: 0.0),
-        .undecisive : Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock_simple", type: .undecisive, progress: 0.0),
+        .undecisive : Achievement(id: 4, title: "Undecisive", description: "Alternate between up and down 8 times", image: "lock_simple", type: .undecisive, progress: 0.75),
         .nightOwl : Achievement(id: 5, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0),
         .letThereBeLight : Achievement(id: 6, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0),
         .exerciseApprentice : Achievement(id: 7, title: "Exercise Apprentice", description: "Do your recommended exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 0.0),
