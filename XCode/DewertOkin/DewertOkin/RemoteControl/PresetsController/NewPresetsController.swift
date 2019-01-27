@@ -40,7 +40,11 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     let presetButtonCell = "presetButtonCell"
 
     let controlUnitPresets = globalDeviceObject.availableMemories.map { $0.rawValue }
-    var phonePresetsNames = ["Sleep", "Relax", "Flat"]
+    var phonePresetsNames = ["Sleep", "Relax", "Flat"] {
+        didSet {
+            collectionView.reloadSections([3])
+        }
+    }
     
     let colors: [UIColor] = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
     
@@ -214,8 +218,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                 renameController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 renameController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
                     self.phonePresetsNames.append(renameController.textFields?[0].text ?? "")
-                    cell.presetName = renameController.textFields?[0].text
-                    self.collectionView.reloadSections([3])
+                    
                 }))
                 self.present(renameController, animated: true, completion: {
                     
@@ -253,6 +256,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         editMenu.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
             // Implement deletion of preset from Core Data
             // Remove cell from collectionView
+            self.phonePresetsNames.remove(at: indexPath.item)
         }))
         editMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         

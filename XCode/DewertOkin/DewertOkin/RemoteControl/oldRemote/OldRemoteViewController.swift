@@ -60,7 +60,7 @@ class OldRemoteViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        checkBluetoothConnectivity()
+        //checkBluetoothConnectivity()
     }
 
     lazy var noConnectionBanner: UIView = {
