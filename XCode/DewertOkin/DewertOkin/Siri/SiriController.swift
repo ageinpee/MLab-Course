@@ -61,22 +61,43 @@ extension RemoteController {
         }
     }
     
-    func intermediateHelper() {
+    func startHeadUp() {
         print("it works")
     }
     
-//    func initializeAllCommands() {
-//        setNewActivity(activityType: "de.uhh.mlabdewertokin.startHeadUp", title: "Move Head Up")
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.startHeadDown", title: "Move Head Down") })
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.startFeetUp", title: "Move Feet Up") })
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.startFeetDown", title: "Move Feet Down") })
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 4.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.triggerMemory1", title: "Trigger Memory 1") })
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.triggerMemory2", title: "Trigger Memory 2") })
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 6.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.stopHeadUp", title: "Stop Head Up") })
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 7.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.stopHeadDown", title: "Stop Head Down") })
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 8.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.stopFeetUp", title: "Stop Feet Up") })
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 9.5, execute: { self.setNewActivity(activityType: "de.uhh.mlabdewertokin.stopFeetDown", title: "Stop Feet Down") })
-//    }
+    func startHeadDown() {
+        print("it works")
+    }
     
+    func startFeetUp() {
+        print("it works")
+    }
+    
+    func startFeetDown() {
+        print("it works")
+    }
+    
+    func triggerMemory1() {
+        print("it works")
+    }
+    
+    func triggerMemory2() {
+        print("it works")
+    }
+    
+    func stopHeadUp() {
+        print("it works")
+    }
+    
+    func stopHeadDown() {
+        print("it works")
+    }
+    
+    func stopFeetUp() {
+        print("it works")
+    }
+    
+    func stopFeetDown() {
+        print("it works")
+    }
 }
