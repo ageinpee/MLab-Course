@@ -111,18 +111,18 @@ extension RemoteController {
     }
     
     func stopHeadUp() {
-        print("it works")
+        bluetoothTimer?.invalidate()
     }
     
     func stopHeadDown() {
-        print("it works")
+        bluetoothTimer?.invalidate()
     }
     
     func stopFeetUp() {
-        print("it works")
+        bluetoothTimer?.invalidate()
     }
     
     func stopFeetDown() {
-        print("it works")
+        bluetoothTimer?.invalidate()
     }
 }
