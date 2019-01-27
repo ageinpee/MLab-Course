@@ -45,7 +45,7 @@ class ExtraFunctionsController: UIViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
         print(self.view.bounds.size)
-        self.offsetDown = ((200*(self.device.availableExtraFunctions.count/2))-Int(self.contentView.bounds.size.height))
+        self.offsetDown = ((300*(self.device.availableExtraFunctions.count/2))-Int(self.contentView.bounds.size.height))
         
         self.noFunctionsLabel.isHidden = true
         self.setStaticButtons()
@@ -54,8 +54,8 @@ class ExtraFunctionsController: UIViewController {
         self.scrollView.isScrollEnabled = true
         self.scrollView.isUserInteractionEnabled = true
         self.scrollView.alwaysBounceVertical = true
-        self.scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: CGFloat(400 + 250*(self.device.availableExtraFunctions.count/2)))//self.contentView.bounds.size
-        self.scrollView.contentInset = .init(top: CGFloat((800 + 200*(self.device.availableExtraFunctions.count/2))-Int(self.contentView.bounds.size.height)),
+        self.scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: CGFloat(400 + 300*(self.device.availableExtraFunctions.count/2)))//self.contentView.bounds.size
+        self.scrollView.contentInset = .init(top: CGFloat((800 + 300*(self.device.availableExtraFunctions.count/2))-Int(self.contentView.bounds.size.height)),
                                              left: 0,
                                              bottom: 0,
                                              right: 0)
