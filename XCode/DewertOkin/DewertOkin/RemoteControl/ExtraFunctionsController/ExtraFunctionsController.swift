@@ -49,7 +49,8 @@ class ExtraFunctionsController: UIViewController {
         
         self.scrollView.isScrollEnabled = true
         self.scrollView.isUserInteractionEnabled = true
-        self.scrollView.contentSize = self.contentView.bounds.size
+        self.scrollView.alwaysBounceVertical = true
+        self.scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: self.contentView.frame.height / 2)//self.contentView.bounds.size
     }
     
     @IBAction func dismissVC(_ sender: Any) {
