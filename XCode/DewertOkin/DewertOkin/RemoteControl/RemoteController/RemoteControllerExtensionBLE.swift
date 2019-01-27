@@ -38,7 +38,6 @@ extension RemoteController {
     func triggerCommand(keycode: keycode) {
         let movement = self.remoteControlConfig.getKeycode(name: keycode)
         bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-        
     }
     
 }

@@ -60,6 +60,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
+    var bluetoothTimer: Timer?
     
     //----------------------------------------
     //--------- Fancy Remote Setup -----------

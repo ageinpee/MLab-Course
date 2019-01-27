@@ -51,37 +51,63 @@ extension RemoteController {
     func startHeadUp() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m1In)
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m1In)
+        }
     }
     
     func startHeadDown() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m1Out)
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m1Out)
+        }
     }
     
     func startFeetUp() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m2In)
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m2In)
+        }
     }
     
     func startFeetDown() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m2Out)
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m2Out)
+        }
     }
     
     func triggerMemory1() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.memory1)
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.memory1)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
     }
     
     func triggerMemory2() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.memory2)
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.memory2)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
     }
     
     func stopHeadUp() {
