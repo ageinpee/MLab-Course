@@ -25,12 +25,12 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Title" id="a7V-Oj-MQn">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="POB-DI-hET">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="POB-DI-hET">
                                             <connections>
                                                 <action selector="unwindToRemoteViewController:" destination="2vF-NN-zR7" id="s6f-3R-EKE"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Anu-2z-jHW">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Anu-2z-jHW">
                                             <connections>
                                                 <segue destination="95K-hM-mn4" kind="presentation" id="gY4-9Z-w7e"/>
                                             </connections>
