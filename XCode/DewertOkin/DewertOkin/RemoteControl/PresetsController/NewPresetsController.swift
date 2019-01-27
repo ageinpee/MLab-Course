@@ -36,6 +36,15 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         return label
     }()
     
+    let tutorialLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Press and hold a preset to edit"
+        label.textAlignment = .center
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote).withSize(16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let defaultCell = "defaultCell"
     let presetButtonCell = "presetButtonCell"
 
@@ -71,7 +80,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 5
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -88,6 +97,8 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
             return 1
         case 3:
             return phonePresetsNames.count + 1
+        case 4:
+            return 1
         default:
             return 0
         }
@@ -143,6 +154,12 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                 }
             }
             return PresetButtonCell()
+        case 4:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: defaultCell, for: indexPath)
+            cell.contentView.addSubview(tutorialLabel)
+            cell.contentView.addConstraint(NSLayoutConstraint(item: tutorialLabel, attribute: .centerX, relatedBy: .equal, toItem: cell.contentView, attribute: .centerX, multiplier: 1, constant: 0))
+            cell.contentView.addConstraint(NSLayoutConstraint(item: tutorialLabel, attribute: .centerY, relatedBy: .equal, toItem: cell.contentView, attribute: .centerY, multiplier: 1, constant: 0))
+            return cell
         default:
             return UICollectionViewCell()
         }
@@ -179,6 +196,8 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
             return CGSize(width: collectionView.frame.width, height: 44)
         case 3:
             return CGSize(width: collectionView.frame.width/2 - 50, height: collectionView.frame.width/4 - 25)
+        case 4:
+            return CGSize(width: collectionView.frame.width, height: 44)
         default:
             return CGSize.zero
         }
