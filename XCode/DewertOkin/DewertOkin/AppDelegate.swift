@@ -131,10 +131,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
-        let viewController = window?.rootViewController as! RemoteController
+        let viewController: RemoteController = RemoteController()
         
         if (userActivity.title == "Move Head Up"){
-            viewController.itDidWork()
+            viewController.intermediateHelper()
         }
         
         return true

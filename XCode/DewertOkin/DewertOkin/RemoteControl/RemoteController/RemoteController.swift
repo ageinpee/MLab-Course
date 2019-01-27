@@ -91,6 +91,8 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         arrowsImageView.image = device.deviceImages[0]
         Image.image = device.deviceImages[1]
         Image.contentMode = .scaleAspectFit
+        
+        initializeAllCommands()
     }
     
     override func viewDidAppear(_ animated: Bool) {
