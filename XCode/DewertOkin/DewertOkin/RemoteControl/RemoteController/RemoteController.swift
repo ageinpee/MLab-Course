@@ -42,7 +42,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     var devicesList = [Devices]()
     
-    var device: DeviceObject = DeviceObject()
+    var device = globalDeviceObject
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
