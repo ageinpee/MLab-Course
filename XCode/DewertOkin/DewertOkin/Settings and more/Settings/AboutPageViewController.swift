@@ -17,6 +17,6 @@ class AboutPageViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "About this app"
         
-        self.teamlabel.text = "Our team contains the following members: \n - Danial Bagheri (Social Media Guy) \n - Henrik Peters \n - Jan Robert Janneck (Technical Lead) \n - Jawad Shah \n - Nima Rahrakhshan (Project Lead) \n - Peter Herner"
+        self.teamlabel.text = "Our team contains the following members: \n - Danial Bagheri \n - Peter Herner \n - Jan Robert Janneck \n - Henrik Peters \n - Nima Rahrakhshan \n - Jawad Shah"
     }
 }
