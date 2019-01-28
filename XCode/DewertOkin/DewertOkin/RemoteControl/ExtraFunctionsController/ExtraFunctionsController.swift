@@ -50,6 +50,7 @@ class ExtraFunctionsController: UIViewController {
         self.noFunctionsLabel.isHidden = true
         self.setStaticButtons()
         self.setDynamicButtons()
+        self.scrollView.alpha = 0
         
         self.scrollView.isScrollEnabled = true
         self.scrollView.isUserInteractionEnabled = true
@@ -62,7 +63,16 @@ class ExtraFunctionsController: UIViewController {
                                              right: 0)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        //self.scrollView.isHidden = false
+        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.scrollView.alpha = 1 // Here you will get the animation you want
+        })
+    }
+    
     @IBAction func dismissVC(_ sender: Any) {
+        self.scrollView.isHidden = true
         dismiss(animated: true, completion: nil)
     }
     
