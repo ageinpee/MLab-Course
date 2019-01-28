@@ -69,6 +69,8 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
             locationManager.requestWhenInUseAuthorization()
         }
         
+        updateMap(radiusInMeters: 2000.0)
+        
         let filter = defaults.stringArray(forKey: "FilterAccessories")
         guard !(filter?.isEmpty ?? true) else {
             initializeVendors()

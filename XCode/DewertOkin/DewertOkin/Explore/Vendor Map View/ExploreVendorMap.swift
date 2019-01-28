@@ -26,6 +26,18 @@ extension ExploreViewController {
         }
     }
     
+    func updateMap(radiusInMeters: CLLocationDistance) {
+        if let userLocation = locationManager.location?.coordinate {
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: radiusInMeters, longitudinalMeters: radiusInMeters)
+            mapView.setRegion(viewRegion, animated: true)
+            mapView.showsUserLocation = true
+        }
+        
+        DispatchQueue.main.async {
+            self.locationManager.startUpdatingLocation()
+        }
+    }
+    
     func initializeVendors() {
         let vendorList = parseVendor()
         guard vendorList.count != 0 else { return }
