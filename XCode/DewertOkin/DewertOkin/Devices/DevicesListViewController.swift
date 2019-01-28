@@ -58,7 +58,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
                                             named: devices.name ?? "unknown device",
                                             withHandheldID: devices.handheld ?? "82418" ,
                                             withStyle: devices.style ?? "filled",
-                                            withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: devices.extraFunctions ?? "")
+                                            withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: devices.extraFunctions ?? "")
                 )
                 cellDevicesData.append(DevicesData.init(image: deviceObject.deviceImages[1],
                                                         name: devices.name,

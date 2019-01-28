@@ -102,7 +102,7 @@ extension DevicesListViewController: UITableViewDataSource {
                                               named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
                                               withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
                                               withStyle: self.devicesList[indexPath.row].style ?? "filled",
-                                              withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
+                                              withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
             UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
             guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
             self.deviceToConnect = deviceToBeConnected
@@ -112,7 +112,7 @@ extension DevicesListViewController: UITableViewDataSource {
                                           named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
                                           withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
                                           withStyle: self.devicesList[indexPath.row].style ?? "filled",
-                                          withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
+                                          withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
         UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
         
         action.backgroundColor = .blue
@@ -137,7 +137,7 @@ extension DevicesListViewController: UITableViewDataSource {
                                           named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
                                           withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
                                           withStyle: self.devicesList[indexPath.row].style ?? "filled",
-                                          withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
+                                          withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
         UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
     }
     

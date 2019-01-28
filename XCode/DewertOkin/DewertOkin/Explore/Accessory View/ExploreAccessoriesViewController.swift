@@ -111,7 +111,7 @@ class ExploreAccessoriesViewController: UIViewController, UITableViewDelegate {
             if let indexPath = tableView.indexPathForRow(at: cell) {
                 tableView.cellForRow(at: indexPath)?.isHighlighted = false
                 globalDeviceObject.availableExtraFunctions.append(extraFuncDict[accessoriesList[indexPath.row].name] ?? .NaN)
-                self.updateDevicesFunctions(newExtraFunctions: DeviceObject().convertExtraFunctionsToString(functions: globalDeviceObject.availableExtraFunctions),
+                self.updateDevicesFunctions(newExtraFunctions: DeviceObject.convertExtraFunctionsToString(functions: globalDeviceObject.availableExtraFunctions),
                                             uuid: globalDeviceObject.uuid)
             }
         }

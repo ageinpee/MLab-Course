@@ -282,7 +282,7 @@ class DeviceObject {
     }
     
     
-    func convertExtraFunctionsToString(functions: [ExtraFunctions]) -> String {
+    static func convertExtraFunctionsToString(functions: [ExtraFunctions]) -> String {
         var output = ""
         for (i,f) in functions.enumerated() {
             if i != functions.count-1 {
@@ -295,7 +295,7 @@ class DeviceObject {
         return output
     }
     
-    func convertStringToExtraFunctions(withString: String) -> [ExtraFunctions] {
+    static func convertStringToExtraFunctions(withString: String) -> [ExtraFunctions] {
         var output = [ExtraFunctions]()
         var stringArray = withString.components(separatedBy: ";")
         if stringArray == [""] { stringArray = [] }

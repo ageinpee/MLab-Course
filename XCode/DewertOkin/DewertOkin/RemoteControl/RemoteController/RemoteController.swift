@@ -99,7 +99,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
                                                       named: d.name ?? "error while fetching",
                                                       withHandheldID: d.handheld ?? "no-device",
                                                       withStyle: d.style ?? "filled",
-                                                      withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: d.extraFunctions ?? "") )
+                                                      withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: d.extraFunctions ?? "") )
                     self.device = globalDeviceObject
                     break
                 }
