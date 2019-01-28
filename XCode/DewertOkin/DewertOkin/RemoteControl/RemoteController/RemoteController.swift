@@ -42,7 +42,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     var devicesList = [Devices]()
     
-    var device: DeviceObject = DeviceObject()
+    var device = globalDeviceObject
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
@@ -77,7 +77,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         Themes.setupTheming(for: self)
-        Health.shared.requestHealthKitPermission()
         initializeAllCommands()
     }
     
