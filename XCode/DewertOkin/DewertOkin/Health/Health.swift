@@ -49,52 +49,11 @@ class Health {
         ExerciseEvent(time: Date().addingTimeInterval(-444392), completed: true),
         ExerciseEvent(time: Date().addingTimeInterval(-398538), completed: true),
         ExerciseEvent(time: Date().addingTimeInterval(-548839), completed: false)
-    ]
-    
-    lazy var page: BLTNPageItem = {
-        let page = BLTNPageItem(title: "Exercise")
-        
-        switch globalDeviceObject.type {
-        case "chair_2Motors":
-            page.image = UIImage(named: "Squad-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-        case "bed_2Motors":
-            page.image = UIImage(named: "Arch-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-        case "table":
-            page.image = UIImage(named: "Wrist-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-        default:
-            print("Error setting exercise image: Device Type not found.")
+        ] {
+        didSet {
+            print("changed")
         }
-        
-        page.descriptionText = "Your companion recommends the following Workout to you:"
-        page.actionButtonTitle = "Do Workout"
-        page.alternativeButtonTitle = "Maybe Later"
-        
-        page.actionHandler = { (item: BLTNActionItem) in
-            self.exerciseHistory.append(ExerciseEvent(time: Date(), completed: true))
-            self.bulletinManager.dismissBulletin()
-            print("Action button tapped")
-            print(self.exerciseHistory)
-            // Setup chart data
-            self.updateStatisticsChart()
-        }
-        
-        page.alternativeHandler = { (item: BLTNActionItem) in
-            print("Maybe later tapped")
-            self.bulletinManager.dismissBulletin()
-            self.exerciseHistory.append(ExerciseEvent(time: Date(), completed: false))
-            // Setup chart data
-            self.updateStatisticsChart()
-        }
-        
-        return page
-    }()
-    
-    lazy var bulletinManager: BLTNItemManager = {
-        let rootItem: BLTNItem = page
-        let manager = BLTNItemManager(rootItem: rootItem)
-        manager.backgroundViewStyle = .dimmed
-        return manager
-    }()
+    }
     
     let healthStore = HKHealthStore()
     
@@ -108,24 +67,24 @@ class Health {
         UserDefaults.standard.set(activityReminderEnabled, forKey: "activityReminderEnabled")
     }
     
-    func updateBulletinImage() {
-        switch globalDeviceObject.type {
-        case "chair_2Motors":
-            page.image = UIImage(named: "Squad-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-        case "bed_2Motors":
-            page.image = UIImage(named: "Arch-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-        case "table":
-            page.image = UIImage(named: "Wrist-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-        default:
-            print("Error setting exercise image: Device Type not found.")
-        }
-        bulletinManager = {
-            let manager = BLTNItemManager(rootItem: page)
-            manager.backgroundViewStyle = .dimmed
-            return manager
-        }()
-        
-    }
+//    func updateBulletinImage() {
+//        switch globalDeviceObject.type {
+//        case "chair_2Motors":
+//            page.image = UIImage(named: "Squad-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+//        case "bed_2Motors":
+//            page.image = UIImage(named: "Arch-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+//        case "table":
+//            page.image = UIImage(named: "Wrist-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+//        default:
+//            print("Error setting exercise image: Device Type not found.")
+//        }
+//        bulletinManager = {
+//            let manager = BLTNItemManager(rootItem: page)
+//            manager.backgroundViewStyle = .dimmed
+//            return manager
+//        }()
+//
+//    }
     
     // This works, don't ask 😅
     func updateStatisticsChart() {
@@ -293,11 +252,9 @@ class Health {
     
     
     func showActivityReminder(above viewcontroller: UIViewController) {
-        guard !bulletinManager.isShowingBulletin else {
-            print("Already showing bulletin. Returning.")
-            return
+        if let mainVC = UIApplication.shared.keyWindow?.rootViewController as? MainViewController {
+            mainVC.showActivityReminder()
         }
-        bulletinManager.showBulletin(above: viewcontroller)
     }
     
     /**

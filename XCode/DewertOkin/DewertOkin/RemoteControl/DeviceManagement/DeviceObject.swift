@@ -13,7 +13,7 @@ import CoreBluetooth
 
 var globalDeviceObject = DeviceObject() {
     didSet {
-        Health.shared.updateBulletinImage()
+        //Health.shared.updateBulletinImage()
     }
 }
 
