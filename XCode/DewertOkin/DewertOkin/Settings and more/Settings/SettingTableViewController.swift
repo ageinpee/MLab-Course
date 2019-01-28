@@ -19,13 +19,14 @@ enum SettingsEntry: String {
     case test = "Test"
     case rfpairing = "RF Pairing Test"
     case bluetoothPairing = "Bluetooth Pairing Test"
+    case remoteStyle = "Use wireframe-design"
 }
 
 class SettingTableViewController: UITableViewController, Themeable {
     
     private let settingsEntries: [[SettingsEntry]] = [
         [.about],
-        [.useOldRemote, .darkMode]
+        [.useOldRemote, .remoteStyle]
     ]
     private let settingsSections = ["Devices and Support", "Preferences"]
     
@@ -101,6 +102,17 @@ class SettingTableViewController: UITableViewController, Themeable {
                 }
                 darkModeSwitch.addTarget(self, action: #selector(darkModeSwitchChanged(sender:)), for: .valueChanged)
                 return darkModeSwitch
+            }()
+        }
+        
+        if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .remoteStyle)) {
+            cell.accessoryView = {
+                let styleSwitch = UISwitch()
+                if let styleSwitchIsOn = UserDefaults.standard.object(forKey: "remoteStyle") as? Bool {
+                    styleSwitch.isOn = styleSwitchIsOn
+                }
+                styleSwitch.addTarget(self, action: #selector(styleSwitchChanged(sender:)), for: .valueChanged)
+                return styleSwitch
             }()
         }
         
@@ -227,6 +239,16 @@ class SettingTableViewController: UITableViewController, Themeable {
             
             // Post the notification to let all current view controllers that the app has changed to non-dark mode, and they should theme themselves to reflect this change.
             NotificationCenter.default.post(name: .darkModeDisabled, object: nil)
+        }
+    }
+    
+    @objc
+    private func styleSwitchChanged(sender: UISwitch!) {
+        if sender.isOn == true {
+            UserDefaults.standard.set(true, forKey: "remoteStyle")
+            
+        } else {
+            UserDefaults.standard.set(false, forKey: "remoteStyle")
         }
     }
     
