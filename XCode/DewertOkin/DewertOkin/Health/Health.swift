@@ -157,6 +157,9 @@ class Health {
     }
     
     func requestHealthKitPermission() {
+        
+        guard HKHealthStore.isHealthDataAvailable() else { return }
+        
         let healthKitTypes: Set = [
             // access step count
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
@@ -165,9 +168,9 @@ class Health {
             guard healthStore.authorizationStatus(for: healthKitType) != .sharingAuthorized else { return }
         }
         
-        healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (_, _) in
-            print("Authorized ?")
-        }
+//        healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (_, _) in
+//            print("Authorized ?")
+//        }
         healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (bool, error) in
             if let e = error {
                 print("Something went wrong during authorisation \(e.localizedDescription)")
