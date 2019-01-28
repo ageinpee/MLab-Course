@@ -22,7 +22,6 @@ extension RemoteController {
         activity.persistentIdentifier = NSUserActivityPersistentIdentifier(activityType)
         
         return INShortcut(userActivity: activity)
-        
     }
     
     func initializeAllCommands() {
@@ -52,7 +51,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m1In)
         }
@@ -63,7 +62,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m1Out)
         }
@@ -74,7 +73,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2In)
         }
@@ -85,7 +84,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2Out)
         }
@@ -96,7 +95,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.memory1)
         }
@@ -107,7 +106,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.memory2)
         }
