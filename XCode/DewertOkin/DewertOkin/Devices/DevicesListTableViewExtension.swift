@@ -60,6 +60,7 @@ extension DevicesListViewController: UITableViewDataSource {
             
         }
         
+        
         action.backgroundColor = .red
         return action
     }
