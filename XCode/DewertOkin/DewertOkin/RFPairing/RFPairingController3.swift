@@ -66,11 +66,11 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func ProceedAction(_ sender: Any) {
-        guard bluetooth.centralManager.state == .poweredOn else { return }
-        let peripherals = bluetoothBackgroundHandler.retrievePeripherals()
-        guard peripherals != [] else { return }
-        bluetoothFlow.connect(peripheral: peripherals.last!, completion: { _ in })
-        
+//        guard bluetooth.centralManager.state == .poweredOn else { return }
+//        let peripherals = bluetoothBackgroundHandler.retrievePeripherals()
+//        guard peripherals != [] else { return }
+//        bluetoothFlow.connect(peripheral: peripherals.last!, completion: { _ in })
+//        
         device.name = "New Device"
         if deviceNameTextfield.text! != "" {
             device.name = deviceNameTextfield.text!
@@ -95,7 +95,9 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
             self.view.alpha = 0
         }) { (_) in
             UIApplication.shared.keyWindow?.rootViewController = MainViewController()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {self.view.removeFromSuperview()})
         }
+    
     }
     /*
     @objc
@@ -156,5 +158,9 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
         NSLayoutConstraint(item: dottedCircleImage, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
         
         //proceedButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        print("Too much load")
     }
 }

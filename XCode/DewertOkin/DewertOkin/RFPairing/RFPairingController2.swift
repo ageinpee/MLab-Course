@@ -48,4 +48,8 @@ class RFPairingController2: UIViewController {
         
         NSLayoutConstraint(item: dottedCircleImage, attribute: .top, relatedBy: .equal, toItem: pairingView, attribute: .top, multiplier: 1, constant: 3*(pairingView.frame.height/4)).isActive = true
     }
+    
+    override func didReceiveMemoryWarning() {
+        print("Too much load")
+    }
 }

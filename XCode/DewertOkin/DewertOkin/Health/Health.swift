@@ -161,6 +161,10 @@ class Health {
             // access step count
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
         ]
+        for healthKitType in healthKitTypes {
+            guard healthStore.authorizationStatus(for: healthKitType) != .sharingAuthorized else { return }
+        }
+        
         healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (_, _) in
             print("Authorized ?")
         }
