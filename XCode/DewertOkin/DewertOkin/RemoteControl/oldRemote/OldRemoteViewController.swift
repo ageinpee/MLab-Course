@@ -62,6 +62,10 @@ class OldRemoteViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         //checkBluetoothConnectivity()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
     lazy var noConnectionBanner: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: -90, width: self.view.frame.width, height: 80))

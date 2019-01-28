@@ -47,6 +47,10 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         }, completion: nil)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

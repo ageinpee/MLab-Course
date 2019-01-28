@@ -19,4 +19,8 @@ class AboutPageViewController: UIViewController {
         
         self.teamlabel.text = "Our team contains the following members: \n Danial Bagheri \n Peter Herner \n Jan Robert Janneck \n Henrik Peters \n Nima Rahrakhshan \n Jawad Shah"
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }

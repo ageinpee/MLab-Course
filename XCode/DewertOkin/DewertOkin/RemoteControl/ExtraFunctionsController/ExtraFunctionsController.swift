@@ -71,6 +71,10 @@ class ExtraFunctionsController: UIViewController {
         })
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     @IBAction func dismissVC(_ sender: Any) {
         self.scrollView.isHidden = true
         dismiss(animated: true, completion: nil)

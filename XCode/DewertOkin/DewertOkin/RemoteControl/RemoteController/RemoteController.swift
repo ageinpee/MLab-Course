@@ -92,6 +92,10 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         //checkBluetoothConnectivity()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func layoutRemote() {
         let lastConnectedDeviceUUID = UserDefaults.standard.string(forKey: "lastConnectedDevice_uuid")
         if lastConnectedDeviceUUID != "" {
