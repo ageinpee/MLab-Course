@@ -51,7 +51,8 @@ extension ExtraFunctionsController {
                 let contentViewWidth = Int(self.contentView.frame.width)
                 
                 if count % 2 == 0 {
-                    offset = offset + contentViewWidth/4 + 80
+                    offset = offset + 200000/Int(self.view.bounds.size.height)
+                    print(offset)
                 }
                 
                 self.contentView.addSubview(button)
