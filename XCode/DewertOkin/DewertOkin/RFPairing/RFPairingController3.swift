@@ -157,4 +157,8 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
         
         //proceedButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
     }
+    
+    override func didReceiveMemoryWarning() {
+        print("Too much load")
+    }
 }
