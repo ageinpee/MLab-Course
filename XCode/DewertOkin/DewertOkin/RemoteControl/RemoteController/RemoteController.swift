@@ -73,42 +73,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.layoutRemote()
+        
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
-        
-        let lastConnectedDeviceUUID = UserDefaults.standard.string(forKey: "lastConnectedDevice_uuid")
-        if lastConnectedDeviceUUID != "" {
-            fetchDevices()
-            for d in self.devicesList {
-                if d.uuid == lastConnectedDeviceUUID {
-                    globalDeviceObject = DeviceObject(withUUID: d.uuid ?? UUID().uuidString,
-                                                       named: d.name ?? "error while fetching",
-                                                       withHandheldID: d.handheld ?? "no-device",
-                                                       withStyle: d.style ?? "filled",
-                                                       withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: d.extraFunctions ?? "") )
-                    self.device = globalDeviceObject
-                    break
-                }
-                else
-                {
-                    self.device = globalDeviceObject
-                }
-            }
-        }
-        
-        currentDeviceLabel.text = device.name
-        currentDeviceLabel.isHidden = true
-        header.topItem?.title = device.name
-        setupButtons()
-        setupPanAreas()
-        
         Themes.setupTheming(for: self)
-        
-        impact = UIImpactFeedbackGenerator(style: .light)
-        
-        arrowsImageView.image = device.deviceImages[0]
-        Image.image = device.deviceImages[1]
-        Image.contentMode = .scaleAspectFit
-        
+        Health.shared.requestHealthKitPermission()
         initializeAllCommands()
     }
     
@@ -119,6 +88,47 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         // Disabled for demonstration purposes
         //checkBluetoothConnectivity()
     }
+    
+    func layoutRemote() {
+        let lastConnectedDeviceUUID = UserDefaults.standard.string(forKey: "lastConnectedDevice_uuid")
+        if lastConnectedDeviceUUID != "" {
+            fetchDevices()
+            for d in self.devicesList {
+                if d.uuid == lastConnectedDeviceUUID {
+                    globalDeviceObject = DeviceObject(withUUID: d.uuid ?? UUID().uuidString,
+                                                      named: d.name ?? "error while fetching",
+                                                      withHandheldID: d.handheld ?? "no-device",
+                                                      withStyle: d.style ?? "filled",
+                                                      withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: d.extraFunctions ?? "") )
+                    self.device = globalDeviceObject
+                    break
+                }
+                else
+                {
+                    self.device = globalDeviceObject
+                }
+            }
+        }
+        
+        self.currentDeviceLabel.text = device.name
+        self.currentDeviceLabel.isHidden = true
+        self.header.topItem?.title = device.name
+        self.setupButtons()
+        self.setupPanAreas()
+        
+        self.impact = UIImpactFeedbackGenerator(style: .light)
+        
+        impact = UIImpactFeedbackGenerator(style: .light)
+        
+        arrowsImageView.image = device.deviceImages[0]
+        Image.image = device.deviceImages[1]
+        Image.contentMode = .scaleAspectFit
+        
+        self.arrowsImageView.image = self.device.deviceImages[0]
+        self.Image.image = self.device.deviceImages[1]
+        self.Image.contentMode = .scaleAspectFit
+    }
+    
     
     @objc
     private func showOldRemote() {

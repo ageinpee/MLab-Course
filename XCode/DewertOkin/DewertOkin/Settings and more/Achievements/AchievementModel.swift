@@ -17,15 +17,31 @@ import UserNotifications
 
 class AchievementModel {
     
-    static var barButtonClickCount: Float = 0.0  {
+    static var apprenticeCount: Float = 0.0 {
         didSet {
-            achievementDictionary[.buttonManiac]?.progress = Float(barButtonClickCount / 5.0)
+            achievementDictionary[.exerciseApprentice]?.progress = Float(apprenticeCount / 25.0)
+            saveAchievementProgress()
+        }
+    }
+    
+    static var maniacCount: Float = 0.0 {
+        didSet {
+            achievementDictionary[.exerciseManiac]?.progress = Float(maniacCount / 50.0)
+            saveAchievementProgress()
+        }
+    }
+    
+    static var masterCount: Float = 0.0 {
+        didSet {
+            achievementDictionary[.exerciseMaster]?.progress = Float(masterCount / 100.0)
+            saveAchievementProgress()
         }
     }
     
     static var remindersSet: Float = 0.0 {
         didSet {
             achievementDictionary[.onTopOfThings]?.progress = Float(remindersSet / 3.0)
+            saveAchievementProgress()
         }
     }
     
@@ -37,18 +53,11 @@ class AchievementModel {
     
     static var veteranUnlocked = false
     
-    static var upDownClickCountUnlocked = false {
-        didSet {
-            if upDownClickCountUnlocked {
-                achievementDictionary[.undecisive]?.progress = Float(1.0)
-            }
-        }
-    }
-    
     static var nightOwlUnlocked = false {
         didSet {
             if nightOwlUnlocked {
                 achievementDictionary[.nightOwl]?.progress = Float(1.0)
+                saveAchievementProgress()
             }
         }
     }
@@ -56,6 +65,7 @@ class AchievementModel {
     static var letThereBeLightUnlocked = false {
         didSet {
             achievementDictionary[.letThereBeLight]?.progress = Float(1.0)
+            saveAchievementProgress()
         }
     }
     
@@ -79,13 +89,15 @@ class AchievementModel {
         
         defaults.set(try? PropertyListEncoder().encode(AchievementModel.achievementDictionary), forKey: "dictionary")
         
-        defaults.setValue(barButtonClickCount, forKey: "barButtonClickCount")
         defaults.setValue(remindersSet, forKey: "remindersSet")
         defaults.setValue(timeSpentInAchievementsSection, forKey: "timeSpentInAchievementsSection")
         defaults.setValue(veteranUnlocked, forKey: "veteranUnlocked")
-        defaults.setValue(upDownClickCountUnlocked, forKey: "upDownClickCountUnlocked")
         defaults.setValue(nightOwlUnlocked, forKey: "nightOwlUnlocked")
         defaults.setValue(letThereBeLightUnlocked, forKey: "letThereBeLightUnlocked")
+        defaults.setValue(apprenticeCount, forKey: "apprenticeCount")
+        defaults.setValue(maniacCount, forKey: "maniacCount")
+        defaults.setValue(masterCount, forKey: "masterCount")
+
         
         print("Achievement progess saved.")
     }
@@ -96,21 +108,28 @@ class AchievementModel {
             AchievementModel.achievementDictionary = dict
             
             let defaults = UserDefaults.standard
-            
-            if let savedBarButtonClickCount = defaults.object(forKey: "barButtonClickCount") as? Float {
-                barButtonClickCount = savedBarButtonClickCount
-            }
+
             if let savedRemindersSet = defaults.object(forKey: "remindersSet") as? Float {
                 remindersSet = savedRemindersSet
             }
+            
+            if let savedApprenticeCount = defaults.object(forKey: "apprenticeCount") as? Float {
+                apprenticeCount = savedApprenticeCount
+            }
+            
+            if let savedManiacCount = defaults.object(forKey: "maniacCount") as? Float {
+                maniacCount = savedManiacCount
+            }
+            
+            if let savedMasterCount = defaults.object(forKey: "masterCount") as? Float {
+                masterCount = savedMasterCount
+            }
+            
             if let savedTimeSpentInAchievementsSection = defaults.object(forKey: "timeSpentInAchievementsSection") as? Float {
                 timeSpentInAchievementsSection = savedTimeSpentInAchievementsSection
             }
             if let savedVeteranUnlocked = defaults.object(forKey: "veteranUnlocked") as? Bool {
                 veteranUnlocked = savedVeteranUnlocked
-            }
-            if let savedUpDownClickCountUnlocked = defaults.object(forKey: "upDownClickCountUnlocked") as? Bool {
-                upDownClickCountUnlocked = savedUpDownClickCountUnlocked
             }
             if let savedNightOwlUnlocked = defaults.object(forKey: "nightOwlUnlocked") as? Bool {
                 nightOwlUnlocked = savedNightOwlUnlocked
@@ -134,7 +153,7 @@ class AchievementModel {
         content.body = "You unlocked the \(name) achievement!"
         content.sound = UNNotificationSound.default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
         let identifier = "\(name)AchievementUnlocked"
         let request = UNNotificationRequest(identifier: identifier,
                                             content: content, trigger: trigger)
@@ -146,20 +165,12 @@ class AchievementModel {
         })
     }
     
-    // Dummy achievement, will be removed
-    public static func updateButtonClickCount() {
-        barButtonClickCount = barButtonClickCount + 1
-        
-        if barButtonClickCount == 5 {
-            
-           // Trigger the notification
-            displayLocalNotification(forAchievement: "Button Maniac")
-            print("BarButton Achievement Triggered")
-            
-            // Set the trophy image
-            achievementDictionary[.buttonManiac]?.image = "trophy"
-        }
+    public static func registerNewExercise() {
+        apprenticeCount += 1
+        maniacCount += 1
+        masterCount += 1
     }
+    
     
     // On Top of Things
     public static func updateRemindersSet() {
@@ -186,16 +197,6 @@ class AchievementModel {
         }
     }
     
-    // Has to be called from RemoteViewController
-    // Undecisive
-    public static func undecisiveAchievementUnlocked() {
-        // TODO: Only trigger if it hasn't been unlocked already
-        achievementDictionary[.undecisive]?.image = "trophy"
-        upDownClickCountUnlocked = true
-        displayLocalNotification(forAchievement: "Undecisive")
-        print("Undecisive achievement unlocked")
-    }
-    
     // Night Owl
     public static func nightOwlAchievementUnlocked() {
         // Only trigger if it hasn't been unlocked already
@@ -220,11 +221,9 @@ class AchievementModel {
     }
     
     public static func resetAchievements() {
-        barButtonClickCount = 0
         remindersSet = 0
         timeSpentInAchievementsSection = 0
         veteranUnlocked = false
-        upDownClickCountUnlocked = false
         nightOwlUnlocked = false
         letThereBeLightUnlocked = false
         

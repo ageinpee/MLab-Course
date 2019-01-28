@@ -53,6 +53,8 @@ extension DevicesListViewController: UITableViewDataSource {
                         try PersistenceService.context.save()
                     }
                 }
+                globalDeviceObject = DeviceObject()
+                UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
                 self.fetchDevices()
             } catch {
                 print("Devices couldn't be load")
@@ -96,11 +98,16 @@ extension DevicesListViewController: UITableViewDataSource {
                 self.showAlert()
                 return
             }
+            globalDeviceObject = DeviceObject(withUUID: self.devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
+                                              named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
+                                              withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
+                                              withStyle: self.devicesList[indexPath.row].style ?? "filled",
+                                              withExtraFunctions: DeviceObject().convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
+            UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
             guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
             self.deviceToConnect = deviceToBeConnected
             self.performSegue(withIdentifier: "ConnectToDevice", sender: self)
         }
-        
         globalDeviceObject = DeviceObject(withUUID: self.devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
                                           named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
                                           withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",

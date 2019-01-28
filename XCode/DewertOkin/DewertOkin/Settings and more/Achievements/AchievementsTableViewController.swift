@@ -213,6 +213,8 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
+        guard indexPath.item < colors.count else { return cell }
+        
         let shapeLayer = CAShapeLayer()
         
         let progressView: UIView = {
@@ -230,8 +232,6 @@ class AchievementsCollectionViewController: UICollectionViewController, UICollec
         // UNSAFE
         presetView.backgroundColor = colors[indexPath.item]
         presetView.layer.borderColor = colors[indexPath.item].cgColor
-        
-        //progressView.backgroundColor = colors[indexPath.item].withAlphaComponent(0.3)
         
         
         cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v1(80)]-8-[v0]-16-|", options: .alignAllCenterY, metrics: nil, views: ["v0" : presetView, "v1": progressView]))

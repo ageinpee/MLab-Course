@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Intents
+import BLTNBoard
 
 class MainViewController: UITabBarController {
     
@@ -49,5 +50,55 @@ class MainViewController: UITabBarController {
         let controllers = [remoteVC, healthVC, exploreVC ,settingsVC]
         
         self.setViewControllers(controllers, animated: false)
+    }
+    
+    lazy var bulletinManager: BLTNItemManager = {
+        let root: BLTNItem = self.getPage()
+        let manager = BLTNItemManager(rootItem: root)
+        manager.backgroundViewStyle = .dimmed
+        return manager
+    }()
+    
+    func getPage() -> BLTNItem {
+        let page = BLTNPageItem(title: "Exercise")
+        
+        switch globalDeviceObject.type {
+        case "chair_2Motors":
+            page.image = UIImage(named: "Squad-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+        case "bed_2Motors":
+            page.image = UIImage(named: "Arch-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+        case "table":
+            page.image = UIImage(named: "Wrist-Exercise")?.resize(size: CGSize(width: 200, height: 200))
+        default:
+            print("Error setting exercise image: Device Type not found.")
+        }
+        
+        page.descriptionText = "Your companion recommends the following Workout to you:"
+        page.actionButtonTitle = "Do Workout"
+        page.alternativeButtonTitle = "Maybe Later"
+        
+        page.actionHandler = { (item: BLTNActionItem) in
+            Health.shared.exerciseHistory.append(ExerciseEvent(time: Date(), completed: true))
+            page.manager?.dismissBulletin()
+            print("Action button tapped")
+            print(Health.shared.exerciseHistory)
+            // Setup chart data
+            Health.shared.updateStatisticsChart()
+        }
+        
+        page.alternativeHandler = { (item: BLTNActionItem) in
+            print("Maybe later tapped")
+            page.manager?.dismissBulletin()
+            Health.shared.exerciseHistory.append(ExerciseEvent(time: Date(), completed: false))
+            // Setup chart data
+            Health.shared.updateStatisticsChart()
+        }
+        page.requiresCloseButton = false
+        return page
+    }
+    
+    func showActivityReminder() {
+        guard !bulletinManager.isShowingBulletin else { return }
+        bulletinManager.showBulletin(above: self)
     }
 }
