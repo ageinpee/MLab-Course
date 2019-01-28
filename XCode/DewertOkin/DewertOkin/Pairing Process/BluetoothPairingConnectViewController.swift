@@ -92,15 +92,6 @@ class BluetoothPairingConnectViewController: UIViewController {
     }
     
     func connectionState() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
-//            guard self.animating != false else { return }
-//            guard self.success != true else { return }
-//            self.bluetoothFlow.cancel()
-//            self.animating = false
-//            self.success = false
-//            self.updateAnimation()
-//        })
-        
         bluetooth.bluetoothCoordinator = bluetoothFlow
         
         guard self.selectedPeripheral != nil else { return }
@@ -189,10 +180,14 @@ class BluetoothPairingConnectViewController: UIViewController {
     }
     
     func showRemote() {
-        let remoteControl = UIStoryboard(name: "SecondRemote", bundle: nil).instantiateViewController(withIdentifier: "RemoteControl") as UIViewController
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-             self.present(remoteControl, animated: true, completion: nil)
-        })
+//        let remoteControlView = self.storyboard!.instantiateViewController(withIdentifier: "RemoteControl") as! RemoteController
+//        self.navigationController!.pushViewController(remoteControlView, animated: true)
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.view.alpha = 0
+        }) { (_) in
+            UIApplication.shared.keyWindow?.rootViewController = MainViewController()
+        }
     }
     
     func showPairingProcess() {
