@@ -77,7 +77,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         Themes.setupTheming(for: self)
-        Health.shared.requestHealthKitPermission()
         initializeAllCommands()
     }
     

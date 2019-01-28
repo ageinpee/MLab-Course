@@ -81,7 +81,6 @@ class MainViewController: UITabBarController {
             Health.shared.exerciseHistory.append(ExerciseEvent(time: Date(), completed: true))
             page.manager?.dismissBulletin()
             print("Action button tapped")
-            print(Health.shared.exerciseHistory)
             // Setup chart data
             Health.shared.updateStatisticsChart()
         }
