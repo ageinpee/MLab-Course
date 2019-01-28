@@ -52,7 +52,6 @@ extension ExtraFunctionsController {
                 
                 if count % 2 == 0 {
                     offset = offset + 200000/Int(self.view.bounds.size.height)
-                    print(offset)
                 }
                 
                 self.contentView.addSubview(button)
