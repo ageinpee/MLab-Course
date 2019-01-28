@@ -54,14 +54,12 @@ class ExtraFunctionsController: UIViewController {
         self.scrollView.isScrollEnabled = true
         self.scrollView.isUserInteractionEnabled = true
         self.scrollView.alwaysBounceVertical = true
-        self.scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: CGFloat(400 + 300*(self.device.availableExtraFunctions.count/2)))//self.contentView.bounds.size
+        self.scrollView.contentSize = self.contentView.bounds.size
+        //self.scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: CGFloat(300*(self.device.availableExtraFunctions.count/2)))
         self.scrollView.contentInset = .init(top: CGFloat((800 + 300*(self.device.availableExtraFunctions.count/2))-Int(self.contentView.bounds.size.height)),
                                              left: 0,
                                              bottom: 0,
                                              right: 0)
-        
-        //let bottomOffset = CGPoint(x: 0, y: (scrollView.contentSize.height - scrollView.bounds.size.height)/2)
-        //self.scrollView.setContentOffset(bottomOffset, animated: true)
     }
     
     @IBAction func dismissVC(_ sender: Any) {
