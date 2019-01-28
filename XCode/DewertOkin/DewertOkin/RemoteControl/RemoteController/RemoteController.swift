@@ -118,10 +118,17 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         
         self.impact = UIImpactFeedbackGenerator(style: .light)
         
+        impact = UIImpactFeedbackGenerator(style: .light)
+        
+        arrowsImageView.image = device.deviceImages[0]
+        Image.image = device.deviceImages[1]
+        Image.contentMode = .scaleAspectFit
+        
         self.arrowsImageView.image = self.device.deviceImages[0]
         self.Image.image = self.device.deviceImages[1]
         self.Image.contentMode = .scaleAspectFit
     }
+    
     
     @objc
     private func showOldRemote() {

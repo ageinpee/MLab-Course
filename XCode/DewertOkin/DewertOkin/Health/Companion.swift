@@ -64,6 +64,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Health.shared.requestHealthKitPermission()
         getSavedData()
         tableView.reloadData()
     }

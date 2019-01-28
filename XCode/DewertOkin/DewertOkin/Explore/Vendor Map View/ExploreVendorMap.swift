@@ -15,10 +15,6 @@ extension ExploreViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        if (CLLocationManager.locationServicesEnabled()) {
-            locationManager.requestWhenInUseAuthorization()
-        }
-        
         if let userLocation = locationManager.location?.coordinate {
             let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: radiusInMeters, longitudinalMeters: radiusInMeters)
             mapView.setRegion(viewRegion, animated: true)
