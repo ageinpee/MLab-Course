@@ -19,7 +19,6 @@ class MainViewController: UITabBarController {
     }
     
     var remoteVC = UIViewController()
-    var reminderVC = UIViewController()
     var settingsVC = UIViewController()
     var healthVC = UIViewController()
     var exploreVC = UIViewController()
@@ -32,32 +31,23 @@ class MainViewController: UITabBarController {
     private func setupViews() {
         guard let remoteNew = UIStoryboard(name: "SecondRemote", bundle: nil).instantiateInitialViewController(),
             let remoteOld = UIStoryboard(name: "OldRemote", bundle: nil).instantiateInitialViewController(),
-            let reminder = UIStoryboard(name: "Reminder", bundle: nil).instantiateInitialViewController(),
             let settings = UIStoryboard(name: "SettingsMore", bundle: nil).instantiateInitialViewController(),
             let explore = UIStoryboard(name: "Explore", bundle: nil).instantiateInitialViewController() else { return }
         
-//        INPreferences.requestSiriAuthorization { (status) in
-//
-//        }
+        self.remoteVC = useNewRemoteStyle ? remoteNew : remoteOld
+        self.remoteVC.tabBarItem = UITabBarItem(title: "Remote", image: UIImage(named: "remote_icon"), tag: 0)
         
-        remoteVC = useNewRemoteStyle ? remoteNew : remoteOld
-        remoteVC.tabBarItem = UITabBarItem(title: "Remote", image: UIImage(named: "remote_icon"), tag: 0)
+        self.healthVC = UINavigationController(rootViewController: CompanionTableViewController())
+        self.healthVC.tabBarItem = UITabBarItem(title: "Companion", image: UIImage(named: "companion"), selectedImage: UIImage(named: "companion_blue"))
         
-        reminderVC = reminder
-        reminderVC.tabBarItem = UITabBarItem(title: "Reminder", image: UIImage(named: "reminder_icon"), tag: 1)
+        self.exploreVC = explore
+        self.exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(named: "explore_icon"), selectedImage: UIImage(named: "explore_icon_blue"))
         
-        healthVC = UINavigationController(rootViewController: CompanionTableViewController())
-        healthVC.tabBarItem = UITabBarItem(title: "Companion", image: UIImage(named: "companion"), selectedImage: UIImage(named: "companion_blue"))
-        
-        exploreVC = explore
-        exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(named: "explore_icon"), selectedImage: UIImage(named: "explore_icon_blue"))
-        
-        settingsVC = settings
-        //settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
-        settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings_icon"), selectedImage: UIImage(named: "settings_icon_highlighted"))
+        self.settingsVC = settings
+        self.settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings_icon"), selectedImage: UIImage(named: "settings_icon_highlighted"))
         
         let controllers = [remoteVC, healthVC, exploreVC ,settingsVC]
         
-        setViewControllers(controllers, animated: false)
+        self.setViewControllers(controllers, animated: false)
     }
 }

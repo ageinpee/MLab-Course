@@ -102,8 +102,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         setupPanAreas()
         
         Themes.setupTheming(for: self)
-
-        Health.shared.requestHealthKitPermission()
         
         impact = UIImpactFeedbackGenerator(style: .light)
         

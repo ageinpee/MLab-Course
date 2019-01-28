@@ -64,6 +64,11 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
         let filter = defaults.stringArray(forKey: "FilterAccessories")
         guard !(filter?.isEmpty ?? true) else {
             initializeVendors()
