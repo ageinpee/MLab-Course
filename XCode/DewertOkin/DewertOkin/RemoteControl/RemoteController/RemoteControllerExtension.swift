@@ -112,7 +112,7 @@ extension RemoteController {
             translation = .began
             arrowsImageView.alpha = 0
             if bluetoothBackgroundHandler.checkStatus(){
-                timer = Timer.scheduledTimer(timeInterval: 0.3,
+                timer = Timer.scheduledTimer(timeInterval: 0.1,
                                              target: self,
                                              selector: #selector(actionRight),
                                              userInfo: nil,
@@ -165,7 +165,7 @@ extension RemoteController {
             translation = .began
             arrowsImageView.alpha = 0
             if bluetoothBackgroundHandler.checkStatus() {
-                timer = Timer.scheduledTimer(timeInterval: 0.3,
+                timer = Timer.scheduledTimer(timeInterval: 0.1,
                                              target: self,
                                              selector: #selector(actionLeft),
                                              userInfo: nil,

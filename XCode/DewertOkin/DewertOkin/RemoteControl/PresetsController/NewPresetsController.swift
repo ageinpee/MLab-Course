@@ -15,6 +15,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
     lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
+    var bluetoothTimer: Timer?
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
     
@@ -171,10 +172,16 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         
         guard (indexPath.section == 1) else { return }
         
-        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-            self.triggerCommand(keycode: keycode.memory1)
-            })
         
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            if (indexPath.row == 0){
+            self.triggerCommand(keycode: keycode.memory1)
+            } else if (indexPath.row == 1){
+                self.triggerCommand(keycode: keycode.memory2)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: { self.bluetoothTimer!.invalidate() })
         collectionView.deselectItem(at: indexPath, animated: true)
         dismissSelf()
     }

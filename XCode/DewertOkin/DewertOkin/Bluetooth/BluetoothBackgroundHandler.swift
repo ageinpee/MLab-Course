@@ -26,12 +26,12 @@ class BluetoothBackgroundHandler: BluetoothCoordinator {
         guard availablePeripherals != [] else { return nil } // Display no devices in range
         
         // Filter all peripherals for once connected peripherals
-        availablePeripherals = availablePeripherals.filter {
-            for devices in onceConnectedPeripherals {
-                return devices.uuid == ($0.identifier.uuidString)
-            }
-            return false
-        }
+//        availablePeripherals = availablePeripherals.filter {
+//            for devices in onceConnectedPeripherals {
+//                return devices.uuid == ($0.identifier.uuidString)
+//            }
+//            return false
+//        }
         
         // Connect to the last connected peripheral
         return availablePeripherals.last
