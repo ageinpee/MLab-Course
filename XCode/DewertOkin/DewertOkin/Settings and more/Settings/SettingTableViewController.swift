@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 enum SettingsEntry: String {
     case deviceInfo = "Device Info"
@@ -19,7 +20,7 @@ enum SettingsEntry: String {
     case test = "Test"
     case rfpairing = "RF Pairing Test"
     case bluetoothPairing = "Bluetooth Pairing Test"
-    case remoteStyle = "Use wireframe-design"
+    case remoteStyle = "Use Wireframe-Design"
 }
 
 class SettingTableViewController: UITableViewController, Themeable {
@@ -247,14 +248,35 @@ class SettingTableViewController: UITableViewController, Themeable {
         if sender.isOn == true {
             UserDefaults.standard.set(true, forKey: "remoteStyle")
             
+            globalDeviceObject.style = "empty"
+            self.updateDevicesStyle(newStyle: "empty", uuid: globalDeviceObject.uuid)
         } else {
             UserDefaults.standard.set(false, forKey: "remoteStyle")
+            
+            globalDeviceObject.style = "filled"
+            self.updateDevicesStyle(newStyle: "filled", uuid: globalDeviceObject.uuid)
         }
     }
     
     @objc
     private func accessibilityModeSwitchChanged(sender: UISwitch!) {
         print("Accessibility Mode switch is on: \(sender.isOn)")
+    }
+    
+    func updateDevicesStyle(newStyle: String, uuid: String) {
+        let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()
+        
+        do {
+            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
+            for device in savedDevices {
+                if device.uuid == uuid {
+                    device.style = newStyle
+                    try PersistenceService.context.save()
+                }
+            }
+        } catch {
+            print("Devices couldn't be load")
+        }
     }
     
     @objc
