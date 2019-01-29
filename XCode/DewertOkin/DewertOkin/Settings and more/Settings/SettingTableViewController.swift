@@ -16,11 +16,11 @@ enum SettingsEntry: String {
     case siri = "Siri"
     case about = "About"
     case darkMode = "Dark Mode"
-    case useOldRemote = "Use Old Remote Layout"
+    case useOldRemote = "Old Remote Layout"
     case test = "Test"
     case rfpairing = "RF Pairing Test"
     case bluetoothPairing = "Bluetooth Pairing Test"
-    case remoteStyle = "Use Wireframe-Design for current Device"
+    case remoteStyle = "Wireframe-Design"
 }
 
 class SettingTableViewController: UITableViewController, Themeable {

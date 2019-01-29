@@ -83,6 +83,7 @@ class MainViewController: UITabBarController {
             print("Action button tapped")
             // Setup chart data
             Health.shared.updateStatisticsChart()
+            AchievementModel.registerNewExercise()
         }
         
         page.alternativeHandler = { (item: BLTNActionItem) in

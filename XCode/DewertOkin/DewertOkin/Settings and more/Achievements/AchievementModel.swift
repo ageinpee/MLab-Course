@@ -169,6 +169,7 @@ class AchievementModel {
         apprenticeCount += 1
         maniacCount += 1
         masterCount += 1
+        print("registering new exercise")
     }
     
     
