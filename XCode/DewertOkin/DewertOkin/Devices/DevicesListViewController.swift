@@ -109,7 +109,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         if (bluetooth.connectedPeripheral?.identifier.uuidString == device.uuid) {
             return "Connected"
         }
-        return "Not-Connected"
+        return ""
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

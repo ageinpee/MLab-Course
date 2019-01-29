@@ -31,7 +31,7 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         
         imageData = [Remote(withID:"82418", withImage:UIImage(named: "remote1.png")!), // our remote
                      Remote(withID:"bedding-all", withImage:UIImage(named: "remote2.png")!),
-                     Remote(withID:"84562", withImage:UIImage(named: "remote3.png")!),
+                     Remote(withID:"99999", withImage:UIImage(named: "remote3.png")!),
                      Remote(withID:"Table-test", withImage:UIImage(named: "remote4.png")!)]
         selectedRemote = imageData[0]
         
