@@ -20,7 +20,7 @@ enum SettingsEntry: String {
     case test = "Test"
     case rfpairing = "RF Pairing Test"
     case bluetoothPairing = "Bluetooth Pairing Test"
-    case remoteStyle = "Use Wireframe-Design"
+    case remoteStyle = "Use Wireframe-Design for current Device"
 }
 
 class SettingTableViewController: UITableViewController, Themeable {
@@ -30,6 +30,7 @@ class SettingTableViewController: UITableViewController, Themeable {
         [.useOldRemote, .remoteStyle]
     ]
     private let settingsSections = ["Devices and Support", "Preferences"]
+    private var styleSwitch = UISwitch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,12 @@ class SettingTableViewController: UITableViewController, Themeable {
         super.viewWillAppear(animated)
         navigationItem.title = "Settings"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if globalDeviceObject.style == "empty" {
+            self.styleSwitch.isOn = true
+        } else {
+            self.styleSwitch.isOn = false
+        }
     }
 
     // MARK: - Table view data source
@@ -108,11 +115,12 @@ class SettingTableViewController: UITableViewController, Themeable {
         
         if (indexPath.row == settingsEntries[indexPath.section].firstIndex(of: .remoteStyle)) {
             cell.accessoryView = {
-                let styleSwitch = UISwitch()
-                if let styleSwitchIsOn = UserDefaults.standard.object(forKey: "remoteStyle") as? Bool {
-                    styleSwitch.isOn = styleSwitchIsOn
+                if globalDeviceObject.style == "empty" {
+                    self.styleSwitch.isOn = true
+                } else {
+                    self.styleSwitch.isOn = false
                 }
-                styleSwitch.addTarget(self, action: #selector(styleSwitchChanged(sender:)), for: .valueChanged)
+                self.styleSwitch.addTarget(self, action: #selector(styleSwitchChanged(sender:)), for: .valueChanged)
                 return styleSwitch
             }()
         }
@@ -246,12 +254,12 @@ class SettingTableViewController: UITableViewController, Themeable {
     @objc
     private func styleSwitchChanged(sender: UISwitch!) {
         if sender.isOn == true {
-            UserDefaults.standard.set(true, forKey: "remoteStyle")
+            //UserDefaults.standard.set(true, forKey: "remoteStyle")
             
             globalDeviceObject.style = "empty"
             self.updateDevicesStyle(newStyle: "empty", uuid: globalDeviceObject.uuid)
         } else {
-            UserDefaults.standard.set(false, forKey: "remoteStyle")
+            //UserDefaults.standard.set(false, forKey: "remoteStyle")
             
             globalDeviceObject.style = "filled"
             self.updateDevicesStyle(newStyle: "filled", uuid: globalDeviceObject.uuid)

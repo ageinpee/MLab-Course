@@ -73,7 +73,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.layoutRemote()
+        self.layoutRemote()
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
         Themes.setupTheming(for: self)
