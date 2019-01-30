@@ -40,7 +40,7 @@
                                     <segue destination="0JR-wU-EAa" kind="custom" identifier="pairingTransition1" customClass="rotationTransition" customModule="DewertOkin" customModuleProvider="target" id="va3-3o-T44"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choose your device by pulling on the remote above" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-hL-Tkt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your device by pulling up or down on the remote above" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-hL-Tkt">
                                 <rect key="frame" x="20" y="711" width="374" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,9 +223,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="controller2Image" width="819.84002685546875" height="876.47998046875"/>
-        <image name="quarterCircle" width="1440" height="1441.9200439453125"/>
-        <image name="quarterCircleFirstStoryboard" width="1440" height="1441"/>
-        <image name="quarterCircleLastStoryboard" width="1440" height="1441"/>
+        <image name="controller2Image" width="1708" height="1826"/>
+        <image name="quarterCircle" width="3000" height="3004"/>
+        <image name="quarterCircleFirstStoryboard" width="3000" height="3002"/>
+        <image name="quarterCircleLastStoryboard" width="3000" height="3002"/>
     </resources>
 </document>
