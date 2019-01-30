@@ -133,7 +133,6 @@ extension DevicesListViewController: UITableViewDataSource {
                                               withStyle: self.devicesList[indexPath.row].style ?? "filled",
                                               withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
             UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
-            print(globalDeviceObject.type)
             return
         }
         guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
@@ -145,7 +144,6 @@ extension DevicesListViewController: UITableViewDataSource {
                                           withStyle: self.devicesList[indexPath.row].style ?? "filled",
                                           withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
         UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
-        print(globalDeviceObject.type)
         
         self.performSegue(withIdentifier: "ConnectToDevice", sender: self)
     }
