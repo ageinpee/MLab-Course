@@ -124,13 +124,13 @@ class StatisticsCell: UITableViewCell {
         
         let chartData = BarChartData(dataSets: dataSets)
         
-        let groupSpace = 0.3
+        let groupSpace = 0.25
         let barSpace = 0.05
         let barWidth = 0.3
         
         chartData.barWidth = barWidth
         let gg = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
-        barChart.xAxis.axisMaximum = gg * Double(6)
+        barChart.xAxis.axisMaximum = gg * Double(7)
         barChart.xAxis.axisMinimum = 0
 
         chartData.groupBars(fromX: 0, groupSpace: groupSpace, barSpace: barSpace)
