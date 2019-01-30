@@ -84,10 +84,21 @@
                         <viewLayoutGuide key="safeArea" id="5Iu-px-na6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="sXn-yz-0aV"/>
+                    <connections>
+                        <segue destination="NF1-2m-OVb" kind="show" identifier="ShowRemote" id="hKL-hB-1cT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vV6-Rm-ojR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="550" y="118"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="LB8-Cc-vHH">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="RemoteControl" id="NF1-2m-OVb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sn2-Wa-bsu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="-38"/>
         </scene>
     </scenes>
 </document>

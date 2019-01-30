@@ -33,6 +33,10 @@ class BluetoothBackgroundHandler: BluetoothCoordinator {
             return false
         }
         
+        // Only select devices which are in range
+        
+        availablePeripherals = availablePeripherals.filter { self.isInRange(uuid: $0.identifier.uuidString) }
+        
         // Connect to the last connected peripheral
         return availablePeripherals.last
     }

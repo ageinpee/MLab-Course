@@ -35,7 +35,7 @@ extension DevicesListViewController: UITableViewDataSource {
         let delete = deleteAction(at: indexPath)
         let edit = editAction(at: indexPath)
         let connect = connectAction(at: indexPath)
-        var swipeGesture = UISwipeActionsConfiguration(actions: [connect,edit,delete])
+        let swipeGesture = UISwipeActionsConfiguration(actions: [connect,edit,delete])
         swipeGesture.performsFirstActionWithFullSwipe = false
         return swipeGesture
     }
@@ -53,6 +53,9 @@ extension DevicesListViewController: UITableViewDataSource {
                     if deviceToDelete.uuid == device.uuid {
                         PersistenceService.context.delete(device)
                         try PersistenceService.context.save()
+                        if (deviceToDelete.uuid == self.bluetooth.connectedPeripheral?.identifier.uuidString) {
+                            self.bluetooth.disconnect()
+                        }
                     }
                 }
                 globalDeviceObject = DeviceObject()
@@ -63,7 +66,6 @@ extension DevicesListViewController: UITableViewDataSource {
             }
             
         }
-        
         
         action.backgroundColor = .red
         return action
@@ -100,16 +102,11 @@ extension DevicesListViewController: UITableViewDataSource {
                 self.showAlert()
                 return
             }
-            globalDeviceObject = DeviceObject(withUUID: self.devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
-                                              named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
-                                              withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
-                                              withStyle: self.devicesList[indexPath.row].style ?? "filled",
-                                              withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
-            UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
             guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
             self.deviceToConnect = deviceToBeConnected
             self.performSegue(withIdentifier: "ConnectToDevice", sender: self)
         }
+        
         globalDeviceObject = DeviceObject(withUUID: self.devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
                                           named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
                                           withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
@@ -129,12 +126,6 @@ extension DevicesListViewController: UITableViewDataSource {
         let device = self.devicesList[indexPath.row]
         guard self.bluetoothBackgroundHandler.isInRange(uuid: device.uuid) else {
             self.showAlert()
-            globalDeviceObject = DeviceObject(withUUID: self.devicesList[indexPath.row].uuid ?? "ERROR - no entry found",
-                                              named: self.devicesList[indexPath.row].name ?? "ERROR - no entry found",
-                                              withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
-                                              withStyle: self.devicesList[indexPath.row].style ?? "filled",
-                                              withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
-            UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
             return
         }
         guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
