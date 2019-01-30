@@ -130,6 +130,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zs-FR-nCq">
+                                <rect key="frame" x="73" y="717" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="XDc-WR-Nkj"/>
+                                    <constraint firstAttribute="width" constant="56" id="mZU-j0-6z0"/>
+                                </constraints>
+                                <state key="normal" title="Presets"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQT-Jr-LLb">
+                                <rect key="frame" x="179" y="717" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="XTf-Yy-O0R"/>
+                                    <constraint firstAttribute="width" constant="56" id="xQT-Yt-eHE"/>
+                                </constraints>
+                                <state key="normal" title="Extras"/>
+                                <connections>
+                                    <segue destination="cmq-sI-oqY" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="GuN-O5-Nqy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D4-d2-D4L">
+                                <rect key="frame" x="285" y="717" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="41b-bw-Kz8"/>
+                                    <constraint firstAttribute="width" constant="56" id="Z5S-Ew-fHO"/>
+                                </constraints>
+                                <state key="normal" title="Timer"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -137,8 +164,14 @@
                             <constraint firstItem="Ipq-0m-Wni" firstAttribute="leading" secondItem="huo-Rz-D3l" secondAttribute="leading" constant="20" id="8Mm-qf-Wd7"/>
                             <constraint firstItem="dFQ-V8-kfJ" firstAttribute="top" secondItem="huo-Rz-D3l" secondAttribute="top" constant="10" id="AYG-QF-3E4"/>
                             <constraint firstItem="Ipq-0m-Wni" firstAttribute="top" secondItem="huo-Rz-D3l" secondAttribute="top" constant="50" id="Gh7-3d-9ra"/>
+                            <constraint firstItem="uQT-Jr-LLb" firstAttribute="leading" secondItem="3zs-FR-nCq" secondAttribute="trailing" constant="50" id="Jm5-Pb-o4J"/>
+                            <constraint firstItem="3zs-FR-nCq" firstAttribute="bottom" secondItem="huo-Rz-D3l" secondAttribute="bottom" constant="-40" id="P5r-s0-qaJ"/>
                             <constraint firstItem="w6G-CQ-txk" firstAttribute="centerX" secondItem="huo-Rz-D3l" secondAttribute="centerX" id="S8R-rf-GfS"/>
                             <constraint firstItem="w6G-CQ-txk" firstAttribute="top" secondItem="huo-Rz-D3l" secondAttribute="top" constant="10" id="ST8-iU-XXc"/>
+                            <constraint firstItem="huo-Rz-D3l" firstAttribute="bottom" secondItem="0D4-d2-D4L" secondAttribute="bottom" constant="40" id="Ufh-9Z-FOt"/>
+                            <constraint firstItem="huo-Rz-D3l" firstAttribute="bottom" secondItem="uQT-Jr-LLb" secondAttribute="bottom" constant="40" id="aTg-Co-Irc"/>
+                            <constraint firstItem="uQT-Jr-LLb" firstAttribute="centerX" secondItem="fse-ca-Ze6" secondAttribute="centerX" id="aaa-IU-c2f"/>
+                            <constraint firstItem="0D4-d2-D4L" firstAttribute="leading" secondItem="uQT-Jr-LLb" secondAttribute="trailing" constant="50" id="gqt-O2-ZBR"/>
                             <constraint firstAttribute="trailing" secondItem="dFQ-V8-kfJ" secondAttribute="trailing" constant="30" id="jHR-Zs-QvF"/>
                             <constraint firstItem="huo-Rz-D3l" firstAttribute="trailing" secondItem="Ipq-0m-Wni" secondAttribute="trailing" constant="20" id="y19-5X-3Gv"/>
                         </constraints>
@@ -152,12 +185,15 @@
                         <outlet property="bothDownButton" destination="G5F-HD-ZfN" id="jf8-EM-sSa"/>
                         <outlet property="bothUpButton" destination="1GJ-eB-qwX" id="s74-2y-I01"/>
                         <outlet property="deviceNameLabel" destination="w6G-CQ-txk" id="YP1-1l-Fa6"/>
+                        <outlet property="extrasButton" destination="uQT-Jr-LLb" id="ehz-rd-j0B"/>
                         <outlet property="feetDownButton" destination="KYT-vm-5dt" id="2nE-wa-Iud"/>
                         <outlet property="feetUpButton" destination="rza-o4-nok" id="OfG-CF-doe"/>
                         <outlet property="memory1Button" destination="5HR-bE-heu" id="1dT-GH-1o5"/>
                         <outlet property="memory2Button" destination="dBO-Ww-ocD" id="l1D-b2-Xmk"/>
+                        <outlet property="presetsButton" destination="3zs-FR-nCq" id="L87-4b-yR2"/>
                         <outlet property="remoteView" destination="Ipq-0m-Wni" id="QEx-g0-SoW"/>
                         <outlet property="saveButton" destination="EBL-VP-R4U" id="dG6-hb-jcU"/>
+                        <outlet property="timerButton" destination="0D4-d2-D4L" id="hgP-f5-bVf"/>
                         <outlet property="torchButton" destination="K6Y-kg-kVb" id="SnC-Y0-mnb"/>
                         <outlet property="ublButton" destination="QDm-KY-Esa" id="X32-Tk-yHi"/>
                     </connections>
@@ -165,6 +201,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Anw-Ne-ccN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="775.44642857142856"/>
+        </scene>
+        <!--NewExtraFunctions-->
+        <scene sceneID="5yJ-fj-6Rc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewExtraFunctions" id="cmq-sI-oqY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RbD-k6-tGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="703" y="938"/>
         </scene>
         <!--Devices-->
         <scene sceneID="a9A-If-d8P">

@@ -26,6 +26,10 @@ class OldRemoteViewController: UIViewController {
     @IBOutlet weak var ublButton: UIButton!
     @IBOutlet weak var torchButton: UIButton!
     
+    @IBOutlet weak var presetsButton: UIButton!
+    @IBOutlet weak var extrasButton: UIButton!
+    @IBOutlet weak var timerButton: UIButton!
+    
     var buttonList: [UIButton] = [UIButton]()
     var buttonList2: [UIButton] = [UIButton]()
     
@@ -53,7 +57,8 @@ class OldRemoteViewController: UIViewController {
                        memory1Button, memory2Button,
                        saveButton, ublButton]
         
-        constrainButtons()
+        constrainRemoteButtons()
+        setupButtons()
         
         self.deviceNameLabel.text = globalDeviceObject.name
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
@@ -65,6 +70,43 @@ class OldRemoteViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func setupButtons() {
+        var width = self.presetsButton.frame.width
+        self.presetsButton.backgroundColor = UIColor.white
+        self.presetsButton.layer.cornerRadius = width/2
+        self.presetsButton.layer.masksToBounds = true
+        self.presetsButton.layer.borderWidth = 1
+        self.presetsButton.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+        self.presetsButton.addTarget(self, action: #selector(showPresetsView), for: .touchUpInside)
+        
+        width = self.timerButton.frame.width
+        self.timerButton.backgroundColor = UIColor.white
+        self.timerButton.layer.cornerRadius = width/2
+        self.timerButton.layer.masksToBounds = true
+        self.timerButton.layer.borderWidth = 1
+        self.timerButton.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+        self.timerButton.addTarget(self, action: #selector(pushTimerViewController), for: .touchUpInside)
+        
+        width = self.extrasButton.frame.width
+        self.extrasButton.backgroundColor = UIColor.white
+        self.extrasButton.layer.cornerRadius = width/2
+        self.extrasButton.layer.masksToBounds = true
+        self.extrasButton.layer.borderWidth = 1
+        self.extrasButton.layer.borderColor = UIColor.init(displayP3Red: 0.0, green: 0.478, blue: 1.0, alpha: 1.0).cgColor
+    }
+    
+    @objc
+    private func showPresetsView() {
+        let nc = UINavigationController(rootViewController: PresetsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
+        present(nc, animated: true, completion: nil)
+        
+    }
+    
+    @objc
+    private func pushTimerViewController() {
+        present(UINavigationController(rootViewController: NewTimerListTableViewController()), animated: true, completion: nil)
     }
 
     lazy var noConnectionBanner: UIView = {
@@ -144,7 +186,7 @@ class OldRemoteViewController: UIViewController {
         
     }
     
-    func constrainButtons() {
+    func constrainRemoteButtons() {
         
         guard let superView = remoteView.superview else { return }
         
