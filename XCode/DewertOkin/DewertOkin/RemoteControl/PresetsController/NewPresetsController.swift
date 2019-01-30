@@ -152,6 +152,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                     cell.delegate = self
                     cell.presetNameLabel.text = "+"
                     cell.presetNameLabel.font = UIFont.preferredFont(forTextStyle: .headline).withSize(30)
+                    cell.longPressGR = UILongPressGestureRecognizer()
                     cell.backgroundColor = .lightGray
                     cell.layer.borderColor = cell.backgroundColor?.cgColor
                     return cell
@@ -178,6 +179,26 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == presetsList.count {
+            let renameController = UIAlertController(title: "Add current position as preset", message: "Give this preset a name", preferredStyle: .alert)
+            
+            renameController.addTextField(configurationHandler: { (textfield) in
+                textfield.placeholder = "Preset Name"
+                textfield.text = ""
+            })
+            renameController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            renameController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                self.savePreset(withUUID: UUID(),
+                                named: renameController.textFields?[0].text ?? "",
+                                forDevice: UUID(uuidString: globalDeviceObject.uuid) ?? UUID())
+                //self.presetsList.append(renameController.textFields?[0].text ?? "")
+                
+            }))
+            self.present(renameController, animated: true, completion: {
+                
+            })
+            return
+        }
         handlePresetButtonPressed(indexPath: indexPath)
         collectionView.deselectItem(at: indexPath, animated: true)
         dismissSelf()
@@ -403,6 +424,8 @@ class PresetButtonCell: UICollectionViewCell {
         return label
     }()
     
+    var longPressGR = UILongPressGestureRecognizer()
+    
     override var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? backgroundColor?.withAlphaComponent(0.9) : backgroundColor?.withAlphaComponent(1)
@@ -428,8 +451,8 @@ class PresetButtonCell: UICollectionViewCell {
         
         backgroundColor = UIButton().tintColor
         
-        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleEditLongPress(_:)))
-        longPressGR.minimumPressDuration = 0.8
+        self.longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleEditLongPress(_:)))
+        self.longPressGR.minimumPressDuration = 0.8
         contentView.addGestureRecognizer(longPressGR)
     }
     
