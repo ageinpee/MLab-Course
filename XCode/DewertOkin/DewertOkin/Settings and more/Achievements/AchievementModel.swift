@@ -97,9 +97,6 @@ class AchievementModel {
         defaults.setValue(maniacCount, forKey: "maniacCount")
         defaults.setValue(masterCount, forKey: "masterCount")
         defaults.setValue(apprenticeUnlocked, forKey: "apprenticeUnlocked")
-
-        
-        print("Achievement progess saved.")
     }
     
     static func loadAchievementProgress() {
