@@ -100,8 +100,6 @@
 		FAE52D3C21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */; };
 		FAE52D3E21D7935700121B54 /* RemoteControllerExtensionBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */; };
 		FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */; };
-		FAE52D4321D7BE5400121B54 /* PresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4221D7BE5400121B54 /* PresetsController.swift */; };
-		FAE52D4B21D909BD00121B54 /* PresetsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */; };
 		FAE52D4E21D924D400121B54 /* AddPresetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4D21D924D400121B54 /* AddPresetController.swift */; };
 		FAE52D5021DA485500121B54 /* DeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE52D4F21DA485500121B54 /* DeviceObject.swift */; };
 /* End PBXBuildFile section */
@@ -240,8 +238,6 @@
 		FAE52D3B21D7929800121B54 /* RemoteControllerExtensionDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionDarkMode.swift; sourceTree = "<group>"; };
 		FAE52D3D21D7935700121B54 /* RemoteControllerExtensionBLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerExtensionBLE.swift; sourceTree = "<group>"; };
 		FAE52D3F21D7B80200121B54 /* pullUpSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pullUpSegue.swift; sourceTree = "<group>"; };
-		FAE52D4221D7BE5400121B54 /* PresetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsController.swift; sourceTree = "<group>"; };
-		FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsControllerExtension.swift; sourceTree = "<group>"; };
 		FAE52D4D21D924D400121B54 /* AddPresetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresetController.swift; sourceTree = "<group>"; };
 		FAE52D4F21DA485500121B54 /* DeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -616,9 +612,7 @@
 		FAE52D4921D9099300121B54 /* PresetsController */ = {
 			isa = PBXGroup;
 			children = (
-				FAE52D4221D7BE5400121B54 /* PresetsController.swift */,
 				CDCBA82121EBD97D006BF55F /* NewPresetsController.swift */,
-				FAE52D4A21D909BD00121B54 /* PresetsControllerExtension.swift */,
 			);
 			path = PresetsController;
 			sourceTree = "<group>";
@@ -882,7 +876,6 @@
 				031CC45321DE43B80025E068 /* DevicesListViewController.swift in Sources */,
 				CD97E84321D94250009C64E4 /* NewTimerTableViewController.swift in Sources */,
 				FAE52D5021DA485500121B54 /* DeviceObject.swift in Sources */,
-				FAE52D4321D7BE5400121B54 /* PresetsController.swift in Sources */,
 				FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */,
 				039133CD21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift in Sources */,
 				FABC760F21B03592003BEF66 /* RemoteController.swift in Sources */,
@@ -892,7 +885,6 @@
 				03E9875C219447E000189C97 /* Reminders.swift in Sources */,
 				0333052521BB34C200603519 /* BluetoothCoordinator.swift in Sources */,
 				035B860721C536CE00A032AE /* BluetoothPeripheral.swift in Sources */,
-				FAE52D4B21D909BD00121B54 /* PresetsControllerExtension.swift in Sources */,
 				0333052921BB352200603519 /* Bluetooth.swift in Sources */,
 				FAE52D4021D7B80200121B54 /* pullUpSegue.swift in Sources */,
 				0380565321E901D500A6502F /* Vendor.swift in Sources */,
