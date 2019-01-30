@@ -48,14 +48,14 @@ extension RemoteController {
     }
     
     func startHeadUp() {
-        //guard bluetoothBackgroundHandler.checkStatus() else { return }
-//        self.characteristic = self.bluetooth.writeCharacteristic
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { self.changeImage(state: "Right-Up")})
-//        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
-//            (_) in
-//            self.triggerCommand(keycode: keycode.m1In)
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.changeImage(state: "Right-Up") })
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m1In)
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
             self.bluetoothTimer?.invalidate()
             self.resetImage()
@@ -66,7 +66,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        changeImage(state: "Right-Down")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.changeImage(state: "Right-Down") })
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m1Out)
@@ -81,7 +81,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        changeImage(state: "Left-Up")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.changeImage(state: "Left-Up") })
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2In)
@@ -96,7 +96,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        changeImage(state: "Left-Down")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.changeImage(state: "Left-Down") })
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2Out)
@@ -131,21 +131,21 @@ extension RemoteController {
     
     func stopHeadUp() {
         bluetoothTimer?.invalidate()
-        resetImage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.resetImage() })
     }
     
     func stopHeadDown() {
         bluetoothTimer?.invalidate()
-        resetImage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.resetImage() })
     }
     
     func stopFeetUp() {
         bluetoothTimer?.invalidate()
-        resetImage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.resetImage() })
     }
     
     func stopFeetDown() {
         bluetoothTimer?.invalidate()
-        resetImage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.resetImage() })
     }
 }

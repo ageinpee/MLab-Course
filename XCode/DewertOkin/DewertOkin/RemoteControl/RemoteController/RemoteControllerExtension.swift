@@ -215,7 +215,7 @@ extension RemoteController {
     /* SIRI RELATED STUFF */
     
     func changeImage(state: String){
-        
+        arrowsImageView.alpha = 0
         let deviceType = DeviceType(rawValue: self.device.type)!
         if state == "Right-Down"{
             switch deviceType {
