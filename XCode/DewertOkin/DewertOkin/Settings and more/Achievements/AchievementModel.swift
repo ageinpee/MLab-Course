@@ -197,7 +197,7 @@ class AchievementModel {
         timeSpentInAchievementsSection = timeSpentInAchievementsSection + Float(elapsedTime)
         
         if (timeSpentInAchievementsSection >= 600.0) {
-            displayLocalNotification(forAchievement: "Veteran")
+           // displayLocalNotification(forAchievement: "Veteran")
             print("Veteran achievement unlocked")
             achievementDictionary[.veteran]?.image = "trophy"
         }
