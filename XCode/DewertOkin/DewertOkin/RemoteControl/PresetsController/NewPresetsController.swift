@@ -161,7 +161,11 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presetButtonCell, for: indexPath) as? PresetButtonCell {
                     cell.presetName = presetsList[indexPath.item].presetName
                     cell.delegate = self
-                    cell.backgroundColor = colors[indexPath.item]
+                    if indexPath.item < colors.count {
+                        cell.backgroundColor = colors[indexPath.item]
+                    } else {
+                        cell.backgroundColor = .gray
+                    }
                     cell.layer.borderColor = cell.backgroundColor?.cgColor
                     return cell
                 }
