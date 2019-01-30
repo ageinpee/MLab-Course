@@ -34,31 +34,31 @@ class Health {
     var activityTimer: Timer?
     
     var exerciseHistory: [ExerciseEvent] = [
-        // 7 is saturday
-        // 1 is sunday
-        // 1 3 1 1 2 4 1
-        // 1 0 1 0 2 1 0
-        // Today
-        ExerciseEvent(time: Date().addingTimeInterval(-31600), completed: true),
-        // Yesterday
-        ExerciseEvent(time: Date().addingTimeInterval(-100200), completed: false),
-        ExerciseEvent(time: Date().addingTimeInterval(-120200), completed: true),
-        ExerciseEvent(time: Date().addingTimeInterval(-150000), completed: false),
-        // 2 days ago
-        ExerciseEvent(time: Date().addingTimeInterval(-240000), completed: true),
-        ExerciseEvent(time: Date().addingTimeInterval(-244800), completed: false),
-        // 3 days ago
-        ExerciseEvent(time: Date().addingTimeInterval(-329534), completed: true),
-        // 4 days ago
-        ExerciseEvent(time: Date().addingTimeInterval(-398538), completed: true),
-        // 5 days ago
-        ExerciseEvent(time: Date().addingTimeInterval(-444392), completed: true),
-        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
-        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
-        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
-        // 6 days ago
-        ExerciseEvent(time: Date().addingTimeInterval(-548839), completed: false),
-        ExerciseEvent(time: Date().addingTimeInterval(-548859), completed: true)
+//        // 7 is saturday
+//        // 1 is sunday
+//        // 1 3 1 1 2 4 1
+//        // 1 0 1 0 2 1 0
+//        // Today
+//        ExerciseEvent(time: Date().addingTimeInterval(-31600), completed: true),
+//        // Yesterday
+//        ExerciseEvent(time: Date().addingTimeInterval(-100200), completed: false),
+//        ExerciseEvent(time: Date().addingTimeInterval(-120200), completed: true),
+//        ExerciseEvent(time: Date().addingTimeInterval(-150000), completed: false),
+//        // 2 days ago
+//        ExerciseEvent(time: Date().addingTimeInterval(-240000), completed: true),
+//        ExerciseEvent(time: Date().addingTimeInterval(-244800), completed: false),
+//        // 3 days ago
+//        ExerciseEvent(time: Date().addingTimeInterval(-329534), completed: true),
+//        // 4 days ago
+//        ExerciseEvent(time: Date().addingTimeInterval(-398538), completed: true),
+//        // 5 days ago
+//        ExerciseEvent(time: Date().addingTimeInterval(-444392), completed: true),
+//        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
+//        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
+//        ExerciseEvent(time: Date().addingTimeInterval(-444444), completed: false),
+//        // 6 days ago
+//        ExerciseEvent(time: Date().addingTimeInterval(-548839), completed: false),
+//        ExerciseEvent(time: Date().addingTimeInterval(-548859), completed: true)
         ] {
         didSet {
             print("exercise history changed")
