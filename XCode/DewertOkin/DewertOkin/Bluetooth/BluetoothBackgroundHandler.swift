@@ -24,26 +24,17 @@ class BluetoothBackgroundHandler: BluetoothCoordinator {
         guard onceConnectedPeripherals != [] else { return nil }
         availablePeripherals = bluetoothService?.retrievePeripherals() ?? []
         guard availablePeripherals != [] else { return nil } // Display no devices in range
-        
-        var stringUUID = getAllUUIDS(devices: onceConnectedPeripherals)
-        
-        print(availablePeripherals[0].identifier.uuidString)
-        print(stringUUID[0])
+
         // Filter all peripherals for once connected peripherals
         availablePeripherals = availablePeripherals.filter {
-            stringUUID.contains($0.identifier.uuidString)
+            for device in onceConnectedPeripherals {
+                return $0.identifier.uuidString == device.uuid
+            }
+            return false
         }
         
         // Connect to the last connected peripheral
         return availablePeripherals.last
-    }
-    
-    func getAllUUIDS(devices: [Devices]) -> [String] {
-        var temp = [String]()
-        for dev in onceConnectedPeripherals {
-            temp.append(dev.uuid ?? "")
-        }
-        return temp
     }
     
     override func retrievePeripherals() -> [CBPeripheral] {
