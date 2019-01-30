@@ -179,6 +179,26 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == presetsList.count {
+            let renameController = UIAlertController(title: "Add current position as preset", message: "Give this preset a name", preferredStyle: .alert)
+            
+            renameController.addTextField(configurationHandler: { (textfield) in
+                textfield.placeholder = "Preset Name"
+                textfield.text = ""
+            })
+            renameController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            renameController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                self.savePreset(withUUID: UUID(),
+                                named: renameController.textFields?[0].text ?? "",
+                                forDevice: UUID(uuidString: globalDeviceObject.uuid) ?? UUID())
+                //self.presetsList.append(renameController.textFields?[0].text ?? "")
+                
+            }))
+            self.present(renameController, animated: true, completion: {
+                
+            })
+            return
+        }
         handlePresetButtonPressed(indexPath: indexPath)
         collectionView.deselectItem(at: indexPath, animated: true)
         dismissSelf()
@@ -189,11 +209,6 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         self.characteristic = self.bluetooth.writeCharacteristic
         
         guard (indexPath.section == 1) else { return }
-        
-        if indexPath.item == presetsList.count-1 {
-            //finish this here
-            jjihun
-        }
         
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
