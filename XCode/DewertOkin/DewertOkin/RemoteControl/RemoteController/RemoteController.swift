@@ -14,7 +14,7 @@ import CoreData
 import Intents
 
 
-class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable{
+class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     
     //----------------------------------------
     //------ Fancy Remote UI-Elements --------
@@ -76,7 +76,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         self.layoutRemote()
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
-        Themes.setupTheming(for: self)
         initializeAllCommands()
     }
     
