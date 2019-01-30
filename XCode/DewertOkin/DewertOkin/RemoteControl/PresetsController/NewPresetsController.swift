@@ -167,23 +167,26 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        handlePresetButtonPressed(indexPath: indexPath)
+        collectionView.deselectItem(at: indexPath, animated: true)
+        dismissSelf()
+    }
+    
+    func handlePresetButtonPressed(indexPath: IndexPath) {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         
         guard (indexPath.section == 1) else { return }
         
-        
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             if (indexPath.row == 0){
-            self.triggerCommand(keycode: keycode.memory1)
+                self.triggerCommand(keycode: keycode.memory1)
             } else if (indexPath.row == 1){
                 self.triggerCommand(keycode: keycode.memory2)
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: { self.bluetoothTimer!.invalidate() })
-        collectionView.deselectItem(at: indexPath, animated: true)
-        dismissSelf()
     }
     
     func triggerCommand(keycode: keycode) {
