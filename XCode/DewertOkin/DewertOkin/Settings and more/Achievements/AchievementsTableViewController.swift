@@ -113,7 +113,6 @@ class AchievementsTableViewController: UITableViewController, Themeable {
             .veteran,
             .undecisive,
             .nightOwl,
-            .letThereBeLight,
             .buttonManiac,
             .exerciseApprentice,
             .exerciseManiac,

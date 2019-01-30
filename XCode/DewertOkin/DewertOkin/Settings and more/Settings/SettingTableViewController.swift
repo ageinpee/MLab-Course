@@ -231,9 +231,6 @@ class SettingTableViewController: UITableViewController, Themeable {
     
     @objc
     private func darkModeSwitchChanged(sender: UISwitch!) {
-        if(!sender.isOn) {
-            AchievementModel.lightAchievementUnlocked()
-        }
         print("Dark Mode switch is on: \(sender.isOn)")
         
         if sender.isOn == true {
