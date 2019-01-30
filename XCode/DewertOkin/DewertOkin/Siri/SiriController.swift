@@ -43,7 +43,7 @@ extension RemoteController {
             INVoiceShortcutCenter.shared.setShortcutSuggestions(shortcuts)
             
         } else {
-            print("Update your device dude, dafuq!")
+            print("Update your device!")
         }
     }
     
@@ -51,44 +51,60 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.changeImage(state: "Right-Up") })
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m1In)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
+            self.bluetoothTimer?.invalidate()
+            self.resetImage()
+        })
     }
     
     func startHeadDown() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.changeImage(state: "Right-Down") })
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m1Out)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
+            self.bluetoothTimer?.invalidate()
+            self.resetImage()
+        })
     }
     
     func startFeetUp() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.changeImage(state: "Left-Up") })
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2In)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
+            self.bluetoothTimer?.invalidate()
+            self.resetImage()
+        })
     }
     
     func startFeetDown() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.changeImage(state: "Left-Down") })
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2Out)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
+            self.bluetoothTimer?.invalidate()
+            self.resetImage()
+        })
     }
     
     func triggerMemory1() {
@@ -115,17 +131,21 @@ extension RemoteController {
     
     func stopHeadUp() {
         bluetoothTimer?.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.resetImage() })
     }
     
     func stopHeadDown() {
         bluetoothTimer?.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.resetImage() })
     }
     
     func stopFeetUp() {
         bluetoothTimer?.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.resetImage() })
     }
     
     func stopFeetDown() {
         bluetoothTimer?.invalidate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.resetImage() })
     }
 }

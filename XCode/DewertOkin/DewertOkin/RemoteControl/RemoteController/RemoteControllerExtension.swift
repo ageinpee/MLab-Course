@@ -129,7 +129,7 @@ extension RemoteController {
                 case .table:
                     Image.image = device.deviceImages[3]
                 default:
-                    print("no device found")
+                    ()
                 }
                 
             } else if (panRecognizer.translation(in: rightPanArea).y <= -40) {
@@ -142,8 +142,7 @@ extension RemoteController {
                 case .table:
                     Image.image = device.deviceImages[2]
                 default:
-                    print("no device found")
-                    
+                    ()
                 }
             }
         case .ended:
@@ -182,7 +181,7 @@ extension RemoteController {
                 case .table:
                     Image.image = device.deviceImages[3]
                 default:
-                    print("no device found")
+                    ()
                 }
                 
             } else if (panRecognizer.translation(in: leftPanArea).y <= -40) {
@@ -195,7 +194,7 @@ extension RemoteController {
                 case .table:
                     Image.image = device.deviceImages[2]
                 default:
-                    print("no device found")
+                    ()
                 }
                 
             }
@@ -212,6 +211,67 @@ extension RemoteController {
             self.arrowsImageView.alpha = withAlpha
         }, completion: nil)
     }
+    
+    /* SIRI RELATED STUFF */
+    
+    func changeImage(state: String){
+        arrowsImageView.alpha = 0
+        let deviceType = DeviceType(rawValue: self.device.type)!
+        if state == "Right-Down"{
+            switch deviceType {
+            case .chair_2Motors:
+                Image.image = self.device.deviceImages[3]
+            case .bed_2Motors:
+                Image.image = self.device.deviceImages[3]
+            case .table:
+                Image.image = self.device.deviceImages[3]
+            default:
+                ()
+            }
+        }
+        else if state == "Right-Up"{
+            switch deviceType {
+            case .chair_2Motors:
+                Image.image = self.device.deviceImages[2]
+            case .bed_2Motors:
+                Image.image = self.device.deviceImages[2]
+            case .table:
+                Image.image = self.device.deviceImages[2]
+            default:
+                ()
+            }
+        }
+        else if state == "Left-Down"{
+            switch deviceType {
+            case .chair_2Motors:
+                Image.image = self.device.deviceImages[5]
+            case .bed_2Motors:
+                Image.image = self.device.deviceImages[5]
+            case .table:
+                Image.image = self.device.deviceImages[3]
+            default:
+                ()
+            }
+        }
+        else if state == "Left-Up"{
+            switch deviceType {
+            case .chair_2Motors:
+                Image.image = self.device.deviceImages[4]
+            case .bed_2Motors:
+                Image.image = self.device.deviceImages[4]
+            case .table:
+                Image.image = self.device.deviceImages[2]
+            default:
+                ()
+            }
+        }
+    }
+    
+    func resetImage(){
+        Image.image = device.deviceImages[1]
+        fadeInArrows(withAlpha: opacity)
+    }
+    
 }
 
 

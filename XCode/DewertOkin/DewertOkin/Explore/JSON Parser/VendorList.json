@@ -312,11 +312,6 @@
                 "accessoryDescription": "Improve your furniture with satellite sound speakers"
             },
             {
-                "imageName": "SubwooferIconAccessory",
-                "name": "Subwoofer Speaker",
-                "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
-            },
-            {
                 "imageName": "UnderBedLightingIconAccessory",
                 "name": "Under Bed Lighting",
                 "accessoryDescription": "Lighting Attached under your bed"
@@ -352,11 +347,6 @@
         "latitude": 53.597655,
         "longitude": 9.934984,
         "accessories": [
-            {
-                "imageName": "SatelliteIconAccessory",
-                "name": "Satellite Speaker",
-                "accessoryDescription": "Improve your furniture with satellite sound speakers"
-            },
             {
                 "imageName": "SubwooferIconAccessory",
                 "name": "Subwoofer Speaker",
@@ -438,11 +428,6 @@
                 "imageName": "SubwooferIconAccessory",
                 "name": "Subwoofer Speaker",
                 "accessoryDescription": "Feel the bass with the subwoofer sound speakers"
-            },
-            {
-                "imageName": "LightStripIconAccessory",
-                "name": "Light Strip",
-                "accessoryDescription": "Lighting for universal attachment"
             },
             {
                 "imageName": "SeatHeatingIconAccessory",

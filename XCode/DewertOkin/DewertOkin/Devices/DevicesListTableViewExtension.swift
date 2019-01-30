@@ -35,7 +35,9 @@ extension DevicesListViewController: UITableViewDataSource {
         let delete = deleteAction(at: indexPath)
         let edit = editAction(at: indexPath)
         let connect = connectAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [connect,edit,delete])
+        var swipeGesture = UISwipeActionsConfiguration(actions: [connect,edit,delete])
+        swipeGesture.performsFirstActionWithFullSwipe = false
+        return swipeGesture
     }
     
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
