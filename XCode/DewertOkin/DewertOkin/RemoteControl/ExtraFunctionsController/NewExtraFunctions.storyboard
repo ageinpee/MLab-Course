@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="height" constant="44" id="Mlt-yZ-Dbi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="discover accessorize">
+                                <state key="normal" title="Discover Accessories">
                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
