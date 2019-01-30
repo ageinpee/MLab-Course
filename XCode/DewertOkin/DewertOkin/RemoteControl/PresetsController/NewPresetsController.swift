@@ -152,6 +152,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                     cell.delegate = self
                     cell.presetNameLabel.text = "+"
                     cell.presetNameLabel.font = UIFont.preferredFont(forTextStyle: .headline).withSize(30)
+                    cell.longPressGR = UILongPressGestureRecognizer()
                     cell.backgroundColor = .lightGray
                     cell.layer.borderColor = cell.backgroundColor?.cgColor
                     return cell
@@ -188,6 +189,11 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         self.characteristic = self.bluetooth.writeCharacteristic
         
         guard (indexPath.section == 1) else { return }
+        
+        if indexPath.item == presetsList.count-1 {
+            //finish this here
+            jjihun
+        }
         
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
@@ -388,6 +394,8 @@ class PresetButtonCell: UICollectionViewCell {
         return label
     }()
     
+    var longPressGR = UILongPressGestureRecognizer()
+    
     override var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? backgroundColor?.withAlphaComponent(0.9) : backgroundColor?.withAlphaComponent(1)
@@ -413,8 +421,8 @@ class PresetButtonCell: UICollectionViewCell {
         
         backgroundColor = UIButton().tintColor
         
-        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleEditLongPress(_:)))
-        longPressGR.minimumPressDuration = 0.8
+        self.longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleEditLongPress(_:)))
+        self.longPressGR.minimumPressDuration = 0.8
         contentView.addGestureRecognizer(longPressGR)
     }
     
