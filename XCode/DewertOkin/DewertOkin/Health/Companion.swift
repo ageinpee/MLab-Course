@@ -89,7 +89,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
             cell.textLabel?.text = "Activity Reminder"
             cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body).withSize(22)
             cell.textLabel?.numberOfLines = 0
-            cell.detailTextLabel?.text = "Enable reminders to stand up every \(Int(Health.shared.activityReminderTimeIntervalInMinutes)) min."
+            cell.detailTextLabel?.text = "Enable reminders to exercise every \(Int(Health.shared.activityReminderTimeIntervalInMinutes)) min."
             cell.detailTextLabel?.numberOfLines = 0
             cell.accessoryView = {
                 let activitySwitch = UISwitch()
@@ -337,5 +337,9 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         Health.shared.activityReminderTimeIntervalInMinutes = minutes
         Health.shared.activityTimer?.invalidate()
         Health.shared.startActivityTracking()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }

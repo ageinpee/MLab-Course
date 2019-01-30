@@ -14,25 +14,25 @@ extension RemoteController {
     func moveHeadUp() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m1In)
+        triggerCommand(keycode: keycode.m1Out)
     }
     
     func moveHeadDown() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m1Out)
+        triggerCommand(keycode: keycode.m1In)
     }
     
     func moveFeetUp() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m2In)
+        triggerCommand(keycode: keycode.m2Out)
     }
     
     func moveFeetDown() {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m2Out)
+        triggerCommand(keycode: keycode.m2In)
     }
     
     func triggerCommand(keycode: keycode) {

@@ -16,8 +16,10 @@ class BluetoothPairingConnectViewController: UIViewController {
     let circleLayer = CAShapeLayer()
     var animating = true
     var success: Bool?
+    var window: UIWindow?
     
     var selectedPeripheral: CBPeripheral?
+    var selectedDeviceObject: Devices?
     var remoteControl = RemoteController()
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
@@ -180,14 +182,16 @@ class BluetoothPairingConnectViewController: UIViewController {
     }
     
     func showRemote() {
-//        let remoteControlView = self.storyboard!.instantiateViewController(withIdentifier: "RemoteControl") as! RemoteController
-//        self.navigationController!.pushViewController(remoteControlView, animated: true)
+        
+        initializeGlobalDeviceObject()
         
         UIView.animate(withDuration: 1.0, animations: {
             self.view.alpha = 0
         }) { (_) in
             UIApplication.shared.keyWindow?.rootViewController = MainViewController()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { self.view.removeFromSuperview() })
         }
+
     }
     
     func showPairingProcess() {
@@ -196,5 +200,15 @@ class BluetoothPairingConnectViewController: UIViewController {
             self.present(pairingProcess, animated: true, completion: nil)
         })
     }
+    
+    func initializeGlobalDeviceObject() {
+        globalDeviceObject = DeviceObject(withUUID: selectedDeviceObject?.uuid ?? "ERROR - no entry found",
+                                          named: selectedDeviceObject?.name ?? "ERROR - no entry found",
+                                          withHandheldID: selectedDeviceObject?.handheld ?? "NaN",
+                                          withStyle: selectedDeviceObject?.style ?? "filled",
+                                          withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: selectedDeviceObject?.extraFunctions ?? ""))
+        UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
+    }
+    
 }
 

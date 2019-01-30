@@ -94,13 +94,10 @@ extension ExploreViewController {
     }
     
     func closeDetailViewInstant() {
-        let transitionAnimator = UIViewPropertyAnimator(duration: 0, dampingRatio: 1, animations: {
             self.bottomConstraint.constant = self.vendorViewOffset * 2
             self.backgroundAlphaView.backgroundColor = .clear
             self.backgroundAlphaView.alpha = 0.0
             self.mapView.deselectAnnotation(self.displayingAnnotation.annotation, animated: true)
-        })
-        transitionAnimator.addCompletion{_ in
             self.backgroundAlphaView.removeFromSuperview()
             self.vendorWebsite.removeFromSuperview()
             self.vendorTelephone.removeFromSuperview()
@@ -113,11 +110,7 @@ extension ExploreViewController {
             if (self.currentState == .open){
                 self.currentState = self.currentState.opposite
             }
-        }
-        transitionAnimator.isUserInteractionEnabled = true
-        transitionAnimator.startAnimation()
     }
-    
 }
 
 extension ExploreViewController: MKMapViewDelegate {
@@ -149,8 +142,8 @@ extension ExploreViewController: MKMapViewDelegate {
         displayingVendor = location
         displayingAnnotation = view
         if (vendorView.superview != nil) {
-            closeDetailViewInstant()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { self.displayDetailView() })
+            self.closeDetailViewInstant()
+            self.displayDetailView()
         }
         else {
             displayDetailView()

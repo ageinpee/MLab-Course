@@ -14,7 +14,7 @@ import CoreData
 import Intents
 
 
-class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable{
+class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     
     //----------------------------------------
     //------ Fancy Remote UI-Elements --------
@@ -42,7 +42,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     
     var devicesList = [Devices]()
     
-    var device = globalDeviceObject
+    var device = globalDeviceObject {
+        didSet {
+            checkBluetoothConnectivity()
+        }
+    }
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
@@ -76,20 +80,21 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         self.layoutRemote()
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
-        Themes.setupTheming(for: self)
         initializeAllCommands()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.layoutRemote()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.layoutRemote()
         arrowsImageView.alpha = 0
         fadeInArrows(withAlpha: opacity)
         
-        // Disabled for demonstration purposes
-        //checkBluetoothConnectivity()
+        checkBluetoothConnectivity()
     }
     
     override func didReceiveMemoryWarning() {
@@ -179,7 +184,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
         noConnectionBanner.addConstraint(NSLayoutConstraint.init(item: noConnectionLabel, attribute: .centerX, relatedBy: .equal, toItem: noConnectionBanner, attribute: .centerX, multiplier: 1, constant: 0))
         noConnectionBanner.addConstraint(NSLayoutConstraint.init(item: noConnectionLabel, attribute: .centerY, relatedBy: .equal, toItem: noConnectionBanner, attribute: .centerY, multiplier: 3/2, constant: 0))
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.noConnectionBanner.transform = CGAffineTransform.init(translationX: 0, y: 80)
+            self.noConnectionBanner.transform = CGAffineTransform.init(translationX: 0, y: 70)
         }) { (_) in
         }
     }

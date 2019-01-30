@@ -71,7 +71,7 @@ class NewTimerListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedTimer = timerList[indexPath.row]
-        let vc = UINavigationController(rootViewController: NewTimerTableViewController(deviceTimer: selectedTimer)) 
+        let vc = UINavigationController(rootViewController: AddTimerViewController(deviceTimer: selectedTimer)) 
         present(vc, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -107,7 +107,7 @@ class NewTimerListTableViewController: UITableViewController {
     
     @objc
     private func presentAddTimerController() {
-        present(UINavigationController(rootViewController: NewTimerTableViewController(deviceTimer: nil)), animated: true, completion: nil)
+        present(UINavigationController(rootViewController: AddTimerViewController(deviceTimer: nil)), animated: true, completion: nil)
     }
     
     @objc

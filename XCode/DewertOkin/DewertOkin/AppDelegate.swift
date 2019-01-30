@@ -127,50 +127,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
-        let viewController: RemoteController = RemoteController()
+        let remoteControl = searchForRemoteControlView()
+        guard remoteControl.devicesList != [] else { return false }
         
         if (userActivity.title == "Move Head Up") {
-            viewController.startHeadUp()
+            remoteControl.startHeadUp()
+            return true
+        }
+        else if (userActivity.title == "Move Head Up") {
+            remoteControl.startHeadUp()
             return true
         }
         else if (userActivity.title == "Move Head Down") {
-            viewController.startHeadDown()
+            remoteControl.startHeadDown()
             return true
         }
         else if (userActivity.title == "Move Feet Up") {
-            viewController.startFeetUp()
+            remoteControl.startFeetUp()
             return true
         }
         else if (userActivity.title == "Move Feet Down") {
-            viewController.startFeetDown()
+            remoteControl.startFeetDown()
             return true
         }
         else if (userActivity.title == "Trigger Memory 1") {
-            viewController.triggerMemory1()
+            remoteControl.triggerMemory1()
             return true
         }
         else if (userActivity.title == "Trigger Memory 1") {
-            viewController.triggerMemory2()
+            remoteControl.triggerMemory2()
             return true
         }
         else if (userActivity.title == "Stop Head Up") {
-            viewController.stopHeadUp()
+            remoteControl.stopHeadUp()
             return true
         }
         else if (userActivity.title == "Stop Head Down") {
-            viewController.stopHeadDown()
+            remoteControl.stopHeadDown()
             return true
         }
         else if (userActivity.title == "Stop Feet Up") {
-            viewController.stopFeetUp()
+            remoteControl.stopFeetUp()
             return true
         }
         else if (userActivity.title == "Stop Feet Down") {
-            viewController.stopFeetDown()
+            remoteControl.stopFeetDown()
             return true
         }
         
         return false
+    }
+    
+    func searchForRemoteControlView() -> RemoteController {
+        var remoteControl: RemoteController
+        if let viewControllers = window?.rootViewController?.children {
+            for viewController in viewControllers {
+                if viewController.isKind(of: RemoteController.self) {
+                    remoteControl = viewController as! RemoteController
+                    return remoteControl
+                }
+            }
+        }
+        remoteControl = RemoteController()
+        return remoteControl
     }
     
 }

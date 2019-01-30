@@ -53,19 +53,20 @@ class AchievementModel {
     
     static var veteranUnlocked = false
     
+    static var apprenticeUnlocked = false {
+        didSet {
+            if apprenticeUnlocked {
+                displayLocalNotification(forAchievement: "Exercise Apprentice")
+            }
+        }
+    }
+    
     static var nightOwlUnlocked = false {
         didSet {
             if nightOwlUnlocked {
                 achievementDictionary[.nightOwl]?.progress = Float(1.0)
                 saveAchievementProgress()
             }
-        }
-    }
-    
-    static var letThereBeLightUnlocked = false {
-        didSet {
-            achievementDictionary[.letThereBeLight]?.progress = Float(1.0)
-            saveAchievementProgress()
         }
     }
     
@@ -78,8 +79,7 @@ class AchievementModel {
         .streakLikeABoss : Achievement(id: 6, title: "STREAK LIKE A BOSS!", description: "Do your exercise for 100 times in a row", image: "lock_simple", type: .streakLikeABoss, progress: 0.0),
         .onTopOfThings : Achievement(id: 7, title: "On Top of Things", description: "Set 3 Reminders", image: "lock_simple", type: .onTopOfThings, progress: 0.0),
         .veteran : Achievement(id: 8, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock_simple", type: .veteran, progress: 0.0),
-        .nightOwl : Achievement(id: 9, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0),
-        .letThereBeLight : Achievement(id: 10, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0)
+        .nightOwl : Achievement(id: 9, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0)
 
     ]
     
@@ -93,19 +93,17 @@ class AchievementModel {
         defaults.setValue(timeSpentInAchievementsSection, forKey: "timeSpentInAchievementsSection")
         defaults.setValue(veteranUnlocked, forKey: "veteranUnlocked")
         defaults.setValue(nightOwlUnlocked, forKey: "nightOwlUnlocked")
-        defaults.setValue(letThereBeLightUnlocked, forKey: "letThereBeLightUnlocked")
         defaults.setValue(apprenticeCount, forKey: "apprenticeCount")
         defaults.setValue(maniacCount, forKey: "maniacCount")
         defaults.setValue(masterCount, forKey: "masterCount")
-
-        
-        print("Achievement progess saved.")
+        defaults.setValue(apprenticeUnlocked, forKey: "apprenticeUnlocked")
     }
     
     static func loadAchievementProgress() {
         if let data: Data = UserDefaults.standard.object(forKey: "dictionary") as? Data {
-            let dict: [AchievementType:Achievement] = try! PropertyListDecoder().decode([AchievementType:Achievement].self, from: data)
-            AchievementModel.achievementDictionary = dict
+            if let dict: [AchievementType:Achievement] = try? PropertyListDecoder().decode([AchievementType:Achievement].self, from: data) {
+                AchievementModel.achievementDictionary = dict
+            }
             
             let defaults = UserDefaults.standard
 
@@ -115,6 +113,10 @@ class AchievementModel {
             
             if let savedApprenticeCount = defaults.object(forKey: "apprenticeCount") as? Float {
                 apprenticeCount = savedApprenticeCount
+            }
+            
+            if let savedApprenticeUnlocked = defaults.object(forKey: "savedApprenticeUnlocked") as? Bool {
+                apprenticeUnlocked = savedApprenticeUnlocked
             }
             
             if let savedManiacCount = defaults.object(forKey: "maniacCount") as? Float {
@@ -133,9 +135,6 @@ class AchievementModel {
             }
             if let savedNightOwlUnlocked = defaults.object(forKey: "nightOwlUnlocked") as? Bool {
                 nightOwlUnlocked = savedNightOwlUnlocked
-            }
-            if let savedLetThereBeLightUnlocked = defaults.object(forKey: "letThereBeLightUnlocked") as? Bool {
-                letThereBeLightUnlocked = savedLetThereBeLightUnlocked
             }
             
             print("Achievement progress loaded.")
@@ -169,6 +168,9 @@ class AchievementModel {
         apprenticeCount += 1
         maniacCount += 1
         masterCount += 1
+        if apprenticeCount == 25 {
+            apprenticeUnlocked = true
+        }
         print("registering new exercise")
     }
     
@@ -192,7 +194,7 @@ class AchievementModel {
         timeSpentInAchievementsSection = timeSpentInAchievementsSection + Float(elapsedTime)
         
         if (timeSpentInAchievementsSection >= 600.0) {
-            displayLocalNotification(forAchievement: "Veteran")
+           // displayLocalNotification(forAchievement: "Veteran")
             print("Veteran achievement unlocked")
             achievementDictionary[.veteran]?.image = "trophy"
         }
@@ -210,23 +212,11 @@ class AchievementModel {
         }
     }
     
-    // Let there be light
-    public static func lightAchievementUnlocked() {
-        // Only trigger if it hasn't been unlocked already
-        if (!letThereBeLightUnlocked) {
-            achievementDictionary[.letThereBeLight]?.image = "trophy"
-            letThereBeLightUnlocked = true
-            displayLocalNotification(forAchievement: "Let there be Light")
-            print("Let there be light achievement unlocked")
-        }
-    }
-    
     public static func resetAchievements() {
         remindersSet = 0
         timeSpentInAchievementsSection = 0
         veteranUnlocked = false
         nightOwlUnlocked = false
-        letThereBeLightUnlocked = false
         
         achievementDictionary = [
             .exerciseApprentice : Achievement(id: 1, title: "Exercise Apprentice", description: "Do your recommended exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 0.0),
@@ -237,9 +227,7 @@ class AchievementModel {
             .streakLikeABoss : Achievement(id: 6, title: "STREAK LIKE A BOSS!", description: "Do your exercise for 100 times in a row", image: "lock_simple", type: .streakLikeABoss, progress: 0.0),
             .onTopOfThings : Achievement(id: 7, title: "On Top of Things", description: "Set 3 Reminders", image: "lock_simple", type: .onTopOfThings, progress: 0.0),
             .veteran : Achievement(id: 8, title: "Achievement Veteran", description: "Spend 10 minutes in the Achievements Screen", image: "lock_simple", type: .veteran, progress: 0.0),
-            .nightOwl : Achievement(id: 9, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0),
-            .letThereBeLight : Achievement(id: 10, title: "Let there be light", description: "Switch on light mode after being on the dark side", image: "lock_simple", type: .letThereBeLight, progress: 0.0)
-            
+            .nightOwl : Achievement(id: 9, title: "Night Owl", description: "Set a timer to trigger between midnight and 4 a.m.", image: "lock_simple", type: .nightOwl, progress: 0.0)
         ]
         
         saveAchievementProgress()
@@ -255,7 +243,6 @@ enum AchievementType: String, Hashable, Codable {
     case veteran
     case undecisive
     case nightOwl
-    case letThereBeLight
     case exerciseApprentice
     case exerciseManiac
     case exerciseMaster

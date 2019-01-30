@@ -16,10 +16,10 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header: UINavigationBar!
     
-    
     var devicesList = [Devices]()
     var cellDevicesData = [DevicesData]()
     var deviceToConnect: CBPeripheral?
+    var deviceObjectToConnect: Devices?
     var remoteControl = RemoteController()
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
@@ -43,6 +43,14 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         fetchDevices()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            remoteControl.layoutRemote()
+        }
     }
     
     func fetchDevices() {
@@ -97,6 +105,12 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
                 if device.uuid == uuid {
                     device.name = newName
                     try PersistenceService.context.save()
+                    globalDeviceObject = DeviceObject(withUUID: device.uuid ?? "ERROR - no entry found",
+                                                      named: device.name ?? "ERROR - no entry found",
+                                                      withHandheldID: device.handheld ?? "NaN",
+                                                      withStyle: device.style ?? "filled",
+                                                      withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: device.extraFunctions ?? ""))
+                    UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
                 }
             }
             self.fetchDevices()
@@ -115,6 +129,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? BluetoothPairingConnectViewController {
             destination.selectedPeripheral = self.deviceToConnect
+            destination.selectedDeviceObject = self.deviceObjectToConnect
         }
     }
     @IBAction func unwindToRemoteViewController(_ sender: Any) {
