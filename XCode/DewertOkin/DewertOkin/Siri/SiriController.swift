@@ -43,7 +43,7 @@ extension RemoteController {
             INVoiceShortcutCenter.shared.setShortcutSuggestions(shortcuts)
             
         } else {
-            print("Update your device dude, dafuq!")
+            print("Update your device!")
         }
     }
     
