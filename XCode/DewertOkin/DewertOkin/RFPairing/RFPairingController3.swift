@@ -66,7 +66,6 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
     
         for row in remoteData {
             if row[0] == selectedRemote.id {
-                print(peripherals.last!.identifier.uuidString)
                 device = DeviceObject(withUUID: peripherals.last!.identifier.uuidString, named: "New Device", withHandheldID: row[0], withStyle: DeviceStyle.filled.rawValue)
                 break
             }

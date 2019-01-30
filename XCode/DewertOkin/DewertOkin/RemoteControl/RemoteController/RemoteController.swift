@@ -80,18 +80,17 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         self.layoutRemote()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         self.layoutRemote()
         arrowsImageView.alpha = 0
         fadeInArrows(withAlpha: opacity)
         
-        // Disabled for demonstration purposes
-        //checkBluetoothConnectivity()
+        checkBluetoothConnectivity()
     }
     
     override func didReceiveMemoryWarning() {
