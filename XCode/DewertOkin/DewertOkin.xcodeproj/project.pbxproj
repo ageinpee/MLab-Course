@@ -73,7 +73,7 @@
 		CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD83CAF721A340230082475B /* AchievementsTableViewCell.swift */; };
 		CD945289219C3D0D00280A66 /* AchievementsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */; };
 		CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */; };
-		CD97E84321D94250009C64E4 /* NewTimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E84221D94250009C64E4 /* NewTimerTableViewController.swift */; };
+		CD97E84321D94250009C64E4 /* AddTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E84221D94250009C64E4 /* AddTimerViewController.swift */; };
 		CD97E84521D986A4009C64E4 /* NewTimerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */; };
 		CDACE3BC21EE5AB90074304C /* Companion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDACE3BB21EE5AB90074304C /* Companion.swift */; };
 		CDACE3BE21EE5C000074304C /* Companion+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDACE3BD21EE5C000074304C /* Companion+Helpers.swift */; };
@@ -210,7 +210,7 @@
 		CD83CAF721A340230082475B /* AchievementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTableViewCell.swift; sourceTree = "<group>"; };
 		CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementsStoryboard.storyboard; sourceTree = "<group>"; };
 		CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
-		CD97E84221D94250009C64E4 /* NewTimerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimerTableViewController.swift; sourceTree = "<group>"; };
+		CD97E84221D94250009C64E4 /* AddTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerViewController.swift; sourceTree = "<group>"; };
 		CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimerListTableViewController.swift; sourceTree = "<group>"; };
 		CDACE3BB21EE5AB90074304C /* Companion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Companion.swift; sourceTree = "<group>"; };
 		CDACE3BD21EE5C000074304C /* Companion+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Companion+Helpers.swift"; sourceTree = "<group>"; };
@@ -543,7 +543,7 @@
 			children = (
 				031EE20321A2EEB600E9E91E /* Timer+CoreDataClass.swift */,
 				031EE20421A2EEB600E9E91E /* Timer+CoreDataProperties.swift */,
-				CD97E84221D94250009C64E4 /* NewTimerTableViewController.swift */,
+				CD97E84221D94250009C64E4 /* AddTimerViewController.swift */,
 				CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */,
 				CD100F4A21DFC89100DBAAB9 /* AlarmViewController.swift */,
 				CD100F4E21E0239500DBAAB9 /* AlarmCreation.swift */,
@@ -874,7 +874,7 @@
 				9243F4C621F0C78000513B11 /* RemoteControllerExtensionCoreData.swift in Sources */,
 				927A423721F8938E00E97CB7 /* ExtraFunctionObject.swift in Sources */,
 				031CC45321DE43B80025E068 /* DevicesListViewController.swift in Sources */,
-				CD97E84321D94250009C64E4 /* NewTimerTableViewController.swift in Sources */,
+				CD97E84321D94250009C64E4 /* AddTimerViewController.swift in Sources */,
 				FAE52D5021DA485500121B54 /* DeviceObject.swift in Sources */,
 				FAE52D3A21D78BA100121B54 /* RemoteControllerExtension.swift in Sources */,
 				039133CD21E7ECF000ECCBBE /* ExploreAccessoriesViewController.swift in Sources */,

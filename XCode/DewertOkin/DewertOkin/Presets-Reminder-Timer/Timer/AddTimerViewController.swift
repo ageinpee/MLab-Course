@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NewTimerTableViewController: UITableViewController {
+class AddTimerViewController: UITableViewController {
     
     let sections: [TimerSection] = [.enabledSwitch, .details]
     var selectedTimer = DeviceTimer()
