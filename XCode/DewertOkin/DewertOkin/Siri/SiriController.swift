@@ -51,7 +51,7 @@ extension RemoteController {
         //guard bluetoothBackgroundHandler.checkStatus() else { return }
 //        self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
-        changeImage(state: "Right-Up")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { self.changeImage(state: "Right-Up")})
 //        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
 //            (_) in
 //            self.triggerCommand(keycode: keycode.m1In)

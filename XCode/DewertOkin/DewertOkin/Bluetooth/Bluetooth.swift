@@ -24,7 +24,6 @@ class Bluetooth: NSObject {
     static var commandService = CBUUID(string: "62741523-52F9-8864-B1AB-3B3A8D65950B")
     static var keycodeUUID = CBUUID(string: "62741525-52F9-8864-B1AB-3B3A8D65950B")
     static var feedbackUUID = CBUUID(string: "62741625-52F9-8864-B1AB-3B3A8D65950B")
-    static var remoteControl = RemoteController()
     
     var bluetoothCoordinator: BluetoothCoordinator?
     
