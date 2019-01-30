@@ -97,6 +97,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate, Themeable
     }
     
     func layoutRemote() {
+        print(globalDeviceObject.type)
         let lastConnectedDeviceUUID = UserDefaults.standard.string(forKey: "lastConnectedDevice_uuid")
         if lastConnectedDeviceUUID != "" {
             fetchDevices()
