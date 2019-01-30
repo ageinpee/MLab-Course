@@ -128,58 +128,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
         let remoteControl = searchForRemoteControlView()
-        guard remoteControl.devicesList != [] else { return false }
+        guard remoteControl.devicesList != [] else { return false }
         
         if (userActivity.title == "Move Head Up") {
             remoteControl.startHeadUp()
             return true
         }
-        
-//
-//        let viewController = UIApplication.shared.windows[0].rootViewController?.children[1] as! RemoteController
-//
-        
-        
-//        if (userActivity.title == "Move Head Up") {
-//            viewController.startHeadUp()
-//            return true
-//        }
-//        else if (userActivity.title == "Move Head Down") {
-//            viewController.startHeadDown()
-//            return true
-//        }
-//        else if (userActivity.title == "Move Feet Up") {
-//            viewController.startFeetUp()
-//            return true
-//        }
-//        else if (userActivity.title == "Move Feet Down") {
-//            viewController.startFeetDown()
-//            return true
-//        }
-//        else if (userActivity.title == "Trigger Memory 1") {
-//            viewController.triggerMemory1()
-//            return true
-//        }
-//        else if (userActivity.title == "Trigger Memory 1") {
-//            viewController.triggerMemory2()
-//            return true
-//        }
-//        else if (userActivity.title == "Stop Head Up") {
-//            viewController.stopHeadUp()
-//            return true
-//        }
-//        else if (userActivity.title == "Stop Head Down") {
-//            viewController.stopHeadDown()
-//            return true
-//        }
-//        else if (userActivity.title == "Stop Feet Up") {
-//            viewController.stopFeetUp()
-//            return true
-//        }
-//        else if (userActivity.title == "Stop Feet Down") {
-//            viewController.stopFeetDown()
-//            return true
-//        }
+        else if (userActivity.title == "Move Head Up") {
+            remoteControl.startHeadUp()
+            return true
+        }
+        else if (userActivity.title == "Move Head Down") {
+            remoteControl.startHeadDown()
+            return true
+        }
+        else if (userActivity.title == "Move Feet Up") {
+            remoteControl.startFeetUp()
+            return true
+        }
+        else if (userActivity.title == "Move Feet Down") {
+            remoteControl.startFeetDown()
+            return true
+        }
+        else if (userActivity.title == "Trigger Memory 1") {
+            remoteControl.triggerMemory1()
+            return true
+        }
+        else if (userActivity.title == "Trigger Memory 1") {
+            remoteControl.triggerMemory2()
+            return true
+        }
+        else if (userActivity.title == "Stop Head Up") {
+            remoteControl.stopHeadUp()
+            return true
+        }
+        else if (userActivity.title == "Stop Head Down") {
+            remoteControl.stopHeadDown()
+            return true
+        }
+        else if (userActivity.title == "Stop Feet Up") {
+            remoteControl.stopFeetUp()
+            return true
+        }
+        else if (userActivity.title == "Stop Feet Down") {
+            remoteControl.stopFeetDown()
+            return true
+        }
         
         return false
     }
