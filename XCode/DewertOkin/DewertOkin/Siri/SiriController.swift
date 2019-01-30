@@ -48,14 +48,14 @@ extension RemoteController {
     }
     
     func startHeadUp() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
+        //guard bluetoothBackgroundHandler.checkStatus() else { return }
+//        self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
         changeImage(state: "Right-Up")
-        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
-            (_) in
-            self.triggerCommand(keycode: keycode.m1In)
-        }
+//        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+//            (_) in
+//            self.triggerCommand(keycode: keycode.m1In)
+//        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
             self.bluetoothTimer?.invalidate()
             self.resetImage()

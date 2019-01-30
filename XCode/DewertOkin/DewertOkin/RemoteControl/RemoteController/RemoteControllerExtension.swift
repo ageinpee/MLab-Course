@@ -220,11 +220,11 @@ extension RemoteController {
         if state == "Right-Down"{
             switch deviceType {
             case .chair_2Motors:
-                Image.image = device.deviceImages[3]
+                Image.image = self.device.deviceImages[3]
             case .bed_2Motors:
-                Image.image = device.deviceImages[3]
+                Image.image = self.device.deviceImages[3]
             case .table:
-                Image.image = device.deviceImages[3]
+                Image.image = self.device.deviceImages[3]
             default:
                 ()
             }
@@ -232,11 +232,11 @@ extension RemoteController {
         else if state == "Right-Up"{
             switch deviceType {
             case .chair_2Motors:
-                Image.image = device.deviceImages[2]
+                Image.image = self.device.deviceImages[2]
             case .bed_2Motors:
-                Image.image = device.deviceImages[2]
+                Image.image = self.device.deviceImages[2]
             case .table:
-                Image.image = device.deviceImages[2]
+                Image.image = self.device.deviceImages[2]
             default:
                 ()
             }
@@ -244,11 +244,11 @@ extension RemoteController {
         else if state == "Left-Down"{
             switch deviceType {
             case .chair_2Motors:
-                Image.image = device.deviceImages[5]
+                Image.image = self.device.deviceImages[5]
             case .bed_2Motors:
-                Image.image = device.deviceImages[5]
+                Image.image = self.device.deviceImages[5]
             case .table:
-                Image.image = device.deviceImages[3]
+                Image.image = self.device.deviceImages[3]
             default:
                 ()
             }
@@ -256,11 +256,11 @@ extension RemoteController {
         else if state == "Left-Up"{
             switch deviceType {
             case .chair_2Motors:
-                Image.image = device.deviceImages[4]
+                Image.image = self.device.deviceImages[4]
             case .bed_2Motors:
-                Image.image = device.deviceImages[4]
+                Image.image = self.device.deviceImages[4]
             case .table:
-                Image.image = device.deviceImages[2]
+                Image.image = self.device.deviceImages[2]
             default:
                 ()
             }
