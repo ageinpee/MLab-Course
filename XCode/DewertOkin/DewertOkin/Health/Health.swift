@@ -51,7 +51,7 @@ class Health {
         ExerciseEvent(time: Date().addingTimeInterval(-548839), completed: false)
         ] {
         didSet {
-            print("changed")
+            print("exercise history changed")
         }
     }
     
@@ -67,24 +67,6 @@ class Health {
         UserDefaults.standard.set(activityReminderEnabled, forKey: "activityReminderEnabled")
     }
     
-//    func updateBulletinImage() {
-//        switch globalDeviceObject.type {
-//        case "chair_2Motors":
-//            page.image = UIImage(named: "Squad-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-//        case "bed_2Motors":
-//            page.image = UIImage(named: "Arch-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-//        case "table":
-//            page.image = UIImage(named: "Wrist-Exercise")?.resize(size: CGSize(width: 200, height: 200))
-//        default:
-//            print("Error setting exercise image: Device Type not found.")
-//        }
-//        bulletinManager = {
-//            let manager = BLTNItemManager(rootItem: page)
-//            manager.backgroundViewStyle = .dimmed
-//            return manager
-//        }()
-//
-//    }
     
     // This works, don't ask 😅
     func updateStatisticsChart() {
@@ -168,9 +150,6 @@ class Health {
             guard healthStore.authorizationStatus(for: healthKitType) != .sharingAuthorized else { return }
         }
         
-//        healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (_, _) in
-//            print("Authorized ?")
-//        }
         healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (bool, error) in
             if let e = error {
                 print("Something went wrong during authorisation \(e.localizedDescription)")

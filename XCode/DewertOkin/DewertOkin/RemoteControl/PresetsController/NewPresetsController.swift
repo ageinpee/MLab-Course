@@ -348,7 +348,6 @@ class PresetButtonCell: UICollectionViewCell {
         switch sender.state {
         case .began:
             delegate?.presetButtonEditHandler(preset: presetName ?? "ERROR", cell: self)
-            print("Began")
         default:
             break
         }
