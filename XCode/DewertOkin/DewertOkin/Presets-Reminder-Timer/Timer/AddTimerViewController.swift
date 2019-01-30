@@ -56,7 +56,6 @@ class AddTimerViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return sections.count
     }
 
@@ -75,6 +74,7 @@ class AddTimerViewController: UITableViewController {
     }
 
     private let nameTextField = UITextField()
+    
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
@@ -210,17 +210,34 @@ class AddTimerViewController: UITableViewController {
                 
             case 2:
                 print("set preset")
+                let alert = UIAlertController(title: "Preset", message: "Select a preset to execute at the specidied time", preferredStyle: .actionSheet)
+                
+                var presetOptions: [UIAlertAction] = []
+                
+                for element in globalDeviceObject.availableMemories {
+                    let newAction = UIAlertAction(title: element.rawValue, style: .default, handler: {action in
+                        tableView.cellForRow(at: IndexPath(item: 2, section: 1))?.detailTextLabel?.text = element.rawValue
+                    })
+                    presetOptions.append(newAction)
+                }
+                
+                for action in presetOptions {
+                    alert.addAction(action)
+                }
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                
+                if presetOptions.isEmpty {
+                    tableView.cellForRow(at: IndexPath(item: 2, section: 1))?.detailTextLabel?.text = "Not available for this device"
+                } else {
+                    self.present(alert, animated: true, completion: nil)
+                }
             default:
                 break
             }
         default: break
         }
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    @objc
-    private func enabledSwitchChanged(sender: UISwitch) {
-        
     }
     
     @objc
