@@ -48,16 +48,6 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
         fetchDevices()
         
         deviceNameTextfield.delegate = self
-        
-        let reader = CSVReader()
-        let remoteData = reader.readCSV(fileName: "handsender1_extended", fileType: "csv")
-        
-        for row in remoteData {
-            if row[0] == selectedRemote.id {
-                device = DeviceObject(withUUID: UUID().uuidString, named: "New Device", withHandheldID: row[0], withStyle: DeviceStyle.filled.rawValue)
-            }
-        }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -70,6 +60,15 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
         let peripherals = bluetoothBackgroundHandler.retrievePeripherals()
         guard peripherals != [] else { return }
         bluetoothFlow.connect(peripheral: peripherals.last!, completion: { _ in })
+        
+        let reader = CSVReader()
+        let remoteData = reader.readCSV(fileName: "handsender1_extended", fileType: "csv")
+        
+        for row in remoteData {
+            if row[0] == selectedRemote.id {
+                device = DeviceObject(withUUID: peripherals.last!.identifier.uuidString, named: "New Device", withHandheldID: row[0], withStyle: DeviceStyle.filled.rawValue)
+            }
+        }
  
         device.name = "New Device"
         if deviceNameTextfield.text! != "" {
@@ -99,31 +98,6 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
         }
     
     }
-    /*
-    @objc
-    private func dismissSelf() {
-        //guard bluetoothBackgroundHandler.checkStatus() else { return }
-        
-        /*
-         
-        insert bluetooth pairing process
-         
- 
-        saveDevice(withUUID: device.uuid, named: device.name, forHandheldID: device.handheldID, withStyle: device.style)
-        */
-        
-        
-        self.dismiss(animated: true)
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.window = UIWindow(frame: UIScreen.main.bounds)
-            delegate.window?.makeKeyAndVisible()
-            delegate.window?.rootViewController = MainViewController()
-        }
-//        present(MainViewController(), animated: true, completion: nil)
-        
-    }
-    */
-    
     
     func fetchDevices() {
         let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()

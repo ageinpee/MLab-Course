@@ -186,6 +186,7 @@ class BluetoothPairingConnectViewController: UIViewController {
             self.view.alpha = 0
         }) { (_) in
             UIApplication.shared.keyWindow?.rootViewController = MainViewController()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { self.view.removeFromSuperview() })
         }
 
     }

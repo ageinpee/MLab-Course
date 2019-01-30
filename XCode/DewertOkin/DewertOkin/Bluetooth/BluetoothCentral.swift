@@ -47,13 +47,6 @@ extension Bluetooth: CBCentralManagerDelegate {
         saveDevice(peripheral: peripheral)
         }
         
-//        globalDeviceObject = DeviceObject(withUUID: self.connectedPeripheral?.identifier.uuidString ?? "ERROR - no entry found",
-//                                          named: self.connectedPeripheral?.name ?? "ERROR - no entry found",
-//                                          withHandheldID: self.devicesList[indexPath.row].handheld ?? "NaN",
-//                                          withStyle: self.devicesList[indexPath.row].style ?? "filled",
-//                                          withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: self.devicesList[indexPath.row].extraFunctions ?? ""))
-//        UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
-        
         defaults.set(onceConnectedPeripherals, forKey: "Peripherals")
         connectedPeripheral!.discoverServices([Bluetooth.commandService])
     }
@@ -73,8 +66,8 @@ extension Bluetooth: CBCentralManagerDelegate {
         
     func saveDevice(peripheral: CBPeripheral) {
         let device = Devices(context: PersistenceService.context)
-        device.name = peripheral.name
-        device.type = peripheral.description
+//        device.name = peripheral.name
+//        device.type = peripheral.description
         device.uuid = peripheral.identifier.uuidString
         PersistenceService.saveContext()
     }

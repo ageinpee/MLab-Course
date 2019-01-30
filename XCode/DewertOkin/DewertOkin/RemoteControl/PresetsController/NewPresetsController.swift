@@ -289,6 +289,11 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                     self.triggerCommand(keycode: keycode.memory2)
                 }
         }))
+        guard !(indexPath.section == 1) else {
+            editMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            present(editMenu, animated: true, completion: nil)
+            return
+        }
         editMenu.addAction(UIAlertAction(title: "Rename", style: .default, handler: { (_) in
             let renameController = UIAlertController(title: "Rename \(title)", message: "Give this preset a name", preferredStyle: .alert)
             
