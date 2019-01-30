@@ -283,8 +283,23 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         
         let editMenu = UIAlertController(title: title, message: "Choose options for preset \(title)", preferredStyle: .actionSheet)
         editMenu.addAction(UIAlertAction(title: "Save current position", style: .default, handler: { (_) in
-            // Implement saving preset to Memory 1/2 or iPhone
+            guard self.bluetoothBackgroundHandler.checkStatus() else { return }
+            self.characteristic = self.bluetooth.writeCharacteristic
+            
+            guard (indexPath.section == 1) else { return }
+                if (indexPath.row == 0){
+                    self.triggerCommand(keycode: keycode.storeMemoryPosition)
+                    self.triggerCommand(keycode: keycode.memory1)
+                } else if (indexPath.row == 1){
+                    self.triggerCommand(keycode: keycode.storeMemoryPosition)
+                    self.triggerCommand(keycode: keycode.memory2)
+                }
         }))
+        guard !(indexPath.section == 1) else {
+            editMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            present(editMenu, animated: true, completion: nil)
+            return
+        }
         editMenu.addAction(UIAlertAction(title: "Rename", style: .default, handler: { (_) in
             let renameController = UIAlertController(title: "Rename \(title)", message: "Give this preset a name", preferredStyle: .alert)
             
