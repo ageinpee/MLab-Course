@@ -53,6 +53,14 @@ class AchievementModel {
     
     static var veteranUnlocked = false
     
+    static var apprenticeUnlocked = false {
+        didSet {
+            if apprenticeUnlocked {
+                displayLocalNotification(forAchievement: "Exercise Apprentice")
+            }
+        }
+    }
+    
     static var nightOwlUnlocked = false {
         didSet {
             if nightOwlUnlocked {
@@ -88,6 +96,7 @@ class AchievementModel {
         defaults.setValue(apprenticeCount, forKey: "apprenticeCount")
         defaults.setValue(maniacCount, forKey: "maniacCount")
         defaults.setValue(masterCount, forKey: "masterCount")
+        defaults.setValue(apprenticeUnlocked, forKey: "apprenticeUnlocked")
 
         
         print("Achievement progess saved.")
@@ -107,6 +116,10 @@ class AchievementModel {
             
             if let savedApprenticeCount = defaults.object(forKey: "apprenticeCount") as? Float {
                 apprenticeCount = savedApprenticeCount
+            }
+            
+            if let savedApprenticeUnlocked = defaults.object(forKey: "savedApprenticeUnlocked") as? Bool {
+                apprenticeUnlocked = savedApprenticeUnlocked
             }
             
             if let savedManiacCount = defaults.object(forKey: "maniacCount") as? Float {
@@ -158,6 +171,9 @@ class AchievementModel {
         apprenticeCount += 1
         maniacCount += 1
         masterCount += 1
+        if apprenticeCount == 25 {
+            apprenticeUnlocked = true
+        }
         print("registering new exercise")
     }
     
