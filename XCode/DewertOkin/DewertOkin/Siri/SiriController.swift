@@ -51,6 +51,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
+        changeImage(state: "Right-Up")
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m1In)
@@ -62,6 +63,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
+        changeImage(state: "Right-Down")
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m1Out)
@@ -73,6 +75,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
+        changeImage(state: "Left-Up")
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2In)
@@ -84,6 +87,7 @@ extension RemoteController {
         guard bluetoothBackgroundHandler.checkStatus() else { return }
         self.characteristic = self.bluetooth.writeCharacteristic
         bluetoothTimer?.invalidate()
+        changeImage(state: "Left-Down")
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2Out)

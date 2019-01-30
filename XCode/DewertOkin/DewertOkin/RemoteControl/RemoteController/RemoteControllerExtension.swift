@@ -212,7 +212,9 @@ extension RemoteController {
         }, completion: nil)
     }
     
-    public func changeImage(state: String){
+    /* SIRI RELATED STUFF */
+    
+    func changeImage(state: String){
         
         let deviceType = DeviceType(rawValue: self.device.type)!
         if state == "Right-Down"{
@@ -263,11 +265,9 @@ extension RemoteController {
                 ()
             }
         }
-        
-        
     }
     
-    public func resetImage(){
+    func resetImage(){
         Image.image = device.deviceImages[1]
         fadeInArrows(withAlpha: opacity)
     }
