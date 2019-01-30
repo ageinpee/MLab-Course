@@ -16,6 +16,7 @@ class BluetoothPairingConnectViewController: UIViewController {
     let circleLayer = CAShapeLayer()
     var animating = true
     var success: Bool?
+    var window: UIWindow?
     
     var selectedPeripheral: CBPeripheral?
     var remoteControl = RemoteController()
@@ -180,14 +181,13 @@ class BluetoothPairingConnectViewController: UIViewController {
     }
     
     func showRemote() {
-//        let remoteControlView = self.storyboard!.instantiateViewController(withIdentifier: "RemoteControl") as! RemoteController
-//        self.navigationController!.pushViewController(remoteControlView, animated: true)
         
         UIView.animate(withDuration: 1.0, animations: {
             self.view.alpha = 0
         }) { (_) in
             UIApplication.shared.keyWindow?.rootViewController = MainViewController()
         }
+
     }
     
     func showPairingProcess() {
@@ -196,5 +196,6 @@ class BluetoothPairingConnectViewController: UIViewController {
             self.present(pairingProcess, animated: true, completion: nil)
         })
     }
+    
 }
 

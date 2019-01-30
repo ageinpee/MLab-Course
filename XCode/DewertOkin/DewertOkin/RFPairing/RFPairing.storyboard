@@ -223,9 +223,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="controller2Image" width="1708" height="1826"/>
-        <image name="quarterCircle" width="3000" height="3004"/>
-        <image name="quarterCircleFirstStoryboard" width="3000" height="3002"/>
-        <image name="quarterCircleLastStoryboard" width="3000" height="3002"/>
+        <image name="controller2Image" width="819.84002685546875" height="876.47998046875"/>
+        <image name="quarterCircle" width="1440" height="1441.9200439453125"/>
+        <image name="quarterCircleFirstStoryboard" width="1440" height="1441"/>
+        <image name="quarterCircleLastStoryboard" width="1440" height="1441"/>
     </resources>
 </document>

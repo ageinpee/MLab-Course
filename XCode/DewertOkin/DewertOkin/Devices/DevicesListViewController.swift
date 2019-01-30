@@ -16,7 +16,6 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header: UINavigationBar!
     
-    
     var devicesList = [Devices]()
     var cellDevicesData = [DevicesData]()
     var deviceToConnect: CBPeripheral?

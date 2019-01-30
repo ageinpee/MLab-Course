@@ -66,14 +66,11 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func ProceedAction(_ sender: Any) {
-        /*
         guard bluetooth.centralManager.state == .poweredOn else { return }
         let peripherals = bluetoothBackgroundHandler.retrievePeripherals()
         guard peripherals != [] else { return }
         bluetoothFlow.connect(peripheral: peripherals.last!, completion: { _ in })
-        */
-        
-        print("XXXX")
+ 
         device.name = "New Device"
         if deviceNameTextfield.text! != "" {
             device.name = deviceNameTextfield.text!
