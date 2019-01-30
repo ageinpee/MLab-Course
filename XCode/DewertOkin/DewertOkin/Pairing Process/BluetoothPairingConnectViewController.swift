@@ -19,6 +19,7 @@ class BluetoothPairingConnectViewController: UIViewController {
     var window: UIWindow?
     
     var selectedPeripheral: CBPeripheral?
+    var selectedDeviceObject: Devices?
     var remoteControl = RemoteController()
     var bluetooth = Bluetooth.sharedBluetooth
     lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
@@ -182,6 +183,8 @@ class BluetoothPairingConnectViewController: UIViewController {
     
     func showRemote() {
         
+        initializeGlobalDeviceObject()
+        
         UIView.animate(withDuration: 1.0, animations: {
             self.view.alpha = 0
         }) { (_) in
@@ -196,6 +199,15 @@ class BluetoothPairingConnectViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             self.present(pairingProcess, animated: true, completion: nil)
         })
+    }
+    
+    func initializeGlobalDeviceObject() {
+        globalDeviceObject = DeviceObject(withUUID: selectedDeviceObject?.uuid ?? "ERROR - no entry found",
+                                          named: selectedDeviceObject?.name ?? "ERROR - no entry found",
+                                          withHandheldID: selectedDeviceObject?.handheld ?? "NaN",
+                                          withStyle: selectedDeviceObject?.style ?? "filled",
+                                          withExtraFunctions: DeviceObject.convertStringToExtraFunctions(withString: selectedDeviceObject?.extraFunctions ?? ""))
+        UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
     }
     
 }
