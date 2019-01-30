@@ -208,12 +208,6 @@ class SettingTableViewController: UITableViewController, Themeable {
     private func pushPresetsController() {
     }
     
-    private func pushHealthController() {
-        if let navigator = navigationController {
-            navigator.pushViewController(HealthViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
-        }
-    }
-    
     @objc
     private func pushDevicesStoryboard() {
         if let vc = UIStoryboard(name: "Devices", bundle: nil).instantiateInitialViewController() {

@@ -72,7 +72,6 @@
 		CD7D582621E8FC62001C9CA6 /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D582521E8FC62001C9CA6 /* AddReminderViewController.swift */; };
 		CD83CAF821A340230082475B /* AchievementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD83CAF721A340230082475B /* AchievementsTableViewCell.swift */; };
 		CD945289219C3D0D00280A66 /* AchievementsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */; };
-		CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */; };
 		CD97E84321D94250009C64E4 /* AddTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E84221D94250009C64E4 /* AddTimerViewController.swift */; };
 		CD97E84521D986A4009C64E4 /* NewTimerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */; };
 		CDACE3BC21EE5AB90074304C /* Companion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDACE3BB21EE5AB90074304C /* Companion.swift */; };
@@ -209,7 +208,6 @@
 		CD7D582521E8FC62001C9CA6 /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		CD83CAF721A340230082475B /* AchievementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTableViewCell.swift; sourceTree = "<group>"; };
 		CD945288219C3D0D00280A66 /* AchievementsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementsStoryboard.storyboard; sourceTree = "<group>"; };
-		CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
 		CD97E84221D94250009C64E4 /* AddTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerViewController.swift; sourceTree = "<group>"; };
 		CD97E84421D986A4009C64E4 /* NewTimerListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimerListTableViewController.swift; sourceTree = "<group>"; };
 		CDACE3BB21EE5AB90074304C /* Companion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Companion.swift; sourceTree = "<group>"; };
@@ -533,7 +531,6 @@
 				CDACE3BD21EE5C000074304C /* Companion+Helpers.swift */,
 				CDFFC97421C07C8B005C5821 /* Health.swift */,
 				CD7D582521E8FC62001C9CA6 /* AddReminderViewController.swift */,
-				CD97E83D21D68CFF009C64E4 /* HealthViewController.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -898,7 +895,6 @@
 				0325CA3921FAE01A00337F64 /* SiriController.swift in Sources */,
 				0333052321BB349700603519 /* RemoteControlConfig.swift in Sources */,
 				CDFFC97521C07C8B005C5821 /* Health.swift in Sources */,
-				CD97E83E21D68CFF009C64E4 /* HealthViewController.swift in Sources */,
 				0316162E21EFD0BA00E69559 /* DetailVendorCollectionView.swift in Sources */,
 				FAD177EA2191C3D70031E4E3 /* AchievementsTableViewController.swift in Sources */,
 				CDACE3BC21EE5AB90074304C /* Companion.swift in Sources */,
