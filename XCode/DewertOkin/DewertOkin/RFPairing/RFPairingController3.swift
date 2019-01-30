@@ -32,9 +32,6 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
     private var failCounter = 0
     
     var remoteControl = RemoteController()
-    var bluetooth = Bluetooth.sharedBluetooth
-    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
-    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     
     override func viewDidLoad() {
         
@@ -75,19 +72,13 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
                 
             })
         }
-        
-        guard bluetooth.centralManager.state == .poweredOn else { return }
-        let peripherals = bluetoothBackgroundHandler.retrievePeripherals()
-        guard peripherals != [] else { return }
-        bluetoothFlow.connect(peripheral: peripherals.last!, completion: { _ in })
  
         let reader = CSVReader()
         let remoteData = reader.readCSV(fileName: "handsender1_extended", fileType: "csv")
     
         for row in remoteData {
             if row[0] == selectedRemote.id {
-                print(peripherals.last!.identifier.uuidString)
-                device = DeviceObject(withUUID: peripherals.last!.identifier.uuidString, named: "New Device", withHandheldID: row[0], withStyle: DeviceStyle.filled.rawValue)
+                device = DeviceObject(withUUID: UUID().uuidString, named: "New Device", withHandheldID: row[0], withStyle: DeviceStyle.filled.rawValue)
                 break
             }
         }

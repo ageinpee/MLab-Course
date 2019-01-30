@@ -73,11 +73,11 @@ extension RemoteController {
         if (recognizerState == .began) || (recognizerState == .changed) {
             if translation == .down {
                 impact.impactOccurred()
-                moveFeetDown()
+                
             }
             else if translation == .up {
                 impact.impactOccurred()
-                moveFeetUp()
+                
             }
         } else {
             timer?.invalidate()
@@ -90,11 +90,11 @@ extension RemoteController {
         if (recognizerState == .began) || (recognizerState == .changed) {
             if translation == .down {
                 impact.impactOccurred()
-                moveHeadDown()
+                
             }
             else if translation == .up {
                 impact.impactOccurred()
-                moveHeadUp()
+                
             }
         } else {
             timer?.invalidate()
@@ -111,13 +111,11 @@ extension RemoteController {
         case .began:
             translation = .began
             arrowsImageView.alpha = 0
-            if bluetoothBackgroundHandler.checkStatus(){
                 timer = Timer.scheduledTimer(timeInterval: 0.1,
                                              target: self,
                                              selector: #selector(actionRight),
                                              userInfo: nil,
                                              repeats: true)
-            }
         case .changed:
             if(panRecognizer.translation(in: rightPanArea).y >= 40) {
                 translation = .down
@@ -163,13 +161,11 @@ extension RemoteController {
         case .began:
             translation = .began
             arrowsImageView.alpha = 0
-            if bluetoothBackgroundHandler.checkStatus() {
                 timer = Timer.scheduledTimer(timeInterval: 0.1,
                                              target: self,
                                              selector: #selector(actionLeft),
                                              userInfo: nil,
                                              repeats: true)
-            }
         case .changed:
             if(panRecognizer.translation(in: leftPanArea).y >= 40) {
                 translation = .down

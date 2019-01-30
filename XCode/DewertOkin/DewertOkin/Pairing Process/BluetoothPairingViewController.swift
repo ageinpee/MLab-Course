@@ -20,9 +20,6 @@ class BluetoothPairingViewController: UIViewController {
     var search: Bool!
     
     var remoteControl = RemoteController()
-    var bluetooth = Bluetooth.sharedBluetooth
-    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
-    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +36,6 @@ class BluetoothPairingViewController: UIViewController {
     }
     
     func refreshPeripheralsList() {
-        guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        availablePeripherals = bluetoothBackgroundHandler.retrievePeripherals()
         self.tableView.reloadData()
         self.tableView.selectRow(at: selectedCell, animated: true, scrollPosition: UITableView.ScrollPosition .none)
         print("Still loading")
@@ -53,15 +48,12 @@ class BluetoothPairingViewController: UIViewController {
     }
     
     @IBAction func connect(_ sender: Any) {
-        guard selectedPeripheral != nil else { return }
-        guard self.bluetooth.bluetoothState == .poweredOn else { return }
         self.performSegue(withIdentifier: "PairingConnection", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? BluetoothPairingConnectViewController {
+        if segue.destination is BluetoothPairingConnectViewController {
             self.search = false
-            destination.selectedPeripheral = self.selectedPeripheral
         }
     }
     

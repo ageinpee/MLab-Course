@@ -51,9 +51,6 @@ extension DevicesListViewController: UITableViewDataSource {
                 let savedDevices = try PersistenceService.context.fetch(fetchRequest)
                 for device in savedDevices {
                     if deviceToDelete.uuid == device.uuid {
-                        if (deviceToDelete.uuid == self.bluetooth.connectedPeripheral?.identifier.uuidString) {
-                            self.bluetooth.disconnect()
-                        }
                         globalDeviceObject = DeviceObject()
                         UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
                         PersistenceService.context.delete(device)
@@ -97,13 +94,6 @@ extension DevicesListViewController: UITableViewDataSource {
         let action = UIContextualAction(style: .destructive, title: "Connect") {
             (action, view, completion) in
             
-            let device = self.devicesList[indexPath.row]
-            guard self.bluetoothBackgroundHandler.isInRange(uuid: device.uuid) else {
-                self.showAlert()
-                return
-            }
-            guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
-            self.deviceToConnect = deviceToBeConnected
             self.deviceObjectToConnect = self.devicesList[indexPath.row]
             self.performSegue(withIdentifier: "ConnectToDevice", sender: self)
         }
@@ -117,13 +107,7 @@ extension DevicesListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let device = self.devicesList[indexPath.row]
-        guard self.bluetoothBackgroundHandler.isInRange(uuid: device.uuid) else {
-            self.showAlert()
-            return
-        }
-        guard let deviceToBeConnected = self.bluetoothBackgroundHandler.getPeripheralWithUUID(uuid: device.uuid) else { return }
-        self.deviceToConnect = deviceToBeConnected
+
         self.deviceObjectToConnect = self.devicesList[indexPath.row]
         
         self.performSegue(withIdentifier: "ConnectToDevice", sender: self)

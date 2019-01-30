@@ -34,10 +34,6 @@ class OldRemoteViewController: UIViewController {
     var buttonList2: [UIButton] = [UIButton]()
     
     //Bluetooth Dependencies
-    var remoteControlConfig = RemoteControlConfig()
-    var bluetooth = Bluetooth.sharedBluetooth
-    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
-    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
     
@@ -61,7 +57,6 @@ class OldRemoteViewController: UIViewController {
         setupButtons()
         
         self.deviceNameLabel.text = globalDeviceObject.name
-        self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,13 +123,13 @@ class OldRemoteViewController: UIViewController {
         return label
     }()
     
-    private func checkBluetoothConnectivity() {
-        if !bluetoothBackgroundHandler.checkStatus() {
-            showNoConnectionBanner()
-        } else {
-            dismissNoConnectionBanner()
-        }
-    }
+//    private func checkBluetoothConnectivity() {
+//        if !bluetoothBackgroundHandler.checkStatus() {
+//            showNoConnectionBanner()
+//        } else {
+//            dismissNoConnectionBanner()
+//        }
+//    }
     
     private func showNoConnectionBanner() {
         guard !self.view.subviews.contains(noConnectionBanner) else {return}
@@ -154,36 +149,6 @@ class OldRemoteViewController: UIViewController {
         }) { (_) in
             self.noConnectionBanner.removeFromSuperview()
         }
-    }
-    
-    func moveHeadUp() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m1In)
-    }
-    
-    func moveHeadDown() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m1Out)
-    }
-    
-    func moveFeetUp() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m4In)
-    }
-    
-    func moveFeetDown() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m4Out)
-    }
-    
-    func triggerCommand(keycode: keycode) {
-        let movement = self.remoteControlConfig.getKeycode(name: keycode)
-        bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-        
     }
     
     func constrainRemoteButtons() {
@@ -234,19 +199,15 @@ class OldRemoteViewController: UIViewController {
     
     
     @IBAction func backUpAction(_ sender: Any) {
-        moveHeadUp()
     }
     
     @IBAction func backDownAction(_ sender: Any) {
-        moveHeadDown()
     }
     
     @IBAction func feetUpAction(_ sender: Any) {
-        moveFeetUp()
     }
     
     @IBAction func feetDownAction(_ sender: Any) {
-        moveFeetDown()
     }
     
     @IBAction func bothUpAction(_ sender: Any) {

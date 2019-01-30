@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreBluetooth
 import UIKit
 import CoreGraphics
 
@@ -18,11 +17,8 @@ class BluetoothPairingConnectViewController: UIViewController {
     var success: Bool?
     var window: UIWindow?
     
-    var selectedPeripheral: CBPeripheral?
     var selectedDeviceObject: Devices?
     var remoteControl = RemoteController()
-    var bluetooth = Bluetooth.sharedBluetooth
-    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
     
     let strokeEndAnimation: CAAnimation = {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -94,15 +90,11 @@ class BluetoothPairingConnectViewController: UIViewController {
     }
     
     func connectionState() {
-        bluetooth.bluetoothCoordinator = bluetoothFlow
-        
-        guard self.selectedPeripheral != nil else { return }
-        guard self.bluetooth.bluetoothState == .poweredOn else { return }
-        self.bluetoothFlow.connect(peripheral: self.selectedPeripheral!, completion: { _ in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             self.animating = false
             self.success = true
             self.updateAnimation()
-        })
+            })
     }
     
     func drawCircle() {

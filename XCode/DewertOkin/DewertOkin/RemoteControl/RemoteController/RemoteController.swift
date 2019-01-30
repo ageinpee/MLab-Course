@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import HealthKit
-import CoreBluetooth
 import CoreData
 import Intents
 
@@ -42,11 +41,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     
     var devicesList = [Devices]()
     
-    var device = globalDeviceObject {
-        didSet {
-            checkBluetoothConnectivity()
-        }
-    }
+    var device = globalDeviceObject //{
+//        didSet {
+//            checkBluetoothConnectivity()
+//        }
+//    }
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
@@ -58,13 +57,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     
     //---------------------------------------
     //----- Bluetooth Dependencies ----------
-    var remoteControlConfig = RemoteControlConfig()
-    var bluetooth = Bluetooth.sharedBluetooth
-    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
-    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
-    var peripheral: CBPeripheral?
-    var characteristic: CBCharacteristic?
-    var bluetoothTimer: Timer?
     
     //----------------------------------------
     //--------- Fancy Remote Setup -----------
@@ -79,8 +71,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
         
         self.layoutRemote()
         
-        self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
-        initializeAllCommands()
+        //initializeAllCommands()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,8 +84,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
         self.layoutRemote()
         arrowsImageView.alpha = 0
         fadeInArrows(withAlpha: opacity)
-        
-        checkBluetoothConnectivity()
     }
     
     override func didReceiveMemoryWarning() {
@@ -168,14 +157,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    private func checkBluetoothConnectivity() {
-        if !bluetoothBackgroundHandler.checkStatus() {
-            showNoConnectionBanner()
-        } else {
-            dismissNoConnectionBanner()
-        }
-    }
     
     private func showNoConnectionBanner() {
         guard !self.view.subviews.contains(noConnectionBanner) else {return}

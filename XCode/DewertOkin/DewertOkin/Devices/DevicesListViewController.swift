@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreBluetooth
 import CoreData
 import UIKit
 
@@ -18,12 +17,8 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     
     var devicesList = [Devices]()
     var cellDevicesData = [DevicesData]()
-    var deviceToConnect: CBPeripheral?
     var deviceObjectToConnect: Devices?
     var remoteControl = RemoteController()
-    var bluetooth = Bluetooth.sharedBluetooth
-    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
-    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,7 +115,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     }
     
     func deviceStatus(device: Devices) -> String {
-        if (bluetooth.connectedPeripheral?.identifier.uuidString == device.uuid) {
+        if (globalDeviceObject.uuid == device.uuid) {
             return "Connected"
         }
         return ""
@@ -128,7 +123,6 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? BluetoothPairingConnectViewController {
-            destination.selectedPeripheral = self.deviceToConnect
             destination.selectedDeviceObject = self.deviceObjectToConnect
         }
     }

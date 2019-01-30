@@ -15,9 +15,6 @@ import Intents
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-    var bluetooth = Bluetooth.sharedBluetooth
-    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
-    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     var isRunning: Bool = true
     
     var mainController = MainViewController()
@@ -39,11 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 // Notifications not allowed
             }
         }
-        
-        // Bluetooth Reconnection stuff
-        bluetooth.bluetoothCoordinator = bluetoothFlow
-        checkAndReconnectDevice()
-        isRunning = true
         
         UNUserNotificationCenter.current().delegate = self
         AchievementModel.loadAchievementProgress()
@@ -67,7 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        isRunning = false
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -84,113 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        isRunning = true
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         PersistenceService.saveContext()
-        
-        // Disconnecting from Device
-        if (bluetooth.connectedPeripheral != nil) {
-            isRunning = false
-            bluetoothFlow.cancel()
-        }
     }
-    
-    func checkAndReconnectDevice() {
-        guard isRunning else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { self.checkAndReconnectDevice() })
-            return
-        }
-        guard waitForBluetooth() else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { self.checkAndReconnectDevice() })
-            return
-        }
-        guard bluetooth.connectedPeripheral == nil else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { self.checkAndReconnectDevice() })
-            return
-        }
-        let availablePeripheral = bluetoothBackgroundHandler.reconnect()
-        guard availablePeripheral != nil else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { self.checkAndReconnectDevice() })
-            return
-        }
-        bluetoothFlow.connect(peripheral: availablePeripheral!, completion: { _ in })
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: { self.checkAndReconnectDevice() })
-    }
-    
-    func waitForBluetooth() -> Bool {
-        return bluetooth.centralManager.state == .poweredOn
-    }
-    
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        
-        let remoteControl = searchForRemoteControlView()
-        guard remoteControl.devicesList != [] else { return false }
-        
-        if (userActivity.title == "Move Head Up") {
-            remoteControl.startHeadUp()
-            return true
-        }
-        else if (userActivity.title == "Move Head Up") {
-            remoteControl.startHeadUp()
-            return true
-        }
-        else if (userActivity.title == "Move Head Down") {
-            remoteControl.startHeadDown()
-            return true
-        }
-        else if (userActivity.title == "Move Feet Up") {
-            remoteControl.startFeetUp()
-            return true
-        }
-        else if (userActivity.title == "Move Feet Down") {
-            remoteControl.startFeetDown()
-            return true
-        }
-        else if (userActivity.title == "Trigger Memory 1") {
-            remoteControl.triggerMemory1()
-            return true
-        }
-        else if (userActivity.title == "Trigger Memory 1") {
-            remoteControl.triggerMemory2()
-            return true
-        }
-        else if (userActivity.title == "Stop Head Up") {
-            remoteControl.stopHeadUp()
-            return true
-        }
-        else if (userActivity.title == "Stop Head Down") {
-            remoteControl.stopHeadDown()
-            return true
-        }
-        else if (userActivity.title == "Stop Feet Up") {
-            remoteControl.stopFeetUp()
-            return true
-        }
-        else if (userActivity.title == "Stop Feet Down") {
-            remoteControl.stopFeetDown()
-            return true
-        }
-        
-        return false
-    }
-    
-    func searchForRemoteControlView() -> RemoteController {
-        var remoteControl: RemoteController
-        if let viewControllers = window?.rootViewController?.children {
-            for viewController in viewControllers {
-                if viewController.isKind(of: RemoteController.self) {
-                    remoteControl = viewController as! RemoteController
-                    return remoteControl
-                }
-            }
-        }
-        remoteControl = RemoteController()
-        return remoteControl
-    }
-    
 }
 
