@@ -42,7 +42,11 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     
     var devicesList = [Devices]()
     
-    var device = globalDeviceObject
+    var device = globalDeviceObject {
+        didSet {
+            checkBluetoothConnectivity()
+        }
+    }
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
@@ -88,8 +92,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
         arrowsImageView.alpha = 0
         fadeInArrows(withAlpha: opacity)
         
-        // Disabled for demonstration purposes
-        //checkBluetoothConnectivity()
+        checkBluetoothConnectivity()
     }
     
     override func didReceiveMemoryWarning() {
@@ -179,7 +182,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
         noConnectionBanner.addConstraint(NSLayoutConstraint.init(item: noConnectionLabel, attribute: .centerX, relatedBy: .equal, toItem: noConnectionBanner, attribute: .centerX, multiplier: 1, constant: 0))
         noConnectionBanner.addConstraint(NSLayoutConstraint.init(item: noConnectionLabel, attribute: .centerY, relatedBy: .equal, toItem: noConnectionBanner, attribute: .centerY, multiplier: 3/2, constant: 0))
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.noConnectionBanner.transform = CGAffineTransform.init(translationX: 0, y: 80)
+            self.noConnectionBanner.transform = CGAffineTransform.init(translationX: 0, y: 70)
         }) { (_) in
         }
     }
