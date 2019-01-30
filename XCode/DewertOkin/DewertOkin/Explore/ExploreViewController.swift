@@ -51,7 +51,7 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Vendors"
+        navigationItem.title = "Explore"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.view.isUserInteractionEnabled = true
         
