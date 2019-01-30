@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import CoreData
 
 class PresetsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, PresetButtonDelegate {
     
@@ -50,13 +51,19 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     let presetButtonCell = "presetButtonCell"
 
     let controlUnitPresets = globalDeviceObject.availableMemories.map { $0.rawValue }
-    var phonePresetsNames = ["Sleep", "Relax", "Flat"] {
+    /*var phonePresetsNames = ["Sleep", "Relax", "Flat"] {
+        didSet {
+            collectionView.reloadSections([3])
+        }
+    }*/
+    
+    let colors: [UIColor] = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
+    
+    var presetsList = [Preset]() {
         didSet {
             collectionView.reloadSections([3])
         }
     }
-    
-    let colors: [UIColor] = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)]
     
     override func viewDidLoad() {
         collectionView.register(PresetButtonCell.self, forCellWithReuseIdentifier: presetButtonCell)
@@ -68,6 +75,10 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         self.navigationItem.title = "Memory"
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSelf)), animated: false)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.getSavedPresets()
     }
     
     @objc
@@ -97,7 +108,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         case 2:
             return 1
         case 3:
-            return phonePresetsNames.count + 1
+            return presetsList.count + 1
         case 4:
             return 1
         default:
@@ -135,7 +146,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
             // Presets on the iPhone
             
             switch indexPath.item {
-            case phonePresetsNames.count:
+            case presetsList.count:
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presetButtonCell, for: indexPath) as? PresetButtonCell {
                     cell.presetName = "New Preset"
                     cell.delegate = self
@@ -147,7 +158,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                 }
             default:
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: presetButtonCell, for: indexPath) as? PresetButtonCell {
-                    cell.presetName = phonePresetsNames[indexPath.item]
+                    cell.presetName = presetsList[indexPath.item].presetName
                     cell.delegate = self
                     cell.backgroundColor = colors[indexPath.item]
                     cell.layer.borderColor = cell.backgroundColor?.cgColor
@@ -237,7 +248,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     func presetButtonEditHandler(preset: String, cell: PresetButtonCell) {
         if let index = collectionView.indexPath(for: cell) {
             print(index)
-            if index.item == phonePresetsNames.count {
+            if index.item == presetsList.count {
                 let renameController = UIAlertController(title: "Add current position as preset", message: "Give this preset a name", preferredStyle: .alert)
                 
                 renameController.addTextField(configurationHandler: { (textfield) in
@@ -246,7 +257,10 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
                 })
                 renameController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 renameController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-                    self.phonePresetsNames.append(renameController.textFields?[0].text ?? "")
+                    self.savePreset(withUUID: UUID(),
+                                    named: renameController.textFields?[0].text ?? "",
+                                    forDevice: UUID(uuidString: globalDeviceObject.uuid) ?? UUID())
+                    //self.presetsList.append(renameController.textFields?[0].text ?? "")
                     
                 }))
                 self.present(renameController, animated: true, completion: {
@@ -284,7 +298,9 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
             })
             renameController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             renameController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-                self.phonePresetsNames[indexPath.item] = renameController.textFields?[0].text ?? "ERROR"
+                self.presetsList[indexPath.item].presetName = renameController.textFields?[0].text ?? "ERROR"
+                self.updatePresetsName(newName: renameController.textFields?[0].text ?? "ERROR",
+                                       uuid: self.presetsList[indexPath.item].presetUUID ?? UUID())
                 cell.presetName = renameController.textFields?[0].text
                 print("Renaming preset \(title) to \(renameController.textFields?[0].text ?? "ERROR")")
             }))
@@ -295,11 +311,70 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         editMenu.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
             // Implement deletion of preset from Core Data
             // Remove cell from collectionView
-            self.phonePresetsNames.remove(at: indexPath.item)
+            
+            let posOfToDelete = indexPath.item
+            self.deletePreset(presetToDelete: self.presetsList[posOfToDelete])
+            
         }))
         editMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(editMenu, animated: true, completion: nil)
+    }
+    
+    private func getSavedPresets() {
+        let fetchRequest: NSFetchRequest<Preset> = Preset.fetchRequest()
+        let predicateUUID = NSPredicate(format: "deviceUUID = %@", globalDeviceObject.uuid)
+        fetchRequest.predicate = predicateUUID
+        
+        do {
+            let savedPresets = try PersistenceService.context.fetch(fetchRequest)
+            self.presetsList = savedPresets
+        } catch {
+            print("Couldn't update the data, reload!")
+        }
+    }
+    
+    private func savePreset(withUUID: UUID, named: String, forDevice: UUID){
+        let preset = Preset(context: PersistenceService.context)
+        preset.presetUUID = withUUID
+        preset.presetName = named
+        preset.deviceUUID = forDevice
+        PersistenceService.saveContext()
+        self.getSavedPresets()
+    }
+    
+    private func updatePresetsName(newName: String, uuid: UUID) {
+        let fetchRequest: NSFetchRequest<Preset> = Preset.fetchRequest()
+        
+        do {
+            let savedDevices = try PersistenceService.context.fetch(fetchRequest)
+            for preset in savedDevices {
+                if preset.presetUUID == uuid {
+                    preset.presetName = newName
+                    try PersistenceService.context.save()
+                }
+            }
+            self.getSavedPresets()
+        } catch {
+            print("Devices couldn't be load")
+        }
+    }
+    
+    func deletePreset(presetToDelete: Preset) {
+        let fetchRequest: NSFetchRequest<Preset> = Preset.fetchRequest()
+        
+        do {
+            let savedPresets = try PersistenceService.context.fetch(fetchRequest)
+            for preset in savedPresets {
+                if presetToDelete.presetUUID == preset.presetUUID {
+                    PersistenceService.context.delete(preset)
+                    try PersistenceService.context.save()
+                }
+            }
+            self.getSavedPresets()
+        } catch {
+            print("Presets couldn't be loaded")
+        }
     }
 }
 

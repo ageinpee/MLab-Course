@@ -13,7 +13,9 @@ import CoreBluetooth
 
 var globalDeviceObject = DeviceObject() {
     didSet {
-        //Health.shared.updateBulletinImage()
+        if let mainVC = UIApplication.shared.keyWindow?.rootViewController as? MainViewController {
+            mainVC.updateBulletinImage()
+        }
     }
 }
 

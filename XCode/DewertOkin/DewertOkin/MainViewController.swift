@@ -101,4 +101,18 @@ class MainViewController: UITabBarController {
         guard !bulletinManager.isShowingBulletin else { return }
         bulletinManager.showBulletin(above: self)
     }
+    
+    func updateBulletinImage() {
+        guard !bulletinManager.isShowingBulletin else {
+            print("Couldn't update Bulletin Image because Bulletin is currently showing.")
+            return
+        }
+        print("Updating Bulletin Image")
+        bulletinManager = {
+            let root: BLTNItem = self.getPage()
+            let manager = BLTNItemManager(rootItem: root)
+            manager.backgroundViewStyle = .dimmed
+            return manager
+        }()
+    }
 }
