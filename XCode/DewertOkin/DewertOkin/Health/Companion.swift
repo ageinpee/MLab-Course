@@ -338,4 +338,8 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
         Health.shared.activityTimer?.invalidate()
         Health.shared.startActivityTracking()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }

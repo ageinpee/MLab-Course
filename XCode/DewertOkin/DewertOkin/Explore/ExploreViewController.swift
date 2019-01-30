@@ -92,16 +92,17 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     
     override func viewDidDisappear(_ animated: Bool) {
         // I think I need to reset all accessories, who knows men
+        //defaults.set([], forKey: "FilterAccessories")
     }
         
     @IBAction func showAccessoriesList(_ sender: Any) {
         if (vendorView.superview != nil) {
-            closeDetailView()
+            closeDetailViewInstant()
         }
         performSegue(withIdentifier: "ShowAccessoriesList", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
-        print("Oops, buy a better iPhone mate! #JustAppleThings")
+        super.didReceiveMemoryWarning()
     }
 }

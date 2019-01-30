@@ -111,7 +111,6 @@ extension ExploreViewController {
                 self.currentState = self.currentState.opposite
             }
     }
-    
 }
 
 extension ExploreViewController: MKMapViewDelegate {
