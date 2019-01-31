@@ -42,11 +42,7 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     
     var devicesList = [Devices]()
     
-    var device = globalDeviceObject {
-        didSet {
-            checkBluetoothConnectivity()
-        }
-    }
+    var device = globalDeviceObject
     var opacity = CGFloat(0.75)
     
     var statusBarStyle: UIStatusBarStyle = .default
@@ -77,13 +73,13 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let oldRemoteOn = UserDefaults.standard.object(forKey: "oldRemoteActivated") as? Bool{
-            // Warning! This re-initializes all ViewControllers in the TabBar (incl. Settings)
-            if let vc = tabBarController as? MainViewController {
-                vc.useNewRemoteStyle = !oldRemoteOn
-                print("Using \(oldRemoteOn ? "old" : "new") Remote Layout")
-            }
-        }
+//        if let oldRemoteOn = UserDefaults.standard.object(forKey: "oldRemoteActivated") as? Bool{
+//            // Warning! This re-initializes all ViewControllers in the TabBar (incl. Settings)
+//            if let vc = tabBarController as? MainViewController {
+//                vc.useNewRemoteStyle = !oldRemoteOn
+//                print("Using \(oldRemoteOn ? "old" : "new") Remote Layout")
+//            }
+//        }
         
         self.layoutRemote()
         
@@ -102,7 +98,9 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
         arrowsImageView.alpha = 0
         fadeInArrows(withAlpha: opacity)
         
-        checkBluetoothConnectivity()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            self.checkBluetoothConnectivity()
+        })
     }
     
     override func didReceiveMemoryWarning() {

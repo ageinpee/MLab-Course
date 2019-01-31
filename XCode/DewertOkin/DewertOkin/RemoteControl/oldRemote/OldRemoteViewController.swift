@@ -67,6 +67,10 @@ class OldRemoteViewController: UIViewController {
         feetUpButton.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
         feetDownButton.addTarget(self, action: #selector(moveFeetUpButton(_:)), for: .touchDown)
         feetDownButton.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
+        bothUpButton.addTarget(self, action: #selector(moveBothDownButton(_:)), for: .touchDown)
+        bothUpButton.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
+        bothDownButton.addTarget(self, action: #selector(moveBothUpButton(_:)), for: .touchDown)
+        bothDownButton.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
         memory1Button.addTarget(self, action: #selector(triggerMemory1Button(_:)), for: .touchDown)
         memory1Button.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
         memory2Button.addTarget(self, action: #selector(triggerMemory2Button(_:)), for: .touchDown)
@@ -256,6 +260,28 @@ class OldRemoteViewController: UIViewController {
         bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
             (_) in
             self.triggerCommand(keycode: keycode.m2In)
+        }
+    }
+    
+    @objc func moveBothUpButton(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m1Out)
+            self.triggerCommand(keycode: keycode.m2Out)
+        }
+    }
+    
+    @objc func moveBothDownButton(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m1In)
+            self.triggerCommand(keycode: keycode.m1In)
         }
     }
     

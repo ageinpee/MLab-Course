@@ -91,8 +91,6 @@ class ExploreViewController: UIViewController, CLLocationManagerDelegate, UIGest
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        // I think I need to reset all accessories, who knows men
-        //defaults.set([], forKey: "FilterAccessories")
     }
         
     @IBAction func showAccessoriesList(_ sender: Any) {

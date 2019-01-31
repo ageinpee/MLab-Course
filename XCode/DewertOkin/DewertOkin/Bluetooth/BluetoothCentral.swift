@@ -66,8 +66,6 @@ extension Bluetooth: CBCentralManagerDelegate {
         
     func saveDevice(peripheral: CBPeripheral) {
         let device = Devices(context: PersistenceService.context)
-//        device.name = peripheral.name
-//        device.type = peripheral.description
         device.uuid = peripheral.identifier.uuidString
         PersistenceService.saveContext()
     }
