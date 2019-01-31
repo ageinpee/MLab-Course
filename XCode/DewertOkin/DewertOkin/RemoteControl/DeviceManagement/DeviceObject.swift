@@ -217,7 +217,12 @@ class DeviceObject {
     }
     
     private func chooseDeviceType() {
+        print(availableMotors.count)
+        print(handheldData[2])
         if handheldData[2] == "bedding" && availableMotors.count == 2 {
+            type = DeviceType.bed_2Motors.rawValue
+        }
+        else if handheldData[2] == "bedding" && availableMotors.count == 4 {
             type = DeviceType.bed_2Motors.rawValue
         }
         else if handheldData[2] == "seating" && availableMotors.count == 2 {
