@@ -211,11 +211,11 @@ class Health {
         getStepsForTimeInterval(timeInSeconds: timeInterval) { result in
             if let result = result {
                 print(result)
-                if result < 5 {
-                    print("Low activity: Steps below 5")
+                if result < 10 {
+                    print("Low activity: Steps below 10")
                     completion(HealthCheckReturnValue.noActivity)
                 } else {
-                    print("Enough activity: Steps above 5")
+                    print("Enough activity: Steps above 10")
                     completion(HealthCheckReturnValue.enoughActivity)
                 }
             } else {
