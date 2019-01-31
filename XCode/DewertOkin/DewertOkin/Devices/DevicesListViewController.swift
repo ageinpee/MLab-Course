@@ -40,14 +40,6 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         fetchDevices()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if self.isMovingFromParent {
-            remoteControl.layoutRemote()
-        }
-    }
-    
     func fetchDevices() {
         let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()
         
