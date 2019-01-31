@@ -32,6 +32,7 @@ class OldRemoteViewController: UIViewController {
     
     var buttonList: [UIButton] = [UIButton]()
     var buttonList2: [UIButton] = [UIButton]()
+    var whereToSaveMemory: Bool?
     
     //Bluetooth Dependencies
     var remoteControlConfig = RemoteControlConfig()
@@ -40,6 +41,7 @@ class OldRemoteViewController: UIViewController {
     lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
     var peripheral: CBPeripheral?
     var characteristic: CBCharacteristic?
+    var bluetoothTimer: Timer?
     
     
     override func viewDidLoad() {
@@ -56,6 +58,21 @@ class OldRemoteViewController: UIViewController {
                        bothUpButton, bothDownButton,
                        memory1Button, memory2Button,
                        saveButton, ublButton]
+        
+        backUpButton.addTarget(self, action: #selector(moveHeadDownButton(_:)), for: .touchDown)
+        backUpButton.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
+        backDownButton.addTarget(self, action: #selector(moveHeadUpButton(_:)), for: .touchDown)
+        backDownButton.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
+        feetUpButton.addTarget(self, action: #selector(moveFeetDownButton(_:)), for: .touchDown)
+        feetUpButton.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
+        feetDownButton.addTarget(self, action: #selector(moveFeetUpButton(_:)), for: .touchDown)
+        feetDownButton.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
+        memory1Button.addTarget(self, action: #selector(triggerMemory1Button(_:)), for: .touchDown)
+        memory1Button.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
+        memory2Button.addTarget(self, action: #selector(triggerMemory2Button(_:)), for: .touchDown)
+        memory2Button.addTarget(self, action: #selector(stopMovement(_:)), for: [.touchUpInside, .touchUpOutside])
+        
+        ublButton.addTarget(self, action: #selector(saveMemory(_:)), for: .touchDown)
         
         constrainRemoteButtons()
         setupButtons()
@@ -156,36 +173,6 @@ class OldRemoteViewController: UIViewController {
         }
     }
     
-    func moveHeadUp() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m1In)
-    }
-    
-    func moveHeadDown() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m1Out)
-    }
-    
-    func moveFeetUp() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m4In)
-    }
-    
-    func moveFeetDown() {
-        guard bluetoothBackgroundHandler.checkStatus() else { return }
-        self.characteristic = self.bluetooth.writeCharacteristic
-        triggerCommand(keycode: keycode.m4Out)
-    }
-    
-    func triggerCommand(keycode: keycode) {
-        let movement = self.remoteControlConfig.getKeycode(name: keycode)
-        bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
-        
-    }
-    
     func constrainRemoteButtons() {
         
         guard let superView = remoteView.superview else { return }
@@ -232,49 +219,87 @@ class OldRemoteViewController: UIViewController {
         NSLayoutConstraint(item: torchButton, attribute: .centerX, relatedBy: .equal, toItem: remoteView, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
     }
     
-    
-    @IBAction func backUpAction(_ sender: Any) {
-        moveHeadUp()
+    @objc func moveHeadUpButton(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m1Out)
+        }
     }
     
-    @IBAction func backDownAction(_ sender: Any) {
-        moveHeadDown()
+    @objc func moveHeadDownButton(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m1In)
+        }
     }
     
-    @IBAction func feetUpAction(_ sender: Any) {
-        moveFeetUp()
+    @objc func moveFeetUpButton(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m2Out)
+        }
     }
     
-    @IBAction func feetDownAction(_ sender: Any) {
-        moveFeetDown()
+    @objc func moveFeetDownButton(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.m2In)
+        }
     }
     
-    @IBAction func bothUpAction(_ sender: Any) {
-        
+    @objc func triggerMemory1Button(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        guard whereToSaveMemory != true else {
+            self.triggerCommand(keycode: keycode.memory1)
+            return
+        }
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.memory1)
+        }
     }
     
-    @IBAction func bothDownAction(_ sender: Any) {
-        
+    @objc func triggerMemory2Button(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        guard whereToSaveMemory != true else {
+            self.triggerCommand(keycode: keycode.memory2)
+            return
+        }
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.memory2)
+        }
     }
     
-    @IBAction func memory1Action(_ sender: Any) {
-        
+    @objc func saveMemory(_ sender: UIButton) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        self.triggerCommand(keycode: keycode.storeMemoryPosition)
+        whereToSaveMemory = true
     }
     
-    @IBAction func memory2Action(_ sender: Any) {
-        
+    @objc func stopMovement(_ sender: UIButton) {
+        self.bluetoothTimer?.invalidate()
     }
     
-    @IBAction func saveAction(_ sender: Any) {
-        
+    func triggerCommand(keycode: keycode) {
+        let movement = self.remoteControlConfig.getKeycode(name: keycode)
+        bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
-    
-    @IBAction func ublAction(_ sender: Any) {
-        
-    }
-    
-    @IBAction func torchAction(_ sender: Any) {
-        
-    }
-    
 }
