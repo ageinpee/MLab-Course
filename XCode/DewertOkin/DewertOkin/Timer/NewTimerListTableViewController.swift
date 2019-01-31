@@ -9,8 +9,19 @@
 import UIKit
 import CoreData
 import UserNotifications
+import CoreBluetooth
 
 class NewTimerListTableViewController: UITableViewController {
+    
+    //---------------------------------------
+    //----- Bluetooth Dependencies ----------
+    var remoteControlConfig = RemoteControlConfig()
+    var bluetooth = Bluetooth.sharedBluetooth
+    lazy var bluetoothFlow = BluetoothFlow(bluetoothService: self.bluetooth)
+    lazy var bluetoothBackgroundHandler = BluetoothBackgroundHandler(bluetoothService: self.bluetooth)
+    var peripheral: CBPeripheral?
+    var characteristic: CBCharacteristic?
+    var bluetoothTimer: Timer?
     
     public var timerList = [DeviceTimer]() {
         didSet {
@@ -127,6 +138,7 @@ class NewTimerListTableViewController: UITableViewController {
     }
     
     private func getSavedData() {
+        guard globalDeviceObject.uuid != "nil" else { return }
         let fetchRequest: NSFetchRequest<DeviceTimer> = DeviceTimer.fetchRequest()
         let predicateUUID = NSPredicate(format: "deviceUUID = %@", globalDeviceObject.uuid)
         fetchRequest.predicate = predicateUUID
@@ -159,6 +171,14 @@ class NewTimerListTableViewController: UITableViewController {
                 if repeats != RepeatingOptions.never.rawValue && repeats != RepeatingOptions.notSet.rawValue {
                     trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
                 }
+                
+                let presetTimerDate = Date().timeIntervalSince(dateInfo.date ?? Date())
+                print("Next Date" + String(presetTimerDate))
+                
+                Timer.scheduledTimer(withTimeInterval: presetTimerDate, repeats: false) { (timer) in
+                    self.triggerMemory1()
+                    timer.invalidate()
+                }
               
                 
                 // Create the request object.
@@ -174,6 +194,37 @@ class NewTimerListTableViewController: UITableViewController {
             }
 
         }
+    }
+    
+    func triggerMemory1() {
+        guard bluetoothBackgroundHandler.checkStatus() else {
+            Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false){
+                (_) in
+                if (self.bluetoothBackgroundHandler.checkStatus()) {
+                    self.triggerMemory1()
+                } else {
+                    self.notifyAfterTime()
+                }
+            }
+            return
+        }
+        self.characteristic = self.bluetooth.writeCharacteristic
+        bluetoothTimer?.invalidate()
+        bluetoothTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            (_) in
+            self.triggerCommand(keycode: keycode.memory1)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {self.bluetoothTimer?.invalidate()})
+    }
+    
+    func notifyAfterTime() {
+        print("Nothing connected")
+    }
+    
+    func triggerCommand(keycode: keycode) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
+        let movement = self.remoteControlConfig.getKeycode(name: keycode)
+        bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
 
 }
