@@ -205,6 +205,7 @@ class CompanionTableViewController: UITableViewController, TimeIntervalSelection
     }
     
     private func getSavedData() {
+        guard globalDeviceObject.uuid != "nil" else { return }
         let fetchRequest: NSFetchRequest<Reminder> = Reminder.fetchRequest()
         let predicateUUID = NSPredicate(format: "deviceUUID = %@", globalDeviceObject.uuid)
         fetchRequest.predicate = predicateUUID

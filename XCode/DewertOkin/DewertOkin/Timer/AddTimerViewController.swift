@@ -249,6 +249,7 @@ class AddTimerViewController: UITableViewController {
     
     @objc
     private func doneButtonPressed() {
+        guard globalDeviceObject.uuid != "nil" else { return }
         selectedTimer.timerName = nameTextField.text
         selectedTimer.timerTime = datePicker.date
         selectedTimer.deviceUUID = UUID(uuidString: globalDeviceObject.uuid)!

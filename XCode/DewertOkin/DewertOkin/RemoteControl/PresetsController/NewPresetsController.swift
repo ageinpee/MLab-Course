@@ -352,6 +352,11 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     private func getSavedPresets() {
+        guard globalDeviceObject.uuid != "nil" else {
+            self.presetsList = []
+            return
+        }
+
         let fetchRequest: NSFetchRequest<Preset> = Preset.fetchRequest()
         let predicateUUID = NSPredicate(format: "deviceUUID = %@", globalDeviceObject.uuid)
         fetchRequest.predicate = predicateUUID
