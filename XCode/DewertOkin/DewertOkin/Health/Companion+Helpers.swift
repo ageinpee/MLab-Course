@@ -163,6 +163,7 @@ enum ReminderSection: String {
 
 class TimeIntervalSelectionTableViewController: UITableViewController {
     
+    // 1/6 = 10 sec for demonstration purposes
     let timeIntervals: [Float] = [30, 60, 90, 120, 150, 180, 1/6]
     let timeCell = "timeCell"
     

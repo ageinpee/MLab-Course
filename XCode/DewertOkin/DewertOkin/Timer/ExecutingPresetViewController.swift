@@ -5,6 +5,7 @@
 //  Created by Jan Robert on 04.01.19.
 //  Copyright © 2019 Team DewertOkin. All rights reserved.
 //
+// Does not currently get used in our app
 
 import Foundation
 import UIKit

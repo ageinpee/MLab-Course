@@ -6,6 +6,7 @@
 //  Copyright © 2019 Team DewertOkin. All rights reserved.
 //
 
+// Does not currently get used in our app, but could be used for a bed
 import Foundation
 import UIKit
 

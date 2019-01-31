@@ -53,6 +53,7 @@ class AchievementModel {
     
     static var veteranUnlocked = false
     
+    // masterUnlocked and maniacUnlocked aren't implemented yet
     static var apprenticeUnlocked = false {
         didSet {
             if apprenticeUnlocked {
@@ -168,6 +169,7 @@ class AchievementModel {
         apprenticeCount += 1
         maniacCount += 1
         masterCount += 1
+        // needs to be expanded for master and maniac
         if apprenticeCount == 25 {
             apprenticeUnlocked = true
         }
@@ -256,6 +258,7 @@ struct Achievement: Codable {
     var id: Int
     var title: String
     var description: String
+    // the image doesn't get used
     var image: String
     var type: AchievementType
     var progress: Float

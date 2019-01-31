@@ -172,8 +172,10 @@ class NewTimerListTableViewController: UITableViewController {
                     trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
                 }
                 
-                
+                // The time interval needs to be put to the date computed by the dateInfo object
                 Timer.scheduledTimer(withTimeInterval: 60, repeats: false) { (timer) in
+                    // Hardcoded to trigger achievement 1
+                    // Presets needs to be saved in CoreData and then fetched here
                     self.triggerMemory1()
                     timer.invalidate()
                 }
