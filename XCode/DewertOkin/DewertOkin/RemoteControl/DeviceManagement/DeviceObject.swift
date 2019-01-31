@@ -50,7 +50,7 @@ class DeviceObject {
     var Reminders: [String] = [String]()                                // placeholder for device specific Remidners-array
     
     init() {
-        uuid = UUID().uuidString
+        uuid = "nil"
         name = "No Device"
         handheldID = "no-device"
         style = "filled"
