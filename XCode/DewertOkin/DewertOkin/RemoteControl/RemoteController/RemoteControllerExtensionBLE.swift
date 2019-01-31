@@ -36,6 +36,7 @@ extension RemoteController {
     }
     
     func triggerCommand(keycode: keycode) {
+        guard bluetoothBackgroundHandler.checkStatus() else { return }
         let movement = self.remoteControlConfig.getKeycode(name: keycode)
         bluetooth.connectedPeripheral!.writeValue(movement, for: characteristic!, type: CBCharacteristicWriteType.withResponse)
     }
