@@ -75,11 +75,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.layoutRemote()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        self.layoutRemote()
         arrowsImageView.alpha = 0
         fadeInArrows(withAlpha: opacity)
     }

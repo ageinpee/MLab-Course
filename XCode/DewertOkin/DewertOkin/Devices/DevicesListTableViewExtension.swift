@@ -63,7 +63,6 @@ extension DevicesListViewController: UITableViewDataSource {
             } catch {
                 print("Devices couldn't be load")
             }
-            
         }
         
         action.backgroundColor = .red

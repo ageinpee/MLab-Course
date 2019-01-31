@@ -214,6 +214,7 @@ class AddTimerViewController: UITableViewController {
                 
                 var presetOptions: [UIAlertAction] = []
                 
+                guard globalDeviceObject.uuid != "nil" else { return }
                 for element in globalDeviceObject.availableMemories {
                     let newAction = UIAlertAction(title: element.rawValue, style: .default, handler: {action in
                         tableView.cellForRow(at: IndexPath(item: 2, section: 1))?.detailTextLabel?.text = element.rawValue
