@@ -111,6 +111,14 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
         }) { (_) in
             UIApplication.shared.keyWindow?.rootViewController = MainViewController()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {self.view.removeFromSuperview()})
+            let subviews = UIApplication.shared.keyWindow?.subviews
+            for subview in subviews ?? [] {
+                if let transition = NSClassFromString("UITransitionView") {
+                    for subview in subviews ?? [] where subview.isKind(of: transition) {
+                        subview.removeFromSuperview()
+                    }
+                }
+            }
         }
     
     }
