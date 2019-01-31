@@ -172,10 +172,8 @@ class NewTimerListTableViewController: UITableViewController {
                     trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
                 }
                 
-                let presetTimerDate = Date().timeIntervalSince(dateInfo.date ?? Date())
-                print("Next Date" + String(presetTimerDate))
                 
-                Timer.scheduledTimer(withTimeInterval: presetTimerDate, repeats: false) { (timer) in
+                Timer.scheduledTimer(withTimeInterval: 60, repeats: false) { (timer) in
                     self.triggerMemory1()
                     timer.invalidate()
                 }
