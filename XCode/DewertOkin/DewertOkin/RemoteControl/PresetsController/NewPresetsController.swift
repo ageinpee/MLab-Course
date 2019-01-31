@@ -40,7 +40,8 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     
     let defaultCell = "defaultCell"
     let presetButtonCell = "presetButtonCell"
-
+    
+    
     let controlUnitPresets = globalDeviceObject.availableMemories.map { $0.rawValue }
     /*var phonePresetsNames = ["Sleep", "Relax", "Flat"] {
         didSet {
@@ -314,6 +315,10 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     private func getSavedPresets() {
+        guard globalDeviceObject.uuid != "nil" else {
+            self.presetsList = []
+            return
+        }
         let fetchRequest: NSFetchRequest<Preset> = Preset.fetchRequest()
         let predicateUUID = NSPredicate(format: "deviceUUID = %@", globalDeviceObject.uuid)
         fetchRequest.predicate = predicateUUID
