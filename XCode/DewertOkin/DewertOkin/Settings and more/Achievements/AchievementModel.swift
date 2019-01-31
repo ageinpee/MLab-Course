@@ -93,6 +93,10 @@ class AchievementModel {
         defaults.setValue(timeSpentInAchievementsSection, forKey: "timeSpentInAchievementsSection")
         defaults.setValue(veteranUnlocked, forKey: "veteranUnlocked")
         defaults.setValue(nightOwlUnlocked, forKey: "nightOwlUnlocked")
+        // Changed for mock
+//        defaults.setValue(apprenticeCount, forKey: "apprenticeCount")
+//        defaults.setValue(maniacCount, forKey: "maniacCount")
+//        defaults.setValue(masterCount, forKey: "masterCount")
         defaults.setValue(25, forKey: "apprenticeCount")
         defaults.setValue(25, forKey: "maniacCount")
         defaults.setValue(25, forKey: "masterCount")
@@ -111,13 +115,16 @@ class AchievementModel {
                 remindersSet = savedRemindersSet
             }
             
-            if let savedApprenticeCount = defaults.object(forKey: "apprenticeCount") as? Float {
-                apprenticeCount = 25.0
-            }
+            // Removed for mock
+//            if let savedApprenticeCount = defaults.object(forKey: "apprenticeCount") as? Float {
+//                apprenticeCount = 25.0
+//            }
+            apprenticeCount = 25.0
             
-            if let savedApprenticeUnlocked = defaults.object(forKey: "savedApprenticeUnlocked") as? Bool {
-                apprenticeUnlocked = true
-            }
+            // Removed for mock
+//            if let savedApprenticeUnlocked = defaults.object(forKey: "savedApprenticeUnlocked") as? Bool {
+//                apprenticeUnlocked = true
+//            }
             
             if let savedManiacCount = defaults.object(forKey: "maniacCount") as? Float {
                 maniacCount = savedManiacCount
