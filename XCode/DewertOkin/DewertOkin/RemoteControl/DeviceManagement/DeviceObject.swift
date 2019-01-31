@@ -220,6 +220,9 @@ class DeviceObject {
         if handheldData[2] == "bedding" && availableMotors.count == 2 {
             type = DeviceType.bed_2Motors.rawValue
         }
+        else if handheldData[2] == "bedding" && availableMotors.count == 4 {
+            type = DeviceType.bed_2Motors.rawValue
+        }
         else if handheldData[2] == "seating" && availableMotors.count == 2 {
             type = DeviceType.chair_2Motors.rawValue
         }
