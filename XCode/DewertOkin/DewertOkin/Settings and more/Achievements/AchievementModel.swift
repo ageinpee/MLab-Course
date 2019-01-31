@@ -17,21 +17,21 @@ import UserNotifications
 
 class AchievementModel {
     
-    static var apprenticeCount: Float = 0.0 {
+    static var apprenticeCount: Float = 25.0 {
         didSet {
             achievementDictionary[.exerciseApprentice]?.progress = Float(apprenticeCount / 25.0)
             saveAchievementProgress()
         }
     }
     
-    static var maniacCount: Float = 0.0 {
+    static var maniacCount: Float = 25.0 {
         didSet {
             achievementDictionary[.exerciseManiac]?.progress = Float(maniacCount / 50.0)
             saveAchievementProgress()
         }
     }
     
-    static var masterCount: Float = 0.0 {
+    static var masterCount: Float = 25.0 {
         didSet {
             achievementDictionary[.exerciseMaster]?.progress = Float(masterCount / 100.0)
             saveAchievementProgress()
@@ -56,7 +56,7 @@ class AchievementModel {
     static var apprenticeUnlocked = false {
         didSet {
             if apprenticeUnlocked {
-                displayLocalNotification(forAchievement: "Exercise Apprentice")
+                //displayLocalNotification(forAchievement: "Exercise Apprentice")
             }
         }
     }
@@ -71,9 +71,9 @@ class AchievementModel {
     }
     
     public static var achievementDictionary: [AchievementType:Achievement] = [
-        .exerciseApprentice : Achievement(id: 1, title: "Exercise Apprentice", description: "Do your recommended exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 0.0),
-        .exerciseManiac : Achievement(id: 2, title: "Exercise Maniac", description: "Do your recommended exercises 50 times", image: "lock_simple", type: .exerciseManiac, progress: 0.0),
-        .exerciseMaster : Achievement(id: 3, title: "Exercise Master", description: "Do your recommended exercise 100 times", image: "lock_simple", type: .exerciseMaster, progress: 0.0),
+        .exerciseApprentice : Achievement(id: 1, title: "Exercise Apprentice", description: "Do your exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 1.0),
+        .exerciseManiac : Achievement(id: 2, title: "Exercise Maniac", description: "Do your exercise 50 times", image: "lock_simple", type: .exerciseManiac, progress: 0.5),
+        .exerciseMaster : Achievement(id: 3, title: "Exercise Master", description: "Do your exercise 100 times", image: "lock_simple", type: .exerciseMaster, progress: 0.25),
         .firstStreak : Achievement(id: 4, title: "First Streak!", description: "Do your exercise for 25 times in a row!", image: "lock_simple", type: .firstStreak, progress: 0.0),
         .streakItHard : Achievement(id: 5, title: "Streak it hard!", description: "Do your exercise for 50 times in a row!", image: "lock_simple", type: .streakItHard, progress: 0.0),
         .streakLikeABoss : Achievement(id: 6, title: "STREAK LIKE A BOSS!", description: "Do your exercise for 100 times in a row", image: "lock_simple", type: .streakLikeABoss, progress: 0.0),
@@ -93,10 +93,10 @@ class AchievementModel {
         defaults.setValue(timeSpentInAchievementsSection, forKey: "timeSpentInAchievementsSection")
         defaults.setValue(veteranUnlocked, forKey: "veteranUnlocked")
         defaults.setValue(nightOwlUnlocked, forKey: "nightOwlUnlocked")
-        defaults.setValue(apprenticeCount, forKey: "apprenticeCount")
-        defaults.setValue(maniacCount, forKey: "maniacCount")
-        defaults.setValue(masterCount, forKey: "masterCount")
-        defaults.setValue(apprenticeUnlocked, forKey: "apprenticeUnlocked")
+        defaults.setValue(25, forKey: "apprenticeCount")
+        defaults.setValue(25, forKey: "maniacCount")
+        defaults.setValue(25, forKey: "masterCount")
+        defaults.setValue(true, forKey: "apprenticeUnlocked")
     }
     
     static func loadAchievementProgress() {
@@ -112,11 +112,11 @@ class AchievementModel {
             }
             
             if let savedApprenticeCount = defaults.object(forKey: "apprenticeCount") as? Float {
-                apprenticeCount = savedApprenticeCount
+                apprenticeCount = 25.0
             }
             
             if let savedApprenticeUnlocked = defaults.object(forKey: "savedApprenticeUnlocked") as? Bool {
-                apprenticeUnlocked = savedApprenticeUnlocked
+                apprenticeUnlocked = true
             }
             
             if let savedManiacCount = defaults.object(forKey: "maniacCount") as? Float {
@@ -168,9 +168,6 @@ class AchievementModel {
         apprenticeCount += 1
         maniacCount += 1
         masterCount += 1
-        if apprenticeCount == 25 {
-            apprenticeUnlocked = true
-        }
         print("registering new exercise")
     }
     
@@ -219,9 +216,9 @@ class AchievementModel {
         nightOwlUnlocked = false
         
         achievementDictionary = [
-            .exerciseApprentice : Achievement(id: 1, title: "Exercise Apprentice", description: "Do your recommended exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 0.0),
-            .exerciseManiac : Achievement(id: 2, title: "Exercise Maniac", description: "Do your recommended exercises 50 times", image: "lock_simple", type: .exerciseManiac, progress: 0.0),
-            .exerciseMaster : Achievement(id: 3, title: "Exercise Master", description: "Do your recommended exercise 100 times", image: "lock_simple", type: .exerciseMaster, progress: 0.0),
+            .exerciseApprentice : Achievement(id: 1, title: "Exercise Apprentice", description: "Do your exercise 25 times", image: "lock_simple", type: .exerciseApprentice, progress: 1.0),
+            .exerciseManiac : Achievement(id: 2, title: "Exercise Maniac", description: "Do your exercise 50 times", image: "lock_simple", type: .exerciseManiac, progress: 0.5),
+            .exerciseMaster : Achievement(id: 3, title: "Exercise Master", description: "Do your exercise 100 times", image: "lock_simple", type: .exerciseMaster, progress: 0.25),
             .firstStreak : Achievement(id: 4, title: "First Streak!", description: "Do your exercise for 25 times in a row!", image: "lock_simple", type: .firstStreak, progress: 0.0),
             .streakItHard : Achievement(id: 5, title: "Streak it hard!", description: "Do your exercise for 50 times in a row!", image: "lock_simple", type: .streakItHard, progress: 0.0),
             .streakLikeABoss : Achievement(id: 6, title: "STREAK LIKE A BOSS!", description: "Do your exercise for 100 times in a row", image: "lock_simple", type: .streakLikeABoss, progress: 0.0),
