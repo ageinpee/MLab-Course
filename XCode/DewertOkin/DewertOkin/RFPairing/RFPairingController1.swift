@@ -101,6 +101,12 @@ class RFPairingController1: UIViewController, UIPickerViewDelegate, UIPickerView
         if(segue.identifier == "pairingTransition1") {
             if let vc = segue.destination as? RFPairingController2 {
                 vc.selectedRemote = selectedRemote
+                if let transition = NSClassFromString("UITransitionView") {
+                    for subview in self.view.subviews where subview.isKind(of: transition) {
+                        subview.removeFromSuperview()
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {self.view.removeFromSuperview()})
             }
         }
         

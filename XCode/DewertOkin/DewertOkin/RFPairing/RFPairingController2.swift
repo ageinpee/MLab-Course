@@ -30,11 +30,20 @@ class RFPairingController2: UIViewController {
         if(segue.identifier == "pairingTransition2") {
             if let vc = segue.destination as? RFPairingController3 {
                 vc.selectedRemote = selectedRemote
+                if let transition = NSClassFromString("UITransitionView") {
+                    for subview in self.view.subviews where subview.isKind(of: transition) {
+                        subview.removeFromSuperview()
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {self.view.removeFromSuperview()})
             }
         }
     }
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.view.removeFromSuperview()
+    }
     
     func layoutConstraints() {
         plugImage.translatesAutoresizingMaskIntoConstraints = false

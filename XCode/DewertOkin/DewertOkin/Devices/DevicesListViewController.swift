@@ -40,6 +40,11 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         fetchDevices()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.view.removeFromSuperview()
+    }
+    
     func fetchDevices() {
         let fetchRequest: NSFetchRequest<Devices> = Devices.fetchRequest()
         
@@ -116,6 +121,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? BluetoothPairingConnectViewController {
             destination.selectedDeviceObject = self.deviceObjectToConnect
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { self.view.removeFromSuperview() })
         }
     }
     @IBAction func unwindToRemoteViewController(_ sender: Any) {
@@ -124,6 +130,7 @@ class DevicesListViewController: UIViewController, UITableViewDelegate {
         if let mainVC = UIApplication.shared.keyWindow?.rootViewController as? MainViewController {
             if let remoteVC = mainVC.viewControllers?[0] as? RemoteController {
                 remoteVC.viewDidLoad()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { self.view.removeFromSuperview() })
             }
         }
     }

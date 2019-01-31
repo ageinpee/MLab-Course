@@ -53,6 +53,11 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.view.removeFromSuperview()
+    }
+    
     @IBAction func ProceedAction(_ sender: Any) {
         failCounter = failCounter+1
         
@@ -102,7 +107,12 @@ class RFPairingController3: UIViewController, UITextFieldDelegate {
             self.view.alpha = 0
         }) { (_) in
             UIApplication.shared.keyWindow?.rootViewController = MainViewController()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {self.view.removeFromSuperview()})
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {self.view.removeFromSuperview()})
+            if let transition = NSClassFromString("UITransitionView") {
+                for subview in self.view.subviews where subview.isKind(of: transition) {
+                    subview.removeFromSuperview()
+                }
+            }
         }
     
     }
