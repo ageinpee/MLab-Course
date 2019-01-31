@@ -77,6 +77,14 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let oldRemoteOn = UserDefaults.standard.object(forKey: "oldRemoteActivated") as? Bool{
+            // Warning! This re-initializes all ViewControllers in the TabBar (incl. Settings)
+            if let vc = tabBarController as? MainViewController {
+                vc.useNewRemoteStyle = !oldRemoteOn
+                print("Using \(oldRemoteOn ? "old" : "new") Remote Layout")
+            }
+        }
+        
         self.layoutRemote()
         
         self.bluetooth.bluetoothCoordinator = self.bluetoothFlow
