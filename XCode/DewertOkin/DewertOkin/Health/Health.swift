@@ -15,7 +15,8 @@ class Health {
     
     static let shared = Health()
     
-    // Save in UserDefaults
+    // This should be automatically enabled by the user connecting to and stying in range of a device
+    // Currently it needs to be manually switched on or off
     var activityReminderEnabled = true {
         didSet {
             startActivityTracking()
