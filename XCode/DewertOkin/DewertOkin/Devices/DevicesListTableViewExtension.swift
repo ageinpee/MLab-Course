@@ -51,8 +51,10 @@ extension DevicesListViewController: UITableViewDataSource {
                 let savedDevices = try PersistenceService.context.fetch(fetchRequest)
                 for device in savedDevices {
                     if deviceToDelete.uuid == device.uuid {
-                        globalDeviceObject = DeviceObject()
-                        UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
+                        if deviceToDelete.uuid == globalDeviceObject.uuid {
+                            globalDeviceObject = DeviceObject()
+                            UserDefaults.standard.set(globalDeviceObject.uuid, forKey: "lastConnectedDevice_uuid")
+                        }
                         PersistenceService.context.delete(device)
                         try PersistenceService.context.save()
                     }

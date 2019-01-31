@@ -70,8 +70,6 @@ class RemoteController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
         self.layoutRemote()
-        
-        //initializeAllCommands()
     }
     
     override func viewWillAppear(_ animated: Bool) {
