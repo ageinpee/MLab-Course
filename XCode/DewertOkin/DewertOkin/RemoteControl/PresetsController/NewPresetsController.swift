@@ -69,7 +69,8 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.getSavedPresets()
     }
     
@@ -175,7 +176,7 @@ class PresetsCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == presetsList.count {
+        if indexPath.item == presetsList.count && indexPath.section == 3{
             let renameController = UIAlertController(title: "Add current position as preset", message: "Give this preset a name", preferredStyle: .alert)
             
             renameController.addTextField(configurationHandler: { (textfield) in
