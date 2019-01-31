@@ -178,7 +178,7 @@ class TimeIntervalSelectionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: timeCell, for: indexPath)
         cell.textLabel?.text = "\(Int(timeIntervals[indexPath.row])) min"
-        cell.accessoryType = selectedRow.contains(indexPath) ? .checkmark : .none
+        //cell.accessoryType = selectedRow.contains(indexPath) ? .checkmark : .none
         return cell
     }
     
